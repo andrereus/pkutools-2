@@ -447,11 +447,11 @@
 </template>
 
 <script>
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
-import { mapState } from 'vuex'
-import update from './mixins/update'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/auth'
+// import 'firebase/compat/database'
+// import { mapState } from 'vuex'
+// import update from './mixins/update'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -525,83 +525,83 @@ export default {
     bottomNav: null,
     sheet: false,
     offlineInfo: false
-  }),
-  mixins: [update],
-  methods: {
-    signInGoogle() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInFacebook() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signOut() {
-      this.$store.dispatch('signOut')
-    },
-    updateDesign() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
-    }
-  },
-  beforeCreate() {
-    document.getElementsByTagName('html')[0].lang = this.$i18n.locale
+  })
+  // mixins: [update],
+  // methods: {
+  //   signInGoogle() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInGoogle')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInFacebook() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInFacebook')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signOut() {
+  //     this.$store.dispatch('signOut')
+  //   },
+  //   updateDesign() {
+  //     this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+  //     localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
+  //   }
+  // },
+  // beforeCreate() {
+  //   document.getElementsByTagName('html')[0].lang = this.$i18n.locale
 
-    firebase.initializeApp({
-      apiKey: process.env.VUE_APP_API_KEY,
-      authDomain: 'pku-tools.firebaseapp.com',
-      databaseURL: 'https://pku-tools.firebaseio.com',
-      projectId: 'pku-tools',
-      storageBucket: 'pku-tools.appspot.com',
-      messagingSenderId: '202032702286',
-      appId: '1:202032702286:web:2daa2ac360e82ee0cfb41f'
-    })
+  //   firebase.initializeApp({
+  //     apiKey: process.env.VUE_APP_API_KEY,
+  //     authDomain: 'pku-tools.firebaseapp.com',
+  //     databaseURL: 'https://pku-tools.firebaseio.com',
+  //     projectId: 'pku-tools',
+  //     storageBucket: 'pku-tools.appspot.com',
+  //     messagingSenderId: '202032702286',
+  //     appId: '1:202032702286:web:2daa2ac360e82ee0cfb41f'
+  //   })
 
-    firebase.auth().onAuthStateChanged((user) => {
-      // Prevent corrupt data
-      if (navigator.onLine) {
-        if (user) {
-          this.$store.dispatch('autoSignIn', user).then(() => {
-            this.$store.dispatch('initRef')
-          })
-        }
-      } else {
-        this.signOut()
-      }
-    })
-  },
-  mounted() {
-    if (localStorage.vuetifyThemeDark) {
-      this.$vuetify.theme.dark = JSON.parse(localStorage.vuetifyThemeDark)
-    }
-  },
-  computed: {
-    locale: {
-      get: function () {
-        return this.$i18n.locale
-      },
-      set: function (newLocale) {
-        localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
-        this.$i18n.locale = newLocale
-        this.$vuetify.lang.current = newLocale
-        document.getElementsByTagName('html')[0].lang = newLocale
-      }
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    userPhotoUrl() {
-      // Necessary to parse url
-      return this.$store.getters.user.photoUrl
-    },
-    ...mapState(['user'])
-  }
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     // Prevent corrupt data
+  //     if (navigator.onLine) {
+  //       if (user) {
+  //         this.$store.dispatch('autoSignIn', user).then(() => {
+  //           this.$store.dispatch('initRef')
+  //         })
+  //       }
+  //     } else {
+  //       this.signOut()
+  //     }
+  //   })
+  // },
+  // mounted() {
+  //   if (localStorage.vuetifyThemeDark) {
+  //     this.$vuetify.theme.dark = JSON.parse(localStorage.vuetifyThemeDark)
+  //   }
+  // },
+  // computed: {
+  //   locale: {
+  //     get: function () {
+  //       return this.$i18n.locale
+  //     },
+  //     set: function (newLocale) {
+  //       localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
+  //       this.$i18n.locale = newLocale
+  //       this.$vuetify.lang.current = newLocale
+  //       document.getElementsByTagName('html')[0].lang = newLocale
+  //     }
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   userPhotoUrl() {
+  //     // Necessary to parse url
+  //     return this.$store.getters.user.photoUrl
+  //   },
+  //   ...mapState(['user'])
+  // }
 }
 </script>
 
