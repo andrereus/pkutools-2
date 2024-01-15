@@ -2,32 +2,32 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="headline mt-3">{{ $t("email-auth.title") }}</h2>
+        <h2 class="text-h5 mt-3">{{ $t('email-auth.title') }}</h2>
       </v-col>
     </v-row>
 
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <div v-if="userIsAuthenticated">
-          <p>{{ $t("email-auth.signedin") }}</p>
+          <p>{{ $t('email-auth.signedin') }}</p>
         </div>
 
         <div v-if="!userIsAuthenticated">
-          <p class="mb-6">{{ $t("email-auth.description") }}</p>
+          <p class="mb-6">{{ $t('email-auth.description') }}</p>
 
-          <v-card outlined>
+          <v-card variant="outlined">
             <v-tabs v-model="tab" show-arrows>
               <v-tabs-slider></v-tabs-slider>
-              <v-tab>{{ $t("email-auth.signin") }}</v-tab>
-              <v-tab>{{ $t("email-auth.register") }}</v-tab>
-              <v-tab>{{ $t("email-auth.forgot-password") }}</v-tab>
+              <v-tab>{{ $t('email-auth.signin') }}</v-tab>
+              <v-tab>{{ $t('email-auth.register') }}</v-tab>
+              <v-tab>{{ $t('email-auth.forgot-password') }}</v-tab>
             </v-tabs>
 
             <v-tabs-items v-model="tab">
               <v-tab-item>
                 <v-container fluid>
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.email')"
                     type="email"
@@ -37,7 +37,7 @@
                   ></v-text-field>
 
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.password')"
                     :type="show1 ? 'text' : 'password'"
@@ -49,18 +49,24 @@
                     spellcheck="false"
                   ></v-text-field>
 
-                  <v-btn depressed rounded color="primary" class="mr-3 mb-3" @click="signInEmailPassword">
-                    {{ $t("email-auth.signin") }}
+                  <v-btn
+                    variant="flat"
+                    rounded
+                    color="primary"
+                    class="mr-3 mb-3"
+                    @click="signInEmailPassword"
+                  >
+                    {{ $t('email-auth.signin') }}
                   </v-btn>
                 </v-container>
               </v-tab-item>
 
               <v-tab-item>
                 <v-container fluid>
-                  <p class="mt-2">{{ $t("email-auth.register-note") }}</p>
+                  <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
 
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.name')"
                     type="text"
@@ -69,7 +75,7 @@
                   ></v-text-field>
 
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.email')"
                     type="email"
@@ -78,7 +84,7 @@
                   ></v-text-field>
 
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.password')"
                     :type="show1 ? 'text' : 'password'"
@@ -90,18 +96,24 @@
                     spellcheck="false"
                   ></v-text-field>
 
-                  <v-btn depressed rounded color="primary" class="mr-3 mb-3" @click="registerEmailPassword">
-                    {{ $t("email-auth.register") }}
+                  <v-btn
+                    variant="flat"
+                    rounded
+                    color="primary"
+                    class="mr-3 mb-3"
+                    @click="registerEmailPassword"
+                  >
+                    {{ $t('email-auth.register') }}
                   </v-btn>
                 </v-container>
               </v-tab-item>
 
               <v-tab-item>
                 <v-container fluid>
-                  <p class="mt-2">{{ $t("email-auth.reset-note") }}</p>
+                  <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
 
                   <v-text-field
-                    filled
+                    variant="filled"
                     rounded
                     :label="$t('email-auth.email')"
                     type="email"
@@ -110,8 +122,14 @@
                     :rules="[rules.required, rules.email]"
                   ></v-text-field>
 
-                  <v-btn depressed rounded color="primary" class="mr-3 mb-3" @click="resetPassword">
-                    {{ $t("email-auth.reset-password") }}
+                  <v-btn
+                    variant="flat"
+                    rounded
+                    color="primary"
+                    class="mr-3 mb-3"
+                    @click="resetPassword"
+                  >
+                    {{ $t('email-auth.reset-password') }}
                   </v-btn>
                 </v-container>
               </v-tab-item>
@@ -121,11 +139,11 @@
       </v-col>
     </v-row>
 
-    <v-snackbar bottom color="warning" v-model="offlineInfo">
-      {{ $t("app.offline") }}
+    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
+      {{ $t('app.offline') }}
       <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="offlineInfo = false">
-          {{ $t("common.close") }}
+        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
+          {{ $t('common.close') }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -133,18 +151,18 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/database";
-import { mdiEye, mdiEyeOff } from "@mdi/js";
+import { mapState } from 'vuex'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/database'
+import { mdiEye, mdiEyeOff } from '@mdi/js'
 
 export default {
   metaInfo() {
     return {
-      title: this.$t("email-auth.title"),
-      meta: [{ name: "description", content: this.$t("email-auth.description") }]
-    };
+      title: this.$t('email-auth.title'),
+      meta: [{ name: 'description', content: this.$t('email-auth.description') }]
+    }
   },
   data: () => ({
     mdiEye,
@@ -158,93 +176,93 @@ export default {
   }),
   methods: {
     registerEmailPassword() {
-      firebase.auth().useDeviceLanguage();
+      firebase.auth().useDeviceLanguage()
       if (navigator.onLine) {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(result => {
+          .then((result) => {
             result.user.updateProfile({
               displayName: this.name
-            });
+            })
             const newUser = {
               id: result.user.uid,
               name: result.user.displayName,
               email: result.additionalUserInfo.profile.email,
               photoUrl: result.user.photoURL
-            };
-            this.$store.commit("setUser", newUser);
+            }
+            this.$store.commit('setUser', newUser)
           })
           .then(() => {
-            this.$store.dispatch("initRef");
-            this.$router.push("/");
+            this.$store.dispatch('initRef')
+            this.$router.push('/')
           })
-          .catch(error => {
-            alert(this.$t("email-auth.error"));
-            console.log(error);
-          });
+          .catch((error) => {
+            alert(this.$t('email-auth.error'))
+            console.log(error)
+          })
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     signInEmailPassword() {
-      firebase.auth().useDeviceLanguage();
+      firebase.auth().useDeviceLanguage()
       if (navigator.onLine) {
         firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-          .then(result => {
+          .then((result) => {
             const newUser = {
               id: result.user.uid,
               name: result.user.displayName,
               email: result.additionalUserInfo.profile.email,
               photoUrl: result.user.photoURL
-            };
-            this.$store.commit("setUser", newUser);
+            }
+            this.$store.commit('setUser', newUser)
           })
           .then(() => {
-            this.$store.dispatch("initRef");
-            this.$router.push("/");
+            this.$store.dispatch('initRef')
+            this.$router.push('/')
           })
-          .catch(error => {
-            alert(this.$t("email-auth.error"));
-            console.log(error);
-          });
+          .catch((error) => {
+            alert(this.$t('email-auth.error'))
+            console.log(error)
+          })
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     resetPassword() {
-      firebase.auth().useDeviceLanguage();
+      firebase.auth().useDeviceLanguage()
       firebase
         .auth()
         .sendPasswordResetEmail(this.email)
         .then(() => {
-          alert(this.$t("email-auth.password-sent"));
+          alert(this.$t('email-auth.password-sent'))
         })
-        .catch(error => {
-          alert(this.$t("email-auth.error"));
-          console.log(error);
-        });
+        .catch((error) => {
+          alert(this.$t('email-auth.error'))
+          console.log(error)
+        })
     }
   },
   computed: {
     rules() {
       return {
-        required: value => !!value || this.$t("email-auth.required"),
-        min: v => (v !== null && v.length >= 8) || this.$t("email-auth.min-length"),
-        email: value => {
-          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return pattern.test(value) || this.$t("email-auth.invalid-email");
+        required: (value) => !!value || this.$t('email-auth.required'),
+        min: (v) => (v !== null && v.length >= 8) || this.$t('email-auth.min-length'),
+        email: (value) => {
+          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          return pattern.test(value) || this.$t('email-auth.invalid-email')
         }
-      };
+      }
     },
     userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined;
+      return this.user !== null && this.user !== undefined
     },
-    ...mapState(["user"])
+    ...mapState(['user'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

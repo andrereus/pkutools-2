@@ -2,7 +2,7 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" lg="9">
-        <h2 class="headline mt-3">{{ $t("other-apps.title") }}</h2>
+        <h2 class="text-h5 mt-3">{{ $t('other-apps.title') }}</h2>
       </v-col>
     </v-row>
 
@@ -13,13 +13,13 @@
           <v-card-title>PKU Manager</v-card-title>
 
           <v-card-text>
-            <div>{{ $t("other-apps.pku-manager") }}</div>
+            <div>{{ $t('other-apps.pku-manager') }}</div>
           </v-card-text>
 
           <v-card-actions>
-            <v-btn text rounded href="https://pkumanager.com/" target="_blank">Web</v-btn>
+            <v-btn variant="text" rounded href="https://pkumanager.com/" target="_blank">Web</v-btn>
             <v-btn
-              text
+              variant="text"
               rounded
               href="https://play.google.com/store/apps/details?id=com.andrereus.pkumanager"
               target="_blank"
@@ -36,13 +36,13 @@
           <v-card-title>Phe Rechner</v-card-title>
 
           <v-card-text>
-            <div>{{ $t("other-apps.phe-rechner") }}</div>
+            <div>{{ $t('other-apps.phe-rechner') }}</div>
           </v-card-text>
 
           <v-card-actions>
-            <v-btn text rounded href="https://pherechner.de/" target="_blank">Web</v-btn>
+            <v-btn variant="text" rounded href="https://pherechner.de/" target="_blank">Web</v-btn>
             <v-btn
-              text
+              variant="text"
               rounded
               href="https://play.google.com/store/apps/details?id=com.endofweb.pherechner"
               target="_blank"
@@ -50,7 +50,7 @@
               Android
             </v-btn>
             <v-btn
-              text
+              variant="text"
               rounded
               href="https://chrome.google.com/webstore/detail/phe-rechner/phihennkfhbchhbegacdmondhhkpmfjj"
               target="_blank"
@@ -62,7 +62,7 @@
       </v-col>
 
       <v-col cols="12" lg="9">
-        <h2 class="headline my-6">{{ $t("other-apps.features") }}</h2>
+        <h2 class="text-h5 my-6">{{ $t('other-apps.features') }}</h2>
         <FeatureComparison />
       </v-col>
     </v-row>
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import FeatureComparison from "../components/FeatureComparison.vue";
+import FeatureComparison from '../components/FeatureComparison.vue'
 
 export default {
   components: {
@@ -78,11 +78,11 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.$t("other-apps.title"),
-      meta: [{ name: "description", content: this.$t("other-apps.description") }]
-    };
+      title: this.$t('other-apps.title'),
+      meta: [{ name: 'description', content: this.$t('other-apps.description') }]
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,7 +7,7 @@
           class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed"
           :title="$t('privacy-policy.title')"
         >
-          {{ $t("privacy-policy.title") }}
+          {{ $t('privacy-policy.title') }}
         </a>
       </v-col>
     </v-row>
@@ -18,17 +18,17 @@
 export default {
   metaInfo() {
     return {
-      title: this.$t("privacy-policy.title"),
-      meta: [{ name: "description", content: this.$t("privacy-policy.description") }]
-    };
+      title: this.$t('privacy-policy.title'),
+      meta: [{ name: 'description', content: this.$t('privacy-policy.description') }]
+    }
   },
   mounted() {
-    let s = document.createElement("script"),
-      tag = document.getElementsByTagName("script")[0];
-    s.src = "https://cdn.iubenda.com/iubenda.js";
-    tag.parentNode.insertBefore(s, tag);
+    let s = document.createElement('script'),
+      tag = document.getElementsByTagName('script')[0]
+    s.src = 'https://cdn.iubenda.com/iubenda.js'
+    tag.parentNode.insertBefore(s, tag)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

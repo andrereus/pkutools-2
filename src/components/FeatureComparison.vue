@@ -1,10 +1,10 @@
 <template>
-  <v-simple-table>
+  <v-table>
     <template v-slot:default>
       <thead>
         <tr>
-          <th scope="col" class="text-left">{{ $t("feature-comparison.subject") }}</th>
-          <th scope="col" class="text-left" v-if="home">{{ $t("feature-comparison.included") }}</th>
+          <th scope="col" class="text-left">{{ $t('feature-comparison.subject') }}</th>
+          <th scope="col" class="text-left" v-if="home">{{ $t('feature-comparison.included') }}</th>
           <th scope="col" class="text-left" v-if="!home">PKU Tools</th>
           <th scope="col" class="text-left" v-if="!home">PKU Manager</th>
           <th scope="col" class="text-left" v-if="!home">Phe Rechner</th>
@@ -13,7 +13,7 @@
       <tbody>
         <tr v-for="item in features" :key="item.name" class="tr-read-only">
           <td class="feature-name">
-            <v-icon left>{{ item.icon }}</v-icon>
+            <v-icon start>{{ item.icon }}</v-icon>
             <span v-if="$i18n.locale !== 'de'">{{ item.en }}</span>
             <span v-if="$i18n.locale === 'de'">{{ item.de }}</span>
           </td>
@@ -35,7 +35,7 @@
         </tr>
       </tbody>
     </template>
-  </v-simple-table>
+  </v-table>
 </template>
 
 <script>
@@ -62,10 +62,10 @@ import {
   mdiCircleHalfFull,
   mdiCloseCircleOutline,
   mdiBarcodeScan
-} from "@mdi/js";
+} from '@mdi/js'
 
 export default {
-  name: "FeatureComparison",
+  name: 'FeatureComparison',
   props: {
     home: Boolean
   },
@@ -76,167 +76,167 @@ export default {
     features: [
       {
         icon: mdiMagnify,
-        en: "Phe Search",
-        de: "Phe Suche",
+        en: 'Phe Search',
+        de: 'Phe Suche',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiCalculator,
-        en: "Phe Calculator",
-        de: "Phe Rechner",
+        en: 'Phe Calculator',
+        de: 'Phe Rechner',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiCalculatorVariant,
-        en: "Protein Calculator",
-        de: "Eiweiß Rechner",
+        en: 'Protein Calculator',
+        de: 'Eiweiß Rechner',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiBarcodeScan,
-        en: "Barcode Scanner",
-        de: "Barcode Scanner",
+        en: 'Barcode Scanner',
+        de: 'Barcode Scanner',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiFoodApple,
-        en: "Own Food",
-        de: "Eigene Lebensmittel",
+        en: 'Own Food',
+        de: 'Eigene Lebensmittel',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 1
       },
       {
         icon: mdiTextBox,
-        en: "Phe Log",
-        de: "Phe Protokoll",
+        en: 'Phe Log',
+        de: 'Phe Protokoll',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiBook,
-        en: "Phe Diary",
-        de: "Phe Tagebuch",
+        en: 'Phe Diary',
+        de: 'Phe Tagebuch',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiCupWater,
-        en: "Amino Counter",
-        de: "Amino Zähler",
+        en: 'Amino Counter',
+        de: 'Amino Zähler',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiWeb,
-        en: "Web App",
-        de: "Web App",
+        en: 'Web App',
+        de: 'Web App',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiAndroid,
-        en: "Android",
-        de: "Android",
+        en: 'Android',
+        de: 'Android',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiApple,
-        en: "iOS",
-        de: "iOS",
+        en: 'iOS',
+        de: 'iOS',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiMicrosoftWindows,
-        en: "Windows",
-        de: "Windows",
+        en: 'Windows',
+        de: 'Windows',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiDesktopMac,
-        en: "macOS",
-        de: "macOS",
+        en: 'macOS',
+        de: 'macOS',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiCloudOffOutline,
-        en: "Offline capable",
-        de: "Offlinefähig",
+        en: 'Offline capable',
+        de: 'Offlinefähig',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 2
       },
       {
         icon: mdiSync,
-        en: "Sync",
-        de: "Sync",
+        en: 'Sync',
+        de: 'Sync',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 3
       },
       {
         icon: mdiExport,
-        en: "Export",
-        de: "Export",
+        en: 'Export',
+        de: 'Export',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiTranslate,
-        en: "English",
-        de: "Englisch",
+        en: 'English',
+        de: 'Englisch',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 3
       },
       {
         icon: mdiTranslate,
-        en: "German",
-        de: "Deutsch",
+        en: 'German',
+        de: 'Deutsch',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 1
       },
       {
         icon: mdiBrightness4,
-        en: "Dark Design",
-        de: "Dunkles Design",
+        en: 'Dark Design',
+        de: 'Dunkles Design',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiFoodAppleOutline,
-        en: "Food Icons",
-        de: "Lebensmittel Icons",
+        en: 'Food Icons',
+        de: 'Lebensmittel Icons',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       }
     ]
   })
-};
+}
 </script>
 
 <style lang="scss" scoped>

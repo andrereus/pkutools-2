@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer app clipped v-model="drawer" floating class="nav-layout">
-      <v-list-item v-if="$vuetify.breakpoint.mdAndDown">
+      <v-list-item v-if="$vuetify.display.mdAndDown">
         <v-list-item-content class="flex-nowrap mt-2">
           <v-img
             src="./assets/pkutools-logo.png"
@@ -13,17 +13,15 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider v-if="$vuetify.breakpoint.mdAndDown"></v-divider>
+      <v-divider v-if="$vuetify.display.mdAndDown"></v-divider>
 
-      <v-list rounded dense>
+      <v-list rounded density="compact">
         <v-list-item to="/">
           <v-list-item-action>
             <v-icon>{{ mdiHomeSearch }}</v-icon>
           </v-list-item-action>
 
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item-group>
@@ -34,9 +32,7 @@
               <v-icon>{{ mdiCalculator }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/protein-calculator">
@@ -44,9 +40,7 @@
               <v-icon>{{ mdiCalculatorVariant }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/barcode-scanner">
@@ -54,9 +48,7 @@
               <v-icon>{{ mdiBarcodeScan }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/own-food">
@@ -64,9 +56,7 @@
               <v-icon>{{ mdiFoodApple }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
 
@@ -78,19 +68,15 @@
               <v-icon>{{ mdiBook }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item dense to="/amino-counter">
+          <v-list-item density="compact" to="/amino-counter">
             <v-list-item-action>
               <v-icon>{{ mdiCupWater }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/statistics">
@@ -98,9 +84,7 @@
               <v-icon>{{ mdiChartBox }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/settings">
@@ -108,9 +92,7 @@
               <v-icon>{{ mdiCog }}</v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
 
@@ -119,18 +101,16 @@
             <v-list-item-title>{{ $t('app.more') }}</v-list-item-title>
           </template>
 
-          <v-list-item dense to="/help">
+          <v-list-item density="compact" to="/help">
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item
-            dense
+            density="compact"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfct-_DFHBZMe7morO3sKalidwx3Y_rPtn1xaQtPLIa_roBdg/viewform?usp=sf_link"
             target="_blank"
           >
@@ -138,49 +118,39 @@
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('app.feedback') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('app.feedback') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item dense to="/about">
+          <v-list-item density="compact" to="/about">
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('about.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('about.title') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item dense to="/disclaimer">
+          <v-list-item density="compact" to="/disclaimer">
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('disclaimer.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('disclaimer.title') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item dense to="/privacy-policy">
+          <v-list-item density="compact" to="/privacy-policy">
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('privacy-policy.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('privacy-policy.title') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item dense to="/other-apps" class="mb-10">
+          <v-list-item density="compact" to="/other-apps" class="mb-10">
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ $t('other-apps.title') }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ $t('other-apps.title') }}</v-list-item-title>
           </v-list-item>
         </v-list-group>
       </v-list>
@@ -195,13 +165,13 @@
           max-width="25"
           class="ml-1 mr-4"
         ></v-img>
-        <v-toolbar-title v-if="$vuetify.breakpoint.lgAndUp">PKU Tools</v-toolbar-title>
+        <v-toolbar-title v-if="$vuetify.display.lgAndUp">PKU Tools</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
 
       <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on" class="lang-button">{{ locale }}</v-btn>
+        <template v-slot:activator="{ props }">
+          <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
         </template>
 
         <v-list>
@@ -212,8 +182,8 @@
       </v-menu>
 
       <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on" :aria-label="$t('app.account-menu')">
+        <template v-slot:activator="{ props }">
+          <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
             <v-avatar size="32">
               <v-icon v-if="!userIsAuthenticated">{{ mdiAccountCircle }}</v-icon>
               <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{
@@ -313,7 +283,7 @@
       app
       v-model="bottomNav"
       class="d-lg-none bottom-nav"
-      active-class="v-btn--active bottom-nav--active"
+      selected-class="v-btn--active bottom-nav--active"
       grow
     >
       <v-btn to="/" value="home" :aria-label="$t('home.title')">
@@ -362,7 +332,7 @@
         :aria-label="$t('common.add')"
         class="add-button mobile-nav-hide"
       >
-        <v-icon color="primary" large>{{ mdiPlusCircle }}</v-icon>
+        <v-icon color="primary" size="large">{{ mdiPlusCircle }}</v-icon>
       </v-btn>
 
       <v-btn to="/phe-diary" value="phe-diary" :aria-label="$t('phe-diary.title')">
@@ -426,19 +396,19 @@
       </v-list>
     </v-bottom-sheet>
 
-    <v-snackbar bottom color="primary" :value="updateExists" :timeout="-1">
+    <v-snackbar location="bottom" color="primary" :model-value="updateExists" :timeout="-1">
       {{ $t('app.update-info') }}
       <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="refreshApp">
+        <v-btn variant="text" v-bind="attrs" @click="refreshApp">
           {{ $t('app.update') }}
         </v-btn>
       </template>
     </v-snackbar>
 
-    <v-snackbar bottom color="warning" v-model="offlineInfo">
+    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}
       <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="offlineInfo = false">
+        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
           {{ $t('common.close') }}
         </v-btn>
       </template>

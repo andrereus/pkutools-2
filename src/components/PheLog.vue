@@ -2,16 +2,16 @@
   <div>
     <div v-if="userIsAuthenticated">
       <v-dialog v-model="dialog2" max-width="500px">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn depressed rounded class="mr-3 mb-8" v-bind="attrs" v-on="on">
-            <v-icon left>{{ mdiBookClock }}</v-icon>
-            {{ $t("phe-log.last-added") }}
+        <template v-slot:activator="{ props }">
+          <v-btn variant="flat" rounded class="mr-3 mb-8" v-bind="props">
+            <v-icon start>{{ mdiBookClock }}</v-icon>
+            {{ $t('phe-log.last-added') }}
           </v-btn>
         </template>
 
         <v-card>
           <v-card-title>
-            <span class="headline">{{ $t("phe-log.last-added") }}</span>
+            <span class="text-h5">{{ $t('phe-log.last-added') }}</span>
           </v-card-title>
 
           <v-card-text>
@@ -36,11 +36,17 @@
                     />
                     <img
                       :src="publicPath + 'img/food-icons/organic-food.svg'"
-                      v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+                      v-if="
+                        (item.icon === undefined || item.icon === '') && item.emoji === undefined
+                      "
                       width="25"
                       class="food-icon"
                     />
-                    {{ (item.icon === undefined || item.icon === "") && item.emoji !== undefined ? item.emoji : null }}
+                    {{
+                      (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                        ? item.emoji
+                        : null
+                    }}
                     {{ item.name }}
                   </td>
                   <td class="text-start">
@@ -56,31 +62,37 @@
 
           <v-card-actions class="mt-n6">
             <v-spacer></v-spacer>
-            <v-btn depressed @click="dialog2 = false">{{ $t("common.cancel") }}</v-btn>
+            <v-btn variant="flat" @click="dialog2 = false">{{ $t('common.cancel') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
 
       <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn depressed rounded class="mr-3 mb-8" v-bind="attrs" v-on="on">
-            <v-icon left>{{ mdiPen }}</v-icon>
-            {{ $t("phe-log.quick-note") }}
+        <template v-slot:activator="{ props }">
+          <v-btn variant="flat" rounded class="mr-3 mb-8" v-bind="props">
+            <v-icon start>{{ mdiPen }}</v-icon>
+            {{ $t('phe-log.quick-note') }}
           </v-btn>
         </template>
 
         <v-card>
           <v-card-title>
-            <span class="headline">{{ formTitle }}</span>
+            <span class="text-h5">{{ formTitle }}</span>
           </v-card-title>
 
           <v-card-text>
-            <p v-if="editedIndex === -1">{{ $t("phe-log.optional-fields") }}</p>
-            <v-text-field filled rounded label="Name" v-model="editedItem.name" class="mt-6">
+            <p v-if="editedIndex === -1">{{ $t('phe-log.optional-fields') }}</p>
+            <v-text-field
+              variant="filled"
+              rounded
+              label="Name"
+              v-model="editedItem.name"
+              class="mt-6"
+            >
               <template v-slot:append-outer>
                 <v-menu offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn fab small depressed v-bind="attrs" v-on="on" class="mt-n2">
+                  <template v-slot:activator="{ props }">
+                    <v-btn fab size="small" variant="flat" v-bind="props" class="mt-n2">
                       <img
                         :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
                         v-if="editedItem.icon !== undefined && editedItem.icon !== null"
@@ -111,10 +123,10 @@
             </v-text-field>
 
             <v-text-field
-              filled
+              variant="filled"
               rounded
               :label="$t('phe-log.weight')"
-              :value="editedItem.weight"
+              :model-value="editedItem.weight"
               @keyup="editWeight"
               type="number"
               :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
@@ -122,10 +134,10 @@
             ></v-text-field>
 
             <v-text-field
-              filled
+              variant="filled"
               rounded
               label="Phe (in mg)"
-              :value="editedItem.phe"
+              :model-value="editedItem.phe"
               @keyup="editPhe"
               type="number"
               :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
@@ -135,11 +147,11 @@
 
           <v-card-actions class="mt-n6">
             <v-spacer></v-spacer>
-            <v-btn depressed color="primary" @click="save">{{ $t("common.save") }}</v-btn>
-            <v-btn depressed color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
-              {{ $t("common.delete") }}
+            <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
+            <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
+              {{ $t('common.delete') }}
             </v-btn>
-            <v-btn depressed @click="close">{{ $t("common.cancel") }}</v-btn>
+            <v-btn variant="flat" @click="close">{{ $t('common.cancel') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -167,7 +179,11 @@
                 width="25"
                 class="food-icon"
               />
-              {{ (item.icon === undefined || item.icon === "") && item.emoji !== undefined ? item.emoji : null }}
+              {{
+                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                  ? item.emoji
+                  : null
+              }}
               {{ item.name }}
             </td>
             <td class="text-start">{{ item.weight }}</td>
@@ -177,37 +193,43 @@
       </v-data-table>
 
       <v-progress-linear
-        :value="(pheResult * 100) / (settings?.maxPhe || 0)"
+        :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
         height="15"
         class="mt-8"
         rounded
       ></v-progress-linear>
 
-      <p class="title font-weight-regular mt-6">{{ $t("phe-log.total") }}: {{ pheResult }} mg Phe</p>
-      <p class="mt-n2 mb-6">{{ $t("phe-log.remaining") }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe</p>
+      <p class="text-h6 font-weight-regular mt-6">
+        {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
+      </p>
+      <p class="mt-n2 mb-6">
+        {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
+      </p>
 
-      <v-btn depressed rounded color="primary" class="mr-3 mb-3" @click="saveResult">
-        {{ $t("phe-log.save-day") }}
+      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="saveResult">
+        {{ $t('phe-log.save-day') }}
       </v-btn>
 
       <v-dialog v-model="alert" max-width="300">
         <v-card>
-          <v-card-title>{{ $t("common.note") }}</v-card-title>
-          <v-card-text>{{ $t("phe-diary.limit") }}</v-card-text>
+          <v-card-title>{{ $t('common.note') }}</v-card-title>
+          <v-card-text>{{ $t('phe-diary.limit') }}</v-card-text>
 
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="alert = false">{{ $t("common.ok") }}</v-btn>
+            <v-btn color="primary" variant="text" @click="alert = false">{{
+              $t('common.ok')
+            }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
     </div>
 
-    <v-snackbar bottom color="warning" v-model="offlineInfo">
-      {{ $t("app.offline") }}
+    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
+      {{ $t('app.offline') }}
       <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="offlineInfo = false">
-          {{ $t("common.close") }}
+        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
+          {{ $t('common.close') }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -215,13 +237,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/database";
-import { format } from "date-fns";
-import foodIcons from "./data/food-icons.json";
-import confetti from "canvas-confetti";
+import { mapState } from 'vuex'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/database'
+import { format } from 'date-fns'
+import foodIcons from './data/food-icons.json'
+import confetti from 'canvas-confetti'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -234,10 +256,10 @@ import {
   mdiBarcodeScan,
   mdiPen,
   mdiBookClock
-} from "@mdi/js";
+} from '@mdi/js'
 
 export default {
-  name: "PheLog",
+  name: 'PheLog',
   data: () => ({
     mdiGoogle,
     mdiFacebook,
@@ -256,42 +278,42 @@ export default {
     alert: false,
     headersEn: [
       {
-        text: "Name",
-        align: "start",
-        value: "name"
+        text: 'Name',
+        align: 'start',
+        value: 'name'
       },
-      { text: "Weight", value: "weight" },
-      { text: "Phe", value: "phe" }
+      { text: 'Weight', value: 'weight' },
+      { text: 'Phe', value: 'phe' }
     ],
     headersDe: [
       {
-        text: "Name",
-        align: "start",
-        value: "name"
+        text: 'Name',
+        align: 'start',
+        value: 'name'
       },
-      { text: "Gewicht", value: "weight" },
-      { text: "Phe", value: "phe" }
+      { text: 'Gewicht', value: 'weight' },
+      { text: 'Phe', value: 'phe' }
     ],
     headers2: [
       {
-        text: "Name",
-        align: "start",
-        value: "name"
+        text: 'Name',
+        align: 'start',
+        value: 'name'
       },
-      { text: "Weight", value: "weight" },
-      { text: "Phe", value: "phe" }
+      { text: 'Weight', value: 'weight' },
+      { text: 'Phe', value: 'phe' }
     ],
     editedIndex: -1,
     editedKey: null,
     editedItem: {
-      name: "",
+      name: '',
       emoji: null,
       icon: null,
       weight: null,
       phe: null
     },
     defaultItem: {
-      name: "",
+      name: '',
       emoji: null,
       icon: null,
       weight: null,
@@ -304,158 +326,158 @@ export default {
   methods: {
     signInGoogle() {
       if (navigator.onLine) {
-        this.$store.dispatch("signInGoogle");
+        this.$store.dispatch('signInGoogle')
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     signInFacebook() {
       if (navigator.onLine) {
-        this.$store.dispatch("signInFacebook");
+        this.$store.dispatch('signInFacebook')
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     editItem(item) {
-      this.editedIndex = this.pheLog.indexOf(item);
-      this.editedKey = item[".key"];
-      this.editedItem = Object.assign({}, item);
-      this.lockValues();
-      this.dialog = true;
+      this.editedIndex = this.pheLog.indexOf(item)
+      this.editedKey = item['.key']
+      this.editedItem = Object.assign({}, item)
+      this.lockValues()
+      this.dialog = true
     },
     addLastAdded(item) {
-      this.editedItem = Object.assign({}, item);
-      this.save();
-      this.dialog2 = false;
+      this.editedItem = Object.assign({}, item)
+      this.save()
+      this.dialog2 = false
     },
     deleteItem() {
       firebase
         .database()
-        .ref(this.user.id + "/pheLog/" + this.editedKey)
-        .remove();
-      this.close();
+        .ref(this.user.id + '/pheLog/' + this.editedKey)
+        .remove()
+      this.close()
     },
     close() {
-      this.lockedValues = false;
-      this.dialog = false;
+      this.lockedValues = false
+      this.dialog = false
       this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-        this.editedKey = null;
-      });
+        this.editedItem = Object.assign({}, this.defaultItem)
+        this.editedIndex = -1
+        this.editedKey = null
+      })
     },
     save() {
       if (this.editedIndex > -1) {
         firebase
           .database()
-          .ref(this.user.id + "/pheLog/" + this.editedKey)
+          .ref(this.user.id + '/pheLog/' + this.editedKey)
           .update({
             name: this.editedItem.name,
             icon: this.editedItem.icon || null,
             weight: Number(this.editedItem.weight),
             phe: Number(this.editedItem.phe)
-          });
+          })
       } else {
         firebase
           .database()
-          .ref(this.user.id + "/pheLog")
+          .ref(this.user.id + '/pheLog')
           .push({
             name: this.editedItem.name,
             emoji: this.editedItem.emoji,
             icon: this.editedItem.icon || null,
             weight: Number(this.editedItem.weight),
             phe: Number(this.editedItem.phe)
-          });
+          })
       }
-      this.close();
+      this.close()
     },
     lockValues() {
       if (this.lockedValues === false) {
-        this.editedItem.weight = Number(this.editedItem.weight);
-        this.editedItem.phe = Number(this.editedItem.phe);
-        this.lockedWeight = this.editedItem.weight;
-        this.lockedPhe = this.editedItem.phe;
-        this.lockedValues = true;
+        this.editedItem.weight = Number(this.editedItem.weight)
+        this.editedItem.phe = Number(this.editedItem.phe)
+        this.lockedWeight = this.editedItem.weight
+        this.lockedPhe = this.editedItem.phe
+        this.lockedValues = true
       } else {
-        this.lockedValues = false;
+        this.lockedValues = false
       }
     },
     editWeight(event) {
       if (this.lockedValues === true) {
-        const newWeight = Number(event.target.value);
-        this.editedItem.phe = Math.round((newWeight * this.lockedPhe) / this.lockedWeight);
-        this.editedItem.weight = newWeight;
+        const newWeight = Number(event.target.value)
+        this.editedItem.phe = Math.round((newWeight * this.lockedPhe) / this.lockedWeight)
+        this.editedItem.weight = newWeight
       } else {
-        this.editedItem.weight = event.target.value;
+        this.editedItem.weight = event.target.value
       }
     },
     editPhe(event) {
       if (this.lockedValues === true) {
-        const newPhe = Number(event.target.value);
-        this.editedItem.weight = Math.round((newPhe * this.lockedWeight) / this.lockedPhe);
-        this.editedItem.phe = newPhe;
+        const newPhe = Number(event.target.value)
+        this.editedItem.weight = Math.round((newPhe * this.lockedWeight) / this.lockedPhe)
+        this.editedItem.phe = newPhe
       } else {
-        this.editedItem.phe = event.target.value;
+        this.editedItem.phe = event.target.value
       }
     },
     saveResult() {
       if (this.pheDiary.length >= 100) {
-        this.alert = true;
+        this.alert = true
       } else {
-        confetti();
+        confetti()
         setTimeout(() => {
-          let r = confirm(this.$t("phe-log.save-diary") + "?");
+          let r = confirm(this.$t('phe-log.save-diary') + '?')
           if (r === true) {
             firebase
               .database()
-              .ref(this.user.id + "/pheDiary")
+              .ref(this.user.id + '/pheDiary')
               .push({
-                date: format(new Date(), "yyyy-MM-dd"),
+                date: format(new Date(), 'yyyy-MM-dd'),
                 phe: this.pheResult,
                 log: this.pheLog
               })
               .then(() => {
                 firebase
                   .database()
-                  .ref(this.user.id + "/pheLog")
-                  .remove();
-              });
-            this.$router.push("phe-diary");
+                  .ref(this.user.id + '/pheLog')
+                  .remove()
+              })
+            this.$router.push('phe-diary')
           }
-        }, 600);
+        }, 600)
       }
     }
   },
   watch: {
     dialog(val) {
-      val || this.close();
+      val || this.close()
     }
   },
   computed: {
     formTitle() {
       if (this.editedIndex === -1) {
-        return this.$t("phe-log.quick-note");
+        return this.$t('phe-log.quick-note')
       } else {
-        return this.$t("common.edit");
+        return this.$t('common.edit')
       }
     },
     pheResult() {
-      let phe = 0;
-      this.pheLog.forEach(item => {
-        phe += item.phe;
-      });
-      return Math.round(phe);
+      let phe = 0
+      this.pheLog.forEach((item) => {
+        phe += item.phe
+      })
+      return Math.round(phe)
     },
     lastAdded() {
       // Get last 3 objects, extract and concatenate "log" arrays, and reverse order.
-      return [].concat(...this.pheDiary.slice(-3).map(obj => obj.log)).reverse();
+      return [].concat(...this.pheDiary.slice(-3).map((obj) => obj.log)).reverse()
     },
     userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined;
+      return this.user !== null && this.user !== undefined
     },
-    ...mapState(["user", "pheLog", "pheDiary", "settings"])
+    ...mapState(['user', 'pheLog', 'pheDiary', 'settings'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
