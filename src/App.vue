@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-navigation-drawer app clipped v-model="drawer" floating class="nav-layout">
+    <v-navigation-drawer v-model="drawer" floating class="nav-layout">
       <v-list-item v-if="$vuetify.display.mdAndDown">
-        <v-list-item-content class="flex-nowrap mt-2">
+        <div class="flex-nowrap mt-2">
           <v-img
             src="./assets/pkutools-logo.png"
             alt="PKU Tools Logo"
@@ -10,7 +10,7 @@
             class="ml-2 mr-4 mb-1"
           ></v-img>
           <v-list-item-title>PKU Tools</v-list-item-title>
-        </v-list-item-content>
+        </div>
       </v-list-item>
 
       <v-divider v-if="$vuetify.display.mdAndDown"></v-divider>
@@ -24,77 +24,73 @@
           <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item-group>
-          <v-subheader>{{ $t('app.tools') }}</v-subheader>
+        <v-list-subheader>{{ $t('app.tools') }}</v-list-subheader>
 
-          <v-list-item to="/phe-calculator">
-            <v-list-item-action>
-              <v-icon>{{ mdiCalculator }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/phe-calculator">
+          <v-list-item-action>
+            <v-icon>{{ mdiCalculator }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item to="/protein-calculator">
-            <v-list-item-action>
-              <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/protein-calculator">
+          <v-list-item-action>
+            <v-icon>{{ mdiCalculatorVariant }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item to="/barcode-scanner">
-            <v-list-item-action>
-              <v-icon>{{ mdiBarcodeScan }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/barcode-scanner">
+          <v-list-item-action>
+            <v-icon>{{ mdiBarcodeScan }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item to="/own-food">
-            <v-list-item-action>
-              <v-icon>{{ mdiFoodApple }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/own-food">
+          <v-list-item-action>
+            <v-icon>{{ mdiFoodApple }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
+          <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
+        </v-list-item>
 
-        <v-list-item-group>
-          <v-subheader>{{ $t('app.logs') }}</v-subheader>
+        <v-list-subheader>{{ $t('app.logs') }}</v-list-subheader>
 
-          <v-list-item to="/phe-diary">
-            <v-list-item-action>
-              <v-icon>{{ mdiBook }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/phe-diary">
+          <v-list-item-action>
+            <v-icon>{{ mdiBook }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item density="compact" to="/amino-counter">
-            <v-list-item-action>
-              <v-icon>{{ mdiCupWater }}</v-icon>
-            </v-list-item-action>
+        <v-list-item density="compact" to="/amino-counter">
+          <v-list-item-action>
+            <v-icon>{{ mdiCupWater }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item to="/statistics">
-            <v-list-item-action>
-              <v-icon>{{ mdiChartBox }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/statistics">
+          <v-list-item-action>
+            <v-icon>{{ mdiChartBox }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
-          </v-list-item>
+          <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item to="/settings">
-            <v-list-item-action>
-              <v-icon>{{ mdiCog }}</v-icon>
-            </v-list-item-action>
+        <v-list-item to="/settings">
+          <v-list-item-action>
+            <v-icon>{{ mdiCog }}</v-icon>
+          </v-list-item-action>
 
-            <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
+          <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
+        </v-list-item>
 
         <v-list-group :prepend-icon="mdiInformation">
           <template v-slot:activator>
@@ -156,7 +152,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left flat dark class="nav-layout custom-app-bar">
+    <v-app-bar flat theme="dark" class="nav-layout custom-app-bar">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
       <router-link to="/" class="app-logo">
         <v-img
@@ -169,7 +165,7 @@
       </router-link>
       <v-spacer></v-spacer>
 
-      <v-menu offset-y>
+      <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
         </template>
@@ -181,7 +177,7 @@
         </v-list>
       </v-menu>
 
-      <v-menu offset-y>
+      <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
             <v-avatar size="32">
@@ -280,7 +276,6 @@
     </v-main>
 
     <v-bottom-navigation
-      app
       v-model="bottomNav"
       class="d-lg-none bottom-nav"
       selected-class="v-btn--active bottom-nav--active"
@@ -364,33 +359,25 @@
 
     <v-bottom-sheet v-model="sheet">
       <v-list>
-        <v-subheader>{{ $t('app.tools') }}</v-subheader>
+        <v-item-subheader>{{ $t('app.tools') }}</v-item-subheader>
 
         <v-list-item to="/phe-calculator" @click="sheet = false">
-          <v-list-item-icon>
-            <v-icon>{{ mdiCalculator }}</v-icon>
-          </v-list-item-icon>
+          <v-icon>{{ mdiCalculator }}</v-icon>
           <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/protein-calculator" @click="sheet = false">
-          <v-list-item-icon>
-            <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-          </v-list-item-icon>
+          <v-icon>{{ mdiCalculatorVariant }}</v-icon>
           <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/barcode-scanner" @click="sheet = false">
-          <v-list-item-icon>
-            <v-icon>{{ mdiBarcodeScan }}</v-icon>
-          </v-list-item-icon>
+          <v-icon>{{ mdiBarcodeScan }}</v-icon>
           <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/own-food" @click="sheet = false">
-          <v-list-item-icon>
-            <v-icon>{{ mdiFoodApple }}</v-icon>
-          </v-list-item-icon>
+          <v-icon>{{ mdiFoodApple }}</v-icon>
           <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
         </v-list-item>
       </v-list>
