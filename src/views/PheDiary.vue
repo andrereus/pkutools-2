@@ -254,24 +254,24 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
-import { format, parseISO, formatISO } from 'date-fns'
-import { enUS, de, fr, es } from 'date-fns/locale'
-import XLSX from 'xlsx'
-import VueApexCharts from 'vue-apexcharts'
-import enChart from 'apexcharts/dist/locales/en.json'
-import deChart from 'apexcharts/dist/locales/de.json'
-import frChart from 'apexcharts/dist/locales/fr.json'
-import esChart from 'apexcharts/dist/locales/es.json'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/auth'
+// import 'firebase/compat/database'
+// import { format, parseISO, formatISO } from 'date-fns'
+// import { enUS, de, fr, es } from 'date-fns/locale'
+// import XLSX from 'xlsx'
+// import VueApexCharts from 'vue-apexcharts'
+// import enChart from 'apexcharts/dist/locales/en.json'
+// import deChart from 'apexcharts/dist/locales/de.json'
+// import frChart from 'apexcharts/dist/locales/fr.json'
+// import esChart from 'apexcharts/dist/locales/es.json'
 import { mdiGoogle, mdiFacebook, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 export default {
-  components: {
-    apexchart: VueApexCharts
-  },
+  // components: {
+  //   apexchart: VueApexCharts
+  // },
   metaInfo() {
     return {
       title: this.$t('phe-diary.title'),
@@ -322,234 +322,234 @@ export default {
       phe: null
     },
     offlineInfo: false
-  }),
-  methods: {
-    signInGoogle() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInFacebook() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    editItem(item) {
-      this.editedIndex = this.pheDiary.indexOf(item)
-      this.editedKey = item['.key']
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
-    },
-    deleteItem() {
-      let r = confirm(this.$t('common.delete') + '?')
-      if (r === true) {
-        firebase
-          .database()
-          .ref(this.user.id + '/pheDiary/' + this.editedKey)
-          .remove()
-        this.close()
-      }
-    },
-    close() {
-      this.dialog = false
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-        this.editedKey = null
-      })
-    },
-    save() {
-      if (this.editedIndex > -1) {
-        if (this.editedItem.log) {
-          firebase
-            .database()
-            .ref(this.user.id + '/pheDiary/' + this.editedKey)
-            .update({
-              date: this.editedItem.date,
-              phe: Number(this.editedItem.phe),
-              log: this.editedItem.log
-            })
-        } else {
-          firebase
-            .database()
-            .ref(this.user.id + '/pheDiary/' + this.editedKey)
-            .update({
-              date: this.editedItem.date,
-              phe: Number(this.editedItem.phe)
-            })
-        }
-      } else {
-        if (this.pheDiary.length >= 100) {
-          this.alert = true
-        } else {
-          firebase
-            .database()
-            .ref(this.user.id + '/pheDiary')
-            .push({
-              date: this.editedItem.date,
-              phe: Number(this.editedItem.phe)
-            })
-        }
-      }
-      this.close()
-    },
-    getlocalDate(date) {
-      if (date) {
-        const locales = { enUS, de, fr, es }
-        return format(parseISO(date), 'eee P', { locale: locales[this.$i18n.locale] })
-      } else {
-        return ''
-      }
-    },
-    exportDiary() {
-      let r = confirm(this.$t('phe-diary.export-confirm') + '.')
-      if (r === true) {
-        let exportTable = this.pheDiary.map((item) => {
-          if (this.$i18n.locale === 'de') {
-            return {
-              Datum: formatISO(parseISO(item.date), { representation: 'date' }),
-              Phe: item.phe
-            }
-          } else {
-            return {
-              Date: formatISO(parseISO(item.date), { representation: 'date' }),
-              Phe: item.phe
-            }
-          }
-        })
+  })
+  // methods: {
+  //   signInGoogle() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInGoogle')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInFacebook() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInFacebook')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   editItem(item) {
+  //     this.editedIndex = this.pheDiary.indexOf(item)
+  //     this.editedKey = item['.key']
+  //     this.editedItem = Object.assign({}, item)
+  //     this.dialog = true
+  //   },
+  //   deleteItem() {
+  //     let r = confirm(this.$t('common.delete') + '?')
+  //     if (r === true) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/pheDiary/' + this.editedKey)
+  //         .remove()
+  //       this.close()
+  //     }
+  //   },
+  //   close() {
+  //     this.dialog = false
+  //     this.$nextTick(() => {
+  //       this.editedItem = Object.assign({}, this.defaultItem)
+  //       this.editedIndex = -1
+  //       this.editedKey = null
+  //     })
+  //   },
+  //   save() {
+  //     if (this.editedIndex > -1) {
+  //       if (this.editedItem.log) {
+  //         firebase
+  //           .database()
+  //           .ref(this.user.id + '/pheDiary/' + this.editedKey)
+  //           .update({
+  //             date: this.editedItem.date,
+  //             phe: Number(this.editedItem.phe),
+  //             log: this.editedItem.log
+  //           })
+  //       } else {
+  //         firebase
+  //           .database()
+  //           .ref(this.user.id + '/pheDiary/' + this.editedKey)
+  //           .update({
+  //             date: this.editedItem.date,
+  //             phe: Number(this.editedItem.phe)
+  //           })
+  //       }
+  //     } else {
+  //       if (this.pheDiary.length >= 100) {
+  //         this.alert = true
+  //       } else {
+  //         firebase
+  //           .database()
+  //           .ref(this.user.id + '/pheDiary')
+  //           .push({
+  //             date: this.editedItem.date,
+  //             phe: Number(this.editedItem.phe)
+  //           })
+  //       }
+  //     }
+  //     this.close()
+  //   },
+  //   getlocalDate(date) {
+  //     if (date) {
+  //       const locales = { enUS, de, fr, es }
+  //       return format(parseISO(date), 'eee P', { locale: locales[this.$i18n.locale] })
+  //     } else {
+  //       return ''
+  //     }
+  //   },
+  //   exportDiary() {
+  //     let r = confirm(this.$t('phe-diary.export-confirm') + '.')
+  //     if (r === true) {
+  //       let exportTable = this.pheDiary.map((item) => {
+  //         if (this.$i18n.locale === 'de') {
+  //           return {
+  //             Datum: formatISO(parseISO(item.date), { representation: 'date' }),
+  //             Phe: item.phe
+  //           }
+  //         } else {
+  //           return {
+  //             Date: formatISO(parseISO(item.date), { representation: 'date' }),
+  //             Phe: item.phe
+  //           }
+  //         }
+  //       })
 
-        let workbook = XLSX.utils.book_new()
+  //       let workbook = XLSX.utils.book_new()
 
-        let worksheet = XLSX.utils.json_to_sheet(exportTable)
-        XLSX.utils.book_append_sheet(workbook, worksheet, this.$t('phe-diary.export-overview') + '')
+  //       let worksheet = XLSX.utils.json_to_sheet(exportTable)
+  //       XLSX.utils.book_append_sheet(workbook, worksheet, this.$t('phe-diary.export-overview') + '')
 
-        this.pheDiary.forEach((item) => {
-          if (item.log !== undefined) {
-            let exportTable2 = item.log.map((item) => {
-              if (this.$i18n.locale === 'de') {
-                return {
-                  Name: item.name,
-                  Gewicht: item.weight,
-                  Phe: item.phe
-                }
-              } else {
-                return {
-                  Name: item.name,
-                  Weight: item.weight,
-                  Phe: item.phe
-                }
-              }
-            })
+  //       this.pheDiary.forEach((item) => {
+  //         if (item.log !== undefined) {
+  //           let exportTable2 = item.log.map((item) => {
+  //             if (this.$i18n.locale === 'de') {
+  //               return {
+  //                 Name: item.name,
+  //                 Gewicht: item.weight,
+  //                 Phe: item.phe
+  //               }
+  //             } else {
+  //               return {
+  //                 Name: item.name,
+  //                 Weight: item.weight,
+  //                 Phe: item.phe
+  //               }
+  //             }
+  //           })
 
-            let worksheet2 = XLSX.utils.json_to_sheet(exportTable2)
-            XLSX.utils.book_append_sheet(
-              workbook,
-              worksheet2,
-              formatISO(parseISO(item.date), { representation: 'date' })
-            )
-          }
-        })
+  //           let worksheet2 = XLSX.utils.json_to_sheet(exportTable2)
+  //           XLSX.utils.book_append_sheet(
+  //             workbook,
+  //             worksheet2,
+  //             formatISO(parseISO(item.date), { representation: 'date' })
+  //           )
+  //         }
+  //       })
 
-        XLSX.writeFile(workbook, this.$t('phe-diary.export-filename') + '.xlsx')
-      }
-    }
-  },
-  watch: {
-    dialog(val) {
-      val || this.close()
-    }
-  },
-  computed: {
-    formTitle() {
-      if (this.editedIndex === -1) {
-        return this.$t('common.add')
-      } else {
-        return this.$t('common.edit')
-      }
-    },
-    computelocalDate() {
-      if (this.editedItem.date) {
-        const locales = { enUS, de, fr, es }
-        return format(parseISO(this.editedItem.date), 'eee P', {
-          locale: locales[this.$i18n.locale]
-        })
-      } else {
-        return ''
-      }
-    },
-    graph() {
-      let newPheDiary = this.pheDiary
-      let chartPheDiary = newPheDiary
-        .map((obj) => {
-          return { x: obj.date, y: obj.phe }
-        })
-        .sort((a, b) => {
-          return parseISO(a.x) - parseISO(b.x)
-        })
-      return [
-        {
-          name: 'Phe',
-          data: chartPheDiary
-        }
-      ]
-    },
-    chartOptions() {
-      let en = enChart
-      let de = deChart
-      let fr = frChart
-      let es = esChart
-      return {
-        chart: {
-          locales: [en, de, fr, es],
-          defaultLocale: this.$i18n.locale,
-          zoom: {
-            enabled: false
-          },
-          background: 'transparent'
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        markers: {
-          size: 1
-        },
-        grid: {
-          show: false
-        },
-        dataLabels: {
-          enabled: false
-        },
-        xaxis: {
-          type: 'datetime'
-        },
-        yaxis: {
-          min: 0
-        },
-        annotations: {
-          yaxis: [
-            {
-              y: this.settings.maxPhe || 0,
-              borderWidth: 2,
-              borderColor: '#3498db',
-              strokeDashArray: 6
-            }
-          ]
-        },
-        theme: {
-          mode: this.$vuetify.theme.dark === true ? 'dark' : 'light'
-        },
-        colors: ['#3498db']
-      }
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'pheDiary', 'settings'])
-  }
+  //       XLSX.writeFile(workbook, this.$t('phe-diary.export-filename') + '.xlsx')
+  //     }
+  //   }
+  // },
+  // watch: {
+  //   dialog(val) {
+  //     val || this.close()
+  //   }
+  // },
+  // computed: {
+  //   formTitle() {
+  //     if (this.editedIndex === -1) {
+  //       return this.$t('common.add')
+  //     } else {
+  //       return this.$t('common.edit')
+  //     }
+  //   },
+  //   computelocalDate() {
+  //     if (this.editedItem.date) {
+  //       const locales = { enUS, de, fr, es }
+  //       return format(parseISO(this.editedItem.date), 'eee P', {
+  //         locale: locales[this.$i18n.locale]
+  //       })
+  //     } else {
+  //       return ''
+  //     }
+  //   },
+  //   graph() {
+  //     let newPheDiary = this.pheDiary
+  //     let chartPheDiary = newPheDiary
+  //       .map((obj) => {
+  //         return { x: obj.date, y: obj.phe }
+  //       })
+  //       .sort((a, b) => {
+  //         return parseISO(a.x) - parseISO(b.x)
+  //       })
+  //     return [
+  //       {
+  //         name: 'Phe',
+  //         data: chartPheDiary
+  //       }
+  //     ]
+  //   },
+  //   chartOptions() {
+  //     let en = enChart
+  //     let de = deChart
+  //     let fr = frChart
+  //     let es = esChart
+  //     return {
+  //       chart: {
+  //         locales: [en, de, fr, es],
+  //         defaultLocale: this.$i18n.locale,
+  //         zoom: {
+  //           enabled: false
+  //         },
+  //         background: 'transparent'
+  //       },
+  //       stroke: {
+  //         curve: 'smooth'
+  //       },
+  //       markers: {
+  //         size: 1
+  //       },
+  //       grid: {
+  //         show: false
+  //       },
+  //       dataLabels: {
+  //         enabled: false
+  //       },
+  //       xaxis: {
+  //         type: 'datetime'
+  //       },
+  //       yaxis: {
+  //         min: 0
+  //       },
+  //       annotations: {
+  //         yaxis: [
+  //           {
+  //             y: this.settings.maxPhe || 0,
+  //             borderWidth: 2,
+  //             borderColor: '#3498db',
+  //             strokeDashArray: 6
+  //           }
+  //         ]
+  //       },
+  //       theme: {
+  //         mode: this.$vuetify.theme.dark === true ? 'dark' : 'light'
+  //       },
+  //       colors: ['#3498db']
+  //     }
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'pheDiary', 'settings'])
+  // }
 }
 </script>
 

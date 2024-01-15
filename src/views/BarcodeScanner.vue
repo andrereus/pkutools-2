@@ -103,16 +103,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
-import { StreamBarcodeReader } from 'vue-barcode-reader'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/database'
+// import { StreamBarcodeReader } from 'vue-barcode-reader'
 import { mdiInformationVariant } from '@mdi/js'
 
 export default {
-  components: {
-    StreamBarcodeReader
-  },
+  // components: {
+  //   StreamBarcodeReader
+  // },
   metaInfo() {
     return {
       title: this.$t('barcode-scanner.title'),
@@ -125,55 +125,55 @@ export default {
     loaded: false,
     result: null,
     weight: 100
-  }),
-  methods: {
-    onLoaded() {
-      this.loaded = true
-    },
-    onDecode(result) {
-      fetch('https://world.openfoodfacts.org/api/v0/product/' + result + '.json')
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result)
-          this.result = result
-        })
-      this.loaded = false
-      this.dialog = false
-    },
-    cancel() {
-      if (this.loaded === true) {
-        this.loaded = false
-      }
-      this.dialog = false
-    },
-    calculatePhe() {
-      return Math.round((this.weight * (this.result.product.nutriments.proteins_100g * 50)) / 100)
-    },
-    save() {
-      firebase
-        .database()
-        .ref(this.user.id + '/pheLog')
-        .push({
-          name: this.result.product.product_name,
-          weight: Number(this.weight),
-          phe: this.calculatePhe()
-        })
-      this.$router.push('/')
-    }
-  },
-  computed: {
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'pheLog', 'settings'])
-  }
+  })
+  // methods: {
+  //   onLoaded() {
+  //     this.loaded = true
+  //   },
+  //   onDecode(result) {
+  //     fetch('https://world.openfoodfacts.org/api/v0/product/' + result + '.json')
+  //       .then((response) => response.json())
+  //       .then((result) => {
+  //         console.log(result)
+  //         this.result = result
+  //       })
+  //     this.loaded = false
+  //     this.dialog = false
+  //   },
+  //   cancel() {
+  //     if (this.loaded === true) {
+  //       this.loaded = false
+  //     }
+  //     this.dialog = false
+  //   },
+  //   calculatePhe() {
+  //     return Math.round((this.weight * (this.result.product.nutriments.proteins_100g * 50)) / 100)
+  //   },
+  //   save() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/pheLog')
+  //       .push({
+  //         name: this.result.product.product_name,
+  //         weight: Number(this.weight),
+  //         phe: this.calculatePhe()
+  //       })
+  //     this.$router.push('/')
+  //   }
+  // },
+  // computed: {
+  //   pheResult() {
+  //     let phe = 0
+  //     this.pheLog.forEach((item) => {
+  //       phe += item.phe
+  //     })
+  //     return Math.round(phe)
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'pheLog', 'settings'])
+  // }
 }
 </script>
 

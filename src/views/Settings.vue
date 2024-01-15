@@ -119,10 +119,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/auth'
+// import 'firebase/compat/database'
 import { mdiGoogle, mdiFacebook, mdiEmail } from '@mdi/js'
 
 export default {
@@ -138,98 +138,98 @@ export default {
     mdiEmail,
     snackbar: false,
     offlineInfo: false
-  }),
-  methods: {
-    signInGoogle() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInFacebook() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    save() {
-      firebase
-        .database()
-        .ref(this.user.id + '/settings')
-        .update({
-          maxPhe: this.settings.maxPhe || 0,
-          maxAmino: this.settings.maxAmino || 3
-        })
-        .then(() => {
-          localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
-          this.snackbar = true
-        })
-    },
-    resetLog() {
-      let r = confirm(this.$t('settings.reset-log') + '?')
-      if (r === true) {
-        firebase
-          .database()
-          .ref(this.user.id + '/pheLog')
-          .remove()
-        this.$router.push('/')
-      }
-    },
-    resetOwnFood() {
-      let r = confirm(this.$t('settings.reset-own-food') + '?')
-      if (r === true) {
-        firebase
-          .database()
-          .ref(this.user.id + '/ownFood')
-          .remove()
-        this.$router.push('own-food')
-      }
-    },
-    resetDiary() {
-      let r = confirm(this.$t('settings.reset-diary') + '?')
-      if (r === true) {
-        firebase
-          .database()
-          .ref(this.user.id + '/pheDiary')
-          .remove()
-        this.$router.push('phe-diary')
-      }
-    },
-    resetAM() {
-      let r = confirm(this.$t('settings.reset-am') + '?')
-      if (r === true) {
-        firebase
-          .database()
-          .ref(this.user.id + '/aminoCounter')
-          .remove()
-        this.$router.push('amino-counter')
-      }
-    },
-    deleteAccount() {
-      let r = confirm(this.$t('settings.delete-account') + '?')
-      if (r === true) {
-        firebase.database().ref(this.user.id).remove()
-        firebase
-          .auth()
-          .currentUser.delete()
-          .then(() => {
-            this.$store.dispatch('signOut')
-            this.$router.push('/')
-          })
-          .catch((error) => {
-            alert(error)
-          })
-      }
-    }
-  },
-  computed: {
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'settings'])
-  }
+  })
+  // methods: {
+  //   signInGoogle() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInGoogle')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInFacebook() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInFacebook')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   save() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/settings')
+  //       .update({
+  //         maxPhe: this.settings.maxPhe || 0,
+  //         maxAmino: this.settings.maxAmino || 3
+  //       })
+  //       .then(() => {
+  //         localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
+  //         this.snackbar = true
+  //       })
+  //   },
+  //   resetLog() {
+  //     let r = confirm(this.$t('settings.reset-log') + '?')
+  //     if (r === true) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/pheLog')
+  //         .remove()
+  //       this.$router.push('/')
+  //     }
+  //   },
+  //   resetOwnFood() {
+  //     let r = confirm(this.$t('settings.reset-own-food') + '?')
+  //     if (r === true) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/ownFood')
+  //         .remove()
+  //       this.$router.push('own-food')
+  //     }
+  //   },
+  //   resetDiary() {
+  //     let r = confirm(this.$t('settings.reset-diary') + '?')
+  //     if (r === true) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/pheDiary')
+  //         .remove()
+  //       this.$router.push('phe-diary')
+  //     }
+  //   },
+  //   resetAM() {
+  //     let r = confirm(this.$t('settings.reset-am') + '?')
+  //     if (r === true) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/aminoCounter')
+  //         .remove()
+  //       this.$router.push('amino-counter')
+  //     }
+  //   },
+  //   deleteAccount() {
+  //     let r = confirm(this.$t('settings.delete-account') + '?')
+  //     if (r === true) {
+  //       firebase.database().ref(this.user.id).remove()
+  //       firebase
+  //         .auth()
+  //         .currentUser.delete()
+  //         .then(() => {
+  //           this.$store.dispatch('signOut')
+  //           this.$router.push('/')
+  //         })
+  //         .catch((error) => {
+  //           alert(error)
+  //         })
+  //     }
+  //   }
+  // },
+  // computed: {
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'settings'])
+  // }
 }
 </script>
 

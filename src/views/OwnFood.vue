@@ -234,11 +234,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
-import foodIcons from '../components/data/food-icons.json'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/auth'
+// import 'firebase/compat/database'
+// import foodIcons from '../components/data/food-icons.json'
 import { mdiGoogle, mdiFacebook, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 export default {
@@ -281,116 +281,116 @@ export default {
     weight: 100,
     offlineInfo: false,
     foodIcons
-  }),
-  methods: {
-    signInGoogle() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInFacebook() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    editItem() {
-      this.dialog2 = false
-      this.dialog = true
-    },
-    deleteItem() {
-      firebase
-        .database()
-        .ref(this.user.id + '/ownFood/' + this.editedKey)
-        .remove()
-      this.close()
-    },
-    close() {
-      this.dialog = false
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-        this.editedKey = null
-      })
-    },
-    save() {
-      if (this.editedIndex > -1) {
-        firebase
-          .database()
-          .ref(this.user.id + '/ownFood/' + this.editedKey)
-          .update({
-            name: this.editedItem.name,
-            icon: this.editedItem.icon || null,
-            phe: Number(this.editedItem.phe)
-          })
-      } else {
-        if (this.ownFood.length >= 500) {
-          this.alert = true
-        } else {
-          firebase
-            .database()
-            .ref(this.user.id + '/ownFood')
-            .push({
-              name: this.editedItem.name,
-              icon: this.editedItem.icon || null,
-              phe: Number(this.editedItem.phe)
-            })
-        }
-      }
-      this.close()
-    },
-    addItem(item) {
-      this.weight = 100
-      this.editedIndex = this.ownFood.indexOf(item)
-      this.editedKey = item['.key']
-      this.editedItem = Object.assign({}, item)
-      this.dialog2 = true
-    },
-    calculatePhe() {
-      return Math.round((this.weight * this.editedItem.phe) / 100)
-    },
-    add() {
-      firebase
-        .database()
-        .ref(this.user.id + '/pheLog')
-        .push({
-          name: this.editedItem.name,
-          icon: this.editedItem.icon || null,
-          weight: Number(this.weight),
-          phe: this.calculatePhe()
-        })
-      this.dialog2 = false
-      this.$router.push('/')
-    }
-  },
-  watch: {
-    dialog(val) {
-      val || this.close()
-    }
-  },
-  computed: {
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    formTitle() {
-      if (this.editedIndex === -1) {
-        return this.$t('common.add')
-      } else {
-        return this.$t('common.edit')
-      }
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'ownFood', 'pheLog', 'settings'])
-  }
+  })
+  // methods: {
+  //   signInGoogle() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInGoogle')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInFacebook() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInFacebook')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   editItem() {
+  //     this.dialog2 = false
+  //     this.dialog = true
+  //   },
+  //   deleteItem() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/ownFood/' + this.editedKey)
+  //       .remove()
+  //     this.close()
+  //   },
+  //   close() {
+  //     this.dialog = false
+  //     this.$nextTick(() => {
+  //       this.editedItem = Object.assign({}, this.defaultItem)
+  //       this.editedIndex = -1
+  //       this.editedKey = null
+  //     })
+  //   },
+  //   save() {
+  //     if (this.editedIndex > -1) {
+  //       firebase
+  //         .database()
+  //         .ref(this.user.id + '/ownFood/' + this.editedKey)
+  //         .update({
+  //           name: this.editedItem.name,
+  //           icon: this.editedItem.icon || null,
+  //           phe: Number(this.editedItem.phe)
+  //         })
+  //     } else {
+  //       if (this.ownFood.length >= 500) {
+  //         this.alert = true
+  //       } else {
+  //         firebase
+  //           .database()
+  //           .ref(this.user.id + '/ownFood')
+  //           .push({
+  //             name: this.editedItem.name,
+  //             icon: this.editedItem.icon || null,
+  //             phe: Number(this.editedItem.phe)
+  //           })
+  //       }
+  //     }
+  //     this.close()
+  //   },
+  //   addItem(item) {
+  //     this.weight = 100
+  //     this.editedIndex = this.ownFood.indexOf(item)
+  //     this.editedKey = item['.key']
+  //     this.editedItem = Object.assign({}, item)
+  //     this.dialog2 = true
+  //   },
+  //   calculatePhe() {
+  //     return Math.round((this.weight * this.editedItem.phe) / 100)
+  //   },
+  //   add() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/pheLog')
+  //       .push({
+  //         name: this.editedItem.name,
+  //         icon: this.editedItem.icon || null,
+  //         weight: Number(this.weight),
+  //         phe: this.calculatePhe()
+  //       })
+  //     this.dialog2 = false
+  //     this.$router.push('/')
+  //   }
+  // },
+  // watch: {
+  //   dialog(val) {
+  //     val || this.close()
+  //   }
+  // },
+  // computed: {
+  //   pheResult() {
+  //     let phe = 0
+  //     this.pheLog.forEach((item) => {
+  //       phe += item.phe
+  //     })
+  //     return Math.round(phe)
+  //   },
+  //   formTitle() {
+  //     if (this.editedIndex === -1) {
+  //       return this.$t('common.add')
+  //     } else {
+  //       return this.$t('common.edit')
+  //     }
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'ownFood', 'pheLog', 'settings'])
+  // }
 }
 </script>
 

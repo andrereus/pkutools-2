@@ -151,10 +151,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/auth'
+// import 'firebase/compat/database'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 
 export default {
@@ -173,95 +173,95 @@ export default {
     email: null,
     password: null,
     show1: false
-  }),
-  methods: {
-    registerEmailPassword() {
-      firebase.auth().useDeviceLanguage()
-      if (navigator.onLine) {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(this.email, this.password)
-          .then((result) => {
-            result.user.updateProfile({
-              displayName: this.name
-            })
-            const newUser = {
-              id: result.user.uid,
-              name: result.user.displayName,
-              email: result.additionalUserInfo.profile.email,
-              photoUrl: result.user.photoURL
-            }
-            this.$store.commit('setUser', newUser)
-          })
-          .then(() => {
-            this.$store.dispatch('initRef')
-            this.$router.push('/')
-          })
-          .catch((error) => {
-            alert(this.$t('email-auth.error'))
-            console.log(error)
-          })
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInEmailPassword() {
-      firebase.auth().useDeviceLanguage()
-      if (navigator.onLine) {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(this.email, this.password)
-          .then((result) => {
-            const newUser = {
-              id: result.user.uid,
-              name: result.user.displayName,
-              email: result.additionalUserInfo.profile.email,
-              photoUrl: result.user.photoURL
-            }
-            this.$store.commit('setUser', newUser)
-          })
-          .then(() => {
-            this.$store.dispatch('initRef')
-            this.$router.push('/')
-          })
-          .catch((error) => {
-            alert(this.$t('email-auth.error'))
-            console.log(error)
-          })
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    resetPassword() {
-      firebase.auth().useDeviceLanguage()
-      firebase
-        .auth()
-        .sendPasswordResetEmail(this.email)
-        .then(() => {
-          alert(this.$t('email-auth.password-sent'))
-        })
-        .catch((error) => {
-          alert(this.$t('email-auth.error'))
-          console.log(error)
-        })
-    }
-  },
-  computed: {
-    rules() {
-      return {
-        required: (value) => !!value || this.$t('email-auth.required'),
-        min: (v) => (v !== null && v.length >= 8) || this.$t('email-auth.min-length'),
-        email: (value) => {
-          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-          return pattern.test(value) || this.$t('email-auth.invalid-email')
-        }
-      }
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user'])
-  }
+  })
+  // methods: {
+  //   registerEmailPassword() {
+  //     firebase.auth().useDeviceLanguage()
+  //     if (navigator.onLine) {
+  //       firebase
+  //         .auth()
+  //         .createUserWithEmailAndPassword(this.email, this.password)
+  //         .then((result) => {
+  //           result.user.updateProfile({
+  //             displayName: this.name
+  //           })
+  //           const newUser = {
+  //             id: result.user.uid,
+  //             name: result.user.displayName,
+  //             email: result.additionalUserInfo.profile.email,
+  //             photoUrl: result.user.photoURL
+  //           }
+  //           this.$store.commit('setUser', newUser)
+  //         })
+  //         .then(() => {
+  //           this.$store.dispatch('initRef')
+  //           this.$router.push('/')
+  //         })
+  //         .catch((error) => {
+  //           alert(this.$t('email-auth.error'))
+  //           console.log(error)
+  //         })
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInEmailPassword() {
+  //     firebase.auth().useDeviceLanguage()
+  //     if (navigator.onLine) {
+  //       firebase
+  //         .auth()
+  //         .signInWithEmailAndPassword(this.email, this.password)
+  //         .then((result) => {
+  //           const newUser = {
+  //             id: result.user.uid,
+  //             name: result.user.displayName,
+  //             email: result.additionalUserInfo.profile.email,
+  //             photoUrl: result.user.photoURL
+  //           }
+  //           this.$store.commit('setUser', newUser)
+  //         })
+  //         .then(() => {
+  //           this.$store.dispatch('initRef')
+  //           this.$router.push('/')
+  //         })
+  //         .catch((error) => {
+  //           alert(this.$t('email-auth.error'))
+  //           console.log(error)
+  //         })
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   resetPassword() {
+  //     firebase.auth().useDeviceLanguage()
+  //     firebase
+  //       .auth()
+  //       .sendPasswordResetEmail(this.email)
+  //       .then(() => {
+  //         alert(this.$t('email-auth.password-sent'))
+  //       })
+  //       .catch((error) => {
+  //         alert(this.$t('email-auth.error'))
+  //         console.log(error)
+  //       })
+  //   }
+  // },
+  // computed: {
+  //   rules() {
+  //     return {
+  //       required: (value) => !!value || this.$t('email-auth.required'),
+  //       min: (v) => (v !== null && v.length >= 8) || this.$t('email-auth.min-length'),
+  //       email: (value) => {
+  //         const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  //         return pattern.test(value) || this.$t('email-auth.invalid-email')
+  //       }
+  //     }
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user'])
+  // }
 }
 </script>
 

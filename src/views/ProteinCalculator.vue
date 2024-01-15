@@ -80,9 +80,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/database'
 
 export default {
   metaInfo() {
@@ -97,56 +97,56 @@ export default {
     weight: 100,
     name: '',
     select: 'other'
-  }),
-  methods: {
-    calculateProtein() {
-      return Math.round(this.protein * this.factor)
-    },
-    calculatePhe() {
-      return Math.round((this.weight * (this.protein * this.factor)) / 100)
-    },
-    save() {
-      firebase
-        .database()
-        .ref(this.user.id + '/pheLog')
-        .push({
-          name: this.name,
-          weight: Number(this.weight),
-          phe: this.calculatePhe()
-        })
-      this.dialog = false
-      this.$router.push('/')
-    }
-  },
-  computed: {
-    type() {
-      return [
-        { text: this.$t('protein-calculator.other'), value: 'other' },
-        { text: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
-        { text: this.$t('protein-calculator.fruit'), value: 'fruit' }
-      ]
-    },
-    factor() {
-      if (this.select === 'fruit') {
-        return 30
-      } else if (this.select === 'vegetable') {
-        return 40
-      } else {
-        return 50
-      }
-    },
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'pheLog', 'settings'])
-  }
+  })
+  // methods: {
+  //   calculateProtein() {
+  //     return Math.round(this.protein * this.factor)
+  //   },
+  //   calculatePhe() {
+  //     return Math.round((this.weight * (this.protein * this.factor)) / 100)
+  //   },
+  //   save() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/pheLog')
+  //       .push({
+  //         name: this.name,
+  //         weight: Number(this.weight),
+  //         phe: this.calculatePhe()
+  //       })
+  //     this.dialog = false
+  //     this.$router.push('/')
+  //   }
+  // },
+  // computed: {
+  //   type() {
+  //     return [
+  //       { text: this.$t('protein-calculator.other'), value: 'other' },
+  //       { text: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
+  //       { text: this.$t('protein-calculator.fruit'), value: 'fruit' }
+  //     ]
+  //   },
+  //   factor() {
+  //     if (this.select === 'fruit') {
+  //       return 30
+  //     } else if (this.select === 'vegetable') {
+  //       return 40
+  //     } else {
+  //       return 50
+  //     }
+  //   },
+  //   pheResult() {
+  //     let phe = 0
+  //     this.pheLog.forEach((item) => {
+  //       phe += item.phe
+  //     })
+  //     return Math.round(phe)
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'pheLog', 'settings'])
+  // }
 }
 </script>
 

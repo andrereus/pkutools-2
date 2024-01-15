@@ -222,10 +222,10 @@
 
 <script>
 import FeatureComparison from '../components/FeatureComparison.vue'
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
-import Fuse from 'fuse.js'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/database'
+// import Fuse from 'fuse.js'
 import PheLog from '../components/PheLog.vue'
 import {
   mdiGoogle,
@@ -276,7 +276,7 @@ export default {
     mdiDownload,
     mdiLoginVariant,
     offlineInfo: false,
-    publicPath: process.env.BASE_URL,
+    // publicPath: process.env.BASE_URL,
     dialog: false,
     search: null,
     phe: null,
@@ -293,90 +293,90 @@ export default {
     ],
     advancedFood: null,
     loading: false
-  }),
-  methods: {
-    signInGoogle() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    signInFacebook() {
-      if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    loadItem(item) {
-      this.name = item.name
-      this.emoji = item.emoji
-      this.phe = item.phe
-      this.weight = 100
-      this.dialog = true
-    },
-    calculatePhe() {
-      return Math.round((this.weight * this.phe) / 100)
-    },
-    save() {
-      firebase
-        .database()
-        .ref(this.user.id + '/pheLog')
-        .push({
-          name: this.name,
-          emoji: this.emoji,
-          weight: Number(this.weight),
-          phe: this.calculatePhe()
-        })
-      this.dialog = false
-      this.advancedFood = null
-    },
-    async searchFood() {
-      this.loading = true
-      let res, food
-      if (this.$i18n.locale === 'de') {
-        res = await fetch(this.publicPath + 'data/usda-icon-de.json')
-        food = await res.json()
-      } else if (this.$i18n.locale === 'es') {
-        res = await fetch(this.publicPath + 'data/usda-icon-es.json')
-        food = await res.json()
-      } else if (this.$i18n.locale === 'fr') {
-        res = await fetch(this.publicPath + 'data/usda-icon-fr.json')
-        food = await res.json()
-      } else {
-        res = await fetch(this.publicPath + 'data/usda-icon-en.json')
-        food = await res.json()
-      }
+  })
+  // methods: {
+  //   signInGoogle() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInGoogle')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   signInFacebook() {
+  //     if (navigator.onLine) {
+  //       this.$store.dispatch('signInFacebook')
+  //     } else {
+  //       this.offlineInfo = true
+  //     }
+  //   },
+  //   loadItem(item) {
+  //     this.name = item.name
+  //     this.emoji = item.emoji
+  //     this.phe = item.phe
+  //     this.weight = 100
+  //     this.dialog = true
+  //   },
+  //   calculatePhe() {
+  //     return Math.round((this.weight * this.phe) / 100)
+  //   },
+  //   save() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/pheLog')
+  //       .push({
+  //         name: this.name,
+  //         emoji: this.emoji,
+  //         weight: Number(this.weight),
+  //         phe: this.calculatePhe()
+  //       })
+  //     this.dialog = false
+  //     this.advancedFood = null
+  //   },
+  //   async searchFood() {
+  //     this.loading = true
+  //     let res, food
+  //     if (this.$i18n.locale === 'de') {
+  //       res = await fetch(this.publicPath + 'data/usda-icon-de.json')
+  //       food = await res.json()
+  //     } else if (this.$i18n.locale === 'es') {
+  //       res = await fetch(this.publicPath + 'data/usda-icon-es.json')
+  //       food = await res.json()
+  //     } else if (this.$i18n.locale === 'fr') {
+  //       res = await fetch(this.publicPath + 'data/usda-icon-fr.json')
+  //       food = await res.json()
+  //     } else {
+  //       res = await fetch(this.publicPath + 'data/usda-icon-en.json')
+  //       food = await res.json()
+  //     }
 
-      const fuse = new Fuse(food, {
-        keys: ['name', 'phe'],
-        threshold: 0.2,
-        minMatchCharLength: 2,
-        ignoreLocation: true
-      })
+  //     const fuse = new Fuse(food, {
+  //       keys: ['name', 'phe'],
+  //       threshold: 0.2,
+  //       minMatchCharLength: 2,
+  //       ignoreLocation: true
+  //     })
 
-      let results = fuse.search(this.search.trim())
+  //     let results = fuse.search(this.search.trim())
 
-      this.advancedFood = results.map((result) => {
-        return result.item
-      })
-      this.loading = false
-    }
-  },
-  computed: {
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'ownFood', 'pheLog', 'settings'])
-  }
+  //     this.advancedFood = results.map((result) => {
+  //       return result.item
+  //     })
+  //     this.loading = false
+  //   }
+  // },
+  // computed: {
+  //   pheResult() {
+  //     let phe = 0
+  //     this.pheLog.forEach((item) => {
+  //       phe += item.phe
+  //     })
+  //     return Math.round(phe)
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'ownFood', 'pheLog', 'settings'])
+  // }
 }
 </script>
 

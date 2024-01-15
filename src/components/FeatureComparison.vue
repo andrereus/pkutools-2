@@ -51,7 +51,7 @@ import {
   mdiAndroid,
   mdiApple,
   mdiMicrosoftWindows,
-  mdiDesktopMac,
+  mdiMonitor,
   mdiCloudOffOutline,
   mdiSync,
   mdiExport,
@@ -171,7 +171,7 @@ export default {
         pherechner: 3
       },
       {
-        icon: mdiDesktopMac,
+        icon: mdiMonitor,
         en: 'macOS',
         de: 'macOS',
         pkutools: 1,

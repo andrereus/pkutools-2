@@ -74,9 +74,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database'
+// import { mapState } from 'vuex'
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/database'
 
 export default {
   metaInfo() {
@@ -90,37 +90,37 @@ export default {
     phe: null,
     weight: null,
     name: ''
-  }),
-  methods: {
-    calculatePhe() {
-      return Math.round((this.weight * this.phe) / 100)
-    },
-    save() {
-      firebase
-        .database()
-        .ref(this.user.id + '/pheLog')
-        .push({
-          name: this.name,
-          weight: Number(this.weight),
-          phe: this.calculatePhe()
-        })
-      this.dialog = false
-      this.$router.push('/')
-    }
-  },
-  computed: {
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    userIsAuthenticated() {
-      return this.user !== null && this.user !== undefined
-    },
-    ...mapState(['user', 'pheLog', 'settings'])
-  }
+  })
+  // methods: {
+  //   calculatePhe() {
+  //     return Math.round((this.weight * this.phe) / 100)
+  //   },
+  //   save() {
+  //     firebase
+  //       .database()
+  //       .ref(this.user.id + '/pheLog')
+  //       .push({
+  //         name: this.name,
+  //         weight: Number(this.weight),
+  //         phe: this.calculatePhe()
+  //       })
+  //     this.dialog = false
+  //     this.$router.push('/')
+  //   }
+  // },
+  // computed: {
+  //   pheResult() {
+  //     let phe = 0
+  //     this.pheLog.forEach((item) => {
+  //       phe += item.phe
+  //     })
+  //     return Math.round(phe)
+  //   },
+  //   userIsAuthenticated() {
+  //     return this.user !== null && this.user !== undefined
+  //   },
+  //   ...mapState(['user', 'pheLog', 'settings'])
+  // }
 }
 </script>
 
