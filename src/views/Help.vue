@@ -91,7 +91,7 @@
         </v-expansion-panels>
 
         <v-btn
-          v-if="this.$i18n.locale !== 'de' && $vuetify.breakpoint.smAndUp"
+          v-if="this.$i18n.locale !== 'de' && $vuetify.display.smAndUp"
           variant="outlined"
           rounded
           color="primary"
@@ -104,7 +104,7 @@
         </v-btn>
 
         <v-btn
-          v-if="this.$i18n.locale === 'de' && $vuetify.breakpoint.smAndUp"
+          v-if="this.$i18n.locale === 'de' && $vuetify.display.smAndUp"
           variant="outlined"
           rounded
           color="primary"
@@ -117,7 +117,7 @@
         </v-btn>
 
         <v-btn
-          v-if="$vuetify.breakpoint.xsOnly"
+          v-if="$vuetify.display.xsOnly"
           variant="outlined"
           rounded
           color="primary"

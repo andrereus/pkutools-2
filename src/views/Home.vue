@@ -164,7 +164,7 @@
           </v-btn>
 
           <v-btn
-            v-if="this.$i18n.locale !== 'de' && $vuetify.breakpoint.smAndUp"
+            v-if="this.$i18n.locale !== 'de' && $vuetify.display.smAndUp"
             variant="flat"
             rounded
             href="https://youtu.be/lmiejnEFccY"
@@ -176,7 +176,7 @@
           </v-btn>
 
           <v-btn
-            v-if="this.$i18n.locale === 'de' && $vuetify.breakpoint.smAndUp"
+            v-if="this.$i18n.locale === 'de' && $vuetify.display.smAndUp"
             variant="flat"
             rounded
             href="https://youtu.be/5_-F4tM8_RQ"
@@ -188,7 +188,7 @@
           </v-btn>
 
           <v-btn
-            v-if="$vuetify.breakpoint.xsOnly"
+            v-if="$vuetify.display.xsOnly"
             variant="flat"
             rounded
             href="https://youtu.be/ITfvSliHwc0"
