@@ -1,5 +1,122 @@
 <template>
   <v-app>
+    <v-app-bar flat theme="dark" class="nav-layout custom-app-bar">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
+      <router-link to="/" class="app-logo">
+        <v-img
+          src="./assets/pkutools-logo.png"
+          alt="PKU Tools Logo"
+          max-width="25"
+          class="ml-1 mr-4"
+        ></v-img>
+        <v-toolbar-title v-if="$vuetify.display.lgAndUp">PKU Tools</v-toolbar-title>
+      </router-link>
+      <v-spacer></v-spacer>
+
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
+            <v-list-item-title>{{ lang.name }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
+            <v-avatar size="32">
+              <v-icon v-if="!userIsAuthenticated">{{ mdiAccountCircle }}</v-icon>
+              <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{
+                mdiAccountCircleOutline
+              }}</v-icon>
+              <img
+                v-if="userIsAuthenticated && userPhotoUrl"
+                :src="userPhotoUrl"
+                :alt="$t('app.profile-picture')"
+              />
+            </v-avatar>
+          </v-btn>
+        </template>
+
+        <v-list class="account-menu">
+          <v-list-item v-if="!userIsAuthenticated" @click="signInGoogle">
+            <span>
+              <v-icon>{{ mdiGoogle }}</v-icon>
+              {{ $t('app.signin-google') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item v-if="!userIsAuthenticated" @click="signInFacebook">
+            <span>
+              <v-icon>{{ mdiFacebook }}</v-icon>
+              {{ $t('app.signin-facebook') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item v-if="!userIsAuthenticated" to="/email-auth">
+            <span>
+              <v-icon>{{ mdiEmail }}</v-icon>
+              {{ $t('email-auth.title') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item v-if="userIsAuthenticated" to="/settings">
+            <span>
+              <v-icon>{{ mdiAccount }}</v-icon>
+              {{ user.name }}
+            </span>
+          </v-list-item>
+
+          <v-list-item v-if="userIsAuthenticated" @click="signOut">
+            <span>
+              <v-icon>{{ mdiLogoutVariant }}</v-icon>
+              {{ $t('app.signout') }}
+            </span>
+          </v-list-item>
+
+          <v-divider></v-divider>
+
+          <v-list-item to="/help">
+            <span>
+              <v-icon>{{ mdiDownload }}</v-icon>
+              {{ $t('app.install') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item to="/help">
+            <span>
+              <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
+              {{ $t('app.help') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfct-_DFHBZMe7morO3sKalidwx3Y_rPtn1xaQtPLIa_roBdg/viewform?usp=sf_link"
+            target="_blank"
+          >
+            <span>
+              <v-icon>{{ mdiCommentQuoteOutline }}</v-icon>
+              {{ $t('app.feedback') }}
+            </span>
+          </v-list-item>
+
+          <v-list-item @click="updateDesign">
+            <span>
+              <v-icon v-if="!$vuetify.theme.dark">{{ mdiBrightness4 }}</v-icon>
+              <v-icon v-if="$vuetify.theme.dark">{{ mdiBrightness7 }}</v-icon>
+              &nbsp;
+              <span v-if="!$vuetify.theme.dark">{{ $t('app.dark') }}</span>
+              <span v-if="$vuetify.theme.dark">{{ $t('app.light') }}</span>
+            </span>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+
     <v-navigation-drawer v-model="drawer" floating class="nav-layout">
       <v-list-item v-if="$vuetify.display.mdAndDown">
         <div class="flex-nowrap mt-2">
@@ -151,123 +268,6 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-
-    <v-app-bar flat theme="dark" class="nav-layout custom-app-bar">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
-      <router-link to="/" class="app-logo">
-        <v-img
-          src="./assets/pkutools-logo.png"
-          alt="PKU Tools Logo"
-          max-width="25"
-          class="ml-1 mr-4"
-        ></v-img>
-        <v-toolbar-title v-if="$vuetify.display.lgAndUp">PKU Tools</v-toolbar-title>
-      </router-link>
-      <v-spacer></v-spacer>
-
-      <v-menu>
-        <template v-slot:activator="{ props }">
-          <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
-            <v-list-item-title>{{ lang.name }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <v-menu>
-        <template v-slot:activator="{ props }">
-          <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
-            <v-avatar size="32">
-              <v-icon v-if="!userIsAuthenticated">{{ mdiAccountCircle }}</v-icon>
-              <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{
-                mdiAccountCircleOutline
-              }}</v-icon>
-              <img
-                v-if="userIsAuthenticated && userPhotoUrl"
-                :src="userPhotoUrl"
-                :alt="$t('app.profile-picture')"
-              />
-            </v-avatar>
-          </v-btn>
-        </template>
-
-        <v-list class="account-menu">
-          <v-list-item v-if="!userIsAuthenticated" @click="signInGoogle">
-            <span>
-              <v-icon>{{ mdiGoogle }}</v-icon>
-              {{ $t('app.signin-google') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item v-if="!userIsAuthenticated" @click="signInFacebook">
-            <span>
-              <v-icon>{{ mdiFacebook }}</v-icon>
-              {{ $t('app.signin-facebook') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item v-if="!userIsAuthenticated" to="/email-auth">
-            <span>
-              <v-icon>{{ mdiEmail }}</v-icon>
-              {{ $t('email-auth.title') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item v-if="userIsAuthenticated" to="/settings">
-            <span>
-              <v-icon>{{ mdiAccount }}</v-icon>
-              {{ user.name }}
-            </span>
-          </v-list-item>
-
-          <v-list-item v-if="userIsAuthenticated" @click="signOut">
-            <span>
-              <v-icon>{{ mdiLogoutVariant }}</v-icon>
-              {{ $t('app.signout') }}
-            </span>
-          </v-list-item>
-
-          <v-divider></v-divider>
-
-          <v-list-item to="/help">
-            <span>
-              <v-icon>{{ mdiDownload }}</v-icon>
-              {{ $t('app.install') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item to="/help">
-            <span>
-              <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
-              {{ $t('app.help') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfct-_DFHBZMe7morO3sKalidwx3Y_rPtn1xaQtPLIa_roBdg/viewform?usp=sf_link"
-            target="_blank"
-          >
-            <span>
-              <v-icon>{{ mdiCommentQuoteOutline }}</v-icon>
-              {{ $t('app.feedback') }}
-            </span>
-          </v-list-item>
-
-          <v-list-item @click="updateDesign">
-            <span>
-              <v-icon v-if="!$vuetify.theme.dark">{{ mdiBrightness4 }}</v-icon>
-              <v-icon v-if="$vuetify.theme.dark">{{ mdiBrightness7 }}</v-icon>
-              &nbsp;
-              <span v-if="!$vuetify.theme.dark">{{ $t('app.dark') }}</span>
-              <span v-if="$vuetify.theme.dark">{{ $t('app.light') }}</span>
-            </span>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
 
     <v-main class="mx-sm-2">
       <v-container fluid>
