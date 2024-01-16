@@ -404,7 +404,7 @@
 </template>
 
 <script>
-import { useStore } from './stores/index';
+import { useStore } from './stores/index'
 // import update from './mixins/update'
 import {
   mdiGoogle,

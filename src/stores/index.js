@@ -16,7 +16,8 @@ export const useStore = defineStore('main', {
     aminoCounter: [],
     pheDiary: [],
     ownFood: [],
-    settings: {}
+    settings: {},
+    unsubscribeFunctions: {}
   }),
   actions: {
     async signInGoogle() {
@@ -64,6 +65,7 @@ export const useStore = defineStore('main', {
           this.autoSignIn(user)
           this.initRef()
         } else {
+          this.unsubscribeAll()
           this.user = null
         }
       })
@@ -72,6 +74,7 @@ export const useStore = defineStore('main', {
       const auth = getAuth()
       try {
         await signOut(auth)
+        this.unsubscribeAll()
         this.user = null
       } catch (error) {
         console.error(error)
@@ -82,9 +85,10 @@ export const useStore = defineStore('main', {
       const userId = this.user.id
 
       const bindRef = (key, dbRef) => {
-        onValue(dbRef, (snapshot) => {
+        const unsubscribe = onValue(dbRef, (snapshot) => {
           this[key] = snapshot.val()
         })
+        this.unsubscribeFunctions[key] = unsubscribe
       }
 
       bindRef('pheLog', ref(db, `${userId}/pheLog`))
@@ -92,6 +96,14 @@ export const useStore = defineStore('main', {
       bindRef('pheDiary', ref(db, `${userId}/pheDiary`))
       bindRef('ownFood', ref(db, `${userId}/ownFood`))
       bindRef('settings', ref(db, `${userId}/settings`))
+    },
+    unsubscribeAll() {
+      Object.values(this.unsubscribeFunctions).forEach((unsubscribe) => {
+        if (typeof unsubscribe === 'function') {
+          unsubscribe()
+        }
+      })
+      this.unsubscribeFunctions = {}
     }
   },
   getters: {
