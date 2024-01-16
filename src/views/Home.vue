@@ -122,11 +122,11 @@
         <PheLog v-if="userIsAuthenticated && advancedFood === null" />
 
         <div v-if="!userIsAuthenticated && advancedFood === null">
-          <v-img
+          <img
             src="../assets/eating-together.svg"
             alt="Food Illustration"
             class="mt-6 mb-10 illustration"
-          ></v-img>
+          ></img>
 
           <v-menu v-if="!userIsAuthenticated">
             <template v-slot:activator="{ props }">

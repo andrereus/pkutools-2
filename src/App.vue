@@ -3,12 +3,12 @@
     <v-app-bar flat theme="dark" class="nav-layout custom-app-bar">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
       <router-link to="/" class="app-logo">
-        <v-img
+        <img
           src="./assets/pkutools-logo.png"
           alt="PKU Tools Logo"
           max-width="25"
           class="ml-1 mr-4"
-        ></v-img>
+        ></img>
         <v-toolbar-title v-if="$vuetify.display.lgAndUp">PKU Tools</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
@@ -120,12 +120,12 @@
     <v-navigation-drawer v-model="drawer" floating class="nav-layout">
       <v-list-item v-if="$vuetify.display.mdAndDown">
         <div class="flex-nowrap mt-2">
-          <v-img
+          <img
             src="./assets/pkutools-logo.png"
             alt="PKU Tools Logo"
             max-width="25"
             class="ml-2 mr-4 mb-1"
-          ></v-img>
+          ></img>
           <v-list-item-title>PKU Tools</v-list-item-title>
         </div>
       </v-list-item>

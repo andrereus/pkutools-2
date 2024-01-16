@@ -24,20 +24,20 @@
             {{ $t('email-auth.title') }}
           </v-btn>
 
-          <v-img
+          <img
             src="../assets/en-phe-diary.png"
             :alt="$t('phe-diary.title')"
             max-width="400"
             class="mt-10"
             v-if="$i18n.locale === 'en'"
-          ></v-img>
-          <v-img
+          ></img>
+          <img
             src="../assets/de-phe-diary.png"
             :alt="$t('phe-diary.title')"
             max-width="400"
             class="mt-10"
             v-if="$i18n.locale === 'de'"
-          ></v-img>
+          ></img>
         </div>
 
         <div v-if="userIsAuthenticated">

@@ -43,13 +43,13 @@
         </v-dialog>
 
         <div v-if="result !== null">
-          <v-img
+          <img
             v-if="result.product.image_small_url"
             :src="result.product.image_small_url"
             max-height="200"
             max-width="200"
             class="my-6"
-          ></v-img>
+          ></img>
 
           <h2 class="headlin my-3">{{ result.product.product_name }}</h2>
 

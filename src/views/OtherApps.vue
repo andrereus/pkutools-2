@@ -9,7 +9,7 @@
     <v-row justify="center">
       <v-col cols="12" sm="6" md="4" lg="3">
         <v-card max-width="400">
-          <v-img src="../assets/pkumanager-app.png" alt="PKU Manager App"></v-img>
+          <img src="../assets/pkumanager-app.png" alt="PKU Manager App"></img>
           <v-card-title>PKU Manager</v-card-title>
 
           <v-card-text>
@@ -32,7 +32,7 @@
 
       <v-col cols="12" sm="6" md="4" lg="3">
         <v-card max-width="400">
-          <v-img src="../assets/pherechner-app.png" alt="Phe Rechner App"></v-img>
+          <img src="../assets/pherechner-app.png" alt="Phe Rechner App"></img>
           <v-card-title>Phe Rechner</v-card-title>
 
           <v-card-text>
