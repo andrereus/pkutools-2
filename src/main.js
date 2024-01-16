@@ -17,7 +17,7 @@ import de from './locales/de.json'
 import es from './locales/es.json'
 import fr from './locales/fr.json'
 
-const app = createApp(App)
+import { initializeApp } from 'firebase/app'
 
 const vuetify = createVuetify({
   components,
@@ -47,6 +47,20 @@ const i18n = createI18n({
   fallbackLocale: 'en',
   messages: { en, de, es, fr }
 })
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyCy-4rH75-ILcbgJPx3amMaoHUEl3fJJtw',
+  authDomain: 'pku-tools.firebaseapp.com',
+  databaseURL: 'https://pku-tools.firebaseio.com',
+  projectId: 'pku-tools',
+  storageBucket: 'pku-tools.appspot.com',
+  messagingSenderId: '202032702286',
+  appId: '1:202032702286:web:2daa2ac360e82ee0cfb41f'
+}
+
+initializeApp(firebaseConfig)
+
+const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
