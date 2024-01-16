@@ -22,7 +22,6 @@
             <template v-slot:append-outer>
               <v-btn
                 variant="flat"
-                fab
                 size="small"
                 :loading="loading"
                 color="primary"
@@ -129,7 +128,7 @@
             class="mt-6 mb-10 illustration"
           ></v-img>
 
-          <v-menu v-if="!userIsAuthenticated" offset-y>
+          <v-menu v-if="!userIsAuthenticated">
             <template v-slot:activator="{ props }">
               <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" v-bind="props">
                 <v-icon start>{{ mdiLoginVariant }}</v-icon>
@@ -276,7 +275,7 @@ export default {
     mdiDownload,
     mdiLoginVariant,
     offlineInfo: false,
-    // publicPath: process.env.BASE_URL,
+    publicPath: import.meta.env.BASE_URL,
     dialog: false,
     search: null,
     phe: null,

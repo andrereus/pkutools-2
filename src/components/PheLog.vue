@@ -90,9 +90,9 @@
               class="mt-6"
             >
               <template v-slot:append-outer>
-                <v-menu offset-y>
+                <v-menu>
                   <template v-slot:activator="{ props }">
-                    <v-btn fab size="small" variant="flat" v-bind="props" class="mt-n2">
+                    <v-btn size="small" variant="flat" v-bind="props" class="mt-n2">
                       <img
                         :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
                         v-if="editedItem.icon !== undefined && editedItem.icon !== null"
@@ -272,7 +272,7 @@ export default {
     mdiBarcodeScan,
     mdiPen,
     mdiBookClock,
-    publicPath: process.env.BASE_URL,
+    publicPath: import.meta.env.BASE_URL,
     dialog: false,
     dialog2: false,
     alert: false,

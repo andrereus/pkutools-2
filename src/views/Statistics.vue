@@ -65,7 +65,7 @@
                   </v-card-text>
                 </router-link>
                 <v-card-actions>
-                  <v-btn variant="flat" fab size="x-small" @click="takeAM" class="add-amino">
+                  <v-btn variant="flat" size="x-small" @click="takeAM" class="add-amino">
                     <v-icon>{{ mdiPlus }}</v-icon>
                   </v-btn>
                 </v-card-actions>
@@ -146,7 +146,7 @@ export default {
     mdiHelpCircleOutline,
     mdiEmail,
     offlineInfo: false,
-    publicPath: process.env.BASE_URL,
+    publicPath: import.meta.env.BASE_URL,
     dialog: false,
     search: null,
     phe: null,

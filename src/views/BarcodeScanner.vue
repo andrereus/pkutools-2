@@ -48,7 +48,6 @@
             :src="result.product.image_small_url"
             max-height="200"
             max-width="200"
-            contain
             class="my-6"
           ></v-img>
 

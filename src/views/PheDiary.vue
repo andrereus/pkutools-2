@@ -59,7 +59,6 @@
             hide-default-footer
             mobile-breakpoint="0"
             sort-by="date"
-            sort-desc
             class="mb-3"
           >
             <template v-slot:item="{ item }">
@@ -105,7 +104,6 @@
                     no-title
                     scrollable
                     @input="menu = false"
-                    :first-day-of-week="1"
                   ></v-date-picker>
                 </v-menu>
 
@@ -283,7 +281,7 @@ export default {
     mdiFacebook,
     mdiInformationVariant,
     mdiEmail,
-    publicPath: process.env.BASE_URL,
+    publicPath: import.meta.env.BASE_URL,
     dialog: false,
     alert: false,
     menu: false,

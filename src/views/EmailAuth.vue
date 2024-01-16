@@ -17,14 +17,13 @@
 
           <v-card variant="outlined">
             <v-tabs v-model="tab" show-arrows>
-              <v-tabs-slider></v-tabs-slider>
               <v-tab>{{ $t('email-auth.signin') }}</v-tab>
               <v-tab>{{ $t('email-auth.register') }}</v-tab>
               <v-tab>{{ $t('email-auth.forgot-password') }}</v-tab>
             </v-tabs>
 
-            <v-tabs-items v-model="tab">
-              <v-tab-item>
+            <v-window v-model="tab">
+              <v-window-item>
                 <v-container fluid>
                   <v-text-field
                     variant="filled"
@@ -59,9 +58,9 @@
                     {{ $t('email-auth.signin') }}
                   </v-btn>
                 </v-container>
-              </v-tab-item>
+              </v-window-item>
 
-              <v-tab-item>
+              <v-window-item>
                 <v-container fluid>
                   <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
 
@@ -106,9 +105,9 @@
                     {{ $t('email-auth.register') }}
                   </v-btn>
                 </v-container>
-              </v-tab-item>
+              </v-window-item>
 
-              <v-tab-item>
+              <v-window-item>
                 <v-container fluid>
                   <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
 
@@ -132,8 +131,8 @@
                     {{ $t('email-auth.reset-password') }}
                   </v-btn>
                 </v-container>
-              </v-tab-item>
-            </v-tabs-items>
+              </v-window-item>
+            </v-window>
           </v-card>
         </div>
       </v-col>
