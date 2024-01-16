@@ -77,7 +77,7 @@
           <v-data-table
             :headers="headers"
             :items="advancedFood"
-            sort-by="name"
+            :sort-by="['name']"
             disable-pagination
             hide-default-footer
             mobile-breakpoint="0"
