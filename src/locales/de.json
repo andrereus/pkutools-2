@@ -1,0 +1,219 @@
+{
+  "app": {
+    "title": "PKU Tools",
+    "description": "Nährwert-App für die Stoffwechselerkrankung PKU.",
+    "signin-google": "Anmelden mit Google",
+    "signin-facebook": "Anmelden mit Facebook",
+    "signout": "Abmelden",
+    "update-info": "Eine neue Version ist verfügbar.",
+    "update": "Aktualisieren",
+    "offline": "Du bist offline.",
+    "more": "Mehr",
+    "dark": "Dunkles Design",
+    "light": "Helles Design",
+    "main-menu": "Hauptmenü",
+    "account-menu": "Account Menü",
+    "profile-picture": "Profilbild",
+    "new": "Neu",
+    "tools": "Tools",
+    "logs": "Protokolle",
+    "help": "Hilfe",
+    "install": "App installieren",
+    "feedback": "Feedback"
+  },
+  "common": {
+    "add": "Hinzufügen",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "reset": "Reset",
+    "settings": "Einstellungen",
+    "ok": "Ok",
+    "note": "Hinweis"
+  },
+  "home": {
+    "title": "Start",
+    "features": "Funktionen",
+    "more": "Und mehr angemeldet",
+    "video": "Video ansehen",
+    "mobile-video": "Video (Mobile)",
+    "compare": "Funktionen vergleichen",
+    "own-food": "Eigene LM.",
+    "own-food-long": "Eigene Lebensmittel",
+    "support-me": "Unterstütze die Entwicklung von PKU Tools:"
+  },
+  "phe-search": {
+    "title": "Phe Suche",
+    "description": "Suche nach Phe-Werten.",
+    "search": "Phe Suche",
+    "weight": "Gewicht (in g)",
+    "advanced": "Ergebnisse aus dem Web",
+    "source": "Quelle: Übersetzt von USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Dies wird z.B. auch für Nährwertangaben in der Google Seitenleiste verwendet."
+  },
+  "phe-calculator": {
+    "title": "Phe Rechner",
+    "description": "Berechne Phe-Werte.",
+    "phe": "Phe pro 100g (in mg)",
+    "weight": "Konsumiertes Gewicht (in g)",
+    "name": "Lebensmittelname",
+    "protein-link": "Stattdessen Eiweiß umrechnen ->"
+  },
+  "protein-calculator": {
+    "title": "Eiweiß Rechner",
+    "description": "Berechne ungefähre Phe-Werte aus Eiweiß.",
+    "factor": "Art des Lebensmittels",
+    "protein": "Eiweiß pro 100g (in g)",
+    "phe": "Phe pro 100g",
+    "weight": "Konsumiertes Gewicht (in g)",
+    "name": "Lebensmittelname",
+    "other": "Allgemein",
+    "vegetable": "Gemüse",
+    "fruit": "Obst"
+  },
+  "barcode-scanner": {
+    "title": "Barcode Scanner",
+    "description": "Experimentelle Funktion: Kamera öffnet noch nicht auf allen Geräten zuverlässig (dann bitte App neu starten).",
+    "note": "Hinweis: Unter iOS funktioniert der Scanner nur über den Browser zuverlässig.",
+    "scan-barcode": "Barcode scannen",
+    "please-wait": "Bitte warten ...",
+    "protein": "Eiweiß (pro 100g)",
+    "info": "Phe wird aus Eiweiß (* 50) berechnet | Datenquelle: openfoodfacts.org"
+  },
+  "own-food": {
+    "title": "Eigene Lebensmittel",
+    "description": "Speichere eigene Lebensmittel und Phe-Werte.",
+    "phe": "Phe pro 100g (in mg)",
+    "weight": "Gewicht (in g)",
+    "date": "Datum",
+    "chart": "Noch nicht genug Einträge für das Diagramm.",
+    "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
+    "note": "Limitiert auf 500 Einträge."
+  },
+  "phe-log": {
+    "title": "Phe Protokoll",
+    "description": "Protokolliere Phe-Werte über den Tag.",
+    "lock-values": "Berechnungsmodus",
+    "lock-info": "Gewicht und Phe werden parallel geändert",
+    "max": "Phe-Toleranz pro Tag",
+    "save-diary": "In Phe Tagebuch speichern und Phe Protokoll zurücksetzen",
+    "weight": "Gewicht (in g)",
+    "total": "Gesamt",
+    "remaining": "Übrig",
+    "save-day": "Protokoll abschließen",
+    "own-food": "Eigene LM.",
+    "quick-note": "Eintrag",
+    "optional-fields": "Alle Felder sind optional.",
+    "preview": "Vorschau Phe Protokoll",
+    "last-added": "Erneut hinzufügen"
+  },
+  "phe-diary": {
+    "title": "Phe Tagebuch",
+    "description": "Protokolliere Phe-Werte über mehrere Tage.",
+    "date": "Datum",
+    "phe": "Gesamt Phe (in mg)",
+    "chart": "Eintrag hinzufügen",
+    "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Reset über Einstellungen.",
+    "export": "Exportieren",
+    "log": "Protokoll (Bearbeitung aktualisiert nich Gesamt Phe!)",
+    "export-confirm": "Phe Tagebuch in Excel exportieren? Hinweis: Vermeide ein doppeltes Datum im Phe Tagebuch",
+    "export-overview": "Übersicht",
+    "export-filename": "PKU Tools - Phe Tagebuch",
+    "note": "Limitiert auf 100 Einträge (~3 Monate). Export und dann Reset über Einstellungen.",
+    "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt."
+  },
+  "statistics": {
+    "title": "Statistiken"
+  },
+  "amino-counter": {
+    "title": "Amino Zähler",
+    "description": "Zähle Portionen der Aminosäurenmischung.",
+    "progress": "Portion(en) heute",
+    "take": "Portion hinzufügen",
+    "amount": "Portionen pro Tag",
+    "serving": "1 Portion",
+    "limit": "Der Amino Zähler ist limitert auf 100 Einträge. Bitte resette den Verlauf in den Einstellungen.",
+    "note": "Limitiert auf 100 Einträge. Reset über Einstellungen."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "App / Account Einstellungen",
+    "max-amino": "Amino-Portionen pro Tag",
+    "max-phe": "Phe-Toleranz pro Tag",
+    "saved": "Gespeichert",
+    "reset-heading": "Reset",
+    "reset-log": "Reset Heutiges Protokoll",
+    "reset-diary": "Reset Phe Tagebuch",
+    "reset-own-food": "Reset Eigene Lebensmittel",
+    "reset-am": "Reset Amino Zähler",
+    "delete-account": "Account löschen"
+  },
+  "email-auth": {
+    "title": "Anmelden mit E-Mail",
+    "description": "Alternative zur Anmeldung über Google oder Facebook.",
+    "signedin": "Du bist angemeldet.",
+    "name": "Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "register-note": "Dies erstellt einen neuen Account.",
+    "register": "Registrieren",
+    "signin": "Anmelden",
+    "reset-note": "Erhalte eine E-Mail zum Zurücksetzen des Passworts.",
+    "forgot-password": "Passwort vergessen",
+    "reset-password": "Passwort zurücksetzen",
+    "password-sent": "E-Mail zum Zurücksetzen des Passworts wurde gesendet. Bitte prüfen deine E-Mails.",
+    "error": "Das hat leider nicht geklappt.",
+    "required": "Pflichtfeld",
+    "min-length": "Minimum 8 Zeichen",
+    "invalid-email": "E-Mail noch ungültig"
+  },
+  "help": {
+    "title": "Hilfe",
+    "description": "Hilfe und FAQ für PKU Tools.",
+    "contact-me": "Kontaktiere mich per E-Mail:",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "install": "Wie kann man die App installieren?",
+    "install-p1": "Dies ist eine Progressive Web App und kann auf jedem Gerät installiert werden.",
+    "install-p2": "Android:",
+    "install-p2-2": "oder in Chrome",
+    "install-p3": "Tippe in Safari auf den Teilen-Button und dann \"Zum Home-Bildschirm\".",
+    "install-p4": "Klicke das kleine Installations-Icon in der Adressleiste in Chrome, Brave oder Edge.",
+    "sign-in": "Wie kann man sich anmelden?",
+    "sign-in-p1": "Man kann sich (oben rechts über das Menü) mit Google oder Facebook anmelden.",
+    "sign-in-p2": "Andere Anmeldemöglichkeiten sind im Moment nicht geplant.",
+    "support": "Wie kann man unterstützen?",
+    "support-p1": "Ich stelle PKU Tools kostenlos zur Verfügung. Mit dem untenstehenden Link kannst du mich unterstützen :)",
+    "support-p2": "Übrigens ist die App Open Source. Wenn du dazu beitragen willst, kontaktiere mich.",
+    "roadmap": "Was ist neu?",
+    "roadmap-p1": "Die App wird ständig optimiert. Im Moment werden nur größere Updates gelegentlich in einer Facebook Gruppe kommuniziert. Kontaktiere mich für mehr Infos.",
+    "translate": "Gibt es auch andere Sprachen?",
+    "translate-p1": "Im Moment nicht, aber du kannst bei der Übersetzung in andere Sprachen helfen. Kontaktiere mich für mehr Infos."
+  },
+  "other-apps": {
+    "title": "Andere Apps",
+    "description": "Andere PKU Apps",
+    "phe-rechner": "Deutsche PKU App die Taschenrechner, Bleistift, Papier und Nährwerttabelle kombiniert (~ 2017).",
+    "pku-manager": "Englische PKU App zum Suchen, Berechnen und Tracken von Lebensmitteln (~ 2018).",
+    "features": "Funktionsvergleich"
+  },
+  "about": {
+    "title": "Impressum",
+    "description": "Über PKU Tools",
+    "email": "E-Mail",
+    "sources": "Quellen: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). & openfoodfacts.org"
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "description": "PKU Tools Disclaimer"
+  },
+  "privacy-policy": {
+    "title": "Datenschutz",
+    "description": "PKU Tools Datenschutz"
+  },
+  "feature-comparison": {
+    "subject": "Funktion",
+    "included": "Enthalten"
+  }
+}
