@@ -30,17 +30,17 @@
                 </a>
                 {{ $t('help.install-p2-2') }}
               </p>
-              <img src="../assets/pwa-android.png" alt="PWA on Android" class="pwa-img"></img>
+              <img src="../assets/pwa-android.png" alt="PWA on Android" class="pwa-img" />
 
               <p>
                 <span class="font-weight-bold">iOS:</span>
                 {{ $t('help.install-p3') }}
-                <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img"></img>
+                <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
               </p>
               <p>
                 <span class="font-weight-bold">Desktop:</span>
                 {{ $t('help.install-p4') }}
-                <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img"></img>
+                <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img" />
               </p>
             </v-expansion-panel-text>
           </v-expansion-panel>
@@ -69,12 +69,7 @@
               <p>{{ $t('help.support-p1') }}</p>
 
               <a href="https://ko-fi.com/andrereus" target="_blank">
-                <img
-                  src="../assets/kofi.png"
-                  alt="Support me"
-                  max-width="200"
-                  class="mb-4"
-                ></img>
+                <img src="../assets/kofi.png" alt="Support me" max-width="200" class="mb-4" />
               </a>
 
               <p class="mt-2">{{ $t('help.support-p2') }}</p>

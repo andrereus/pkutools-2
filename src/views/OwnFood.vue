@@ -30,14 +30,14 @@
             max-width="400"
             class="mt-10"
             v-if="$i18n.locale === 'en'"
-          ></img>
+          />
           <img
             src="../assets/de-own-food.png"
             :alt="$t('own-food.title')"
             max-width="400"
             class="mt-10"
             v-if="$i18n.locale === 'de'"
-          ></img>
+          />
         </div>
 
         <div v-if="userIsAuthenticated">

@@ -8,7 +8,7 @@
           alt="PKU Tools Logo"
           max-width="25"
           class="ml-1 mr-4"
-        ></img>
+        />
         <v-toolbar-title v-if="$vuetify.display.lgAndUp">PKU Tools</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
@@ -125,7 +125,7 @@
             alt="PKU Tools Logo"
             max-width="25"
             class="ml-2 mr-4 mb-1"
-          ></img>
+          />
           <v-list-item-title>PKU Tools</v-list-item-title>
         </div>
       </v-list-item>
@@ -483,24 +483,24 @@ export default {
   // mixins: [update],
   methods: {
     signInGoogle() {
-      const store = useStore();
+      const store = useStore()
       if (navigator.onLine) {
-        store.signInGoogle();
+        store.signInGoogle()
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     signInFacebook() {
-      const store = useStore();
+      const store = useStore()
       if (navigator.onLine) {
-        store.signInFacebook();
+        store.signInFacebook()
       } else {
-        this.offlineInfo = true;
+        this.offlineInfo = true
       }
     },
     signOut() {
-      const store = useStore();
-      store.signOut();
+      const store = useStore()
+      store.signOut()
     },
     updateDesign() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
@@ -514,8 +514,8 @@ export default {
     if (localStorage.vuetifyThemeDark) {
       this.$vuetify.theme.dark = JSON.parse(localStorage.vuetifyThemeDark)
     }
-    const store = useStore();
-    store.checkAuthState();
+    const store = useStore()
+    store.checkAuthState()
   },
   computed: {
     locale: {
@@ -530,16 +530,16 @@ export default {
       }
     },
     userIsAuthenticated() {
-      const store = useStore();
-      return store.user !== null;
+      const store = useStore()
+      return store.user !== null
     },
     userPhotoUrl() {
-      const store = useStore();
-      return store.user ? store.user.photoUrl : null;
+      const store = useStore()
+      return store.user ? store.user.photoUrl : null
     },
     user() {
-      const store = useStore();
-      return store.user;
+      const store = useStore()
+      return store.user
     }
   }
 }

@@ -49,7 +49,7 @@
             max-height="200"
             max-width="200"
             class="my-6"
-          ></img>
+          />
 
           <h2 class="headlin my-3">{{ result.product.product_name }}</h2>
 

@@ -30,14 +30,14 @@
               alt="Support me"
               max-width="200"
               class="mt-2"
-            ></img>
+            />
             <img
               v-if="$vuetify.theme.dark"
               src="../assets/kofi-dark.png"
               alt="Support me"
               max-width="200"
               class="mt-2"
-            ></img>
+            />
           </a>
         </p>
       </v-col>
