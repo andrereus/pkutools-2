@@ -84,9 +84,26 @@ export const useStore = defineStore('main', {
       const db = getDatabase()
       const userId = this.user.id
 
+      const initialState = {
+        pheLog: [],
+        aminoCounter: [],
+        pheDiary: [],
+        ownFood: [],
+        settings: {}
+      }
+
       const bindRef = (key, dbRef) => {
         const unsubscribe = onValue(dbRef, (snapshot) => {
-          this[key] = snapshot.val()
+          const data = snapshot.val()
+          const isInitiallyArray = Array.isArray(initialState[key])
+
+          if (data && typeof data === 'object') {
+            this[key] = isInitiallyArray
+              ? Object.entries(data).map(([key, value]) => ({ ...value, '.key': key }))
+              : data
+          } else {
+            this[key] = isInitiallyArray ? [] : {}
+          }
         })
         this.unsubscribeFunctions[key] = unsubscribe
       }

@@ -224,7 +224,7 @@ import FeatureComparison from '../components/FeatureComparison.vue'
 import Fuse from 'fuse.js'
 import PheLog from '../components/PheLog.vue'
 import { useStore } from '../stores/index'
-import { getDatabase, ref } from 'firebase/database'
+import { getDatabase, ref, push } from 'firebase/database'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -321,8 +321,7 @@ export default {
     },
     save() {
       const db = getDatabase()
-      const store = useStore()
-      ref(db, `${store.user.id}/pheLog`).push({
+      push(ref(db, `${this.user.id}/pheLog`), {
         name: this.name,
         emoji: this.emoji,
         weight: Number(this.weight),

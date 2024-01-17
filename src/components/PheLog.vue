@@ -237,13 +237,11 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-// import firebase from 'firebase/compat/app'
-// import 'firebase/compat/auth'
-// import 'firebase/compat/database'
-// import { format } from 'date-fns'
-// import foodIcons from './data/food-icons.json'
-// import confetti from 'canvas-confetti'
+import { useStore } from '../stores/index'
+import { getDatabase, ref, push, remove, update } from 'firebase/database'
+import { format } from 'date-fns'
+import foodIcons from './data/food-icons.json'
+import confetti from 'canvas-confetti'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -322,161 +320,150 @@ export default {
     offlineInfo: false,
     lockedValues: false,
     foodIcons
-  })
-  // methods: {
-  //   signInGoogle() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInGoogle')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   signInFacebook() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInFacebook')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   editItem(item) {
-  //     this.editedIndex = this.pheLog.indexOf(item)
-  //     this.editedKey = item['.key']
-  //     this.editedItem = Object.assign({}, item)
-  //     this.lockValues()
-  //     this.dialog = true
-  //   },
-  //   addLastAdded(item) {
-  //     this.editedItem = Object.assign({}, item)
-  //     this.save()
-  //     this.dialog2 = false
-  //   },
-  //   deleteItem() {
-  //     firebase
-  //       .database()
-  //       .ref(this.user.id + '/pheLog/' + this.editedKey)
-  //       .remove()
-  //     this.close()
-  //   },
-  //   close() {
-  //     this.lockedValues = false
-  //     this.dialog = false
-  //     this.$nextTick(() => {
-  //       this.editedItem = Object.assign({}, this.defaultItem)
-  //       this.editedIndex = -1
-  //       this.editedKey = null
-  //     })
-  //   },
-  //   save() {
-  //     if (this.editedIndex > -1) {
-  //       firebase
-  //         .database()
-  //         .ref(this.user.id + '/pheLog/' + this.editedKey)
-  //         .update({
-  //           name: this.editedItem.name,
-  //           icon: this.editedItem.icon || null,
-  //           weight: Number(this.editedItem.weight),
-  //           phe: Number(this.editedItem.phe)
-  //         })
-  //     } else {
-  //       firebase
-  //         .database()
-  //         .ref(this.user.id + '/pheLog')
-  //         .push({
-  //           name: this.editedItem.name,
-  //           emoji: this.editedItem.emoji,
-  //           icon: this.editedItem.icon || null,
-  //           weight: Number(this.editedItem.weight),
-  //           phe: Number(this.editedItem.phe)
-  //         })
-  //     }
-  //     this.close()
-  //   },
-  //   lockValues() {
-  //     if (this.lockedValues === false) {
-  //       this.editedItem.weight = Number(this.editedItem.weight)
-  //       this.editedItem.phe = Number(this.editedItem.phe)
-  //       this.lockedWeight = this.editedItem.weight
-  //       this.lockedPhe = this.editedItem.phe
-  //       this.lockedValues = true
-  //     } else {
-  //       this.lockedValues = false
-  //     }
-  //   },
-  //   editWeight(event) {
-  //     if (this.lockedValues === true) {
-  //       const newWeight = Number(event.target.value)
-  //       this.editedItem.phe = Math.round((newWeight * this.lockedPhe) / this.lockedWeight)
-  //       this.editedItem.weight = newWeight
-  //     } else {
-  //       this.editedItem.weight = event.target.value
-  //     }
-  //   },
-  //   editPhe(event) {
-  //     if (this.lockedValues === true) {
-  //       const newPhe = Number(event.target.value)
-  //       this.editedItem.weight = Math.round((newPhe * this.lockedWeight) / this.lockedPhe)
-  //       this.editedItem.phe = newPhe
-  //     } else {
-  //       this.editedItem.phe = event.target.value
-  //     }
-  //   },
-  //   saveResult() {
-  //     if (this.pheDiary.length >= 100) {
-  //       this.alert = true
-  //     } else {
-  //       confetti()
-  //       setTimeout(() => {
-  //         let r = confirm(this.$t('phe-log.save-diary') + '?')
-  //         if (r === true) {
-  //           firebase
-  //             .database()
-  //             .ref(this.user.id + '/pheDiary')
-  //             .push({
-  //               date: format(new Date(), 'yyyy-MM-dd'),
-  //               phe: this.pheResult,
-  //               log: this.pheLog
-  //             })
-  //             .then(() => {
-  //               firebase
-  //                 .database()
-  //                 .ref(this.user.id + '/pheLog')
-  //                 .remove()
-  //             })
-  //           this.$router.push('phe-diary')
-  //         }
-  //       }, 600)
-  //     }
-  //   }
-  // },
-  // watch: {
-  //   dialog(val) {
-  //     val || this.close()
-  //   }
-  // },
-  // computed: {
-  //   formTitle() {
-  //     if (this.editedIndex === -1) {
-  //       return this.$t('phe-log.quick-note')
-  //     } else {
-  //       return this.$t('common.edit')
-  //     }
-  //   },
-  //   pheResult() {
-  //     let phe = 0
-  //     this.pheLog.forEach((item) => {
-  //       phe += item.phe
-  //     })
-  //     return Math.round(phe)
-  //   },
-  //   lastAdded() {
-  //     // Get last 3 objects, extract and concatenate "log" arrays, and reverse order.
-  //     return [].concat(...this.pheDiary.slice(-3).map((obj) => obj.log)).reverse()
-  //   },
-  //   userIsAuthenticated() {
-  //     return this.user !== null && this.user !== undefined
-  //   },
-  //   ...mapState(['user', 'pheLog', 'pheDiary', 'settings'])
-  // }
+  }),
+  methods: {
+    editItem(item) {
+      this.editedIndex = this.pheLog.indexOf(item)
+      this.editedKey = item['.key']
+      this.editedItem = Object.assign({}, item)
+      this.lockValues()
+      this.dialog = true
+    },
+    addLastAdded(item) {
+      this.editedItem = Object.assign({}, item)
+      this.save()
+      this.dialog2 = false
+    },
+    deleteItem() {
+      const db = getDatabase()
+      remove(ref(db, `${this.user.id}/pheLog/${this.editedKey}`))
+      this.close()
+    },
+    close() {
+      this.lockedValues = false
+      this.dialog = false
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem)
+        this.editedIndex = -1
+        this.editedKey = null
+      })
+    },
+    save() {
+      const db = getDatabase()
+      if (this.editedIndex > -1) {
+        update(ref(db, `${this.user.id}/pheLog/${this.editedKey}`), {
+          name: this.editedItem.name,
+          icon: this.editedItem.icon || null,
+          weight: Number(this.editedItem.weight),
+          phe: Number(this.editedItem.phe)
+        })
+      } else {
+        push(ref(db, `${this.user.id}/pheLog`), {
+          name: this.editedItem.name,
+          emoji: this.editedItem.emoji,
+          icon: this.editedItem.icon || null,
+          weight: Number(this.editedItem.weight),
+          phe: Number(this.editedItem.phe)
+        })
+      }
+      this.close()
+    },
+    lockValues() {
+      if (this.lockedValues === false) {
+        this.editedItem.weight = Number(this.editedItem.weight)
+        this.editedItem.phe = Number(this.editedItem.phe)
+        this.lockedWeight = this.editedItem.weight
+        this.lockedPhe = this.editedItem.phe
+        this.lockedValues = true
+      } else {
+        this.lockedValues = false
+      }
+    },
+    editWeight(event) {
+      if (this.lockedValues === true) {
+        const newWeight = Number(event.target.value)
+        this.editedItem.phe = Math.round((newWeight * this.lockedPhe) / this.lockedWeight)
+        this.editedItem.weight = newWeight
+      } else {
+        this.editedItem.weight = event.target.value
+      }
+    },
+    editPhe(event) {
+      if (this.lockedValues === true) {
+        const newPhe = Number(event.target.value)
+        this.editedItem.weight = Math.round((newPhe * this.lockedWeight) / this.lockedPhe)
+        this.editedItem.phe = newPhe
+      } else {
+        this.editedItem.phe = event.target.value
+      }
+    },
+    saveResult() {
+      const db = getDatabase()
+      if (this.pheDiary.length >= 100) {
+        this.alert = true
+      } else {
+        confetti()
+        setTimeout(() => {
+          let r = confirm(this.$t('phe-log.save-diary') + '?')
+          if (r === true) {
+            push(ref(db, `${this.user.id}/pheDiary`), {
+              date: format(new Date(), 'yyyy-MM-dd'),
+              phe: this.pheResult,
+              log: this.pheLog
+            }).then(() => {
+              remove(ref(db, `${this.user.id}/pheLog`))
+            })
+            this.$router.push('phe-diary')
+          }
+        }, 600)
+      }
+    }
+  },
+  watch: {
+    dialog(val) {
+      val || this.close()
+    }
+  },
+  computed: {
+    formTitle() {
+      if (this.editedIndex === -1) {
+        return this.$t('phe-log.quick-note')
+      } else {
+        return this.$t('common.edit')
+      }
+    },
+    pheResult() {
+      let phe = 0
+      this.pheLog.forEach((item) => {
+        phe += item.phe
+      })
+      return Math.round(phe)
+    },
+    lastAdded() {
+      // Get last 3 objects, extract and concatenate "log" arrays, and reverse order.
+      return [].concat(...this.pheDiary.slice(-3).map((obj) => obj.log)).reverse()
+    },
+    userIsAuthenticated() {
+      const store = useStore()
+      return store.user !== null
+    },
+    pheLog() {
+      const store = useStore()
+      return store.pheLog
+    },
+    pheDiary() {
+      const store = useStore()
+      return store.pheDiary
+    },
+    settings() {
+      const store = useStore()
+      return store.settings
+    },
+    user() {
+      const store = useStore()
+      return store.user
+    }
+  }
 }
 </script>
 
