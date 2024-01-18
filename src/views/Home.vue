@@ -220,11 +220,11 @@
 </template>
 
 <script>
-import FeatureComparison from '../components/FeatureComparison.vue'
-import Fuse from 'fuse.js'
-import PheLog from '../components/PheLog.vue'
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
+import Fuse from 'fuse.js'
+import FeatureComparison from '../components/FeatureComparison.vue'
+import PheLog from '../components/PheLog.vue'
 import {
   mdiGoogle,
   mdiFacebook,

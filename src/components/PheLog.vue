@@ -239,8 +239,8 @@
 <script>
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
-import { format } from 'date-fns'
 import foodIcons from './data/food-icons.json'
+import { format } from 'date-fns'
 import confetti from 'canvas-confetti'
 import {
   mdiGoogle,
@@ -447,6 +447,10 @@ export default {
       const store = useStore()
       return store.user !== null
     },
+    user() {
+      const store = useStore()
+      return store.user
+    },
     pheLog() {
       const store = useStore()
       return store.pheLog
@@ -458,10 +462,6 @@ export default {
     settings() {
       const store = useStore()
       return store.settings
-    },
-    user() {
-      const store = useStore()
-      return store.user
     }
   }
 }

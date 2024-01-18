@@ -74,9 +74,8 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-// import firebase from 'firebase/compat/app'
-// import 'firebase/compat/database'
+import { useStore } from '../stores/index'
+import { getDatabase, ref, push } from 'firebase/database'
 
 export default {
   metaInfo() {
@@ -90,37 +89,47 @@ export default {
     phe: null,
     weight: null,
     name: ''
-  })
-  // methods: {
-  //   calculatePhe() {
-  //     return Math.round((this.weight * this.phe) / 100)
-  //   },
-  //   save() {
-  //     firebase
-  //       .database()
-  //       .ref(this.user.id + '/pheLog')
-  //       .push({
-  //         name: this.name,
-  //         weight: Number(this.weight),
-  //         phe: this.calculatePhe()
-  //       })
-  //     this.dialog = false
-  //     this.$router.push('/')
-  //   }
-  // },
-  // computed: {
-  //   pheResult() {
-  //     let phe = 0
-  //     this.pheLog.forEach((item) => {
-  //       phe += item.phe
-  //     })
-  //     return Math.round(phe)
-  //   },
-  //   userIsAuthenticated() {
-  //     return this.user !== null && this.user !== undefined
-  //   },
-  //   ...mapState(['user', 'pheLog', 'settings'])
-  // }
+  }),
+  methods: {
+    calculatePhe() {
+      return Math.round((this.weight * this.phe) / 100)
+    },
+    save() {
+      const db = getDatabase()
+      push(ref(db, `${this.user.id}/pheLog`), {
+        name: this.name,
+        weight: Number(this.weight),
+        phe: this.calculatePhe()
+      })
+      this.dialog = false
+      this.$router.push('/')
+    }
+  },
+  computed: {
+    pheResult() {
+      let phe = 0
+      this.pheLog.forEach((item) => {
+        phe += item.phe
+      })
+      return Math.round(phe)
+    },
+    userIsAuthenticated() {
+      const store = useStore()
+      return store.user !== null
+    },
+    user() {
+      const store = useStore()
+      return store.user
+    },
+    pheLog() {
+      const store = useStore()
+      return store.pheLog
+    },
+    settings() {
+      const store = useStore()
+      return store.settings
+    }
+  }
 }
 </script>
 
