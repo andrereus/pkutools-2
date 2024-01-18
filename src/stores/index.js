@@ -83,7 +83,6 @@ export const useStore = defineStore('main', {
     initRef() {
       const db = getDatabase()
       const userId = this.user.id
-
       const initialState = {
         pheLog: [],
         aminoCounter: [],
