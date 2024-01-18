@@ -129,7 +129,7 @@ export default {
       this.loaded = true
     },
     onDecode(result) {
-      fetch('https://world.openfoodfacts.org/api/v0/product/' + result + '.json')
+      fetch('https://world.openfoodfacts.org/api/v2/product/' + result + '.json')
         .then((response) => response.json())
         .then((result) => {
           console.log(result)
