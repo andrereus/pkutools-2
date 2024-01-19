@@ -98,13 +98,10 @@
 </template>
 
 <script>
-// TODO: Clean up
-// import { mapState } from 'vuex'
-// import firebase from 'firebase/compat/app'
-// import 'firebase/compat/database'
-// import Fuse from 'fuse.js'
-// import { parseISO, isToday } from 'date-fns'
-// import VueApexCharts from 'vue-apexcharts'
+import { useStore } from '../stores/index'
+import { getDatabase, ref, push } from 'firebase/database'
+import { parseISO, isToday } from 'date-fns'
+import VueApexCharts from 'vue3-apexcharts'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -122,9 +119,9 @@ import {
 } from '@mdi/js'
 
 export default {
-  // components: {
-  //   apexchart: VueApexCharts
-  // },
+  components: {
+    apexchart: VueApexCharts
+  },
   metaInfo() {
     return {
       title: this.$t('statistics.title'),
@@ -164,152 +161,119 @@ export default {
     advancedFood: null,
     loading: false,
     alert: false
-  })
-  // methods: {
-  //   signInGoogle() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInGoogle')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   signInFacebook() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInFacebook')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   loadItem(item) {
-  //     this.name = item.name
-  //     this.icon = item.icon !== undefined && item.icon !== '' ? item.icon : 'organic-food'
-  //     this.phe = item.phe
-  //     this.weight = 100
-  //     this.dialog = true
-  //   },
-  //   calculatePhe() {
-  //     return Math.round((this.weight * this.phe) / 100)
-  //   },
-  //   save() {
-  //     firebase
-  //       .database()
-  //       .ref(this.user.id + '/pheLog')
-  //       .push({
-  //         name: this.name,
-  //         icon: this.icon,
-  //         weight: Number(this.weight),
-  //         phe: this.calculatePhe()
-  //       })
-  //     this.dialog = false
-  //     this.$router.push('/')
-  //   },
-  //   async searchFood() {
-  //     this.loading = true
-  //     let res, food
-  //     if (this.$i18n.locale === 'de') {
-  //       const res1 = await fetch(this.publicPath + 'data/frida-icon-original.json')
-  //       const res2 = await fetch(this.publicPath + 'data/deda-icon-original.json')
-  //       const food1 = await res1.json()
-  //       const food2 = await res2.json()
-  //       food = food1.concat(food2).concat(this.ownFood)
-  //     } else {
-  //       res = await fetch(this.publicPath + 'data/usda.json')
-  //       food = await res.json()
-  //     }
-
-  //     const fuse = new Fuse(food, {
-  //       keys: ['name', 'phe'],
-  //       threshold: 0.2,
-  //       minMatchCharLength: 2,
-  //       ignoreLocation: true
-  //     })
-
-  //     let results = fuse.search(this.search.trim())
-
-  //     this.advancedFood = results.map((result) => {
-  //       return result.item
-  //     })
-  //     this.loading = false
-  //   },
-  //   takeAM() {
-  //     if (this.aminoCounter.length >= 100) {
-  //       this.alert = true
-  //     } else {
-  //       firebase
-  //         .database()
-  //         .ref(this.user.id + '/aminoCounter')
-  //         .push({
-  //           date: new Date().toISOString()
-  //         })
-  //     }
-  //   }
-  // },
-  // computed: {
-  //   calculateAmino() {
-  //     return this.aminoCounter.filter((item) => {
-  //       return isToday(parseISO(item.date))
-  //     }).length
-  //   },
-  //   pheResult() {
-  //     let phe = 0
-  //     this.pheLog.forEach((item) => {
-  //       phe += item.phe
-  //     })
-  //     return Math.round(phe)
-  //   },
-  //   graph() {
-  //     let newPheDiary = this.pheDiary
-  //     let chartPheDiary = newPheDiary
-  //       .map((obj) => {
-  //         return { x: obj.date, y: obj.phe }
-  //       })
-  //       .sort((a, b) => {
-  //         return parseISO(a.x) - parseISO(b.x)
-  //       })
-  //     return [
-  //       {
-  //         name: 'Phe',
-  //         data: chartPheDiary
-  //       }
-  //     ]
-  //   },
-  //   chartOptions() {
-  //     return {
-  //       chart: {
-  //         sparkline: {
-  //           enabled: true
-  //         },
-  //         background: 'transparent'
-  //       },
-  //       stroke: {
-  //         curve: 'smooth'
-  //       },
-  //       markers: {
-  //         size: 1
-  //       },
-  //       grid: {
-  //         show: false
-  //       },
-  //       xaxis: {
-  //         type: 'datetime'
-  //       },
-  //       yaxis: {
-  //         min: 0
-  //       },
-  //       theme: {
-  //         mode: this.$vuetify.theme.dark === true ? 'dark' : 'light'
-  //       },
-  //       colors: ['#3498db'],
-  //       tooltip: {
-  //         enabled: false
-  //       }
-  //     }
-  //   },
-  //   userIsAuthenticated() {
-  //     return this.user !== null && this.user !== undefined
-  //   },
-  //   ...mapState(['user', 'pheLog', 'aminoCounter', 'pheDiary', 'settings', 'ownFood'])
-  // }
+  }),
+  methods: {
+    signInGoogle() {
+      if (navigator.onLine) {
+        this.$store.dispatch('signInGoogle')
+      } else {
+        this.offlineInfo = true
+      }
+    },
+    signInFacebook() {
+      if (navigator.onLine) {
+        this.$store.dispatch('signInFacebook')
+      } else {
+        this.offlineInfo = true
+      }
+    },
+    takeAM() {
+      if (this.aminoCounter.length >= 100) {
+        this.alert = true
+      } else {
+        const db = getDatabase()
+        push(ref(db, `${this.user.id}/aminoCounter`), {
+          date: new Date().toISOString()
+        })
+      }
+    }
+  },
+  computed: {
+    calculateAmino() {
+      return this.aminoCounter.filter((item) => {
+        return isToday(parseISO(item.date))
+      }).length
+    },
+    pheResult() {
+      let phe = 0
+      this.pheLog.forEach((item) => {
+        phe += item.phe
+      })
+      return Math.round(phe)
+    },
+    graph() {
+      let newPheDiary = this.pheDiary
+      let chartPheDiary = newPheDiary
+        .map((obj) => {
+          return { x: obj.date, y: obj.phe }
+        })
+        .sort((a, b) => {
+          return parseISO(a.x) - parseISO(b.x)
+        })
+      return [
+        {
+          name: 'Phe',
+          data: chartPheDiary
+        }
+      ]
+    },
+    chartOptions() {
+      return {
+        chart: {
+          sparkline: {
+            enabled: true
+          },
+          background: 'transparent'
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        markers: {
+          size: 1
+        },
+        grid: {
+          show: false
+        },
+        xaxis: {
+          type: 'datetime'
+        },
+        yaxis: {
+          min: 0
+        },
+        theme: {
+          mode: this.$vuetify.theme.dark === true ? 'dark' : 'light'
+        },
+        colors: ['#3498db'],
+        tooltip: {
+          enabled: false
+        }
+      }
+    },
+    userIsAuthenticated() {
+      const store = useStore()
+      return store.user !== null
+    },
+    user() {
+      const store = useStore()
+      return store.user
+    },
+    pheLog() {
+      const store = useStore()
+      return store.pheLog
+    },
+    pheDiary() {
+      const store = useStore()
+      return store.pheDiary
+    },
+    aminoCounter() {
+      const store = useStore()
+      return store.aminoCounter
+    },
+    settings() {
+      const store = useStore()
+      return store.settings
+    }
+  }
 }
 </script>
 

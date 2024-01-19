@@ -321,15 +321,6 @@
         <v-icon>{{ mdiFoodApple }}</v-icon>
       </v-btn>
 
-      <v-btn
-        @click="sheet = true"
-        value="add"
-        :aria-label="$t('common.add')"
-        class="add-button mobile-nav-hide"
-      >
-        <v-icon color="primary" size="large">{{ mdiPlusCircle }}</v-icon>
-      </v-btn>
-
       <v-btn to="/phe-diary" value="phe-diary" :aria-label="$t('phe-diary.title')">
         <v-icon>{{ mdiBook }}</v-icon>
       </v-btn>
@@ -356,32 +347,6 @@
         <v-icon>{{ mdiCog }}</v-icon>
       </v-btn>
     </v-bottom-navigation>
-
-    <v-bottom-sheet v-model="sheet">
-      <v-list>
-        <v-item-subheader>{{ $t('app.tools') }}</v-item-subheader>
-
-        <v-list-item to="/phe-calculator" @click="sheet = false">
-          <v-icon>{{ mdiCalculator }}</v-icon>
-          <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item to="/protein-calculator" @click="sheet = false">
-          <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-          <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item to="/barcode-scanner" @click="sheet = false">
-          <v-icon>{{ mdiBarcodeScan }}</v-icon>
-          <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item to="/own-food" @click="sheet = false">
-          <v-icon>{{ mdiFoodApple }}</v-icon>
-          <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-bottom-sheet>
 
     <v-snackbar location="bottom" color="primary" :model-value="updateExists" :timeout="-1">
       {{ $t('app.update-info') }}
@@ -477,7 +442,6 @@ export default {
       { name: 'Français', abbr: 'fr' }
     ],
     bottomNav: null,
-    sheet: false,
     offlineInfo: false
   }),
   // mixins: [update],
@@ -595,10 +559,6 @@ export default {
 
 .bottom-nav--active:before {
   opacity: 0.08 !important;
-}
-
-.add-button.bottom-nav--active:before {
-  opacity: 0 !important;
 }
 
 .app-logo {

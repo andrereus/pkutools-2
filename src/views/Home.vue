@@ -332,20 +332,22 @@ export default {
     },
     async searchFood() {
       this.loading = true
-      let res, food
+      let res, food, langFood
+
       if (this.$i18n.locale === 'de') {
         res = await fetch(this.publicPath + 'data/usda-icon-de.json')
-        food = await res.json()
+        langFood = await res.json()
       } else if (this.$i18n.locale === 'es') {
         res = await fetch(this.publicPath + 'data/usda-icon-es.json')
-        food = await res.json()
+        langFood = await res.json()
       } else if (this.$i18n.locale === 'fr') {
         res = await fetch(this.publicPath + 'data/usda-icon-fr.json')
-        food = await res.json()
+        langFood = await res.json()
       } else {
         res = await fetch(this.publicPath + 'data/usda-icon-en.json')
-        food = await res.json()
+        langFood = await res.json()
       }
+      food = langFood.concat(this.ownFood)
 
       const fuse = new Fuse(food, {
         keys: ['name', 'phe'],
@@ -353,7 +355,6 @@ export default {
         minMatchCharLength: 2,
         ignoreLocation: true
       })
-
       let results = fuse.search(this.search.trim())
 
       this.advancedFood = results.map((result) => {
