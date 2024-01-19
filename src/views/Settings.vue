@@ -140,15 +140,17 @@ export default {
   }),
   methods: {
     signInGoogle() {
+      const store = useStore()
       if (navigator.onLine) {
-        this.$store.dispatch('signInGoogle')
+        store.signInGoogle()
       } else {
         this.offlineInfo = true
       }
     },
     signInFacebook() {
+      const store = useStore()
       if (navigator.onLine) {
-        this.$store.dispatch('signInFacebook')
+        store.signInFacebook()
       } else {
         this.offlineInfo = true
       }
