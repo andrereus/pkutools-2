@@ -102,12 +102,10 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-// import firebase from 'firebase/compat/app'
-// import 'firebase/compat/auth'
-// import 'firebase/compat/database'
-// import { formatRelative, isToday, parseISO } from 'date-fns'
-// import { enUS, de, fr, es } from 'date-fns/locale'
+import { useStore } from '../stores/index'
+import { getDatabase, ref, push, remove } from 'firebase/database'
+import { formatRelative, isToday, parseISO } from 'date-fns'
+import { enUS, de, fr, es } from 'date-fns/locale'
 import { mdiGoogle, mdiFacebook, mdiCupWater, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 export default {
@@ -125,68 +123,76 @@ export default {
     mdiEmail,
     alert: false,
     offlineInfo: false
-  })
-  // methods: {
-  //   signInGoogle() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInGoogle')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   signInFacebook() {
-  //     if (navigator.onLine) {
-  //       this.$store.dispatch('signInFacebook')
-  //     } else {
-  //       this.offlineInfo = true
-  //     }
-  //   },
-  //   takeAM() {
-  //     if (this.aminoCounter.length >= 100) {
-  //       this.alert = true
-  //     } else {
-  //       firebase
-  //         .database()
-  //         .ref(this.user.id + '/aminoCounter')
-  //         .push({
-  //           date: new Date().toISOString()
-  //         })
-  //     }
-  //   },
-  //   getlocalDate(date) {
-  //     if (date) {
-  //       const locales = { enUS, de, fr, es }
-  //       return formatRelative(parseISO(new Date(date).toISOString()), new Date(), {
-  //         locale: locales[this.$i18n.locale]
-  //       })
-  //     } else {
-  //       return ''
-  //     }
-  //   },
-  //   resetAM() {
-  //     let r = confirm(this.$t('common.reset') + '?')
-  //     if (r === true) {
-  //       firebase
-  //         .database()
-  //         .ref(this.user.id + '/aminoCounter')
-  //         .remove()
-  //     }
-  //   }
-  // },
-  // computed: {
-  //   reverseAminoCounter() {
-  //     return [...this.aminoCounter].reverse()
-  //   },
-  //   calculateAmino() {
-  //     return this.aminoCounter.filter((item) => {
-  //       return isToday(parseISO(item.date))
-  //     }).length
-  //   },
-  //   userIsAuthenticated() {
-  //     return this.user !== null && this.user !== undefined
-  //   },
-  //   ...mapState(['user', 'aminoCounter', 'settings'])
-  // }
+  }),
+  methods: {
+    signInGoogle() {
+      if (navigator.onLine) {
+        this.$store.dispatch('signInGoogle')
+      } else {
+        this.offlineInfo = true
+      }
+    },
+    signInFacebook() {
+      if (navigator.onLine) {
+        this.$store.dispatch('signInFacebook')
+      } else {
+        this.offlineInfo = true
+      }
+    },
+    takeAM() {
+      if (this.aminoCounter.length >= 100) {
+        this.alert = true
+      } else {
+        const db = getDatabase()
+        push(ref(db, `${this.user.id}/aminoCounter`), {
+          date: new Date().toISOString()
+        })
+      }
+    },
+    getlocalDate(date) {
+      if (date) {
+        const locales = { enUS, de, fr, es }
+        return formatRelative(parseISO(new Date(date).toISOString()), new Date(), {
+          locale: locales[this.$i18n.locale]
+        })
+      } else {
+        return ''
+      }
+    },
+    resetAM() {
+      let r = confirm(this.$t('common.reset') + '?')
+      if (r === true) {
+        const db = getDatabase()
+        remove(ref(db, `${this.user.id}/aminoCounter`))
+      }
+    }
+  },
+  computed: {
+    reverseAminoCounter() {
+      return [...this.aminoCounter].reverse()
+    },
+    calculateAmino() {
+      return this.aminoCounter.filter((item) => {
+        return isToday(parseISO(item.date))
+      }).length
+    },
+    userIsAuthenticated() {
+      const store = useStore()
+      return store.user !== null
+    },
+    user() {
+      const store = useStore()
+      return store.user
+    },
+    aminoCounter() {
+      const store = useStore()
+      return store.aminoCounter
+    },
+    settings() {
+      const store = useStore()
+      return store.settings
+    }
+  }
 }
 </script>
 
