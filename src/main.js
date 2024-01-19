@@ -19,6 +19,8 @@ import fr from './locales/fr.json'
 
 import { initializeApp } from 'firebase/app'
 
+import VueApexCharts from 'vue3-apexcharts'
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -66,5 +68,6 @@ app.use(createPinia())
 app.use(router)
 app.use(vuetify)
 app.use(i18n)
+app.use(VueApexCharts)
 
 app.mount('#app')

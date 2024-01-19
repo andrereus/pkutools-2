@@ -406,10 +406,17 @@ export default {
         setTimeout(() => {
           let r = confirm(this.$t('phe-log.save-diary') + '?')
           if (r === true) {
+            const pheLogForFirebase = this.pheLog.map(
+              ({
+                // eslint-disable-next-line no-unused-vars
+                '.key': key,
+                ...itemWithoutKey
+              }) => itemWithoutKey
+            )
             push(ref(db, `${this.user.id}/pheDiary`), {
               date: format(new Date(), 'yyyy-MM-dd'),
               phe: this.pheResult,
-              log: this.pheLog
+              log: pheLogForFirebase
             }).then(() => {
               remove(ref(db, `${this.user.id}/pheLog`))
             })
