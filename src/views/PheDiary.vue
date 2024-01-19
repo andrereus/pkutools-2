@@ -131,67 +131,31 @@
                   <template v-slot:item="{ item }">
                     <tr class="tr-read-only">
                       <td class="text-start">
-                        <v-edit-dialog
-                          v-model:return-value="item.name"
-                          large
-                          :cancel-text="$t('common.cancel')"
-                          :save-text="$t('common.ok')"
-                        >
-                          <img
-                            :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                            v-if="item.icon !== undefined && item.icon !== ''"
-                            onerror="this.src='img/food-icons/organic-food.svg'"
-                            width="25"
-                            class="food-icon"
-                          />
-                          <img
-                            :src="publicPath + 'img/food-icons/organic-food.svg'"
-                            v-if="
-                              (item.icon === undefined || item.icon === '') &&
-                              item.emoji === undefined
-                            "
-                            width="25"
-                            class="food-icon"
-                          />
-                          {{
+                        <img
+                          :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                          v-if="item.icon !== undefined && item.icon !== ''"
+                          onerror="this.src='img/food-icons/organic-food.svg'"
+                          width="25"
+                          class="food-icon"
+                        />
+                        <img
+                          :src="publicPath + 'img/food-icons/organic-food.svg'"
+                          v-if="
                             (item.icon === undefined || item.icon === '') &&
-                            item.emoji !== undefined
-                              ? item.emoji
-                              : null
-                          }}
-                          {{ item.name }}
-                          <template v-slot:input>
-                            <v-text-field
-                              v-model="item.name"
-                              label="Name"
-                              class="mt-4 mb-n2"
-                            ></v-text-field>
-                          </template>
-                        </v-edit-dialog>
+                            item.emoji === undefined
+                          "
+                          width="25"
+                          class="food-icon"
+                        />
+                        {{
+                          (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                            ? item.emoji
+                            : null
+                        }}
+                        {{ item.name }}
                       </td>
                       <td class="text-start">
-                        <v-edit-dialog
-                          v-model:return-value="item.phe"
-                          large
-                          :cancel-text="$t('common.cancel')"
-                          :save-text="$t('common.ok')"
-                        >
-                          {{ item.phe }}
-                          <template v-slot:input>
-                            <v-text-field
-                              v-model.number="item.weight"
-                              :label="$t('phe-log.weight')"
-                              type="number"
-                              class="mt-4"
-                            ></v-text-field>
-                            <v-text-field
-                              v-model.number="item.phe"
-                              label="Phe (in mg)"
-                              type="number"
-                              class="mb-n2"
-                            ></v-text-field>
-                          </template>
-                        </v-edit-dialog>
+                        {{ item.phe }}
                       </td>
                     </tr>
                   </template>
