@@ -4,8 +4,11 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
+  signOut,
+  sendPasswordResetEmail
 } from 'firebase/auth'
 import { getDatabase, ref, onValue } from 'firebase/database'
 
@@ -50,6 +53,31 @@ export const useStore = defineStore('main', {
         console.error(error)
       }
     },
+    async registerWithEmail(email, password, name) {
+      const auth = getAuth()
+      auth.useDeviceLanguage()
+      const result = await createUserWithEmailAndPassword(auth, email, password)
+      result.user.updateProfile({ displayName: name })
+      this.user = {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        photoUrl: result.user.photoURL
+      }
+      this.initRef()
+    },
+    async signInWithEmail(email, password) {
+      const auth = getAuth()
+      auth.useDeviceLanguage()
+      const result = await signInWithEmailAndPassword(auth, email, password)
+      this.user = {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        photoUrl: result.user.photoURL
+      }
+      this.initRef()
+    },
     autoSignIn(user) {
       this.user = {
         id: user.uid,
@@ -79,6 +107,11 @@ export const useStore = defineStore('main', {
       } catch (error) {
         console.error(error)
       }
+    },
+    async resetPassword(email) {
+      const auth = getAuth()
+      auth.useDeviceLanguage()
+      await sendPasswordResetEmail(auth, email)
     },
     initRef() {
       const db = getDatabase()
