@@ -214,9 +214,13 @@
             </v-card>
           </v-dialog>
 
-          <!-- <v-btn variant="flat" rounded class="mr-3 mt-3" @click="exportDiary">{{
-            $t('phe-diary.export')
-          }}</v-btn> -->
+          <v-btn variant="flat" rounded class="mr-3 mt-3" @click="exportAllFoodItems">
+            {{ $t('phe-diary.export') }}
+          </v-btn>
+
+          <v-btn variant="flat" rounded class="mr-3 mt-3" @click="exportDailyPheTotals">
+            {{ $t('phe-diary.export') }}
+          </v-btn>
 
           <p class="text--secondary mt-5">
             <v-icon>{{ mdiInformationVariant }}</v-icon>
@@ -256,7 +260,6 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import { format, parseISO, formatISO } from 'date-fns'
 import { enUS, de, fr, es } from 'date-fns/locale'
-// import XLSX from 'xlsx'
 import VueApexCharts from 'vue3-apexcharts'
 import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
@@ -390,59 +393,42 @@ export default {
       } else {
         return ''
       }
+    },
+    exportAllFoodItems() {
+      let csvContent = 'data:text/csv;charset=utf-8,'
+      csvContent += 'Date,Name,Weight,Phe\n'
+
+      this.pheDiary.forEach((diaryEntry) => {
+        const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
+        if (diaryEntry.log && diaryEntry.log.length > 0) {
+          diaryEntry.log.forEach((logEntry) => {
+            const row = `${date},${logEntry.name},${logEntry.weight},${logEntry.phe}\n`
+            csvContent += row
+          })
+        }
+      })
+      this.triggerDownload(csvContent)
+    },
+    exportDailyPheTotals() {
+      let csvContent = 'data:text/csv;charset=utf-8,'
+      csvContent += 'Date,Total Phe\n'
+
+      this.pheDiary.forEach((diaryEntry) => {
+        const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
+        const row = `${date},${diaryEntry.phe}\n`
+        csvContent += row
+      })
+      this.triggerDownload(csvContent)
+    },
+    triggerDownload(csvContent) {
+      const encodedUri = encodeURI(csvContent)
+      const link = document.createElement('a')
+      link.setAttribute('href', encodedUri)
+      link.setAttribute('download', this.$t('phe-diary.export-filename') + '.csv')
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
-    // exportDiary() {
-    //   let r = confirm(this.$t('phe-diary.export-confirm') + '.')
-    //   if (r === true) {
-    //     let exportTable = this.pheDiary.map((item) => {
-    //       if (this.$i18n.locale === 'de') {
-    //         return {
-    //           Datum: formatISO(parseISO(item.date), { representation: 'date' }),
-    //           Phe: item.phe
-    //         }
-    //       } else {
-    //         return {
-    //           Date: formatISO(parseISO(item.date), { representation: 'date' }),
-    //           Phe: item.phe
-    //         }
-    //       }
-    //     })
-
-    //     let workbook = XLSX.utils.book_new()
-
-    //     let worksheet = XLSX.utils.json_to_sheet(exportTable)
-    //     XLSX.utils.book_append_sheet(workbook, worksheet, this.$t('phe-diary.export-overview') + '')
-
-    //     this.pheDiary.forEach((item) => {
-    //       if (item.log !== undefined) {
-    //         let exportTable2 = item.log.map((item) => {
-    //           if (this.$i18n.locale === 'de') {
-    //             return {
-    //               Name: item.name,
-    //               Gewicht: item.weight,
-    //               Phe: item.phe
-    //             }
-    //           } else {
-    //             return {
-    //               Name: item.name,
-    //               Weight: item.weight,
-    //               Phe: item.phe
-    //             }
-    //           }
-    //         })
-
-    //         let worksheet2 = XLSX.utils.json_to_sheet(exportTable2)
-    //         XLSX.utils.book_append_sheet(
-    //           workbook,
-    //           worksheet2,
-    //           formatISO(parseISO(item.date), { representation: 'date' })
-    //         )
-    //       }
-    //     })
-
-    //     XLSX.writeFile(workbook, this.$t('phe-diary.export-filename') + '.xlsx')
-    //   }
-    // }
   },
   watch: {
     dialog(val) {
