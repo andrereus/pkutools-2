@@ -21,9 +21,28 @@ import { initializeApp } from 'firebase/app'
 
 import VueApexCharts from 'vue3-apexcharts'
 
+function getPreferredTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
 const vuetify = createVuetify({
   components,
   directives,
+  theme: {
+    defaultTheme: getPreferredTheme(),
+    themes: {
+      light: {
+        colors: {
+          primary: '#3498db'
+        }
+      },
+      dark: {
+        colors: {
+          primary: '#3498db'
+        }
+      }
+    }
+  },
   icons: {
     defaultSet: 'mdi',
     aliases,
@@ -45,7 +64,7 @@ const vuetify = createVuetify({
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'en',
+  locale: localStorage.i18nCurrentLocale ? JSON.parse(localStorage.i18nCurrentLocale) : 'en',
   fallbackLocale: 'en',
   messages: { en, de, es, fr }
 })
@@ -71,3 +90,14 @@ app.use(i18n)
 app.use(VueApexCharts)
 
 app.mount('#app')
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  vuetify.theme.defaultTheme = e.matches ? 'dark' : 'light'
+})
+
+if (!localStorage.i18nCurrentLocale) {
+  const browserLocale = navigator.language.split('-')[0]
+  if (['en', 'de', 'es', 'fr'].includes(browserLocale)) {
+    i18n.global.locale.value = browserLocale
+  }
+}
