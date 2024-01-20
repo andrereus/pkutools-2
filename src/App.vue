@@ -447,7 +447,7 @@ export default {
   }),
   // mixins: [update],
   setup() {
-    // TODO: Remove vuetifyThemeDark from localStorage for everyone
+    // TODO: Optional: Remove vuetifyThemeDark from localStorage for everyone
     const theme = useTheme()
     function toggleTheme() {
       theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
@@ -460,7 +460,13 @@ export default {
         theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light'
+        listenForDeviceTheme()
       }
+    }
+    function listenForDeviceTheme() {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        theme.global.name.value = e.matches ? 'dark' : 'light'
+      })
     }
     return {
       toggleTheme,
