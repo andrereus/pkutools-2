@@ -106,11 +106,11 @@
 
           <v-list-item @click="updateDesign">
             <span>
-              <v-icon v-if="!$vuetify.theme.dark">{{ mdiBrightness4 }}</v-icon>
-              <v-icon v-if="$vuetify.theme.dark">{{ mdiBrightness7 }}</v-icon>
+              <v-icon v-if="!$vuetify.theme.current.dark">{{ mdiBrightness4 }}</v-icon>
+              <v-icon v-if="$vuetify.theme.current.dark">{{ mdiBrightness7 }}</v-icon>
               &nbsp;
-              <span v-if="!$vuetify.theme.dark">{{ $t('app.dark') }}</span>
-              <span v-if="$vuetify.theme.dark">{{ $t('app.light') }}</span>
+              <span v-if="!$vuetify.theme.current.dark">{{ $t('app.dark') }}</span>
+              <span v-if="$vuetify.theme.current.dark">{{ $t('app.light') }}</span>
             </span>
           </v-list-item>
         </v-list>
@@ -370,6 +370,7 @@
 
 <script>
 import { useStore } from './stores/index'
+import { useTheme } from 'vuetify'
 // import update from './mixins/update'
 import {
   mdiGoogle,
@@ -445,6 +446,27 @@ export default {
     offlineInfo: false
   }),
   // mixins: [update],
+  setup() {
+    // TODO: Remove vuetifyThemeDark from localStorage for everyone
+    const theme = useTheme()
+    function toggleTheme() {
+      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+      localStorage.vuetifyCurrentTheme = JSON.stringify(theme.global.name.value)
+    }
+    function mountTheme() {
+      if (localStorage.vuetifyCurrentTheme) {
+        theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
+      } else {
+        theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+      }
+    }
+    return {
+      toggleTheme,
+      mountTheme
+    }
+  },
   methods: {
     signInGoogle() {
       const store = useStore()
@@ -467,17 +489,14 @@ export default {
       store.signOut()
     },
     updateDesign() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
+      this.toggleTheme()
     }
   },
   beforeCreate() {
     document.getElementsByTagName('html')[0].lang = this.$i18n.locale
   },
   mounted() {
-    if (localStorage.vuetifyThemeDark) {
-      this.$vuetify.theme.dark = JSON.parse(localStorage.vuetifyThemeDark)
-    }
+    this.mountTheme()
     const store = useStore()
     store.checkAuthState()
   },
@@ -489,7 +508,7 @@ export default {
       set: function (newLocale) {
         localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
         this.$i18n.locale = newLocale
-        this.$vuetify.lang.current = newLocale
+        this.$vuetify.locale.current = newLocale
         document.getElementsByTagName('html')[0].lang = newLocale
       }
     },

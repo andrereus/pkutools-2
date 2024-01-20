@@ -47,7 +47,7 @@ const vuetify = createVuetify({
     }
   },
   locale: {
-    locale: 'en',
+    locale: localStorage.i18nCurrentLocale ? JSON.parse(localStorage.i18nCurrentLocale) : 'en',
     fallback: 'en',
     messages: {
       en: vEn,
@@ -91,5 +91,6 @@ if (!localStorage.i18nCurrentLocale) {
   const browserLocale = navigator.language.split('-')[0]
   if (['en', 'de', 'es', 'fr'].includes(browserLocale)) {
     i18n.global.locale.value = browserLocale
+    vuetify.locale.current.value = browserLocale
   }
 }
