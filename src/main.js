@@ -21,15 +21,11 @@ import { initializeApp } from 'firebase/app'
 
 import VueApexCharts from 'vue3-apexcharts'
 
-function getPreferredTheme() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
 const vuetify = createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: getPreferredTheme(),
+    defaultTheme: 'light',
     themes: {
       light: {
         colors: {
@@ -90,10 +86,6 @@ app.use(i18n)
 app.use(VueApexCharts)
 
 app.mount('#app')
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  vuetify.theme.defaultTheme = e.matches ? 'dark' : 'light'
-})
 
 if (!localStorage.i18nCurrentLocale) {
   const browserLocale = navigator.language.split('-')[0]
