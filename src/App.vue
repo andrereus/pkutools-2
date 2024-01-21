@@ -210,7 +210,7 @@
         </v-list-item>
 
         <v-list-group>
-          // TODO: Recheck this quickfix
+          <!-- TODO: Recheck this quickfix -->
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" :prepend-icon="mdiInformation">{{
               $t('app.more')
