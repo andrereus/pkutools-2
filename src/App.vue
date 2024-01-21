@@ -443,30 +443,45 @@ export default {
       { name: 'Français', abbr: 'fr' }
     ],
     bottomNav: null,
-    offlineInfo: false
+    offlineInfo: false,
+    useThemeFromDevice: true
   }),
   // mixins: [update],
   setup() {
     // TODO: Optional: Remove vuetifyThemeDark from localStorage for everyone
     const theme = useTheme()
+    const handleSystemThemeChange = (e) => {
+      theme.global.name.value = e.matches ? 'dark' : 'light'
+    }
     function toggleTheme() {
+      this.useThemeFromDevice = false
+      localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', handleSystemThemeChange)
       theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
       localStorage.vuetifyCurrentTheme = JSON.stringify(theme.global.name.value)
     }
     function mountTheme() {
-      if (localStorage.vuetifyCurrentTheme) {
+      if (localStorage.vuetifyThemeFromDevice) {
+        this.useThemeFromDevice = JSON.parse(localStorage.vuetifyThemeFromDevice)
+      } else {
+        localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+      }
+
+      if (localStorage.vuetifyCurrentTheme && this.useThemeFromDevice !== true) {
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .removeEventListener('change', handleSystemThemeChange)
         theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
       } else {
         theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light'
-        listenForDeviceTheme()
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', handleSystemThemeChange)
       }
-    }
-    function listenForDeviceTheme() {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        theme.global.name.value = e.matches ? 'dark' : 'light'
-      })
     }
     return {
       toggleTheme,

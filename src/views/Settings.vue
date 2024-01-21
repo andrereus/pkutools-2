@@ -43,7 +43,7 @@
           ></v-text-field>
 
           <v-switch
-            v-model="$vuetify.theme.dark"
+            v-model="useThemeFromDevice"
             inset
             :label="$t('app.dark')"
             class="mt-n1 mb-2 ml-1"
@@ -122,6 +122,7 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
+import { useTheme } from 'vuetify'
 import { mdiGoogle, mdiFacebook, mdiEmail } from '@mdi/js'
 
 export default {
@@ -136,8 +137,42 @@ export default {
     mdiFacebook,
     mdiEmail,
     snackbar: false,
-    offlineInfo: false
+    offlineInfo: false,
+    useThemeFromDevice: true
   }),
+  setup() {
+    const theme = useTheme()
+    const handleSystemThemeChange = (e) => {
+      theme.global.name.value = e.matches ? 'dark' : 'light'
+    }
+    function toggleThemeFromDevice() {
+      localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+      if (this.useThemeFromDevice === true || !localStorage.vuetifyCurrentTheme) {
+        theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', handleSystemThemeChange)
+      } else {
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .removeEventListener('change', handleSystemThemeChange)
+        theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
+      }
+    }
+    function mountThemeFromDevice() {
+      if (localStorage.vuetifyThemeFromDevice) {
+        this.useThemeFromDevice = JSON.parse(localStorage.vuetifyThemeFromDevice)
+      } else {
+        localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+      }
+    }
+    return {
+      toggleThemeFromDevice,
+      mountThemeFromDevice
+    }
+  },
   methods: {
     signInGoogle() {
       const store = useStore()
@@ -161,7 +196,7 @@ export default {
         maxPhe: this.settings.maxPhe || 0,
         maxAmino: this.settings.maxAmino || 3
       }).then(() => {
-        localStorage.vuetifyThemeDark = JSON.stringify(this.$vuetify.theme.dark)
+        this.toggleThemeFromDevice()
         this.snackbar = true
       })
     },
@@ -215,6 +250,9 @@ export default {
           })
       }
     }
+  },
+  mounted() {
+    this.mountThemeFromDevice()
   },
   computed: {
     userIsAuthenticated() {
