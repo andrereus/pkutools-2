@@ -74,12 +74,11 @@
   },
   "barcode-scanner": {
     "title": "Barcode Scanner",
-    "description": "Experimental feature: Camera does not yet open reliably on all devices (then please restart the app).",
-    "note": "Notice: On iOS the scanner only works reliably via the browser.",
+    "description": "Experimental feature",
     "scan-barcode": "Scan barcode",
     "please-wait": "Please wait ...",
     "protein": "Protein (per 100g)",
-    "info": "Phe gets calculated from protein (* 50) | Datasource: openfoodfacts.org"
+    "info": "Phe gets calculated from protein (* 50) / Datasource: openfoodfacts.org"
   },
   "own-food": {
     "title": "Own Food",
@@ -116,11 +115,13 @@
     "chart": "Add entry",
     "limit": "The Phe Diary is limited to 100 entries. Export your data in Excel. Reset via Settings.",
     "export": "Export",
+    "export-food": "Export food",
+    "export-days": "Export days",
     "log": "Log (Editing does not update Total Phe!)",
     "export-confirm": "Export Phe Diary in Excel? Note: Avoid duplicate dates in the Phe Diary",
     "export-overview": "Overview",
     "export-filename": "PKU Tools - Phe Diary",
-    "note": "Limited to 100 entries (~3 months). Export and then Reset via Settings.",
+    "note": "Limited to 100 entries (~3 months). Reset via Settings.",
     "chart-info": "The chart gets displayed after the second entry."
   },
   "statistics": {
@@ -133,8 +134,8 @@
     "take": "Add serving",
     "amount": "Servings per day",
     "serving": "1 serving",
-    "limit": "The Amino Counter is limited to 100 entries. Please reset the history in the Settings.",
-    "note": "Limited to 100 entries. Reset via Settings."
+    "limit": "The Amino Counter is limited to 100 entries. Please reset the history.",
+    "note": "Limited to 100 entries."
   },
   "settings": {
     "title": "Settings",
@@ -143,11 +144,12 @@
     "max-phe": "Phe tolerance per day",
     "saved": "Saved",
     "reset-heading": "Reset",
-    "reset-log": "Reset todays log",
+    "reset-log": "Reset start page",
     "reset-diary": "Reset Phe Diary",
     "reset-own-food": "Reset Own Food",
     "reset-am": "Reset Amino Counter",
-    "delete-account": "Delete account"
+    "delete-account": "Delete account",
+    "device-theme": "Automatically adapt the design to the device"
   },
   "email-auth": {
     "title": "Sign in with Email",

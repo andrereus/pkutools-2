@@ -179,11 +179,11 @@
           </v-dialog>
 
           <v-btn variant="flat" rounded class="mr-3 mt-3" @click="exportAllFoodItems">
-            {{ $t('phe-diary.export') }}
+            {{ $t('phe-diary.export-food') }}
           </v-btn>
 
           <v-btn variant="flat" rounded class="mr-3 mt-3" @click="exportDailyPheTotals">
-            {{ $t('phe-diary.export') }}
+            {{ $t('phe-diary.export-days') }}
           </v-btn>
 
           <p class="text--secondary mt-5">

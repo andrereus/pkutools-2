@@ -74,12 +74,11 @@
   },
   "barcode-scanner": {
     "title": "Barcode Scanner",
-    "description": "Experimentelle Funktion: Kamera öffnet noch nicht auf allen Geräten zuverlässig (dann bitte App neu starten).",
-    "note": "Hinweis: Unter iOS funktioniert der Scanner nur über den Browser zuverlässig.",
+    "description": "Experimentelle Funktion",
     "scan-barcode": "Barcode scannen",
     "please-wait": "Bitte warten ...",
     "protein": "Eiweiß (pro 100g)",
-    "info": "Phe wird aus Eiweiß (* 50) berechnet | Datenquelle: openfoodfacts.org"
+    "info": "Phe wird aus Eiweiß (* 50) berechnet / Datenquelle: openfoodfacts.org"
   },
   "own-food": {
     "title": "Eigene Lebensmittel",
@@ -116,11 +115,13 @@
     "chart": "Eintrag hinzufügen",
     "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Reset über Einstellungen.",
     "export": "Exportieren",
+    "export-food": "Lebensmittel exportieren",
+    "export-days": "Tage exportieren",
     "log": "Protokoll (Bearbeitung aktualisiert nich Gesamt Phe!)",
     "export-confirm": "Phe Tagebuch in Excel exportieren? Hinweis: Vermeide ein doppeltes Datum im Phe Tagebuch",
     "export-overview": "Übersicht",
     "export-filename": "PKU Tools - Phe Tagebuch",
-    "note": "Limitiert auf 100 Einträge (~3 Monate). Export und dann Reset über Einstellungen.",
+    "note": "Limitiert auf 100 Einträge (~3 Monate). Reset über Einstellungen.",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt."
   },
   "statistics": {
@@ -133,8 +134,8 @@
     "take": "Portion hinzufügen",
     "amount": "Portionen pro Tag",
     "serving": "1 Portion",
-    "limit": "Der Amino Zähler ist limitert auf 100 Einträge. Bitte resette den Verlauf in den Einstellungen.",
-    "note": "Limitiert auf 100 Einträge. Reset über Einstellungen."
+    "limit": "Der Amino Zähler ist limitert auf 100 Einträge. Bitte resette den Verlauf.",
+    "note": "Limitiert auf 100 Einträge."
   },
   "settings": {
     "title": "Einstellungen",
@@ -143,11 +144,12 @@
     "max-phe": "Phe-Toleranz pro Tag",
     "saved": "Gespeichert",
     "reset-heading": "Reset",
-    "reset-log": "Reset Heutiges Protokoll",
+    "reset-log": "Reset Startseite",
     "reset-diary": "Reset Phe Tagebuch",
     "reset-own-food": "Reset Eigene Lebensmittel",
     "reset-am": "Reset Amino Zähler",
-    "delete-account": "Account löschen"
+    "delete-account": "Account löschen",
+    "device-theme": "Design automatisch an das Gerät anpassen"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

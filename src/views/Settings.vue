@@ -45,7 +45,7 @@
           <v-switch
             v-model="useThemeFromDevice"
             inset
-            :label="$t('app.dark')"
+            :label="$t('settings.device-theme')"
             class="mt-n1 mb-2 ml-1"
           ></v-switch>
 
@@ -58,15 +58,14 @@
           <v-btn variant="flat" rounded class="mr-6 mb-5" @click="resetLog">
             {{ $t('settings.reset-log') }}
           </v-btn>
+          <v-btn variant="flat" rounded class="mr-6 mb-5" @click="resetOwnFood">
+            {{ $t('settings.reset-own-food') }}
+          </v-btn>
           <v-btn variant="flat" rounded class="mr-6 mb-5" @click="resetDiary">
             {{ $t('settings.reset-diary') }}
           </v-btn>
-          <br />
           <v-btn variant="flat" rounded class="mr-6 mb-5" @click="resetAM">
             {{ $t('settings.reset-am') }}
-          </v-btn>
-          <v-btn variant="flat" rounded class="mr-6 mb-5" @click="resetOwnFood">
-            {{ $t('settings.reset-own-food') }}
           </v-btn>
 
           <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>

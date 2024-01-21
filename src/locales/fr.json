@@ -74,12 +74,11 @@
   },
   "barcode-scanner": {
     "title": "Scanner de code-barres",
-    "description": "Fonction expérimentale : la caméra ne s'ouvre pas encore de manière fiable sur tous les appareils (veuillez alors relancer l'application).",
-    "note": "Remarque : Sur iOS, le scanner ne fonctionne de manière fiable que via le navigateur.",
+    "description": "Fonction expérimentale",
     "scan-barcode": "Scanner le code-barres",
     "please-wait": "Veuillez patienter...",
     "protein": "Protéines (pour 100g)",
-    "info": "Le Phe est calculé à partir des protéines (* 50) | Source de données: openfoodfacts.org"
+    "info": "Le Phe est calculé à partir des protéines (* 50) / Source de données: openfoodfacts.org"
   },
   "own-food": {
     "title": "Aliments personnels",
@@ -116,11 +115,13 @@
     "chart": "Ajouter une entrée",
     "limit": "Le Journal de Phe est limité à 100 entrées. Exportez vos données en Excel. Réinitialisez via les paramètres.",
     "export": "Exporter",
+    "export-food": "Exporter des aliments",
+    "export-days": "Días de exportación",
     "log": "Journal (Modifier ne met pas à jour le Phe total !)",
     "export-confirm": "Exporter le Journal de Phe en Excel ? Remarque : évitez les dates en double dans le Journal de Phe",
     "export-overview": "Aperçu",
     "export-filename": "PKU Tools - Journal de Phe",
-    "note": "Limité à 100 entrées (~3 mois). Exportez puis réinitialisez via les paramètres.",
+    "note": "Limité à 100 entrées (~3 mois). Réinitialisez via les paramètres.",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée."
   },
   "statistics": {
@@ -133,8 +134,8 @@
     "take": "Ajouter une portion",
     "amount": "Portions par jour",
     "serving": "1 portion",
-    "limit": "Le compteur d'acides aminés est limité à 100 entrées. Veuillez réinitialiser l'historique dans les paramètres.",
-    "note": "Limité à 100 entrées. Réinitialisez via les paramètres."
+    "limit": "Le compteur d'acides aminés est limité à 100 entrées. Veuillez réinitialiser l'historique.",
+    "note": "Limité à 100 entrées."
   },
   "settings": {
     "title": "Paramètres",
@@ -143,11 +144,12 @@
     "max-phe": "Tolérance de Phe par jour",
     "saved": "Enregistré",
     "reset-heading": "Réinitialiser",
-    "reset-log": "Réinitialiser le journal d'aujourd'hui",
+    "reset-log": "Reset page d'accueil",
     "reset-diary": "Réinitialiser le Journal de Phe",
     "reset-own-food": "Réinitialiser les aliments personnels",
     "reset-am": "Réinitialiser le compteur d'acides aminés",
-    "delete-account": "Supprimer le compte"
+    "delete-account": "Supprimer le compte",
+    "device-theme": "Adapter automatiquement le design à l'appareil"
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",

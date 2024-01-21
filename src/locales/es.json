@@ -74,12 +74,11 @@
   },
   "barcode-scanner": {
     "title": "Escáner de código de barras",
-    "description": "Función experimental: la cámara aún no se abre de forma fiable en todos los dispositivos (reinicia la aplicación).",
-    "note": "Aviso: En iOS, el escáner funciona de manera confiable solo a través del navegador.",
+    "description": "Función experimental",
     "scan-barcode": "Escanear código de barras",
     "please-wait": "Por favor, espera...",
     "protein": "Proteína (por 100g)",
-    "info": "Phe se calcula a partir de proteínas (* 50) | Fuente de datos: openfoodfacts.org"
+    "info": "Phe se calcula a partir de proteínas (* 50) / Fuente de datos: openfoodfacts.org"
   },
   "own-food": {
     "title": "Alimento propio",
@@ -116,11 +115,13 @@
     "chart": "Agregar entrada",
     "limit": "El diario de Phe está limitado a 100 entradas. Exporta tus datos en Excel. Restablece a través de la configuración.",
     "export": "Exportar",
+    "export-food": "Exportar alimentos",
+    "export-days": "Días de exportación",
     "log": "Registro (editar no actualiza el Phe total!)",
     "export-confirm": "¿Exportar diario de Phe en Excel? Nota: Evita fechas duplicadas en el diario de Phe",
     "export-overview": "Resumen",
     "export-filename": "Herramientas PKU - Diario de Phe",
-    "note": "Limitado a 100 entradas (~3 meses). Exporta y luego restablece a través de la configuración.",
+    "note": "Limitado a 100 entradas (~3 meses). Restablece a través de la configuración.",
     "chart-info": "El diagrama se muestra después de la segunda entrada."
   },
   "statistics": {
@@ -133,8 +134,8 @@
     "take": "Agregar porción",
     "amount": "Porciones por día",
     "serving": "1 porción",
-    "limit": "El contador de aminoácidos está limitado a 100 entradas. Restablece el historial en la configuración.",
-    "note": "Limitado a 100 entradas. Restablecer a través de la configuración."
+    "limit": "El contador de aminoácidos está limitado a 100 entradas. Restablece el historial.",
+    "note": "Limitado a 100 entradas."
   },
   "settings": {
     "title": "Configuración",
@@ -143,11 +144,12 @@
     "max-phe": "Tolerancia de Phe por día",
     "saved": "Guardado",
     "reset-heading": "Restablecer",
-    "reset-log": "Restablecer el registro de hoy",
+    "reset-log": "Restablecer página de inicio",
     "reset-diary": "Restablecer el diario de Phe",
     "reset-own-food": "Restablecer alimentos propios",
     "reset-am": "Restablecer contador de aminoácidos",
-    "delete-account": "Eliminar cuenta"
+    "delete-account": "Eliminar cuenta",
+    "device-theme": "Adaptar automáticamente el diseño al dispositivo"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
