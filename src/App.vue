@@ -134,9 +134,9 @@
 
       <v-list rounded density="compact">
         <v-list-item to="/">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiHomeSearch }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
         </v-list-item>
@@ -144,33 +144,33 @@
         <v-list-subheader>{{ $t('app.tools') }}</v-list-subheader>
 
         <v-list-item to="/phe-calculator">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiCalculator }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/protein-calculator">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/barcode-scanner">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiBarcodeScan }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/own-food">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiFoodApple }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
         </v-list-item>
@@ -178,40 +178,43 @@
         <v-list-subheader>{{ $t('app.logs') }}</v-list-subheader>
 
         <v-list-item to="/phe-diary">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiBook }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item density="compact" to="/amino-counter">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiCupWater }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/statistics">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiChartBox }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
         </v-list-item>
 
         <v-list-item to="/settings">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>{{ mdiCog }}</v-icon>
-          </v-list-item-action>
+          </template>
 
           <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-group :prepend-icon="mdiInformation">
-          <template v-slot:activator>
-            <v-list-item-title>{{ $t('app.more') }}</v-list-item-title>
+        <v-list-group>
+          // TODO: Recheck this quickfix
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" :prepend-icon="mdiInformation">{{
+              $t('app.more')
+            }}</v-list-item>
           </template>
 
           <v-list-item density="compact" to="/help">
