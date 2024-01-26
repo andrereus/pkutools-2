@@ -68,7 +68,7 @@ const i18n = createI18n({
 })
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCy-4rH75-ILcbgJPx3amMaoHUEl3fJJtw',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: 'pku-tools.firebaseapp.com',
   databaseURL: 'https://pku-tools.firebaseio.com',
   projectId: 'pku-tools',
