@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar flat theme="dark" class="nav-layout custom-app-bar">
+    <v-app-bar flat theme="dark" class="custom-app-bar">
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
       </template>
@@ -118,7 +118,7 @@
       </template>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" floating class="nav-layout">
+    <v-navigation-drawer v-model="drawer" floating>
       <v-list>
         <v-list-item rounded="xl" to="/">
           <template v-slot:prepend>
@@ -242,72 +242,13 @@
       </v-container>
     </v-main>
 
-    <v-bottom-navigation
-      v-model="bottomNav"
-      class="d-lg-none bottom-nav"
-      selected-class="v-btn--active bottom-nav--active"
-      grow
-    >
+    <v-bottom-navigation grow v-model="bottomNav" class="d-lg-none">
       <v-btn to="/" value="home" :aria-label="$t('home.title')">
         <v-icon>{{ mdiHomeSearch }}</v-icon>
       </v-btn>
 
-      <v-btn
-        to="/phe-calculator"
-        value="phe-calculator"
-        class="mobile-nav-hide"
-        :aria-label="$t('phe-calculator.title')"
-      >
-        <v-icon>{{ mdiCalculator }}</v-icon>
-      </v-btn>
-
-      <v-btn
-        to="/protein-calculator"
-        value="protein-calculator"
-        class="mobile-nav-hide"
-        :aria-label="$t('protein-calculator.title')"
-      >
-        <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-      </v-btn>
-
-      <v-btn
-        to="/barcode-scanner"
-        value="barcode-scanner"
-        class="mobile-nav-hide"
-        :aria-label="$t('barcode-scanner.title')"
-      >
-        <v-icon>{{ mdiBarcodeScan }}</v-icon>
-      </v-btn>
-
-      <v-btn
-        to="/own-food"
-        value="own-food"
-        class="mobile-nav-hide"
-        :aria-label="$t('own-food.title')"
-      >
-        <v-icon>{{ mdiFoodApple }}</v-icon>
-      </v-btn>
-
       <v-btn to="/phe-diary" value="phe-diary" :aria-label="$t('phe-diary.title')">
         <v-icon>{{ mdiBook }}</v-icon>
-      </v-btn>
-
-      <v-btn
-        to="/amino-counter"
-        value="amino-counter"
-        class="mobile-nav-hide"
-        :aria-label="$t('amino-counter.title')"
-      >
-        <v-icon>{{ mdiCupWater }}</v-icon>
-      </v-btn>
-
-      <v-btn
-        to="/statistics"
-        value="statistics"
-        class="mobile-nav-hide"
-        :aria-label="$t('statistics.title')"
-      >
-        <v-icon>{{ mdiChartBox }}</v-icon>
       </v-btn>
 
       <v-btn to="/settings" value="settings" :aria-label="$t('settings.title')">
@@ -564,10 +505,6 @@ export default {
   }
 }
 
-.bottom-nav--active:before {
-  opacity: 0.08 !important;
-}
-
 .app-logo {
   display: flex;
   text-decoration: none;
@@ -584,11 +521,6 @@ export default {
   .app-logo {
     color: #fff;
   }
-}
-
-.nav-hide,
-.mobile-nav-hide {
-  display: none;
 }
 
 .v-btn {
