@@ -479,7 +479,7 @@ export default {
   cursor: pointer;
 }
 
-.theme--dark.v-toolbar.v-sheet {
+.v-theme--dark.v-toolbar.v-sheet {
   background-color: #121212;
 }
 
@@ -491,7 +491,7 @@ export default {
   cursor: pointer;
 }
 
-.theme--light.v-data-table {
+.v-theme--light.v-data-table {
   background-color: #fafafa;
 }
 

@@ -508,7 +508,7 @@ export default {
   cursor: pointer;
 }
 
-.theme--dark.v-toolbar.v-sheet {
+.v-theme--dark.v-toolbar.v-sheet {
   background-color: #121212;
 }
 
@@ -516,7 +516,7 @@ export default {
   vertical-align: bottom;
 }
 
-.theme--light.v-data-table {
+.v-theme--light.v-data-table {
   background-color: #fafafa;
 }
 
@@ -524,7 +524,7 @@ export default {
   text-transform: none;
 }
 
-.theme--dark.table-read-only {
+.v-theme--dark.table-read-only {
   background-color: #2e2e2e;
 }
 

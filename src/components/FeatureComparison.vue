@@ -240,7 +240,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.theme--light.v-data-table {
+.v-theme--light.v-data-table {
   background-color: #fafafa;
 }
 

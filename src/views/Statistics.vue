@@ -292,7 +292,7 @@ export default {
   border: none;
 }
 
-.theme--light.stat-card {
+.v-theme--light.stat-card {
   background-color: #fafafa;
 }
 
@@ -304,7 +304,7 @@ export default {
   vertical-align: bottom;
 }
 
-.theme--light.v-data-table {
+.v-theme--light.v-data-table {
   background-color: #fafafa;
 }
 
@@ -314,12 +314,12 @@ export default {
   right: 10px;
 }
 
-.theme--light .amino-router {
+.v-theme--light .amino-router {
   color: rgba(0, 0, 0, 0.6);
   text-decoration: inherit;
 }
 
-.theme--dark .amino-router {
+.v-theme--dark .amino-router {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: inherit;
 }
