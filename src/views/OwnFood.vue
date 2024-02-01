@@ -85,13 +85,7 @@
               </v-card-title>
 
               <v-card-text>
-                <v-text-field
-                  variant="filled"
-                  rounded
-                  label="Name"
-                  v-model="editedItem.name"
-                  class="mt-6"
-                >
+                <v-text-field label="Name" v-model="editedItem.name" class="mt-6">
                   <template v-slot:append-outer>
                     <v-menu>
                       <template v-slot:activator="{ props }">
@@ -125,8 +119,6 @@
                   </template>
                 </v-text-field>
                 <v-text-field
-                  variant="filled"
-                  rounded
                   :label="$t('own-food.phe')"
                   v-model.number="editedItem.phe"
                   type="number"
@@ -176,8 +168,6 @@
 
               <v-card-text>
                 <v-text-field
-                  variant="filled"
-                  rounded
                   :label="$t('own-food.weight')"
                   v-model.number="weight"
                   type="number"

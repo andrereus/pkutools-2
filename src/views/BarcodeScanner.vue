@@ -60,8 +60,6 @@
           </p>
 
           <v-text-field
-            variant="filled"
-            rounded
             :label="$t('protein-calculator.weight')"
             v-model.number="weight"
             type="number"

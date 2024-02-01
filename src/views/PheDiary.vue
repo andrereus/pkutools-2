@@ -90,8 +90,6 @@
                 >
                   <template v-slot:activator="{ props }">
                     <v-text-field
-                      variant="filled"
-                      rounded
                       :model-value="computelocalDate"
                       :label="$t('phe-diary.date')"
                       readonly
@@ -108,8 +106,6 @@
                 </v-menu>
 
                 <v-text-field
-                  variant="filled"
-                  rounded
                   :label="$t('phe-diary.phe')"
                   v-model.number="editedItem.phe"
                   type="number"

@@ -13,15 +13,11 @@
         </router-link>
 
         <v-text-field
-          variant="filled"
-          rounded
           :label="$t('phe-calculator.phe')"
           v-model.number="phe"
           type="number"
         ></v-text-field>
         <v-text-field
-          variant="filled"
-          rounded
           :label="$t('phe-calculator.weight')"
           v-model.number="weight"
           type="number"
@@ -53,8 +49,6 @@
 
             <v-card-text>
               <v-text-field
-                variant="filled"
-                rounded
                 :label="$t('phe-calculator.name')"
                 v-model="name"
                 class="mt-6"

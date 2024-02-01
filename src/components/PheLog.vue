@@ -82,13 +82,7 @@
 
           <v-card-text>
             <p v-if="editedIndex === -1">{{ $t('phe-log.optional-fields') }}</p>
-            <v-text-field
-              variant="filled"
-              rounded
-              label="Name"
-              v-model="editedItem.name"
-              class="mt-6"
-            >
+            <v-text-field label="Name" v-model="editedItem.name" class="mt-6">
               <template v-slot:append-outer>
                 <v-menu>
                   <template v-slot:activator="{ props }">
@@ -123,8 +117,6 @@
             </v-text-field>
 
             <v-text-field
-              variant="filled"
-              rounded
               :label="$t('phe-log.weight')"
               :model-value="editedItem.weight"
               @keyup="editWeight"
@@ -134,8 +126,6 @@
             ></v-text-field>
 
             <v-text-field
-              variant="filled"
-              rounded
               label="Phe (in mg)"
               :model-value="editedItem.phe"
               @keyup="editPhe"

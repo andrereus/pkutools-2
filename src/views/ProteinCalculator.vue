@@ -9,24 +9,18 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <v-select
-          variant="filled"
-          rounded
           v-model="select"
           :items="type"
           :label="$t('protein-calculator.factor')"
         ></v-select>
 
         <v-text-field
-          variant="filled"
-          rounded
           :label="$t('protein-calculator.protein')"
           v-model.number="protein"
           type="number"
         ></v-text-field>
 
         <v-text-field
-          variant="filled"
-          rounded
           :label="$t('protein-calculator.weight')"
           v-model.number="weight"
           type="number"
@@ -59,8 +53,6 @@
 
             <v-card-text>
               <v-text-field
-                variant="filled"
-                rounded
                 :label="$t('protein-calculator.name')"
                 v-model="name"
                 class="mt-6"

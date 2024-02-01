@@ -27,16 +27,12 @@
 
         <div v-if="userIsAuthenticated">
           <v-text-field
-            variant="filled"
-            rounded
             :label="$t('settings.max-phe')"
             v-model.number="settings.maxPhe"
             type="number"
           ></v-text-field>
 
           <v-text-field
-            variant="filled"
-            rounded
             :label="$t('settings.max-amino')"
             v-model.number="settings.maxAmino"
             type="number"

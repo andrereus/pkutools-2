@@ -26,8 +26,6 @@
               <v-window-item>
                 <v-container fluid>
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.email')"
                     type="email"
                     class="mt-6"
@@ -36,8 +34,6 @@
                   ></v-text-field>
 
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.password')"
                     :type="show1 ? 'text' : 'password'"
                     v-model="password"
@@ -65,8 +61,6 @@
                   <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
 
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.name')"
                     type="text"
                     class="mt-8"
@@ -74,8 +68,6 @@
                   ></v-text-field>
 
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.email')"
                     type="email"
                     v-model="email"
@@ -83,8 +75,6 @@
                   ></v-text-field>
 
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.password')"
                     :type="show1 ? 'text' : 'password'"
                     v-model="password"
@@ -112,8 +102,6 @@
                   <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
 
                   <v-text-field
-                    variant="filled"
-                    rounded
                     :label="$t('email-auth.email')"
                     type="email"
                     class="mt-8"

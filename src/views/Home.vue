@@ -10,25 +10,23 @@
       <v-col cols="12" md="10" lg="8" xl="6">
         <div>
           <v-text-field
+            variant="outlined"
+            rounded
             v-model="search"
             :label="$t('phe-search.search')"
-            variant="filled"
-            rounded
             autocomplete="off"
             @keyup="searchFood"
             clearable
             @click:clear="advancedFood = null"
           >
-            <template v-slot:append-outer>
+            <template v-slot:append>
               <v-btn
                 variant="flat"
-                size="small"
-                :loading="loading"
                 color="primary"
+                :loading="loading"
                 @click="searchFood"
-                class="mt-n2"
+                :icon="mdiMagnify"
               >
-                <v-icon>{{ mdiMagnify }}</v-icon>
               </v-btn>
             </template>
           </v-text-field>
@@ -44,8 +42,6 @@
 
               <v-card-text>
                 <v-text-field
-                  variant="filled"
-                  rounded
                   :label="$t('phe-search.weight')"
                   v-model.number="weight"
                   type="number"
