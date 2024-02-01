@@ -9,17 +9,17 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInGoogle" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
             <v-icon start>{{ mdiGoogle }}</v-icon>
             {{ $t('app.signin-google') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInFacebook" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInFacebook" class="mt-2">
             <v-icon start>{{ mdiFacebook }}</v-icon>
             {{ $t('app.signin-facebook') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" to="/email-auth" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
           </v-btn>
@@ -58,13 +58,7 @@
               <v-btn variant="flat" rounded @click="takeAM" color="primary" class="mr-2 mt-2">
                 {{ $t('amino-counter.take') }}
               </v-btn>
-              <v-btn
-                variant="flat"
-                rounded
-                color="grey-lighten-4"
-                class="mr-2 mt-2"
-                @click="resetAM"
-              >
+              <v-btn variant="flat" rounded color="btnsecondary" class="mr-2 mt-2" @click="resetAM">
                 {{ $t('common.reset') }}
               </v-btn>
             </v-timeline-item>

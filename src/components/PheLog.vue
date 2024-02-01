@@ -3,7 +3,7 @@
     <div v-if="userIsAuthenticated">
       <v-dialog v-model="dialog2" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-3 mb-8" v-bind="props">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-8" v-bind="props">
             <v-icon start>{{ mdiBookClock }}</v-icon>
             {{ $t('phe-log.last-added') }}
           </v-btn>
@@ -62,7 +62,7 @@
 
           <v-card-actions class="mt-n6">
             <v-spacer></v-spacer>
-            <v-btn variant="flat" color="grey-lighten-4" @click="dialog2 = false">{{
+            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
               $t('common.cancel')
             }}</v-btn>
           </v-card-actions>
@@ -71,7 +71,7 @@
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-3 mb-8" v-bind="props">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-8" v-bind="props">
             <v-icon start>{{ mdiPen }}</v-icon>
             {{ $t('phe-log.quick-note') }}
           </v-btn>
@@ -91,7 +91,7 @@
                     <v-btn
                       size="small"
                       variant="flat"
-                      color="grey-lighten-4"
+                      color="btnsecondary"
                       v-bind="props"
                       class="mt-n2"
                     >
@@ -149,7 +149,7 @@
             <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
               {{ $t('common.delete') }}
             </v-btn>
-            <v-btn variant="flat" color="grey-lighten-4" @click="close">{{
+            <v-btn variant="flat" color="btnsecondary" @click="close">{{
               $t('common.cancel')
             }}</v-btn>
           </v-card-actions>

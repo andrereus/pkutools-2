@@ -9,17 +9,17 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInGoogle" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
             <v-icon start>{{ mdiGoogle }}</v-icon>
             {{ $t('app.signin-google') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInFacebook" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInFacebook" class="mt-2">
             <v-icon start>{{ mdiFacebook }}</v-icon>
             {{ $t('app.signin-facebook') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" to="/email-auth" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
           </v-btn>
@@ -51,28 +51,22 @@
 
           <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.reset-heading') }}</h2>
 
-          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-6 mb-5" @click="resetLog">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetLog">
             {{ $t('settings.reset-log') }}
           </v-btn>
           <v-btn
             variant="flat"
             rounded
-            color="grey-lighten-4"
+            color="btnsecondary"
             class="mr-6 mb-5"
             @click="resetOwnFood"
           >
             {{ $t('settings.reset-own-food') }}
           </v-btn>
-          <v-btn
-            variant="flat"
-            rounded
-            color="grey-lighten-4"
-            class="mr-6 mb-5"
-            @click="resetDiary"
-          >
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetDiary">
             {{ $t('settings.reset-diary') }}
           </v-btn>
-          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-6 mb-5" @click="resetAM">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetAM">
             {{ $t('settings.reset-am') }}
           </v-btn>
 

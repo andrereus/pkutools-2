@@ -9,17 +9,17 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInGoogle" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
             <v-icon start>{{ mdiGoogle }}</v-icon>
             {{ $t('app.signin-google') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInFacebook" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" @click="signInFacebook" class="mt-2">
             <v-icon start>{{ mdiFacebook }}</v-icon>
             {{ $t('app.signin-facebook') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="grey-lighten-4" to="/email-auth" class="mt-2">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
           </v-btn>
@@ -169,7 +169,7 @@
                 >
                   {{ $t('common.delete') }}
                 </v-btn>
-                <v-btn variant="flat" color="grey-lighten-4" @click="close">{{
+                <v-btn variant="flat" color="btnsecondary" @click="close">{{
                   $t('common.cancel')
                 }}</v-btn>
               </v-card-actions>
@@ -179,7 +179,7 @@
           <v-btn
             variant="flat"
             rounded
-            color="grey-lighten-4"
+            color="btnsecondary"
             class="mr-3 mt-3"
             @click="exportAllFoodItems"
           >
@@ -189,7 +189,7 @@
           <v-btn
             variant="flat"
             rounded
-            color="grey-lighten-4"
+            color="btnsecondary"
             class="mr-3 mt-3"
             @click="exportDailyPheTotals"
           >
