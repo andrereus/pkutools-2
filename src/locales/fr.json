@@ -117,7 +117,7 @@
     "export": "Exporter",
     "export-food": "Exporter des aliments",
     "export-days": "Días de exportación",
-    "log": "Journal (Modifier ne met pas à jour le Phe total !)",
+    "log": "Journal",
     "export-confirm": "Exporter le Journal de Phe en Excel ? Remarque : évitez les dates en double dans le Journal de Phe",
     "export-overview": "Aperçu",
     "export-filename": "PKU Tools - Journal de Phe",

@@ -117,7 +117,7 @@
     "export": "Exportar",
     "export-food": "Exportar alimentos",
     "export-days": "Días de exportación",
-    "log": "Registro (editar no actualiza el Phe total!)",
+    "log": "Registro",
     "export-confirm": "¿Exportar diario de Phe en Excel? Nota: Evita fechas duplicadas en el diario de Phe",
     "export-overview": "Resumen",
     "export-filename": "Herramientas PKU - Diario de Phe",

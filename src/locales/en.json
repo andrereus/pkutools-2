@@ -117,7 +117,7 @@
     "export": "Export",
     "export-food": "Export food",
     "export-days": "Export days",
-    "log": "Log (Editing does not update Total Phe!)",
+    "log": "Log",
     "export-confirm": "Export Phe Diary in Excel? Note: Avoid duplicate dates in the Phe Diary",
     "export-overview": "Overview",
     "export-filename": "PKU Tools - Phe Diary",
