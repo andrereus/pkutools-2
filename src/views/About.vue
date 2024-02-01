@@ -28,7 +28,7 @@
               v-if="!$vuetify.theme.dark"
               src="../assets/kofi.png"
               alt="Support me"
-              max-width="200"
+              width="200"
               class="mt-2"
             />
             <img

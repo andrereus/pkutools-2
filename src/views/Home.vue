@@ -416,7 +416,9 @@ export default {
 
 <style lang="scss" scoped>
 .illustration {
+  width: 100%;
   max-width: 550px;
+  height: auto;
 }
 
 .tr-edit {

@@ -69,7 +69,7 @@
               <p>{{ $t('help.support-p1') }}</p>
 
               <a href="https://ko-fi.com/andrereus" target="_blank">
-                <img src="../assets/kofi.png" alt="Support me" max-width="200" class="mb-4" />
+                <img src="../assets/kofi.png" alt="Support me" width="200" class="mb-4" />
               </a>
 
               <p class="mt-2">{{ $t('help.support-p2') }}</p>
@@ -160,7 +160,7 @@ export default {
 }
 
 .gplay-btn {
-  max-width: 120px;
+  width: 150px;
   vertical-align: middle;
 }
 
@@ -174,7 +174,9 @@ export default {
 }
 
 .pwa-img {
+  width: 100%;
   max-width: 700px;
+  height: auto;
   margin: 15px 0 30px;
 }
 </style>

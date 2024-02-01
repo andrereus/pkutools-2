@@ -286,10 +286,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.illustration {
-  max-width: 550px;
-}
-
 .v-btn {
   text-transform: none;
 }
