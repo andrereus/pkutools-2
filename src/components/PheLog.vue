@@ -3,7 +3,7 @@
     <div v-if="userIsAuthenticated">
       <v-dialog v-model="dialog2" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded class="mr-3 mb-8" v-bind="props">
+          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-3 mb-8" v-bind="props">
             <v-icon start>{{ mdiBookClock }}</v-icon>
             {{ $t('phe-log.last-added') }}
           </v-btn>
@@ -62,14 +62,16 @@
 
           <v-card-actions class="mt-n6">
             <v-spacer></v-spacer>
-            <v-btn variant="flat" @click="dialog2 = false">{{ $t('common.cancel') }}</v-btn>
+            <v-btn variant="flat" color="grey-lighten-4" @click="dialog2 = false">{{
+              $t('common.cancel')
+            }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded class="mr-3 mb-8" v-bind="props">
+          <v-btn variant="flat" rounded color="grey-lighten-4" class="mr-3 mb-8" v-bind="props">
             <v-icon start>{{ mdiPen }}</v-icon>
             {{ $t('phe-log.quick-note') }}
           </v-btn>
@@ -86,7 +88,13 @@
               <template v-slot:append-outer>
                 <v-menu>
                   <template v-slot:activator="{ props }">
-                    <v-btn size="small" variant="flat" v-bind="props" class="mt-n2">
+                    <v-btn
+                      size="small"
+                      variant="flat"
+                      color="grey-lighten-4"
+                      v-bind="props"
+                      class="mt-n2"
+                    >
                       <img
                         :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
                         v-if="editedItem.icon !== undefined && editedItem.icon !== null"
@@ -141,7 +149,9 @@
             <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
               {{ $t('common.delete') }}
             </v-btn>
-            <v-btn variant="flat" @click="close">{{ $t('common.cancel') }}</v-btn>
+            <v-btn variant="flat" color="grey-lighten-4" @click="close">{{
+              $t('common.cancel')
+            }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

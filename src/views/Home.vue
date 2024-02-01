@@ -10,8 +10,6 @@
       <v-col cols="12" md="10" lg="8" xl="6">
         <div>
           <v-text-field
-            variant="outlined"
-            rounded
             v-model="search"
             :label="$t('phe-search.search')"
             autocomplete="off"
@@ -65,7 +63,9 @@
                 <v-btn variant="flat" color="primary" @click="save" v-if="userIsAuthenticated">
                   {{ $t('common.add') }}
                 </v-btn>
-                <v-btn variant="flat" @click="dialog = false">{{ $t('common.close') }}</v-btn>
+                <v-btn variant="flat" color="grey-lighten-4" @click="dialog = false">{{
+                  $t('common.close')
+                }}</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -97,19 +97,44 @@
         </div>
 
         <div v-if="advancedFood === null">
-          <v-btn variant="flat" rounded to="/phe-calculator" class="mr-3 mb-3">
+          <v-btn
+            variant="flat"
+            rounded
+            color="grey-lighten-4"
+            to="/phe-calculator"
+            class="mr-3 mb-3"
+          >
             <v-icon start>{{ mdiCalculator }}</v-icon>
             {{ $t('phe-calculator.title') }}
           </v-btn>
-          <v-btn variant="flat" rounded to="/protein-calculator" class="mr-3 mb-3">
+          <v-btn
+            variant="flat"
+            rounded
+            color="grey-lighten-4"
+            to="/protein-calculator"
+            class="mr-3 mb-3"
+          >
             <v-icon start>{{ mdiCalculatorVariant }}</v-icon>
             {{ $t('protein-calculator.title') }}
           </v-btn>
-          <v-btn variant="flat" rounded to="/barcode-scanner" class="mr-3 mb-3">
+          <v-btn
+            variant="flat"
+            rounded
+            color="grey-lighten-4"
+            to="/barcode-scanner"
+            class="mr-3 mb-3"
+          >
             <v-icon start>{{ mdiBarcodeScan }}</v-icon>
             {{ $t('barcode-scanner.title') }}
           </v-btn>
-          <v-btn v-if="userIsAuthenticated" variant="flat" rounded to="/own-food" class="mr-3 mb-3">
+          <v-btn
+            v-if="userIsAuthenticated"
+            variant="flat"
+            rounded
+            color="grey-lighten-4"
+            to="/own-food"
+            class="mr-3 mb-3"
+          >
             <v-icon start>{{ mdiFoodApple }}</v-icon>
             {{ $t('home.own-food') }}
           </v-btn>
@@ -153,7 +178,7 @@
             </v-list>
           </v-menu>
 
-          <v-btn variant="flat" rounded to="/help" class="mr-3 mb-3">
+          <v-btn variant="flat" rounded color="grey-lighten-4" to="/help" class="mr-3 mb-3">
             <v-icon start>{{ mdiDownload }}</v-icon>
             {{ $t('app.install') }}
           </v-btn>
@@ -162,6 +187,7 @@
             v-if="this.$i18n.locale !== 'de' && $vuetify.display.smAndUp"
             variant="flat"
             rounded
+            color="grey-lighten-4"
             href="https://youtu.be/lmiejnEFccY"
             target="_blank"
             class="mr-3 mb-3"
@@ -174,6 +200,7 @@
             v-if="this.$i18n.locale === 'de' && $vuetify.display.smAndUp"
             variant="flat"
             rounded
+            color="grey-lighten-4"
             href="https://youtu.be/5_-F4tM8_RQ"
             target="_blank"
             class="mr-3 mb-3"
@@ -186,6 +213,7 @@
             v-if="$vuetify.display.xsOnly"
             variant="flat"
             rounded
+            color="grey-lighten-4"
             href="https://youtu.be/ITfvSliHwc0"
             target="_blank"
             class="mr-3 mb-3"
@@ -197,7 +225,7 @@
           <h2 class="text-h5 mt-6 mb-6">{{ $t('home.features') }}</h2>
           <FeatureComparison home class="mb-8" />
 
-          <v-btn variant="flat" rounded to="/other-apps" class="mr-3 mb-3">
+          <v-btn variant="flat" rounded color="grey-lighten-4" to="/other-apps" class="mr-3 mb-3">
             {{ $t('home.compare') }}
           </v-btn>
         </div>

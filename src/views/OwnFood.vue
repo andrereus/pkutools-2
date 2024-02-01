@@ -9,17 +9,17 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded @click="signInGoogle" class="mt-2">
+          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInGoogle" class="mt-2">
             <v-icon start>{{ mdiGoogle }}</v-icon>
             {{ $t('app.signin-google') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded @click="signInFacebook" class="mt-2">
+          <v-btn variant="flat" rounded color="grey-lighten-4" @click="signInFacebook" class="mt-2">
             <v-icon start>{{ mdiFacebook }}</v-icon>
             {{ $t('app.signin-facebook') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded to="/email-auth" class="mt-2">
+          <v-btn variant="flat" rounded color="grey-lighten-4" to="/email-auth" class="mt-2">
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
           </v-btn>
@@ -89,7 +89,13 @@
                   <template v-slot:append-outer>
                     <v-menu>
                       <template v-slot:activator="{ props }">
-                        <v-btn size="small" variant="flat" v-bind="props" class="mt-n2">
+                        <v-btn
+                          size="small"
+                          variant="flat"
+                          color="grey-lighten-4"
+                          v-bind="props"
+                          class="mt-n2"
+                        >
                           <img
                             :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
                             v-if="editedItem.icon !== undefined && editedItem.icon !== null"
@@ -136,7 +142,9 @@
                 >
                   {{ $t('common.delete') }}
                 </v-btn>
-                <v-btn variant="flat" @click="close">{{ $t('common.cancel') }}</v-btn>
+                <v-btn variant="flat" color="grey-lighten-4" @click="close">{{
+                  $t('common.cancel')
+                }}</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -189,8 +197,12 @@
                 <v-btn variant="flat" color="primary" @click="add">
                   {{ $t('common.add') }}
                 </v-btn>
-                <v-btn variant="flat" @click="editItem()">{{ $t('common.edit') }}</v-btn>
-                <v-btn variant="flat" @click="dialog2 = false">{{ $t('common.cancel') }}</v-btn>
+                <v-btn variant="flat" color="grey-lighten-4" @click="editItem()">{{
+                  $t('common.edit')
+                }}</v-btn>
+                <v-btn variant="flat" color="grey-lighten-4" @click="dialog2 = false">{{
+                  $t('common.cancel')
+                }}</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>

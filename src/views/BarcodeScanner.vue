@@ -37,7 +37,9 @@
 
             <v-card-actions class="mt-n6">
               <v-spacer></v-spacer>
-              <v-btn variant="flat" @click="cancel">{{ $t('common.cancel') }}</v-btn>
+              <v-btn variant="flat" color="grey-lighten-4" @click="cancel">{{
+                $t('common.cancel')
+              }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
