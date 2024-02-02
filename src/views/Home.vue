@@ -31,11 +31,9 @@
 
           <v-dialog v-model="dialog" max-width="500px">
             <v-card>
-              <v-card-title>
-                <span class="text-h5">
-                  {{ emoji }}
-                  {{ name }}
-                </span>
+              <v-card-title class="text-h5 mt-4">
+                {{ emoji }}
+                {{ name }}
               </v-card-title>
 
               <v-card-text>
@@ -43,7 +41,6 @@
                   :label="$t('phe-search.weight')"
                   v-model.number="weight"
                   type="number"
-                  class="mt-6"
                   clearable
                 ></v-text-field>
                 <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>

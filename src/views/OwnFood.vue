@@ -73,12 +73,12 @@
             </template>
 
             <v-card>
-              <v-card-title>
-                <span class="text-h5">{{ formTitle }}</span>
+              <v-card-title class="text-h5 mt-4">
+                {{ formTitle }}
               </v-card-title>
 
               <v-card-text>
-                <v-text-field label="Name" v-model="editedItem.name" class="mt-6">
+                <v-text-field label="Name" v-model="editedItem.name">
                   <template v-slot:append-outer>
                     <v-menu>
                       <template v-slot:activator="{ props }">
@@ -149,22 +149,20 @@
 
           <v-dialog v-model="dialog2" max-width="500px">
             <v-card>
-              <v-card-title>
-                <span class="text-h5">
-                  <img
-                    :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                    v-if="editedItem.icon !== undefined"
-                    width="35"
-                    class="food-icon"
-                  />
-                  <img
-                    :src="publicPath + 'img/food-icons/organic-food.svg'"
-                    v-if="editedItem.icon === undefined"
-                    width="35"
-                    class="food-icon"
-                  />
-                  {{ editedItem.name }}
-                </span>
+              <v-card-title class="text-h5 mt-4">
+                <img
+                  :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
+                  v-if="editedItem.icon !== undefined"
+                  width="35"
+                  class="food-icon"
+                />
+                <img
+                  :src="publicPath + 'img/food-icons/organic-food.svg'"
+                  v-if="editedItem.icon === undefined"
+                  width="35"
+                  class="food-icon"
+                />
+                {{ editedItem.name }}
               </v-card-title>
 
               <v-card-text>
@@ -172,7 +170,6 @@
                   :label="$t('own-food.weight')"
                   v-model.number="weight"
                   type="number"
-                  class="mt-6"
                   clearable
                 ></v-text-field>
                 <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>

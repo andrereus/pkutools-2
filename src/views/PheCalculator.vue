@@ -43,16 +43,12 @@
           </template>
 
           <v-card>
-            <v-card-title>
-              <span class="text-h5">{{ $t('common.add') }}</span>
+            <v-card-title class="text-h5 mt-4">
+              {{ $t('common.add') }}
             </v-card-title>
 
             <v-card-text>
-              <v-text-field
-                :label="$t('phe-calculator.name')"
-                v-model="name"
-                class="mt-6"
-              ></v-text-field>
+              <v-text-field :label="$t('phe-calculator.name')" v-model="name"></v-text-field>
             </v-card-text>
 
             <v-card-actions class="mt-n6">

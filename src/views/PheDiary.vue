@@ -74,8 +74,8 @@
             </template>
 
             <v-card>
-              <v-card-title>
-                <span class="text-h5">{{ formTitle }}</span>
+              <v-card-title class="text-h5 mt-4">
+                {{ formTitle }}
               </v-card-title>
 
               <v-card-text>
@@ -91,7 +91,6 @@
                       :label="$t('phe-diary.date')"
                       readonly
                       v-bind="props"
-                      class="mt-4"
                     ></v-text-field>
                   </template>
                   <v-date-picker

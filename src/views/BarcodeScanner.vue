@@ -21,8 +21,8 @@
           </template>
 
           <v-card>
-            <v-card-title>
-              <span class="text-h5">{{ $t('barcode-scanner.scan-barcode') }}</span>
+            <v-card-title class="text-h5 mt-4">
+              {{ $t('barcode-scanner.scan-barcode') }}
             </v-card-title>
 
             <v-card-text>

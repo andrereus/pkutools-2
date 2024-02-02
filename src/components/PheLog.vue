@@ -10,15 +10,15 @@
         </template>
 
         <v-card>
-          <v-card-title>
-            <span class="text-h5">{{ $t('phe-log.last-added') }}</span>
+          <v-card-title class="text-h5 mt-4">
+            {{ $t('phe-log.last-added') }}
           </v-card-title>
 
           <v-card-text>
             <v-data-table-virtual
               :headers="headers2"
               :items="lastAdded"
-              class="mt-3 mb-4"
+              class="mb-4"
               v-if="lastAdded"
             >
               <template v-slot:item="{ item }">
@@ -75,13 +75,13 @@
         </template>
 
         <v-card>
-          <v-card-title>
-            <span class="text-h5">{{ formTitle }}</span>
+          <v-card-title class="text-h5 mt-4">
+            {{ formTitle }}
           </v-card-title>
 
           <v-card-text>
-            <p v-if="editedIndex === -1">{{ $t('phe-log.optional-fields') }}</p>
-            <v-text-field label="Name" v-model="editedItem.name" class="mt-6">
+            <p v-if="editedIndex === -1" class="mb-4">{{ $t('phe-log.optional-fields') }}</p>
+            <v-text-field label="Name" v-model="editedItem.name">
               <template v-slot:append-outer>
                 <v-menu>
                   <template v-slot:activator="{ props }">
