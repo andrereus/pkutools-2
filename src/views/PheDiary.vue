@@ -52,12 +52,9 @@
             class="mt-n1 mb-1"
           ></apexchart>
 
-          <v-data-table
+          <v-data-table-virtual
             :headers="$i18n.locale === 'en' ? headersEn : headersDe"
             :items="pheDiary"
-            disable-pagination
-            hide-default-footer
-            mobile-breakpoint="0"
             :sort-by="['date']"
             class="mb-3"
           >
@@ -67,7 +64,7 @@
                 <td class="text-start">{{ item.phe }}</td>
               </tr>
             </template>
-          </v-data-table>
+          </v-data-table-virtual>
 
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ props }">
@@ -115,12 +112,9 @@
                   {{ $t('phe-diary.log') }}
                 </p>
 
-                <v-data-table
+                <v-data-table-virtual
                   :headers="headers2"
                   :items="editedItem.log"
-                  disable-pagination
-                  hide-default-footer
-                  mobile-breakpoint="0"
                   class="table-read-only mt-n2 mb-6"
                   v-if="editedItem.log"
                 >
@@ -155,7 +149,7 @@
                       </td>
                     </tr>
                   </template>
-                </v-data-table>
+                </v-data-table-virtual>
               </v-card-text>
 
               <v-card-actions class="mt-n6">
@@ -262,27 +256,27 @@ export default {
     menu: false,
     headersEn: [
       {
-        text: 'Date',
+        title: 'Date',
         align: 'start',
-        value: 'date'
+        key: 'date'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     headersDe: [
       {
-        text: 'Datum',
+        title: 'Datum',
         align: 'start',
-        value: 'date'
+        key: 'date'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     headers2: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     editedIndex: -1,
     editedKey: null,

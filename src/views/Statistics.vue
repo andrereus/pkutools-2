@@ -158,11 +158,11 @@ export default {
     icon: 'organic-food',
     headers: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     advancedFood: null,
     loading: false,

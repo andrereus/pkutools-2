@@ -41,14 +41,7 @@
         </div>
 
         <div v-if="userIsAuthenticated">
-          <v-data-table
-            :headers="headers"
-            :items="ownFood"
-            disable-pagination
-            hide-default-footer
-            mobile-breakpoint="0"
-            class="mb-3"
-          >
+          <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
             <template v-slot:item="{ item }">
               <tr @click="addItem(item)" class="tr-edit">
                 <td class="text-start">
@@ -70,7 +63,7 @@
                 <td class="text-start">{{ item.phe }}</td>
               </tr>
             </template>
-          </v-data-table>
+          </v-data-table-virtual>
 
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ props }">
@@ -260,11 +253,11 @@ export default {
     menu: false,
     headers: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     editedIndex: -1,
     editedKey: null,

@@ -15,12 +15,9 @@
           </v-card-title>
 
           <v-card-text>
-            <v-data-table
+            <v-data-table-virtual
               :headers="headers2"
               :items="lastAdded"
-              disable-pagination
-              hide-default-footer
-              mobile-breakpoint="0"
               class="mt-3 mb-4"
               v-if="lastAdded"
             >
@@ -57,7 +54,7 @@
                   </td>
                 </tr>
               </template>
-            </v-data-table>
+            </v-data-table-virtual>
           </v-card-text>
 
           <v-card-actions class="mt-n6">
@@ -156,12 +153,9 @@
         </v-card>
       </v-dialog>
 
-      <v-data-table
+      <v-data-table-virtual
         :headers="$i18n.locale === 'en' ? headersEn : headersDe"
         :items="pheLog"
-        disable-pagination
-        hide-default-footer
-        mobile-breakpoint="0"
       >
         <template v-slot:item="{ item }">
           <tr @click="editItem(item)" class="tr-edit">
@@ -190,7 +184,7 @@
             <td class="text-start">{{ item.phe }}</td>
           </tr>
         </template>
-      </v-data-table>
+      </v-data-table-virtual>
 
       <v-progress-linear
         :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
@@ -276,30 +270,30 @@ export default {
     alert: false,
     headersEn: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Weight', value: 'weight' },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Weight', key: 'weight' },
+      { title: 'Phe', key: 'phe' }
     ],
     headersDe: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Gewicht', value: 'weight' },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Gewicht', key: 'weight' },
+      { title: 'Phe', key: 'phe' }
     ],
     headers2: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Weight', value: 'weight' },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Weight', key: 'weight' },
+      { title: 'Phe', key: 'phe' }
     ],
     editedIndex: -1,
     editedKey: null,

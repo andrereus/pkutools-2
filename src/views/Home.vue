@@ -70,13 +70,10 @@
             </v-card>
           </v-dialog>
 
-          <v-data-table
+          <v-data-table-virtual
             :headers="headers"
             :items="advancedFood"
             :sort-by="['name']"
-            disable-pagination
-            hide-default-footer
-            mobile-breakpoint="0"
             v-if="advancedFood !== null"
           >
             <template v-slot:item="{ item }">
@@ -88,7 +85,7 @@
                 <td class="text-start">{{ item.phe }}</td>
               </tr>
             </template>
-          </v-data-table>
+          </v-data-table-virtual>
 
           <p class="mt-6 text--secondary" v-if="advancedFood !== null">
             <v-icon>{{ mdiInformationVariant }}</v-icon>
@@ -301,11 +298,11 @@ export default {
     emoji: '🌱',
     headers: [
       {
-        text: 'Name',
+        title: 'Name',
         align: 'start',
-        value: 'name'
+        key: 'name'
       },
-      { text: 'Phe', value: 'phe' }
+      { title: 'Phe', key: 'phe' }
     ],
     advancedFood: null,
     loading: false
