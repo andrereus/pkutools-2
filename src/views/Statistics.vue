@@ -298,17 +298,8 @@ export default {
   background-color: #fafafa;
 }
 
-.tr-edit {
-  cursor: pointer;
-}
-
-.food-icon {
-  vertical-align: bottom;
-  display: inline-block;
-}
-
-.v-theme--light.v-data-table {
-  background-color: #fafafa;
+.v-theme--dark.stat-card {
+  background-color: #212121;
 }
 
 .add-amino {
