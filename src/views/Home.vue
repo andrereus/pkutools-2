@@ -48,8 +48,8 @@
                   <p class="mt-4 text-caption">{{ $t('phe-log.preview') }}</p>
                   <v-progress-linear
                     :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-                    height="5"
-                    class="mt-n2 mb-6"
+                    height="6"
+                    class="mt-3 mb-8"
                     rounded
                   ></v-progress-linear>
                 </div>
