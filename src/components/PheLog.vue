@@ -30,6 +30,7 @@
                       onerror="this.src='img/food-icons/organic-food.svg'"
                       width="25"
                       class="food-icon"
+                      alt="Food Icon"
                     />
                     <img
                       :src="publicPath + 'img/food-icons/organic-food.svg'"
@@ -38,6 +39,7 @@
                       "
                       width="25"
                       class="food-icon"
+                      alt="Food Icon"
                     />
                     {{
                       (item.icon === undefined || item.icon === '') && item.emoji !== undefined
@@ -97,12 +99,14 @@
                         v-if="editedItem.icon !== undefined && editedItem.icon !== null"
                         width="40"
                         class="food-icon"
+                        alt="Food Icon"
                       />
                       <img
                         :src="publicPath + 'img/food-icons/organic-food.svg'"
                         v-if="editedItem.icon === undefined || editedItem.icon === null"
                         width="40"
                         class="food-icon"
+                        alt="Food Icon"
                       />
                     </v-btn>
                   </template>
@@ -113,6 +117,7 @@
                         v-if="item.svg !== undefined"
                         width="40"
                         class="food-icon pick-icon"
+                        alt="Icon Picker"
                         @click="editedItem.icon = item.svg"
                       />
                     </span>
@@ -166,12 +171,14 @@
                 onerror="this.src='img/food-icons/organic-food.svg'"
                 width="25"
                 class="food-icon"
+                alt="Food Icon"
               />
               <img
                 :src="publicPath + 'img/food-icons/organic-food.svg'"
                 v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
                 width="25"
                 class="food-icon"
+                alt="Food Icon"
               />
               {{
                 (item.icon === undefined || item.icon === '') && item.emoji !== undefined
@@ -196,7 +203,7 @@
       <p class="text-h6 font-weight-regular mt-6">
         {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
       </p>
-      <p class="mt-n2 mb-6">
+      <p class="mt-1 mb-7">
         {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
       </p>
 
@@ -479,6 +486,7 @@ export default {
 
 .food-icon {
   vertical-align: bottom;
+  display: inline-block;
 }
 
 .pick-icon {

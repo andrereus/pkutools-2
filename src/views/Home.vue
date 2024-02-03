@@ -421,6 +421,7 @@ export default {
 
 .food-icon {
   vertical-align: bottom;
+  display: inline-block;
 }
 
 .v-theme--light.v-data-table {

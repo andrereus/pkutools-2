@@ -51,12 +51,14 @@
                     onerror="this.src='img/food-icons/organic-food.svg'"
                     width="25"
                     class="food-icon"
+                    alt="Food Icon"
                   />
                   <img
                     :src="publicPath + 'img/food-icons/organic-food.svg'"
                     v-if="item.icon === undefined || item.icon === ''"
                     width="25"
                     class="food-icon"
+                    alt="Food Icon"
                   />
                   {{ item.name }}
                 </td>
@@ -94,12 +96,14 @@
                             v-if="editedItem.icon !== undefined && editedItem.icon !== null"
                             width="40"
                             class="food-icon"
+                            alt="Food Icon"
                           />
                           <img
                             :src="publicPath + 'img/food-icons/organic-food.svg'"
                             v-if="editedItem.icon === undefined || editedItem.icon === null"
                             width="40"
                             class="food-icon"
+                            alt="Food Icon"
                           />
                         </v-btn>
                       </template>
@@ -110,6 +114,7 @@
                             v-if="item.svg !== undefined"
                             width="40"
                             class="food-icon pick-icon"
+                            alt="Icon Picker"
                             @click="editedItem.icon = item.svg"
                           />
                         </span>
@@ -155,12 +160,14 @@
                   v-if="editedItem.icon !== undefined"
                   width="35"
                   class="food-icon"
+                  alt="Food Icon"
                 />
                 <img
                   :src="publicPath + 'img/food-icons/organic-food.svg'"
                   v-if="editedItem.icon === undefined"
                   width="35"
                   class="food-icon"
+                  alt="Food Icon"
                 />
                 {{ editedItem.name }}
               </v-card-title>
@@ -404,6 +411,7 @@ export default {
 
 .food-icon {
   vertical-align: bottom;
+  display: inline-block;
 }
 
 .pick-icon {

@@ -126,6 +126,7 @@
                           onerror="this.src='img/food-icons/organic-food.svg'"
                           width="25"
                           class="food-icon"
+                          alt="Food Icon"
                         />
                         <img
                           :src="publicPath + 'img/food-icons/organic-food.svg'"
@@ -135,6 +136,7 @@
                           "
                           width="25"
                           class="food-icon"
+                          alt="Food Icon"
                         />
                         {{
                           (item.icon === undefined || item.icon === '') && item.emoji !== undefined
@@ -517,6 +519,7 @@ export default {
 
 .food-icon {
   vertical-align: bottom;
+  display: inline-block;
 }
 
 .v-theme--light.v-data-table {
