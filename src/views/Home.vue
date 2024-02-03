@@ -359,7 +359,7 @@ export default {
         res = await fetch(this.publicPath + 'data/usda-icon-en.json')
         langFood = await res.json()
       }
-      // TODO: Checkbox if search should be with or without own food
+      // TODO: Optional: Checkbox if search should be with or without own food
       food = langFood.concat(this.ownFood)
 
       const fuse = new Fuse(food, {

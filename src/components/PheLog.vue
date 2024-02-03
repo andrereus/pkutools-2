@@ -84,7 +84,7 @@
           <v-card-text>
             <p v-if="editedIndex === -1" class="mb-4">{{ $t('phe-log.optional-fields') }}</p>
             <v-text-field label="Name" v-model="editedItem.name">
-              <template v-slot:append-outer>
+              <template v-slot:append>
                 <v-menu>
                   <template v-slot:activator="{ props }">
                     <v-btn
@@ -126,6 +126,7 @@
               </template>
             </v-text-field>
 
+            <!-- TODO: Add info for lock: Editing mode and calculating mode -->
             <v-text-field
               :label="$t('phe-log.weight')"
               :model-value="editedItem.weight"
@@ -323,6 +324,7 @@ export default {
     foodIcons
   }),
   methods: {
+    // TODO: Fix: Emoji could be undefined
     editItem(item) {
       this.editedIndex = this.pheLog.indexOf(item)
       this.editedKey = item['.key']

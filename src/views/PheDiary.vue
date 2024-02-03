@@ -93,6 +93,7 @@
                       v-bind="props"
                     ></v-text-field>
                   </template>
+                  <!-- TODO: Fix Date Picker-->
                   <v-date-picker
                     v-model="editedItem.date"
                     no-title
@@ -107,7 +108,7 @@
                   type="number"
                 ></v-text-field>
 
-                <p v-if="editedItem.log" class="ml-2 mt-n2 text-caption">
+                <p v-if="editedItem.log" class="ml-2 mt-n2 mb-4 text-caption">
                   {{ $t('phe-diary.log') }}
                 </p>
 

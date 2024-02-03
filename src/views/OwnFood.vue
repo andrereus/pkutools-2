@@ -81,7 +81,7 @@
 
               <v-card-text>
                 <v-text-field label="Name" v-model="editedItem.name">
-                  <template v-slot:append-outer>
+                  <template v-slot:append>
                     <v-menu>
                       <template v-slot:activator="{ props }">
                         <v-btn
