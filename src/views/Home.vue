@@ -29,6 +29,28 @@
             </template>
           </v-text-field>
 
+          <v-data-table-virtual
+            :headers="headers"
+            :items="advancedFood"
+            :sort-by="['name']"
+            v-if="advancedFood !== null"
+          >
+            <template v-slot:item="{ item }">
+              <tr @click="loadItem(item)" class="tr-edit">
+                <td class="text-start">
+                  {{ item.emoji }}
+                  {{ item.name }}
+                </td>
+                <td class="text-start">{{ item.phe }}</td>
+              </tr>
+            </template>
+          </v-data-table-virtual>
+
+          <p class="mt-6 text--secondary" v-if="advancedFood !== null">
+            <v-icon>{{ mdiInformationVariant }}</v-icon>
+            {{ $t('phe-search.source') }}
+          </p>
+
           <v-dialog v-model="dialog" max-width="500px">
             <v-card>
               <v-card-title class="text-h5 mt-4">
@@ -66,28 +88,6 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-
-          <v-data-table-virtual
-            :headers="headers"
-            :items="advancedFood"
-            :sort-by="['name']"
-            v-if="advancedFood !== null"
-          >
-            <template v-slot:item="{ item }">
-              <tr @click="loadItem(item)" class="tr-edit">
-                <td class="text-start">
-                  {{ item.emoji }}
-                  {{ item.name }}
-                </td>
-                <td class="text-start">{{ item.phe }}</td>
-              </tr>
-            </template>
-          </v-data-table-virtual>
-
-          <p class="mt-6 text--secondary" v-if="advancedFood !== null">
-            <v-icon>{{ mdiInformationVariant }}</v-icon>
-            {{ $t('phe-search.source') }}
-          </p>
         </div>
 
         <div v-if="advancedFood === null">
