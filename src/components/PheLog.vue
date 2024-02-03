@@ -87,13 +87,7 @@
               <template v-slot:append>
                 <v-menu>
                   <template v-slot:activator="{ props }">
-                    <v-btn
-                      size="small"
-                      variant="flat"
-                      color="btnsecondary"
-                      v-bind="props"
-                      class="mt-n2"
-                    >
+                    <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
                       <img
                         :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
                         v-if="editedItem.icon !== undefined && editedItem.icon !== null"
