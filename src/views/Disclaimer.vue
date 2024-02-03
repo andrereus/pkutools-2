@@ -1,7 +1,14 @@
 <template>
   <div>
     <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
+      <v-col
+        cols="12"
+        md="10"
+        lg="8"
+        xl="6"
+        class="t-prose"
+        :class="{ 't-prose-invert': $vuetify.theme.current.dark }"
+      >
         <h1>Disclaimer</h1>
         <p>Last updated: November 13, 2023</p>
         <h1>Interpretation and Definitions</h1>
