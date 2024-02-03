@@ -12,6 +12,8 @@
           v-model="select"
           :items="type"
           :label="$t('protein-calculator.factor')"
+          item-title="title"
+          item-value="value"
         ></v-select>
 
         <v-text-field
@@ -108,9 +110,9 @@ export default {
   computed: {
     type() {
       return [
-        { text: this.$t('protein-calculator.other'), value: 'other' },
-        { text: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
-        { text: this.$t('protein-calculator.fruit'), value: 'fruit' }
+        { title: this.$t('protein-calculator.other'), value: 'other' },
+        { title: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
+        { title: this.$t('protein-calculator.fruit'), value: 'fruit' }
       ]
     },
     factor() {
