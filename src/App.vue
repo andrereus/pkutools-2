@@ -256,15 +256,6 @@
       </v-btn>
     </v-bottom-navigation>
 
-    <v-snackbar location="bottom" color="primary" :model-value="updateExists" :timeout="-1">
-      {{ $t('app.update-info') }}
-      <template v-slot:action="{ attrs }">
-        <v-btn variant="text" v-bind="attrs" @click="refreshApp">
-          {{ $t('app.update') }}
-        </v-btn>
-      </template>
-    </v-snackbar>
-
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}
       <template v-slot:action="{ attrs }">
@@ -279,7 +270,6 @@
 <script>
 import { useStore } from './stores/index'
 import { useTheme } from 'vuetify'
-// import update from './mixins/update'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -354,7 +344,6 @@ export default {
     offlineInfo: false,
     useThemeFromDevice: true
   }),
-  // mixins: [update],
   setup() {
     // TODO: Optional: Remove vuetifyThemeDark from localStorage for everyone
     const theme = useTheme()

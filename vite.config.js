@@ -13,13 +13,13 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
+      includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
       manifest: {
         name: 'PKU Tools',
         short_name: 'PKU Tools',
+        description: 'Tools and apps for PKU.',
         theme_color: '#3498db',
         background_color: '#3498db',
-        display: 'standalone',
-        description: 'Tools and apps for PKU.',
         icons: [
           {
             src: 'pwa-64x64.png',
