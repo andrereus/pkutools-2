@@ -145,6 +145,7 @@ export default {
     const theme = useTheme()
     const handleSystemThemeChange = (e) => {
       theme.global.name.value = e.matches ? 'dark' : 'light'
+      document.documentElement.setAttribute('data-theme', theme.global.name.value)
     }
     function toggleThemeFromDevice() {
       localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
@@ -152,6 +153,7 @@ export default {
         theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light'
+        document.documentElement.setAttribute('data-theme', theme.global.name.value)
         window
           .matchMedia('(prefers-color-scheme: dark)')
           .addEventListener('change', handleSystemThemeChange)
@@ -160,6 +162,7 @@ export default {
           .matchMedia('(prefers-color-scheme: dark)')
           .removeEventListener('change', handleSystemThemeChange)
         theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
+        document.documentElement.setAttribute('data-theme', theme.global.name.value)
       }
     }
     function mountThemeFromDevice() {

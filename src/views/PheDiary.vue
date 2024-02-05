@@ -82,7 +82,7 @@
                 <input
                   type="date"
                   v-model="editedItem.date"
-                  class="t-input t-input-bordered t-w-full t-mb-4"
+                  class="t-input t-input-bordered t-w-full t-mb-4 t-border-solid"
                 />
 
                 <v-text-field

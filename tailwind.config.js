@@ -7,8 +7,5 @@ export default {
     extend: {}
   },
   plugins: [typography, daisyui],
-  daisyui: {
-    themes: false
-  },
   prefix: 't-'
 }
