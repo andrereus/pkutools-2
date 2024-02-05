@@ -318,7 +318,6 @@ export default {
     foodIcons
   }),
   methods: {
-    // TODO: Fix: Emoji could be undefined
     editItem(item) {
       this.editedIndex = this.pheLog.indexOf(item)
       this.editedKey = item['.key']
@@ -357,7 +356,7 @@ export default {
       } else {
         push(ref(db, `${this.user.id}/pheLog`), {
           name: this.editedItem.name,
-          emoji: this.editedItem.emoji,
+          emoji: this.editedItem.emoji || null,
           icon: this.editedItem.icon || null,
           weight: Number(this.editedItem.weight),
           phe: Number(this.editedItem.phe)
