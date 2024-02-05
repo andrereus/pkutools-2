@@ -79,7 +79,11 @@
               </v-card-title>
 
               <v-card-text>
-                <input type="date" v-model="editedItem.date" />
+                <input
+                  type="date"
+                  v-model="editedItem.date"
+                  class="t-input t-input-bordered t-w-full t-mb-4"
+                />
 
                 <v-text-field
                   :label="$t('phe-diary.phe')"
