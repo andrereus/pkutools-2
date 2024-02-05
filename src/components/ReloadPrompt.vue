@@ -1,47 +1,19 @@
 <script setup>
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 
-const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW()
-
-async function close() {
-  offlineReady.value = false
-  needRefresh.value = false
-}
+const { needRefresh, updateServiceWorker } = useRegisterSW()
 </script>
 
 <template>
-  <div v-if="offlineReady || needRefresh" class="pwa-toast" role="alert">
-    <div class="message">
-      <span v-if="offlineReady"> App ready to work offline </span>
-      <span v-else> New content available, click on reload button to update. </span>
+  <div v-if="needRefresh" class="t-toast t-toast-center t-mb-12 xl:t-mb-0">
+    <div class="t-alert t-border-solid t-border-2 t-border-sky-500">
+      <p>{{ $t('app.update-info') }}</p>
+      <button
+        @click="updateServiceWorker()"
+        class="t-btn t-btn-sm t-btn-neutral t-bg-sky-500 hover:t-bg-sky-500 t-text-white"
+      >
+        {{ $t('app.update') }}
+      </button>
     </div>
-    <button v-if="needRefresh" @click="updateServiceWorker()">Reload</button>
-    <button @click="close">Close</button>
   </div>
 </template>
-
-<style>
-.pwa-toast {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 16px;
-  padding: 12px;
-  border: 1px solid #8885;
-  border-radius: 4px;
-  z-index: 1;
-  text-align: left;
-  box-shadow: 3px 4px 5px 0 #8885;
-  background-color: white;
-}
-.pwa-toast .message {
-  margin-bottom: 8px;
-}
-.pwa-toast button {
-  border: 1px solid #8885;
-  outline: none;
-  margin-right: 5px;
-  border-radius: 2px;
-  padding: 3px 10px;
-}
-</style>
