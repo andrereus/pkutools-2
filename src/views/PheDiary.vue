@@ -79,28 +79,7 @@
               </v-card-title>
 
               <v-card-text>
-                <v-menu
-                  v-model="menu"
-                  :close-on-content-click="false"
-                  transition="scale-transition"
-                  min-width="290px"
-                >
-                  <template v-slot:activator="{ props }">
-                    <v-text-field
-                      :model-value="computelocalDate"
-                      :label="$t('phe-diary.date')"
-                      readonly
-                      v-bind="props"
-                    ></v-text-field>
-                  </template>
-                  <!-- TODO: Fix Date Picker-->
-                  <v-date-picker
-                    v-model="editedItem.date"
-                    no-title
-                    scrollable
-                    @input="menu = false"
-                  ></v-date-picker>
-                </v-menu>
+                <input type="date" v-model="editedItem.date" />
 
                 <v-text-field
                   :label="$t('phe-diary.phe')"
@@ -255,7 +234,6 @@ export default {
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
     alert: false,
-    menu: false,
     headersEn: [
       {
         title: 'Date',
