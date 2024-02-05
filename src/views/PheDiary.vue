@@ -450,6 +450,24 @@ export default {
         chart: {
           locales: [en, de, fr, es],
           defaultLocale: this.$i18n.locale,
+          toolbar: {
+            export: {
+              csv: {
+                filename: 'PKU Tools - Chart Data',
+                headerCategory: 'Date',
+                headerValue: 'Total Phe',
+                dateFormatter(timestamp) {
+                  return timestamp
+                }
+              },
+              svg: {
+                filename: 'PKU Tools - Chart'
+              },
+              png: {
+                filename: 'PKU Tools - Chart'
+              }
+            }
+          },
           zoom: {
             enabled: false
           },
