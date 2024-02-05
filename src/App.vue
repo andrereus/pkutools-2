@@ -197,7 +197,6 @@
         </v-list-item>
 
         <v-list-group>
-          <!-- TODO: Recheck this quickfix -->
           <template v-slot:activator="{ props }">
             <v-list-item rounded="xl" v-bind="props" :prepend-icon="mdiInformation">{{
               $t('app.more')
@@ -351,7 +350,6 @@ export default {
     useThemeFromDevice: true
   }),
   setup() {
-    // TODO: Optional: Remove vuetifyThemeDark from localStorage for everyone
     const theme = useTheme()
     const handleSystemThemeChange = (e) => {
       theme.global.name.value = e.matches ? 'dark' : 'light'
@@ -370,6 +368,11 @@ export default {
         this.useThemeFromDevice = JSON.parse(localStorage.vuetifyThemeFromDevice)
       } else {
         localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+      }
+
+      // Remove old local storage item
+      if (localStorage.vuetifyThemeDark) {
+        localStorage.removeItem('vuetifyThemeDark')
       }
 
       if (localStorage.vuetifyCurrentTheme && this.useThemeFromDevice !== true) {

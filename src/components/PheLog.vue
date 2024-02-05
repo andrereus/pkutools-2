@@ -120,7 +120,7 @@
               </template>
             </v-text-field>
 
-            <!-- TODO: Add info for lock: Editing mode and calculating mode -->
+            <!-- TODO: Optional: Add info for lock: Editing mode and calculating mode -->
             <v-text-field
               :label="$t('phe-log.weight')"
               :model-value="editedItem.weight"
