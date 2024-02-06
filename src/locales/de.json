@@ -19,8 +19,7 @@
     "logs": "Protokolle",
     "help": "Hilfe",
     "install": "App installieren",
-    "feedback": "Feedback",
-    "change-info": "Willkommen bei der aktualisierten App. Weitere Informationen zu den Anpassungen folgen in Kürze."
+    "feedback": "Feedback"
   },
   "common": {
     "add": "Hinzufügen",
