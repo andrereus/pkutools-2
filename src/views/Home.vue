@@ -2,6 +2,9 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
+        <v-alert type="info" variant="tonal">
+          Welcome to the updated app. More info on what has changed is coming soon.
+        </v-alert>
         <p v-if="!userIsAuthenticated" class="mt-5 mb-1">{{ $t('app.description') }}</p>
       </v-col>
     </v-row>
