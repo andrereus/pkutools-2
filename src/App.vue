@@ -252,7 +252,12 @@
         <v-icon>{{ mdiBook }}</v-icon>
       </v-btn>
 
-      <v-btn to="/settings" value="settings" :aria-label="$t('settings.title')">
+      <v-btn
+        to="/settings"
+        value="settings"
+        :aria-label="$t('settings.title')"
+        class="mr-14 mr-sm-0"
+      >
         <v-icon>{{ mdiCog }}</v-icon>
       </v-btn>
     </v-bottom-navigation>
