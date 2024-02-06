@@ -19,7 +19,8 @@
     "logs": "Journaux",
     "help": "Aide",
     "install": "Installer l'application",
-    "feedback": "Retour d'information"
+    "feedback": "Retour d'information",
+    "change-info": "Bienvenue dans l'application mise à jour. Plus d'informations sur ce qui a changé seront bientôt disponibles."
   },
   "common": {
     "add": "Ajouter",

@@ -19,7 +19,8 @@
     "logs": "Logs",
     "help": "Help",
     "install": "Install app",
-    "feedback": "Feedback"
+    "feedback": "Feedback",
+    "change-info": "Welcome to the updated app. More info on what has changed is coming soon."
   },
   "common": {
     "add": "Add",

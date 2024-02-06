@@ -19,7 +19,8 @@
     "logs": "Registros",
     "help": "Ayuda",
     "install": "Instalar aplicación",
-    "feedback": "Comentarios"
+    "feedback": "Comentarios",
+    "change-info": "Bienvenido a la aplicación actualizada. Pronto te daremos más información sobre los cambios."
   },
   "common": {
     "add": "Agregar",
