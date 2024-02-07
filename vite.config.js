@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      filename: 'service-worker-2.js',
       devOptions: {
         enabled: true
       },
