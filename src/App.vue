@@ -13,6 +13,10 @@
       </v-app-bar-title>
 
       <template v-slot:append>
+        <v-btn icon @click="openSleek">
+          <v-icon>{{ mdiBullhornOutline }}</v-icon>
+        </v-btn>
+
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
@@ -252,12 +256,7 @@
         <v-icon>{{ mdiBook }}</v-icon>
       </v-btn>
 
-      <v-btn
-        to="/settings"
-        value="settings"
-        :aria-label="$t('settings.title')"
-        class="mr-14 mr-sm-0"
-      >
+      <v-btn to="/settings" value="settings" :aria-label="$t('settings.title')">
         <v-icon>{{ mdiCog }}</v-icon>
       </v-btn>
     </v-bottom-navigation>
@@ -304,7 +303,8 @@ import {
   mdiCommentQuoteOutline,
   mdiEmail,
   mdiDownload,
-  mdiClipboardTextOutline
+  mdiClipboardTextOutline,
+  mdiBullhornOutline
 } from '@mdi/js'
 
 export default {
@@ -343,6 +343,7 @@ export default {
     mdiEmail,
     mdiDownload,
     mdiClipboardTextOutline,
+    mdiBullhornOutline,
     drawer: null,
     lang: [
       { name: 'Deutsch', abbr: 'de' },
@@ -426,6 +427,9 @@ export default {
     },
     updateDesign() {
       this.toggleTheme()
+    },
+    openSleek() {
+      window.$sleek.open()
     }
   },
   beforeCreate() {
