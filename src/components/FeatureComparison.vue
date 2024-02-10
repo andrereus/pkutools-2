@@ -42,16 +42,11 @@
 import {
   mdiMagnify,
   mdiCalculator,
-  mdiCalculatorVariant,
   mdiFoodApple,
-  mdiTextBox,
   mdiBook,
   mdiCupWater,
+  mdiChartBox,
   mdiWeb,
-  mdiAndroid,
-  mdiApple,
-  mdiMicrosoftWindows,
-  mdiMonitor,
   mdiCloudOffOutline,
   mdiSync,
   mdiExport,
@@ -76,24 +71,16 @@ export default {
     features: [
       {
         icon: mdiMagnify,
-        en: 'Phe Search',
-        de: 'Phe Suche',
+        en: 'Food Search',
+        de: 'Lebensmittelsuche',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
       },
       {
         icon: mdiCalculator,
-        en: 'Phe Calculator',
-        de: 'Phe Rechner',
-        pkutools: 1,
-        pkumanager: 1,
-        pherechner: 1
-      },
-      {
-        icon: mdiCalculatorVariant,
-        en: 'Protein Calculator',
-        de: 'Eiweiß Rechner',
+        en: 'Phe/Protein Calculator',
+        de: 'Phe/Eiweiß Rechner',
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
@@ -115,14 +102,6 @@ export default {
         pherechner: 1
       },
       {
-        icon: mdiTextBox,
-        en: 'Phe Log',
-        de: 'Phe Protokoll',
-        pkutools: 1,
-        pkumanager: 1,
-        pherechner: 1
-      },
-      {
         icon: mdiBook,
         en: 'Phe Diary',
         de: 'Phe Tagebuch',
@@ -139,89 +118,57 @@ export default {
         pherechner: 3
       },
       {
+        icon: mdiChartBox,
+        en: 'Statistics',
+        de: 'Statistiken',
+        pkutools: 1,
+        pkumanager: 3,
+        pherechner: 2
+      },
+      {
         icon: mdiWeb,
-        en: 'Web App',
-        de: 'Web App',
+        en: 'Multiplatform App',
+        de: 'Multiplattform App',
         pkutools: 1,
-        pkumanager: 1,
-        pherechner: 1
-      },
-      {
-        icon: mdiAndroid,
-        en: 'Android',
-        de: 'Android',
-        pkutools: 1,
-        pkumanager: 1,
-        pherechner: 1
-      },
-      {
-        icon: mdiApple,
-        en: 'iOS',
-        de: 'iOS',
-        pkutools: 1,
-        pkumanager: 3,
-        pherechner: 3
-      },
-      {
-        icon: mdiMicrosoftWindows,
-        en: 'Windows',
-        de: 'Windows',
-        pkutools: 1,
-        pkumanager: 3,
-        pherechner: 3
-      },
-      {
-        icon: mdiMonitor,
-        en: 'macOS',
-        de: 'macOS',
-        pkutools: 1,
-        pkumanager: 3,
-        pherechner: 3
+        pkumanager: 2,
+        pherechner: 2
       },
       {
         icon: mdiCloudOffOutline,
-        en: 'Offline capable',
-        de: 'Offlinefähig',
+        en: 'Basic features offline capable',
+        de: 'Grundfunktionen offlinefähig',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 2
       },
       {
         icon: mdiSync,
-        en: 'Sync',
-        de: 'Sync',
+        en: 'Realtime synchronization',
+        de: 'Synchronisierung in Echtzeit',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 3
       },
       {
         icon: mdiExport,
-        en: 'Export',
-        de: 'Export',
+        en: 'Data Export',
+        de: 'Datenexport',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3
       },
       {
         icon: mdiTranslate,
-        en: 'English',
-        de: 'Englisch',
+        en: 'Multilingual',
+        de: 'Mehrsprachig',
         pkutools: 1,
-        pkumanager: 1,
+        pkumanager: 2,
         pherechner: 3
       },
       {
-        icon: mdiTranslate,
-        en: 'German',
-        de: 'Deutsch',
-        pkutools: 1,
-        pkumanager: 2,
-        pherechner: 1
-      },
-      {
         icon: mdiBrightness4,
-        en: 'Dark Design',
-        de: 'Dunkles Design',
+        en: 'Light/Dark Design',
+        de: 'Helles/Dunkles Design',
         pkutools: 1,
         pkumanager: 3,
         pherechner: 3

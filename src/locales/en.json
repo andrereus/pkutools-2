@@ -47,7 +47,7 @@
   "phe-search": {
     "title": "Phe Search",
     "description": "Search for phe values.",
-    "search": "Phe Search",
+    "search": "Search for food",
     "weight": "Weight (in g)",
     "advanced": "Search all foods",
     "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar."
