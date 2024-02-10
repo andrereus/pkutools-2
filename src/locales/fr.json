@@ -94,7 +94,6 @@
     "title": "Journal de Phe",
     "description": "Enregistrez les valeurs de Phe tout au long de la journée.",
     "lock-values": "Mode de calcul",
-    "lock-info": "Le poids et le Phe sont modifiés en parallèle",
     "max": "Tolérance de Phe par jour",
     "save-diary": "Enregistrer dans le Journal de Phe et réinitialiser le Journal de Phe",
     "weight": "Poids (en g)",
@@ -102,10 +101,10 @@
     "remaining": "Restant",
     "save-day": "Terminer le journal",
     "own-food": "Aliments personnels",
-    "quick-note": "Entrée",
-    "optional-fields": "Tous les champs sont facultatifs.",
+    "quick-note": "Nouveau",
+    "lock-info": "Mode édition/calcul",
     "preview": "Aperçu du Journal de Phe",
-    "last-added": "Ajouter à nouveau"
+    "last-added": "De l'histoire"
   },
   "phe-diary": {
     "title": "Journal de Phe",

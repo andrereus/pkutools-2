@@ -82,7 +82,6 @@
           </v-card-title>
 
           <v-card-text>
-            <p v-if="editedIndex === -1" class="mb-4">{{ $t('phe-log.optional-fields') }}</p>
             <v-text-field label="Name" v-model="editedItem.name">
               <template v-slot:append>
                 <v-menu>
@@ -120,7 +119,6 @@
               </template>
             </v-text-field>
 
-            <!-- TODO: Optional: Add info for lock: Editing mode and calculating mode -->
             <v-text-field
               :label="$t('phe-log.weight')"
               :model-value="editedItem.weight"
@@ -138,6 +136,10 @@
               :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
               @click:append="lockValues"
             ></v-text-field>
+
+            <p class="mb-6">
+              <v-icon size="small">{{ mdiLock }}</v-icon> = {{ $t('phe-log.lock-info') }}
+            </p>
           </v-card-text>
 
           <v-card-actions class="mt-n6">

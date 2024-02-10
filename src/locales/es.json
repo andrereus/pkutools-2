@@ -94,7 +94,6 @@
     "title": "Registro de Phe",
     "description": "Registrar valores de Phe a lo largo del día.",
     "lock-values": "Modo de cálculo",
-    "lock-info": "El peso y Phe se cambian en paralelo",
     "max": "Tolerancia de Phe por día",
     "save-diary": "Guardar en el diario de Phe y reiniciar el registro de Phe",
     "weight": "Peso (en g)",
@@ -102,10 +101,10 @@
     "remaining": "Restante",
     "save-day": "Terminar registro",
     "own-food": "Alimento propio",
-    "quick-note": "Entrada",
-    "optional-fields": "Todos los campos son opcionales.",
+    "quick-note": "Nuevo",
+    "lock-info": "Modo Edición/Cálculo",
     "preview": "Vista previa del registro de Phe",
-    "last-added": "Añadir de nuevo"
+    "last-added": "De la historia"
   },
   "phe-diary": {
     "title": "Diario de Phe",

@@ -94,7 +94,6 @@
     "title": "Phe Protokoll",
     "description": "Protokolliere Phe-Werte über den Tag.",
     "lock-values": "Berechnungsmodus",
-    "lock-info": "Gewicht und Phe werden parallel geändert",
     "max": "Phe-Toleranz pro Tag",
     "save-diary": "In Phe Tagebuch speichern und Phe Protokoll zurücksetzen",
     "weight": "Gewicht (in g)",
@@ -102,10 +101,10 @@
     "remaining": "Übrig",
     "save-day": "Protokoll abschließen",
     "own-food": "Eigene LM.",
-    "quick-note": "Eintrag",
-    "optional-fields": "Alle Felder sind optional.",
+    "quick-note": "Neu",
+    "lock-info": "Editier-/Rechenmodus",
     "preview": "Vorschau Phe Protokoll",
-    "last-added": "Erneut hinzufügen"
+    "last-added": "Von Verlauf"
   },
   "phe-diary": {
     "title": "Phe Tagebuch",

@@ -94,7 +94,6 @@
     "title": "Phe Log",
     "description": "Log phe values throughout the day.",
     "lock-values": "Calculation Mode",
-    "lock-info": "Weight and Phe are changed in parallel",
     "max": "Phe tolerance per day",
     "save-diary": "Save in Phe Diary and reset Phe Log",
     "weight": "Weight (in g)",
@@ -102,10 +101,10 @@
     "remaining": "Remaining",
     "save-day": "Finish log",
     "own-food": "Own food",
-    "quick-note": "Entry",
-    "optional-fields": "All fields are optional.",
+    "quick-note": "New",
+    "lock-info": "Edit/Calculation mode",
     "preview": "Preview Phe Log",
-    "last-added": "Add again"
+    "last-added": "From history"
   },
   "phe-diary": {
     "title": "Phe Diary",
