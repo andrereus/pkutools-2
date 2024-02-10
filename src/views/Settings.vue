@@ -38,12 +38,9 @@
             type="number"
           ></v-text-field>
 
-          <v-switch
-            v-model="useThemeFromDevice"
-            inset
-            :label="$t('settings.device-theme')"
-            class="mt-n1 mb-2 ml-1"
-          ></v-switch>
+          <v-switch v-model="useThemeFromDevice" :label="$t('settings.device-theme')"></v-switch>
+
+          <p class="mt-n4 mb-5">{{ $t('settings.device-theme-info') }}</p>
 
           <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="save">{{
             $t('common.save')

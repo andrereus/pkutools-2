@@ -148,7 +148,8 @@
     "reset-own-food": "Réinitialiser les aliments personnels",
     "reset-am": "Réinitialiser le compteur d'acides aminés",
     "delete-account": "Supprimer le compte",
-    "device-theme": "Adapter automatiquement le design à l'appareil"
+    "device-theme": "Adapter automatiquement le design à l'appareil",
+    "device-theme-info": "Les paramètres sont pris en compte lors de l'enregistrement. Pour une adaptation manuelle du design, voir le menu Account."
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",
