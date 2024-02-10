@@ -71,7 +71,7 @@
             <v-list-item v-if="userIsAuthenticated" to="/settings">
               <span>
                 <v-icon>{{ mdiAccount }}</v-icon>
-                {{ user.name }}
+                {{ user.name || user.email }}
               </span>
             </v-list-item>
 
