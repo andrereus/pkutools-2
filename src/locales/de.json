@@ -18,8 +18,7 @@
     "tools": "Tools",
     "logs": "Protokolle",
     "help": "Hilfe",
-    "install": "App installieren",
-    "feedback": "Feedback"
+    "install": "App installieren"
   },
   "common": {
     "add": "Hinzufügen",

@@ -98,16 +98,6 @@
               </span>
             </v-list-item>
 
-            <v-list-item
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfct-_DFHBZMe7morO3sKalidwx3Y_rPtn1xaQtPLIa_roBdg/viewform?usp=sf_link"
-              target="_blank"
-            >
-              <span>
-                <v-icon>{{ mdiCommentQuoteOutline }}</v-icon>
-                {{ $t('app.feedback') }}
-              </span>
-            </v-list-item>
-
             <v-list-item @click="updateDesign">
               <span>
                 <v-icon v-if="!$vuetify.theme.current.dark">{{ mdiBrightness4 }}</v-icon>
@@ -211,15 +201,6 @@
             {{ $t('app.help') }}
           </v-list-item>
 
-          <v-list-item
-            rounded="xl"
-            density="compact"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfct-_DFHBZMe7morO3sKalidwx3Y_rPtn1xaQtPLIa_roBdg/viewform?usp=sf_link"
-            target="_blank"
-          >
-            {{ $t('app.feedback') }}
-          </v-list-item>
-
           <v-list-item rounded="xl" density="compact" to="/about">
             {{ $t('about.title') }}
           </v-list-item>
@@ -300,7 +281,6 @@ import {
   mdiChartBox,
   mdiHomeSearch,
   mdiBarcodeScan,
-  mdiCommentQuoteOutline,
   mdiEmail,
   mdiDownload,
   mdiClipboardTextOutline,
@@ -335,7 +315,6 @@ export default {
     mdiChartBox,
     mdiHomeSearch,
     mdiBarcodeScan,
-    mdiCommentQuoteOutline,
     mdiEmail,
     mdiDownload,
     mdiClipboardTextOutline,

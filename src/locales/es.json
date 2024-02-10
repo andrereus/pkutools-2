@@ -18,8 +18,7 @@
     "tools": "Herramientas",
     "logs": "Registros",
     "help": "Ayuda",
-    "install": "Instalar aplicación",
-    "feedback": "Comentarios"
+    "install": "Instalar aplicación"
   },
   "common": {
     "add": "Agregar",

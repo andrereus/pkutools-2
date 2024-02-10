@@ -18,8 +18,7 @@
     "tools": "Outils",
     "logs": "Journaux",
     "help": "Aide",
-    "install": "Installer l'application",
-    "feedback": "Retour d'information"
+    "install": "Installer l'application"
   },
   "common": {
     "add": "Ajouter",
