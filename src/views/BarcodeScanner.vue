@@ -11,7 +11,6 @@
         <router-link to="/protein-calculator" class="head-link mt-n1 mb-6">
           {{ $t('phe-calculator.protein-link') }}
         </router-link>
-        <p class="mb-6">{{ $t('barcode-scanner.description') }}</p>
 
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ props }">
