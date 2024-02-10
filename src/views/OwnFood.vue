@@ -233,12 +233,6 @@ import foodIcons from '../components/data/food-icons.json'
 import { mdiGoogle, mdiFacebook, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('own-food.title'),
-      meta: [{ name: 'description', content: this.$t('own-food.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

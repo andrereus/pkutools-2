@@ -70,12 +70,6 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('phe-calculator.title'),
-      meta: [{ name: 'description', content: this.$t('phe-calculator.description') }]
-    }
-  },
   data: () => ({
     dialog: false,
     phe: null,

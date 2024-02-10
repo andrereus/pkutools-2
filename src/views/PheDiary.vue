@@ -224,12 +224,6 @@ export default {
   components: {
     apexchart: VueApexCharts
   },
-  metaInfo() {
-    return {
-      title: this.$t('phe-diary.title'),
-      meta: [{ name: 'description', content: this.$t('phe-diary.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

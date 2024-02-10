@@ -16,12 +16,6 @@
 
 <script>
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('privacy-policy.title'),
-      meta: [{ name: 'description', content: this.$t('privacy-policy.description') }]
-    }
-  },
   mounted() {
     let s = document.createElement('script'),
       tag = document.getElementsByTagName('script')[0]

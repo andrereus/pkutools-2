@@ -128,12 +128,6 @@ export default {
   components: {
     apexchart: VueApexCharts
   },
-  metaInfo() {
-    return {
-      title: this.$t('statistics.title'),
-      meta: [{ name: 'description', content: this.$t('app.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

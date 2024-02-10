@@ -194,12 +194,6 @@
 
 <script>
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('disclaimer.title'),
-      meta: [{ name: 'description', content: this.$t('disclaimer.description') }]
-    }
-  },
   data: () => ({
     part1: 'mail',
     part2: 'pkutools',

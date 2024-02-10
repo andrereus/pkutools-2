@@ -135,12 +135,6 @@
 import { mdiPlayCircleOutline, mdiPlay, mdiAt, mdiDownload } from '@mdi/js'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('help.title'),
-      meta: [{ name: 'description', content: this.$t('help.description') }]
-    }
-  },
   data: () => ({
     mdiPlayCircleOutline,
     mdiPlay,

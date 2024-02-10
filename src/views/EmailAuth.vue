@@ -142,12 +142,6 @@ import { useStore } from '../stores/index'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('email-auth.title'),
-      meta: [{ name: 'description', content: this.$t('email-auth.description') }]
-    }
-  },
   data: () => ({
     mdiEye,
     mdiEyeOff,

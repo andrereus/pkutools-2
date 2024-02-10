@@ -76,12 +76,6 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('protein-calculator.title'),
-      meta: [{ name: 'description', content: this.$t('protein-calculator.description') }]
-    }
-  },
   data: () => ({
     dialog: false,
     protein: null,

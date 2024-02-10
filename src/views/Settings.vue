@@ -127,12 +127,6 @@ import { useTheme } from 'vuetify'
 import { mdiGoogle, mdiFacebook, mdiEmail } from '@mdi/js'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('settings.title'),
-      meta: [{ name: 'description', content: this.$t('settings.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

@@ -109,12 +109,6 @@ import { enUS, de, fr, es } from 'date-fns/locale'
 import { mdiGoogle, mdiFacebook, mdiCupWater, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 export default {
-  metaInfo() {
-    return {
-      title: this.$t('amino-counter.title'),
-      meta: [{ name: 'description', content: this.$t('amino-counter.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

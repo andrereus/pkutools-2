@@ -111,12 +111,6 @@ export default {
   components: {
     StreamBarcodeReader
   },
-  metaInfo() {
-    return {
-      title: this.$t('barcode-scanner.title'),
-      meta: [{ name: 'description', content: this.$t('app.description') }]
-    }
-  },
   data: () => ({
     mdiInformationVariant,
     dialog: false,

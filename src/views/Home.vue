@@ -261,13 +261,6 @@ export default {
     FeatureComparison,
     PheLog
   },
-  metaInfo() {
-    return {
-      title: this.$t('app.title'),
-      titleTemplate: null,
-      meta: [{ name: 'description', content: this.$t('app.description') }]
-    }
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,

@@ -311,10 +311,6 @@ export default {
   components: {
     ReloadPrompt
   },
-  metaInfo: {
-    title: 'PKU Tools',
-    titleTemplate: 'PKU Tools | %s'
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,
