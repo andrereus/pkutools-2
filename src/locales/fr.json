@@ -148,7 +148,7 @@
     "reset-am": "Réinitialiser le compteur d'acides aminés",
     "delete-account": "Supprimer le compte",
     "device-theme": "Adapter automatiquement le design à l'appareil",
-    "device-theme-info": "Les paramètres sont pris en compte lors de l'enregistrement. Pour une adaptation manuelle du design, voir le menu Account."
+    "device-theme-info": "Les réglages ne sont appliqués que lors de l'enregistrement. Pour l'adaptation manuelle du design, voir le menu Account."
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",

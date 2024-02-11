@@ -148,7 +148,7 @@
     "reset-am": "Reset Amino Zähler",
     "delete-account": "Account löschen",
     "device-theme": "Design automatisch an das Gerät anpassen",
-    "device-theme-info": "Einstellungen werden beim Speichern übernommen. Manuelle Design Anpassung siehe Account Menü."
+    "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü."
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

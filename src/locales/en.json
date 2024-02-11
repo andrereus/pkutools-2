@@ -148,7 +148,7 @@
     "reset-am": "Reset Amino Counter",
     "delete-account": "Delete account",
     "device-theme": "Automatically adapt the design to the device",
-    "device-theme-info": "Settings are applied when saving. Manual design customization see Account menu."
+    "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu."
   },
   "email-auth": {
     "title": "Sign in with Email",

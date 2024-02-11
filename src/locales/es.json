@@ -148,7 +148,7 @@
     "reset-am": "Restablecer contador de aminoácidos",
     "delete-account": "Eliminar cuenta",
     "device-theme": "Adaptar automáticamente el diseño al dispositivo",
-    "device-theme-info": "Los ajustes se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta."
+    "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta."
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
