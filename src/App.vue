@@ -30,9 +30,7 @@
             <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
               <v-avatar size="32">
                 <v-icon v-if="!userIsAuthenticated">{{ mdiAccountCircle }}</v-icon>
-                <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{
-                  mdiAccountCircleOutline
-                }}</v-icon>
+                <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{ mdiAccount }}</v-icon>
                 <img
                   v-if="userIsAuthenticated && userPhotoUrl"
                   :src="userPhotoUrl"
@@ -251,7 +249,6 @@ import {
   mdiCog,
   mdiInformation,
   mdiAccountCircle,
-  mdiAccountCircleOutline,
   mdiAccount,
   mdiLogoutVariant,
   mdiHelpCircleOutline,
@@ -285,7 +282,6 @@ export default {
     mdiCog,
     mdiInformation,
     mdiAccountCircle,
-    mdiAccountCircleOutline,
     mdiAccount,
     mdiLogoutVariant,
     mdiHelpCircleOutline,
