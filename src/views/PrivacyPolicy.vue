@@ -6,6 +6,7 @@
           href="https://www.iubenda.com/privacy-policy/19763599"
           class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed"
           :title="$t('privacy-policy.title')"
+          target="_blank"
         >
           {{ $t('privacy-policy.title') }} <v-icon size="small">{{ mdiOpenInNew }}</v-icon>
         </a>
