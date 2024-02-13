@@ -40,8 +40,7 @@
     "mobile-video": "Video (móvil)",
     "compare": "Comparar características",
     "own-food": "Alimentos propios",
-    "own-food-long": "Alimentos propios",
-    "support-me": "Apoya el desarrollo de Herramientas PKU:"
+    "own-food-long": "Alimentos propios"
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
@@ -87,7 +86,8 @@
     "date": "Fecha",
     "chart": "No hay suficientes entradas para el gráfico.",
     "limit": "Alimento propio está limitado a 500 entradas.",
-    "note": "Limitado a 500 entradas."
+    "note": "Limitado a 500 entradas.",
+    "search-info": "La comida propia también está disponible en la búsqueda de la página de inicio."
   },
   "phe-log": {
     "title": "Registro de Phe",
@@ -103,7 +103,7 @@
     "quick-note": "Nuevo",
     "lock-info": "Modo Edición/Cálculo",
     "preview": "Vista previa del registro de Phe",
-    "last-added": "De la historia"
+    "last-added": "Del Diario de Phe"
   },
   "phe-diary": {
     "title": "Diario de Phe",
@@ -122,30 +122,15 @@
     "note": "Limitado a 100 entradas (~3 meses). Restablece a través de la configuración.",
     "chart-info": "El diagrama se muestra después de la segunda entrada."
   },
-  "statistics": {
-    "title": "Estadísticas"
-  },
-  "amino-counter": {
-    "title": "Contador de aminoácidos",
-    "description": "Contar porciones de la mezcla de aminoácidos.",
-    "progress": "porción(es) hoy",
-    "take": "Agregar porción",
-    "amount": "Porciones por día",
-    "serving": "1 porción",
-    "limit": "El contador de aminoácidos está limitado a 100 entradas. Restablece el historial.",
-    "note": "Limitado a 100 entradas."
-  },
   "settings": {
     "title": "Configuración",
     "description": "Configuración de la aplicación / cuenta",
-    "max-amino": "Porciones de aminoácidos por día",
     "max-phe": "Tolerancia de Phe por día",
     "saved": "Guardado",
     "reset-heading": "Restablecer",
     "reset-log": "Restablecer página de inicio",
     "reset-diary": "Restablecer el diario de Phe",
     "reset-own-food": "Restablecer alimentos propios",
-    "reset-am": "Restablecer contador de aminoácidos",
     "delete-account": "Eliminar cuenta",
     "device-theme": "Adaptar automáticamente el diseño al dispositivo",
     "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta."
@@ -180,24 +165,7 @@
     "install-p2": "Android:",
     "install-p2-2": "o en Chrome",
     "install-p3": "En Safari, toca el botón de compartir y luego \"Añadir a la pantalla de inicio\".",
-    "install-p4": "Haz clic en el pequeño icono de instalación en la barra de direcciones en Chrome, Brave o Edge.",
-    "sign-in": "¿Cómo iniciar sesión?",
-    "sign-in-p1": "Puede iniciar sesión (arriba a la derecha a través del menú) con Google, Facebook o correo electrónico.",
-    "sign-in-p2": "Otras opciones de inicio de sesión no están planeadas en este momento.",
-    "support": "¿Cómo apoyar?",
-    "support-p1": "Ofrezco Herramientas PKU de forma gratuita. Con el siguiente enlace puedes apoyarme :)",
-    "support-p2": "Por cierto, la aplicación es de código abierto. Si quieres contribuir, contáctame.",
-    "roadmap": "¿Qué hay de nuevo?",
-    "roadmap-p1": "La aplicación se está optimizando constantemente. En este momento, solo se comunican ocasionalmente actualizaciones importantes en un grupo de Facebook. Contáctame para más información.",
-    "translate": "¿Hay otros idiomas?",
-    "translate-p1": "No en este momento, pero puedes ayudar con la traducción a otros idiomas. Contáctame para más información."
-  },
-  "other-apps": {
-    "title": "Otras aplicaciones",
-    "description": "Otras aplicaciones PKU",
-    "phe-rechner": "Aplicación PKU alemana que combina calculadora, bolígrafo, papel y tabla nutricional (~ 2017).",
-    "pku-manager": "Aplicación PKU en inglés para buscar, calcular y realizar seguimiento de alimentos (~ 2018).",
-    "features": "Comparación de características"
+    "install-p4": "Haz clic en el pequeño icono de instalación en la barra de direcciones en Chrome, Brave o Edge."
   },
   "about": {
     "title": "Acerca de",

@@ -35,16 +35,6 @@ const router = createRouter({
       component: () => import('../views/PheDiary.vue')
     },
     {
-      path: '/statistics',
-      name: 'Statistics',
-      component: () => import('../views/Statistics.vue')
-    },
-    {
-      path: '/amino-counter',
-      name: 'Amino Counter',
-      component: () => import('../views/AminoCounter.vue')
-    },
-    {
       path: '/settings',
       name: 'Settings',
       component: () => import('../views/Settings.vue')
@@ -58,11 +48,6 @@ const router = createRouter({
       path: '/help',
       name: 'Help',
       component: () => import('../views/Help.vue')
-    },
-    {
-      path: '/other-apps',
-      name: 'Other Apps',
-      component: () => import('../views/OtherApps.vue')
     },
     {
       path: '/about',

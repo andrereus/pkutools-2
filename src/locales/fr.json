@@ -40,8 +40,7 @@
     "mobile-video": "Vidéo (mobile)",
     "compare": "Comparer les fonctionnalités",
     "own-food": "Aliments personnels",
-    "own-food-long": "Aliments personnels",
-    "support-me": "Soutenez le développement des outils PKU :"
+    "own-food-long": "Aliments personnels"
   },
   "phe-search": {
     "title": "Recherche de Phe",
@@ -87,7 +86,8 @@
     "date": "Date",
     "chart": "Pas assez d'entrées pour le graphique.",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
-    "note": "Limité à 500 entrées."
+    "note": "Limité à 500 entrées.",
+    "search-info": "Les propres aliments sont également disponibles dans la recherche sur la page d'accueil."
   },
   "phe-log": {
     "title": "Journal de Phe",
@@ -103,7 +103,7 @@
     "quick-note": "Nouveau",
     "lock-info": "Mode édition/calcul",
     "preview": "Aperçu du Journal de Phe",
-    "last-added": "De l'histoire"
+    "last-added": "Du Journal de Phe"
   },
   "phe-diary": {
     "title": "Journal de Phe",
@@ -122,30 +122,15 @@
     "note": "Limité à 100 entrées (~3 mois). Réinitialisez via les paramètres.",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée."
   },
-  "statistics": {
-    "title": "Statistiques"
-  },
-  "amino-counter": {
-    "title": "Compteur d'acides aminés",
-    "description": "Comptez les portions du mélange d'acides aminés.",
-    "progress": "portion(s) aujourd'hui",
-    "take": "Ajouter une portion",
-    "amount": "Portions par jour",
-    "serving": "1 portion",
-    "limit": "Le compteur d'acides aminés est limité à 100 entrées. Veuillez réinitialiser l'historique.",
-    "note": "Limité à 100 entrées."
-  },
   "settings": {
     "title": "Paramètres",
     "description": "Paramètres de l'application / du compte",
-    "max-amino": "Portions d'acides aminés par jour",
     "max-phe": "Tolérance de Phe par jour",
     "saved": "Enregistré",
     "reset-heading": "Réinitialiser",
     "reset-log": "Reset page d'accueil",
     "reset-diary": "Réinitialiser le Journal de Phe",
     "reset-own-food": "Réinitialiser les aliments personnels",
-    "reset-am": "Réinitialiser le compteur d'acides aminés",
     "delete-account": "Supprimer le compte",
     "device-theme": "Adapter automatiquement le design à l'appareil",
     "device-theme-info": "Les réglages ne sont appliqués que lors de l'enregistrement. Pour l'adaptation manuelle du design, voir le menu Account."
@@ -180,24 +165,7 @@
     "install-p2": "Android :",
     "install-p2-2": "ou dans Chrome",
     "install-p3": "Dans Safari, appuyez sur le bouton de partage, puis sur \"Ajouter à l'écran d'accueil\".",
-    "install-p4": "Cliquez sur la petite icône d'installation dans la barre d'adresse de Chrome, Brave ou Edge.",
-    "sign-in": "Comment se connecter ?",
-    "sign-in-p1": "On peut s'inscrire (en haut à droite via le menu) avec Google, Facebook ou par e-mail.",
-    "sign-in-p2": "D'autres options de connexion ne sont pas prévues pour le moment.",
-    "support": "Comment apporter son soutien ?",
-    "support-p1": "Je fournis PKU Tools gratuitement. Avec le lien ci-dessous, vous pouvez me soutenir :)",
-    "support-p2": "Au fait, l'application est Open Source. Si vous souhaitez contribuer, contactez-moi.",
-    "roadmap": "Quoi de neuf ?",
-    "roadmap-p1": "L'application est constamment optimisée. Pour le moment, seules les mises à jour majeures sont parfois communiquées dans un groupe Facebook. Contactez-moi pour plus d'informations.",
-    "translate": "Y a-t-il d'autres langues ?",
-    "translate-p1": "Pas pour le moment, mais vous pouvez aider à la traduction dans d'autres langues. Contactez-moi pour plus d'informations."
-  },
-  "other-apps": {
-    "title": "Autres applications",
-    "description": "Autres applications PKU",
-    "phe-rechner": "Application PKU allemande qui combine calculatrice, stylo, papier et tableau nutritionnel (~ 2017).",
-    "pku-manager": "Application PKU anglaise pour rechercher, calculer et suivre les aliments (~ 2018).",
-    "features": "Comparaison des fonctionnalités"
+    "install-p4": "Cliquez sur la petite icône d'installation dans la barre d'adresse de Chrome, Brave ou Edge."
   },
   "about": {
     "title": "À propos",

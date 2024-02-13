@@ -13,10 +13,6 @@
       </v-app-bar-title>
 
       <template v-slot:append>
-        <v-btn icon @click="openSleek">
-          <v-icon>{{ mdiBullhornOutline }}</v-icon>
-        </v-btn>
-
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
@@ -91,13 +87,6 @@
               </span>
             </v-list-item>
 
-            <v-list-item to="/help">
-              <span>
-                <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
-                {{ $t('app.help') }}
-              </span>
-            </v-list-item>
-
             <v-list-item @click="updateDesign">
               <span>
                 <v-icon v-if="!$vuetify.theme.current.dark">{{ mdiBrightness4 }}</v-icon>
@@ -114,7 +103,7 @@
 
     <v-navigation-drawer v-model="drawer" floating>
       <v-list>
-        <v-list-item rounded="xl" to="/">
+        <v-list-item rounded="lg" to="/">
           <template v-slot:prepend>
             <v-icon>{{ mdiHomeSearch }}</v-icon>
           </template>
@@ -122,9 +111,7 @@
           <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-subheader>{{ $t('app.tools') }}</v-list-subheader>
-
-        <v-list-item rounded="xl" to="/phe-calculator">
+        <v-list-item rounded="lg" to="/phe-calculator">
           <template v-slot:prepend>
             <v-icon>{{ mdiCalculator }}</v-icon>
           </template>
@@ -132,7 +119,7 @@
           <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="xl" to="/protein-calculator">
+        <v-list-item rounded="lg" to="/protein-calculator">
           <template v-slot:prepend>
             <v-icon>{{ mdiCalculatorVariant }}</v-icon>
           </template>
@@ -140,15 +127,19 @@
           <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="xl" to="/barcode-scanner">
+        <v-list-item rounded="lg" to="/barcode-scanner">
           <template v-slot:prepend>
             <v-icon>{{ mdiBarcodeScan }}</v-icon>
           </template>
 
           <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
         </v-list-item>
+      </v-list>
 
-        <v-list-item rounded="xl" to="/own-food">
+      <v-divider></v-divider>
+
+      <v-list>
+        <v-list-item rounded="lg" to="/own-food">
           <template v-slot:prepend>
             <v-icon>{{ mdiFoodApple }}</v-icon>
           </template>
@@ -156,9 +147,7 @@
           <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-subheader>{{ $t('app.logs') }}</v-list-subheader>
-
-        <v-list-item rounded="xl" to="/phe-diary">
+        <v-list-item rounded="lg" to="/phe-diary">
           <template v-slot:prepend>
             <v-icon>{{ mdiBook }}</v-icon>
           </template>
@@ -166,57 +155,49 @@
           <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="xl" density="compact" to="/amino-counter">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiCupWater }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('amino-counter.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="xl" to="/statistics">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiChartBox }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('statistics.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="xl" to="/settings">
+        <v-list-item rounded="lg" to="/settings">
           <template v-slot:prepend>
             <v-icon>{{ mdiCog }}</v-icon>
           </template>
 
           <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
         </v-list-item>
+      </v-list>
 
-        <v-list-group>
-          <template v-slot:activator="{ props }">
-            <v-list-item rounded="xl" v-bind="props" :prepend-icon="mdiInformation">{{
-              $t('app.more')
-            }}</v-list-item>
+      <v-divider></v-divider>
+
+      <v-list>
+        <v-list-item rounded="lg" to="/help">
+          <template v-slot:prepend>
+            <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
           </template>
 
-          <v-list-item rounded="xl" density="compact" to="/help">
-            {{ $t('app.help') }}
-          </v-list-item>
+          <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item rounded="xl" density="compact" to="/about">
-            {{ $t('about.title') }}
-          </v-list-item>
+        <v-list-item rounded="lg" to="/about">
+          <template v-slot:prepend>
+            <v-icon>{{ mdiInformationVariant }}</v-icon>
+          </template>
 
-          <v-list-item rounded="xl" density="compact" to="/disclaimer">
-            {{ $t('disclaimer.title') }}
-          </v-list-item>
+          <v-list-item-title>{{ $t('about.title') }}</v-list-item-title>
+        </v-list-item>
 
-          <v-list-item rounded="xl" density="compact" to="/privacy-policy">
-            {{ $t('privacy-policy.title') }}
-          </v-list-item>
+        <v-list-item rounded="lg" to="/disclaimer">
+          <template v-slot:prepend>
+            <v-icon>{{ mdiInformationVariant }}</v-icon>
+          </template>
 
-          <v-list-item rounded="xl" density="compact" to="/other-apps" class="mb-10">
-            {{ $t('other-apps.title') }}
-          </v-list-item>
-        </v-list-group>
+          <v-list-item-title>{{ $t('disclaimer.title') }}</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item rounded="lg" to="/privacy-policy">
+          <template v-slot:prepend>
+            <v-icon>{{ mdiInformationVariant }}</v-icon>
+          </template>
+
+          <v-list-item-title>{{ $t('privacy-policy.title') }}</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -284,7 +265,7 @@ import {
   mdiEmail,
   mdiDownload,
   mdiClipboardTextOutline,
-  mdiBullhornOutline
+  mdiInformationVariant
 } from '@mdi/js'
 
 export default {
@@ -318,7 +299,7 @@ export default {
     mdiEmail,
     mdiDownload,
     mdiClipboardTextOutline,
-    mdiBullhornOutline,
+    mdiInformationVariant,
     drawer: null,
     lang: [
       { name: 'Deutsch', abbr: 'de' },
@@ -402,9 +383,6 @@ export default {
     },
     updateDesign() {
       this.toggleTheme()
-    },
-    openSleek() {
-      window.$sleek.open()
     }
   },
   beforeCreate() {
@@ -533,5 +511,9 @@ export default {
 
 .account-menu {
   min-width: 200px;
+}
+
+.v-theme--light .v-navigation-drawer .v-divider {
+  opacity: 1;
 }
 </style>

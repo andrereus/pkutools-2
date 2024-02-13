@@ -40,8 +40,7 @@
     "mobile-video": "Video (Mobile)",
     "compare": "Funktionen vergleichen",
     "own-food": "Eigene LM.",
-    "own-food-long": "Eigene Lebensmittel",
-    "support-me": "Unterstütze die Entwicklung von PKU Tools:"
+    "own-food-long": "Eigene Lebensmittel"
   },
   "phe-search": {
     "title": "Phe Suche",
@@ -87,7 +86,8 @@
     "date": "Datum",
     "chart": "Noch nicht genug Einträge für das Diagramm.",
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
-    "note": "Limitiert auf 500 Einträge."
+    "note": "Limitiert auf 500 Einträge.",
+    "search-info": "Eigene Lebensmittel sind auch in der Suche auf der Startseite verfügbar."
   },
   "phe-log": {
     "title": "Phe Protokoll",
@@ -103,7 +103,7 @@
     "quick-note": "Neu",
     "lock-info": "Editier-/Rechenmodus",
     "preview": "Vorschau Phe Protokoll",
-    "last-added": "Von Verlauf"
+    "last-added": "Von Phe Tagebuch"
   },
   "phe-diary": {
     "title": "Phe Tagebuch",
@@ -122,30 +122,15 @@
     "note": "Limitiert auf 100 Einträge (~3 Monate). Reset über Einstellungen.",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt."
   },
-  "statistics": {
-    "title": "Statistiken"
-  },
-  "amino-counter": {
-    "title": "Amino Zähler",
-    "description": "Zähle Portionen der Aminosäurenmischung.",
-    "progress": "Portion(en) heute",
-    "take": "Portion hinzufügen",
-    "amount": "Portionen pro Tag",
-    "serving": "1 Portion",
-    "limit": "Der Amino Zähler ist limitert auf 100 Einträge. Bitte resette den Verlauf.",
-    "note": "Limitiert auf 100 Einträge."
-  },
   "settings": {
     "title": "Einstellungen",
     "description": "App / Account Einstellungen",
-    "max-amino": "Amino-Portionen pro Tag",
     "max-phe": "Phe-Toleranz pro Tag",
     "saved": "Gespeichert",
     "reset-heading": "Reset",
     "reset-log": "Reset Startseite",
     "reset-diary": "Reset Phe Tagebuch",
     "reset-own-food": "Reset Eigene Lebensmittel",
-    "reset-am": "Reset Amino Zähler",
     "delete-account": "Account löschen",
     "device-theme": "Design automatisch an das Gerät anpassen",
     "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü."
@@ -180,24 +165,7 @@
     "install-p2": "Android:",
     "install-p2-2": "oder in Chrome",
     "install-p3": "Tippe in Safari auf den Teilen-Button und dann \"Zum Home-Bildschirm\".",
-    "install-p4": "Klicke das kleine Installations-Icon in der Adressleiste in Chrome, Brave oder Edge.",
-    "sign-in": "Wie kann man sich anmelden?",
-    "sign-in-p1": "Man kann sich (oben rechts über das Menü) mit Google, Facebook oder E-Mail anmelden.",
-    "sign-in-p2": "Andere Anmeldemöglichkeiten sind im Moment nicht geplant.",
-    "support": "Wie kann man unterstützen?",
-    "support-p1": "Ich stelle PKU Tools kostenlos zur Verfügung. Mit dem untenstehenden Link kannst du mich unterstützen :)",
-    "support-p2": "Übrigens ist die App Open Source. Wenn du dazu beitragen willst, kontaktiere mich.",
-    "roadmap": "Was ist neu?",
-    "roadmap-p1": "Die App wird ständig optimiert. Im Moment werden nur größere Updates gelegentlich in einer Facebook Gruppe kommuniziert. Kontaktiere mich für mehr Infos.",
-    "translate": "Gibt es auch andere Sprachen?",
-    "translate-p1": "Im Moment nicht, aber du kannst bei der Übersetzung in andere Sprachen helfen. Kontaktiere mich für mehr Infos."
-  },
-  "other-apps": {
-    "title": "Andere Apps",
-    "description": "Andere PKU Apps",
-    "phe-rechner": "Deutsche PKU App die Taschenrechner, Bleistift, Papier und Nährwerttabelle kombiniert (~ 2017).",
-    "pku-manager": "Englische PKU App zum Suchen, Berechnen und Tracken von Lebensmitteln (~ 2018).",
-    "features": "Funktionsvergleich"
+    "install-p4": "Klicke das kleine Installations-Icon in der Adressleiste in Chrome, Brave oder Edge."
   },
   "about": {
     "title": "Impressum",

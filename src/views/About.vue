@@ -18,28 +18,8 @@
 
         <!-- prettier-ignore -->
         <p>{{ $t("about.email") }}: {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
-
+        <br />
         <p>{{ $t('about.sources') }}</p>
-
-        <p class="mt-6 mb-8 text--secondary">
-          {{ $t('home.support-me') }}
-          <a href="https://ko-fi.com/andrereus" target="_blank">
-            <img
-              v-if="!$vuetify.theme.dark"
-              src="../assets/kofi.png"
-              alt="Support me"
-              width="200"
-              class="mt-2"
-            />
-            <img
-              v-if="$vuetify.theme.dark"
-              src="../assets/kofi-dark.png"
-              alt="Support me"
-              max-width="200"
-              class="mt-2"
-            />
-          </a>
-        </p>
       </v-col>
     </v-row>
   </div>

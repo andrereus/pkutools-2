@@ -32,12 +32,6 @@
             type="number"
           ></v-text-field>
 
-          <v-text-field
-            :label="$t('settings.max-amino')"
-            v-model.number="settings.maxAmino"
-            type="number"
-          ></v-text-field>
-
           <v-switch v-model="useThemeFromDevice" :label="$t('settings.device-theme')"></v-switch>
 
           <p class="mt-n4 mb-5">{{ $t('settings.device-theme-info') }}</p>
@@ -63,35 +57,12 @@
           <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetDiary">
             {{ $t('settings.reset-diary') }}
           </v-btn>
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetAM">
-            {{ $t('settings.reset-am') }}
-          </v-btn>
 
           <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>
 
           <v-btn variant="outlined" rounded color="error" class="mr-6 mb-5" @click="deleteAccount">
             {{ $t('settings.delete-account') }}
           </v-btn>
-
-          <p class="mt-6 mb-8 text--secondary">
-            {{ $t('home.support-me') }}
-            <a href="https://ko-fi.com/andrereus" target="_blank">
-              <img
-                v-if="!$vuetify.theme.dark"
-                src="../assets/kofi.png"
-                alt="Support me"
-                width="200"
-                class="mt-2"
-              />
-              <img
-                v-if="$vuetify.theme.dark"
-                src="../assets/kofi-dark.png"
-                alt="Support me"
-                max-width="200"
-                class="mt-2"
-              />
-            </a>
-          </p>
 
           <v-snackbar location="bottom" color="teal" v-model="snackbar">
             {{ $t('settings.saved') }}
@@ -186,10 +157,10 @@ export default {
       }
     },
     save() {
+      // TODO: Remove amino counter for every user
       const db = getDatabase()
       update(ref(db, `${this.user.id}/settings`), {
-        maxPhe: this.settings.maxPhe || 0,
-        maxAmino: this.settings.maxAmino || 3
+        maxPhe: this.settings.maxPhe || 0
       }).then(() => {
         this.toggleThemeFromDevice()
         this.snackbar = true
@@ -217,14 +188,6 @@ export default {
         const db = getDatabase()
         remove(ref(db, `${this.user.id}/pheDiary`))
         this.$router.push('phe-diary')
-      }
-    },
-    resetAM() {
-      let r = confirm(this.$t('settings.reset-am') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        remove(ref(db, `${this.user.id}/aminoCounter`))
-        this.$router.push('amino-counter')
       }
     },
     deleteAccount() {

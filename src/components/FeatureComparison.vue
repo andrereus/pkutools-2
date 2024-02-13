@@ -44,8 +44,6 @@ import {
   mdiCalculator,
   mdiFoodApple,
   mdiBook,
-  mdiCupWater,
-  mdiChartBox,
   mdiWeb,
   mdiCloudOffOutline,
   mdiSync,
@@ -108,22 +106,6 @@ export default {
         pkutools: 1,
         pkumanager: 1,
         pherechner: 1
-      },
-      {
-        icon: mdiCupWater,
-        en: 'Amino Counter',
-        de: 'Amino Zähler',
-        pkutools: 1,
-        pkumanager: 3,
-        pherechner: 3
-      },
-      {
-        icon: mdiChartBox,
-        en: 'Statistics',
-        de: 'Statistiken',
-        pkutools: 1,
-        pkumanager: 3,
-        pherechner: 2
       },
       {
         icon: mdiWeb,

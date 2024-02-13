@@ -23,24 +23,11 @@
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
           </v-btn>
-
-          <img
-            src="../assets/en-own-food.png"
-            :alt="$t('own-food.title')"
-            max-width="400"
-            class="mt-10"
-            v-if="$i18n.locale === 'en'"
-          />
-          <img
-            src="../assets/de-own-food.png"
-            :alt="$t('own-food.title')"
-            max-width="400"
-            class="mt-10"
-            v-if="$i18n.locale === 'de'"
-          />
         </div>
 
         <div v-if="userIsAuthenticated">
+          <p class="mb-4">{{ $t('own-food.search-info') }}</p>
+
           <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
             <template v-slot:item="{ item }">
               <tr @click="addItem(item)" class="tr-edit">

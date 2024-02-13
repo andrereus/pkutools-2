@@ -131,15 +131,9 @@
         <PheLog v-if="userIsAuthenticated && advancedFood === null" />
 
         <div v-if="!userIsAuthenticated && advancedFood === null">
-          <img
-            src="../assets/eating-together.svg"
-            alt="Food Illustration"
-            class="mt-6 mb-10 illustration"
-          />
-
           <v-menu v-if="!userIsAuthenticated">
             <template v-slot:activator="{ props }">
-              <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" v-bind="props">
+              <v-btn variant="flat" rounded color="primary" class="mt-8 mr-3 mb-3" v-bind="props">
                 <v-icon start>{{ mdiLoginVariant }}</v-icon>
                 {{ $t('email-auth.signin') }}
               </v-btn>
@@ -166,56 +160,13 @@
             </v-list>
           </v-menu>
 
-          <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mr-3 mb-3">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-8 mr-3 mb-3">
             <v-icon start>{{ mdiDownload }}</v-icon>
             {{ $t('app.install') }}
           </v-btn>
 
-          <v-btn
-            v-if="this.$i18n.locale !== 'de' && $vuetify.display.smAndUp"
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            href="https://youtu.be/lmiejnEFccY"
-            target="_blank"
-            class="mr-3 mb-3"
-          >
-            <v-icon start>{{ mdiPlayCircleOutline }}</v-icon>
-            {{ $t('home.video') }}
-          </v-btn>
-
-          <v-btn
-            v-if="this.$i18n.locale === 'de' && $vuetify.display.smAndUp"
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            href="https://youtu.be/5_-F4tM8_RQ"
-            target="_blank"
-            class="mr-3 mb-3"
-          >
-            <v-icon start>{{ mdiPlayCircleOutline }}</v-icon>
-            {{ $t('home.video') }}
-          </v-btn>
-
-          <v-btn
-            v-if="$vuetify.display.xsOnly"
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            href="https://youtu.be/ITfvSliHwc0"
-            target="_blank"
-            class="mr-3 mb-3"
-          >
-            <v-icon start>{{ mdiPlay }}</v-icon>
-            {{ $t('home.mobile-video') }}
-          </v-btn>
-
           <h2 class="text-h5 mt-6 mb-6">{{ $t('home.features') }}</h2>
           <FeatureComparison home class="mb-8" />
-
-          <v-btn variant="flat" rounded color="btnsecondary" to="/other-apps" class="mr-3 mb-3">
-            {{ $t('home.compare') }}
-          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -401,12 +352,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.illustration {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-}
-
 .tr-edit {
   cursor: pointer;
 }

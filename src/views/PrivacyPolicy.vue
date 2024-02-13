@@ -7,7 +7,7 @@
           class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed"
           :title="$t('privacy-policy.title')"
         >
-          {{ $t('privacy-policy.title') }}
+          {{ $t('privacy-policy.title') }} <v-icon size="small">{{ mdiOpenInNew }}</v-icon>
         </a>
       </v-col>
     </v-row>
@@ -15,7 +15,12 @@
 </template>
 
 <script>
+import { mdiOpenInNew } from '@mdi/js'
+
 export default {
+  data: () => ({
+    mdiOpenInNew
+  }),
   mounted() {
     let s = document.createElement('script'),
       tag = document.getElementsByTagName('script')[0]
