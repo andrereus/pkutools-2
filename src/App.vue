@@ -165,7 +165,7 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item rounded="lg" to="/help">
+        <v-list-item rounded="lg" density="compact" to="/help">
           <template v-slot:prepend>
             <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
           </template>
@@ -173,7 +173,7 @@
           <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="lg" to="/about">
+        <v-list-item rounded="lg" density="compact" to="/about">
           <template v-slot:prepend>
             <v-icon>{{ mdiInformationVariant }}</v-icon>
           </template>
@@ -181,7 +181,7 @@
           <v-list-item-title>{{ $t('about.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="lg" to="/disclaimer">
+        <v-list-item rounded="lg" density="compact" to="/disclaimer">
           <template v-slot:prepend>
             <v-icon>{{ mdiInformationVariant }}</v-icon>
           </template>
@@ -189,7 +189,7 @@
           <v-list-item-title>{{ $t('disclaimer.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="lg" to="/privacy-policy">
+        <v-list-item rounded="lg" density="compact" to="/privacy-policy">
           <template v-slot:prepend>
             <v-icon>{{ mdiInformationVariant }}</v-icon>
           </template>
