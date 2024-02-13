@@ -8,7 +8,7 @@
           :title="$t('privacy-policy.title')"
           target="_blank"
         >
-          {{ $t('privacy-policy.title') }} <v-icon size="small">{{ mdiOpenInNew }}</v-icon>
+          {{ $t('privacy-policy.title') }} <v-icon size="x-small">{{ mdiOpenInNew }}</v-icon>
         </a>
       </v-col>
     </v-row>
