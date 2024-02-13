@@ -133,7 +133,7 @@
         <div v-if="!userIsAuthenticated && advancedFood === null">
           <v-menu v-if="!userIsAuthenticated">
             <template v-slot:activator="{ props }">
-              <v-btn variant="flat" rounded color="primary" class="mt-8 mr-3 mb-3" v-bind="props">
+              <v-btn variant="flat" rounded color="primary" class="mt-8 mr-3 mb-4" v-bind="props">
                 <v-icon start>{{ mdiLoginVariant }}</v-icon>
                 {{ $t('email-auth.signin') }}
               </v-btn>
@@ -160,7 +160,7 @@
             </v-list>
           </v-menu>
 
-          <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-8 mr-3 mb-3">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-8 mr-3 mb-4">
             <v-icon start>{{ mdiDownload }}</v-icon>
             {{ $t('app.install') }}
           </v-btn>
