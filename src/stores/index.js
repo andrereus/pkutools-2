@@ -8,7 +8,8 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  updateProfile
 } from 'firebase/auth'
 import { getDatabase, ref, onValue } from 'firebase/database'
 
@@ -57,7 +58,9 @@ export const useStore = defineStore('main', {
       const auth = getAuth()
       auth.useDeviceLanguage()
       const result = await createUserWithEmailAndPassword(auth, email, password)
-      result.user.updateProfile({ displayName: name })
+      await updateProfile(result.user, {
+        displayName: name
+      })
       this.user = {
         id: result.user.uid,
         name: result.user.displayName,
