@@ -60,6 +60,10 @@
 
           <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>
 
+          <p class="mb-6">
+            {{ $t('settings.delete-account-info') }}
+          </p>
+
           <v-btn variant="outlined" rounded color="error" class="mr-6 mb-5" @click="deleteAccount">
             {{ $t('settings.delete-account') }}
           </v-btn>

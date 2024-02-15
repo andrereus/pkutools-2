@@ -133,7 +133,8 @@
     "reset-own-food": "Restablecer alimentos propios",
     "delete-account": "Eliminar cuenta",
     "device-theme": "Adaptar automáticamente el diseño al dispositivo",
-    "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta."
+    "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta.",
+    "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla."
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",

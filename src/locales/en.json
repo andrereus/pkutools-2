@@ -133,7 +133,8 @@
     "reset-own-food": "Reset Own Food",
     "delete-account": "Delete account",
     "device-theme": "Automatically adapt the design to the device",
-    "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu."
+    "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu.",
+    "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again."
   },
   "email-auth": {
     "title": "Sign in with Email",

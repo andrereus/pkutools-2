@@ -133,7 +133,8 @@
     "reset-own-food": "Reset Eigene Lebensmittel",
     "delete-account": "Account löschen",
     "device-theme": "Design automatisch an das Gerät anpassen",
-    "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü."
+    "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü.",
+    "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden."
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
