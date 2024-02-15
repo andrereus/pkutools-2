@@ -430,7 +430,7 @@ export default {
   padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
-#app {
+.v-application {
   padding-left: env(safe-area-inset-left) !important;
   padding-right: env(safe-area-inset-right) !important;
 }
