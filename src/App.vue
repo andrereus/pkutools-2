@@ -439,7 +439,7 @@ export default {
 .v-bottom-navigation {
   padding-left: env(safe-area-inset-left) !important;
   padding-right: env(safe-area-inset-right) !important;
-  padding-bottom: env(safe-area-inset-bottom, 20px) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
 
   height: auto !important;
 
@@ -507,9 +507,5 @@ export default {
 
 .account-menu {
   min-width: 200px;
-}
-
-.v-theme--light .v-navigation-drawer .v-divider {
-  opacity: 1;
 }
 </style>
