@@ -217,7 +217,8 @@ export default {
             this.$router.push('/')
           })
           .catch((error) => {
-            alert(error)
+            alert(this.$t('app.error'))
+            console.error(error)
           })
       }
     }
