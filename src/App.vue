@@ -439,7 +439,7 @@ export default {
 .v-bottom-navigation {
   padding-left: env(safe-area-inset-left) !important;
   padding-right: env(safe-area-inset-right) !important;
-  bottom: env(safe-area-inset-bottom) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
 
   height: auto !important;
 
