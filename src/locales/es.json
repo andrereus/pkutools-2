@@ -18,7 +18,8 @@
     "tools": "Herramientas",
     "logs": "Registros",
     "help": "Ayuda",
-    "install": "Instalar aplicación"
+    "install": "Instalar aplicación",
+    "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión."
   },
   "common": {
     "add": "Agregar",

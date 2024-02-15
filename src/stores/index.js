@@ -26,33 +26,25 @@ export const useStore = defineStore('main', {
   actions: {
     async signInGoogle() {
       const auth = getAuth()
-      try {
-        const result = await signInWithPopup(auth, new GoogleAuthProvider())
-        this.user = {
-          id: result.user.uid,
-          name: result.user.displayName,
-          email: result.user.email,
-          photoUrl: result.user.photoURL
-        }
-        this.initRef()
-      } catch (error) {
-        console.error(error)
+      const result = await signInWithPopup(auth, new GoogleAuthProvider())
+      this.user = {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        photoUrl: result.user.photoURL
       }
+      this.initRef()
     },
     async signInFacebook() {
       const auth = getAuth()
-      try {
-        const result = await signInWithPopup(auth, new FacebookAuthProvider())
-        this.user = {
-          id: result.user.uid,
-          name: result.user.displayName,
-          email: result.user.email,
-          photoUrl: result.user.photoURL
-        }
-        this.initRef()
-      } catch (error) {
-        console.error(error)
+      const result = await signInWithPopup(auth, new FacebookAuthProvider())
+      this.user = {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        photoUrl: result.user.photoURL
       }
+      this.initRef()
     },
     async registerWithEmail(email, password, name) {
       const auth = getAuth()

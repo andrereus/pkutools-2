@@ -18,7 +18,8 @@
     "tools": "Tools",
     "logs": "Protokolle",
     "help": "Hilfe",
-    "install": "App installieren"
+    "install": "App installieren",
+    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode."
   },
   "common": {
     "add": "Hinzufügen",

@@ -18,7 +18,8 @@
     "tools": "Outils",
     "logs": "Journaux",
     "help": "Aide",
-    "install": "Installer l'application"
+    "install": "Installer l'application",
+    "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion."
   },
   "common": {
     "add": "Ajouter",

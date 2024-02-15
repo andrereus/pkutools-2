@@ -18,7 +18,8 @@
     "tools": "Tools",
     "logs": "Logs",
     "help": "Help",
-    "install": "Install app"
+    "install": "Install app",
+    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method."
   },
   "common": {
     "add": "Add",

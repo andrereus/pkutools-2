@@ -254,18 +254,28 @@ export default {
     offlineInfo: false
   }),
   methods: {
-    signInGoogle() {
+    async signInGoogle() {
       const store = useStore()
       if (navigator.onLine) {
-        store.signInGoogle()
+        try {
+          await store.signInGoogle()
+        } catch (error) {
+          alert(this.$t('app.auth-error'))
+          console.error(error)
+        }
       } else {
         this.offlineInfo = true
       }
     },
-    signInFacebook() {
+    async signInFacebook() {
       const store = useStore()
       if (navigator.onLine) {
-        store.signInFacebook()
+        try {
+          await store.signInFacebook()
+        } catch (error) {
+          alert(this.$t('app.auth-error'))
+          console.error(error)
+        }
       } else {
         this.offlineInfo = true
       }
