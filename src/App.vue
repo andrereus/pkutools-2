@@ -439,6 +439,8 @@ export default {
   padding-left: env(safe-area-inset-left) !important;
   padding-right: env(safe-area-inset-right) !important;
   padding-bottom: env(safe-area-inset-bottom) !important;
+
+  height: auto !important;
 }
 
 .v-theme--dark.v-navigation-drawer {
