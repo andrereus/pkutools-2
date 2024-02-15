@@ -161,7 +161,6 @@ export default {
       }
     },
     save() {
-      // TODO: Remove amino counter for every user
       const db = getDatabase()
       update(ref(db, `${this.user.id}/settings`), {
         maxPhe: this.settings.maxPhe || 0
