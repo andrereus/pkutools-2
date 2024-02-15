@@ -440,6 +440,8 @@ export default {
   padding-right: env(safe-area-inset-right) !important;
   padding-bottom: env(safe-area-inset-bottom) !important;
 
+  height: auto !important;
+
   .v-btn {
     padding: 15px !important;
   }
