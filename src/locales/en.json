@@ -19,8 +19,7 @@
     "logs": "Logs",
     "help": "Help",
     "install": "Install app",
-    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
-    "error": "That didn't work."
+    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method."
   },
   "common": {
     "add": "Add",
@@ -136,7 +135,8 @@
     "delete-account": "Delete account",
     "device-theme": "Automatically adapt the design to the device",
     "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu.",
-    "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again."
+    "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again.",
+    "delete-account-error": "Unfortunately this did not work. Try logging out and back in again."
   },
   "email-auth": {
     "title": "Sign in with Email",

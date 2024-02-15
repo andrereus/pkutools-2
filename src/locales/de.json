@@ -19,8 +19,7 @@
     "logs": "Protokolle",
     "help": "Hilfe",
     "install": "App installieren",
-    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode.",
-    "error": "Das hat leider nicht geklappt."
+    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode."
   },
   "common": {
     "add": "Hinzufügen",
@@ -136,7 +135,8 @@
     "delete-account": "Account löschen",
     "device-theme": "Design automatisch an das Gerät anpassen",
     "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü.",
-    "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden."
+    "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden.",
+    "delete-account-error": "Das hat leider nicht geklappt. Versuche dich einmal ab- und wieder anzumelden."
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

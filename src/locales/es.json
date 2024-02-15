@@ -19,8 +19,7 @@
     "logs": "Registros",
     "help": "Ayuda",
     "install": "Instalar aplicación",
-    "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión.",
-    "error": "Eso no funcionó."
+    "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión."
   },
   "common": {
     "add": "Agregar",
@@ -136,7 +135,8 @@
     "delete-account": "Eliminar cuenta",
     "device-theme": "Adaptar automáticamente el diseño al dispositivo",
     "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta.",
-    "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla."
+    "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla.",
+    "delete-account-error": "Lamentablemente, esto no ha funcionado. Intente cerrar la sesión y volver a iniciarla."
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",

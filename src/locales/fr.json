@@ -19,8 +19,7 @@
     "logs": "Journaux",
     "help": "Aide",
     "install": "Installer l'application",
-    "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
-    "error": "Cela n'a pas fonctionné."
+    "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion."
   },
   "common": {
     "add": "Ajouter",
@@ -136,7 +135,8 @@
     "delete-account": "Supprimer le compte",
     "device-theme": "Adapter automatiquement le design à l'appareil",
     "device-theme-info": "Les réglages ne sont appliqués que lors de l'enregistrement. Pour l'adaptation manuelle du design, voir le menu Account.",
-    "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois."
+    "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois.",
+    "delete-account-error": "Cela n'a malheureusement pas fonctionné. Essaie de te déconnecter et de te reconnecter une fois."
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",

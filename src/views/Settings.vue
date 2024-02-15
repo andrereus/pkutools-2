@@ -217,7 +217,7 @@ export default {
             this.$router.push('/')
           })
           .catch((error) => {
-            alert(this.$t('app.error'))
+            alert(this.$t('settings.delete-account-error'))
             console.error(error)
           })
       }
