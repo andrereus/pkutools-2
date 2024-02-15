@@ -87,7 +87,9 @@
     "chart": "Pas assez d'entrées pour le graphique.",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
     "note": "Limité à 500 entrées.",
-    "search-info": "Les propres aliments sont également disponibles dans la recherche sur la page d'accueil."
+    "search-info": "Les propres aliments sont également disponibles dans la recherche sur la page d'accueil.",
+    "export": "Exporter",
+    "export-filename": "PKU Tools - Aliments personnels"
   },
   "phe-log": {
     "title": "Journal de Phe",
@@ -116,8 +118,6 @@
     "export-food": "Exporter des aliments",
     "export-days": "Días de exportación",
     "log": "Journal",
-    "export-confirm": "Exporter le Journal de Phe en Excel ? Remarque : évitez les dates en double dans le Journal de Phe",
-    "export-overview": "Aperçu",
     "export-filename": "PKU Tools - Journal de Phe",
     "note": "Limité à 100 entrées (~3 mois). Réinitialisez via les paramètres.",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée."

@@ -87,7 +87,9 @@
     "chart": "Noch nicht genug Einträge für das Diagramm.",
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
     "note": "Limitiert auf 500 Einträge.",
-    "search-info": "Eigene Lebensmittel sind auch in der Suche auf der Startseite verfügbar."
+    "search-info": "Eigene Lebensmittel sind auch in der Suche auf der Startseite verfügbar.",
+    "export": "Exportieren",
+    "export-filename": "PKU Tools - Eigene Lebensmittel"
   },
   "phe-log": {
     "title": "Phe Protokoll",
@@ -116,8 +118,6 @@
     "export-food": "Lebensmittel exportieren",
     "export-days": "Tage exportieren",
     "log": "Protokoll",
-    "export-confirm": "Phe Tagebuch in Excel exportieren? Hinweis: Vermeide ein doppeltes Datum im Phe Tagebuch",
-    "export-overview": "Übersicht",
     "export-filename": "PKU Tools - Phe Tagebuch",
     "note": "Limitiert auf 100 Einträge (~3 Monate). Reset über Einstellungen.",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt."

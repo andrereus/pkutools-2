@@ -87,7 +87,9 @@
     "chart": "Not enough entries for the chart.",
     "limit": "Own Food is limited to 500 entries.",
     "note": "Limited to 500 entries.",
-    "search-info": "Own food is also available in the search on the start page."
+    "search-info": "Own food is also available in the search on the start page.",
+    "export": "Export",
+    "export-filename": "PKU Tools - Own Food"
   },
   "phe-log": {
     "title": "Phe Log",
@@ -116,8 +118,6 @@
     "export-food": "Export food",
     "export-days": "Export days",
     "log": "Log",
-    "export-confirm": "Export Phe Diary in Excel? Note: Avoid duplicate dates in the Phe Diary",
-    "export-overview": "Overview",
     "export-filename": "PKU Tools - Phe Diary",
     "note": "Limited to 100 entries (~3 months). Reset via Settings.",
     "chart-info": "The chart gets displayed after the second entry."
