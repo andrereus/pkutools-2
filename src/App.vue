@@ -418,34 +418,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-app {
-  padding-top: env(safe-area-inset-top) !important;
-  padding-right: env(safe-area-inset-right) !important;
-  padding-bottom: env(safe-area-inset-bottom) !important;
+.v-app-bar {
   padding-left: env(safe-area-inset-left) !important;
+  margin-top: env(safe-area-inset-top) !important;
+  padding-right: env(safe-area-inset-right) !important;
 }
 
-// .v-app-bar {
-//   padding-left: env(safe-area-inset-left) !important;
-//   margin-top: env(safe-area-inset-top) !important;
-//   padding-right: env(safe-area-inset-right) !important;
-// }
+.v-navigation-drawer {
+  margin-left: env(safe-area-inset-left) !important;
+  padding-top: env(safe-area-inset-top) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
 
-// .v-navigation-drawer {
-//   padding-left: env(safe-area-inset-left) !important;
-//   padding-top: env(safe-area-inset-top) !important;
-//   padding-bottom: env(safe-area-inset-bottom) !important;
-// }
-
-// .v-main {
-//   padding-left: env(safe-area-inset-left) !important;
-//   padding-right: env(safe-area-inset-right) !important;
-// }
+.v-main {
+  padding-left: env(safe-area-inset-left) !important;
+  padding-right: env(safe-area-inset-right) !important;
+}
 
 .v-bottom-navigation {
-  // padding-left: env(safe-area-inset-left) !important;
-  // padding-right: env(safe-area-inset-right) !important;
-  // padding-bottom: env(safe-area-inset-bottom) !important;
+  padding-left: env(safe-area-inset-left) !important;
+  padding-right: env(safe-area-inset-right) !important;
+  margin-bottom: env(safe-area-inset-bottom) !important;
 
   height: auto !important;
 
