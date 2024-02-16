@@ -482,6 +482,10 @@ export default {
   align-items: center;
 }
 
+.v-theme--light .v-bottom-navigation {
+  background-color: #f5f5f5;
+}
+
 .v-theme--dark {
   &.v-navigation-drawer,
   &.v-bottom-navigation {
