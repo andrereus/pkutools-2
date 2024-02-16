@@ -169,7 +169,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-theme--light.v-data-table {
+.v-theme--light.v-table {
   background-color: #fafafa;
 }
 
