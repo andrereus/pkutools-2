@@ -289,7 +289,7 @@ export default {
       const db = getDatabase()
       push(ref(db, `${this.user.id}/pheLog`), {
         name: this.name,
-        emoji: this.emoji,
+        emoji: this.emoji || null,
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
