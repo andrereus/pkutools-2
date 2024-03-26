@@ -35,7 +35,7 @@ const router = createRouter({
       component: () => import('../views/PheDiary.vue')
     },
     {
-      path: '/settings',
+      path: '/accountsettings',
       name: 'Settings',
       component: () => import('../views/Settings.vue')
     },

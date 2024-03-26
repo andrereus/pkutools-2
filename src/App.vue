@@ -62,7 +62,7 @@
               </span>
             </v-list-item>
 
-            <v-list-item v-if="userIsAuthenticated" to="/settings">
+            <v-list-item v-if="userIsAuthenticated" to="/accountsettings">
               <span>
                 <v-icon>{{ mdiAccount }}</v-icon>
                 {{ user.name || user.email }}
@@ -153,7 +153,7 @@
           <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
         </v-list-item>
 
-        <v-list-item rounded="lg" to="/settings">
+        <v-list-item rounded="lg" to="/accountsettings">
           <template v-slot:prepend>
             <v-icon>{{ mdiCog }}</v-icon>
           </template>
@@ -216,7 +216,7 @@
         <v-icon>{{ mdiBook }}</v-icon>
       </v-btn>
 
-      <v-btn to="/settings" value="settings" :aria-label="$t('settings.title')">
+      <v-btn to="/accountsettings" value="settings" :aria-label="$t('settings.title')">
         <v-icon>{{ mdiCog }}</v-icon>
       </v-btn>
     </v-bottom-navigation>
