@@ -116,14 +116,6 @@ export default {
         pherechner: 2
       },
       {
-        icon: mdiCloudOffOutline,
-        en: 'Basic features offline capable',
-        de: 'Grundfunktionen offlinefähig',
-        pkutools: 1,
-        pkumanager: 2,
-        pherechner: 2
-      },
-      {
         icon: mdiSync,
         en: 'Realtime synchronization',
         de: 'Synchronisierung in Echtzeit',
