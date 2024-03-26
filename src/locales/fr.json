@@ -136,7 +136,8 @@
     "device-theme": "Adapter automatiquement le design à l'appareil",
     "device-theme-info": "Les réglages ne sont appliqués que lors de l'enregistrement. Pour l'adaptation manuelle du design, voir le menu Account.",
     "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois.",
-    "delete-account-error": "Cela n'a malheureusement pas fonctionné. Essaie de te déconnecter et de te reconnecter une fois."
+    "delete-account-error": "Cela n'a malheureusement pas fonctionné. Essaie de te déconnecter et de te reconnecter une fois.",
+    "signin-required": "Pour modifier les paramètres ou supprimer un compte, tu dois te connecter."
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",

@@ -3,6 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <h2 class="text-h5 mt-3">{{ $t('settings.title') }}</h2>
+        <p v-if="!userIsAuthenticated" class="mt-5">{{ $t('settings.signin-required') }}</p>
       </v-col>
     </v-row>
 

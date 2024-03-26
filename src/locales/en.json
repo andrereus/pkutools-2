@@ -136,7 +136,8 @@
     "device-theme": "Automatically adapt the design to the device",
     "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu.",
     "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again.",
-    "delete-account-error": "Unfortunately this did not work. Try logging out and back in again."
+    "delete-account-error": "Unfortunately this did not work. Try logging out and back in again.",
+    "signin-required": "You must log in to edit settings or delete an account."
   },
   "email-auth": {
     "title": "Sign in with Email",

@@ -136,7 +136,8 @@
     "device-theme": "Design automatisch an das Gerät anpassen",
     "device-theme-info": "Einstellungen werden erst beim Speichern angewendet. Manuelle Design Anpassung siehe Account Menü.",
     "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden.",
-    "delete-account-error": "Das hat leider nicht geklappt. Versuche dich einmal ab- und wieder anzumelden."
+    "delete-account-error": "Das hat leider nicht geklappt. Versuche dich einmal ab- und wieder anzumelden.",
+    "signin-required": "Um Einstellungen zu bearbeiten oder einen Account zu löschen musst du dich anmelden."
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

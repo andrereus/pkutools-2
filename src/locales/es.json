@@ -136,7 +136,8 @@
     "device-theme": "Adaptar automáticamente el diseño al dispositivo",
     "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta.",
     "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla.",
-    "delete-account-error": "Lamentablemente, esto no ha funcionado. Intente cerrar la sesión y volver a iniciarla."
+    "delete-account-error": "Lamentablemente, esto no ha funcionado. Intente cerrar la sesión y volver a iniciarla.",
+    "signin-required": "Debe iniciar sesión para modificar la configuración o eliminar una cuenta."
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
