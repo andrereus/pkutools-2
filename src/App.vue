@@ -205,8 +205,6 @@
       </v-container>
     </v-main>
 
-    <ReloadPrompt />
-
     <v-bottom-navigation grow v-model="bottomNav" class="d-lg-none">
       <v-btn to="/" value="home" :aria-label="$t('home.title')">
         <v-icon>{{ mdiHomeSearch }}</v-icon>
@@ -235,7 +233,6 @@
 <script>
 import { useStore } from './stores/index'
 import { useTheme } from 'vuetify'
-import ReloadPrompt from './components/ReloadPrompt.vue'
 import {
   mdiGoogle,
   mdiFacebook,
@@ -266,9 +263,6 @@ import {
 } from '@mdi/js'
 
 export default {
-  components: {
-    ReloadPrompt
-  },
   data: () => ({
     mdiGoogle,
     mdiFacebook,
