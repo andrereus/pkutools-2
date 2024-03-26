@@ -9,7 +9,6 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      selfDestroying: true,
       filename: 'service-worker-2.js',
       devOptions: {
         enabled: true
