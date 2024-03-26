@@ -165,7 +165,7 @@
     "faq": "FAQ",
     "contact": "Contact",
     "install": "Comment installer l'application ?",
-    "install-p1": "Il s'agit d'une Progressive Web App et peut être installée sur n'importe quel appareil.",
+    "install-p1": "Cette application web peut être installée sur n'importe quel appareil comme une application.",
     "install-p2": "Android :",
     "install-p2-2": "ou dans Chrome",
     "install-p3": "Dans Safari, appuyez sur le bouton de partage, puis sur \"Ajouter à l'écran d'accueil\".",
