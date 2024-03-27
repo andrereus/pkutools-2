@@ -18,7 +18,7 @@
     "tools": "Herramientas",
     "logs": "Registros",
     "help": "Ayuda",
-    "install": "Instalar aplicación",
+    "install": "Instalar aplicación web",
     "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión."
   },
   "common": {
@@ -164,7 +164,6 @@
     "contact-me": "Contáctame por correo electrónico:",
     "faq": "Preguntas frecuentes",
     "contact": "Contacto",
-    "install": "¿Cómo instalar la aplicación?",
     "install-p1": "Esta aplicación web puede instalarse en cualquier dispositivo como una aplicación.",
     "install-p2": "Android:",
     "install-p2-2": "o en Chrome",

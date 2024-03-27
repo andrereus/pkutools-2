@@ -18,7 +18,7 @@
     "tools": "Tools",
     "logs": "Protokolle",
     "help": "Hilfe",
-    "install": "App installieren",
+    "install": "Web App installieren",
     "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode."
   },
   "common": {
@@ -164,7 +164,6 @@
     "contact-me": "Kontaktiere mich per E-Mail:",
     "faq": "FAQ",
     "contact": "Kontakt",
-    "install": "Wie kann man die App installieren?",
     "install-p1": "Diese Web App kann auf jedem Gerät wie eine App installiert werden.",
     "install-p2": "Android:",
     "install-p2-2": "oder in Chrome",

@@ -18,7 +18,7 @@
     "tools": "Tools",
     "logs": "Logs",
     "help": "Help",
-    "install": "Install app",
+    "install": "Install web app",
     "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method."
   },
   "common": {
@@ -164,7 +164,6 @@
     "contact-me": "Contact me via email:",
     "faq": "FAQ",
     "contact": "Contact",
-    "install": "How to install the app?",
     "install-p1": "This web app can be installed on any device like an app.",
     "install-p2": "Android:",
     "install-p2-2": "or in Chrome",

@@ -109,8 +109,8 @@ export default {
       },
       {
         icon: mdiWeb,
-        en: 'Multiplatform App',
-        de: 'Multiplattform App',
+        en: 'Multiplatform',
+        de: 'Multiplattform',
         pkutools: 1,
         pkumanager: 2,
         pherechner: 2
