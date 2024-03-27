@@ -46,7 +46,7 @@ const router = createRouter({
       component: PheDiary
     },
     {
-      path: '/accountsettings',
+      path: '/settings',
       name: 'Settings',
       component: Settings
     },
