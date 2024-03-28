@@ -11,6 +11,8 @@
         <!-- prettier-ignore -->
         <p class="mb-8">{{ $t("help.contact-me") }} {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
 
+        <h2 class="text-h5 mb-5">{{ $t('help.install') }}</h2>
+
         <p>{{ $t('help.install-p1') }}</p>
         <br />
         <p>
@@ -29,13 +31,14 @@
         <p>
           <span class="font-weight-bold">iOS:</span>
           {{ $t('help.install-p3') }}
-          <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
         </p>
+        <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
+
         <p>
           <span class="font-weight-bold">Desktop:</span>
           {{ $t('help.install-p4') }}
-          <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img" />
         </p>
+        <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img" />
       </v-col>
     </v-row>
   </div>
