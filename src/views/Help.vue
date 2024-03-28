@@ -28,13 +28,13 @@
         </p>
         <img src="../assets/pwa-android.png" alt="PWA on Android" class="pwa-img" />
 
-        <p>
+        <p class="mb-2">
           <span class="font-weight-bold">iOS:</span>
           {{ $t('help.install-p3') }}
         </p>
         <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
 
-        <p>
+        <p class="mb-2">
           <span class="font-weight-bold">Desktop:</span>
           {{ $t('help.install-p4') }}
         </p>
