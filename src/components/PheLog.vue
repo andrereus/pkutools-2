@@ -1,9 +1,46 @@
 <template>
   <div>
     <div v-if="userIsAuthenticated">
+      <v-btn
+        size="small"
+        variant="flat"
+        color="btnsecondary"
+        to="/phe-calculator"
+        class="mr-3 mb-3"
+        :icon="mdiCalculator"
+      >
+      </v-btn>
+      <v-btn
+        size="small"
+        variant="flat"
+        color="btnsecondary"
+        to="/protein-calculator"
+        class="mr-3 mb-3"
+        :icon="mdiCalculatorVariant"
+      >
+      </v-btn>
+      <v-btn
+        size="small"
+        variant="flat"
+        color="btnsecondary"
+        to="/barcode-scanner"
+        class="mr-3 mb-3"
+        :icon="mdiBarcodeScan"
+      >
+      </v-btn>
+      <v-btn
+        size="small"
+        variant="flat"
+        color="btnsecondary"
+        to="/own-food"
+        class="mr-3 mb-3"
+        :icon="mdiFoodApple"
+      >
+      </v-btn>
+
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-2 mb-3" v-bind="props">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-3" v-bind="props">
             <v-icon start>{{ mdiPen }}</v-icon>
             {{ $t('phe-log.quick-note') }}
           </v-btn>
@@ -88,7 +125,7 @@
         </v-card>
       </v-dialog>
 
-      <v-sheet v-if="lastAdded">
+      <v-sheet v-if="lastAdded" class="my-3">
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn

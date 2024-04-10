@@ -90,54 +90,31 @@
           </v-dialog>
         </div>
 
-        <div v-if="advancedFood === null">
-          <v-sheet>
-            <v-slide-group>
-              <v-slide-group-item>
-                <v-btn
-                  variant="flat"
-                  rounded
-                  color="btnsecondary"
-                  to="/phe-calculator"
-                  class="mr-2 mb-3"
-                >
-                  <v-icon start>{{ mdiCalculator }}</v-icon>
-                  {{ $t('phe-calculator.title') }}
-                </v-btn>
-                <v-btn
-                  variant="flat"
-                  rounded
-                  color="btnsecondary"
-                  to="/protein-calculator"
-                  class="mr-2 mb-3"
-                >
-                  <v-icon start>{{ mdiCalculatorVariant }}</v-icon>
-                  {{ $t('protein-calculator.title') }}
-                </v-btn>
-                <v-btn
-                  variant="flat"
-                  rounded
-                  color="btnsecondary"
-                  to="/barcode-scanner"
-                  class="mr-2 mb-3"
-                >
-                  <v-icon start>{{ mdiBarcodeScan }}</v-icon>
-                  {{ $t('barcode-scanner.title') }}
-                </v-btn>
-                <v-btn
-                  v-if="userIsAuthenticated"
-                  variant="flat"
-                  rounded
-                  color="btnsecondary"
-                  to="/own-food"
-                  class="mr-2 mb-3"
-                >
-                  <v-icon start>{{ mdiFoodApple }}</v-icon>
-                  {{ $t('home.own-food') }}
-                </v-btn>
-              </v-slide-group-item>
-            </v-slide-group>
-          </v-sheet>
+        <div v-if="!userIsAuthenticated && advancedFood === null">
+          <v-btn variant="flat" rounded color="btnsecondary" to="/phe-calculator" class="mr-3 mb-3">
+            <v-icon start>{{ mdiCalculator }}</v-icon>
+            {{ $t('phe-calculator.title') }}
+          </v-btn>
+          <v-btn
+            variant="flat"
+            rounded
+            color="btnsecondary"
+            to="/protein-calculator"
+            class="mr-3 mb-3"
+          >
+            <v-icon start>{{ mdiCalculatorVariant }}</v-icon>
+            {{ $t('protein-calculator.title') }}
+          </v-btn>
+          <v-btn
+            variant="flat"
+            rounded
+            color="btnsecondary"
+            to="/barcode-scanner"
+            class="mr-3 mb-3"
+          >
+            <v-icon start>{{ mdiBarcodeScan }}</v-icon>
+            {{ $t('barcode-scanner.title') }}
+          </v-btn>
         </div>
 
         <PheLog v-if="userIsAuthenticated && advancedFood === null" />
