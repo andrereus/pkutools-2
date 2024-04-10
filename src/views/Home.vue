@@ -29,6 +29,17 @@
             </template>
           </v-text-field>
 
+          <v-btn
+            size="small"
+            variant="flat"
+            color="btnsecondary"
+            @click="advancedFood = null"
+            class="mr-3 mb-3"
+            :icon="mdiArrowLeft"
+            v-if="advancedFood !== null"
+          >
+          </v-btn>
+
           <v-data-table-virtual
             :headers="headers"
             :items="advancedFood"
@@ -193,7 +204,8 @@ import {
   mdiBarcodeScan,
   mdiEmail,
   mdiDownload,
-  mdiLoginVariant
+  mdiLoginVariant,
+  mdiArrowLeft
 } from '@mdi/js'
 
 export default {
@@ -218,6 +230,7 @@ export default {
     mdiEmail,
     mdiDownload,
     mdiLoginVariant,
+    mdiArrowLeft,
     offlineInfo: false,
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
