@@ -126,9 +126,10 @@
       </v-dialog>
 
       <v-sheet v-if="lastAdded" class="my-3">
-        <v-slide-group>
+        <v-slide-group show-arrows>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn
+              size="small"
               variant="flat"
               rounded
               color="btnsecondary"
