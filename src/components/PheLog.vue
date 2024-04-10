@@ -3,7 +3,7 @@
     <div v-if="userIsAuthenticated">
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-3" v-bind="props">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-2 mb-3" v-bind="props">
             <v-icon start>{{ mdiPen }}</v-icon>
             {{ $t('phe-log.quick-note') }}
           </v-btn>
