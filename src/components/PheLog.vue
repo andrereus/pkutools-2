@@ -129,7 +129,6 @@
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn
-              size="small"
               variant="flat"
               rounded
               color="btnsecondary"
