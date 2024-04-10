@@ -1,76 +1,9 @@
 <template>
   <div>
     <div v-if="userIsAuthenticated">
-      <v-dialog v-model="dialog2" max-width="500px">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-8" v-bind="props">
-            <v-icon start>{{ mdiBookClock }}</v-icon>
-            {{ $t('phe-log.last-added') }}
-          </v-btn>
-        </template>
-
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ $t('phe-log.last-added') }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-data-table-virtual
-              :headers="headers2"
-              :items="lastAdded"
-              class="mb-4"
-              v-if="lastAdded"
-            >
-              <template v-slot:item="{ item }">
-                <tr @click="addLastAdded(item)" class="tr-edit">
-                  <td class="text-start">
-                    <img
-                      :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                      v-if="item.icon !== undefined && item.icon !== ''"
-                      onerror="this.src='img/food-icons/organic-food.svg'"
-                      width="25"
-                      class="food-icon"
-                      alt="Food Icon"
-                    />
-                    <img
-                      :src="publicPath + 'img/food-icons/organic-food.svg'"
-                      v-if="
-                        (item.icon === undefined || item.icon === '') && item.emoji === undefined
-                      "
-                      width="25"
-                      class="food-icon"
-                      alt="Food Icon"
-                    />
-                    {{
-                      (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                        ? item.emoji
-                        : null
-                    }}
-                    {{ item.name }}
-                  </td>
-                  <td class="text-start">
-                    {{ item.weight }}
-                  </td>
-                  <td class="text-start">
-                    {{ item.phe }}
-                  </td>
-                </tr>
-              </template>
-            </v-data-table-virtual>
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-8" v-bind="props">
+          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-3" v-bind="props">
             <v-icon start>{{ mdiPen }}</v-icon>
             {{ $t('phe-log.quick-note') }}
           </v-btn>
@@ -154,6 +87,24 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+
+      <v-sheet v-if="lastAdded">
+        <v-slide-group>
+          <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
+            <v-btn
+              size="small"
+              variant="flat"
+              rounded
+              color="btnsecondary"
+              class="mr-2 mb-3"
+              @click="addLastAdded(item)"
+            >
+              <v-icon start>{{ mdiPlus }}</v-icon>
+              {{ item.weight }}g {{ item.name }}
+            </v-btn>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
 
       <v-data-table-virtual
         :headers="$i18n.locale === 'en' ? headersEn : headersDe"
@@ -251,7 +202,7 @@ import {
   mdiLockOpenVariant,
   mdiBarcodeScan,
   mdiPen,
-  mdiBookClock
+  mdiPlus
 } from '@mdi/js'
 
 export default {
@@ -267,10 +218,9 @@ export default {
     mdiLockOpenVariant,
     mdiBarcodeScan,
     mdiPen,
-    mdiBookClock,
+    mdiPlus,
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
-    dialog2: false,
     alert: false,
     headersEn: [
       {
@@ -288,15 +238,6 @@ export default {
         key: 'name'
       },
       { title: 'Gewicht', key: 'weight' },
-      { title: 'Phe', key: 'phe' }
-    ],
-    headers2: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Weight', key: 'weight' },
       { title: 'Phe', key: 'phe' }
     ],
     editedIndex: -1,
@@ -330,7 +271,6 @@ export default {
     addLastAdded(item) {
       this.editedItem = Object.assign({}, item)
       this.save()
-      this.dialog2 = false
     },
     deleteItem() {
       const db = getDatabase()
