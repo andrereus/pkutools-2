@@ -454,7 +454,7 @@ export default {
   cursor: pointer;
 }
 
-.v-theme--dark.v-toolbar.v-sheet {
+.v-theme--dark.v-sheet {
   background-color: #121212;
 }
 
