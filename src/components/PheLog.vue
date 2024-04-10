@@ -125,19 +125,19 @@
         </v-card>
       </v-dialog>
 
-      <v-sheet v-if="lastAdded" class="my-3">
-        <v-slide-group show-arrows>
+      <v-sheet v-if="lastAdded" class="mt-3 mb-4">
+        <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn
               size="small"
               variant="flat"
               rounded
               color="btnsecondary"
-              class="mr-2 mb-3"
+              class="mr-1 mb-2"
               @click="addLastAdded(item)"
             >
-              <v-icon start>{{ mdiPlus }}</v-icon>
-              {{ item.weight }}g {{ item.name }}
+              + {{ item.weight }}g
+              {{ item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name }}
             </v-btn>
           </v-slide-group-item>
         </v-slide-group>
@@ -422,8 +422,8 @@ export default {
       return Math.round(phe)
     },
     lastAdded() {
-      // Get last 3 objects, extract and concatenate "log" arrays, and reverse order.
-      return [].concat(...this.pheDiary.slice(-3).map((obj) => obj.log)).reverse()
+      // Get last 2 objects, extract and concatenate "log" arrays, and reverse order.
+      return [].concat(...this.pheDiary.slice(-2).map((obj) => obj.log)).reverse()
     },
     userIsAuthenticated() {
       const store = useStore()
