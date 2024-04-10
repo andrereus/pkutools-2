@@ -30,14 +30,15 @@
           </v-text-field>
 
           <v-btn
-            size="small"
             variant="flat"
+            rounded
             color="btnsecondary"
-            @click="advancedFood = null"
             class="mr-3 mb-3"
-            :icon="mdiArrowLeft"
+            @click="advancedFood = null"
             v-if="advancedFood !== null"
           >
+            <v-icon start>{{ mdiArrowLeft }}</v-icon>
+            {{ $t('phe-search.back') }}
           </v-btn>
 
           <v-data-table-virtual

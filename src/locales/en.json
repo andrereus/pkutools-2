@@ -49,7 +49,8 @@
     "search": "Search for food",
     "weight": "Weight (in g)",
     "advanced": "Search all foods",
-    "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar."
+    "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar.",
+    "back": "Back"
   },
   "phe-calculator": {
     "title": "Phe Calculator",
