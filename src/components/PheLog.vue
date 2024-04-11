@@ -125,7 +125,7 @@
         </v-card>
       </v-dialog>
 
-      <v-sheet v-if="lastAdded" class="mt-3 mb-4">
+      <v-sheet v-if="lastAdded" class="mt-3 mb-6">
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn
