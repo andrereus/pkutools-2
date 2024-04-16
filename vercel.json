@@ -1,6 +1,4 @@
 {
-  "installCommand": "cd app && npm install",
-  "buildCommand": "cd app && npm run build",
   "rewrites": [
     { "source": "/app/(.*)", "destination": "/app/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
