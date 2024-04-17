@@ -182,7 +182,7 @@
           target="_blank"
         >
           <template v-slot:prepend>
-            <v-icon>{{ mdiLinkVariant }}</v-icon>
+            <v-icon>{{ mdiListBoxOutline }}</v-icon>
           </template>
 
           <v-list-item-title>Changelog</v-list-item-title>
@@ -276,7 +276,7 @@ import {
   mdiDownload,
   mdiClipboardTextOutline,
   mdiInformationVariant,
-  mdiLinkVariant
+  mdiListBoxOutline
 } from '@mdi/js'
 
 export default {
@@ -307,7 +307,7 @@ export default {
     mdiDownload,
     mdiClipboardTextOutline,
     mdiInformationVariant,
-    mdiLinkVariant,
+    mdiListBoxOutline,
     drawer: null,
     lang: [
       { name: 'Deutsch', abbr: 'de' },
