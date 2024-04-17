@@ -175,6 +175,19 @@
           <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
         </v-list-item>
 
+        <v-list-item
+          rounded="lg"
+          density="compact"
+          href="https://headwayapp.co/pku-tools-changelog"
+          target="_blank"
+        >
+          <template v-slot:prepend>
+            <v-icon>{{ mdiLinkVariant }}</v-icon>
+          </template>
+
+          <v-list-item-title>Changelog</v-list-item-title>
+        </v-list-item>
+
         <v-list-item rounded="lg" density="compact" to="/about">
           <template v-slot:prepend>
             <v-icon>{{ mdiInformationVariant }}</v-icon>
@@ -262,7 +275,8 @@ import {
   mdiEmail,
   mdiDownload,
   mdiClipboardTextOutline,
-  mdiInformationVariant
+  mdiInformationVariant,
+  mdiLinkVariant
 } from '@mdi/js'
 
 export default {
@@ -293,6 +307,7 @@ export default {
     mdiDownload,
     mdiClipboardTextOutline,
     mdiInformationVariant,
+    mdiLinkVariant,
     drawer: null,
     lang: [
       { name: 'Deutsch', abbr: 'de' },
