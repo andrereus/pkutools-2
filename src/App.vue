@@ -13,6 +13,8 @@
       </v-app-bar-title>
 
       <template v-slot:append>
+        <v-btn icon class="headway"></v-btn>
+
         <v-menu>
           <template v-slot:activator="{ props }">
             <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
@@ -231,6 +233,7 @@
 </template>
 
 <script>
+/* global Headway */
 import { useStore } from './stores/index'
 import { useTheme } from 'vuetify'
 import {
@@ -392,6 +395,15 @@ export default {
     this.mountTheme()
     const store = useStore()
     store.checkAuthState()
+
+    // Script gets loaded in index.html
+    if (typeof Headway !== 'undefined') {
+      const config = {
+        selector: '.headway',
+        account: 'JVmwL7'
+      }
+      Headway.init(config)
+    }
   },
   computed: {
     locale: {
