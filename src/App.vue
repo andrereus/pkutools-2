@@ -179,7 +179,6 @@
           rounded="lg"
           density="compact"
           href="https://headwayapp.co/pku-tools-changelog"
-          target="_blank"
         >
           <template v-slot:prepend>
             <v-icon>{{ mdiListBoxOutline }}</v-icon>
