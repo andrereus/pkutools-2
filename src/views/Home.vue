@@ -2,6 +2,7 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
+        {{ $t('app.facebook-auth-warning') }}
         <p v-if="!userIsAuthenticated" class="mt-5 mb-1">{{ $t('app.description') }}</p>
       </v-col>
     </v-row>
