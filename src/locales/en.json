@@ -20,7 +20,7 @@
     "help": "Help",
     "install": "Install web app",
     "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
-    "fb-auth-warning": "'Sign in with Facebook' will be removed.",
+    "fb-auth-warning": "'Sign in with Facebook' will be removed!",
     "fb-auth-button": "More info",
     "fb-auth-alert": "'Sign in with Facebook' will be removed. Please do not use this login method anymore. If you have created an account with this login method, you can export your data and delete the account. You can then create a new account with a different login method. Sorry for the inconvenience, unfortunately it has to be removed as Facebook has changed the requirements for using this login method."
   },
