@@ -20,7 +20,9 @@
     "help": "Ayuda",
     "install": "Instalar aplicación web",
     "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión.",
-    "facebook-auth-warning": "Se eliminará el inicio de sesión con Facebook. Por favor, no lo utilice más."
+    "fb-auth-warning": "'Iniciar sesión con Facebook' será eliminado.",
+    "fb-auth-button": "Seguir leyendo",
+    "fb-auth-alert": "'Iniciar sesión con Facebook' será eliminado. Por favor, no utilices más este método de inicio de sesión. Si has creado una cuenta con este método de inicio de sesión, puedes exportar tus datos y eliminar la cuenta. A continuación, puedes crear una nueva cuenta utilizando otro método de inicio de sesión. Disculpa las molestias, pero desgraciadamente tenemos que eliminarlo porque Facebook ha cambiado los requisitos para utilizar este método de inicio de sesión."
   },
   "common": {
     "add": "Agregar",

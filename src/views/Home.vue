@@ -2,7 +2,10 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
-        {{ $t('app.facebook-auth-warning') }}
+        {{ $t('app.fb-auth-warning') }}
+        <button @click="facebookRemoval" class="fb-auth-button">
+          {{ $t('app.fb-auth-button') }}
+        </button>
         <p v-if="!userIsAuthenticated" class="mt-5 mb-1">{{ $t('app.description') }}</p>
       </v-col>
     </v-row>
@@ -331,6 +334,9 @@ export default {
         return result.item
       })
       this.loading = false
+    },
+    facebookRemoval() {
+      alert(this.$t('app.fb-auth-alert'))
     }
   },
   computed: {
@@ -381,5 +387,9 @@ export default {
 
 .v-btn {
   text-transform: none;
+}
+
+.fb-auth-button {
+  color: #3498db;
 }
 </style>

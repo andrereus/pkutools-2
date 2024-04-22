@@ -20,7 +20,9 @@
     "help": "Aide",
     "install": "Installer l'application web",
     "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
-    "facebook-auth-warning": "La connexion avec Facebook sera supprimée. Veuillez ne plus l'utiliser."
+    "fb-auth-warning": "L'option 'Se connecter avec Facebook' est supprimée.",
+    "fb-auth-button": "En savoir plus",
+    "fb-auth-alert": "L'option 'Se connecter avec Facebook' est supprimée. Veuillez ne plus utiliser cette méthode de connexion. Si tu as créé un compte avec cette méthode de connexion, tu peux exporter tes données et supprimer le compte. Tu peux ensuite créer un nouveau compte avec une autre méthode de connexion. Désolé pour le désagrément, il doit malheureusement être supprimé car Facebook a modifié les exigences relatives à l'utilisation de cette méthode de connexion."
   },
   "common": {
     "add": "Ajouter",
