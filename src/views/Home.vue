@@ -2,10 +2,6 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
-        {{ $t('app.fb-auth-warning') }}
-        <button @click="facebookRemoval" class="fb-auth-button">
-          {{ $t('app.fb-auth-button') }}
-        </button>
         <p v-if="!userIsAuthenticated" class="mt-5 mb-1">{{ $t('app.description') }}</p>
       </v-col>
     </v-row>
@@ -150,12 +146,6 @@
                   {{ $t('app.signin-google') }}
                 </span>
               </v-list-item>
-              <v-list-item @click="signInFacebook">
-                <span>
-                  <v-icon>{{ mdiFacebook }}</v-icon>
-                  {{ $t('app.signin-facebook') }}
-                </span>
-              </v-list-item>
               <v-list-item to="/email-auth">
                 <span>
                   <v-icon>{{ mdiEmail }}</v-icon>
@@ -195,7 +185,6 @@ import FeatureComparison from '../components/FeatureComparison.vue'
 import PheLog from '../components/PheLog.vue'
 import {
   mdiGoogle,
-  mdiFacebook,
   mdiMagnify,
   mdiCalculator,
   mdiCalculatorVariant,
@@ -220,7 +209,6 @@ export default {
   },
   data: () => ({
     mdiGoogle,
-    mdiFacebook,
     mdiMagnify,
     mdiCalculator,
     mdiCalculatorVariant,
@@ -261,19 +249,6 @@ export default {
       if (navigator.onLine) {
         try {
           await store.signInGoogle()
-        } catch (error) {
-          alert(this.$t('app.auth-error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    async signInFacebook() {
-      const store = useStore()
-      if (navigator.onLine) {
-        try {
-          await store.signInFacebook()
         } catch (error) {
           alert(this.$t('app.auth-error'))
           console.error(error)
@@ -334,9 +309,6 @@ export default {
         return result.item
       })
       this.loading = false
-    },
-    facebookRemoval() {
-      alert(this.$t('app.fb-auth-alert'))
     }
   },
   computed: {
@@ -387,9 +359,5 @@ export default {
 
 .v-btn {
   text-transform: none;
-}
-
-.fb-auth-button {
-  color: #3498db;
 }
 </style>

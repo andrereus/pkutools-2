@@ -3,7 +3,6 @@
     "title": "PKU Tools",
     "description": "Nutrition app for the metabolic disorder PKU.",
     "signin-google": "Sign in with Google",
-    "signin-facebook": "Sign in with Facebook",
     "signout": "Sign out",
     "update-info": "A new version is available.",
     "update": "Update",
@@ -19,10 +18,7 @@
     "logs": "Logs",
     "help": "Help",
     "install": "Install web app",
-    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
-    "fb-auth-warning": "'Sign in with Facebook' will be removed on May 11!",
-    "fb-auth-button": "More info",
-    "fb-auth-alert": "'Sign in with Facebook' will be removed. Please do not use this login method anymore. If you have created an account with this login method, you can export your data and delete the account. You can then create a new account with a different login method. Sorry for the inconvenience, unfortunately it has to be removed as Facebook has changed the requirements for using this login method."
+    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method."
   },
   "common": {
     "add": "Add",
@@ -144,7 +140,7 @@
   },
   "email-auth": {
     "title": "Sign in with Email",
-    "description": "Alternative to signing in via Google or Facebook.",
+    "description": "Alternative to signing in via Google.",
     "signedin": "You are signed in.",
     "name": "Name",
     "email": "Email",

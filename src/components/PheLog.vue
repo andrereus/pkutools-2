@@ -230,7 +230,6 @@ import { format } from 'date-fns'
 import confetti from 'canvas-confetti'
 import {
   mdiGoogle,
-  mdiFacebook,
   mdiMagnify,
   mdiCalculator,
   mdiCalculatorVariant,
@@ -246,7 +245,6 @@ export default {
   name: 'PheLog',
   data: () => ({
     mdiGoogle,
-    mdiFacebook,
     mdiMagnify,
     mdiCalculator,
     mdiCalculatorVariant,

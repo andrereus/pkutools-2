@@ -15,11 +15,6 @@
             {{ $t('app.signin-google') }}
           </v-btn>
           <br />
-          <v-btn variant="flat" rounded color="btnsecondary" @click="signInFacebook" class="mt-2">
-            <v-icon start>{{ mdiFacebook }}</v-icon>
-            {{ $t('app.signin-facebook') }}
-          </v-btn>
-          <br />
           <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
             <v-icon start>{{ mdiEmail }}</v-icon>
             {{ $t('email-auth.title') }}
@@ -97,12 +92,11 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 import { useTheme } from 'vuetify'
-import { mdiGoogle, mdiFacebook, mdiEmail } from '@mdi/js'
+import { mdiGoogle, mdiEmail } from '@mdi/js'
 
 export default {
   data: () => ({
     mdiGoogle,
-    mdiFacebook,
     mdiEmail,
     snackbar: false,
     offlineInfo: false,
@@ -150,19 +144,6 @@ export default {
       if (navigator.onLine) {
         try {
           await store.signInGoogle()
-        } catch (error) {
-          alert(this.$t('app.auth-error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    async signInFacebook() {
-      const store = useStore()
-      if (navigator.onLine) {
-        try {
-          await store.signInFacebook()
         } catch (error) {
           alert(this.$t('app.auth-error'))
           console.error(error)

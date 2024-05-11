@@ -3,7 +3,6 @@
     "title": "PKU Tools",
     "description": "Nährwert-App für die Stoffwechselstörung PKU.",
     "signin-google": "Anmelden mit Google",
-    "signin-facebook": "Anmelden mit Facebook",
     "signout": "Abmelden",
     "update-info": "Eine neue Version ist verfügbar.",
     "update": "Aktualisieren",
@@ -19,10 +18,7 @@
     "logs": "Protokolle",
     "help": "Hilfe",
     "install": "Web App installieren",
-    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode.",
-    "fb-auth-warning": "'Anmelden mit Facebook' wird am 11. Mai entfernt!",
-    "fb-auth-button": "Mehr Info",
-    "fb-auth-alert": "'Anmelden mit Facebook' wird entfernt. Bitte verwende diese Login-Methode nichtmehr. Falls du einen Account mit dieser Login-Methode erstellt hast, kannst du deine Daten exportieren und den Account löschen. Du kannst dann einen neuen Account mit einer anderen Anmelde-Methode erstellen. Entschuldige die Unannehmlichkeiten, es muss leider entfernt werden, da Facebook die Anforderungen an die Verwendung dieser Login-Methode geändert hat."
+    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode."
   },
   "common": {
     "add": "Hinzufügen",
@@ -144,7 +140,7 @@
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
-    "description": "Alternative zur Anmeldung über Google oder Facebook.",
+    "description": "Alternative zur Anmeldung über Google.",
     "signedin": "Du bist angemeldet.",
     "name": "Name",
     "email": "E-Mail",

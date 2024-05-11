@@ -3,7 +3,6 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
@@ -17,7 +16,6 @@ export const useStore = defineStore('main', {
   state: () => ({
     user: null,
     pheLog: [],
-    aminoCounter: [],
     pheDiary: [],
     ownFood: [],
     settings: {},
@@ -27,17 +25,6 @@ export const useStore = defineStore('main', {
     async signInGoogle() {
       const auth = getAuth()
       const result = await signInWithPopup(auth, new GoogleAuthProvider())
-      this.user = {
-        id: result.user.uid,
-        name: result.user.displayName,
-        email: result.user.email,
-        photoUrl: result.user.photoURL
-      }
-      this.initRef()
-    },
-    async signInFacebook() {
-      const auth = getAuth()
-      const result = await signInWithPopup(auth, new FacebookAuthProvider())
       this.user = {
         id: result.user.uid,
         name: result.user.displayName,
@@ -113,7 +100,6 @@ export const useStore = defineStore('main', {
       const userId = this.user.id
       const initialState = {
         pheLog: [],
-        aminoCounter: [],
         pheDiary: [],
         ownFood: [],
         settings: {}
@@ -136,7 +122,6 @@ export const useStore = defineStore('main', {
       }
 
       bindRef('pheLog', ref(db, `${userId}/pheLog`))
-      bindRef('aminoCounter', ref(db, `${userId}/aminoCounter`))
       bindRef('pheDiary', ref(db, `${userId}/pheDiary`))
       bindRef('ownFood', ref(db, `${userId}/ownFood`))
       bindRef('settings', ref(db, `${userId}/settings`))

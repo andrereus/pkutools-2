@@ -50,13 +50,6 @@
               </span>
             </v-list-item>
 
-            <v-list-item v-if="!userIsAuthenticated" @click="signInFacebook">
-              <span>
-                <v-icon>{{ mdiFacebook }}</v-icon>
-                {{ $t('app.signin-facebook') }}
-              </span>
-            </v-list-item>
-
             <v-list-item v-if="!userIsAuthenticated" to="/email-auth">
               <span>
                 <v-icon>{{ mdiEmail }}</v-icon>
@@ -250,7 +243,6 @@ import { useStore } from './stores/index'
 import { useTheme } from 'vuetify'
 import {
   mdiGoogle,
-  mdiFacebook,
   mdiMagnify,
   mdiCalculator,
   mdiCalculatorVariant,
@@ -281,7 +273,6 @@ import {
 export default {
   data: () => ({
     mdiGoogle,
-    mdiFacebook,
     mdiMagnify,
     mdiCalculator,
     mdiCalculatorVariant,
@@ -373,19 +364,6 @@ export default {
       if (navigator.onLine) {
         try {
           await store.signInGoogle()
-        } catch (error) {
-          alert(this.$t('app.auth-error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
-      }
-    },
-    async signInFacebook() {
-      const store = useStore()
-      if (navigator.onLine) {
-        try {
-          await store.signInFacebook()
         } catch (error) {
           alert(this.$t('app.auth-error'))
           console.error(error)
