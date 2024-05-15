@@ -3,12 +3,18 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
         <h2 class="text-h5 mt-3">{{ $t('settings.title') }}</h2>
-        <p v-if="!userIsAuthenticated" class="mt-5">{{ $t('settings.signin-required') }}</p>
       </v-col>
     </v-row>
 
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
+        <v-select
+          :items="themeOptions"
+          v-model="selectedTheme"
+          :label="$t('settings.theme')"
+          @update:modelValue="handleThemeChange"
+        ></v-select>
+
         <div v-if="!userIsAuthenticated">
           <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
             <v-icon start>{{ mdiGoogle }}</v-icon>
@@ -27,10 +33,6 @@
             v-model.number="settings.maxPhe"
             type="number"
           ></v-text-field>
-
-          <v-switch v-model="useThemeFromDevice" :label="$t('settings.device-theme')"></v-switch>
-
-          <p class="mt-n4 mb-5">{{ $t('settings.device-theme-info') }}</p>
 
           <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="save">{{
             $t('common.save')
@@ -100,7 +102,8 @@ export default {
     mdiEmail,
     snackbar: false,
     offlineInfo: false,
-    useThemeFromDevice: true
+    themeOptions: ['system', 'light', 'dark'],
+    selectedTheme: 'system'
   }),
   setup() {
     const theme = useTheme()
@@ -108,34 +111,25 @@ export default {
       theme.global.name.value = e.matches ? 'dark' : 'light'
       document.documentElement.setAttribute('data-theme', theme.global.name.value)
     }
-    function toggleThemeFromDevice() {
-      localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
-      if (this.useThemeFromDevice === true || !localStorage.vuetifyCurrentTheme) {
-        theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
-        document.documentElement.setAttribute('data-theme', theme.global.name.value)
+    function applyTheme(selectedTheme) {
+      if (selectedTheme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        theme.global.name.value = prefersDark ? 'dark' : 'light'
         window
           .matchMedia('(prefers-color-scheme: dark)')
           .addEventListener('change', handleSystemThemeChange)
       } else {
+        theme.global.name.value = selectedTheme
         window
           .matchMedia('(prefers-color-scheme: dark)')
           .removeEventListener('change', handleSystemThemeChange)
-        theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
-        document.documentElement.setAttribute('data-theme', theme.global.name.value)
       }
-    }
-    function mountThemeFromDevice() {
-      if (localStorage.vuetifyThemeFromDevice) {
-        this.useThemeFromDevice = JSON.parse(localStorage.vuetifyThemeFromDevice)
-      } else {
-        localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
-      }
+      document.documentElement.setAttribute('data-theme', theme.global.name.value)
+      localStorage.setItem('vuetifyCurrentTheme', selectedTheme)
     }
     return {
-      toggleThemeFromDevice,
-      mountThemeFromDevice
+      applyTheme,
+      handleSystemThemeChange
     }
   },
   methods: {
@@ -157,7 +151,6 @@ export default {
       update(ref(db, `${this.user.id}/settings`), {
         maxPhe: this.settings.maxPhe || 0
       }).then(() => {
-        this.toggleThemeFromDevice()
         this.snackbar = true
       })
     },
@@ -203,10 +196,15 @@ export default {
             console.error(error)
           })
       }
+    },
+    handleThemeChange() {
+      this.applyTheme(this.selectedTheme)
     }
   },
   mounted() {
-    this.mountThemeFromDevice()
+    const storedTheme = localStorage.getItem('vuetifyCurrentTheme') || 'system'
+    this.selectedTheme = storedTheme
+    this.applyTheme(this.selectedTheme)
   },
   computed: {
     userIsAuthenticated() {

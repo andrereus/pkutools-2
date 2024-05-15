@@ -8,8 +8,6 @@
     "update": "Update",
     "offline": "You are offline.",
     "more": "More",
-    "dark": "Dark Design",
-    "light": "Light Design",
     "main-menu": "Main menu",
     "account-menu": "Account menu",
     "profile-picture": "Profile picture",
@@ -132,11 +130,9 @@
     "reset-diary": "Reset Phe Diary",
     "reset-own-food": "Reset Own Food",
     "delete-account": "Delete account",
-    "device-theme": "Automatically adapt the design to the device",
-    "device-theme-info": "Settings are only applied when saving. Manual design customization see Account menu.",
     "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again.",
     "delete-account-error": "Unfortunately this did not work. Try logging out and back in again.",
-    "signin-required": "To edit settings or delete an account, you need to log in."
+    "theme": "Theme"
   },
   "email-auth": {
     "title": "Sign in with Email",

@@ -8,8 +8,6 @@
     "update": "Actualizar",
     "offline": "Estás desconectado.",
     "more": "Más",
-    "dark": "Diseño oscuro",
-    "light": "Diseño claro",
     "main-menu": "Menú principal",
     "account-menu": "Menú de cuenta",
     "profile-picture": "Foto de perfil",
@@ -132,11 +130,9 @@
     "reset-diary": "Restablecer el diario de Phe",
     "reset-own-food": "Restablecer alimentos propios",
     "delete-account": "Eliminar cuenta",
-    "device-theme": "Adaptar automáticamente el diseño al dispositivo",
-    "device-theme-info": "Los ajustes sólo se aplican al guardar. Para la personalización manual del diseño, véase el menú Cuenta.",
     "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla.",
     "delete-account-error": "Lamentablemente, esto no ha funcionado. Intente cerrar la sesión y volver a iniciarla.",
-    "signin-required": "Es necesario registrarse para modificar la configuración o eliminar una cuenta."
+    "theme": "Theme"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",

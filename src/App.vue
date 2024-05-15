@@ -79,16 +79,6 @@
                 {{ $t('app.install') }}
               </span>
             </v-list-item>
-
-            <v-list-item @click="updateDesign">
-              <span>
-                <v-icon v-if="!$vuetify.theme.current.dark">{{ mdiBrightness4 }}</v-icon>
-                <v-icon v-if="$vuetify.theme.current.dark">{{ mdiBrightness7 }}</v-icon>
-                &nbsp;
-                <span v-if="!$vuetify.theme.current.dark">{{ $t('app.dark') }}</span>
-                <span v-if="$vuetify.theme.current.dark">{{ $t('app.light') }}</span>
-              </span>
-            </v-list-item>
           </v-list>
         </v-menu>
       </template>
@@ -257,8 +247,6 @@ import {
   mdiAccount,
   mdiLogoutVariant,
   mdiHelpCircleOutline,
-  mdiBrightness4,
-  mdiBrightness7,
   mdiPlusCircle,
   mdiHelpCircle,
   mdiChartBox,
@@ -288,8 +276,6 @@ export default {
     mdiAccount,
     mdiLogoutVariant,
     mdiHelpCircleOutline,
-    mdiBrightness4,
-    mdiBrightness7,
     mdiPlusCircle,
     mdiHelpCircle,
     mdiChartBox,
@@ -308,8 +294,7 @@ export default {
       { name: 'Français', abbr: 'fr' }
     ],
     bottomNav: null,
-    offlineInfo: false,
-    useThemeFromDevice: true
+    offlineInfo: false
   }),
   setup() {
     const theme = useTheme()
@@ -317,47 +302,28 @@ export default {
       theme.global.name.value = e.matches ? 'dark' : 'light'
       document.documentElement.setAttribute('data-theme', theme.global.name.value)
     }
-    function toggleTheme() {
-      this.useThemeFromDevice = false
-      localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', handleSystemThemeChange)
-      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-      document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      localStorage.vuetifyCurrentTheme = JSON.stringify(theme.global.name.value)
-    }
-    function mountTheme() {
-      if (localStorage.vuetifyThemeFromDevice) {
-        this.useThemeFromDevice = JSON.parse(localStorage.vuetifyThemeFromDevice)
-      } else {
-        localStorage.vuetifyThemeFromDevice = JSON.stringify(this.useThemeFromDevice)
+    function initializeTheme() {
+      let storedTheme = localStorage.getItem('vuetifyCurrentTheme')
+      if (!storedTheme || storedTheme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        storedTheme = prefersDark ? 'dark' : 'light'
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', handleSystemThemeChange)
       }
+      theme.global.name.value = storedTheme
+      document.documentElement.setAttribute('data-theme', theme.global.name.value)
 
       // Remove old local storage item
       if (localStorage.vuetifyThemeDark) {
         localStorage.removeItem('vuetifyThemeDark')
       }
-
-      if (localStorage.vuetifyCurrentTheme && this.useThemeFromDevice !== true) {
-        window
-          .matchMedia('(prefers-color-scheme: dark)')
-          .removeEventListener('change', handleSystemThemeChange)
-        theme.global.name.value = JSON.parse(localStorage.vuetifyCurrentTheme)
-        document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      } else {
-        theme.global.name.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
-        document.documentElement.setAttribute('data-theme', theme.global.name.value)
-        window
-          .matchMedia('(prefers-color-scheme: dark)')
-          .addEventListener('change', handleSystemThemeChange)
+      if (localStorage.vuetifyThemeFromDevice) {
+        localStorage.removeItem('vuetifyThemeFromDevice')
       }
     }
     return {
-      toggleTheme,
-      mountTheme
+      initializeTheme
     }
   },
   methods: {
@@ -377,16 +343,13 @@ export default {
     signOut() {
       const store = useStore()
       store.signOut()
-    },
-    updateDesign() {
-      this.toggleTheme()
     }
   },
   beforeCreate() {
     document.getElementsByTagName('html')[0].lang = this.$i18n.locale
   },
   mounted() {
-    this.mountTheme()
+    this.initializeTheme()
     const store = useStore()
     store.checkAuthState()
 

@@ -8,8 +8,6 @@
     "update": "Mettre à jour",
     "offline": "Vous êtes hors ligne.",
     "more": "Plus",
-    "dark": "Design sombre",
-    "light": "Design clair",
     "main-menu": "Menu principal",
     "account-menu": "Menu du compte",
     "profile-picture": "Photo de profil",
@@ -132,11 +130,9 @@
     "reset-diary": "Réinitialiser le Journal de Phe",
     "reset-own-food": "Réinitialiser les aliments personnels",
     "delete-account": "Supprimer le compte",
-    "device-theme": "Adapter automatiquement le design à l'appareil",
-    "device-theme-info": "Les réglages ne sont appliqués que lors de l'enregistrement. Pour l'adaptation manuelle du design, voir le menu Account.",
     "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois.",
     "delete-account-error": "Cela n'a malheureusement pas fonctionné. Essaie de te déconnecter et de te reconnecter une fois.",
-    "signin-required": "Pour modifier les paramètres ou supprimer un compte, il est nécessaire de se connecter."
+    "theme": "Theme"
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",
