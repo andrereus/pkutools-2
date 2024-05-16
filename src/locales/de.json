@@ -132,7 +132,10 @@
     "delete-account": "Account löschen",
     "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden.",
     "delete-account-error": "Das hat leider nicht geklappt. Versuche dich einmal ab- und wieder anzumelden.",
-    "theme": "Theme"
+    "theme": "Darstellung (diese App/dieser Browser)",
+    "theme-system": "Gerätedesign verwenden",
+    "theme-light": "Helles Design",
+    "theme-dark": "Dunkles Design"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

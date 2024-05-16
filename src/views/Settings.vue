@@ -102,7 +102,6 @@ export default {
     mdiEmail,
     snackbar: false,
     offlineInfo: false,
-    themeOptions: ['system', 'light', 'dark'],
     selectedTheme: 'system'
   }),
   setup() {
@@ -207,6 +206,13 @@ export default {
     this.applyTheme(this.selectedTheme)
   },
   computed: {
+    themeOptions() {
+      return [
+        { title: this.$t('settings.theme-system'), value: 'system' },
+        { title: this.$t('settings.theme-light'), value: 'light' },
+        { title: this.$t('settings.theme-dark'), value: 'dark' }
+      ]
+    },
     userIsAuthenticated() {
       const store = useStore()
       return store.user !== null

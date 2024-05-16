@@ -132,7 +132,10 @@
     "delete-account": "Delete account",
     "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again.",
     "delete-account-error": "Unfortunately this did not work. Try logging out and back in again.",
-    "theme": "Theme"
+    "theme": "Appearance (this app/this browser)",
+    "theme-system": "Use device theme",
+    "theme-light": "Light theme",
+    "theme-dark": "Dark theme"
   },
   "email-auth": {
     "title": "Sign in with Email",

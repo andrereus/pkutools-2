@@ -132,7 +132,10 @@
     "delete-account": "Supprimer le compte",
     "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois.",
     "delete-account-error": "Cela n'a malheureusement pas fonctionné. Essaie de te déconnecter et de te reconnecter une fois.",
-    "theme": "Theme"
+    "theme": "Apparence (cette application/ce navigateur)",
+    "theme-system": "Utiliser le thème de l'appareil",
+    "theme-light": "Thème lumineux",
+    "theme-dark": "Thème sombre"
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",

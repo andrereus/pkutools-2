@@ -132,7 +132,10 @@
     "delete-account": "Eliminar cuenta",
     "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla.",
     "delete-account-error": "Lamentablemente, esto no ha funcionado. Intente cerrar la sesión y volver a iniciarla.",
-    "theme": "Theme"
+    "theme": "Apariencia (esta aplicación/este navegador)",
+    "theme-system": "Utilizar el tema del dispositivo",
+    "theme-light": "Tema luminoso",
+    "theme-dark": "Tema oscuro"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
