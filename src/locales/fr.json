@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Application nutritionnelle pour le trouble métabolique PKU.",
+    "description": "Application nutritionnelle pour régime pauvre en phénylalanine.",
     "signin-google": "Se connecter avec Google",
     "signout": "Se déconnecter",
     "update-info": "Une nouvelle version est disponible.",

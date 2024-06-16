@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Aplicación nutricional para el trastorno metabólico PKU.",
+    "description": "Aplicación nutricional para dietas bajas en fenilalanina.",
     "signin-google": "Iniciar sesión con Google",
     "signout": "Cerrar sesión",
     "update-info": "Hay una nueva versión disponible.",

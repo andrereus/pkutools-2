@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Nährwert-App für die Stoffwechselstörung PKU.",
+    "description": "Nährwert-App für phenylalaninarme Diät.",
     "signin-google": "Anmelden mit Google",
     "signout": "Abmelden",
     "update-info": "Eine neue Version ist verfügbar.",

@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Nutrition app for the metabolic disorder PKU.",
+    "description": "Nutrition app for low-phenylalanine diets.",
     "signin-google": "Sign in with Google",
     "signout": "Sign out",
     "update-info": "A new version is available.",
