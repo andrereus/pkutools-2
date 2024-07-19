@@ -26,7 +26,7 @@
           </div>
           <ul
             tabindex="0"
-            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-60 t-p-2 t-shadow"
           >
             <li>
               <router-link to="/" class="t-no-underline t-text-base-content">{{
@@ -75,7 +75,7 @@
           </div>
           <ul
             tabindex="0"
-            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-44 t-p-2 t-shadow"
           >
             <li v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
               <button>{{ lang.name }}</button>
@@ -129,7 +129,7 @@
           </div>
           <ul
             tabindex="0"
-            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-60 t-p-2 t-shadow"
           >
             <li v-if="!userIsAuthenticated">
               <button @click="signInGoogle" class="t-text-base-content">
@@ -146,15 +146,15 @@
                 {{ user.name || user.email }}
               </router-link>
             </li>
-            <li v-if="userIsAuthenticated">
-              <button @click="signOut" class="t-text-base-content">
-                {{ $t('app.signout') }}
-              </button>
-            </li>
             <li>
               <router-link to="/settings" class="t-no-underline t-text-base-content">{{
                 $t('settings.title')
               }}</router-link>
+            </li>
+            <li v-if="userIsAuthenticated">
+              <button @click="signOut" class="t-text-base-content">
+                {{ $t('app.signout') }}
+              </button>
             </li>
             <li>
               <router-link to="/help" class="t-no-underline t-text-base-content">{{
