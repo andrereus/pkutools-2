@@ -8,6 +8,15 @@
 
     <v-row justify="center" class="mb-3">
       <v-col cols="12" md="10" lg="8" xl="6">
+        <div v-if="userIsAuthenticated" role="tablist" class="t-tabs t-tabs-lifted t-mb-12">
+          <router-link to="/" role="tab" class="t-tab t-tab-active t-no-underline">{{
+            $t('phe-log.title')
+          }}</router-link>
+          <router-link to="/phe-diary" role="tab" class="t-tab t-no-underline">{{
+            $t('phe-diary.title')
+          }}</router-link>
+        </div>
+
         <div>
           <v-text-field
             v-model="search"

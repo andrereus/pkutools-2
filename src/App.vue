@@ -1,220 +1,191 @@
 <template>
   <v-app>
-    <v-app-bar flat theme="dark" class="custom-app-bar">
-      <template v-slot:prepend>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" :aria-label="$t('app.main-menu')" />
-      </template>
-
-      <v-app-bar-title>
-        <router-link to="/" class="app-logo">
-          <img src="./assets/pkutools-logo.png" alt="PKU Tools Logo" width="25" class="mr-4" />
-          <span v-if="$vuetify.display.lgAndUp">PKU Tools</span>
+    <div class="t-navbar t-bg-base-100">
+      <div class="t-flex-none">
+        <div class="t-dropdown">
+          <div
+            tabindex="0"
+            role="button"
+            class="t-btn t-btn-ghost t-btn-circle"
+            :aria-label="$t('app.main-menu')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="t-size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+          >
+            <li>
+              <router-link to="/" class="t-no-underline t-text-base-content">{{
+                $t('home.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/phe-calculator" class="t-no-underline t-text-base-content">{{
+                $t('phe-calculator.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/protein-calculator" class="t-no-underline t-text-base-content">{{
+                $t('protein-calculator.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/barcode-scanner" class="t-no-underline t-text-base-content">{{
+                $t('barcode-scanner.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/own-food" class="t-no-underline t-text-base-content">{{
+                $t('own-food.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/phe-diary" class="t-no-underline t-text-base-content">{{
+                $t('phe-diary.title')
+              }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-flex-1">
+        <router-link to="/" class="t-btn t-btn-ghost app-logo">
+          <img src="./assets/pkutools-logo.png" alt="PKU Tools Logo" width="25" class="t-mr-2" />
+          <span class="md:t-text-xl">PKU Tools</span>
         </router-link>
-      </v-app-bar-title>
-
-      <template v-slot:append>
-        <v-btn icon class="headway"></v-btn>
-
-        <v-menu>
-          <template v-slot:activator="{ props }">
-            <v-btn icon v-bind="props" class="lang-button">{{ locale }}</v-btn>
-          </template>
-
-          <v-list>
-            <v-list-item v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
-              <v-list-item-title>{{ lang.name }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
-        <v-menu>
-          <template v-slot:activator="{ props }">
-            <v-btn icon v-bind="props" :aria-label="$t('app.account-menu')">
-              <v-avatar size="32">
-                <v-icon v-if="!userIsAuthenticated">{{ mdiAccountCircle }}</v-icon>
-                <v-icon v-if="userIsAuthenticated && !userPhotoUrl">{{ mdiAccount }}</v-icon>
-                <img
-                  v-if="userIsAuthenticated && userPhotoUrl"
-                  :src="userPhotoUrl"
-                  :alt="$t('app.profile-picture')"
+      </div>
+      <div class="t-flex-none">
+        <button class="t-btn t-btn-ghost t-btn-circle headway"></button>
+        <div class="t-dropdown t-dropdown-end">
+          <div tabindex="0" role="button" class="t-btn t-btn-ghost t-btn-circle lang-button">
+            {{ locale }}
+          </div>
+          <ul
+            tabindex="0"
+            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+          >
+            <li v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
+              <button>{{ lang.name }}</button>
+            </li>
+          </ul>
+        </div>
+        <div class="t-dropdown t-dropdown-end">
+          <div
+            tabindex="0"
+            role="button"
+            class="t-btn t-btn-ghost t-btn-circle t-avatar"
+            :aria-label="$t('app.account-menu')"
+          >
+            <div class="t-w-6 t-rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="t-size-6"
+                v-if="!userIsAuthenticated"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                 />
-              </v-avatar>
-            </v-btn>
-          </template>
-
-          <v-list class="account-menu">
-            <v-list-item v-if="!userIsAuthenticated" @click="signInGoogle">
-              <span>
-                <v-icon>{{ mdiGoogle }}</v-icon>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="t-size-6"
+                v-if="userIsAuthenticated && !userPhotoUrl"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+              <img
+                v-if="userIsAuthenticated && userPhotoUrl"
+                :src="userPhotoUrl"
+                :alt="$t('app.profile-picture')"
+              />
+            </div>
+          </div>
+          <ul
+            tabindex="0"
+            class="t-menu t-dropdown-content t-bg-base-100 t-rounded-box t-z-[1] t-mt-3 t-w-52 t-p-2 t-shadow"
+          >
+            <li v-if="!userIsAuthenticated">
+              <button @click="signInGoogle" class="t-text-base-content">
                 {{ $t('app.signin-google') }}
-              </span>
-            </v-list-item>
-
-            <v-list-item v-if="!userIsAuthenticated" to="/email-auth">
-              <span>
-                <v-icon>{{ mdiEmail }}</v-icon>
+              </button>
+            </li>
+            <li v-if="!userIsAuthenticated">
+              <router-link to="/email-auth" class="t-no-underline t-text-base-content">
                 {{ $t('email-auth.title') }}
-              </span>
-            </v-list-item>
-
-            <v-list-item v-if="userIsAuthenticated" to="/settings">
-              <span>
-                <v-icon>{{ mdiAccount }}</v-icon>
+              </router-link>
+            </li>
+            <li v-if="userIsAuthenticated">
+              <router-link to="/settings" class="t-no-underline t-text-base-content">
                 {{ user.name || user.email }}
-              </span>
-            </v-list-item>
-
-            <v-list-item v-if="userIsAuthenticated" @click="signOut">
-              <span>
-                <v-icon>{{ mdiLogoutVariant }}</v-icon>
+              </router-link>
+            </li>
+            <li v-if="userIsAuthenticated">
+              <button @click="signOut" class="t-text-base-content">
                 {{ $t('app.signout') }}
-              </span>
-            </v-list-item>
-
-            <v-divider></v-divider>
-
-            <v-list-item to="/help">
-              <span>
-                <v-icon>{{ mdiDownload }}</v-icon>
-                {{ $t('app.install') }}
-              </span>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </template>
-    </v-app-bar>
-
-    <v-navigation-drawer v-model="drawer" floating>
-      <v-list>
-        <v-list-item rounded="lg" to="/">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiHomeSearch }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('home.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" to="/phe-calculator">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiCalculator }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('phe-calculator.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" to="/protein-calculator">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiCalculatorVariant }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('protein-calculator.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" to="/barcode-scanner">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiBarcodeScan }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('barcode-scanner.title') }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item rounded="lg" to="/own-food">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiFoodApple }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('own-food.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" to="/phe-diary">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiBook }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('phe-diary.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" to="/settings">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiCog }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('settings.title') }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item rounded="lg" density="compact" to="/help">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiHelpCircleOutline }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('app.help') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item
-          rounded="lg"
-          density="compact"
-          href="https://headwayapp.co/pku-tools-changelog"
-        >
-          <template v-slot:prepend>
-            <v-icon>{{ mdiListBoxOutline }}</v-icon>
-          </template>
-
-          <v-list-item-title>Changelog</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" density="compact" to="/about">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiInformationVariant }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('about.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" density="compact" to="/disclaimer">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiInformationVariant }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('disclaimer.title') }}</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item rounded="lg" density="compact" to="/privacy-policy">
-          <template v-slot:prepend>
-            <v-icon>{{ mdiInformationVariant }}</v-icon>
-          </template>
-
-          <v-list-item-title>{{ $t('privacy-policy.title') }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+              </button>
+            </li>
+            <li>
+              <router-link to="/settings" class="t-no-underline t-text-base-content">{{
+                $t('settings.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/help" class="t-no-underline t-text-base-content">{{
+                $t('app.help')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/about" class="t-no-underline t-text-base-content">{{
+                $t('about.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/disclaimer" class="t-no-underline t-text-base-content">{{
+                $t('disclaimer.title')
+              }}</router-link>
+            </li>
+            <li>
+              <router-link to="/privacy-policy" class="t-no-underline t-text-base-content">{{
+                $t('privacy-policy.title')
+              }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <v-main class="mx-sm-2">
       <v-container fluid>
         <router-view></router-view>
       </v-container>
     </v-main>
-
-    <v-bottom-navigation grow v-model="bottomNav" class="d-lg-none">
-      <v-btn to="/" value="home" :aria-label="$t('home.title')">
-        <v-icon>{{ mdiHomeSearch }}</v-icon>
-      </v-btn>
-
-      <v-btn to="/phe-diary" value="phe-diary" :aria-label="$t('phe-diary.title')">
-        <v-icon>{{ mdiBook }}</v-icon>
-      </v-btn>
-
-      <v-btn to="/settings" value="settings" :aria-label="$t('settings.title')">
-        <v-icon>{{ mdiCog }}</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}

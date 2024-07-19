@@ -2,7 +2,7 @@
   <div>
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('phe-diary.title') }}</h2>
+        <h2 v-if="!userIsAuthenticated" class="text-h5 mt-3">{{ $t('phe-diary.title') }}</h2>
       </v-col>
     </v-row>
 
@@ -21,6 +21,15 @@
         </div>
 
         <div v-if="userIsAuthenticated">
+          <div role="tablist" class="t-tabs t-tabs-lifted t-mb-12">
+            <router-link to="/" role="tab" class="t-tab t-no-underline">{{
+              $t('phe-log.title')
+            }}</router-link>
+            <router-link to="/phe-diary" role="tab" class="t-tab t-tab-active t-no-underline">{{
+              $t('phe-diary.title')
+            }}</router-link>
+          </div>
+
           <p v-if="pheDiary.length < 2" class="mb-4">{{ $t('phe-diary.chart-info') }}</p>
 
           <apexchart
