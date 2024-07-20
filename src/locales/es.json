@@ -16,7 +16,8 @@
     "logs": "Registros",
     "help": "Ayuda",
     "install": "Instalar aplicación web",
-    "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión."
+    "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión.",
+    "redesign-info": "Rediseño en curso ;) Tenga paciencia."
   },
   "common": {
     "add": "Agregar",

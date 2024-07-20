@@ -21,6 +21,8 @@
           }}</router-link>
         </div>
 
+        <p class="mb-6">{{ $t('app.redesign-info') }}</p>
+
         <div>
           <v-text-field
             v-model="search"

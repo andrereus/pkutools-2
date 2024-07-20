@@ -16,7 +16,8 @@
     "logs": "Protokolle",
     "help": "Hilfe",
     "install": "Web App installieren",
-    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode."
+    "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode.",
+    "redesign-info": "Redesign in Bearbeitung ;) Bitte um etwas Geduld."
   },
   "common": {
     "add": "Hinzufügen",

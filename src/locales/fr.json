@@ -16,7 +16,8 @@
     "logs": "Journaux",
     "help": "Aide",
     "install": "Installer l'application web",
-    "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion."
+    "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
+    "redesign-info": "Redesign en cours ;) Merci de patienter."
   },
   "common": {
     "add": "Ajouter",

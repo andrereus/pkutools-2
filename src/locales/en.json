@@ -16,7 +16,8 @@
     "logs": "Logs",
     "help": "Help",
     "install": "Install web app",
-    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method."
+    "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
+    "redesign-info": "Redesign in progress ;) Please be patient."
   },
   "common": {
     "add": "Add",
