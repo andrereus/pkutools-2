@@ -12,6 +12,8 @@
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo-512.png"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.22",
+    "@heroicons/vue": "^2.1.5",
     "apexcharts": "^3.50.0",
     "canvas-confetti": "^1.9.3",
     "date-fns": "^3.6.0",
