@@ -146,15 +146,15 @@
                 {{ user.name || user.email }}
               </router-link>
             </li>
-            <li>
-              <router-link to="/settings" class="t-no-underline t-text-base-content">{{
-                $t('settings.title')
-              }}</router-link>
-            </li>
             <li v-if="userIsAuthenticated">
               <button @click="signOut" class="t-text-base-content">
                 {{ $t('app.signout') }}
               </button>
+            </li>
+            <li>
+              <router-link to="/settings" class="t-no-underline t-text-base-content">{{
+                $t('settings.title')
+              }}</router-link>
             </li>
             <li>
               <router-link to="/help" class="t-no-underline t-text-base-content">{{
