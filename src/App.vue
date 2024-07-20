@@ -1,86 +1,71 @@
 <template>
   <v-app>
-    <Disclosure as="nav" class="t-bg-white t-shadow" v-slot="{ open }">
+    <div as="nav" class="t-bg-white t-shadow">
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
-          <Menu as="div" class="t-relative t-inline-block t-text-left">
-            <div>
-              <MenuButton
-                class="t-flex t-items-center t-rounded-full t-bg-gray-100 t-text-gray-400 hover:t-text-gray-600 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 focus:t-ring-offset-gray-100"
+          <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
+            <Menu as="div" class="t-relative">
+              <div>
+                <MenuButton
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
+                >
+                  <span class="t-absolute t--inset-1.5" />
+                  <span class="t-sr-only">Open user menu</span>
+                  <Bars3Icon class="t-h-6 t-w-6" aria-hidden="true" />
+                </MenuButton>
+              </div>
+              <transition
+                enter-active-class="t-transition t-ease-out t-duration-200"
+                enter-from-class="t-transform t-opacity-0 t-scale-95"
+                enter-to-class="t-transform t-opacity-100 t-scale-100"
+                leave-active-class="t-transition t-ease-in t-duration-75"
+                leave-from-class="t-transform t-opacity-100 t-scale-100"
+                leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
-                <span class="t-sr-only">Open options</span>
-                <EllipsisVerticalIcon class="t-h-5 t-w-5" aria-hidden="true" />
-              </MenuButton>
-            </div>
+                <MenuItems
+                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-48 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                >
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Your Profile</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Settings</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Sign out</a
+                    >
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
+          </div>
 
-            <transition
-              enter-active-class="t-transition t-ease-out t-duration-100"
-              enter-from-class="t-transform t-opacity-0 t-scale-95"
-              enter-to-class="t-transform t-opacity-100 t-scale-100"
-              leave-active-class="t-transition t-ease-in t-duration-75"
-              leave-from-class="t-transform t-opacity-100 t-scale-100"
-              leave-to-class="t-transform t-opacity-0 t-scale-95"
-            >
-              <MenuItems
-                class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 t-focus:outline-none"
-              >
-                <div class="t-py-1">
-                  <MenuItem v-slot="{ active }">
-                    <a
-                      href="#"
-                      :class="[
-                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
-                        't-block t-px-4 t-py-2 t-text-sm'
-                      ]"
-                      >Account settings</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a
-                      href="#"
-                      :class="[
-                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
-                        't-block t-px-4 t-py-2 t-text-sm'
-                      ]"
-                      >Support</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a
-                      href="#"
-                      :class="[
-                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
-                        't-block t-px-4 t-py-2 t-text-sm'
-                      ]"
-                      >License</a
-                    >
-                  </MenuItem>
-                  <form method="POST" action="#">
-                    <MenuItem v-slot="{ active }">
-                      <button
-                        type="submit"
-                        :class="[
-                          active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
-                          't-block t-w-full t-px-4 t-py-2 t-text-left t-text-sm'
-                        ]"
-                      >
-                        Sign out
-                      </button>
-                    </MenuItem>
-                  </form>
-                </div>
-              </MenuItems>
-            </transition>
-          </Menu>
-
-          <div
-            class="t-flex t-flex-1 t-items-center t-justify-center sm:t-items-stretch sm:t-justify-start"
-          >
+          <div class="t-flex t-flex-1 t-items-stretch t-justify-start t-ml-3">
             <div class="t-flex t-flex-shrink-0 t-items-center">
               <img
-                class="t-h-8 t-w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company"
+                class="t-h-8 t-w-auto t-mr-3"
+                src="./assets/pkutools-logo.png"
+                alt="PKU Tools Logo"
               />
               PKU Tools
             </div>
@@ -88,16 +73,61 @@
           <div
             class="t-absolute t-inset-y-0 t-right-0 t-flex t-items-center t-pr-2 sm:t-static sm:t-inset-auto sm:t-ml-6 sm:t-pr-0"
           >
-            <button
-              type="button"
-              class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
-            >
-              <span class="t-absolute t--inset-1.5" />
-              <span class="t-sr-only">View notifications</span>
-              <BellIcon class="t-h-6 t-w-6" aria-hidden="true" />
-            </button>
+            <Menu as="div" class="t-relative t-ml-3">
+              <div>
+                <MenuButton
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
+                >
+                  <span class="t-absolute t--inset-1.5" />
+                  <span class="t-sr-only">Open user menu</span>
+                  <LanguageIcon class="t-h-6 t-w-6" aria-hidden="true" />
+                </MenuButton>
+              </div>
+              <transition
+                enter-active-class="t-transition t-ease-out t-duration-200"
+                enter-from-class="t-transform t-opacity-0 t-scale-95"
+                enter-to-class="t-transform t-opacity-100 t-scale-100"
+                leave-active-class="t-transition t-ease-in t-duration-75"
+                leave-from-class="t-transform t-opacity-100 t-scale-100"
+                leave-to-class="t-transform t-opacity-0 t-scale-95"
+              >
+                <MenuItems
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                >
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Your Profile</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Settings</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                      ]"
+                      >Sign out</a
+                    >
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
 
-            <!-- Profile dropdown -->
             <Menu as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
@@ -107,8 +137,8 @@
                   <span class="t-sr-only">Open user menu</span>
                   <img
                     class="t-h-8 t-w-8 t-rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
+                    src="./assets/pkutools-logo.png"
+                    alt="PKU Tools Logo"
                   />
                 </MenuButton>
               </div>
@@ -159,37 +189,7 @@
           </div>
         </div>
       </div>
-
-      <DisclosurePanel class="sm:t-hidden">
-        <div class="t-space-y-1 t-pb-4 t-pt-2">
-          <!-- Current: "t-bg-indigo-50 t-border-indigo-500 t-text-indigo-700", Default: "t-border-transparent t-text-gray-500 hover:t-bg-gray-50 hover:t-border-gray-300 hover:t-text-gray-700" -->
-          <DisclosureButton
-            as="a"
-            href="#"
-            class="t-block t-border-l-4 t-border-indigo-500 t-bg-indigo-50 t-py-2 t-pl-3 t-pr-4 t-text-base t-font-medium t-text-indigo-700"
-            >Dashboard</DisclosureButton
-          >
-          <DisclosureButton
-            as="a"
-            href="#"
-            class="t-block t-border-l-4 t-border-transparent t-py-2 t-pl-3 t-pr-4 t-text-base t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-bg-gray-50 hover:t-text-gray-700"
-            >Team</DisclosureButton
-          >
-          <DisclosureButton
-            as="a"
-            href="#"
-            class="t-block t-border-l-4 t-border-transparent t-py-2 t-pl-3 t-pr-4 t-text-base t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-bg-gray-50 hover:t-text-gray-700"
-            >Projects</DisclosureButton
-          >
-          <DisclosureButton
-            as="a"
-            href="#"
-            class="t-block t-border-l-4 t-border-transparent t-py-2 t-pl-3 t-pr-4 t-text-base t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-bg-gray-50 hover:t-text-gray-700"
-            >Calendar</DisclosureButton
-          >
-        </div>
-      </DisclosurePanel>
-    </Disclosure>
+    </div>
 
     <v-main class="mx-sm-2">
       <v-container fluid>
@@ -239,28 +239,17 @@ import {
   mdiListBoxOutline
 } from '@mdi/js'
 
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems
-} from '@headlessui/vue'
-import { BellIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Bars3Icon, LanguageIcon } from '@heroicons/vue/24/outline'
 
 export default {
   components: {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
     Menu,
     MenuButton,
     MenuItem,
     MenuItems,
-    BellIcon,
-    EllipsisVerticalIcon
+    Bars3Icon,
+    LanguageIcon
   },
   data: () => ({
     mdiGoogle,
