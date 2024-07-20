@@ -3,17 +3,76 @@
     <Disclosure as="nav" class="t-bg-white t-shadow" v-slot="{ open }">
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
-          <div class="t-absolute t-inset-y-0 t-left-0 t-flex t-items-center sm:t-hidden">
-            <!-- Mobile menu button -->
-            <DisclosureButton
-              class="t-relative t-inline-flex t-items-center t-justify-center t-rounded-md t-p-2 t-text-gray-400 hover:t-bg-gray-100 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-inset focus:t-ring-indigo-500"
+          <Menu as="div" class="t-relative t-inline-block t-text-left">
+            <div>
+              <MenuButton
+                class="t-flex t-items-center t-rounded-full t-bg-gray-100 t-text-gray-400 hover:t-text-gray-600 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 focus:t-ring-offset-gray-100"
+              >
+                <span class="t-sr-only">Open options</span>
+                <EllipsisVerticalIcon class="t-h-5 t-w-5" aria-hidden="true" />
+              </MenuButton>
+            </div>
+
+            <transition
+              enter-active-class="t-transition t-ease-out t-duration-100"
+              enter-from-class="t-transform t-opacity-0 t-scale-95"
+              enter-to-class="t-transform t-opacity-100 t-scale-100"
+              leave-active-class="t-transition t-ease-in t-duration-75"
+              leave-from-class="t-transform t-opacity-100 t-scale-100"
+              leave-to-class="t-transform t-opacity-0 t-scale-95"
             >
-              <span class="t-absolute t--inset-0.5" />
-              <span class="t-sr-only">Open main menu</span>
-              <Bars3Icon v-if="!open" class="t-block t-h-6 t-w-6" aria-hidden="true" />
-              <XMarkIcon v-else class="t-block t-h-6 t-w-6" aria-hidden="true" />
-            </DisclosureButton>
-          </div>
+              <MenuItems
+                class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 t-focus:outline-none"
+              >
+                <div class="t-py-1">
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
+                        't-block t-px-4 t-py-2 t-text-sm'
+                      ]"
+                      >Account settings</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
+                        't-block t-px-4 t-py-2 t-text-sm'
+                      ]"
+                      >Support</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
+                        't-block t-px-4 t-py-2 t-text-sm'
+                      ]"
+                      >License</a
+                    >
+                  </MenuItem>
+                  <form method="POST" action="#">
+                    <MenuItem v-slot="{ active }">
+                      <button
+                        type="submit"
+                        :class="[
+                          active ? 't-bg-gray-100 t-text-gray-900' : 't-text-gray-700',
+                          't-block t-w-full t-px-4 t-py-2 t-text-left t-text-sm'
+                        ]"
+                      >
+                        Sign out
+                      </button>
+                    </MenuItem>
+                  </form>
+                </div>
+              </MenuItems>
+            </transition>
+          </Menu>
+
           <div
             class="t-flex t-flex-1 t-items-center t-justify-center sm:t-items-stretch sm:t-justify-start"
           >
@@ -23,29 +82,7 @@
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt="Your Company"
               />
-            </div>
-            <div class="t-hidden sm:t-ml-6 sm:t-flex sm:t-space-x-8">
-              <!-- Current: "t-border-indigo-500 t-text-gray-900", Default: "t-border-transparent t-text-gray-500 hover:t-border-gray-300 hover:t-text-gray-700" -->
-              <a
-                href="#"
-                class="t-inline-flex t-items-center t-border-b-2 t-border-indigo-500 t-px-1 t-pt-1 t-text-sm t-font-medium t-text-gray-900"
-                >Dashboard</a
-              >
-              <a
-                href="#"
-                class="t-inline-flex t-items-center t-border-b-2 t-border-transparent t-px-1 t-pt-1 t-text-sm t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-text-gray-700"
-                >Team</a
-              >
-              <a
-                href="#"
-                class="t-inline-flex t-items-center t-border-b-2 t-border-transparent t-px-1 t-pt-1 t-text-sm t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-text-gray-700"
-                >Projects</a
-              >
-              <a
-                href="#"
-                class="t-inline-flex t-items-center t-border-b-2 t-border-transparent t-px-1 t-pt-1 t-text-sm t-font-medium t-text-gray-500 hover:t-border-gray-300 hover:t-text-gray-700"
-                >Calendar</a
-              >
+              PKU Tools
             </div>
           </div>
           <div
@@ -211,7 +248,7 @@ import {
   MenuItem,
   MenuItems
 } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { BellIcon, EllipsisVerticalIcon } from '@heroicons/vue/24/outline'
 
 export default {
   components: {
@@ -222,9 +259,8 @@ export default {
     MenuButton,
     MenuItem,
     MenuItems,
-    Bars3Icon,
     BellIcon,
-    XMarkIcon
+    EllipsisVerticalIcon
   },
   data: () => ({
     mdiGoogle,
