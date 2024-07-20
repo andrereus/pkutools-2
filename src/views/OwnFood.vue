@@ -21,7 +21,7 @@
         </div>
 
         <div v-if="userIsAuthenticated">
-          <p class="mb-4">{{ $t('own-food.search-info') }}</p>
+          <p class="mb-6">{{ $t('own-food.search-info') }}</p>
 
           <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
             <template v-slot:item="{ item }">
