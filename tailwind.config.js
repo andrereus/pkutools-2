@@ -1,4 +1,5 @@
 import typography from '@tailwindcss/typography'
+import forms from '@tailwindcss/forms'
 import daisyui from 'daisyui'
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,9 +7,6 @@ export default {
   theme: {
     extend: {}
   },
-  plugins: [typography, daisyui],
-  prefix: 't-',
-  corePlugins: {
-    preflight: false
-  }
+  plugins: [typography, forms, daisyui],
+  prefix: 't-'
 }

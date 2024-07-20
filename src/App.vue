@@ -1,201 +1,318 @@
 <template>
-  <v-app>
-    <div class="t-navbar t-bg-base-100">
-      <div class="t-flex-none">
-        <div class="t-dropdown">
-          <div
-            tabindex="0"
-            role="button"
-            class="t-btn t-btn-ghost t-btn-circle"
-            :aria-label="$t('app.main-menu')"
+  <div>
+    <TransitionRoot as="template" :show="sidebarOpen">
+      <Dialog class="t-relative t-z-50 lg:t-hidden" @close="sidebarOpen = false">
+        <TransitionChild
+          as="template"
+          enter="t-transition-opacity t-ease-linear t-duration-300"
+          enter-from="t-opacity-0"
+          enter-to="t-opacity-100"
+          leave="t-transition-opacity t-ease-linear t-duration-300"
+          leave-from="t-opacity-100"
+          leave-to="t-opacity-0"
+        >
+          <div class="t-fixed t-inset-0 t-bg-gray-900/80" />
+        </TransitionChild>
+
+        <div class="t-fixed t-inset-0 t-flex">
+          <TransitionChild
+            as="template"
+            enter="t-transition t-ease-in-out t-duration-300 t-transform"
+            enter-from="-t-translate-x-full"
+            enter-to="t-translate-x-0"
+            leave="t-transition t-ease-in-out t-duration-300 t-transform"
+            leave-from="t-translate-x-0"
+            leave-to="-t-translate-x-full"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="t-size-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </div>
-          <ul
-            tabindex="0"
-            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-60 t-p-2 t-shadow"
-          >
-            <li>
-              <router-link to="/" class="t-no-underline t-text-base-content">{{
-                $t('home.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/phe-calculator" class="t-no-underline t-text-base-content">{{
-                $t('phe-calculator.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/protein-calculator" class="t-no-underline t-text-base-content">{{
-                $t('protein-calculator.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/barcode-scanner" class="t-no-underline t-text-base-content">{{
-                $t('barcode-scanner.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/own-food" class="t-no-underline t-text-base-content">{{
-                $t('own-food.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/phe-diary" class="t-no-underline t-text-base-content">{{
-                $t('phe-diary.title')
-              }}</router-link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="t-flex-1">
-        <router-link to="/" class="t-btn t-btn-ghost app-logo">
-          <img src="./assets/pkutools-logo.png" alt="PKU Tools Logo" width="25" class="t-mr-2" />
-          <span class="md:t-text-xl">PKU Tools</span>
-        </router-link>
-      </div>
-      <div class="t-flex-none">
-        <button class="t-btn t-btn-ghost t-btn-circle headway"></button>
-        <div class="t-dropdown t-dropdown-end">
-          <div tabindex="0" role="button" class="t-btn t-btn-ghost t-btn-circle lang-button">
-            {{ locale }}
-          </div>
-          <ul
-            tabindex="0"
-            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-44 t-p-2 t-shadow"
-          >
-            <li v-for="(lang, i) in lang" :key="i" @click="locale = lang.abbr">
-              <button>{{ lang.name }}</button>
-            </li>
-          </ul>
-        </div>
-        <div class="t-dropdown t-dropdown-end">
-          <div
-            tabindex="0"
-            role="button"
-            class="t-btn t-btn-ghost t-btn-circle t-avatar"
-            :aria-label="$t('app.account-menu')"
-          >
-            <div class="t-w-6 t-rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="t-size-6"
-                v-if="!userIsAuthenticated"
+            <DialogPanel class="t-relative t-mr-16 t-flex t-w-full t-max-w-xs t-flex-1">
+              <TransitionChild
+                as="template"
+                enter="t-ease-in-out t-duration-300"
+                enter-from="t-opacity-0"
+                enter-to="t-opacity-100"
+                leave="t-ease-in-out t-duration-300"
+                leave-from="t-opacity-100"
+                leave-to="t-opacity-0"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="t-size-6"
-                v-if="userIsAuthenticated && !userPhotoUrl"
+                <div class="t-absolute t-left-full t-top-0 t-flex t-w-16 t-justify-center t-pt-5">
+                  <button type="button" class="-t-m-2.5 t-p-2.5" @click="sidebarOpen = false">
+                    <span class="t-sr-only">Close sidebar</span>
+                    <XMarkIcon class="t-h-6 t-w-6 t-text-white" aria-hidden="true" />
+                  </button>
+                </div>
+              </TransitionChild>
+              <!-- Sidebar component, swap this element with another sidebar if you like -->
+              <div
+                class="t-flex t-grow t-flex-col t-gap-y-5 t-overflow-y-auto t-bg-white t-px-6 t-pb-4"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                <div class="t-flex t-h-16 t-shrink-0 t-items-center">
+                  <img
+                    class="t-h-8 t-w-auto"
+                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    alt="Your Company"
+                  />
+                </div>
+                <nav class="t-flex t-flex-1 t-flex-col">
+                  <ul role="list" class="t-flex t-flex-1 t-flex-col t-gap-y-7">
+                    <li>
+                      <ul role="list" class="-t-mx-2 t-space-y-1">
+                        <li v-for="item in navigation" :key="item.name">
+                          <a
+                            :href="item.href"
+                            :class="[
+                              item.current
+                                ? 't-bg-gray-50 t-text-indigo-600'
+                                : 't-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600',
+                              't-group t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6'
+                            ]"
+                          >
+                            <component
+                              :is="item.icon"
+                              :class="[
+                                item.current
+                                  ? 't-text-indigo-600'
+                                  : 't-text-gray-400 group-hover:t-text-indigo-600',
+                                't-h-6 t-w-6 t-shrink-0'
+                              ]"
+                              aria-hidden="true"
+                            />
+                            {{ item.name }}
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="t-text-xs t-font-semibold t-leading-6 t-text-gray-400">
+                        Your teams
+                      </div>
+                      <ul role="list" class="-t-mx-2 t-mt-2 t-space-y-1">
+                        <li v-for="team in teams" :key="team.name">
+                          <a
+                            :href="team.href"
+                            :class="[
+                              team.current
+                                ? 't-bg-gray-50 t-text-indigo-600'
+                                : 't-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600',
+                              't-group t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6'
+                            ]"
+                          >
+                            <span
+                              :class="[
+                                team.current
+                                  ? 't-border-indigo-600 t-text-indigo-600'
+                                  : 't-border-gray-200 t-text-gray-400 group-hover:t-border-indigo-600 group-hover:t-text-indigo-600',
+                                't-flex t-h-6 t-w-6 t-shrink-0 t-items-center t-justify-center t-rounded-lg t-border t-bg-white t-text-[0.625rem] t-font-medium'
+                              ]"
+                              >{{ team.initial }}</span
+                            >
+                            <span class="t-truncate">{{ team.name }}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="t-mt-auto">
+                      <a
+                        href="#"
+                        class="t-group -t-mx-2 t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6 t-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600"
+                      >
+                        <Cog6ToothIcon
+                          class="t-h-6 t-w-6 t-shrink-0 t-text-gray-400 group-hover:t-text-indigo-600"
+                          aria-hidden="true"
+                        />
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </DialogPanel>
+          </TransitionChild>
+        </div>
+      </Dialog>
+    </TransitionRoot>
+
+    <!-- Static sidebar for desktop -->
+    <div class="t-hidden lg:t-fixed lg:t-inset-y-0 lg:t-z-50 lg:t-flex lg:t-w-72 lg:t-flex-col">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div
+        class="t-flex t-grow t-flex-col t-gap-y-5 t-overflow-y-auto t-border-r t-border-gray-200 t-bg-white t-px-6 t-pb-4"
+      >
+        <div class="t-flex t-h-16 t-shrink-0 t-items-center">
+          <img
+            class="t-h-8 t-w-auto"
+            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            alt="Your Company"
+          />
+        </div>
+        <nav class="t-flex t-flex-1 t-flex-col">
+          <ul role="list" class="t-flex t-flex-1 t-flex-col t-gap-y-7">
+            <li>
+              <ul role="list" class="-t-mx-2 t-space-y-1">
+                <li v-for="item in navigation" :key="item.name">
+                  <a
+                    :href="item.href"
+                    :class="[
+                      item.current
+                        ? 't-bg-gray-50 t-text-indigo-600'
+                        : 't-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600',
+                      't-group t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6'
+                    ]"
+                  >
+                    <component
+                      :is="item.icon"
+                      :class="[
+                        item.current
+                          ? 't-text-indigo-600'
+                          : 't-text-gray-400 group-hover:t-text-indigo-600',
+                        't-h-6 t-w-6 t-shrink-0'
+                      ]"
+                      aria-hidden="true"
+                    />
+                    {{ item.name }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="t-text-xs t-font-semibold t-leading-6 t-text-gray-400">Your teams</div>
+              <ul role="list" class="-t-mx-2 t-mt-2 t-space-y-1">
+                <li v-for="team in teams" :key="team.name">
+                  <a
+                    :href="team.href"
+                    :class="[
+                      team.current
+                        ? 't-bg-gray-50 t-text-indigo-600'
+                        : 't-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600',
+                      't-group t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6'
+                    ]"
+                  >
+                    <span
+                      :class="[
+                        team.current
+                          ? 't-border-indigo-600 t-text-indigo-600'
+                          : 't-border-gray-200 t-text-gray-400 group-hover:t-border-indigo-600 group-hover:t-text-indigo-600',
+                        't-flex t-h-6 t-w-6 t-shrink-0 t-items-center t-justify-center t-rounded-lg t-border t-bg-white t-text-[0.625rem] t-font-medium'
+                      ]"
+                      >{{ team.initial }}</span
+                    >
+                    <span class="t-truncate">{{ team.name }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="t-mt-auto">
+              <a
+                href="#"
+                class="t-group -t-mx-2 t-flex t-gap-x-3 t-rounded-md t-p-2 t-text-sm t-font-semibold t-leading-6 t-text-gray-700 hover:t-bg-gray-50 hover:t-text-indigo-600"
+              >
+                <Cog6ToothIcon
+                  class="t-h-6 t-w-6 t-shrink-0 t-text-gray-400 group-hover:t-text-indigo-600"
+                  aria-hidden="true"
                 />
-              </svg>
-              <img
-                v-if="userIsAuthenticated && userPhotoUrl"
-                :src="userPhotoUrl"
-                :alt="$t('app.profile-picture')"
-              />
-            </div>
-          </div>
-          <ul
-            tabindex="0"
-            class="t-menu t-menu-lg t-dropdown-content t-bg-base-100 t-rounded-box t-z-[2] t-mt-3 t-w-60 t-p-2 t-shadow"
-          >
-            <li v-if="!userIsAuthenticated">
-              <button @click="signInGoogle" class="t-text-base-content">
-                {{ $t('app.signin-google') }}
-              </button>
-            </li>
-            <li v-if="!userIsAuthenticated">
-              <router-link to="/email-auth" class="t-no-underline t-text-base-content">
-                {{ $t('email-auth.title') }}
-              </router-link>
-            </li>
-            <li v-if="userIsAuthenticated">
-              <router-link to="/settings" class="t-no-underline t-text-base-content">
-                {{ user.name || user.email }}
-              </router-link>
-            </li>
-            <li v-if="userIsAuthenticated">
-              <button @click="signOut" class="t-text-base-content">
-                {{ $t('app.signout') }}
-              </button>
-            </li>
-            <li>
-              <router-link to="/settings" class="t-no-underline t-text-base-content">{{
-                $t('settings.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/help" class="t-no-underline t-text-base-content">{{
-                $t('app.help')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/about" class="t-no-underline t-text-base-content">{{
-                $t('about.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/disclaimer" class="t-no-underline t-text-base-content">{{
-                $t('disclaimer.title')
-              }}</router-link>
-            </li>
-            <li>
-              <router-link to="/privacy-policy" class="t-no-underline t-text-base-content">{{
-                $t('privacy-policy.title')
-              }}</router-link>
+                Settings
+              </a>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
 
-    <v-main class="mx-sm-2">
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
+    <div class="lg:t-pl-72">
+      <div
+        class="t-sticky t-top-0 t-z-40 t-flex t-h-16 t-shrink-0 t-items-center t-gap-x-4 t-border-b t-border-gray-200 t-bg-white t-px-4 t-shadow-sm sm:t-gap-x-6 sm:t-px-6 lg:t-px-8"
+      >
+        <button
+          type="button"
+          class="-t-m-2.5 t-p-2.5 t-text-gray-700 lg:t-hidden"
+          @click="sidebarOpen = true"
+        >
+          <span class="t-sr-only">Open sidebar</span>
+          <Bars3Icon class="t-h-6 t-w-6" aria-hidden="true" />
+        </button>
 
-    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
-      {{ $t('app.offline') }}
-      <template v-slot:action="{ attrs }">
-        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
-          {{ $t('common.close') }}
-        </v-btn>
-      </template>
-    </v-snackbar>
-  </v-app>
+        <!-- Separator -->
+        <div class="t-h-6 t-w-px t-bg-gray-200 lg:t-hidden" aria-hidden="true" />
+
+        <div class="t-flex t-flex-1 t-gap-x-4 t-self-stretch lg:t-gap-x-6">
+          <form class="t-relative t-flex t-flex-1" action="#" method="GET">
+            <label for="search-field" class="t-sr-only">Search</label>
+            <MagnifyingGlassIcon
+              class="t-pointer-events-none t-absolute t-inset-y-0 t-left-0 t-h-full t-w-5 t-text-gray-400"
+              aria-hidden="true"
+            />
+            <input
+              id="search-field"
+              class="t-block t-h-full t-w-full t-border-0 t-py-0 t-pl-8 t-pr-0 t-text-gray-900 t-placeholder:t-text-gray-400 focus:t-ring-0 sm:t-text-sm"
+              placeholder="Search..."
+              type="search"
+              name="search"
+            />
+          </form>
+          <div class="t-flex t-items-center t-gap-x-4 lg:t-gap-x-6">
+            <button type="button" class="-t-m-2.5 t-p-2.5 t-text-gray-400 hover:t-text-gray-500">
+              <span class="t-sr-only">View notifications</span>
+              <BellIcon class="t-h-6 t-w-6" aria-hidden="true" />
+            </button>
+
+            <!-- Separator -->
+            <div
+              class="t-hidden lg:t-block lg:t-h-6 lg:t-w-px lg:t-bg-gray-200"
+              aria-hidden="true"
+            />
+
+            <!-- Profile dropdown -->
+            <Menu as="div" class="t-relative">
+              <MenuButton class="-t-m-1.5 t-flex t-items-center t-p-1.5">
+                <span class="t-sr-only">Open user menu</span>
+                <img
+                  class="t-h-8 t-w-8 t-rounded-full t-bg-gray-50"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+                <span class="t-hidden lg:t-flex lg:t-items-center">
+                  <span
+                    class="t-ml-4 t-text-sm t-font-semibold t-leading-6 t-text-gray-900"
+                    aria-hidden="true"
+                    >Tom Cook</span
+                  >
+                  <ChevronDownIcon class="t-ml-2 t-h-5 t-w-5 t-text-gray-400" aria-hidden="true" />
+                </span>
+              </MenuButton>
+              <transition
+                enter-active-class="t-transition t-ease-out t-duration-100"
+                enter-from-class="t-transform t-opacity-0 t-scale-95"
+                enter-to-class="t-transform t-opacity-100 t-scale-100"
+                leave-active-class="t-transition t-ease-in t-duration-75"
+                leave-from-class="t-transform t-opacity-100 t-scale-100"
+                leave-to-class="t-transform t-opacity-0 t-scale-95"
+              >
+                <MenuItems
+                  class="t-absolute t-right-0 t-z-10 t-mt-2.5 t-w-32 t-origin-top-right t-rounded-md t-bg-white t-py-2 t-shadow-lg t-ring-1 t-ring-gray-900/5 focus:t-outline-none"
+                >
+                  <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                    <a
+                      :href="item.href"
+                      :class="[
+                        active ? 't-bg-gray-50' : '',
+                        't-block t-px-3 t-py-1 t-text-sm t-leading-6 t-text-gray-900'
+                      ]"
+                      >{{ item.name }}</a
+                    >
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
+          </div>
+        </div>
+      </div>
+
+      <main class="t-py-10">
+        <div class="t-px-4 sm:t-px-6 lg:t-px-8">
+          <router-view></router-view>
+        </div>
+      </main>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -229,7 +346,55 @@ import {
   mdiListBoxOutline
 } from '@mdi/js'
 
+/* Tailwind */
+import {
+  Dialog,
+  DialogPanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  TransitionChild,
+  TransitionRoot
+} from '@headlessui/vue'
+import {
+  Bars3Icon,
+  BellIcon,
+  CalendarIcon,
+  ChartPieIcon,
+  Cog6ToothIcon,
+  DocumentDuplicateIcon,
+  FolderIcon,
+  HomeIcon,
+  UsersIcon,
+  XMarkIcon
+} from '@heroicons/vue/24/outline'
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+/* Tailwind */
+
 export default {
+  components: {
+    Dialog,
+    DialogPanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+    TransitionChild,
+    TransitionRoot,
+    Bars3Icon,
+    BellIcon,
+    CalendarIcon,
+    ChartPieIcon,
+    Cog6ToothIcon,
+    DocumentDuplicateIcon,
+    FolderIcon,
+    HomeIcon,
+    UsersIcon,
+    XMarkIcon,
+    ChevronDownIcon,
+    MagnifyingGlassIcon
+  },
   data: () => ({
     mdiGoogle,
     mdiMagnify,
@@ -263,7 +428,25 @@ export default {
       { name: 'Français', abbr: 'fr' }
     ],
     bottomNav: null,
-    offlineInfo: false
+    offlineInfo: false,
+    sidebarOpen: false,
+    navigation: [
+      { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+      { name: 'Team', href: '#', icon: UsersIcon, current: false },
+      { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+      { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+      { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
+      { name: 'Reports', href: '#', icon: ChartPieIcon, current: false }
+    ],
+    teams: [
+      { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
+      { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
+      { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false }
+    ],
+    userNavigation: [
+      { name: 'Your profile', href: '#' },
+      { name: 'Sign out', href: '#' }
+    ]
   }),
   setup() {
     const theme = useTheme()
