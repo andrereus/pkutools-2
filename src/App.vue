@@ -23,13 +23,13 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-48 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
+                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-56 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -44,7 +44,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -59,7 +59,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -74,7 +74,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -89,7 +89,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -104,7 +104,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -156,13 +156,13 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-40 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -218,7 +218,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -233,7 +233,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -248,7 +248,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -263,7 +263,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -280,7 +280,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -295,7 +295,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -310,7 +310,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -325,7 +325,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -340,7 +340,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
