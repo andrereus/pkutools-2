@@ -136,7 +136,7 @@
           >
             <button
               type="button"
-              class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 headway dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
+              class="headway t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
             ></button>
 
             <Menu as="div" class="t-relative t-ml-3">
