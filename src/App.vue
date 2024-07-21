@@ -217,7 +217,7 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-64 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
@@ -232,6 +232,15 @@
                             close()
                           }
                         "
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="25"
+                          class="t-inline-block t-mr-2"
+                        >
+                          <path
+                            d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"
+                          /></svg
                         >{{ $t('app.signin-google') }}</a
                       >
                     </MenuItem>
@@ -247,7 +256,7 @@
                             close()
                           }
                         "
-                        >{{ $t('email-auth.title') }}</a
+                        ><Mail class="t-inline-block t-mr-2" />{{ $t('email-auth.title') }}</a
                       >
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
@@ -262,7 +271,7 @@
                             close()
                           }
                         "
-                        >{{ user.name || user.email }}</a
+                        ><User class="t-inline-block t-mr-2" />{{ user.name || user.email }}</a
                       >
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
@@ -277,7 +286,7 @@
                             close()
                           }
                         "
-                        >{{ $t('app.signout') }}</a
+                        ><LogOut class="t-inline-block t-mr-2" />{{ $t('app.signout') }}</a
                       >
                     </MenuItem>
                   </div>
@@ -294,7 +303,7 @@
                             close()
                           }
                         "
-                        >{{ $t('settings.title') }}</a
+                        ><Settings class="t-inline-block t-mr-2" />{{ $t('settings.title') }}</a
                       >
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
@@ -309,7 +318,7 @@
                             close()
                           }
                         "
-                        >{{ $t('help.title') }}</a
+                        ><LifeBuoy class="t-inline-block t-mr-2" />{{ $t('help.title') }}</a
                       >
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
@@ -324,7 +333,7 @@
                             close()
                           }
                         "
-                        >{{ $t('about.title') }}</a
+                        ><Info class="t-inline-block t-mr-2" />{{ $t('about.title') }}</a
                       >
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
@@ -339,7 +348,7 @@
                             close()
                           }
                         "
-                        >{{ $t('disclaimer.title') }}</a
+                        ><Info class="t-inline-block t-mr-2" />{{ $t('disclaimer.title') }}</a
                       >
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
@@ -354,7 +363,7 @@
                             close()
                           }
                         "
-                        >{{ $t('privacy-policy.title') }}</a
+                        ><Info class="t-inline-block t-mr-2" />{{ $t('privacy-policy.title') }}</a
                       >
                     </MenuItem>
                   </div>
@@ -426,7 +435,12 @@ import {
   SquareDivide,
   ScanBarcode,
   Apple,
-  Book
+  Book,
+  Mail,
+  LogOut,
+  Settings,
+  LifeBuoy,
+  Info
 } from 'lucide-vue-next'
 
 export default {
@@ -443,7 +457,12 @@ export default {
     SquareDivide,
     ScanBarcode,
     Apple,
-    Book
+    Book,
+    Mail,
+    LogOut,
+    Settings,
+    LifeBuoy,
+    Info
   },
   data: () => ({
     mdiGoogle,
