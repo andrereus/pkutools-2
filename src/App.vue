@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <div as="nav" class="t-bg-white t-shadow">
+    <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
           <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
             <Menu as="div" class="t-relative">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">Open user menu</span>
@@ -23,13 +23,13 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-48 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-48 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -43,8 +43,8 @@
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -58,8 +58,8 @@
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -73,8 +73,8 @@
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -88,8 +88,8 @@
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -103,8 +103,8 @@
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -127,7 +127,7 @@
                 src="./assets/pkutools-logo.png"
                 alt="PKU Tools Logo"
               />
-              <span>PKU Tools</span>
+              <span class="dark:t-text-white">PKU Tools</span>
             </RouterLink>
           </div>
 
@@ -136,13 +136,13 @@
           >
             <button
               type="button"
-              class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 headway"
+              class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 headway dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
             ></button>
 
             <Menu as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 t-uppercase"
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 t-uppercase dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
                 >
                   {{ locale }}
                 </MenuButton>
@@ -156,13 +156,13 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -180,18 +180,18 @@
             <Menu as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
-                  class="t-relative t-flex t-rounded-full t-bg-white t-text-sm focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
+                  class="t-relative t-flex t-rounded-full t-bg-white t-text-sm focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800"
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">Open user menu</span>
                   <UserCircleIcon
                     v-if="!userIsAuthenticated"
-                    class="t-h-6 t-w-6"
+                    class="t-h-6 t-w-6 dark:t-text-gray-300"
                     aria-hidden="true"
                   />
                   <UserIcon
                     v-if="userIsAuthenticated && !userPhotoUrl"
-                    class="t-h-6 t-w-6"
+                    class="t-h-6 t-w-6 dark:t-text-gray-300"
                     aria-hidden="true"
                   />
                   <img
@@ -200,6 +200,7 @@
                     :src="userPhotoUrl"
                     :alt="$t('app.profile-picture')"
                   />
+                  <UserIcon v-else class="t-h-6 t-w-6 dark:t-text-gray-300" aria-hidden="true" />
                 </MenuButton>
               </div>
               <transition
@@ -211,14 +212,14 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -232,8 +233,8 @@
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -247,8 +248,8 @@
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -262,8 +263,8 @@
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -279,8 +280,8 @@
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -294,8 +295,8 @@
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -309,8 +310,8 @@
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -324,8 +325,8 @@
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -339,8 +340,8 @@
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100' : '',
-                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
