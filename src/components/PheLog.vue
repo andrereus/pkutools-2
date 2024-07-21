@@ -2,47 +2,62 @@
   <div>
     <div v-if="userIsAuthenticated">
       <v-btn
+        size="small"
         variant="flat"
+        rounded
         color="btnsecondary"
         to="/phe-calculator"
         class="mr-3 mb-3"
-        :icon="mdiCalculator"
       >
+        <v-icon start>{{ mdiCalculator }}</v-icon>
+        {{ $t('phe-calculator.title') }}
       </v-btn>
       <v-btn
+        size="small"
         variant="flat"
+        rounded
         color="btnsecondary"
         to="/protein-calculator"
         class="mr-3 mb-3"
-        :icon="mdiCalculatorVariant"
       >
+        <v-icon start>{{ mdiCalculatorVariant }}</v-icon>
+        {{ $t('protein-calculator.title') }}
       </v-btn>
       <v-btn
+        size="small"
         variant="flat"
+        rounded
         color="btnsecondary"
         to="/barcode-scanner"
         class="mr-3 mb-3"
-        :icon="mdiBarcodeScan"
       >
+        <v-icon start>{{ mdiBarcodeScan }}</v-icon>
+        {{ $t('barcode-scanner.title') }}
       </v-btn>
       <v-btn
+        size="small"
         variant="flat"
+        rounded
         color="btnsecondary"
         to="/own-food"
         class="mr-3 mb-3"
-        :icon="mdiFoodApple"
       >
+        <v-icon start>{{ mdiFoodApple }}</v-icon>
+        {{ $t('home.own-food') }}
       </v-btn>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
           <v-btn
+            size="small"
             variant="flat"
+            rounded
             color="btnsecondary"
             class="mr-3 mb-3"
-            :icon="mdiPen"
             v-bind="props"
           >
+            <v-icon start>{{ mdiPen }}</v-icon>
+            {{ $t('phe-log.quick-note') }}
           </v-btn>
         </template>
 
