@@ -4,14 +4,14 @@
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
           <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
-            <Menu as="div" class="t-relative">
+            <MenuComponent as="div" class="t-relative">
               <div>
                 <MenuButton
                   class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">Open user menu</span>
-                  <Bars3Icon class="t-h-6 t-w-6" aria-hidden="true" />
+                  <MenuIcon class="t-h-6 t-w-6" aria-hidden="true" />
                 </MenuButton>
               </div>
               <transition
@@ -123,7 +123,7 @@
                   </MenuItem>
                 </MenuItems>
               </transition>
-            </Menu>
+            </MenuComponent>
           </div>
 
           <div class="t-flex t-flex-1 t-items-stretch t-justify-start t-ml-3">
@@ -145,7 +145,7 @@
               class="headway t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
             ></button>
 
-            <Menu as="div" class="t-relative t-ml-3">
+            <MenuComponent as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
                   class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 t-uppercase dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
@@ -181,9 +181,9 @@
                   </MenuItem>
                 </MenuItems>
               </transition>
-            </Menu>
+            </MenuComponent>
 
-            <Menu as="div" class="t-relative t-ml-3">
+            <MenuComponent as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
                   class="t-relative t-flex t-rounded-full t-bg-white t-text-sm focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 dark:t-bg-gray-800"
@@ -360,7 +360,7 @@
                   </div>
                 </MenuItems>
               </transition>
-            </Menu>
+            </MenuComponent>
           </div>
         </div>
       </div>
@@ -416,9 +416,9 @@ import {
   mdiListBoxOutline
 } from '@mdi/js'
 
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon } from '@heroicons/vue/24/outline'
+import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import {
+  Menu as MenuIcon,
   CircleUser,
   User,
   House,
@@ -431,11 +431,11 @@ import {
 
 export default {
   components: {
-    Menu,
+    MenuComponent,
     MenuButton,
     MenuItem,
     MenuItems,
-    Bars3Icon,
+    MenuIcon,
     CircleUser,
     User,
     House,
