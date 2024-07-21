@@ -23,7 +23,7 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-64 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
+                  class="t-absolute t-left-0 t-z-10 t-mt-4 t-w-64 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
                 >
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -162,7 +162,7 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-40 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
+                  class="t-absolute t-right-0 t-z-10 t-mt-4 t-w-40 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
@@ -217,7 +217,7 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-64 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700 dark:t-divide-gray-700"
+                  class="t-absolute t-right-0 t-z-10 t-mt-4 t-w-64 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700 dark:t-divide-gray-700"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
