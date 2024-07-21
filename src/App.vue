@@ -461,6 +461,11 @@ export default {
     const handleSystemThemeChange = (e) => {
       theme.global.name.value = e.matches ? 'dark' : 'light'
       document.documentElement.setAttribute('data-theme', theme.global.name.value)
+      if (theme.global.name.value === 'dark') {
+        document.documentElement.classList.add('t-dark')
+      } else {
+        document.documentElement.classList.remove('t-dark')
+      }
     }
     function initializeTheme() {
       let storedTheme = localStorage.getItem('vuetifyCurrentTheme')
@@ -473,6 +478,11 @@ export default {
       }
       theme.global.name.value = storedTheme
       document.documentElement.setAttribute('data-theme', theme.global.name.value)
+      if (theme.global.name.value === 'dark') {
+        document.documentElement.classList.add('t-dark')
+      } else {
+        document.documentElement.classList.remove('t-dark')
+      }
 
       // Remove old local storage item
       if (localStorage.vuetifyThemeDark) {
