@@ -1,6 +1,8 @@
 <template>
   <div>
     <div v-if="!userIsAuthenticated">
+      <h2 class="text-h5 mb-6">{{ $t('phe-diary.title') }}</h2>
+
       <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
         <v-icon start>{{ mdiGoogle }}</v-icon>
         {{ $t('app.signin-google') }}

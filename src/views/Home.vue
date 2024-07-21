@@ -4,7 +4,7 @@
     <!-- <p class="mb-6">{{ $t('app.redesign-info') }}</p> -->
 
     <div>
-      <div class="t-block t-mb-6">
+      <div v-if="userIsAuthenticated" class="t-block t-mb-6">
         <nav class="t-flex t-space-x-4" aria-label="Tabs">
           <RouterLink
             to="/"
