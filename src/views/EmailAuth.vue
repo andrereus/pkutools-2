@@ -1,130 +1,122 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('email-auth.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('email-auth.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <div v-if="userIsAuthenticated">
-          <p>{{ $t('email-auth.signedin') }}</p>
-        </div>
+    <div v-if="userIsAuthenticated">
+      <p>{{ $t('email-auth.signedin') }}</p>
+    </div>
 
-        <div v-if="!userIsAuthenticated">
-          <p class="mb-6">{{ $t('email-auth.description') }}</p>
+    <div v-if="!userIsAuthenticated">
+      <p class="mb-6">{{ $t('email-auth.description') }}</p>
 
-          <v-card variant="outlined">
-            <v-tabs v-model="tab" show-arrows>
-              <v-tab>{{ $t('email-auth.signin') }}</v-tab>
-              <v-tab>{{ $t('email-auth.register') }}</v-tab>
-              <v-tab>{{ $t('email-auth.forgot-password') }}</v-tab>
-            </v-tabs>
+      <v-card variant="outlined">
+        <v-tabs v-model="tab" show-arrows>
+          <v-tab>{{ $t('email-auth.signin') }}</v-tab>
+          <v-tab>{{ $t('email-auth.register') }}</v-tab>
+          <v-tab>{{ $t('email-auth.forgot-password') }}</v-tab>
+        </v-tabs>
 
-            <v-window v-model="tab">
-              <v-window-item>
-                <v-container fluid>
-                  <v-text-field
-                    :label="$t('email-auth.email')"
-                    type="email"
-                    class="mt-6"
-                    v-model="email"
-                    :rules="[rules.required, rules.email]"
-                  ></v-text-field>
+        <v-window v-model="tab">
+          <v-window-item>
+            <v-container fluid>
+              <v-text-field
+                :label="$t('email-auth.email')"
+                type="email"
+                class="mt-6"
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+              ></v-text-field>
 
-                  <v-text-field
-                    :label="$t('email-auth.password')"
-                    :type="show1 ? 'text' : 'password'"
-                    v-model="password"
-                    :append-icon="show1 ? mdiEye : mdiEyeOff"
-                    :rules="[rules.required, rules.min]"
-                    :hint="$t('email-auth.min-length')"
-                    @click:append="show1 = !show1"
-                    spellcheck="false"
-                  ></v-text-field>
+              <v-text-field
+                :label="$t('email-auth.password')"
+                :type="show1 ? 'text' : 'password'"
+                v-model="password"
+                :append-icon="show1 ? mdiEye : mdiEyeOff"
+                :rules="[rules.required, rules.min]"
+                :hint="$t('email-auth.min-length')"
+                @click:append="show1 = !show1"
+                spellcheck="false"
+              ></v-text-field>
 
-                  <v-btn
-                    variant="flat"
-                    rounded
-                    color="primary"
-                    class="mr-3 mb-3"
-                    @click="signInEmailPassword"
-                  >
-                    {{ $t('email-auth.signin') }}
-                  </v-btn>
-                </v-container>
-              </v-window-item>
+              <v-btn
+                variant="flat"
+                rounded
+                color="primary"
+                class="mr-3 mb-3"
+                @click="signInEmailPassword"
+              >
+                {{ $t('email-auth.signin') }}
+              </v-btn>
+            </v-container>
+          </v-window-item>
 
-              <v-window-item>
-                <v-container fluid>
-                  <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
+          <v-window-item>
+            <v-container fluid>
+              <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
 
-                  <v-text-field
-                    :label="$t('email-auth.name')"
-                    type="text"
-                    class="mt-8"
-                    v-model="name"
-                  ></v-text-field>
+              <v-text-field
+                :label="$t('email-auth.name')"
+                type="text"
+                class="mt-8"
+                v-model="name"
+              ></v-text-field>
 
-                  <v-text-field
-                    :label="$t('email-auth.email')"
-                    type="email"
-                    v-model="email"
-                    :rules="[rules.required, rules.email]"
-                  ></v-text-field>
+              <v-text-field
+                :label="$t('email-auth.email')"
+                type="email"
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+              ></v-text-field>
 
-                  <v-text-field
-                    :label="$t('email-auth.password')"
-                    :type="show1 ? 'text' : 'password'"
-                    v-model="password"
-                    :append-icon="show1 ? mdiEye : mdiEyeOff"
-                    :rules="[rules.required, rules.min]"
-                    :hint="$t('email-auth.min-length')"
-                    @click:append="show1 = !show1"
-                    spellcheck="false"
-                  ></v-text-field>
+              <v-text-field
+                :label="$t('email-auth.password')"
+                :type="show1 ? 'text' : 'password'"
+                v-model="password"
+                :append-icon="show1 ? mdiEye : mdiEyeOff"
+                :rules="[rules.required, rules.min]"
+                :hint="$t('email-auth.min-length')"
+                @click:append="show1 = !show1"
+                spellcheck="false"
+              ></v-text-field>
 
-                  <v-btn
-                    variant="flat"
-                    rounded
-                    color="primary"
-                    class="mr-3 mb-3"
-                    @click="registerEmailPassword"
-                  >
-                    {{ $t('email-auth.register') }}
-                  </v-btn>
-                </v-container>
-              </v-window-item>
+              <v-btn
+                variant="flat"
+                rounded
+                color="primary"
+                class="mr-3 mb-3"
+                @click="registerEmailPassword"
+              >
+                {{ $t('email-auth.register') }}
+              </v-btn>
+            </v-container>
+          </v-window-item>
 
-              <v-window-item>
-                <v-container fluid>
-                  <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
+          <v-window-item>
+            <v-container fluid>
+              <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
 
-                  <v-text-field
-                    :label="$t('email-auth.email')"
-                    type="email"
-                    class="mt-8"
-                    v-model="email"
-                    :rules="[rules.required, rules.email]"
-                  ></v-text-field>
+              <v-text-field
+                :label="$t('email-auth.email')"
+                type="email"
+                class="mt-8"
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+              ></v-text-field>
 
-                  <v-btn
-                    variant="flat"
-                    rounded
-                    color="primary"
-                    class="mr-3 mb-3"
-                    @click="resetPassword"
-                  >
-                    {{ $t('email-auth.reset-password') }}
-                  </v-btn>
-                </v-container>
-              </v-window-item>
-            </v-window>
-          </v-card>
-        </div>
-      </v-col>
-    </v-row>
+              <v-btn
+                variant="flat"
+                rounded
+                color="primary"
+                class="mr-3 mb-3"
+                @click="resetPassword"
+              >
+                {{ $t('email-auth.reset-password') }}
+              </v-btn>
+            </v-container>
+          </v-window-item>
+        </v-window>
+      </v-card>
+    </div>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}

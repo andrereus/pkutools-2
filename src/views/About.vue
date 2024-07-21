@@ -1,27 +1,19 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('about.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('about.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <p>
-          André Reus
-          <br />
-          Obere Gasse 38
-          <br />
-          71120 Grafenau
-        </p>
+    <p>
+      André Reus
+      <br />
+      Obere Gasse 38
+      <br />
+      71120 Grafenau
+    </p>
 
-        <!-- prettier-ignore -->
-        <p>{{ $t("about.email") }}: {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
-        <br />
-        <p>{{ $t('about.sources') }}</p>
-      </v-col>
-    </v-row>
+    <!-- prettier-ignore -->
+    <p>{{ $t("about.email") }}: {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
+    <br />
+    <p>{{ $t('about.sources') }}</p>
   </div>
 </template>
 

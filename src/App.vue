@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div class="t-min-h-full">
     <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
@@ -200,7 +200,6 @@
                     :src="userPhotoUrl"
                     :alt="$t('app.profile-picture')"
                   />
-                  <UserIcon v-else class="t-h-6 t-w-6 dark:t-text-gray-300" aria-hidden="true" />
                 </MenuButton>
               </div>
               <transition
@@ -361,11 +360,13 @@
       </div>
     </div>
 
-    <v-main class="mx-sm-2">
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
+    <div class="t-pb-10">
+      <main>
+        <div class="t-mx-auto t-max-w-7xl t-px-4 t-py-8 sm:t-px-6 lg:t-px-8">
+          <RouterView></RouterView>
+        </div>
+      </main>
+    </div>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}
@@ -375,7 +376,7 @@
         </v-btn>
       </template>
     </v-snackbar>
-  </v-app>
+  </div>
 </template>
 
 <script>

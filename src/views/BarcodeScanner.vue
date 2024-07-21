@@ -1,102 +1,94 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('barcode-scanner.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('barcode-scanner.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <router-link to="/protein-calculator" class="head-link mt-n1 mb-6">
-          {{ $t('phe-calculator.protein-link') }}
-        </router-link>
+    <router-link to="/protein-calculator" class="head-link mt-n1 mb-6">
+      {{ $t('phe-calculator.protein-link') }}
+    </router-link>
 
-        <v-dialog v-model="dialog" max-width="500px">
-          <template v-slot:activator="{ props }">
-            <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mb-3">
-              {{ $t('barcode-scanner.scan-barcode') }}
-            </v-btn>
-          </template>
+    <v-dialog v-model="dialog" max-width="500px">
+      <template v-slot:activator="{ props }">
+        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mb-3">
+          {{ $t('barcode-scanner.scan-barcode') }}
+        </v-btn>
+      </template>
 
-          <v-card>
-            <v-card-title class="text-h5 mt-4">
-              {{ $t('barcode-scanner.scan-barcode') }}
-            </v-card-title>
+      <v-card>
+        <v-card-title class="text-h5 mt-4">
+          {{ $t('barcode-scanner.scan-barcode') }}
+        </v-card-title>
 
-            <v-card-text>
-              <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
-              <StreamBarcodeReader
-                v-if="dialog === true"
-                ref="scanner"
-                @decode="onDecode"
-                @loaded="onLoaded"
-              ></StreamBarcodeReader>
-            </v-card-text>
+        <v-card-text>
+          <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
+          <StreamBarcodeReader
+            v-if="dialog === true"
+            ref="scanner"
+            @decode="onDecode"
+            @loaded="onLoaded"
+          ></StreamBarcodeReader>
+        </v-card-text>
 
-            <v-card-actions class="mt-n6">
-              <v-spacer></v-spacer>
-              <v-btn variant="flat" color="btnsecondary" @click="cancel">{{
-                $t('common.cancel')
-              }}</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+        <v-card-actions class="mt-n6">
+          <v-spacer></v-spacer>
+          <v-btn variant="flat" color="btnsecondary" @click="cancel">{{
+            $t('common.cancel')
+          }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
-        <div v-if="result !== null">
-          <img
-            v-if="result.product.image_small_url"
-            :src="result.product.image_small_url"
-            max-height="200"
-            max-width="200"
-            class="my-6"
-          />
+    <div v-if="result !== null">
+      <img
+        v-if="result.product.image_small_url"
+        :src="result.product.image_small_url"
+        max-height="200"
+        max-width="200"
+        class="my-6"
+      />
 
-          <h2 class="headlin my-3">{{ result.product.product_name }}</h2>
+      <h2 class="headlin my-3">{{ result.product.product_name }}</h2>
 
-          <p class="text-h6 font-weight-regular mb-6">
-            {{ result.product.nutriments.proteins_100g }}
-            {{ result.product.nutriments.proteins_unit }}
-            {{ $t('barcode-scanner.protein') }}
-          </p>
+      <p class="text-h6 font-weight-regular mb-6">
+        {{ result.product.nutriments.proteins_100g }}
+        {{ result.product.nutriments.proteins_unit }}
+        {{ $t('barcode-scanner.protein') }}
+      </p>
 
-          <v-text-field
-            :label="$t('protein-calculator.weight')"
-            v-model.number="weight"
-            type="number"
-            clearable
-          ></v-text-field>
+      <v-text-field
+        :label="$t('protein-calculator.weight')"
+        v-model.number="weight"
+        type="number"
+        clearable
+      ></v-text-field>
 
-          <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+      <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
 
-          <div v-if="userIsAuthenticated">
-            <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
-            <v-progress-linear
-              :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-              height="6"
-              class="mt-3 mb-6"
-              rounded
-            ></v-progress-linear>
-          </div>
+      <div v-if="userIsAuthenticated">
+        <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
+        <v-progress-linear
+          :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
+          height="6"
+          class="mt-3 mb-6"
+          rounded
+        ></v-progress-linear>
+      </div>
 
-          <v-btn
-            variant="flat"
-            rounded
-            color="primary"
-            @click="save"
-            class="mr-3 mt-3"
-            v-if="userIsAuthenticated"
-          >
-            {{ $t('common.add') }}
-          </v-btn>
-        </div>
+      <v-btn
+        variant="flat"
+        rounded
+        color="primary"
+        @click="save"
+        class="mr-3 mt-3"
+        v-if="userIsAuthenticated"
+      >
+        {{ $t('common.add') }}
+      </v-btn>
+    </div>
 
-        <p class="mt-6 text--secondary">
-          <v-icon>{{ mdiInformationVariant }}</v-icon>
-          {{ $t('barcode-scanner.info') }}
-        </p>
-      </v-col>
-    </v-row>
+    <p class="mt-6 text--secondary">
+      <v-icon>{{ mdiInformationVariant }}</v-icon>
+      {{ $t('barcode-scanner.info') }}
+    </p>
   </div>
 </template>
 

@@ -1,82 +1,68 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('settings.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('settings.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <v-select
-          :items="themeOptions"
-          v-model="selectedTheme"
-          :label="$t('settings.theme')"
-          @update:modelValue="handleThemeChange"
-        ></v-select>
+    <v-select
+      :items="themeOptions"
+      v-model="selectedTheme"
+      :label="$t('settings.theme')"
+      @update:modelValue="handleThemeChange"
+    ></v-select>
 
-        <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
-            <v-icon start>{{ mdiGoogle }}</v-icon>
-            {{ $t('app.signin-google') }}
+    <div v-if="!userIsAuthenticated">
+      <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
+        <v-icon start>{{ mdiGoogle }}</v-icon>
+        {{ $t('app.signin-google') }}
+      </v-btn>
+      <br />
+      <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
+        <v-icon start>{{ mdiEmail }}</v-icon>
+        {{ $t('email-auth.title') }}
+      </v-btn>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <v-text-field
+        :label="$t('settings.max-phe')"
+        v-model.number="settings.maxPhe"
+        type="number"
+      ></v-text-field>
+
+      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="save">{{
+        $t('common.save')
+      }}</v-btn>
+
+      <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.reset-heading') }}</h2>
+
+      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetLog">
+        {{ $t('settings.reset-log') }}
+      </v-btn>
+      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetOwnFood">
+        {{ $t('settings.reset-own-food') }}
+      </v-btn>
+      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetDiary">
+        {{ $t('settings.reset-diary') }}
+      </v-btn>
+
+      <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>
+
+      <p class="mb-6">
+        {{ $t('settings.delete-account-info') }}
+      </p>
+
+      <v-btn variant="outlined" rounded color="error" class="mr-6 mb-5" @click="deleteAccount">
+        {{ $t('settings.delete-account') }}
+      </v-btn>
+
+      <v-snackbar location="bottom" color="teal" v-model="snackbar">
+        {{ $t('settings.saved') }}
+        <template v-slot:action="{ attrs }">
+          <v-btn variant="text" v-bind="attrs" @click="snackbar = false">
+            {{ $t('common.close') }}
           </v-btn>
-          <br />
-          <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
-            <v-icon start>{{ mdiEmail }}</v-icon>
-            {{ $t('email-auth.title') }}
-          </v-btn>
-        </div>
-
-        <div v-if="userIsAuthenticated">
-          <v-text-field
-            :label="$t('settings.max-phe')"
-            v-model.number="settings.maxPhe"
-            type="number"
-          ></v-text-field>
-
-          <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="save">{{
-            $t('common.save')
-          }}</v-btn>
-
-          <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.reset-heading') }}</h2>
-
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetLog">
-            {{ $t('settings.reset-log') }}
-          </v-btn>
-          <v-btn
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            class="mr-6 mb-5"
-            @click="resetOwnFood"
-          >
-            {{ $t('settings.reset-own-food') }}
-          </v-btn>
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetDiary">
-            {{ $t('settings.reset-diary') }}
-          </v-btn>
-
-          <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>
-
-          <p class="mb-6">
-            {{ $t('settings.delete-account-info') }}
-          </p>
-
-          <v-btn variant="outlined" rounded color="error" class="mr-6 mb-5" @click="deleteAccount">
-            {{ $t('settings.delete-account') }}
-          </v-btn>
-
-          <v-snackbar location="bottom" color="teal" v-model="snackbar">
-            {{ $t('settings.saved') }}
-            <template v-slot:action="{ attrs }">
-              <v-btn variant="text" v-bind="attrs" @click="snackbar = false">
-                {{ $t('common.close') }}
-              </v-btn>
-            </template>
-          </v-snackbar>
-        </div>
-      </v-col>
-    </v-row>
+        </template>
+      </v-snackbar>
+    </div>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}

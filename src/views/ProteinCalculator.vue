@@ -1,73 +1,65 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('protein-calculator.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('protein-calculator.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <v-select
-          v-model="select"
-          :items="type"
-          :label="$t('protein-calculator.factor')"
-          item-title="title"
-          item-value="value"
-        ></v-select>
+    <v-select
+      v-model="select"
+      :items="type"
+      :label="$t('protein-calculator.factor')"
+      item-title="title"
+      item-value="value"
+    ></v-select>
 
-        <v-text-field
-          :label="$t('protein-calculator.protein')"
-          v-model.number="protein"
-          type="number"
-        ></v-text-field>
+    <v-text-field
+      :label="$t('protein-calculator.protein')"
+      v-model.number="protein"
+      type="number"
+    ></v-text-field>
 
-        <v-text-field
-          :label="$t('protein-calculator.weight')"
-          v-model.number="weight"
-          type="number"
-          clearable
-        ></v-text-field>
+    <v-text-field
+      :label="$t('protein-calculator.weight')"
+      v-model.number="weight"
+      type="number"
+      clearable
+    ></v-text-field>
 
-        <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+    <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
 
-        <div v-if="userIsAuthenticated">
-          <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
-          <v-progress-linear
-            :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-            height="6"
-            class="mt-3 mb-6"
-            rounded
-          ></v-progress-linear>
-        </div>
+    <div v-if="userIsAuthenticated">
+      <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
+      <v-progress-linear
+        :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
+        height="6"
+        class="mt-3 mb-6"
+        rounded
+      ></v-progress-linear>
+    </div>
 
-        <v-dialog v-model="dialog" max-width="500px" v-if="userIsAuthenticated">
-          <template v-slot:activator="{ props }">
-            <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mt-3">
-              {{ $t('common.add') }}
-            </v-btn>
-          </template>
+    <v-dialog v-model="dialog" max-width="500px" v-if="userIsAuthenticated">
+      <template v-slot:activator="{ props }">
+        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mt-3">
+          {{ $t('common.add') }}
+        </v-btn>
+      </template>
 
-          <v-card>
-            <v-card-title class="text-h5 mt-4">
-              {{ $t('common.add') }}
-            </v-card-title>
+      <v-card>
+        <v-card-title class="text-h5 mt-4">
+          {{ $t('common.add') }}
+        </v-card-title>
 
-            <v-card-text>
-              <v-text-field :label="$t('protein-calculator.name')" v-model="name"></v-text-field>
-            </v-card-text>
+        <v-card-text>
+          <v-text-field :label="$t('protein-calculator.name')" v-model="name"></v-text-field>
+        </v-card-text>
 
-            <v-card-actions class="mt-n6">
-              <v-spacer></v-spacer>
-              <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-              <v-btn variant="flat" color="btnsecondary" @click="dialog = false">{{
-                $t('common.cancel')
-              }}</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-col>
-    </v-row>
+        <v-card-actions class="mt-n6">
+          <v-spacer></v-spacer>
+          <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
+          <v-btn variant="flat" color="btnsecondary" @click="dialog = false">{{
+            $t('common.cancel')
+          }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 

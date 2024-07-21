@@ -1,211 +1,192 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <h2 class="text-h5 mt-3">{{ $t('own-food.title') }}</h2>
-      </v-col>
-    </v-row>
+    <h2 class="text-h5 mb-6">{{ $t('own-food.title') }}</h2>
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <div v-if="!userIsAuthenticated">
-          <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
-            <v-icon start>{{ mdiGoogle }}</v-icon>
-            {{ $t('app.signin-google') }}
+    <div v-if="!userIsAuthenticated">
+      <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
+        <v-icon start>{{ mdiGoogle }}</v-icon>
+        {{ $t('app.signin-google') }}
+      </v-btn>
+      <br />
+      <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
+        <v-icon start>{{ mdiEmail }}</v-icon>
+        {{ $t('email-auth.title') }}
+      </v-btn>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <p class="mb-6">{{ $t('own-food.search-info') }}</p>
+
+      <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
+        <template v-slot:item="{ item }">
+          <tr @click="addItem(item)" class="tr-edit">
+            <td class="text-start">
+              <img
+                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                v-if="item.icon !== undefined && item.icon !== ''"
+                onerror="this.src='img/food-icons/organic-food.svg'"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              <img
+                :src="publicPath + 'img/food-icons/organic-food.svg'"
+                v-if="item.icon === undefined || item.icon === ''"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              {{ item.name }}
+            </td>
+            <td class="text-start">{{ item.phe }}</td>
+          </tr>
+        </template>
+      </v-data-table-virtual>
+
+      <v-dialog v-model="dialog" max-width="500px">
+        <template v-slot:activator="{ props }">
+          <v-btn variant="flat" rounded color="primary" class="mr-3 mt-3" v-bind="props">
+            {{ $t('common.add') }}
           </v-btn>
-          <br />
-          <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
-            <v-icon start>{{ mdiEmail }}</v-icon>
-            {{ $t('email-auth.title') }}
-          </v-btn>
-        </div>
+        </template>
 
-        <div v-if="userIsAuthenticated">
-          <p class="mb-6">{{ $t('own-food.search-info') }}</p>
+        <v-card>
+          <v-card-title class="text-h5 mt-4">
+            {{ formTitle }}
+          </v-card-title>
 
-          <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
-            <template v-slot:item="{ item }">
-              <tr @click="addItem(item)" class="tr-edit">
-                <td class="text-start">
-                  <img
-                    :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                    v-if="item.icon !== undefined && item.icon !== ''"
-                    onerror="this.src='img/food-icons/organic-food.svg'"
-                    width="25"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                  <img
-                    :src="publicPath + 'img/food-icons/organic-food.svg'"
-                    v-if="item.icon === undefined || item.icon === ''"
-                    width="25"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                  {{ item.name }}
-                </td>
-                <td class="text-start">{{ item.phe }}</td>
-              </tr>
-            </template>
-          </v-data-table-virtual>
-
-          <v-dialog v-model="dialog" max-width="500px">
-            <template v-slot:activator="{ props }">
-              <v-btn variant="flat" rounded color="primary" class="mr-3 mt-3" v-bind="props">
-                {{ $t('common.add') }}
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title class="text-h5 mt-4">
-                {{ formTitle }}
-              </v-card-title>
-
-              <v-card-text>
-                <v-text-field label="Name" v-model="editedItem.name">
-                  <template v-slot:append>
-                    <v-menu>
-                      <template v-slot:activator="{ props }">
-                        <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
-                          <img
-                            :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                            v-if="editedItem.icon !== undefined && editedItem.icon !== null"
-                            width="40"
-                            class="food-icon"
-                            alt="Food Icon"
-                          />
-                          <img
-                            :src="publicPath + 'img/food-icons/organic-food.svg'"
-                            v-if="editedItem.icon === undefined || editedItem.icon === null"
-                            width="40"
-                            class="food-icon"
-                            alt="Food Icon"
-                          />
-                        </v-btn>
-                      </template>
-                      <v-card max-width="300" max-height="250" class="overflow-y-auto">
-                        <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
-                          <img
-                            :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
-                            v-if="item.svg !== undefined"
-                            width="40"
-                            class="food-icon pick-icon"
-                            alt="Icon Picker"
-                            @click="editedItem.icon = item.svg"
-                          />
-                        </span>
-                      </v-card>
-                    </v-menu>
+          <v-card-text>
+            <v-text-field label="Name" v-model="editedItem.name">
+              <template v-slot:append>
+                <v-menu>
+                  <template v-slot:activator="{ props }">
+                    <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
+                      <img
+                        :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
+                        v-if="editedItem.icon !== undefined && editedItem.icon !== null"
+                        width="40"
+                        class="food-icon"
+                        alt="Food Icon"
+                      />
+                      <img
+                        :src="publicPath + 'img/food-icons/organic-food.svg'"
+                        v-if="editedItem.icon === undefined || editedItem.icon === null"
+                        width="40"
+                        class="food-icon"
+                        alt="Food Icon"
+                      />
+                    </v-btn>
                   </template>
-                </v-text-field>
-                <v-text-field
-                  :label="$t('own-food.phe')"
-                  v-model.number="editedItem.phe"
-                  type="number"
-                ></v-text-field>
-              </v-card-text>
+                  <v-card max-width="300" max-height="250" class="overflow-y-auto">
+                    <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
+                      <img
+                        :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
+                        v-if="item.svg !== undefined"
+                        width="40"
+                        class="food-icon pick-icon"
+                        alt="Icon Picker"
+                        @click="editedItem.icon = item.svg"
+                      />
+                    </span>
+                  </v-card>
+                </v-menu>
+              </template>
+            </v-text-field>
+            <v-text-field
+              :label="$t('own-food.phe')"
+              v-model.number="editedItem.phe"
+              type="number"
+            ></v-text-field>
+          </v-card-text>
 
-              <v-card-actions class="mt-n6">
-                <v-spacer></v-spacer>
-                <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-                <v-btn
-                  variant="flat"
-                  color="warning"
-                  v-if="editedIndex !== -1"
-                  @click="deleteItem()"
-                >
-                  {{ $t('common.delete') }}
-                </v-btn>
-                <v-btn variant="flat" color="btnsecondary" @click="close">{{
-                  $t('common.cancel')
-                }}</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+          <v-card-actions class="mt-n6">
+            <v-spacer></v-spacer>
+            <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
+            <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
+              {{ $t('common.delete') }}
+            </v-btn>
+            <v-btn variant="flat" color="btnsecondary" @click="close">{{
+              $t('common.cancel')
+            }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
-          <v-btn
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            class="mr-3 mt-3"
-            @click="exportOwnFood"
-          >
-            {{ $t('own-food.export') }}
-          </v-btn>
+      <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mt-3" @click="exportOwnFood">
+        {{ $t('own-food.export') }}
+      </v-btn>
 
-          <p class="text--secondary mt-5">
-            <v-icon>{{ mdiInformationVariant }}</v-icon>
-            {{ $t('own-food.note') }}
-          </p>
+      <p class="text--secondary mt-5">
+        <v-icon>{{ mdiInformationVariant }}</v-icon>
+        {{ $t('own-food.note') }}
+      </p>
 
-          <v-dialog v-model="dialog2" max-width="500px">
-            <v-card>
-              <v-card-title class="text-h5 mt-4">
-                <img
-                  :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                  v-if="editedItem.icon !== undefined"
-                  width="35"
-                  class="food-icon"
-                  alt="Food Icon"
-                />
-                <img
-                  :src="publicPath + 'img/food-icons/organic-food.svg'"
-                  v-if="editedItem.icon === undefined"
-                  width="35"
-                  class="food-icon"
-                  alt="Food Icon"
-                />
-                {{ editedItem.name }}
-              </v-card-title>
+      <v-dialog v-model="dialog2" max-width="500px">
+        <v-card>
+          <v-card-title class="text-h5 mt-4">
+            <img
+              :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
+              v-if="editedItem.icon !== undefined"
+              width="35"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="editedItem.icon === undefined"
+              width="35"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            {{ editedItem.name }}
+          </v-card-title>
 
-              <v-card-text>
-                <v-text-field
-                  :label="$t('own-food.weight')"
-                  v-model.number="weight"
-                  type="number"
-                  clearable
-                ></v-text-field>
-                <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>
-                <p class="mt-4 text-caption">{{ $t('phe-log.preview') }}</p>
-                <v-progress-linear
-                  :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-                  height="6"
-                  class="mt-3 mb-8"
-                  rounded
-                ></v-progress-linear>
-              </v-card-text>
+          <v-card-text>
+            <v-text-field
+              :label="$t('own-food.weight')"
+              v-model.number="weight"
+              type="number"
+              clearable
+            ></v-text-field>
+            <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>
+            <p class="mt-4 text-caption">{{ $t('phe-log.preview') }}</p>
+            <v-progress-linear
+              :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
+              height="6"
+              class="mt-3 mb-8"
+              rounded
+            ></v-progress-linear>
+          </v-card-text>
 
-              <v-card-actions class="mt-n6">
-                <v-spacer></v-spacer>
-                <v-btn variant="flat" color="primary" @click="add">
-                  {{ $t('common.add') }}
-                </v-btn>
-                <v-btn variant="flat" color="btnsecondary" @click="editItem()">{{
-                  $t('common.edit')
-                }}</v-btn>
-                <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
-                  $t('common.cancel')
-                }}</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+          <v-card-actions class="mt-n6">
+            <v-spacer></v-spacer>
+            <v-btn variant="flat" color="primary" @click="add">
+              {{ $t('common.add') }}
+            </v-btn>
+            <v-btn variant="flat" color="btnsecondary" @click="editItem()">{{
+              $t('common.edit')
+            }}</v-btn>
+            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
+              $t('common.cancel')
+            }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
-          <v-dialog v-model="alert" max-width="300">
-            <v-card>
-              <v-card-title>{{ $t('common.note') }}</v-card-title>
-              <v-card-text>{{ $t('own-food.limit') }}</v-card-text>
+      <v-dialog v-model="alert" max-width="300">
+        <v-card>
+          <v-card-title>{{ $t('common.note') }}</v-card-title>
+          <v-card-text>{{ $t('own-food.limit') }}</v-card-text>
 
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" variant="text" @click="alert = false">{{
-                  $t('common.ok')
-                }}</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </div>
-      </v-col>
-    </v-row>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" variant="text" @click="alert = false">{{
+              $t('common.ok')
+            }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
       {{ $t('app.offline') }}

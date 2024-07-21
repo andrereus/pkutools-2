@@ -1,17 +1,13 @@
 <template>
-  <div>
-    <v-row justify="center" class="privacy-background">
-      <v-col cols="12" md="10" lg="8" xl="6">
-        <a
-          href="https://www.iubenda.com/privacy-policy/19763599"
-          class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed"
-          :title="$t('privacy-policy.title')"
-          target="_blank"
-        >
-          {{ $t('privacy-policy.title') }} <v-icon size="x-small">{{ mdiOpenInNew }}</v-icon>
-        </a>
-      </v-col>
-    </v-row>
+  <div class="privacy-background">
+    <a
+      href="https://www.iubenda.com/privacy-policy/19763599"
+      class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed"
+      :title="$t('privacy-policy.title')"
+      target="_blank"
+    >
+      {{ $t('privacy-policy.title') }} <v-icon size="x-small">{{ mdiOpenInNew }}</v-icon>
+    </a>
   </div>
 </template>
 
