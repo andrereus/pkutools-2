@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('phe-diary.title') }}</h2>
-
     <div v-if="!userIsAuthenticated">
       <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
         <v-icon start>{{ mdiGoogle }}</v-icon>
@@ -15,6 +13,22 @@
     </div>
 
     <div v-if="userIsAuthenticated">
+      <div class="t-block t-mb-6">
+        <nav class="t-flex t-space-x-4" aria-label="Tabs">
+          <RouterLink
+            to="/"
+            class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium"
+            >{{ $t('phe-log.title') }}</RouterLink
+          >
+          <RouterLink
+            to="/phe-diary"
+            class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium"
+            aria-current="page"
+            >{{ $t('phe-diary.title') }}</RouterLink
+          >
+        </nav>
+      </div>
+
       <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
 
       <apexchart
