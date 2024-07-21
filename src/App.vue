@@ -190,12 +190,12 @@
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">Open user menu</span>
-                  <UserCircleIcon
+                  <CircleUser
                     v-if="!userIsAuthenticated"
                     class="t-h-6 t-w-6 dark:t-text-gray-300"
                     aria-hidden="true"
                   />
-                  <UserIcon
+                  <User
                     v-if="userIsAuthenticated && !userPhotoUrl"
                     class="t-h-6 t-w-6 dark:t-text-gray-300"
                     aria-hidden="true"
@@ -417,8 +417,17 @@ import {
 } from '@mdi/js'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, UserCircleIcon, UserIcon } from '@heroicons/vue/24/outline'
-import { House, Calculator, SquareDivide, ScanBarcode, Apple, Book } from 'lucide-vue-next'
+import { Bars3Icon } from '@heroicons/vue/24/outline'
+import {
+  CircleUser,
+  User,
+  House,
+  Calculator,
+  SquareDivide,
+  ScanBarcode,
+  Apple,
+  Book
+} from 'lucide-vue-next'
 
 export default {
   components: {
@@ -427,8 +436,8 @@ export default {
     MenuItem,
     MenuItems,
     Bars3Icon,
-    UserCircleIcon,
-    UserIcon,
+    CircleUser,
+    User,
     House,
     Calculator,
     SquareDivide,
