@@ -25,34 +25,94 @@
                 <MenuItems
                   class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-48 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
                 >
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Your Profile</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/')
+                          close()
+                        }
+                      "
+                      >{{ $t('home.title') }}</a
                     >
                   </MenuItem>
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Settings</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/phe-calculator')
+                          close()
+                        }
+                      "
+                      >{{ $t('phe-calculator.title') }}</a
                     >
                   </MenuItem>
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Sign out</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/protein-calculator')
+                          close()
+                        }
+                      "
+                      >{{ $t('protein-calculator.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                      ]"
+                      @click.prevent="
+                        () => {
+                          $router.push('/barcode-scanner')
+                          close()
+                        }
+                      "
+                      >{{ $t('barcode-scanner.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                      ]"
+                      @click.prevent="
+                        () => {
+                          $router.push('/own-food')
+                          close()
+                        }
+                      "
+                      >{{ $t('own-food.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                      ]"
+                      @click.prevent="
+                        () => {
+                          $router.push('/phe-diary')
+                          close()
+                        }
+                      "
+                      >{{ $t('phe-diary.title') }}</a
                     >
                   </MenuItem>
                 </MenuItems>
@@ -70,6 +130,7 @@
               PKU Tools
             </div>
           </div>
+
           <div
             class="t-absolute t-inset-y-0 t-right-0 t-flex t-items-center t-pr-2 sm:t-static sm:t-inset-auto sm:t-ml-6 sm:t-pr-0"
           >
@@ -153,34 +214,79 @@
                 <MenuItems
                   class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
                 >
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Your Profile</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/settings')
+                          close()
+                        }
+                      "
+                      >{{ $t('settings.title') }}</a
                     >
                   </MenuItem>
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Settings</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/help')
+                          close()
+                        }
+                      "
+                      >{{ $t('help.title') }}</a
                     >
                   </MenuItem>
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Sign out</a
+                      @click.prevent="
+                        () => {
+                          $router.push('/about')
+                          close()
+                        }
+                      "
+                      >{{ $t('about.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                      ]"
+                      @click.prevent="
+                        () => {
+                          $router.push('/disclaimer')
+                          close()
+                        }
+                      "
+                      >{{ $t('disclaimer.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100' : '',
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                      ]"
+                      @click.prevent="
+                        () => {
+                          $router.push('/privacy-policy')
+                          close()
+                        }
+                      "
+                      >{{ $t('privacy-policy.title') }}</a
                     >
                   </MenuItem>
                 </MenuItems>
