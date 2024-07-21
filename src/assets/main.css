@@ -1,6 +1,6 @@
 @tailwind base;
 
-// Temporary fix because of preflight
+/* Temporary fix because of preflight */
 @layer base {
   [type='text'],
   input:where(:not([type])),
