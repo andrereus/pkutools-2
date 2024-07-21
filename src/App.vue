@@ -121,27 +121,30 @@
           </div>
 
           <div class="t-flex t-flex-1 t-items-stretch t-justify-start t-ml-3">
-            <div class="t-flex t-flex-shrink-0 t-items-center">
+            <RouterLink to="/" class="t-flex t-flex-shrink-0 t-items-center">
               <img
                 class="t-h-8 t-w-auto t-mr-3"
                 src="./assets/pkutools-logo.png"
                 alt="PKU Tools Logo"
               />
-              PKU Tools
-            </div>
+              <span>PKU Tools</span>
+            </RouterLink>
           </div>
 
           <div
             class="t-absolute t-inset-y-0 t-right-0 t-flex t-items-center t-pr-2 sm:t-static sm:t-inset-auto sm:t-ml-6 sm:t-pr-0"
           >
+            <button
+              type="button"
+              class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 headway"
+            ></button>
+
             <Menu as="div" class="t-relative t-ml-3">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2"
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-indigo-500 focus:t-ring-offset-2 t-uppercase"
                 >
-                  <span class="t-absolute t--inset-1.5" />
-                  <span class="t-sr-only">Open user menu</span>
-                  <LanguageIcon class="t-h-6 t-w-6" aria-hidden="true" />
+                  {{ locale }}
                 </MenuButton>
               </div>
               <transition
@@ -155,34 +158,19 @@
                 <MenuItems
                   class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
                 >
-                  <MenuItem v-slot="{ active }">
+                  <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
-                      href="#"
                       :class="[
                         active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
+                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
                       ]"
-                      >Your Profile</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a
-                      href="#"
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
-                      ]"
-                      >Settings</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a
-                      href="#"
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700'
-                      ]"
-                      >Sign out</a
+                      @click.prevent="
+                        () => {
+                          locale = lang.abbr
+                          close()
+                        }
+                      "
+                      >{{ lang.name }}</a
                     >
                   </MenuItem>
                 </MenuItems>
@@ -196,10 +184,21 @@
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">Open user menu</span>
+                  <UserCircleIcon
+                    v-if="!userIsAuthenticated"
+                    class="t-h-6 t-w-6"
+                    aria-hidden="true"
+                  />
+                  <UserIcon
+                    v-if="userIsAuthenticated && !userPhotoUrl"
+                    class="t-h-6 t-w-6"
+                    aria-hidden="true"
+                  />
                   <img
+                    v-if="userIsAuthenticated && userPhotoUrl"
                     class="t-h-8 t-w-8 t-rounded-full"
-                    src="./assets/pkutools-logo.png"
-                    alt="PKU Tools Logo"
+                    :src="userPhotoUrl"
+                    :alt="$t('app.profile-picture')"
                   />
                 </MenuButton>
               </div>
@@ -212,83 +211,147 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-48 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
+                  class="t-absolute t-right-0 t-z-10 t-mt-2 t-w-56 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none"
                 >
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/settings')
-                          close()
-                        }
-                      "
-                      >{{ $t('settings.title') }}</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/help')
-                          close()
-                        }
-                      "
-                      >{{ $t('help.title') }}</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/about')
-                          close()
-                        }
-                      "
-                      >{{ $t('about.title') }}</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/disclaimer')
-                          close()
-                        }
-                      "
-                      >{{ $t('disclaimer.title') }}</a
-                    >
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100' : '',
-                        't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/privacy-policy')
-                          close()
-                        }
-                      "
-                      >{{ $t('privacy-policy.title') }}</a
-                    >
-                  </MenuItem>
+                  <div class="py-1">
+                    <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            signInGoogle()
+                            close()
+                          }
+                        "
+                        >{{ $t('app.signin-google') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/email-auth')
+                            close()
+                          }
+                        "
+                        >{{ $t('email-auth.title') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/settings')
+                            close()
+                          }
+                        "
+                        >{{ user.name || user.email }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            signOut()
+                            close()
+                          }
+                        "
+                        >{{ $t('app.signout') }}</a
+                      >
+                    </MenuItem>
+                  </div>
+                  <div class="py-1">
+                    <MenuItem v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/settings')
+                            close()
+                          }
+                        "
+                        >{{ $t('settings.title') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/help')
+                            close()
+                          }
+                        "
+                        >{{ $t('help.title') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/about')
+                            close()
+                          }
+                        "
+                        >{{ $t('about.title') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/disclaimer')
+                            close()
+                          }
+                        "
+                        >{{ $t('disclaimer.title') }}</a
+                      >
+                    </MenuItem>
+                    <MenuItem v-slot="{ active, close }">
+                      <a
+                        :class="[
+                          active ? 't-bg-gray-100' : '',
+                          't-block t-px-4 t-py-2 t-text-sm t-text-gray-700 t-cursor-pointer'
+                        ]"
+                        @click.prevent="
+                          () => {
+                            $router.push('/privacy-policy')
+                            close()
+                          }
+                        "
+                        >{{ $t('privacy-policy.title') }}</a
+                      >
+                    </MenuItem>
+                  </div>
                 </MenuItems>
               </transition>
             </Menu>
@@ -346,7 +409,7 @@ import {
 } from '@mdi/js'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, LanguageIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, UserCircleIcon, UserIcon } from '@heroicons/vue/24/outline'
 
 export default {
   components: {
@@ -355,7 +418,8 @@ export default {
     MenuItem,
     MenuItems,
     Bars3Icon,
-    LanguageIcon
+    UserCircleIcon,
+    UserIcon
   },
   data: () => ({
     mdiGoogle,

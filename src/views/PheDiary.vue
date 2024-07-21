@@ -21,15 +21,6 @@
         </div>
 
         <div v-if="userIsAuthenticated">
-          <div role="tablist" class="t-tabs t-tabs-lifted t-tabs-lg t-mb-12">
-            <router-link to="/" role="tab" class="t-tab t-no-underline">{{
-              $t('phe-log.title')
-            }}</router-link>
-            <router-link to="/phe-diary" role="tab" class="t-tab t-tab-active t-no-underline">{{
-              $t('phe-diary.title')
-            }}</router-link>
-          </div>
-
           <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
 
           <apexchart
