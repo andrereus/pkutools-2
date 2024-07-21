@@ -23,7 +23,7 @@
                 leave-to-class="t-transform t-opacity-0 t-scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-56 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
+                  class="t-absolute t-left-0 t-z-10 t-mt-2 t-w-64 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-white"
                 >
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -37,7 +37,7 @@
                           close()
                         }
                       "
-                      >{{ $t('home.title') }}</a
+                      ><House class="t-inline-block t-mr-2" />{{ $t('home.title') }}</a
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
@@ -52,7 +52,9 @@
                           close()
                         }
                       "
-                      >{{ $t('phe-calculator.title') }}</a
+                      ><Calculator class="t-inline-block t-mr-2" />{{
+                        $t('phe-calculator.title')
+                      }}</a
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
@@ -67,7 +69,9 @@
                           close()
                         }
                       "
-                      >{{ $t('protein-calculator.title') }}</a
+                      ><SquareDivide class="t-inline-block t-mr-2" />{{
+                        $t('protein-calculator.title')
+                      }}</a
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
@@ -82,7 +86,9 @@
                           close()
                         }
                       "
-                      >{{ $t('barcode-scanner.title') }}</a
+                      ><ScanBarcode class="t-inline-block t-mr-2" />{{
+                        $t('barcode-scanner.title')
+                      }}</a
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
@@ -97,7 +103,7 @@
                           close()
                         }
                       "
-                      >{{ $t('own-food.title') }}</a
+                      ><Apple class="t-inline-block t-mr-2" />{{ $t('own-food.title') }}</a
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
@@ -112,7 +118,7 @@
                           close()
                         }
                       "
-                      >{{ $t('phe-diary.title') }}</a
+                      ><Book class="t-inline-block t-mr-2" />{{ $t('phe-diary.title') }}</a
                     >
                   </MenuItem>
                 </MenuItems>
@@ -412,6 +418,7 @@ import {
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, UserCircleIcon, UserIcon } from '@heroicons/vue/24/outline'
+import { House, Calculator, SquareDivide, ScanBarcode, Apple, Book } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -421,7 +428,13 @@ export default {
     MenuItems,
     Bars3Icon,
     UserCircleIcon,
-    UserIcon
+    UserIcon,
+    House,
+    Calculator,
+    SquareDivide,
+    ScanBarcode,
+    Apple,
+    Book
   },
   data: () => ({
     mdiGoogle,
