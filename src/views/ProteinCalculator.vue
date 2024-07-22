@@ -1,6 +1,22 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('protein-calculator.title') }}</h2>
+    <h2 class="text-h5 mb-6">{{ $t('app.calculate') }}</h2>
+
+    <div class="t-block t-mb-6">
+      <nav class="t-flex t-space-x-4" aria-label="Tabs">
+        <RouterLink
+          to="/phe-calculator"
+          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          >{{ $t('phe-calculator.tab-title') }}</RouterLink
+        >
+        <RouterLink
+          to="/protein-calculator"
+          class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
+          aria-current="page"
+          >{{ $t('protein-calculator.tab-title') }}</RouterLink
+        >
+      </nav>
+    </div>
 
     <v-select
       v-model="select"

@@ -17,7 +17,9 @@
     "help": "Aide",
     "install": "Installer l'application web",
     "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
-    "redesign-info": "Redesign en cours ;) Merci de patienter."
+    "redesign-info": "Redesign en cours ;) Merci de patienter.",
+    "search": "Rechercher",
+    "calculate": "Calculer"
   },
   "common": {
     "add": "Ajouter",
@@ -52,6 +54,7 @@
   },
   "phe-calculator": {
     "title": "Calculateur de Phe",
+    "tab-title": "Phe",
     "description": "Calcul des valeurs de Phe.",
     "phe": "Phe pour 100g (en mg)",
     "weight": "Poids consommé (en g)",
@@ -60,6 +63,7 @@
   },
   "protein-calculator": {
     "title": "Calculateur de protéines",
+    "tab-title": "Protéines",
     "description": "Calculer les valeurs approximatives de Phe à partir des protéines.",
     "factor": "Type d'aliment",
     "protein": "Protéines pour 100g (en g)",
@@ -72,6 +76,7 @@
   },
   "barcode-scanner": {
     "title": "Scanner de code-barres",
+    "tab-title": "Code barre",
     "description": "Fonction expérimentale",
     "scan-barcode": "Scanner le code-barres",
     "please-wait": "Veuillez patienter...",

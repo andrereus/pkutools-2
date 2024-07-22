@@ -376,19 +376,14 @@
         </div>
         <nav class="t-flex t-space-x-2 t-py-2" aria-label="Global">
           <RouterLink
+            to="/barcode-scanner"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><Search
+          /></RouterLink>
+          <RouterLink
             to="/phe-calculator"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
             ><Calculator
-          /></RouterLink>
-          <RouterLink
-            to="/protein-calculator"
-            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><SquareDivide
-          /></RouterLink>
-          <RouterLink
-            to="/barcode-scanner"
-            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><ScanBarcode
           /></RouterLink>
           <RouterLink
             to="/own-food"
@@ -460,6 +455,7 @@ import {
   CircleUser,
   User,
   House,
+  Search,
   Calculator,
   SquareDivide,
   ScanBarcode,
@@ -482,6 +478,7 @@ export default {
     CircleUser,
     User,
     House,
+    Search,
     Calculator,
     SquareDivide,
     ScanBarcode,
