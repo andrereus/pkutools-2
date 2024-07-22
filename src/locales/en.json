@@ -45,6 +45,7 @@
   },
   "phe-search": {
     "title": "Phe Search",
+    "tab-title": "Food",
     "description": "Search for phe values.",
     "search": "Search for food",
     "weight": "Weight (in g)",
@@ -107,7 +108,7 @@
     "remaining": "Remaining",
     "save-day": "Finish log",
     "own-food": "Own food",
-    "quick-note": "New",
+    "quick-note": "Manual entry",
     "lock-info": "Edit/Calculation mode",
     "preview": "Preview Phe Log"
   },

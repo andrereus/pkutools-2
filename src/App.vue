@@ -50,6 +50,21 @@
                       ]"
                       @click.prevent="
                         () => {
+                          $router.push('/phe-search')
+                          close()
+                        }
+                      "
+                      ><Search class="t-inline-block t-mr-2" />{{ $t('phe-search.title') }}</a
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                      ]"
+                      @click.prevent="
+                        () => {
                           $router.push('/phe-calculator')
                           close()
                         }
@@ -376,7 +391,7 @@
         </div>
         <nav class="t-flex t-space-x-2 t-py-2" aria-label="Global">
           <RouterLink
-            to="/barcode-scanner"
+            to="/phe-search"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
             ><Search
           /></RouterLink>

@@ -1,9 +1,24 @@
 <template>
   <div>
-    <p v-if="!userIsAuthenticated" class="mb-8">{{ $t('app.description') }}</p>
-    <!-- <p class="mb-6">{{ $t('app.redesign-info') }}</p> -->
+    <h2 class="text-h5 mb-6">{{ $t('app.search') }}</h2>
 
-    <div v-if="!userIsAuthenticated">
+    <div class="t-block t-mb-6">
+      <nav class="t-flex t-space-x-4" aria-label="Tabs">
+        <RouterLink
+          to="/phe-search"
+          class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
+          aria-current="page"
+          >{{ $t('phe-search.tab-title') }}</RouterLink
+        >
+        <RouterLink
+          to="/barcode-scanner"
+          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          >{{ $t('barcode-scanner.tab-title') }}</RouterLink
+        >
+      </nav>
+    </div>
+
+    <div>
       <v-text-field
         v-model="search"
         :label="$t('phe-search.search')"
@@ -24,18 +39,6 @@
         </template>
       </v-text-field>
 
-      <v-btn
-        variant="flat"
-        rounded
-        color="btnsecondary"
-        class="mr-3 mb-3"
-        @click="advancedFood = null"
-        v-if="advancedFood !== null"
-      >
-        <v-icon start>{{ mdiArrowLeft }}</v-icon>
-        {{ $t('phe-search.back') }}
-      </v-btn>
-
       <v-data-table-virtual
         :headers="headers"
         :items="advancedFood"
@@ -53,7 +56,7 @@
         </template>
       </v-data-table-virtual>
 
-      <p class="mt-6 text--secondary" v-if="advancedFood !== null">
+      <p class="mt-6 text--secondary">
         <v-icon>{{ mdiInformationVariant }}</v-icon>
         {{ $t('phe-search.source') }}
       </p>
@@ -95,41 +98,6 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </div>
-
-    <PheLog v-if="userIsAuthenticated && advancedFood === null" />
-
-    <div v-if="!userIsAuthenticated && advancedFood === null">
-      <v-menu v-if="!userIsAuthenticated">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="primary" class="mt-6 mr-3 mb-4" v-bind="props">
-            <v-icon start>{{ mdiLoginVariant }}</v-icon>
-            {{ $t('email-auth.signin') }}
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item @click="signInGoogle">
-            <span>
-              <v-icon>{{ mdiGoogle }}</v-icon>
-              {{ $t('app.signin-google') }}
-            </span>
-          </v-list-item>
-          <v-list-item to="/email-auth">
-            <span>
-              <v-icon>{{ mdiEmail }}</v-icon>
-              {{ $t('email-auth.title') }}
-            </span>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-8 mr-3 mb-4">
-        <v-icon start>{{ mdiDownload }}</v-icon>
-        {{ $t('app.install') }}
-      </v-btn>
-
-      <h2 class="text-h5 mt-6 mb-6">{{ $t('home.features') }}</h2>
-      <FeatureComparison home class="mb-8" />
     </div>
 
     <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
@@ -242,7 +210,7 @@ export default {
         phe: this.calculatePhe()
       })
       this.dialog = false
-      this.advancedFood = null
+      this.$router.push('/')
     },
     async searchFood() {
       this.loading = true

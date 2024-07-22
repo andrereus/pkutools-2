@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import PheSearch from '../views/PheSearch.vue'
 import PheCalculator from '../views/PheCalculator.vue'
 import ProteinCalculator from '../views/ProteinCalculator.vue'
 import BarcodeScanner from '../views/BarcodeScanner.vue'
@@ -19,6 +20,11 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/phe-search',
+      name: 'Phe Search',
+      component: PheSearch
     },
     {
       path: '/phe-calculator',

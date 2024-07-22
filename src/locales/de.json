@@ -45,6 +45,7 @@
   },
   "phe-search": {
     "title": "Phe Suche",
+    "tab-title": "Lebensmittel",
     "description": "Suche nach Phe-Werten.",
     "search": "Lebensmittel suchen",
     "weight": "Gewicht (in g)",
@@ -107,7 +108,7 @@
     "remaining": "Übrig",
     "save-day": "Protokoll abschließen",
     "own-food": "Eigene LM.",
-    "quick-note": "Neu",
+    "quick-note": "Manueller Eintrag",
     "lock-info": "Editier-/Rechenmodus",
     "preview": "Vorschau Phe Protokoll"
   },

@@ -45,6 +45,7 @@
   },
   "phe-search": {
     "title": "Recherche de Phe",
+    "tab-title": "Alimentation",
     "description": "Recherche de valeurs de Phe.",
     "search": "Chercher des aliments",
     "weight": "Poids (en g)",
@@ -107,7 +108,7 @@
     "remaining": "Restant",
     "save-day": "Terminer le journal",
     "own-food": "Aliments personnels",
-    "quick-note": "Nouveau",
+    "quick-note": "Entrée manuelle",
     "lock-info": "Mode édition/calcul",
     "preview": "Aperçu du Journal de Phe"
   },

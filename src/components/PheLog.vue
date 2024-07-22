@@ -1,10 +1,11 @@
 <template>
   <div>
     <div v-if="userIsAuthenticated">
+      <h2 class="text-h5 mb-6">{{ $t('phe-log.title') }}</h2>
+
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mb-3" v-bind="props">
-            <v-icon start>{{ mdiPen }}</v-icon>
+          <v-btn variant="flat" rounded color="btnsecondary" class="mb-2" v-bind="props">
             {{ $t('phe-log.quick-note') }}
           </v-btn>
         </template>
@@ -88,7 +89,7 @@
         </v-card>
       </v-dialog>
 
-      <v-sheet v-if="lastAdded" class="mt-3 mb-6">
+      <v-sheet v-if="lastAdded" class="mb-6">
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn

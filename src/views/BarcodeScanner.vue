@@ -5,9 +5,9 @@
     <div class="t-block t-mb-6">
       <nav class="t-flex t-space-x-4" aria-label="Tabs">
         <RouterLink
-          to="/"
+          to="/phe-search"
           class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-          >{{ $t('home.title') }}</RouterLink
+          >{{ $t('phe-search.tab-title') }}</RouterLink
         >
         <RouterLink
           to="/barcode-scanner"
