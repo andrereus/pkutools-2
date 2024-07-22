@@ -98,8 +98,8 @@
     "export-filename": "PKU Tools - Alimento propio"
   },
   "phe-log": {
-    "title": "Registro de Phe",
-    "tab-title": "Registro diario",
+    "title": "Protocolo Phe",
+    "tab-title": "Protocolo",
     "description": "Registrar valores de Phe a lo largo del día.",
     "lock-values": "Modo de cálculo",
     "max": "Tolerancia de Phe por día",

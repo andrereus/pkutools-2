@@ -99,7 +99,7 @@
   },
   "phe-log": {
     "title": "Phe Protokoll",
-    "tab-title": "Tagesprotokoll",
+    "tab-title": "Protokoll",
     "description": "Protokolliere Phe-Werte über den Tag.",
     "lock-values": "Berechnungsmodus",
     "max": "Phe-Toleranz pro Tag",

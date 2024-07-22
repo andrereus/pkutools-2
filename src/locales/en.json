@@ -99,7 +99,7 @@
   },
   "phe-log": {
     "title": "Phe Log",
-    "tab-title": "Daily log",
+    "tab-title": "Log",
     "description": "Log phe values throughout the day.",
     "lock-values": "Calculation Mode",
     "max": "Phe tolerance per day",
