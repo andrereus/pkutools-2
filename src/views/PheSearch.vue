@@ -21,7 +21,6 @@
     <div>
       <v-text-field
         v-model="search"
-        ref="focusInput"
         :label="$t('phe-search.search')"
         autocomplete="off"
         @keyup="searchFood"
@@ -245,9 +244,6 @@ export default {
       })
       this.loading = false
     }
-  },
-  mounted() {
-    this.$refs.focusInput.$el.querySelector('input').focus()
   },
   computed: {
     pheResult() {
