@@ -17,16 +17,80 @@
         </nav>
       </div>
 
+      <v-sheet v-if="lastAdded" class="mb-6">
+        <v-slide-group>
+          <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
+            <v-btn
+              size="small"
+              variant="flat"
+              rounded
+              color="btnsecondary"
+              class="mr-1 mb-2"
+              @click="addLastAdded(item)"
+            >
+              + {{ item.weight }}g
+              {{ item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name }}
+            </v-btn>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+
+      <v-data-table-virtual
+        :headers="$i18n.locale === 'en' ? headersEn : headersDe"
+        :items="pheLog"
+      >
+        <template v-slot:item="{ item }">
+          <tr @click="editItem(item)" class="tr-edit">
+            <td class="text-start">
+              <img
+                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                v-if="item.icon !== undefined && item.icon !== ''"
+                onerror="this.src='img/food-icons/organic-food.svg'"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              <img
+                :src="publicPath + 'img/food-icons/organic-food.svg'"
+                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              {{
+                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                  ? item.emoji
+                  : null
+              }}
+              {{ item.name }}
+            </td>
+            <td class="text-start">{{ item.weight }}</td>
+            <td class="text-start">{{ item.phe }}</td>
+          </tr>
+        </template>
+      </v-data-table-virtual>
+
+      <v-progress-linear
+        :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
+        height="15"
+        class="mt-8"
+        rounded
+      ></v-progress-linear>
+
+      <p class="text-h6 font-weight-regular mt-6">
+        {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
+      </p>
+      <p class="mt-1 mb-7">
+        {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
+      </p>
+
+      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="saveResult">
+        {{ $t('phe-log.save-day') }}
+      </v-btn>
+
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn
-            size="small"
-            variant="flat"
-            rounded
-            color="btnsecondary"
-            class="mb-2"
-            v-bind="props"
-          >
+          <v-btn variant="flat" rounded color="btnsecondary" class="mb-2" v-bind="props">
             {{ $t('phe-log.quick-note') }}
           </v-btn>
         </template>
@@ -109,77 +173,6 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-
-      <v-sheet v-if="lastAdded" class="mb-6">
-        <v-slide-group>
-          <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
-            <v-btn
-              size="small"
-              variant="flat"
-              rounded
-              color="btnsecondary"
-              class="mr-1 mb-2"
-              @click="addLastAdded(item)"
-            >
-              + {{ item.weight }}g
-              {{ item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name }}
-            </v-btn>
-          </v-slide-group-item>
-        </v-slide-group>
-      </v-sheet>
-
-      <v-data-table-virtual
-        :headers="$i18n.locale === 'en' ? headersEn : headersDe"
-        :items="pheLog"
-      >
-        <template v-slot:item="{ item }">
-          <tr @click="editItem(item)" class="tr-edit">
-            <td class="text-start">
-              <img
-                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                v-if="item.icon !== undefined && item.icon !== ''"
-                onerror="this.src='img/food-icons/organic-food.svg'"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              <img
-                :src="publicPath + 'img/food-icons/organic-food.svg'"
-                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              {{
-                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                  ? item.emoji
-                  : null
-              }}
-              {{ item.name }}
-            </td>
-            <td class="text-start">{{ item.weight }}</td>
-            <td class="text-start">{{ item.phe }}</td>
-          </tr>
-        </template>
-      </v-data-table-virtual>
-
-      <v-progress-linear
-        :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-        height="15"
-        class="mt-8"
-        rounded
-      ></v-progress-linear>
-
-      <p class="text-h6 font-weight-regular mt-6">
-        {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
-      </p>
-      <p class="mt-1 mb-7">
-        {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
-      </p>
-
-      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="saveResult">
-        {{ $t('phe-log.save-day') }}
-      </v-btn>
 
       <v-dialog v-model="alert" max-width="300">
         <v-card>
