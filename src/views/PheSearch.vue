@@ -247,9 +247,7 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.$refs.focusInput.$el.querySelector('input').focus()
-    }, 300)
+    this.$refs.focusInput.$el.querySelector('input').focus()
   },
   computed: {
     pheResult() {
