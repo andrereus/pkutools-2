@@ -404,14 +404,14 @@
           </div>
         </div>
         <nav
-          class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12"
+          class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12 lg:t-justify-start"
           aria-label="Global"
         >
           <RouterLink
             to="/"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Book />
+            <House />
           </RouterLink>
           <RouterLink
             to="/phe-search"
