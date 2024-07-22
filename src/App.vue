@@ -67,6 +67,22 @@
                       ]"
                       @click.prevent="
                         () => {
+                          $router.push('/barcode-scanner')
+                          close()
+                        }
+                      "
+                    >
+                      <ScanBarcode class="t-inline-block t-mr-2" />{{ $t('barcode-scanner.title') }}
+                    </a>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active, close }">
+                    <a
+                      :class="[
+                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
+                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                      ]"
+                      @click.prevent="
+                        () => {
                           $router.push('/phe-calculator')
                           close()
                         }
@@ -91,22 +107,6 @@
                       <SquareDivide class="t-inline-block t-mr-2" />{{
                         $t('protein-calculator.title')
                       }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/barcode-scanner')
-                          close()
-                        }
-                      "
-                    >
-                      <ScanBarcode class="t-inline-block t-mr-2" />{{ $t('barcode-scanner.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">

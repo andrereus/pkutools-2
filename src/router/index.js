@@ -27,6 +27,11 @@ const router = createRouter({
       component: PheSearch
     },
     {
+      path: '/barcode-scanner',
+      name: 'Barcode Scanner',
+      component: BarcodeScanner
+    },
+    {
       path: '/phe-calculator',
       name: 'Phe Calculator',
       component: PheCalculator
@@ -35,11 +40,6 @@ const router = createRouter({
       path: '/protein-calculator',
       name: 'Protein Calculator',
       component: ProteinCalculator
-    },
-    {
-      path: '/barcode-scanner',
-      name: 'Barcode Scanner',
-      component: BarcodeScanner
     },
     {
       path: '/own-food',
