@@ -1,25 +1,9 @@
 <template>
   <div>
-    <p v-if="!userIsAuthenticated" class="mb-6">{{ $t('app.description') }}</p>
+    <p v-if="!userIsAuthenticated" class="mb-8">{{ $t('app.description') }}</p>
     <!-- <p class="mb-6">{{ $t('app.redesign-info') }}</p> -->
 
     <div>
-      <div v-if="userIsAuthenticated" class="t-block t-mb-6">
-        <nav class="t-flex t-space-x-4" aria-label="Tabs">
-          <RouterLink
-            to="/"
-            class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
-            aria-current="page"
-            >{{ $t('phe-log.title') }}</RouterLink
-          >
-          <RouterLink
-            to="/phe-diary"
-            class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-            >{{ $t('phe-diary.title') }}</RouterLink
-          >
-        </nav>
-      </div>
-
       <v-text-field
         v-model="search"
         :label="$t('phe-search.search')"
@@ -113,27 +97,12 @@
       </v-dialog>
     </div>
 
-    <div v-if="!userIsAuthenticated && advancedFood === null">
-      <v-btn variant="flat" rounded color="btnsecondary" to="/phe-calculator" class="mr-3 mb-3">
-        <v-icon start>{{ mdiCalculator }}</v-icon>
-        {{ $t('phe-calculator.title') }}
-      </v-btn>
-      <v-btn variant="flat" rounded color="btnsecondary" to="/protein-calculator" class="mr-3 mb-3">
-        <v-icon start>{{ mdiCalculatorVariant }}</v-icon>
-        {{ $t('protein-calculator.title') }}
-      </v-btn>
-      <v-btn variant="flat" rounded color="btnsecondary" to="/barcode-scanner" class="mr-3 mb-3">
-        <v-icon start>{{ mdiBarcodeScan }}</v-icon>
-        {{ $t('barcode-scanner.title') }}
-      </v-btn>
-    </div>
-
     <PheLog v-if="userIsAuthenticated && advancedFood === null" />
 
     <div v-if="!userIsAuthenticated && advancedFood === null">
       <v-menu v-if="!userIsAuthenticated">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="primary" class="mt-8 mr-3 mb-4" v-bind="props">
+          <v-btn variant="flat" rounded color="primary" class="mt-6 mr-3 mb-4" v-bind="props">
             <v-icon start>{{ mdiLoginVariant }}</v-icon>
             {{ $t('email-auth.signin') }}
           </v-btn>

@@ -1,7 +1,9 @@
 <template>
   <div class="t-min-h-full">
     <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
-      <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-6 lg:t-px-8">
+      <div
+        class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 t-divide-y t-divide-gray-200 dark:t-divide-gray-700 lg:t-px-8"
+      >
         <div class="t-relative t-flex t-h-16 t-justify-between">
           <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
             <MenuComponent as="div" class="t-relative">
@@ -372,6 +374,33 @@
             </MenuComponent>
           </div>
         </div>
+        <nav class="t-flex t-space-x-2 t-py-2" aria-label="Global">
+          <RouterLink
+            to="/phe-calculator"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><Calculator
+          /></RouterLink>
+          <RouterLink
+            to="/protein-calculator"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><SquareDivide
+          /></RouterLink>
+          <RouterLink
+            to="/barcode-scanner"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><ScanBarcode
+          /></RouterLink>
+          <RouterLink
+            to="/own-food"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><Apple
+          /></RouterLink>
+          <RouterLink
+            to="/phe-diary"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><Book
+          /></RouterLink>
+        </nav>
       </div>
     </div>
 
