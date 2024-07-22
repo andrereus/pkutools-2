@@ -411,25 +411,29 @@
             to="/"
             class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <House />
+            <House /><span class="t-hidden md:t-inline-block t-ml-2">{{ $t('home.title') }}</span>
           </RouterLink>
           <RouterLink
             to="/phe-search"
             class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Search />
+            <Search /><span class="t-hidden md:t-inline-block t-ml-2">{{ $t('app.search') }}</span>
           </RouterLink>
           <RouterLink
             to="/phe-calculator"
             class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Calculator />
+            <Calculator /><span class="t-hidden md:t-inline-block t-ml-2">{{
+              $t('app.calculator')
+            }}</span>
           </RouterLink>
           <RouterLink
             to="/own-food"
             class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Apple />
+            <Apple /><span class="t-hidden md:t-inline-block t-ml-2">{{
+              $t('own-food.title')
+            }}</span>
           </RouterLink>
         </nav>
       </div>
