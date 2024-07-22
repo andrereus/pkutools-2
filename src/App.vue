@@ -404,7 +404,7 @@
           </div>
         </div>
         <nav
-          class="t-flex t-justify-center t-space-x-10 t-py-2 lg:t-justify-start lg:t-space-x-2"
+          class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-10 lg:t-justify-start lg:t-space-x-2"
           aria-label="Global"
         >
           <RouterLink
