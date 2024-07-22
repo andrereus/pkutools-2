@@ -39,8 +39,9 @@
                           close()
                         }
                       "
-                      ><House class="t-inline-block t-mr-2" />{{ $t('home.title') }}</a
                     >
+                      <House class="t-inline-block t-mr-2" />{{ $t('home.title') }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -54,8 +55,9 @@
                           close()
                         }
                       "
-                      ><Search class="t-inline-block t-mr-2" />{{ $t('phe-search.title') }}</a
                     >
+                      <Search class="t-inline-block t-mr-2" />{{ $t('phe-search.title') }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -69,10 +71,9 @@
                           close()
                         }
                       "
-                      ><Calculator class="t-inline-block t-mr-2" />{{
-                        $t('phe-calculator.title')
-                      }}</a
                     >
+                      <Calculator class="t-inline-block t-mr-2" />{{ $t('phe-calculator.title') }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -86,10 +87,11 @@
                           close()
                         }
                       "
-                      ><SquareDivide class="t-inline-block t-mr-2" />{{
-                        $t('protein-calculator.title')
-                      }}</a
                     >
+                      <SquareDivide class="t-inline-block t-mr-2" />{{
+                        $t('protein-calculator.title')
+                      }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -103,10 +105,9 @@
                           close()
                         }
                       "
-                      ><ScanBarcode class="t-inline-block t-mr-2" />{{
-                        $t('barcode-scanner.title')
-                      }}</a
                     >
+                      <ScanBarcode class="t-inline-block t-mr-2" />{{ $t('barcode-scanner.title') }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -120,8 +121,9 @@
                           close()
                         }
                       "
-                      ><Apple class="t-inline-block t-mr-2" />{{ $t('own-food.title') }}</a
                     >
+                      <Apple class="t-inline-block t-mr-2" />{{ $t('own-food.title') }}
+                    </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
@@ -135,8 +137,9 @@
                           close()
                         }
                       "
-                      ><Book class="t-inline-block t-mr-2" />{{ $t('phe-diary.title') }}</a
                     >
+                      <Book class="t-inline-block t-mr-2" />{{ $t('phe-diary.title') }}
+                    </a>
                   </MenuItem>
                 </MenuItems>
               </transition>
@@ -193,8 +196,9 @@
                           close()
                         }
                       "
-                      >{{ lang.name }}</a
                     >
+                      {{ lang.name }}
+                    </a>
                   </MenuItem>
                 </MenuItems>
               </transition>
@@ -249,7 +253,8 @@
                             close()
                           }
                         "
-                        ><svg
+                      >
+                        <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           width="25"
@@ -257,9 +262,10 @@
                         >
                           <path
                             d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"
-                          /></svg
-                        >{{ $t('app.signin-google') }}</a
-                      >
+                          />
+                        </svg>
+                        {{ $t('app.signin-google') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
                       <a
@@ -273,8 +279,9 @@
                             close()
                           }
                         "
-                        ><Mail class="t-inline-block t-mr-2" />{{ $t('email-auth.title') }}</a
                       >
+                        <Mail class="t-inline-block t-mr-2" />{{ $t('email-auth.title') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
@@ -288,8 +295,9 @@
                             close()
                           }
                         "
-                        ><User class="t-inline-block t-mr-2" />{{ user.name || user.email }}</a
                       >
+                        <User class="t-inline-block t-mr-2" />{{ user.name || user.email }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
@@ -303,8 +311,9 @@
                             close()
                           }
                         "
-                        ><LogOut class="t-inline-block t-mr-2" />{{ $t('app.signout') }}</a
                       >
+                        <LogOut class="t-inline-block t-mr-2" />{{ $t('app.signout') }}
+                      </a>
                     </MenuItem>
                   </div>
                   <div class="py-1">
@@ -320,8 +329,9 @@
                             close()
                           }
                         "
-                        ><Settings class="t-inline-block t-mr-2" />{{ $t('settings.title') }}</a
                       >
+                        <Settings class="t-inline-block t-mr-2" />{{ $t('settings.title') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
@@ -335,8 +345,9 @@
                             close()
                           }
                         "
-                        ><LifeBuoy class="t-inline-block t-mr-2" />{{ $t('help.title') }}</a
                       >
+                        <LifeBuoy class="t-inline-block t-mr-2" />{{ $t('help.title') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
@@ -350,8 +361,9 @@
                             close()
                           }
                         "
-                        ><Info class="t-inline-block t-mr-2" />{{ $t('about.title') }}</a
                       >
+                        <Info class="t-inline-block t-mr-2" />{{ $t('about.title') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
@@ -365,8 +377,9 @@
                             close()
                           }
                         "
-                        ><Info class="t-inline-block t-mr-2" />{{ $t('disclaimer.title') }}</a
                       >
+                        <Info class="t-inline-block t-mr-2" />{{ $t('disclaimer.title') }}
+                      </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
@@ -380,8 +393,9 @@
                             close()
                           }
                         "
-                        ><Info class="t-inline-block t-mr-2" />{{ $t('privacy-policy.title') }}</a
                       >
+                        <Info class="t-inline-block t-mr-2" />{{ $t('privacy-policy.title') }}
+                      </a>
                     </MenuItem>
                   </div>
                 </MenuItems>
@@ -389,27 +403,34 @@
             </MenuComponent>
           </div>
         </div>
-        <nav class="t-flex t-space-x-2 t-py-2" aria-label="Global">
+        <nav
+          class="t-flex t-justify-center t-space-x-8 t-py-2 lg:t-justify-start lg:t-space-x-2"
+          aria-label="Global"
+        >
           <RouterLink
             to="/"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><Book
-          /></RouterLink>
+          >
+            <Book />
+          </RouterLink>
           <RouterLink
             to="/phe-search"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><Search
-          /></RouterLink>
+          >
+            <Search />
+          </RouterLink>
           <RouterLink
             to="/phe-calculator"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><Calculator
-          /></RouterLink>
+          >
+            <Calculator />
+          </RouterLink>
           <RouterLink
             to="/own-food"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><Apple
-          /></RouterLink>
+          >
+            <Apple />
+          </RouterLink>
         </nav>
       </div>
     </div>
