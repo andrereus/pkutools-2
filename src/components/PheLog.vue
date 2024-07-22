@@ -5,7 +5,14 @@
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mb-2" v-bind="props">
+          <v-btn
+            size="small"
+            variant="flat"
+            rounded
+            color="btnsecondary"
+            class="mb-2"
+            v-bind="props"
+          >
             {{ $t('phe-log.quick-note') }}
           </v-btn>
         </template>
