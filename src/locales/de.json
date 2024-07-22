@@ -18,8 +18,8 @@
     "install": "Web App installieren",
     "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode.",
     "redesign-info": "Redesign in Bearbeitung ;) Bitte um etwas Geduld.",
-    "search": "Suchen",
-    "calculate": "Berechnen"
+    "search": "Suche",
+    "calculator": "Rechner"
   },
   "common": {
     "add": "Hinzufügen",
@@ -99,6 +99,7 @@
   },
   "phe-log": {
     "title": "Phe Protokoll",
+    "tab-title": "Tagesprotokoll",
     "description": "Protokolliere Phe-Werte über den Tag.",
     "lock-values": "Berechnungsmodus",
     "max": "Phe-Toleranz pro Tag",
@@ -114,6 +115,7 @@
   },
   "phe-diary": {
     "title": "Phe Tagebuch",
+    "tab-title": "Tagebuch",
     "description": "Protokolliere Phe-Werte über mehrere Tage.",
     "date": "Datum",
     "phe": "Gesamt Phe (in mg)",

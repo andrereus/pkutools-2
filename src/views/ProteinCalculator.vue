@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('app.calculate') }}</h2>
+    <h2 class="text-h5 mb-6">{{ $t('app.calculator') }}</h2>
 
     <div class="t-block t-mb-6">
       <nav class="t-flex t-space-x-4" aria-label="Tabs">

@@ -19,7 +19,7 @@
     "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión.",
     "redesign-info": "Rediseño en curso ;) Tenga paciencia.",
     "search": "Buscar en",
-    "calculate": "Calcule"
+    "calculator": "Calculadora"
   },
   "common": {
     "add": "Agregar",
@@ -99,6 +99,7 @@
   },
   "phe-log": {
     "title": "Registro de Phe",
+    "tab-title": "Registro diario",
     "description": "Registrar valores de Phe a lo largo del día.",
     "lock-values": "Modo de cálculo",
     "max": "Tolerancia de Phe por día",
@@ -114,6 +115,7 @@
   },
   "phe-diary": {
     "title": "Diario de Phe",
+    "tab-title": "Diario",
     "description": "Registrar valores de Phe durante varios días.",
     "date": "Fecha",
     "phe": "Total de Phe (en mg)",

@@ -391,6 +391,11 @@
         </div>
         <nav class="t-flex t-space-x-2 t-py-2" aria-label="Global">
           <RouterLink
+            to="/"
+            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            ><Book
+          /></RouterLink>
+          <RouterLink
             to="/phe-search"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
             ><Search
@@ -404,11 +409,6 @@
             to="/own-food"
             class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
             ><Apple
-          /></RouterLink>
-          <RouterLink
-            to="/phe-diary"
-            class="t-text-gray-900 hover:t-bg-gray-50 hover:t-text-gray-900 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-            ><Book
           /></RouterLink>
         </nav>
       </div>

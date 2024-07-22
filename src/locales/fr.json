@@ -18,8 +18,8 @@
     "install": "Installer l'application web",
     "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
     "redesign-info": "Redesign en cours ;) Merci de patienter.",
-    "search": "Rechercher",
-    "calculate": "Calculer"
+    "search": "Recherche",
+    "calculator": "Calculateur"
   },
   "common": {
     "add": "Ajouter",
@@ -99,6 +99,7 @@
   },
   "phe-log": {
     "title": "Journal de Phe",
+    "tab-title": "Protocole journalier",
     "description": "Enregistrez les valeurs de Phe tout au long de la journée.",
     "lock-values": "Mode de calcul",
     "max": "Tolérance de Phe par jour",
@@ -114,6 +115,7 @@
   },
   "phe-diary": {
     "title": "Journal de Phe",
+    "tab-title": "Journal",
     "description": "Enregistrez les valeurs de Phe sur plusieurs jours.",
     "date": "Date",
     "phe": "Phe total (en mg)",

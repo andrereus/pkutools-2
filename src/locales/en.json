@@ -19,7 +19,7 @@
     "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
     "redesign-info": "Redesign in progress ;) Please be patient.",
     "search": "Search",
-    "calculate": "Calculate"
+    "calculator": "Calculator"
   },
   "common": {
     "add": "Add",
@@ -99,6 +99,7 @@
   },
   "phe-log": {
     "title": "Phe Log",
+    "tab-title": "Daily log",
     "description": "Log phe values throughout the day.",
     "lock-values": "Calculation Mode",
     "max": "Phe tolerance per day",
@@ -114,6 +115,7 @@
   },
   "phe-diary": {
     "title": "Phe Diary",
+    "tab-title": "Diary",
     "description": "Log phe values over several days.",
     "date": "Date",
     "phe": "Total Phe (in mg)",

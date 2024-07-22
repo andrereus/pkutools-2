@@ -1,7 +1,21 @@
 <template>
   <div>
     <div v-if="userIsAuthenticated">
-      <h2 class="text-h5 mb-6">{{ $t('phe-log.title') }}</h2>
+      <div class="t-block t-mb-6">
+        <nav class="t-flex t-space-x-4" aria-label="Tabs">
+          <RouterLink
+            to="/"
+            class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
+            aria-current="page"
+            >{{ $t('phe-log.tab-title') }}</RouterLink
+          >
+          <RouterLink
+            to="/phe-diary"
+            class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+            >{{ $t('phe-diary.tab-title') }}</RouterLink
+          >
+        </nav>
+      </div>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
