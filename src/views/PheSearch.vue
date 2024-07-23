@@ -115,49 +115,12 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 import Fuse from 'fuse.js'
-import FeatureComparison from '../components/FeatureComparison.vue'
-import PheLog from '../components/PheLog.vue'
-import {
-  mdiGoogle,
-  mdiMagnify,
-  mdiCalculator,
-  mdiCalculatorVariant,
-  mdiFoodApple,
-  mdiPoll,
-  mdiPlayCircleOutline,
-  mdiPlay,
-  mdiInformationVariant,
-  mdiPlus,
-  mdiHelpCircleOutline,
-  mdiBarcodeScan,
-  mdiEmail,
-  mdiDownload,
-  mdiLoginVariant,
-  mdiArrowLeft
-} from '@mdi/js'
+import { mdiMagnify, mdiInformationVariant } from '@mdi/js'
 
 export default {
-  components: {
-    FeatureComparison,
-    PheLog
-  },
   data: () => ({
-    mdiGoogle,
     mdiMagnify,
-    mdiCalculator,
-    mdiCalculatorVariant,
-    mdiFoodApple,
-    mdiPoll,
-    mdiPlayCircleOutline,
-    mdiPlay,
     mdiInformationVariant,
-    mdiPlus,
-    mdiHelpCircleOutline,
-    mdiBarcodeScan,
-    mdiEmail,
-    mdiDownload,
-    mdiLoginVariant,
-    mdiArrowLeft,
     offlineInfo: false,
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
@@ -178,19 +141,6 @@ export default {
     loading: false
   }),
   methods: {
-    async signInGoogle() {
-      const store = useStore()
-      if (navigator.onLine) {
-        try {
-          await store.signInGoogle()
-        } catch (error) {
-          alert(this.$t('app.auth-error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
-      }
-    },
     loadItem(item) {
       this.name = item.name
       this.emoji = item.emoji
@@ -280,11 +230,6 @@ export default {
 <style lang="scss" scoped>
 .tr-edit {
   cursor: pointer;
-}
-
-.food-icon {
-  vertical-align: bottom;
-  display: inline-block;
 }
 
 .v-theme--light.v-data-table {
