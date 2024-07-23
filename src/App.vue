@@ -462,32 +462,6 @@
 /* global Headway */
 import { useStore } from './stores/index'
 import { useTheme } from 'vuetify'
-import {
-  mdiGoogle,
-  mdiMagnify,
-  mdiCalculator,
-  mdiCalculatorVariant,
-  mdiFoodApple,
-  mdiTextBox,
-  mdiBook,
-  mdiCupWater,
-  mdiCog,
-  mdiInformation,
-  mdiAccountCircle,
-  mdiAccount,
-  mdiLogoutVariant,
-  mdiHelpCircleOutline,
-  mdiPlusCircle,
-  mdiHelpCircle,
-  mdiChartBox,
-  mdiHomeSearch,
-  mdiBarcodeScan,
-  mdiEmail,
-  mdiDownload,
-  mdiClipboardTextOutline,
-  mdiInformationVariant,
-  mdiListBoxOutline
-} from '@mdi/js'
 
 import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import {
@@ -531,38 +505,12 @@ export default {
     Info
   },
   data: () => ({
-    mdiGoogle,
-    mdiMagnify,
-    mdiCalculator,
-    mdiCalculatorVariant,
-    mdiFoodApple,
-    mdiTextBox,
-    mdiBook,
-    mdiCupWater,
-    mdiCog,
-    mdiInformation,
-    mdiAccountCircle,
-    mdiAccount,
-    mdiLogoutVariant,
-    mdiHelpCircleOutline,
-    mdiPlusCircle,
-    mdiHelpCircle,
-    mdiChartBox,
-    mdiHomeSearch,
-    mdiBarcodeScan,
-    mdiEmail,
-    mdiDownload,
-    mdiClipboardTextOutline,
-    mdiInformationVariant,
-    mdiListBoxOutline,
-    drawer: null,
     lang: [
       { name: 'Deutsch', abbr: 'de' },
       { name: 'English', abbr: 'en' },
       { name: 'Español', abbr: 'es' },
       { name: 'Français', abbr: 'fr' }
     ],
-    bottomNav: null,
     offlineInfo: false
   }),
   setup() {
@@ -670,98 +618,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-application {
-  padding-left: env(safe-area-inset-left) !important;
-  padding-right: env(safe-area-inset-right) !important;
-  padding-bottom: env(safe-area-inset-bottom) !important;
-}
-
-.v-app-bar {
-  padding-left: env(safe-area-inset-left) !important;
-  padding-top: env(safe-area-inset-top) !important;
-  padding-right: env(safe-area-inset-right) !important;
-}
-
-.v-navigation-drawer {
-  padding-left: env(safe-area-inset-left) !important;
-  padding-top: env(safe-area-inset-top) !important;
-  padding-bottom: env(safe-area-inset-bottom) !important;
-}
-
-.v-bottom-navigation {
-  padding-left: env(safe-area-inset-left) !important;
-  padding-right: env(safe-area-inset-right) !important;
-  padding-bottom: env(safe-area-inset-bottom) !important;
-
-  height: auto !important;
-
-  .v-btn {
-    padding: 15px !important;
-  }
-}
-
-.v-theme--dark.v-navigation-drawer {
-  background-color: #121212 !important;
-}
-
-.v-item-group.v-bottom-navigation {
-  box-shadow: none;
-  background-color: #f5f5f5;
-
-  .v-btn {
-    min-width: 60px;
-  }
-
-  @media (max-height: 565px) {
-    display: none;
-  }
-}
-
-.app-logo {
-  display: flex;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.87);
-  align-items: center;
-}
-
-.v-theme--light .v-bottom-navigation {
-  background-color: #f5f5f5;
-}
-
-.v-theme--dark {
-  &.v-navigation-drawer,
-  &.v-bottom-navigation {
-    background-color: #272727;
-  }
-
-  .app-logo {
-    color: #fff;
-  }
-}
-
 .v-btn {
   text-transform: none;
-}
-
-.lang-button {
-  text-transform: uppercase;
-}
-
-.v-list--dense .v-list-item .v-list-item__title {
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-.v-theme--light .custom-app-bar {
-  background: linear-gradient(90deg, rgba(41, 128, 185, 1) 0%, rgba(52, 152, 219, 1) 100%);
-}
-
-.v-theme--dark .custom-app-bar {
-  background: linear-gradient(90deg, rgba(41, 128, 185, 1) 0%, rgba(52, 73, 94, 1) 100%);
-}
-
-.account-menu {
-  min-width: 200px;
 }
 </style>
