@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
-    "@heroicons/vue": "^2.1.5",
     "apexcharts": "^3.50.0",
     "canvas-confetti": "^1.9.3",
     "date-fns": "^3.6.0",
@@ -37,7 +36,6 @@
     "@vitejs/plugin-vue": "^4.6.2",
     "@vue/eslint-config-prettier": "^8.0.0",
     "autoprefixer": "^10.4.19",
-    "daisyui": "^4.12.10",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.27.0",
     "eslint-plugin-vuetify": "^2.4.0",
