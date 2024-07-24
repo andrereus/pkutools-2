@@ -1,7 +1,6 @@
 <template>
   <div>
     <p v-if="!userIsAuthenticated" class="mb-8">{{ $t('app.description') }}</p>
-    <!-- <p class="mb-6">{{ $t('app.redesign-info') }}</p> -->
 
     <div v-if="!userIsAuthenticated">
       <v-text-field
