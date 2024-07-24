@@ -84,7 +84,7 @@
         {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
       </p>
       <p class="mb-8">
-        {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }} %
+        {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }}%
         {{ $t('phe-log.optimum') }}
       </p>
 
