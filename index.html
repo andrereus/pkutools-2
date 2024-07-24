@@ -21,6 +21,7 @@
         lgpdAppliesGlobally: false,
         perPurposeConsent: true,
         siteId: 1980005,
+        usPreferencesWidgetDisplay: 'inline-right',
         cookiePolicyId: 19763599,
         banner: {
           acceptButtonCaptionColor: '#FFFFFF',
@@ -33,11 +34,15 @@
           customizeButtonDisplay: true,
           explicitWithdrawal: true,
           listPurposes: true,
-          position: 'float-bottom-left',
+          logo: null,
+          ownerName: 'PKU Tools',
+          position: 'float-bottom-center',
           rejectButtonCaptionColor: '#FFFFFF',
           rejectButtonColor: '#0073CE',
           rejectButtonDisplay: true,
           showPurposesToggles: true,
+          showTitle: false,
+          showTotalNumberOfProviders: true,
           textColor: '#000000'
         }
       }
@@ -54,23 +59,22 @@
       window.smartlook ||
         (function (d) {
           var o = (smartlook = function () {
-              o.api.push(arguments);
+              o.api.push(arguments)
             }),
-            h = d.getElementsByTagName("head")[0];
-          var c = d.createElement("script");
-          o.api = new Array();
-          c.async = true;
-          c.type = "text/javascript";
-          c.charset = "utf-8";
-          c.src = "https://web-sdk.smartlook.com/recorder.js";
-          h.appendChild(c);
-        })(document);
-      smartlook("init", "0f9d423bd0d5f9f76eec5399c5adb897068bb318", { region: "eu" });
+            h = d.getElementsByTagName('head')[0]
+          var c = d.createElement('script')
+          o.api = new Array()
+          c.async = true
+          c.type = 'text/javascript'
+          c.charset = 'utf-8'
+          c.src = 'https://web-sdk.smartlook.com/recorder.js'
+          h.appendChild(c)
+        })(document)
+      smartlook('init', '0f9d423bd0d5f9f76eec5399c5adb897068bb318', { region: 'eu' })
     </script>
     <script
-      async
       defer
-      src="https://analytics.umami.is/script.js"
+      src="https://cloud.umami.is/script.js"
       data-website-id="f46a04a8-9ab1-481e-8683-63227a3b9d17"
     ></script>
     <script src="//cdn.headwayapp.co/widget.js"></script>
