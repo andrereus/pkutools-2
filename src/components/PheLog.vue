@@ -188,15 +188,6 @@
         </v-card>
       </v-dialog>
     </div>
-
-    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
-      {{ $t('app.offline') }}
-      <template v-slot:action="{ attrs }">
-        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
-          {{ $t('common.close') }}
-        </v-btn>
-      </template>
-    </v-snackbar>
   </div>
 </template>
 
@@ -269,7 +260,6 @@ export default {
       weight: null,
       phe: null
     },
-    offlineInfo: false,
     lockedValues: false,
     foodIcons
   }),

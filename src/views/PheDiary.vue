@@ -176,15 +176,6 @@
         </v-card>
       </v-dialog>
     </div>
-
-    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
-      {{ $t('app.offline') }}
-      <template v-slot:action="{ attrs }">
-        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
-          {{ $t('common.close') }}
-        </v-btn>
-      </template>
-    </v-snackbar>
   </div>
 </template>
 
@@ -244,21 +235,16 @@ export default {
     defaultItem: {
       date: '',
       phe: null
-    },
-    offlineInfo: false
+    }
   }),
   methods: {
     async signInGoogle() {
       const store = useStore()
-      if (navigator.onLine) {
-        try {
-          await store.signInGoogle()
-        } catch (error) {
-          alert(this.$t('app.auth-error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
+      try {
+        await store.signInGoogle()
+      } catch (error) {
+        alert(this.$t('app.auth-error'))
+        console.error(error)
       }
     },
     editItem(item) {

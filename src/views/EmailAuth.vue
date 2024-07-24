@@ -117,15 +117,6 @@
         </v-window>
       </v-card>
     </div>
-
-    <v-snackbar location="bottom" color="warning" v-model="offlineInfo">
-      {{ $t('app.offline') }}
-      <template v-slot:action="{ attrs }">
-        <v-btn variant="text" v-bind="attrs" @click="offlineInfo = false">
-          {{ $t('common.close') }}
-        </v-btn>
-      </template>
-    </v-snackbar>
   </div>
 </template>
 
@@ -137,7 +128,6 @@ export default {
   data: () => ({
     mdiEye,
     mdiEyeOff,
-    offlineInfo: false,
     tab: null,
     name: null,
     email: null,
@@ -146,45 +136,33 @@ export default {
   }),
   methods: {
     async registerEmailPassword() {
-      if (navigator.onLine) {
-        const store = useStore()
-        try {
-          await store.registerWithEmail(this.email, this.password, this.name)
-          this.$router.push('/')
-        } catch (error) {
-          alert(this.$t('email-auth.error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
+      const store = useStore()
+      try {
+        await store.registerWithEmail(this.email, this.password, this.name)
+        this.$router.push('/')
+      } catch (error) {
+        alert(this.$t('email-auth.error'))
+        console.error(error)
       }
     },
     async signInEmailPassword() {
-      if (navigator.onLine) {
-        const store = useStore()
-        try {
-          await store.signInWithEmail(this.email, this.password)
-          this.$router.push('/')
-        } catch (error) {
-          alert(this.$t('email-auth.error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
+      const store = useStore()
+      try {
+        await store.signInWithEmail(this.email, this.password)
+        this.$router.push('/')
+      } catch (error) {
+        alert(this.$t('email-auth.error'))
+        console.error(error)
       }
     },
     async resetPassword() {
-      if (navigator.onLine) {
-        const store = useStore()
-        try {
-          await store.resetPassword(this.email)
-          alert(this.$t('email-auth.password-sent'))
-        } catch (error) {
-          alert(this.$t('email-auth.error'))
-          console.error(error)
-        }
-      } else {
-        this.offlineInfo = true
+      const store = useStore()
+      try {
+        await store.resetPassword(this.email)
+        alert(this.$t('email-auth.password-sent'))
+      } catch (error) {
+        alert(this.$t('email-auth.error'))
+        console.error(error)
       }
     }
   },
