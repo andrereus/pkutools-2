@@ -86,7 +86,8 @@
     "save-day": "Terminar registro",
     "quick-note": "Entrada manual",
     "lock-info": "Modo Edición/Cálculo",
-    "preview": "Vista previa del registro de Phe"
+    "preview": "Vista previa del registro de Phe",
+    "optimum": "Desviación del óptimo"
   },
   "phe-diary": {
     "title": "Diario de Phe",

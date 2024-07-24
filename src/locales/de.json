@@ -86,7 +86,8 @@
     "save-day": "Protokoll abschließen",
     "quick-note": "Manueller Eintrag",
     "lock-info": "Editier-/Rechenmodus",
-    "preview": "Vorschau Phe Protokoll"
+    "preview": "Vorschau Phe Protokoll",
+    "optimum": "Abweichung vom Optimum"
   },
   "phe-diary": {
     "title": "Phe Tagebuch",

@@ -86,7 +86,8 @@
     "save-day": "Finish log",
     "quick-note": "Manual entry",
     "lock-info": "Edit/Calculation mode",
-    "preview": "Preview Phe Log"
+    "preview": "Preview Phe Log",
+    "optimum": "Deviation from the optimum"
   },
   "phe-diary": {
     "title": "Phe Diary",

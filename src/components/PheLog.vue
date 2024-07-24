@@ -80,8 +80,12 @@
       <p class="text-h6 font-weight-regular mt-6">
         {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
       </p>
-      <p class="mt-1 mb-7">
+      <p class="mt-3 mb-3">
         {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
+      </p>
+      <p class="mb-8">
+        {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }} %
+        {{ $t('phe-log.optimum') }}
       </p>
 
       <v-dialog v-model="dialog2" max-width="500px">
