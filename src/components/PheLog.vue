@@ -84,9 +84,37 @@
         {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
       </p>
 
-      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="saveResult">
-        {{ $t('phe-log.save-day') }}
-      </v-btn>
+      <v-dialog v-model="dialog2" max-width="500px">
+        <template v-slot:activator="{ props }">
+          <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mb-3">
+            {{ $t('phe-log.save-day') }}
+          </v-btn>
+        </template>
+
+        <v-card>
+          <v-card-title class="text-h5 mt-4">
+            {{ $t('phe-log.save-day') }}
+          </v-card-title>
+
+          <v-card-text>
+            <input
+              type="date"
+              v-model="date"
+              class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-indigo-600 t-mb-3 dark:t-text-gray-300"
+            />
+          </v-card-text>
+
+          <v-card-actions class="mt-n6">
+            <v-spacer></v-spacer>
+            <v-btn variant="flat" color="primary" @click="saveResult">{{
+              $t('common.save')
+            }}</v-btn>
+            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
+              $t('common.cancel')
+            }}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
@@ -196,7 +224,6 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import foodIcons from './data/food-icons.json'
 import { format } from 'date-fns'
-import confetti from 'canvas-confetti'
 import {
   mdiGoogle,
   mdiMagnify,
@@ -261,7 +288,9 @@ export default {
       phe: null
     },
     lockedValues: false,
-    foodIcons
+    foodIcons,
+    dialog2: false,
+    data: ''
   }),
   methods: {
     editItem(item) {
@@ -343,27 +372,21 @@ export default {
       if (this.pheDiary.length >= 100) {
         this.alert = true
       } else {
-        confetti()
-        setTimeout(() => {
-          let r = confirm(this.$t('phe-log.save-diary') + '?')
-          if (r === true) {
-            const pheLogForFirebase = this.pheLog.map(
-              ({
-                // eslint-disable-next-line no-unused-vars
-                '.key': key,
-                ...itemWithoutKey
-              }) => itemWithoutKey
-            )
-            push(ref(db, `${this.user.id}/pheDiary`), {
-              date: format(new Date(), 'yyyy-MM-dd'),
-              phe: this.pheResult,
-              log: pheLogForFirebase
-            }).then(() => {
-              remove(ref(db, `${this.user.id}/pheLog`))
-            })
-            this.$router.push('phe-diary')
-          }
-        }, 600)
+        const pheLogForFirebase = this.pheLog.map(
+          ({
+            // eslint-disable-next-line no-unused-vars
+            '.key': key,
+            ...itemWithoutKey
+          }) => itemWithoutKey
+        )
+        push(ref(db, `${this.user.id}/pheDiary`), {
+          date: this.date,
+          phe: this.pheResult,
+          log: pheLogForFirebase
+        }).then(() => {
+          remove(ref(db, `${this.user.id}/pheLog`))
+        })
+        this.$router.push('phe-diary')
       }
     }
   },
@@ -371,6 +394,9 @@ export default {
     dialog(val) {
       val || this.close()
     }
+  },
+  created() {
+    this.date = format(new Date(), 'yyyy-MM-dd')
   },
   computed: {
     formTitle() {
