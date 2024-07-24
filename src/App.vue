@@ -1,5 +1,5 @@
 <template>
-  <div class="t-min-h-full">
+  <div class="t-min-h-full app-container-safe-area">
     <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
       <div
         class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 t-divide-y t-divide-gray-200 dark:t-divide-gray-700 lg:t-px-8"
@@ -602,3 +602,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app-container-safe-area {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+</style>
