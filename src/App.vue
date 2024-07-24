@@ -41,7 +41,7 @@
                       "
                     >
                       <House
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('home.title') }}
                     </a>
@@ -60,7 +60,7 @@
                       "
                     >
                       <Search
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-search.title') }}
                     </a>
@@ -79,7 +79,7 @@
                       "
                     >
                       <ScanBarcode
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('barcode-scanner.title') }}
                     </a>
@@ -98,7 +98,7 @@
                       "
                     >
                       <Calculator
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-calculator.title') }}
                     </a>
@@ -117,7 +117,7 @@
                       "
                     >
                       <SquareDivide
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('protein-calculator.title') }}
                     </a>
@@ -136,7 +136,7 @@
                       "
                     >
                       <Apple
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('own-food.title') }}
                     </a>
@@ -155,7 +155,7 @@
                       "
                     >
                       <Book
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-diary.title') }}
                     </a>
@@ -300,7 +300,7 @@
                         "
                       >
                         <Mail
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('email-auth.title') }}
                       </a>
@@ -319,7 +319,7 @@
                         "
                       >
                         <User
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ user.name || user.email }}
                       </a>
@@ -338,7 +338,7 @@
                         "
                       >
                         <LogOut
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('app.signout') }}
                       </a>
@@ -359,7 +359,7 @@
                         "
                       >
                         <Settings
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('settings.title') }}
                       </a>
@@ -378,7 +378,7 @@
                         "
                       >
                         <LifeBuoy
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('help.title') }}
                       </a>
@@ -397,7 +397,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('about.title') }}
                       </a>
@@ -416,7 +416,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('disclaimer.title') }}
                       </a>
@@ -435,7 +435,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('privacy-policy.title') }}
                       </a>
