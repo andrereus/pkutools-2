@@ -31,7 +31,7 @@
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -40,14 +40,17 @@
                         }
                       "
                     >
-                      <House class="t-inline-block t-mr-2" />{{ $t('home.title') }}
+                      <House
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('home.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -56,14 +59,17 @@
                         }
                       "
                     >
-                      <Search class="t-inline-block t-mr-2" />{{ $t('phe-search.title') }}
+                      <Search
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('phe-search.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -72,14 +78,17 @@
                         }
                       "
                     >
-                      <ScanBarcode class="t-inline-block t-mr-2" />{{ $t('barcode-scanner.title') }}
+                      <ScanBarcode
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('barcode-scanner.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -88,14 +97,17 @@
                         }
                       "
                     >
-                      <Calculator class="t-inline-block t-mr-2" />{{ $t('phe-calculator.title') }}
+                      <Calculator
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('phe-calculator.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -104,16 +116,17 @@
                         }
                       "
                     >
-                      <SquareDivide class="t-inline-block t-mr-2" />{{
-                        $t('protein-calculator.title')
-                      }}
+                      <SquareDivide
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('protein-calculator.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -122,14 +135,17 @@
                         }
                       "
                     >
-                      <Apple class="t-inline-block t-mr-2" />{{ $t('own-food.title') }}
+                      <Apple
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('own-food.title') }}
                     </a>
                   </MenuItem>
                   <MenuItem v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -138,7 +154,10 @@
                         }
                       "
                     >
-                      <Book class="t-inline-block t-mr-2" />{{ $t('phe-diary.title') }}
+                      <Book
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                        aria-hidden="true"
+                      />{{ $t('phe-diary.title') }}
                     </a>
                   </MenuItem>
                 </MenuItems>
@@ -245,7 +264,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -271,7 +290,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -280,14 +299,17 @@
                           }
                         "
                       >
-                        <Mail class="t-inline-block t-mr-2" />{{ $t('email-auth.title') }}
+                        <Mail
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('email-auth.title') }}
                       </a>
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -296,14 +318,17 @@
                           }
                         "
                       >
-                        <User class="t-inline-block t-mr-2" />{{ user.name || user.email }}
+                        <User
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ user.name || user.email }}
                       </a>
                     </MenuItem>
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -312,7 +337,10 @@
                           }
                         "
                       >
-                        <LogOut class="t-inline-block t-mr-2" />{{ $t('app.signout') }}
+                        <LogOut
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('app.signout') }}
                       </a>
                     </MenuItem>
                   </div>
@@ -321,7 +349,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -330,14 +358,17 @@
                           }
                         "
                       >
-                        <Settings class="t-inline-block t-mr-2" />{{ $t('settings.title') }}
+                        <Settings
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('settings.title') }}
                       </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -346,14 +377,17 @@
                           }
                         "
                       >
-                        <LifeBuoy class="t-inline-block t-mr-2" />{{ $t('help.title') }}
+                        <LifeBuoy
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('help.title') }}
                       </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -362,14 +396,17 @@
                           }
                         "
                       >
-                        <Info class="t-inline-block t-mr-2" />{{ $t('about.title') }}
+                        <Info
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('about.title') }}
                       </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -378,14 +415,17 @@
                           }
                         "
                       >
-                        <Info class="t-inline-block t-mr-2" />{{ $t('disclaimer.title') }}
+                        <Info
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('disclaimer.title') }}
                       </a>
                     </MenuItem>
                     <MenuItem v-slot="{ active, close }">
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -394,7 +434,10 @@
                           }
                         "
                       >
-                        <Info class="t-inline-block t-mr-2" />{{ $t('privacy-policy.title') }}
+                        <Info
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-400 group-hover:t-text-gray-500"
+                          aria-hidden="true"
+                        />{{ $t('privacy-policy.title') }}
                       </a>
                     </MenuItem>
                   </div>
