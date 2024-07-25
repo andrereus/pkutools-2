@@ -441,6 +441,15 @@
           >
         </p>
       </li>
+      <li>
+        <p><strong>Umami</strong></p>
+        <p>
+          Their Privacy Policy can be viewed at
+          <a href="https://umami.is/privacy" rel="external nofollow noopener" target="_blank"
+            >https://umami.is/privacy</a
+          >
+        </p>
+      </li>
     </ul>
     <h3>Usage, Performance and Miscellaneous</h3>
     <p>We may use third-party Service Providers to maintain and improve our Service.</p>
@@ -454,6 +463,15 @@
             rel="external nofollow noopener"
             target="_blank"
             >https://policies.google.com/privacy</a
+          >
+        </p>
+      </li>
+      <li>
+        <p><strong>Headway</strong></p>
+        <p>
+          Their Privacy Policy can be viewed at
+          <a href="https://headwayapp.co/privacy" rel="external nofollow noopener" target="_blank"
+            >https://headwayapp.co/privacy</a
           >
         </p>
       </li>
