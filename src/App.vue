@@ -41,7 +41,7 @@
                       "
                     >
                       <House
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('home.title') }}
                     </a>
@@ -60,7 +60,7 @@
                       "
                     >
                       <Search
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-search.title') }}
                     </a>
@@ -79,7 +79,7 @@
                       "
                     >
                       <ScanBarcode
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('barcode-scanner.title') }}
                     </a>
@@ -98,7 +98,7 @@
                       "
                     >
                       <Calculator
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-calculator.title') }}
                     </a>
@@ -117,7 +117,7 @@
                       "
                     >
                       <SquareDivide
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('protein-calculator.title') }}
                     </a>
@@ -136,7 +136,7 @@
                       "
                     >
                       <Apple
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('own-food.title') }}
                     </a>
@@ -155,7 +155,7 @@
                       "
                     >
                       <Book
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
                       />{{ $t('phe-diary.title') }}
                     </a>
@@ -277,7 +277,7 @@
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           width="25"
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         >
                           <path
                             d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"
@@ -301,7 +301,7 @@
                         "
                       >
                         <Mail
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('email-auth.title') }}
                       </a>
@@ -320,7 +320,7 @@
                         "
                       >
                         <User
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ user.name || user.email }}
                       </a>
@@ -339,7 +339,7 @@
                         "
                       >
                         <LogOut
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('app.signout') }}
                       </a>
@@ -360,7 +360,7 @@
                         "
                       >
                         <Settings
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('settings.title') }}
                       </a>
@@ -379,7 +379,7 @@
                         "
                       >
                         <LifeBuoy
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('help.title') }}
                       </a>
@@ -398,7 +398,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('about.title') }}
                       </a>
@@ -417,7 +417,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('disclaimer.title') }}
                       </a>
@@ -436,7 +436,7 @@
                         "
                       >
                         <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300"
+                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
                         />{{ $t('privacy-policy.title') }}
                       </a>
