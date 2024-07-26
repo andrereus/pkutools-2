@@ -1,16 +1,24 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('help.title') }}</h2>
+    <header>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
+        {{ $t('help.title') }}
+      </h2>
+    </header>
 
     <!-- prettier-ignore -->
-    <p class="mb-8">{{ $t("help.contact-me") }} {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
+    <p class="t-mb-8">{{ $t("help.contact-me") }} {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
 
-    <h2 class="text-h5 mb-5">{{ $t('help.install') }}</h2>
+    <header>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
+        {{ $t('help.install') }}
+      </h2>
+    </header>
 
     <p>{{ $t('help.install-p1') }}</p>
     <br />
     <p>
-      <span class="font-weight-bold">{{ $t('help.install-p2') }}</span>
+      <span class="t-font-bold">{{ $t('help.install-p2') }}</span>
       <a href="https://play.google.com/store/apps/details?id=com.pkutools.twa" target="_blank">
         <img
           alt="Get it on Google Play"
@@ -22,14 +30,14 @@
     </p>
     <img src="../assets/pwa-android.png" alt="PWA on Android" class="pwa-img" />
 
-    <p class="mb-2">
-      <span class="font-weight-bold">iOS:</span>
+    <p class="t-mb-2">
+      <span class="t-font-bold">iOS:</span>
       {{ $t('help.install-p3') }}
     </p>
     <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
 
-    <p class="mb-2">
-      <span class="font-weight-bold">Desktop:</span>
+    <p class="t-mb-2">
+      <span class="t-font-bold">Desktop:</span>
       {{ $t('help.install-p4') }}
     </p>
     <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img" />

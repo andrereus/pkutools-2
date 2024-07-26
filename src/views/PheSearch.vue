@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('app.search') }}</h2>
+    <header>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
+        {{ $t('app.search') }}
+      </h2>
+    </header>
 
     <div class="t-block t-mb-6">
       <nav class="t-flex t-space-x-4" aria-label="Tabs">

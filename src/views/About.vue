@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('about.title') }}</h2>
+    <header>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
+        {{ $t('about.title') }}
+      </h2>
+    </header>
 
     <p>
       André Reus

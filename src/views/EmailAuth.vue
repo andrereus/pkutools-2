@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-6">{{ $t('email-auth.title') }}</h2>
+    <header>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
+        {{ $t('email-auth.title') }}
+      </h2>
+    </header>
 
     <div v-if="userIsAuthenticated">
       <p>{{ $t('email-auth.signedin') }}</p>
