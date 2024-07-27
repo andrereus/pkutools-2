@@ -17,7 +17,7 @@
         </nav>
       </div>
 
-      <v-sheet v-if="lastAdded" class="mb-6">
+      <v-sheet v-if="lastAdded" class="mb-6 t-bg-transparent">
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
             <v-btn
