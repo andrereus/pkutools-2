@@ -10,7 +10,8 @@
     "install": "Install web app",
     "auth-error": "Unfortunately this did not work. Try it again. Always use the same login method.",
     "search": "Search",
-    "calculator": "Calculator"
+    "calculator": "Calculator",
+    "redesign": "Individual pages are currently being redesigned :) Please be patient."
   },
   "common": {
     "add": "Add",

@@ -10,7 +10,8 @@
     "install": "Instalar aplicación web",
     "auth-error": "Lamentablemente, no ha funcionado. Inténtelo de nuevo. Utilice siempre el mismo método de inicio de sesión.",
     "search": "Buscar en",
-    "calculator": "Calculadora"
+    "calculator": "Calculadora",
+    "redesign": "Actualmente se están rediseñando algunas páginas :) Tenga paciencia."
   },
   "common": {
     "add": "Agregar",

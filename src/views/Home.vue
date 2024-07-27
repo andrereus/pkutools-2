@@ -98,6 +98,8 @@
 
     <PheLog v-if="userIsAuthenticated && advancedFood === null" />
 
+    <p class="t-mt-4">{{ $t('app.redesign') }}</p>
+
     <div v-if="!userIsAuthenticated && advancedFood === null">
       <v-menu v-if="!userIsAuthenticated">
         <template v-slot:activator="{ props }">
