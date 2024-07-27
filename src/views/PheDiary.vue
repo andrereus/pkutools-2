@@ -479,10 +479,6 @@ export default {
   display: inline-block;
 }
 
-.v-theme--light.v-data-table {
-  background-color: #fafafa;
-}
-
 .v-btn {
   text-transform: none;
 }

@@ -450,10 +450,6 @@ export default {
   cursor: pointer;
 }
 
-.v-theme--dark.v-sheet {
-  background-color: #121212;
-}
-
 .food-icon {
   vertical-align: bottom;
   display: inline-block;
@@ -461,10 +457,6 @@ export default {
 
 .pick-icon {
   cursor: pointer;
-}
-
-.v-theme--light.v-data-table {
-  background-color: #fafafa;
 }
 
 .v-btn {
