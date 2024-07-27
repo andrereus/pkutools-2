@@ -27,7 +27,7 @@
       <button
         type="button"
         @click="signInGoogle"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('app.signin-google') }}
       </button>
@@ -35,7 +35,7 @@
       <RouterLink
         type="button"
         to="/email-auth"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
@@ -72,21 +72,21 @@
       <button
         type="button"
         @click="resetLog"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('settings.reset-log') }}
       </button>
       <button
         type="button"
         @click="resetOwnFood"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('settings.reset-own-food') }}
       </button>
       <button
         type="button"
         @click="resetDiary"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('settings.reset-diary') }}
       </button>
@@ -102,7 +102,7 @@
       <button
         type="button"
         @click="deleteAccount"
-        class="t-rounded t-bg-gray-200 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-300 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
       >
         {{ $t('settings.delete-account') }}
       </button>
