@@ -45,7 +45,6 @@ import {
   mdiFoodApple,
   mdiBook,
   mdiWeb,
-  mdiCloudOffOutline,
   mdiSync,
   mdiExport,
   mdiTranslate,
@@ -161,10 +160,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-theme--light.v-table {
-  background-color: #fafafa;
-}
-
 .feature-name {
   white-space: nowrap;
 }
