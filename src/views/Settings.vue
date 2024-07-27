@@ -6,66 +6,107 @@
       </h2>
     </header>
 
-    <v-select
-      :items="themeOptions"
+    <label
+      for="theme-select"
+      class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
+      >{{ $t('settings.theme') }}</label
+    >
+    <select
+      id="theme-select"
+      name="theme-select"
       v-model="selectedTheme"
-      :label="$t('settings.theme')"
-      @update:modelValue="handleThemeChange"
-    ></v-select>
+      @change="handleThemeChange"
+      class="t-mt-2 t-block t-w-full t-rounded-md t-border-0 t-py-1.5 t-pl-3 t-pr-10 t-text-gray-900 t-ring-1 t-ring-inset t-ring-gray-300 focus:t-ring-2 focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-text-gray-300 t-mb-4"
+    >
+      <option v-for="option in themeOptions" :key="option.value" :value="option.value">
+        {{ option.title }}
+      </option>
+    </select>
 
-    <div v-if="!userIsAuthenticated">
-      <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
-        <v-icon start>{{ mdiGoogle }}</v-icon>
+    <div v-if="!userIsAuthenticated" class="t-mt-8">
+      <button
+        type="button"
+        @click="signInGoogle"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('app.signin-google') }}
-      </v-btn>
+      </button>
       <br />
-      <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
-        <v-icon start>{{ mdiEmail }}</v-icon>
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('email-auth.title') }}
-      </v-btn>
+      </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
-      <v-text-field
-        :label="$t('settings.max-phe')"
-        v-model.number="settings.maxPhe"
-        type="number"
-      ></v-text-field>
+      <label
+        for="max-phe"
+        class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
+        >{{ $t('settings.max-phe') }}</label
+      >
+      <div class="t-mt-2 t-mb-6">
+        <input
+          type="number"
+          name="max-phe"
+          id="max-phe"
+          v-model.number="settings.maxPhe"
+          class="t-block t-w-full t-rounded-md t-border-0 t-py-1.5 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-text-gray-300"
+          placeholder="you@example.com"
+        />
+      </div>
 
-      <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="save">{{
-        $t('common.save')
-      }}</v-btn>
+      <button
+        type="button"
+        @click="save"
+        class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-mb-6"
+      >
+        {{ $t('common.save') }}
+      </button>
 
-      <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.reset-heading') }}</h2>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
+        {{ $t('settings.reset-heading') }}
+      </h2>
 
-      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetLog">
+      <button
+        type="button"
+        @click="resetLog"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('settings.reset-log') }}
-      </v-btn>
-      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetOwnFood">
+      </button>
+      <button
+        type="button"
+        @click="resetOwnFood"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('settings.reset-own-food') }}
-      </v-btn>
-      <v-btn variant="flat" rounded color="btnsecondary" class="mr-6 mb-5" @click="resetDiary">
+      </button>
+      <button
+        type="button"
+        @click="resetDiary"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('settings.reset-diary') }}
-      </v-btn>
+      </button>
 
-      <h2 class="text-h5 mt-6 mb-4">{{ $t('settings.delete-account') }}</h2>
+      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
+        {{ $t('settings.delete-account') }}
+      </h2>
 
-      <p class="mb-6">
+      <p class="t-mb-6">
         {{ $t('settings.delete-account-info') }}
       </p>
 
-      <v-btn variant="outlined" rounded color="error" class="mr-6 mb-5" @click="deleteAccount">
+      <button
+        type="button"
+        @click="deleteAccount"
+        class="t-rounded t-bg-gray-100 dark:t-bg-white/10 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-white t-shadow-sm hover:t-bg-gray-200 dark:hover:t-bg-white/20 t-mr-3 t-mb-6"
+      >
         {{ $t('settings.delete-account') }}
-      </v-btn>
-
-      <v-snackbar location="bottom" color="teal" v-model="snackbar">
-        {{ $t('settings.saved') }}
-        <template v-slot:action="{ attrs }">
-          <v-btn variant="text" v-bind="attrs" @click="snackbar = false">
-            {{ $t('common.close') }}
-          </v-btn>
-        </template>
-      </v-snackbar>
+      </button>
     </div>
   </div>
 </template>
@@ -75,13 +116,9 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 import { useTheme } from 'vuetify'
-import { mdiGoogle, mdiEmail } from '@mdi/js'
 
 export default {
   data: () => ({
-    mdiGoogle,
-    mdiEmail,
-    snackbar: false,
     selectedTheme: 'system'
   }),
   setup() {
@@ -136,7 +173,7 @@ export default {
       update(ref(db, `${this.user.id}/settings`), {
         maxPhe: this.settings.maxPhe || 0
       }).then(() => {
-        this.snackbar = true
+        alert(this.$t('settings.saved'))
       })
     },
     resetLog() {
@@ -214,9 +251,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.v-btn {
-  text-transform: none;
-}
-</style>

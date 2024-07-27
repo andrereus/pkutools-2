@@ -104,7 +104,7 @@
             <input
               type="date"
               v-model="date"
-              class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-indigo-600 t-mb-3 dark:t-text-gray-300"
+              class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
             />
           </v-card-text>
 

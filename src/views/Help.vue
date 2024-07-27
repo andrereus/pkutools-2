@@ -9,11 +9,9 @@
     <!-- prettier-ignore -->
     <p class="t-mb-8">{{ $t("help.contact-me") }} {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
 
-    <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('help.install') }}
-      </h2>
-    </header>
+    <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
+      {{ $t('help.install') }}
+    </h2>
 
     <p>{{ $t('help.install-p1') }}</p>
     <br />

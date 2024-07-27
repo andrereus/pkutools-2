@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -12,6 +10,8 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import { en as vEn, de as vDe, es as vEs, fr as vFr } from 'vuetify/locale'
+
+import './assets/main.css'
 
 import { createI18n } from 'vue-i18n'
 import en from './locales/en.json'
