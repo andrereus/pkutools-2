@@ -6,22 +6,16 @@
       </h2>
     </header>
 
-    <label
-      for="theme-select"
-      class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
-      >{{ $t('settings.theme') }}</label
-    >
-    <select
-      id="theme-select"
+    <SelectMenu
       name="theme-select"
+      :label="$t('settings.theme')"
       v-model="selectedTheme"
       @change="handleThemeChange"
-      class="t-mt-2 t-block t-w-full t-rounded-md t-border-0 t-py-1.5 t-pl-3 t-pr-10 t-text-gray-900 t-ring-1 t-ring-inset t-ring-gray-300 focus:t-ring-2 focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500 t-bg-white dark:t-bg-gray-800 t-mb-4"
     >
       <option v-for="option in themeOptions" :key="option.value" :value="option.value">
         {{ option.title }}
       </option>
-    </select>
+    </SelectMenu>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
       <button
@@ -116,7 +110,12 @@ import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 import { useTheme } from 'vuetify'
 
+import SelectMenu from '../components/SelectMenu.vue'
+
 export default {
+  components: {
+    SelectMenu
+  },
   data: () => ({
     selectedTheme: 'system'
   }),
