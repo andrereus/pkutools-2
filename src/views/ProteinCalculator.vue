@@ -20,64 +20,44 @@
       </nav>
     </div>
 
-    <v-select
-      v-model="select"
-      :items="type"
-      :label="$t('protein-calculator.factor')"
-      item-title="title"
-      item-value="value"
-    ></v-select>
+    <TextInput
+      id-name="name"
+      :label="$t('protein-calculator.name')"
+      v-model="name"
+      v-if="userIsAuthenticated"
+    />
 
-    <v-text-field
+    <SelectMenu id-name="factor" :label="$t('protein-calculator.factor')" v-model="select">
+      <option v-for="option in type" :key="option.value" :value="option.value">
+        {{ option.title }}
+      </option>
+    </SelectMenu>
+
+    <NumberInput
+      id-name="protein"
       :label="$t('protein-calculator.protein')"
       v-model.number="protein"
-      type="number"
-    ></v-text-field>
-
-    <v-text-field
+    />
+    <NumberInput
+      id-name="weight"
       :label="$t('protein-calculator.weight')"
       v-model.number="weight"
-      type="number"
-      clearable
-    ></v-text-field>
+    />
 
-    <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+    <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
 
     <div v-if="userIsAuthenticated">
-      <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
+      <p class="t-text-sm">{{ $t('phe-log.preview') }}</p>
+
       <v-progress-linear
         :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
         height="6"
         class="mt-3 mb-6"
         rounded
       ></v-progress-linear>
+
+      <PrimaryButton :text="$t('common.add')" @click="save" />
     </div>
-
-    <v-dialog v-model="dialog" max-width="500px" v-if="userIsAuthenticated">
-      <template v-slot:activator="{ props }">
-        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mt-3">
-          {{ $t('common.add') }}
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-title class="text-h5 mt-4">
-          {{ $t('common.add') }}
-        </v-card-title>
-
-        <v-card-text>
-          <v-text-field :label="$t('protein-calculator.name')" v-model="name"></v-text-field>
-        </v-card-text>
-
-        <v-card-actions class="mt-n6">
-          <v-spacer></v-spacer>
-          <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-          <v-btn variant="flat" color="btnsecondary" @click="dialog = false">{{
-            $t('common.cancel')
-          }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 
@@ -86,15 +66,22 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 
 import PageHeader from '../components/PageHeader.vue'
+import SelectMenu from '../components/SelectMenu.vue'
+import TextInput from '../components/TextInput.vue'
+import NumberInput from '../components/NumberInput.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
 
 export default {
   components: {
-    PageHeader
+    PageHeader,
+    SelectMenu,
+    TextInput,
+    NumberInput,
+    PrimaryButton
   },
   data: () => ({
-    dialog: false,
     protein: null,
-    weight: 100,
+    weight: null,
     name: '',
     select: 'other'
   }),
@@ -112,7 +99,6 @@ export default {
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
-      this.dialog = false
       this.$router.push('/')
     }
   },
@@ -159,9 +145,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.v-btn {
-  text-transform: none;
-}
-</style>

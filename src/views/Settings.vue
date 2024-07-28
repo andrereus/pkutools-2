@@ -32,6 +32,7 @@
         id-name="max-phe"
         :label="$t('settings.max-phe')"
         v-model.number="settings.maxPhe"
+        class="t-mb-6"
       />
 
       <PrimaryButton :text="$t('common.save')" @click="save" />
