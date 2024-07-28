@@ -9,7 +9,7 @@
             <MenuComponent as="div" class="t-relative">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white"
                 >
                   <span class="t-absolute t--inset-1.5" />
                   <span class="t-sr-only">{{ $t('app.main-menu') }}</span>
@@ -181,13 +181,13 @@
           >
             <button
               type="button"
-              class="headway t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
+              class="headway t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white"
             ></button>
 
-            <MenuComponent as="div" class="t-relative t-ml-3">
+            <MenuComponent as="div" class="t-relative t-ml-2">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-400 hover:t-text-gray-500 focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 t-uppercase dark:t-bg-gray-800 dark:t-text-gray-400 dark:hover:t-text-white"
+                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 t-uppercase dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white t-mr-2"
                 >
                   {{ locale }}
                 </MenuButton>
@@ -453,31 +453,39 @@
         >
           <RouterLink
             to="/"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <House /><span class="t-hidden md:t-inline-block t-ml-2">{{ $t('home.title') }}</span>
+            <House
+              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+              aria-hidden="true"
+            /><span class="t-hidden md:t-inline-block">{{ $t('home.title') }}</span>
           </RouterLink>
           <RouterLink
             to="/phe-search"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Search /><span class="t-hidden md:t-inline-block t-ml-2">{{ $t('app.search') }}</span>
+            <Search
+              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+              aria-hidden="true"
+            /><span class="t-hidden md:t-inline-block">{{ $t('app.search') }}</span>
           </RouterLink>
           <RouterLink
             to="/phe-calculator"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Calculator /><span class="t-hidden md:t-inline-block t-ml-2">{{
-              $t('app.calculator')
-            }}</span>
+            <Calculator
+              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+              aria-hidden="true"
+            /><span class="t-hidden md:t-inline-block">{{ $t('app.calculator') }}</span>
           </RouterLink>
           <RouterLink
             to="/own-food"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <Apple /><span class="t-hidden md:t-inline-block t-ml-2">{{
-              $t('own-food.title')
-            }}</span>
+            <Apple
+              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+              aria-hidden="true"
+            /><span class="t-hidden md:t-inline-block">{{ $t('own-food.title') }}</span>
           </RouterLink>
         </nav>
       </div>
