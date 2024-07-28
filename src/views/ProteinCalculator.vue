@@ -21,7 +21,7 @@
     </div>
 
     <TextInput
-      id-name="name"
+      id-name="food"
       :label="$t('protein-calculator.name')"
       v-model="name"
       v-if="userIsAuthenticated"
