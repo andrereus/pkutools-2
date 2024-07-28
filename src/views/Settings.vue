@@ -16,13 +16,7 @@
     </SelectMenu>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <button
-        type="button"
-        @click="signInGoogle"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
-      >
-        {{ $t('app.signin-google') }}
-      </button>
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
@@ -40,37 +34,13 @@
         v-model.number="settings.maxPhe"
       />
 
-      <button
-        type="button"
-        @click="save"
-        class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-mb-6"
-      >
-        {{ $t('common.save') }}
-      </button>
+      <PrimaryButton :text="$t('common.save')" @click="save" />
 
       <PageHeader :title="$t('settings.reset-heading')" class="t-mt-6" />
 
-      <button
-        type="button"
-        @click="resetLog"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
-      >
-        {{ $t('settings.reset-log') }}
-      </button>
-      <button
-        type="button"
-        @click="resetOwnFood"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
-      >
-        {{ $t('settings.reset-own-food') }}
-      </button>
-      <button
-        type="button"
-        @click="resetDiary"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
-      >
-        {{ $t('settings.reset-diary') }}
-      </button>
+      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
+      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
+      <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
 
       <PageHeader :title="$t('settings.delete-account')" class="t-mt-6" />
 
@@ -78,13 +48,7 @@
         {{ $t('settings.delete-account-info') }}
       </p>
 
-      <button
-        type="button"
-        @click="deleteAccount"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
-      >
-        {{ $t('settings.delete-account') }}
-      </button>
+      <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
     </div>
   </div>
 </template>
@@ -98,12 +62,16 @@ import { useTheme } from 'vuetify'
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
 import NumberInput from '../components/NumberInput.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
+import SecondaryButton from '../components/SecondaryButton.vue'
 
 export default {
   components: {
     PageHeader,
     SelectMenu,
-    NumberInput
+    NumberInput,
+    PrimaryButton,
+    SecondaryButton
   },
   data: () => ({
     selectedTheme: 'system'
