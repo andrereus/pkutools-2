@@ -5,7 +5,7 @@
     </header>
 
     <SelectMenu
-      name="theme-select"
+      id-name="theme-select"
       :label="$t('settings.theme')"
       v-model="selectedTheme"
       @change="handleThemeChange"
@@ -34,20 +34,11 @@
     </div>
 
     <div v-if="userIsAuthenticated">
-      <label
-        for="max-phe"
-        class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
-        >{{ $t('settings.max-phe') }}</label
-      >
-      <div class="t-mt-2 t-mb-6">
-        <input
-          type="number"
-          name="max-phe"
-          id="max-phe"
-          v-model.number="settings.maxPhe"
-          class="t-block t-w-full t-rounded-md t-border-0 t-py-1.5 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500 t-bg-white dark:t-bg-gray-800"
-        />
-      </div>
+      <NumberInput
+        id-name="max-phe"
+        :label="$t('settings.max-phe')"
+        v-model.number="settings.maxPhe"
+      />
 
       <button
         type="button"
@@ -106,11 +97,13 @@ import { useTheme } from 'vuetify'
 
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
+import NumberInput from '../components/NumberInput.vue'
 
 export default {
   components: {
     PageHeader,
-    SelectMenu
+    SelectMenu,
+    NumberInput
   },
   data: () => ({
     selectedTheme: 'system'
