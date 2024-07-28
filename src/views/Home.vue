@@ -30,7 +30,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-8 mr-3 mb-6">
+      <v-btn variant="flat" rounded color="btnsecondary" to="/help" class="mt-6 mr-3 mb-4">
         <v-icon start>{{ mdiDownload }}</v-icon>
         {{ $t('app.install') }}
       </v-btn>
