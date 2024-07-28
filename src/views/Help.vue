@@ -1,17 +1,13 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('help.title') }}
-      </h2>
+      <PageHeader :title="$t('help.title')" />
     </header>
 
     <!-- prettier-ignore -->
     <p class="t-mb-8">{{ $t("help.contact-me") }} {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
 
-    <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
-      {{ $t('help.install') }}
-    </h2>
+    <PageHeader :title="$t('help.install')" class="t-mt-6" />
 
     <p>{{ $t('help.install-p1') }}</p>
     <br />
@@ -43,7 +39,12 @@
 </template>
 
 <script>
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     part1: 'mail',
     part2: 'pkutools',

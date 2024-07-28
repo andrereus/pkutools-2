@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('own-food.title') }}
-      </h2>
+      <PageHeader :title="$t('own-food.title')" />
     </header>
 
     <div v-if="!userIsAuthenticated">
@@ -200,7 +198,12 @@ import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
 import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     mdiGoogle,
     mdiInformationVariant,

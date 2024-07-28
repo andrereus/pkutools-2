@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('app.search') }}
-      </h2>
+      <PageHeader :title="$t('app.search')" />
     </header>
 
     <div class="t-block t-mb-6">
@@ -112,7 +110,12 @@ import { getDatabase, ref, push } from 'firebase/database'
 import Fuse from 'fuse.js'
 import { mdiMagnify, mdiInformationVariant } from '@mdi/js'
 
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     mdiMagnify,
     mdiInformationVariant,

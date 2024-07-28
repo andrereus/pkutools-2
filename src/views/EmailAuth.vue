@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('email-auth.title') }}
-      </h2>
+      <PageHeader :title="$t('email-auth.title')" />
     </header>
 
     <div v-if="userIsAuthenticated">
@@ -128,7 +126,12 @@
 import { useStore } from '../stores/index'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     mdiEye,
     mdiEyeOff,

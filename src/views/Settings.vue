@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('settings.title') }}
-      </h2>
+      <PageHeader :title="$t('settings.title')" />
     </header>
 
     <SelectMenu
@@ -59,9 +57,7 @@
         {{ $t('common.save') }}
       </button>
 
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
-        {{ $t('settings.reset-heading') }}
-      </h2>
+      <PageHeader :title="$t('settings.reset-heading')" class="t-mt-6" />
 
       <button
         type="button"
@@ -85,9 +81,7 @@
         {{ $t('settings.reset-diary') }}
       </button>
 
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-my-6">
-        {{ $t('settings.delete-account') }}
-      </h2>
+      <PageHeader :title="$t('settings.delete-account')" class="t-mt-6" />
 
       <p class="t-mb-6">
         {{ $t('settings.delete-account-info') }}
@@ -110,10 +104,12 @@ import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 import { useTheme } from 'vuetify'
 
+import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
 
 export default {
   components: {
+    PageHeader,
     SelectMenu
   },
   data: () => ({

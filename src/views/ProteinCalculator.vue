@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('app.calculator') }}
-      </h2>
+      <PageHeader :title="$t('app.calculator')" />
     </header>
 
     <div class="t-block t-mb-6">
@@ -87,7 +85,12 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     dialog: false,
     protein: null,

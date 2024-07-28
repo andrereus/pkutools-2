@@ -1,9 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 class="t-text-2xl t-text-gray-900 dark:t-text-gray-300 t-mb-6">
-        {{ $t('about.title') }}
-      </h2>
+      <PageHeader :title="$t('about.title')" />
     </header>
 
     <p>
@@ -22,7 +20,12 @@
 </template>
 
 <script>
+import PageHeader from '../components/PageHeader.vue'
+
 export default {
+  components: {
+    PageHeader
+  },
   data: () => ({
     part1: 'mail',
     part2: 'pkutools',
