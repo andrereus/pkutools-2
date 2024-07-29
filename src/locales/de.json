@@ -58,7 +58,7 @@
   },
   "barcode-scanner": {
     "title": "Barcode Scanner",
-    "tab-title": "Barcode",
+    "tab-title": "Produkte",
     "description": "Experimentelle Funktion",
     "scan-barcode": "Barcode scannen",
     "please-wait": "Bitte warten ...",
