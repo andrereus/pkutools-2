@@ -74,7 +74,7 @@
     "weight": "Peso (en g)",
     "limit": "Alimento propio está limitado a 500 entradas.",
     "note": "Limitado a 500 entradas.",
-    "search-info": "La comida propia también está disponible en la búsqueda de la página de inicio.",
+    "search-info": "La comida propia también está disponible en la búsqueda.",
     "export": "Exportar",
     "export-filename": "PKU Tools - Alimento propio"
   },

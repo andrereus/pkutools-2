@@ -74,7 +74,7 @@
     "weight": "Gewicht (in g)",
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
     "note": "Limitiert auf 500 Einträge.",
-    "search-info": "Eigene Lebensmittel sind auch in der Suche auf der Startseite verfügbar.",
+    "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Eigene Lebensmittel"
   },

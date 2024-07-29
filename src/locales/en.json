@@ -74,7 +74,7 @@
     "weight": "Weight (in g)",
     "limit": "Own Food is limited to 500 entries.",
     "note": "Limited to 500 entries.",
-    "search-info": "Own food is also available in the search on the start page.",
+    "search-info": "Own food is also available in the search.",
     "export": "Export",
     "export-filename": "PKU Tools - Own Food"
   },

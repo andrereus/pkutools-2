@@ -74,7 +74,7 @@
     "weight": "Poids (en g)",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
     "note": "Limité à 500 entrées.",
-    "search-info": "Les propres aliments sont également disponibles dans la recherche sur la page d'accueil.",
+    "search-info": "Les propres aliments sont également disponibles dans la recherche.",
     "export": "Exporter",
     "export-filename": "PKU Tools - Aliments personnels"
   },
