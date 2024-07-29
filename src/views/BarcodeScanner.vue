@@ -22,7 +22,7 @@
 
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ props }">
-        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mb-3">
+        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mt-2 mr-3 mb-3">
           {{ $t('barcode-scanner.scan-barcode') }}
         </v-btn>
       </template>
@@ -34,12 +34,18 @@
 
         <v-card-text>
           <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
-          <StreamBarcodeReader
+
+          <!-- Do not remove -->
+          <p v-if="error !== ''">{{ error }}</p>
+
+          <QrcodeStream
             v-if="dialog === true"
-            ref="scanner"
-            @decode="onDecode"
-            @loaded="onLoaded"
-          ></StreamBarcodeReader>
+            :track="paintBoundingBox"
+            :formats="['ean_13', 'ean_8']"
+            @camera-on="onReady"
+            @detect="onDetect"
+            @error="onError"
+          ></QrcodeStream>
         </v-card-text>
 
         <v-card-actions class="mt-n6">
@@ -60,43 +66,56 @@
         class="my-6"
       />
 
-      <h2 class="headlin my-3">{{ result.product.product_name }}</h2>
+      <h2 class="text-h5 mt-3 mb-1">{{ result.product.product_name }}</h2>
 
-      <p class="text-h6 font-weight-regular mb-6">
-        {{ result.product.nutriments.proteins_100g }}
-        {{ result.product.nutriments.proteins_unit }}
-        {{ $t('barcode-scanner.protein') }}
-      </p>
+      <!-- Do not remove -->
+      <p v-if="code !== ''" class="t-mb-6">Code: {{ code }}</p>
 
-      <v-text-field
-        :label="$t('protein-calculator.weight')"
-        v-model.number="weight"
-        type="number"
-        clearable
-      ></v-text-field>
+      <div v-if="this.result.product.nutriments.proteins_100g">
+        <p class="text-h6 font-weight-regular mb-6">
+          {{ result.product.nutriments.proteins_100g }}
+          {{ result.product.nutriments.proteins_unit }}
+          {{ $t('barcode-scanner.protein') }}
+        </p>
 
-      <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+        <v-text-field
+          :label="$t('protein-calculator.weight')"
+          v-model.number="weight"
+          type="number"
+          clearable
+        ></v-text-field>
 
-      <div v-if="userIsAuthenticated">
-        <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
-        <v-progress-linear
-          :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-          height="6"
-          class="mt-3 mb-6"
+        <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+
+        <div v-if="userIsAuthenticated">
+          <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
+          <v-progress-linear
+            :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
+            height="6"
+            class="mt-3 mb-6"
+            rounded
+          ></v-progress-linear>
+        </div>
+
+        <v-btn
+          variant="flat"
           rounded
-        ></v-progress-linear>
+          color="primary"
+          @click="save"
+          class="mr-3 mt-3"
+          v-if="userIsAuthenticated"
+        >
+          {{ $t('common.add') }}
+        </v-btn>
       </div>
 
-      <v-btn
-        variant="flat"
-        rounded
-        color="primary"
-        @click="save"
-        class="mr-3 mt-3"
-        v-if="userIsAuthenticated"
-      >
-        {{ $t('common.add') }}
-      </v-btn>
+      <div v-if="!this.result.product.nutriments.proteins_100g">
+        <p>{{ $t('barcode-scanner.no-protein') }}</p>
+        <br />
+        <RouterLink to="/protein-calculator" class="head-link mt-n1 mb-6 t-text-sky-500">
+          {{ $t('barcode-scanner.protein-link') }}
+        </RouterLink>
+      </div>
     </div>
 
     <p class="mt-6 text--secondary">
@@ -109,36 +128,80 @@
 <script>
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
-import { StreamBarcodeReader } from 'vue-barcode-reader'
+import { QrcodeStream } from 'vue-qrcode-reader'
 import { mdiInformationVariant } from '@mdi/js'
 
 import PageHeader from '../components/PageHeader.vue'
 
 export default {
   components: {
-    StreamBarcodeReader,
+    QrcodeStream,
     PageHeader
   },
   data: () => ({
     mdiInformationVariant,
     dialog: false,
     loaded: false,
+    code: '',
+    error: '',
     result: null,
     weight: 100
   }),
   methods: {
-    onLoaded() {
+    paintBoundingBox(detectedCodes, ctx) {
+      for (const detectedCode of detectedCodes) {
+        const {
+          boundingBox: { x, y, width, height }
+        } = detectedCode
+
+        ctx.lineWidth = 2
+        ctx.strokeStyle = '#007bff'
+        ctx.strokeRect(x, y, width, height)
+      }
+    },
+    onReady() {
       this.loaded = true
     },
-    onDecode(result) {
-      fetch('https://world.openfoodfacts.org/api/v2/product/' + result + '.json')
-        .then((response) => response.json())
+    onDetect(detectedCodes) {
+      this.code = detectedCodes[0].rawValue
+
+      fetch('https://world.openfoodfacts.org/api/v2/product/' + this.code + '.json')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          }
+          throw new Error(response.status)
+        })
         .then((result) => {
-          console.log(result)
           this.result = result
+        })
+        .catch((error) => {
+          console.log(error)
         })
       this.loaded = false
       this.dialog = false
+    },
+    onError(err) {
+      this.error = `[${err.name}]: `
+
+      if (err.name === 'NotAllowedError') {
+        this.error += 'you need to grant camera access permission'
+      } else if (err.name === 'NotFoundError') {
+        this.error += 'no camera on this device'
+      } else if (err.name === 'NotSupportedError') {
+        this.error += 'secure context required (HTTPS, localhost)'
+      } else if (err.name === 'NotReadableError') {
+        this.error += 'is the camera already in use?'
+      } else if (err.name === 'OverconstrainedError') {
+        this.error += 'installed cameras are not suitable'
+      } else if (err.name === 'StreamApiNotSupportedError') {
+        this.error += 'Stream API is not supported in this browser'
+      } else if (err.name === 'InsecureContextError') {
+        this.error +=
+          'Camera access is only permitted in secure context. Use HTTPS or localhost rather than HTTP.'
+      } else {
+        this.error += err.message
+      }
     },
     cancel() {
       if (this.loaded === true) {
@@ -190,9 +253,6 @@ export default {
 <style lang="scss" scoped>
 .v-btn {
   text-transform: none;
-}
-.hidden {
-  display: none;
 }
 
 .head-link {
