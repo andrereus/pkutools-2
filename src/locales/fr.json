@@ -10,6 +10,7 @@
     "install": "Installer l'application web",
     "auth-error": "Malheureusement, cela n'a pas fonctionné. Essaie de nouveau. Utilise toujours la même méthode de connexion.",
     "search": "Recherche",
+    "scanner": "Scanner",
     "calculator": "Calculateur",
     "redesign": "Actuellement, certaines pages sont en cours de redesign :) Merci de patienter un peu."
   },

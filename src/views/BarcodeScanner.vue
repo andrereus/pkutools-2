@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <PageHeader :title="$t('app.search')" />
+      <PageHeader :title="$t('app.scanner')" />
     </header>
 
     <div class="t-block t-mb-6">

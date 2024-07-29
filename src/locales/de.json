@@ -10,6 +10,7 @@
     "install": "Web App installieren",
     "auth-error": "Das hat leider nicht geklappt. Versuche es nocheinmal. Verwende immer die selbe Anmeldemethode.",
     "search": "Suche",
+    "scanner": "Scanner",
     "calculator": "Rechner",
     "redesign": "Zur Zeit werden einzelne Seiten redesigned :) Bitte um etwas Geduld."
   },
