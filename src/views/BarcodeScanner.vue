@@ -69,7 +69,7 @@
       <h2 class="text-h5 mt-3 mb-1">{{ result.product.product_name }}</h2>
 
       <!-- Do not remove -->
-      <p v-if="code !== ''" class="t-mb-6">Code: {{ code }}</p>
+      <p v-if="code !== ''" class="t-mb-6 text-caption">Code: {{ code }}</p>
 
       <div v-if="this.result.product.nutriments.proteins_100g">
         <p class="text-h6 font-weight-regular mb-6">
