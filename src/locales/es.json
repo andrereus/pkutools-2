@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Aplicación nutricional para dietas bajas en fenilalanina.",
+    "description": "Aplicación nutricional para dietas bajas en fenilalanina",
+    "long-description": "Esta aplicación está dirigida a personas con fenilcetonuria. Combina calculadora, lápiz, papel y tabla nutricional.",
     "signin-google": "Iniciar sesión con Google",
     "signout": "Cerrar sesión",
     "main-menu": "Menú principal",
@@ -26,7 +27,9 @@
   },
   "home": {
     "title": "Inicio",
-    "features": "Características"
+    "features": "Características",
+    "signin-install": "Registro e instalación",
+    "suggestion": "Recomendación: Instala la aplicación web antes de registrarte."
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
@@ -174,5 +177,23 @@
   "feature-comparison": {
     "subject": "Característica",
     "included": "Incluido"
+  },
+  "features": {
+    "search-name": "Búsqueda de Alimentos",
+    "search-description": "Busca en una base de datos de alimentos.",
+    "scanner-name": "Escáner de Código de Barras",
+    "scanner-description": "Escanea productos con códigos de barras.",
+    "calculator-name": "Calculadora de Fenilalanina",
+    "calculator-description": "Calcula la cantidad de Phe para un peso específico o convierte proteína en Phe.",
+    "diary-name": "Registro y Diario",
+    "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
+    "own-food-name": "Alimentos Propios",
+    "own-food-description": "Guarda tus propios alimentos para añadir rápidamente.",
+    "export-name": "Función de Exportación",
+    "export-description": "Exporta tus datos como CSV (compatible con Excel).",
+    "install-name": "Instalable",
+    "install-description": "Instala la aplicación web en tu dispositivo.",
+    "design-name": "Diseño de Aplicación Flexible",
+    "design-description": "Multilingüe, diseño claro y oscuro, etc."
   }
 }

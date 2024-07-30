@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Nutrition app for low-phenylalanine diets.",
+    "description": "Nutrition app for low-phenylalanine diets",
+    "long-description": "This app is aimed at people with PKU. It combines a calculator, pencil, paper and nutritional table.",
     "signin-google": "Sign in with Google",
     "signout": "Sign out",
     "main-menu": "Main menu",
@@ -26,7 +27,9 @@
   },
   "home": {
     "title": "Home",
-    "features": "Features"
+    "features": "Features",
+    "signin-install": "Registration and installation",
+    "suggestion": "Recommendation: Install the web app before you sign up."
   },
   "phe-search": {
     "title": "Phe Search",
@@ -174,5 +177,23 @@
   "feature-comparison": {
     "subject": "Feature",
     "included": "Included"
+  },
+  "features": {
+    "search-name": "Food Search",
+    "search-description": "Search a food database.",
+    "scanner-name": "Barcode Scanner",
+    "scanner-description": "Scan products with barcodes.",
+    "calculator-name": "Phenylalanine Calculator",
+    "calculator-description": "Calculate the amount of Phe for a specific weight or convert protein to Phe.",
+    "diary-name": "Log and Diary",
+    "diary-description": "Keep track of your food and monitor your Phe tolerance.",
+    "own-food-name": "Own Foods",
+    "own-food-description": "Save your own foods for quick addition.",
+    "export-name": "Export Function",
+    "export-description": "Export your data as CSV (compatible with Excel).",
+    "install-name": "Installable",
+    "install-description": "Install the web app on your device.",
+    "design-name": "Flexible App Design",
+    "design-description": "Multilingual, light and dark design, etc."
   }
 }

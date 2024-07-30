@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Application nutritionnelle pour régime pauvre en phénylalanine.",
+    "description": "Application nutritionnelle pour régime pauvre en phénylalanine",
+    "long-description": "Cette application s'adresse aux personnes atteintes de PKU. Elle combine calculatrice, crayon, papier et tableau des valeurs nutritives.",
     "signin-google": "Se connecter avec Google",
     "signout": "Se déconnecter",
     "main-menu": "Menu principal",
@@ -26,7 +27,9 @@
   },
   "home": {
     "title": "Accueil",
-    "features": "Fonctionnalités"
+    "features": "Fonctionnalités",
+    "signin-install": "Inscription et installation",
+    "suggestion": "Recommandation : Installe l'application web avant de t'inscrire."
   },
   "phe-search": {
     "title": "Recherche de Phe",
@@ -174,5 +177,23 @@
   "feature-comparison": {
     "subject": "Fonctionnalité",
     "included": "Inclus"
+  },
+  "features": {
+    "search-name": "Recherche Alimentaire",
+    "search-description": "Recherchez dans une base de données d'aliments.",
+    "scanner-name": "Scanner de Code-Barres",
+    "scanner-description": "Scannez des produits avec des codes-barres.",
+    "calculator-name": "Calculateur de Phénylalanine",
+    "calculator-description": "Calculez la quantité de Phe pour un poids spécifique ou convertissez des protéines en Phe.",
+    "diary-name": "Journal et Carnet",
+    "diary-description": "Suivez vos aliments et surveillez votre tolérance à la Phe.",
+    "own-food-name": "Aliments Personnalisés",
+    "own-food-description": "Enregistrez vos propres aliments pour un ajout rapide.",
+    "export-name": "Fonction d'Exportation",
+    "export-description": "Exportez vos données au format CSV (compatible avec Excel).",
+    "install-name": "Installable",
+    "install-description": "Installez l'application web sur votre appareil.",
+    "design-name": "Design d'Application Flexible",
+    "design-description": "Multilingue, design clair et sombre, etc."
   }
 }

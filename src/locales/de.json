@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "PKU Tools",
-    "description": "Nährwert-App für phenylalaninarme Diät.",
+    "description": "Nährwert-App für phenylalaninarme Diät",
+    "long-description": "Diese App richtet sich an Menschen mit PKU. Sie kombiniert Taschenrechner, Bleistift, Papier und Nährwerttabelle.",
     "signin-google": "Anmelden mit Google",
     "signout": "Abmelden",
     "main-menu": "Hauptmenü",
@@ -26,7 +27,9 @@
   },
   "home": {
     "title": "Start",
-    "features": "Funktionen"
+    "features": "Funktionen",
+    "signin-install": "Anmeldung und Installation",
+    "suggestion": "Empfehlung: Installiere die Web App bevor du dich anmeldest."
   },
   "phe-search": {
     "title": "Phe Suche",
@@ -174,5 +177,23 @@
   "feature-comparison": {
     "subject": "Funktion",
     "included": "Enthalten"
+  },
+  "features": {
+    "search-name": "Lebensmittel Suche",
+    "search-description": "Durchsuche eine Lebensmitteldatenbank.",
+    "scanner-name": "Barcode Scanner",
+    "scanner-description": "Scanne Produkte mit Barcodes.",
+    "calculator-name": "Phenylalanin Rechner",
+    "calculator-description": "Berechne die Phe-Menge für ein bestimmtes Gewicht oder rechne Eiweiß in Phe um.",
+    "diary-name": "Protokoll und Tagebuch",
+    "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
+    "own-food-name": "Eigene Lebensmittel",
+    "own-food-description": "Hinterlege eigene Lebensmittel zum schnellen Hinzufügen.",
+    "export-name": "Export Funktion",
+    "export-description": "Exportiere deine Daten als CSV (mit Excel kompatibel).",
+    "install-name": "Installationsfähig",
+    "install-description": "Installiere die Web App auf deinem Gerät.",
+    "design-name": "Flexibles App Design",
+    "design-description": "Mehrsprachig, helles und dunkles Design etc."
   }
 }
