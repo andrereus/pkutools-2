@@ -50,13 +50,13 @@
               leave-to="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
             >
               <DialogPanel
-                class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
+                class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
               >
                 <div>
                   <div class="t-text-center">
                     <DialogTitle
                       as="h3"
-                      class="t-text-base t-font-semibold t-leading-6 t-text-gray-900"
+                      class="t-text-base t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white"
                       >{{ $t('barcode-scanner.scan-barcode') }}</DialogTitle
                     >
                     <div class="t-mt-2">
