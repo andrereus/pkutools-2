@@ -20,7 +20,7 @@
       </nav>
     </div>
 
-    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" />
+    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" class="t-mt-2" />
 
     <TransitionRoot as="template" :show="open">
       <Dialog class="t-relative t-z-10" @close="open = false">
