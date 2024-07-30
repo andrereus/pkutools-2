@@ -184,7 +184,6 @@ export default {
   },
   data: () => ({
     mdiInformationVariant,
-    dialog: false,
     loaded: false,
     open: false,
     code: '',
@@ -224,7 +223,6 @@ export default {
           console.log(error)
         })
       this.loaded = false
-      this.dialog = false
       this.open = false
     },
     onError(err) {
@@ -253,7 +251,6 @@ export default {
       if (this.loaded === true) {
         this.loaded = false
       }
-      this.dialog = false
       this.open = false
     },
     calculatePhe() {
