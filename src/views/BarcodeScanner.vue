@@ -98,32 +98,32 @@
         :src="result.product.image_small_url"
         max-height="200"
         max-width="200"
-        class="my-6"
+        class="t-my-6"
       />
 
-      <h2 class="text-h5 mt-3 mb-1">{{ result.product.product_name }}</h2>
+      <h2 class="t-text-2xl t-mt-3 t-mb-1">{{ result.product.product_name }}</h2>
 
       <!-- Do not remove -->
-      <p v-if="code !== ''" class="t-mb-6 text-caption">Code: {{ code }}</p>
+      <p v-if="code !== ''" class="t-text-sm t-mb-6">Code: {{ code }}</p>
 
       <div v-if="this.result.product.nutriments.proteins_100g">
-        <p class="text-h6 font-weight-regular mb-6">
+        <p class="t-text-xl t-mb-6">
           {{ result.product.nutriments.proteins_100g }}
           {{ result.product.nutriments.proteins_unit }}
           {{ $t('barcode-scanner.protein') }}
         </p>
 
-        <v-text-field
+        <NumberInput
+          id-name="weight"
           :label="$t('protein-calculator.weight')"
           v-model.number="weight"
-          type="number"
-          clearable
-        ></v-text-field>
+          class="t-mb-6"
+        />
 
-        <p class="text-h6 font-weight-regular">~ {{ calculatePhe() }} mg Phe</p>
+        <p class="t-text-xl">~ {{ calculatePhe() }} mg Phe</p>
 
         <div v-if="userIsAuthenticated">
-          <p class="mt-6 text-caption">{{ $t('phe-log.preview') }}</p>
+          <p class="t-text-sm t-mt-6">{{ $t('phe-log.preview') }}</p>
           <v-progress-linear
             :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
             height="6"
@@ -132,29 +132,18 @@
           ></v-progress-linear>
         </div>
 
-        <v-btn
-          variant="flat"
-          rounded
-          color="primary"
-          @click="save"
-          class="mr-3 mt-3"
-          v-if="userIsAuthenticated"
-        >
-          {{ $t('common.add') }}
-        </v-btn>
+        <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
 
-      <div v-if="!this.result.product.nutriments.proteins_100g">
+      <div v-if="!this.result.product.nutriments.proteins_100g" class="t-mb-6">
         <p>{{ $t('barcode-scanner.no-protein') }}</p>
-        <br />
-        <RouterLink to="/protein-calculator" class="head-link mt-n1 mb-6 t-text-sky-500">
+        <RouterLink to="/protein-calculator" class="t-text-sky-500">
           {{ $t('barcode-scanner.protein-link') }}
         </RouterLink>
       </div>
     </div>
 
-    <p class="mt-6 text--secondary">
-      <v-icon>{{ mdiInformationVariant }}</v-icon>
+    <p class="t-mt-2">
       {{ $t('barcode-scanner.info') }}
     </p>
   </div>
@@ -164,12 +153,12 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 import { QrcodeStream } from 'vue-qrcode-reader'
-import { mdiInformationVariant } from '@mdi/js'
 
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
 import PageHeader from '../components/PageHeader.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
+import NumberInput from '../components/NumberInput.vue'
 
 export default {
   components: {
@@ -180,10 +169,10 @@ export default {
     TransitionChild,
     TransitionRoot,
     PageHeader,
-    PrimaryButton
+    PrimaryButton,
+    NumberInput
   },
   data: () => ({
-    mdiInformationVariant,
     loaded: false,
     open: false,
     code: '',
@@ -293,14 +282,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.v-btn {
-  text-transform: none;
-}
-
-.head-link {
-  display: block;
-  text-decoration: none;
-}
-</style>
