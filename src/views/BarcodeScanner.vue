@@ -20,42 +20,77 @@
       </nav>
     </div>
 
-    <v-dialog v-model="dialog" max-width="500px">
-      <template v-slot:activator="{ props }">
-        <v-btn variant="flat" rounded color="primary" v-bind="props" class="mt-2 mr-3 mb-3">
-          {{ $t('barcode-scanner.scan-barcode') }}
-        </v-btn>
-      </template>
+    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" />
 
-      <v-card>
-        <v-card-title class="text-h5 mt-4">
-          {{ $t('barcode-scanner.scan-barcode') }}
-        </v-card-title>
+    <TransitionRoot as="template" :show="open">
+      <Dialog class="t-relative t-z-10" @close="open = false">
+        <TransitionChild
+          as="template"
+          enter="t-ease-out t-duration-300"
+          enter-from="t-opacity-0"
+          enter-to="t-opacity-100"
+          leave="t-ease-in t-duration-200"
+          leave-from="t-opacity-100"
+          leave-to="t-opacity-0"
+        >
+          <div class="t-fixed t-inset-0 t-bg-gray-500 t-bg-opacity-75 t-transition-opacity" />
+        </TransitionChild>
 
-        <v-card-text>
-          <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
+        <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
+          <div
+            class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0"
+          >
+            <TransitionChild
+              as="template"
+              enter="t-ease-out t-duration-300"
+              enter-from="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
+              enter-to="t-opacity-100 t-translate-y-0 sm:t-scale-100"
+              leave="t-ease-in t-duration-200"
+              leave-from="t-opacity-100 t-translate-y-0 sm:t-scale-100"
+              leave-to="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
+            >
+              <DialogPanel
+                class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
+              >
+                <div>
+                  <div class="t-text-center">
+                    <DialogTitle
+                      as="h3"
+                      class="t-text-base t-font-semibold t-leading-6 t-text-gray-900"
+                      >{{ $t('barcode-scanner.scan-barcode') }}</DialogTitle
+                    >
+                    <div class="t-mt-2">
+                      <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
 
-          <!-- Do not remove -->
-          <p v-if="error !== ''">{{ error }}</p>
+                      <!-- Do not remove -->
+                      <p v-if="error !== ''">{{ error }}</p>
 
-          <QrcodeStream
-            v-if="dialog === true"
-            :track="paintBoundingBox"
-            :formats="['ean_13', 'ean_8']"
-            @camera-on="onReady"
-            @detect="onDetect"
-            @error="onError"
-          ></QrcodeStream>
-        </v-card-text>
-
-        <v-card-actions class="mt-n6">
-          <v-spacer></v-spacer>
-          <v-btn variant="flat" color="btnsecondary" @click="cancel">{{
-            $t('common.cancel')
-          }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+                      <QrcodeStream
+                        v-if="open === true"
+                        :track="paintBoundingBox"
+                        :formats="['ean_13', 'ean_8']"
+                        @camera-on="onReady"
+                        @detect="onDetect"
+                        @error="onError"
+                      ></QrcodeStream>
+                    </div>
+                  </div>
+                </div>
+                <div class="t-mt-5 sm:t-mt-6">
+                  <button
+                    type="button"
+                    class="t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-indigo-600 t-px-3 t-py-2 t-text-sm t-font-semibold t-text-white t-shadow-sm t-hover:bg-indigo-500 t-focus-visible:outline t-focus-visible:outline-2 t-focus-visible:outline-offset-2 t-focus-visible:outline-indigo-600"
+                    @click="cancel"
+                  >
+                    {{ $t('common.cancel') }}
+                  </button>
+                </div>
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </div>
+      </Dialog>
+    </TransitionRoot>
 
     <div v-if="result !== null">
       <img
@@ -131,17 +166,27 @@ import { getDatabase, ref, push } from 'firebase/database'
 import { QrcodeStream } from 'vue-qrcode-reader'
 import { mdiInformationVariant } from '@mdi/js'
 
+import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+
 import PageHeader from '../components/PageHeader.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
 
 export default {
   components: {
     QrcodeStream,
-    PageHeader
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    TransitionChild,
+    TransitionRoot,
+    PageHeader,
+    PrimaryButton
   },
   data: () => ({
     mdiInformationVariant,
     dialog: false,
     loaded: false,
+    open: false,
     code: '',
     error: '',
     result: null,
@@ -180,6 +225,7 @@ export default {
         })
       this.loaded = false
       this.dialog = false
+      this.open = false
     },
     onError(err) {
       this.error = `[${err.name}]: `
@@ -208,6 +254,7 @@ export default {
         this.loaded = false
       }
       this.dialog = false
+      this.open = false
     },
     calculatePhe() {
       return Math.round((this.weight * (this.result.product.nutriments.proteins_100g * 50)) / 100)
