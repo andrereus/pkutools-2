@@ -70,12 +70,24 @@
                 {{ $t('email-auth.title') }}
               </RouterLink>
             </div>
-            <RouterLink
-              to="/help"
-              class="t-text-sm t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white t-block t-mt-8"
-            >
-              {{ $t('app.install') }} <span aria-hidden="true">→</span>
-            </RouterLink>
+            <div class="t-mt-10 t-flex t-items-center t-justify-center t-gap-x-4">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
+                target="_blank"
+              >
+                <img
+                  alt="Get it on Google Play"
+                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                  class="t-inline-block t-w-28 t-align-middle"
+                />
+              </a>
+              <RouterLink
+                to="/help"
+                class="t-text-sm t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white t-block"
+              >
+                {{ $t('app.install') }} <span aria-hidden="true">→</span>
+              </RouterLink>
+            </div>
           </div>
         </div>
       </div>

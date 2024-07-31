@@ -192,7 +192,7 @@
     "export-name": "Fonction d'Exportation",
     "export-description": "Exportez vos données au format CSV (compatible avec Excel).",
     "install-name": "Installable",
-    "install-description": "Installez l'application web sur votre appareil.",
+    "install-description": "Peut être installé sur n'importe quel appareil (Android, iOS, Mac, Windows).",
     "design-name": "Design d'Application Flexible",
     "design-description": "Multilingue, design clair et sombre, etc."
   }
