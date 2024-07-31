@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <div class="t-py-12 sm:t-py-16 t-px-6 sm:t-px-6 lg:t-px-8">
+      <div class="t-py-24 sm:t-py-32 t-px-6 sm:t-px-6 lg:t-px-8">
         <div class="t-mx-auto t-max-w-2xl t-text-center">
           <h2
             class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
@@ -94,7 +94,7 @@
         </div>
       </div>
 
-      <div class="t-py-6 sm:t-py-8">
+      <div class="t-pt-6 sm:t-pt-8 t-pb-12 sm:t-pb-16">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-flex t-flex-col t-items-center t-gap-8 lg:t-flex-row lg:t-justify-center">
             <div
