@@ -3,7 +3,7 @@
     <PheLog v-if="userIsAuthenticated" />
 
     <div v-if="!userIsAuthenticated">
-      <div class="t-py-12 sm:t-py-16">
+      <div class="t-pt-6 sm:t-pt-8 t-pb-12 sm:t-pb-16">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
             <p
@@ -45,13 +45,6 @@
 
       <div class="t-py-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
-          <div class="t-mx-auto t-max-w-4xl t-text-center">
-            <p
-              class="t-mt-2 t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
-            >
-              {{ $t('plans.title') }}
-            </p>
-          </div>
           <div
             class="t-flex t-flex-col t-items-center t-mt-10 t-gap-8 lg:t-flex-row lg:t-justify-center"
           >
