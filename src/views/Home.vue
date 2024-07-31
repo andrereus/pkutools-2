@@ -3,7 +3,7 @@
     <PheLog v-if="userIsAuthenticated" />
 
     <div v-if="!userIsAuthenticated">
-      <div class="t-pt-6 sm:t-pt-8 t-pb-12 sm:t-pb-16">
+      <div class="t-py-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
             <p
@@ -51,11 +51,11 @@
             <div
               v-for="tier in plans"
               :key="tier.id"
-              class="t-bg-white dark:t-bg-gray-900 t-ring-1 t-ring-gray-200 t-rounded-3xl t-p-8 xl:t-p-10 t-w-full t-max-w-sm"
+              class="t-bg-white dark:t-bg-gray-900 t-ring-1 t-ring-gray-200 t-rounded-3xl t-p-8 xl:t-p-10 t-w-full t-max-w-md"
             >
               <p class="t-flex t-items-baseline t-gap-x-1">
                 <span
-                  class="t-text-xl sm:t-text-2xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white"
+                  class="t-text-lg sm:t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white"
                   >{{ $t(tier.price) }}</span
                 >
               </p>
