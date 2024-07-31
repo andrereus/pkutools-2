@@ -43,11 +43,60 @@
         </div>
       </div>
 
-      <div class="t-py-6 sm:t-py-8">
-        <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
-          <div
-            class="t-flex t-flex-col t-items-center t-mt-10 t-gap-8 lg:t-flex-row lg:t-justify-center"
+      <div class="t-py-12 sm:t-py-16 t-px-6 sm:t-px-6 lg:t-px-8">
+        <div class="t-mx-auto t-max-w-2xl t-text-center">
+          <h2
+            class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
           >
+            {{ $t('home.signin-install') }}
+          </h2>
+          <p
+            class="t-mx-auto t-mt-6 t-max-w-xl t-text-lg t-leading-8 t-text-gray-600 dark:t-text-gray-300"
+          >
+            {{ $t('home.suggestion') }}
+          </p>
+          <div
+            class="t-mt-10 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
+          >
+            <a
+              @click.prevent="signInGoogle"
+              class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-cursor-pointer"
+            >
+              {{ $t('app.signin-google') }}
+            </a>
+            <RouterLink
+              to="/email-auth"
+              class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
+            >
+              {{ $t('email-auth.title') }}
+            </RouterLink>
+          </div>
+          <div
+            class="t-mt-10 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
+          >
+            <a
+              href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
+              target="_blank"
+            >
+              <img
+                alt="Get it on Google Play"
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                class="t-inline-block t-w-28 t-align-middle"
+              />
+            </a>
+            <RouterLink
+              to="/help"
+              class="t-text-sm t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white t-block"
+            >
+              {{ $t('app.install') }} <span aria-hidden="true">→</span>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-py-6 sm:t-pys-8">
+        <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
+          <div class="t-flex t-flex-col t-items-center t-gap-8 lg:t-flex-row lg:t-justify-center">
             <div
               v-for="tier in plans"
               :key="tier.id"
@@ -68,55 +117,6 @@
                   {{ $t(feature) }}
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="t-px-6 t-py-12 sm:t-px-6 sm:t-py-16 lg:t-px-8">
-          <div class="t-mx-auto t-max-w-2xl t-text-center">
-            <h2
-              class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
-            >
-              {{ $t('home.signin-install') }}
-            </h2>
-            <p
-              class="t-mx-auto t-mt-6 t-max-w-xl t-text-lg t-leading-8 t-text-gray-600 dark:t-text-gray-300"
-            >
-              {{ $t('home.suggestion') }}
-            </p>
-            <div class="t-mt-10 t-flex t-items-center t-justify-center t-gap-x-4">
-              <a
-                @click.prevent="signInGoogle"
-                class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-cursor-pointer"
-              >
-                {{ $t('app.signin-google') }}
-              </a>
-              <RouterLink
-                to="/email-auth"
-                class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
-              >
-                {{ $t('email-auth.title') }}
-              </RouterLink>
-            </div>
-            <div class="t-mt-10 t-flex t-items-center t-justify-center t-gap-x-4">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
-                target="_blank"
-              >
-                <img
-                  alt="Get it on Google Play"
-                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                  class="t-inline-block t-w-28 t-align-middle"
-                />
-              </a>
-              <RouterLink
-                to="/help"
-                class="t-text-sm t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white t-block"
-              >
-                {{ $t('app.install') }} <span aria-hidden="true">→</span>
-              </RouterLink>
             </div>
           </div>
         </div>
