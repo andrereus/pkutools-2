@@ -195,5 +195,12 @@
     "install-description": "Puede instalarse en cualquier dispositivo (Android, iOS, Mac, Windows).",
     "design-name": "Diseño de Aplicación Flexible",
     "design-description": "Multilingüe, diseño claro y oscuro, etc."
+  },
+  "plans": {
+    "title": "Planes",
+    "tier-1-price": "Gratuito",
+    "tier-1-feature-1": "100 entradas de diario (~3 meses)",
+    "tier-1-feature-2": "500 alimentos propios",
+    "tier-1-feature-3": "Exportar o eliminar entradas en cualquier momento"
   }
 }

@@ -3,7 +3,7 @@
     <PheLog v-if="userIsAuthenticated" />
 
     <div v-if="!userIsAuthenticated">
-      <div class="t-pb-24 sm:t-pb-32 t-pt-6 sm:t-pt-8">
+      <div class="t-py-12 sm:t-py-16">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
             <p
@@ -43,8 +43,45 @@
         </div>
       </div>
 
+      <div class="t-py-6 sm:t-py-8">
+        <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
+          <div class="t-mx-auto t-max-w-4xl t-text-center">
+            <p
+              class="t-mt-2 t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
+            >
+              {{ $t('plans.title') }}
+            </p>
+          </div>
+          <div
+            class="t-flex t-flex-col t-items-center t-mt-10 t-gap-8 lg:t-flex-row lg:t-justify-center"
+          >
+            <div
+              v-for="tier in plans"
+              :key="tier.id"
+              class="t-bg-white dark:t-bg-gray-900 t-ring-1 t-ring-gray-200 t-rounded-3xl t-p-8 xl:t-p-10 t-w-full t-max-w-sm"
+            >
+              <p class="t-flex t-items-baseline t-gap-x-1">
+                <span
+                  class="t-text-2xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white"
+                  >{{ $t(tier.price) }}</span
+                >
+              </p>
+              <ul
+                role="list"
+                class="t-mt-8 t-space-y-3 t-text-sm t-leading-6 t-text-gray-600 dark:t-text-gray-300 xl:t-mt-10"
+              >
+                <li v-for="feature in tier.features" :key="feature" class="t-flex t-gap-x-3">
+                  <Check class="t-h-6 t-w-5 t-flex-none t-text-sky-500" aria-hidden="true" />
+                  {{ $t(feature) }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div>
-        <div class="t-px-6 t-pb-12 sm:t-px-6 sm:t-pb-16 lg:t-px-8">
+        <div class="t-px-6 t-py-12 sm:t-px-6 sm:t-py-16 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl t-text-center">
             <h2
               class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
@@ -107,7 +144,8 @@ import {
   Book,
   FileDown,
   Download,
-  Frame
+  Frame,
+  Check
 } from 'lucide-vue-next'
 
 export default {
@@ -120,7 +158,8 @@ export default {
     Book,
     FileDown,
     Download,
-    Frame
+    Frame,
+    Check
   },
   data: () => ({
     features: [
@@ -163,6 +202,12 @@ export default {
         name: 'features.design-name',
         description: 'features.design-description',
         icon: Frame
+      }
+    ],
+    plans: [
+      {
+        price: 'plans.tier-1-price',
+        features: ['plans.tier-1-feature-1', 'plans.tier-1-feature-2', 'plans.tier-1-feature-3']
       }
     ]
   }),
