@@ -31,7 +31,7 @@
     <img src="../assets/pwa-ios.png" alt="PWA on iOS" class="pwa-img" />
 
     <p class="t-mb-2">
-      <span class="t-font-bold">Desktop:</span>
+      <span class="t-font-bold">PC:</span>
       {{ $t('help.install-p4') }}
     </p>
     <img src="../assets/pwa-desktop.png" alt="PWA on desktop" class="pwa-img" />
