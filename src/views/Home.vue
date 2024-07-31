@@ -55,7 +55,7 @@
             >
               <p class="t-flex t-items-baseline t-gap-x-1">
                 <span
-                  class="t-text-2xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white"
+                  class="t-text-xl sm:t-text-2xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white"
                   >{{ $t(tier.price) }}</span
                 >
               </p>
