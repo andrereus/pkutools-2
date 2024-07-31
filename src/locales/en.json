@@ -199,6 +199,7 @@
   "plans": {
     "title": "Plans",
     "tier-1-price": "Free use",
+    "tier-1-feature-0": "All features",
     "tier-1-feature-1": "100 diary entries (~3 months)",
     "tier-1-feature-2": "500 own food entries",
     "tier-1-feature-3": "Export or delete entries at any time"

@@ -200,7 +200,12 @@ export default {
     plans: [
       {
         price: 'plans.tier-1-price',
-        features: ['plans.tier-1-feature-1', 'plans.tier-1-feature-2', 'plans.tier-1-feature-3']
+        features: [
+          'plans.tier-1-feature-0',
+          'plans.tier-1-feature-1',
+          'plans.tier-1-feature-2',
+          'plans.tier-1-feature-3'
+        ]
       }
     ]
   }),

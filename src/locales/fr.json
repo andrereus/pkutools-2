@@ -199,6 +199,7 @@
   "plans": {
     "title": "Plans",
     "tier-1-price": "Utilisation gratuite",
+    "tier-1-feature-0": "Toutes les fonctions",
     "tier-1-feature-1": "100 entrées dans le journal (~3 mois)",
     "tier-1-feature-2": "500 aliments propres",
     "tier-1-feature-3": "Exporter ou supprimer des entrées à tout moment"
