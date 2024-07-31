@@ -27,7 +27,7 @@
                 <MenuItems
                   class="t-absolute t-left-0 t-z-10 t-mt-4 t-w-64 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
                 >
-                  <MenuItem v-slot="{ active, close }">
+                  <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active, close }">
                     <a
                       :class="[
                         active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
@@ -35,129 +35,16 @@
                       ]"
                       @click.prevent="
                         () => {
-                          $router.push('/')
+                          $router.push(item.route)
                           close()
                         }
                       "
                     >
-                      <House
+                      <component
+                        :is="item.icon"
                         class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                         aria-hidden="true"
-                      />{{ $t('home.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/phe-search')
-                          close()
-                        }
-                      "
-                    >
-                      <Search
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('phe-search.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/barcode-scanner')
-                          close()
-                        }
-                      "
-                    >
-                      <ScanBarcode
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('barcode-scanner.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/phe-calculator')
-                          close()
-                        }
-                      "
-                    >
-                      <Calculator
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('phe-calculator.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/protein-calculator')
-                          close()
-                        }
-                      "
-                    >
-                      <SquareDivide
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('protein-calculator.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/own-food')
-                          close()
-                        }
-                      "
-                    >
-                      <Apple
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('own-food.title') }}
-                    </a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active, close }">
-                    <a
-                      :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                      ]"
-                      @click.prevent="
-                        () => {
-                          $router.push('/phe-diary')
-                          close()
-                        }
-                      "
-                    >
-                      <Book
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                        aria-hidden="true"
-                      />{{ $t('phe-diary.title') }}
+                      />{{ $t(item.name) }}
                     </a>
                   </MenuItem>
                 </MenuItems>
@@ -346,7 +233,11 @@
                     </MenuItem>
                   </div>
                   <div class="py-1">
-                    <MenuItem v-slot="{ active, close }">
+                    <MenuItem
+                      v-for="item in userNavigation"
+                      :key="item.name"
+                      v-slot="{ active, close }"
+                    >
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
@@ -354,91 +245,16 @@
                         ]"
                         @click.prevent="
                           () => {
-                            $router.push('/settings')
+                            $router.push(item.route)
                             close()
                           }
                         "
                       >
-                        <Settings
+                        <component
+                          :is="item.icon"
                           class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
                           aria-hidden="true"
-                        />{{ $t('settings.title') }}
-                      </a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active, close }">
-                      <a
-                        :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                        ]"
-                        @click.prevent="
-                          () => {
-                            $router.push('/help')
-                            close()
-                          }
-                        "
-                      >
-                        <LifeBuoy
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                          aria-hidden="true"
-                        />{{ $t('help.title') }}
-                      </a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active, close }">
-                      <a
-                        :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                        ]"
-                        @click.prevent="
-                          () => {
-                            $router.push('/about')
-                            close()
-                          }
-                        "
-                      >
-                        <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                          aria-hidden="true"
-                        />{{ $t('about.title') }}
-                      </a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active, close }">
-                      <a
-                        :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                        ]"
-                        @click.prevent="
-                          () => {
-                            $router.push('/disclaimer')
-                            close()
-                          }
-                        "
-                      >
-                        <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                          aria-hidden="true"
-                        />{{ $t('disclaimer.title') }}
-                      </a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active, close }">
-                      <a
-                        :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
-                        ]"
-                        @click.prevent="
-                          () => {
-                            $router.push('/privacy-policy')
-                            close()
-                          }
-                        "
-                      >
-                        <Info
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-                          aria-hidden="true"
-                        />{{ $t('privacy-policy.title') }}
+                        />{{ $t(item.name) }}
                       </a>
                     </MenuItem>
                   </div>
@@ -452,40 +268,16 @@
           aria-label="Global"
         >
           <RouterLink
-            to="/"
+            v-for="item in tabNavigation"
+            :key="item.name"
+            :to="item.route"
             class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
           >
-            <House
+            <component
+              :is="item.icon"
               class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
               aria-hidden="true"
-            /><span class="t-hidden md:t-inline-block">{{ $t('home.title') }}</span>
-          </RouterLink>
-          <RouterLink
-            to="/phe-search"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-          >
-            <Search
-              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-              aria-hidden="true"
-            /><span class="t-hidden md:t-inline-block">{{ $t('app.search') }}</span>
-          </RouterLink>
-          <RouterLink
-            to="/phe-calculator"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-          >
-            <Calculator
-              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-              aria-hidden="true"
-            /><span class="t-hidden md:t-inline-block">{{ $t('app.calculator') }}</span>
-          </RouterLink>
-          <RouterLink
-            to="/own-food"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
-          >
-            <Apple
-              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
-              aria-hidden="true"
-            /><span class="t-hidden md:t-inline-block">{{ $t('own-food.title') }}</span>
+            /><span class="t-hidden md:t-inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
       </div>
@@ -548,11 +340,33 @@ export default {
     Info
   },
   data: () => ({
+    navigation: [
+      { name: 'home.title', icon: 'House', route: '/' },
+      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
+      { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' }
+    ],
     lang: [
       { name: 'Deutsch', abbr: 'de' },
       { name: 'English', abbr: 'en' },
       { name: 'Español', abbr: 'es' },
       { name: 'Français', abbr: 'fr' }
+    ],
+    userNavigation: [
+      { name: 'settings.title', icon: 'Settings', route: '/settings' },
+      { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
+      { name: 'about.title', icon: 'Info', route: '/about' },
+      { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
+      { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+    ],
+    tabNavigation: [
+      { name: 'home.title', icon: 'House', route: '/' },
+      { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ]
   }),
   setup() {
