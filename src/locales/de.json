@@ -195,13 +195,5 @@
     "install-description": "Kann auf jedem Gerät installiert werden (Android, iOS, Mac, Windows).",
     "design-name": "Flexibles App Design",
     "design-description": "Mehrsprachig, helles und dunkles Design etc."
-  },
-  "plans": {
-    "title": "Pläne",
-    "tier-1-price": "Kostenlose Nutzung",
-    "tier-1-feature-0": "Alle Funktionen",
-    "tier-1-feature-1": "100 Tagebuch Einträge (~3 Monate)",
-    "tier-1-feature-2": "500 eigene Lebensmittel",
-    "tier-1-feature-3": "Einträge jederzeit exportieren oder löschen"
   }
 }
