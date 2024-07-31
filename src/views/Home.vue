@@ -3,7 +3,7 @@
     <PheLog v-if="userIsAuthenticated" />
 
     <div v-if="!userIsAuthenticated">
-      <div class="t-py-6 sm:t-py-8">
+      <div class="t-pt-3 t-pb-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
             <p
@@ -56,23 +56,23 @@
             {{ $t('home.suggestion') }}
           </p>
           <div
-            class="t-mt-10 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
+            class="t-mt-8 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
           >
             <a
               @click.prevent="signInGoogle"
-              class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-cursor-pointer"
+              class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-cursor-pointer"
             >
               {{ $t('app.signin-google') }}
             </a>
             <RouterLink
               to="/email-auth"
-              class="t-rounded-md t-bg-sky-500 t-px-3.5 t-py-2.5 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
+              class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
             >
               {{ $t('email-auth.title') }}
             </RouterLink>
           </div>
           <div
-            class="t-mt-10 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
+            class="t-mt-6 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
           >
             <a
               href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
@@ -94,7 +94,7 @@
         </div>
       </div>
 
-      <div class="t-py-6 sm:t-pys-8">
+      <div class="t-py-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-flex t-flex-col t-items-center t-gap-8 lg:t-flex-row lg:t-justify-center">
             <div
