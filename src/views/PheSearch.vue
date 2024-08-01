@@ -60,7 +60,7 @@
                     class="t-cursor-pointer"
                   >
                     <td
-                      class="t-whitespace-nowrap t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+                      class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
                     >
                       {{ item.emoji }}
                       {{ item.name }}
