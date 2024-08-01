@@ -29,7 +29,7 @@
     "title": "Inicio",
     "features": "Características",
     "signin-install": "Registro e instalación",
-    "suggestion": "Recomendación: Instala la aplicación web antes de registrarte."
+    "suggestion": "Puede instalarse en cualquier dispositivo (Android, iOS, Mac, Windows)."
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
@@ -190,10 +190,6 @@
     "own-food-name": "Alimentos Propios",
     "own-food-description": "Guarda tus propios alimentos para añadir rápidamente.",
     "export-name": "Función de Exportación",
-    "export-description": "Exporta tus datos como CSV (compatible con Excel).",
-    "install-name": "Instalable",
-    "install-description": "Puede instalarse en cualquier dispositivo (Android, iOS, Mac, Windows).",
-    "design-name": "Diseño de Aplicación Flexible",
-    "design-description": "Multilingüe, diseño claro y oscuro, etc."
+    "export-description": "Exporta tus datos como CSV (compatible con Excel)."
   }
 }

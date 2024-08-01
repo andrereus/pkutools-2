@@ -29,7 +29,7 @@
     "title": "Home",
     "features": "Features",
     "signin-install": "Registration and installation",
-    "suggestion": "Recommendation: Install the web app before you sign up."
+    "suggestion": "Can be installed on any device (Android, iOS, Mac, Windows)."
   },
   "phe-search": {
     "title": "Phe Search",
@@ -190,10 +190,6 @@
     "own-food-name": "Own Foods",
     "own-food-description": "Save your own foods for quick addition.",
     "export-name": "Export Function",
-    "export-description": "Export your data as CSV (compatible with Excel).",
-    "install-name": "Installable",
-    "install-description": "Can be installed on any device (Android, iOS, Mac, Windows).",
-    "design-name": "Flexible App Design",
-    "design-description": "Multilingual, light and dark design, etc."
+    "export-description": "Export your data as CSV (compatible with Excel)."
   }
 }
