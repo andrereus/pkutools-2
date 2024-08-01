@@ -87,7 +87,7 @@
             </a>
             <RouterLink
               to="/help"
-              class="t-text-sm t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white t-block"
+              class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10"
             >
               {{ $t('app.install') }} <span aria-hidden="true">→</span>
             </RouterLink>

@@ -67,7 +67,7 @@
     "protein": "Proteína (por 100g)",
     "info": "Phe se calcula a partir de proteínas (* 50) / Fuente de datos: openfoodfacts.org",
     "no-protein": "Proteína no disponible para el cálculo.",
-    "protein-link": "Convertir proteínas manualmente ->"
+    "protein-link": "Convertir proteínas manualmente"
   },
   "own-food": {
     "title": "Alimento propio",

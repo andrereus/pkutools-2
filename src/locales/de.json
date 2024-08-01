@@ -67,7 +67,7 @@
     "protein": "Eiweiß (pro 100g)",
     "info": "Phe wird aus Eiweiß (* 50) berechnet / Datenquelle: openfoodfacts.org",
     "no-protein": "Eiweiß zur Berechnung nicht vorhanden.",
-    "protein-link": "Eiweiß manuell umrechnen ->"
+    "protein-link": "Eiweiß manuell umrechnen"
   },
   "own-food": {
     "title": "Eigene Lebensmittel",

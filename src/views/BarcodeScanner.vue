@@ -122,7 +122,7 @@
       <div v-if="!this.result.product.nutriments.proteins_100g" class="t-mb-6">
         <p>{{ $t('barcode-scanner.no-protein') }}</p>
         <RouterLink to="/protein-calculator" class="t-text-sky-500">
-          {{ $t('barcode-scanner.protein-link') }}
+          {{ $t('barcode-scanner.protein-link') }} <span aria-hidden="true">→</span>
         </RouterLink>
       </div>
     </div>

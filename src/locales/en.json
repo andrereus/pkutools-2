@@ -67,7 +67,7 @@
     "protein": "Protein (per 100g)",
     "info": "Phe gets calculated from protein (* 50) / Datasource: openfoodfacts.org",
     "no-protein": "Protein not available for calculation.",
-    "protein-link": "Convert protein manually ->"
+    "protein-link": "Convert protein manually"
   },
   "own-food": {
     "title": "Own Food",
