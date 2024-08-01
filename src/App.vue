@@ -277,7 +277,7 @@
               :is="item.icon"
               class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
               aria-hidden="true"
-            /><span class="t-hidden md:t-inline-block">{{ $t(item.name) }}</span>
+            /><span class="t-hidden lg:t-inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
       </div>
