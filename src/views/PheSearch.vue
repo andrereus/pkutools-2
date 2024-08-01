@@ -5,7 +5,6 @@
     </header>
 
     <div>
-      <!-- TODO: autocomplete="off"? -->
       <div class="t-w-full t-mb-6">
         <label for="search" class="t-sr-only">{{ $t('phe-search.search') }}</label>
         <div class="t-relative">
@@ -26,7 +25,6 @@
         </div>
       </div>
 
-      <!-- TODO: Sorting? -->
       <div v-if="advancedFood !== null" class="t-mt-8 t-flow-root">
         <div class="t--mx-4 t--my-2 t-overflow-x-auto sm:t--mx-6 lg:t--mx-8">
           <div class="t-inline-block t-min-w-full t-py-2 t-align-middle sm:t-px-6 lg:t-px-8">
