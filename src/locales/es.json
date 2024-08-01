@@ -37,7 +37,7 @@
     "search": "Buscar alimentos",
     "weight": "Peso (en g)",
     "source": "Fuente: Traducido por USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Por ejemplo, también se utiliza para la información nutricional en la barra lateral de Google.",
-    "back": "Volver"
+    "search-info": "Afine su búsqueda con varias palabras."
   },
   "phe-calculator": {
     "title": "Calculadora de Phe",

@@ -78,7 +78,9 @@
         </div>
       </div>
 
-      <p class="t-mt-2">
+      <p class="t-mt-8 t-italic">{{ $t('phe-search.search-info') }}</p>
+
+      <p class="t-mt-8">
         {{ $t('phe-search.source') }}
       </p>
 
