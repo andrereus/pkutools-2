@@ -23,7 +23,8 @@
                 <dt
                   class="t-text-base t-font-semibold t-leading-7 t-text-gray-900 dark:t-text-white"
                 >
-                  <div
+                  <RouterLink
+                    :to="feature.route"
                     class="t-absolute t-left-0 t-top-0 t-flex t-h-10 t-w-10 t-items-center t-justify-center t-rounded-lg t-bg-sky-500"
                   >
                     <component
@@ -31,7 +32,7 @@
                       class="t-h-6 t-w-6 t-text-white"
                       aria-hidden="true"
                     />
-                  </div>
+                  </RouterLink>
                   {{ $t(feature.name) }}
                 </dt>
                 <dd class="t-mt-2 t-text-base t-leading-7 t-text-gray-600 dark:t-text-gray-300">
@@ -118,32 +119,38 @@ export default {
       {
         name: 'features.search-name',
         description: 'features.search-description',
-        icon: Search
+        icon: Search,
+        route: '/phe-search'
       },
       {
         name: 'features.scanner-name',
         description: 'features.scanner-description',
-        icon: ScanBarcode
+        icon: ScanBarcode,
+        route: '/barcode-scanner'
       },
       {
         name: 'features.calculator-name',
         description: 'features.calculator-description',
-        icon: Calculator
+        icon: Calculator,
+        route: '/phe-calculator'
       },
       {
         name: 'features.diary-name',
         description: 'features.diary-description',
-        icon: Book
+        icon: Book,
+        route: '/phe-diary'
       },
       {
         name: 'features.own-food-name',
         description: 'features.own-food-description',
-        icon: Apple
+        icon: Apple,
+        route: '/own-food'
       },
       {
         name: 'features.export-name',
         description: 'features.export-description',
-        icon: FileDown
+        icon: FileDown,
+        route: '/settings'
       }
     ]
   }),
