@@ -5,45 +5,80 @@
     </header>
 
     <div>
-      <v-text-field
-        v-model="search"
-        :label="$t('phe-search.search')"
-        autocomplete="off"
-        @keyup="searchFood"
-        clearable
-        @click:clear="advancedFood = null"
-      >
-        <template v-slot:append>
-          <v-btn
-            variant="flat"
-            color="primary"
-            :loading="loading"
-            @click="searchFood"
-            :icon="mdiMagnify"
+      <!-- TODO: autocomplete="off"? -->
+      <div class="t-w-full t-mb-6">
+        <label for="search" class="t-sr-only">{{ $t('phe-search.search') }}</label>
+        <div class="t-relative">
+          <div
+            class="t-pointer-events-none t-absolute t-inset-y-0 t-left-0 t-flex t-items-center t-pl-3"
           >
-          </v-btn>
-        </template>
-      </v-text-field>
+            <Search class="t-h-5 t-w-5 t-text-gray-400" aria-hidden="true" />
+          </div>
+          <input
+            type="search"
+            id="search"
+            name="search"
+            v-model="search"
+            :placeholder="$t('phe-search.search')"
+            @keyup="searchFood"
+            class="t-block t-w-full t-rounded-md t-border-0 t-bg-white t-py-1.5 t-pl-10 t-pr-3 t-text-gray-900 t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-bg-gray-800 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500"
+          />
+        </div>
+      </div>
 
-      <v-data-table-virtual
-        :headers="headers"
-        :items="advancedFood"
-        :sort-by="['name']"
-        v-if="advancedFood !== null"
-      >
-        <template v-slot:item="{ item }">
-          <tr @click="loadItem(item)" class="tr-edit">
-            <td class="text-start">
-              {{ item.emoji }}
-              {{ item.name }}
-            </td>
-            <td class="text-start">{{ item.phe }}</td>
-          </tr>
-        </template>
-      </v-data-table-virtual>
+      <!-- TODO: Sorting? -->
+      <div v-if="advancedFood !== null" class="t-mt-8 t-flow-root">
+        <div class="t--mx-4 t--my-2 t-overflow-x-auto sm:t--mx-6 lg:t--mx-8">
+          <div class="t-inline-block t-min-w-full t-py-2 t-align-middle sm:t-px-6 lg:t-px-8">
+            <div
+              class="t-overflow-hidden t-shadow t-ring-1 t-ring-black dark:t-ring-gray-800 t-ring-opacity-5 sm:t-rounded-lg"
+            >
+              <table class="t-min-w-full t-divide-y t-divide-gray-300 dark:t-divide-gray-600">
+                <thead class="t-bg-gray-50 dark:t-bg-gray-950">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="t-py-3.5 t-pl-4 t-pr-3 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+                    >
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="t-px-3 t-py-3.5 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300"
+                    >
+                      Phe
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="t-divide-y t-divide-gray-200 dark:t-divide-gray-700 t-bg-white dark:t-bg-gray-900"
+                >
+                  <tr
+                    v-for="item in advancedFood"
+                    :key="item.name"
+                    @click="loadItem(item)"
+                    class="t-cursor-pointer"
+                  >
+                    <td
+                      class="t-whitespace-nowrap t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+                    >
+                      {{ item.emoji }}
+                      {{ item.name }}
+                    </td>
+                    <td
+                      class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+                    >
+                      {{ item.phe }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <p class="mt-6 text--secondary">
-        <v-icon>{{ mdiInformationVariant }}</v-icon>
+      <p class="t-mt-2">
         {{ $t('phe-search.source') }}
       </p>
 
@@ -94,11 +129,14 @@ import { getDatabase, ref, push } from 'firebase/database'
 import Fuse from 'fuse.js'
 import { mdiMagnify, mdiInformationVariant } from '@mdi/js'
 
+import { Search } from 'lucide-vue-next'
+
 import PageHeader from '../components/PageHeader.vue'
 
 export default {
   components: {
-    PageHeader
+    PageHeader,
+    Search
   },
   data: () => ({
     mdiMagnify,
