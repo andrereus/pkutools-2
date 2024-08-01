@@ -54,8 +54,8 @@
                   class="t-divide-y t-divide-gray-200 dark:t-divide-gray-700 t-bg-white dark:t-bg-gray-900"
                 >
                   <tr
-                    v-for="item in advancedFood"
-                    :key="item.name"
+                    v-for="(item, index) in advancedFood"
+                    :key="index"
                     @click="loadItem(item)"
                     class="t-cursor-pointer"
                   >
