@@ -4,22 +4,6 @@
       <PageHeader :title="$t('app.search')" />
     </header>
 
-    <div class="t-block t-mb-6">
-      <nav class="t-flex t-space-x-4" aria-label="Tabs">
-        <RouterLink
-          to="/phe-search"
-          class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
-          aria-current="page"
-          >{{ $t('phe-search.tab-title') }}</RouterLink
-        >
-        <RouterLink
-          to="/barcode-scanner"
-          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-          >{{ $t('barcode-scanner.tab-title') }}</RouterLink
-        >
-      </nav>
-    </div>
-
     <div>
       <v-text-field
         v-model="search"

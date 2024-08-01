@@ -365,6 +365,7 @@ export default {
     tabNavigation: [
       { name: 'home.title', icon: 'House', route: '/' },
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
       { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ]

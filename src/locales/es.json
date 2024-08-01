@@ -33,7 +33,6 @@
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
-    "tab-title": "Alimentación",
     "description": "Buscar valores de Phe.",
     "search": "Buscar alimentos",
     "weight": "Peso (en g)",
@@ -62,7 +61,6 @@
   },
   "barcode-scanner": {
     "title": "Escáner de código de barras",
-    "tab-title": "Productos",
     "description": "Función experimental",
     "scan-barcode": "Escanear código de barras",
     "please-wait": "Por favor, espera...",

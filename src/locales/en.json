@@ -33,7 +33,6 @@
   },
   "phe-search": {
     "title": "Phe Search",
-    "tab-title": "Food",
     "description": "Search for phe values.",
     "search": "Search for food",
     "weight": "Weight (in g)",
@@ -62,7 +61,6 @@
   },
   "barcode-scanner": {
     "title": "Barcode Scanner",
-    "tab-title": "Products",
     "description": "Experimental feature",
     "scan-barcode": "Scan barcode",
     "please-wait": "Please wait ...",
