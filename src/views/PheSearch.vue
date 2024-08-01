@@ -204,7 +204,8 @@ export default {
         keys: ['name', 'phe'],
         threshold: 0.2,
         minMatchCharLength: 2,
-        ignoreLocation: true
+        ignoreLocation: true,
+        useExtendedSearch: true
       })
       let results = fuse.search(this.search.trim())
 
