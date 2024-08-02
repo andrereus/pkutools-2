@@ -23,7 +23,8 @@
     "cancel": "Cancel",
     "close": "Close",
     "ok": "Ok",
-    "note": "Note"
+    "note": "Note",
+    "error": "Something went wrong."
   },
   "home": {
     "title": "Home",
@@ -65,7 +66,7 @@
     "scan-barcode": "Scan barcode",
     "please-wait": "Please wait ...",
     "protein": "Protein (per 100g)",
-    "info": "Phe gets calculated from protein (* 50) / Datasource: openfoodfacts.org",
+    "info": "Phe gets calculated from protein (* 50). Datasource: openfoodfacts.org",
     "no-protein": "Protein not available for calculation.",
     "protein-link": "Convert protein manually"
   },

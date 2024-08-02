@@ -6,75 +6,26 @@
 
     <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" class="t-mt-2" />
 
-    <TransitionRoot as="template" :show="open">
-      <Dialog class="t-relative t-z-10" @close="open = false">
-        <TransitionChild
-          as="template"
-          enter="t-ease-out t-duration-300"
-          enter-from="t-opacity-0"
-          enter-to="t-opacity-100"
-          leave="t-ease-in t-duration-200"
-          leave-from="t-opacity-100"
-          leave-to="t-opacity-0"
-        >
-          <div class="t-fixed t-inset-0 t-bg-gray-500 t-bg-opacity-75 t-transition-opacity" />
-        </TransitionChild>
+    <ModalDialog
+      :open="open"
+      :title="$t('barcode-scanner.scan-barcode')"
+      @close="open = false"
+      @cancel="cancel"
+    >
+      <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
 
-        <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
-          <div
-            class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0"
-          >
-            <TransitionChild
-              as="template"
-              enter="t-ease-out t-duration-300"
-              enter-from="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
-              enter-to="t-opacity-100 t-translate-y-0 sm:t-scale-100"
-              leave="t-ease-in t-duration-200"
-              leave-from="t-opacity-100 t-translate-y-0 sm:t-scale-100"
-              leave-to="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
-            >
-              <DialogPanel
-                class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
-              >
-                <div>
-                  <div class="t-text-center">
-                    <DialogTitle
-                      as="h3"
-                      class="t-text-base t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white"
-                      >{{ $t('barcode-scanner.scan-barcode') }}</DialogTitle
-                    >
-                    <div class="t-mt-2">
-                      <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
+      <!-- Do not remove -->
+      <p v-if="error !== ''">{{ error }}</p>
 
-                      <!-- Do not remove -->
-                      <p v-if="error !== ''">{{ error }}</p>
-
-                      <QrcodeStream
-                        v-if="open === true"
-                        :track="paintBoundingBox"
-                        :formats="['ean_13', 'ean_8']"
-                        @camera-on="onReady"
-                        @detect="onDetect"
-                        @error="onError"
-                      ></QrcodeStream>
-                    </div>
-                  </div>
-                </div>
-                <div class="t-mt-5 sm:t-mt-6">
-                  <button
-                    type="button"
-                    class="t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-sky-500 t-px-3 t-py-2 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-500 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
-                    @click="cancel"
-                  >
-                    {{ $t('common.cancel') }}
-                  </button>
-                </div>
-              </DialogPanel>
-            </TransitionChild>
-          </div>
-        </div>
-      </Dialog>
-    </TransitionRoot>
+      <QrcodeStream
+        v-if="open === true"
+        :track="paintBoundingBox"
+        :formats="['ean_13', 'ean_8']"
+        @camera-on="onReady"
+        @detect="onDetect"
+        @error="onError"
+      ></QrcodeStream>
+    </ModalDialog>
 
     <div v-if="result !== null">
       <img
@@ -138,23 +89,18 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 import { QrcodeStream } from 'vue-qrcode-reader'
 
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-
 import PageHeader from '../components/PageHeader.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
+import ModalDialog from '../components/ModalDialog.vue'
 
 export default {
   components: {
     QrcodeStream,
-    Dialog,
-    DialogPanel,
-    DialogTitle,
-    TransitionChild,
-    TransitionRoot,
     PageHeader,
     PrimaryButton,
-    NumberInput
+    NumberInput,
+    ModalDialog
   },
   data: () => ({
     loaded: false,
@@ -193,6 +139,7 @@ export default {
           this.result = result
         })
         .catch((error) => {
+          alert(this.$t('common.error'))
           console.log(error)
         })
       this.loaded = false
