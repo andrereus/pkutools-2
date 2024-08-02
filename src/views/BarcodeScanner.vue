@@ -9,7 +9,7 @@
     <ModalDialog
       :open="open"
       :title="$t('barcode-scanner.scan-barcode')"
-      @close="open = false"
+      @close="cancel"
       @cancel="cancel"
     >
       <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
