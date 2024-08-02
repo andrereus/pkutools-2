@@ -20,7 +20,7 @@ defineEmits(['close', 'submit'])
         <div class="t-fixed t-inset-0 t-bg-gray-500 t-bg-opacity-75 t-transition-opacity" />
       </TransitionChild>
 
-      <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
+      <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-scroll">
         <div
           class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0"
         >
