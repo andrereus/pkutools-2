@@ -6,7 +6,7 @@
 
     <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" class="t-mt-2" />
 
-    <ModalDialog
+    <SimpleDialog
       :open="open"
       :title="$t('barcode-scanner.scan-barcode')"
       @close="cancel"
@@ -25,7 +25,7 @@
         @detect="onDetect"
         @error="onError"
       ></QrcodeStream>
-    </ModalDialog>
+    </SimpleDialog>
 
     <div v-if="result !== null">
       <img
@@ -92,7 +92,7 @@ import { QrcodeStream } from 'vue-qrcode-reader'
 import PageHeader from '../components/PageHeader.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
-import ModalDialog from '../components/ModalDialog.vue'
+import SimpleDialog from '../components/SimpleDialog.vue'
 
 export default {
   components: {
@@ -100,7 +100,7 @@ export default {
     PageHeader,
     PrimaryButton,
     NumberInput,
-    ModalDialog
+    SimpleDialog
   },
   data: () => ({
     loaded: false,
