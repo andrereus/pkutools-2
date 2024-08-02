@@ -1,8 +1,8 @@
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-defineProps(['open', 'title'])
-defineEmits(['close', 'cancel', 'submit'])
+defineProps(['open', 'title', 'auth'])
+defineEmits(['close', 'submit'])
 </script>
 
 <template>
@@ -34,37 +34,39 @@ defineEmits(['close', 'cancel', 'submit'])
             leave-to="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
           >
             <DialogPanel
-              class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
+              class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 t-w-full t-max-w-md sm:t-max-w-lg sm:t-p-6"
             >
               <div>
-                <div class="t-text-center">
+                <div>
                   <DialogTitle
                     as="h3"
                     class="t-text-base t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white"
                     >{{ title }}</DialogTitle
                   >
-                  <div class="t-mt-3">
+                  <div class="t-mt-5">
                     <slot />
                   </div>
                 </div>
               </div>
               <div
                 class="t-mt-5 sm:t-mt-6 sm:t-grid sm:t-grid-flow-row-dense sm:t-grid-cols-2 sm:t-gap-3"
+                :class="{ 'sm:t-grid-cols-1': !auth, 'sm:t-grid-cols-2': auth }"
               >
                 <button
+                  v-if="auth"
                   type="button"
                   class="t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-sky-500 t-px-3 t-py-2 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-500 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 sm:t-col-start-2"
                   @click="$emit('submit')"
                 >
-                  {{ $t('common.save') }}
+                  {{ $t('common.add') }}
                 </button>
                 <button
                   type="button"
                   class="t-mt-3 t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-white t-px-3 t-py-2 t-text-sm t-font-semibold t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 hover:t-bg-gray-50 sm:t-col-start-1 sm:t-mt-0"
-                  @click="$emit('cancel')"
+                  @click="$emit('close')"
                   ref="cancelButtonRef"
                 >
-                  {{ $t('common.cancel') }}
+                  {{ $t('common.close') }}
                 </button>
               </div>
             </DialogPanel>

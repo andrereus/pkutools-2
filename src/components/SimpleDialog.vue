@@ -2,7 +2,7 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
 defineProps(['open', 'title'])
-defineEmits(['close', 'cancel'])
+defineEmits(['close'])
 </script>
 
 <template>
@@ -52,7 +52,7 @@ defineEmits(['close', 'cancel'])
                 <button
                   type="button"
                   class="t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-sky-500 t-px-3 t-py-2 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-500 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
-                  @click="$emit('cancel')"
+                  @click="$emit('close')"
                 >
                   {{ $t('common.cancel') }}
                 </button>

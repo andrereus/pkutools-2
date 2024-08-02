@@ -6,12 +6,7 @@
 
     <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" class="t-mt-2" />
 
-    <SimpleDialog
-      :open="open"
-      :title="$t('barcode-scanner.scan-barcode')"
-      @close="cancel"
-      @cancel="cancel"
-    >
+    <SimpleDialog :open="open" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
       <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
 
       <!-- Do not remove -->

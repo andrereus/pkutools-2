@@ -83,43 +83,30 @@
         {{ $t('phe-search.source') }}
       </p>
 
-      <v-dialog v-model="dialog" max-width="500px">
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ emoji }}
-            {{ name }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-text-field
-              :label="$t('phe-search.weight')"
-              v-model.number="weight"
-              type="number"
-              clearable
-            ></v-text-field>
-            <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>
-            <div v-if="userIsAuthenticated">
-              <p class="mt-4 text-caption">{{ $t('phe-log.preview') }}</p>
-              <v-progress-linear
-                :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-                height="6"
-                class="mt-3 mb-8"
-                rounded
-              ></v-progress-linear>
-            </div>
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="save" v-if="userIsAuthenticated">
-              {{ $t('common.add') }}
-            </v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="dialog = false">{{
-              $t('common.close')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <InputDialog
+        :open="open"
+        :title="emoji + ' ' + name"
+        @close="open = false"
+        @submit="save"
+        :auth="userIsAuthenticated"
+      >
+        <NumberInput
+          id-name="weight"
+          :label="$t('phe-search.weight')"
+          v-model.number="weight"
+          class="t-mb-6"
+        />
+        <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
+        <div v-if="userIsAuthenticated">
+          <p class="t-text-sm t-mt-6">{{ $t('phe-log.preview') }}</p>
+          <v-progress-linear
+            :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
+            height="6"
+            class="mt-3 mb-8"
+            rounded
+          ></v-progress-linear>
+        </div>
+      </InputDialog>
     </div>
   </div>
 </template>
@@ -128,22 +115,23 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push } from 'firebase/database'
 import Fuse from 'fuse.js'
-import { mdiMagnify, mdiInformationVariant } from '@mdi/js'
 
 import { Search } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
+import InputDialog from '../components/InputDialog.vue'
+import NumberInput from '../components/NumberInput.vue'
 
 export default {
   components: {
     PageHeader,
+    InputDialog,
+    NumberInput,
     Search
   },
   data: () => ({
-    mdiMagnify,
-    mdiInformationVariant,
     publicPath: import.meta.env.BASE_URL,
-    dialog: false,
+    open: false,
     search: null,
     phe: null,
     weight: 100,
@@ -166,7 +154,7 @@ export default {
       this.emoji = item.emoji
       this.phe = item.phe
       this.weight = 100
-      this.dialog = true
+      this.open = true
     },
     calculatePhe() {
       return Math.round((this.weight * this.phe) / 100)
@@ -179,7 +167,7 @@ export default {
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
-      this.dialog = false
+      this.open = false
       this.$router.push('/')
     },
     async searchFood() {
@@ -247,13 +235,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.tr-edit {
-  cursor: pointer;
-}
-
-.v-btn {
-  text-transform: none;
-}
-</style>
