@@ -20,7 +20,7 @@ defineEmits(['close', 'submit'])
         <div class="t-fixed t-inset-0 t-bg-gray-500 t-bg-opacity-75 t-transition-opacity" />
       </TransitionChild>
 
-      <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-scroll">
+      <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
         <div
           class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0"
         >
@@ -34,7 +34,7 @@ defineEmits(['close', 'submit'])
             leave-to="t-opacity-0 t-translate-y-4 sm:t-translate-y-0 sm:t-scale-95"
           >
             <DialogPanel
-              class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 t-w-full t-max-w-md sm:t-max-w-lg sm:t-p-6"
+              class="t-relative t-transform t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 t-w-full t-max-w-md sm:t-max-w-lg sm:t-p-6"
             >
               <div>
                 <div>
