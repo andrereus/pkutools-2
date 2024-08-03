@@ -25,7 +25,7 @@ const focus = ref(null)
 
       <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
         <div
-          class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0"
+          class="t-flex t-min-h-full t-items-start t-justify-center t-p-4 t-text-center sm:t-items-center sm:t-p-0"
         >
           <TransitionChild
             as="template"
