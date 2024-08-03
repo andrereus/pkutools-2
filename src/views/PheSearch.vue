@@ -26,56 +26,26 @@
         </div>
       </div>
 
-      <div v-if="advancedFood !== null" class="t-mt-8 t-flow-root">
-        <div class="t--mx-4 t--my-2 t-overflow-x-auto sm:t--mx-6 lg:t--mx-8">
-          <div class="t-inline-block t-min-w-full t-py-2 t-align-middle sm:t-px-6 lg:t-px-8">
-            <div
-              class="t-overflow-hidden t-shadow t-ring-1 t-ring-black dark:t-ring-gray-800 t-ring-opacity-5 sm:t-rounded-lg"
-            >
-              <table class="t-min-w-full t-divide-y t-divide-gray-300 dark:t-divide-gray-600">
-                <thead class="t-bg-gray-50 dark:t-bg-gray-950">
-                  <tr>
-                    <th
-                      scope="col"
-                      class="t-py-3.5 t-pl-4 t-pr-3 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      class="t-px-3 t-py-3.5 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300"
-                    >
-                      Phe
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="t-divide-y t-divide-gray-200 dark:t-divide-gray-700 t-bg-white dark:t-bg-gray-900"
-                >
-                  <tr
-                    v-for="(item, index) in advancedFood"
-                    :key="index"
-                    @click="loadItem(item)"
-                    class="t-cursor-pointer"
-                  >
-                    <td
-                      class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-                    >
-                      {{ item.emoji }}
-                      {{ item.name }}
-                    </td>
-                    <td
-                      class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-                    >
-                      {{ item.phe }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <DataTable v-if="advancedFood !== null">
+        <tr
+          v-for="(item, index) in advancedFood"
+          :key="index"
+          @click="loadItem(item)"
+          class="t-cursor-pointer"
+        >
+          <td
+            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+          >
+            {{ item.emoji }}
+            {{ item.name }}
+          </td>
+          <td
+            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+          >
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
 
       <p class="t-mt-8 t-italic">{{ $t('phe-search.search-info') }}</p>
 
@@ -121,12 +91,14 @@ import { Search } from 'lucide-vue-next'
 import PageHeader from '../components/PageHeader.vue'
 import InputDialog from '../components/InputDialog.vue'
 import NumberInput from '../components/NumberInput.vue'
+import DataTable from '../components/DataTable.vue'
 
 export default {
   components: {
     PageHeader,
     InputDialog,
     NumberInput,
+    DataTable,
     Search
   },
   data: () => ({
