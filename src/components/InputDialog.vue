@@ -49,7 +49,7 @@ defineEmits(['close', 'submit'])
                 </div>
               </div>
               <div
-                class="t-mt-5 sm:t-mt-6 sm:t-grid sm:t-grid-flow-row-dense sm:t-grid-cols-2 sm:t-gap-3"
+                class="t-mt-5 sm:t-mt-6 sm:t-grid sm:t-grid-flow-row-dense sm:t-gap-3"
                 :class="{ 'sm:t-grid-cols-1': !auth, 'sm:t-grid-cols-2': auth }"
               >
                 <button
