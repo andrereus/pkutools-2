@@ -1,16 +1,13 @@
 <script setup>
-import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
 defineProps(['open', 'title', 'auth'])
 defineEmits(['close', 'submit'])
-
-const focus = ref(null)
 </script>
 
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog class="t-relative t-z-10" @close="$emit('close')" :initialFocus="focus" ref="focus">
+    <Dialog class="t-relative t-z-10" @close="$emit('close')">
       <TransitionChild
         as="template"
         enter="t-ease-out t-duration-300"
