@@ -44,7 +44,7 @@
       v-model.number="weight"
     />
 
-    <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
+    <p class="t-text-xl t-my-6">~ {{ calculatePhe() }} mg Phe</p>
 
     <div v-if="userIsAuthenticated">
       <p class="t-text-sm">{{ $t('phe-log.preview') }}</p>
