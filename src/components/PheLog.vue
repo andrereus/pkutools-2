@@ -206,6 +206,8 @@
         </v-card>
       </v-dialog>
 
+      <p class="t-mt-4">{{ $t('app.redesign') }}</p>
+
       <v-dialog v-model="alert" max-width="300">
         <v-card>
           <v-card-title>{{ $t('common.note') }}</v-card-title>
