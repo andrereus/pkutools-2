@@ -261,22 +261,6 @@
             </MenuComponent>
           </div>
         </div>
-        <div
-          v-if="userIsAuthenticated"
-          class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md"
-        >
-          <div class="t-text-xs t-flex t-justify-between">
-            <span>{{ pheResult }} Phe</span>
-            <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
-          </div>
-          <v-progress-linear
-            :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-            height="3"
-            class="mt-2"
-            color="primary"
-            rounded
-          ></v-progress-linear>
-        </div>
         <nav
           class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12 lg:t-justify-start lg:t-space-x-4"
           aria-label="Global"
@@ -294,6 +278,19 @@
             /><span class="t-hidden lg:t-inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
+        <div v-if="userIsAuthenticated" class="t-pt-1 t-pb-4 t-px-1">
+          <v-progress-linear
+            :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
+            height="3"
+            class="mb-3"
+            color="primary"
+            rounded
+          ></v-progress-linear>
+          <div class="t-text-xs t-flex t-justify-between t-px-1">
+            <span>{{ pheResult }} Phe</span>
+            <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
+          </div>
+        </div>
       </div>
     </div>
 
