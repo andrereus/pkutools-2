@@ -151,13 +151,6 @@
               clearable
             ></v-text-field>
             <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>
-            <p class="mt-4 text-caption">{{ $t('phe-log.preview') }}</p>
-            <v-progress-linear
-              :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-              height="6"
-              class="mt-3 mb-8"
-              rounded
-            ></v-progress-linear>
           </v-card-text>
 
           <v-card-actions class="mt-n6">

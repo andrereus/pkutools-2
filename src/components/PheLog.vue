@@ -70,20 +70,7 @@
         </template>
       </v-data-table-virtual>
 
-      <v-progress-linear
-        :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-        height="15"
-        class="mt-8"
-        rounded
-      ></v-progress-linear>
-
-      <p class="text-h6 font-weight-regular mt-6">
-        {{ $t('phe-log.total') }}: {{ pheResult }} mg Phe
-      </p>
-      <p class="mt-3 mb-3">
-        {{ $t('phe-log.remaining') }}: {{ (settings?.maxPhe || 0) - pheResult }} mg Phe
-      </p>
-      <p class="mb-8">
+      <p class="my-8">
         {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }}%
         {{ $t('phe-log.optimum') }}
       </p>

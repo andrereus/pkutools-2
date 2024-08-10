@@ -52,16 +52,6 @@
 
         <p class="t-text-xl">~ {{ calculatePhe() }} mg Phe</p>
 
-        <div v-if="userIsAuthenticated">
-          <p class="t-text-sm t-mt-6">{{ $t('phe-log.preview') }}</p>
-          <v-progress-linear
-            :model-value="((pheResult + calculatePhe()) * 100) / (settings?.maxPhe || 0)"
-            height="6"
-            class="mt-3 mb-6"
-            rounded
-          ></v-progress-linear>
-        </div>
-
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
 

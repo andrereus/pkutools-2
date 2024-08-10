@@ -1,9 +1,7 @@
 <template>
   <div class="t-min-h-full app-container-safe-area">
     <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
-      <div
-        class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 t-divide-y t-divide-gray-200 dark:t-divide-gray-700 lg:t-px-8"
-      >
+      <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
           <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
             <MenuComponent as="div" class="t-relative">
@@ -263,6 +261,19 @@
             </MenuComponent>
           </div>
         </div>
+        <div v-if="userIsAuthenticated" class="t-my-2 t-px-2">
+          <div class="t-text-xs t-flex t-justify-between t-px-1">
+            <span>{{ pheResult }} Phe</span>
+            <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
+          </div>
+          <v-progress-linear
+            :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
+            height="3"
+            class="mt-1"
+            color="primary"
+            rounded
+          ></v-progress-linear>
+        </div>
         <nav
           class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12 lg:t-justify-start lg:t-space-x-4"
           aria-label="Global"
@@ -465,6 +476,21 @@ export default {
     user() {
       const store = useStore()
       return store.user
+    },
+    pheLog() {
+      const store = useStore()
+      return store.pheLog
+    },
+    settings() {
+      const store = useStore()
+      return store.settings
+    },
+    pheResult() {
+      let phe = 0
+      this.pheLog.forEach((item) => {
+        phe += item.phe
+      })
+      return Math.round(phe)
     }
   }
 }
