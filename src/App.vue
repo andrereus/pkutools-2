@@ -265,7 +265,7 @@
           v-if="userIsAuthenticated"
           class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded t-shadow-inner"
         >
-          <div class="t-text-xs t-flex t-justify-between t-px-1">
+          <div class="t-text-xs t-flex t-justify-between">
             <span>{{ pheResult }} Phe</span>
             <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
           </div>
