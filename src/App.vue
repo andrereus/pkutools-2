@@ -263,7 +263,7 @@
         </div>
         <div
           v-if="userIsAuthenticated"
-          class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded t-shadow-inner"
+          class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md"
         >
           <div class="t-text-xs t-flex t-justify-between">
             <span>{{ pheResult }} Phe</span>
@@ -272,7 +272,7 @@
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
             height="2"
-            class="mt-1"
+            class="mt-2"
             color="primary"
             rounded
           ></v-progress-linear>
