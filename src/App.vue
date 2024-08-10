@@ -261,7 +261,10 @@
             </MenuComponent>
           </div>
         </div>
-        <div v-if="userIsAuthenticated" class="t-my-2 t-px-2">
+        <div
+          v-if="userIsAuthenticated"
+          class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded t-border dark:t-border-gray-700"
+        >
           <div class="t-text-xs t-flex t-justify-between t-px-1">
             <span>{{ pheResult }} Phe</span>
             <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
