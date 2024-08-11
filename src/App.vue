@@ -269,7 +269,7 @@
           </div>
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-            height="3"
+            height="2"
             class="mt-2"
             color="primary"
             rounded
