@@ -39,7 +39,7 @@
     "search": "Search for food",
     "weight": "Weight (in g)",
     "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar.",
-    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\"."
+    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\". Source: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Phe Calculator",
@@ -67,7 +67,7 @@
     "scan-barcode": "Scan barcode",
     "please-wait": "Please wait ...",
     "protein": "Protein (per 100g)",
-    "info": "Phe gets calculated from protein (* 50). Datasource: openfoodfacts.org",
+    "info": "Phe gets calculated from protein (* 50). Source: openfoodfacts.org",
     "no-protein": "Protein not available for calculation.",
     "protein-link": "Convert protein manually"
   },
@@ -164,7 +164,7 @@
     "title": "About",
     "description": "About PKU Tools",
     "email": "Email",
-    "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). & openfoodfacts.org"
+    "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Disclaimer",

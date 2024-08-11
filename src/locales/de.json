@@ -39,7 +39,7 @@
     "search": "Lebensmittel suchen",
     "weight": "Gewicht (in g)",
     "source": "Quelle: Übersetzt von USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Dies wird z.B. auch für Nährwertangaben in der Google Seitenleiste verwendet.",
-    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\"."
+    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Phe Rechner",
@@ -67,7 +67,7 @@
     "scan-barcode": "Barcode scannen",
     "please-wait": "Bitte warten ...",
     "protein": "Eiweiß (pro 100g)",
-    "info": "Phe wird aus Eiweiß (* 50) berechnet. Datenquelle: openfoodfacts.org",
+    "info": "Phe wird aus Eiweiß (* 50) berechnet. Quelle: openfoodfacts.org",
     "no-protein": "Eiweiß zur Berechnung nicht vorhanden.",
     "protein-link": "Eiweiß manuell umrechnen"
   },
@@ -164,7 +164,7 @@
     "title": "Impressum",
     "description": "Über PKU Tools",
     "email": "E-Mail",
-    "sources": "Quellen: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). & openfoodfacts.org"
+    "sources": "Quellen: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Disclaimer",

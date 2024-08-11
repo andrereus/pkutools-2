@@ -70,7 +70,7 @@
         </template>
       </v-data-table-virtual>
 
-      <p class="my-8">
+      <p class="mt-8 mb-6">
         {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }}%
         {{ $t('phe-log.optimum') }}
       </p>

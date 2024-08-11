@@ -39,7 +39,7 @@
     "search": "Chercher des aliments",
     "weight": "Poids (en g)",
     "source": "Source: Traduit par USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Par exemple, elle est également utilisée pour les informations nutritionnelles dans la barre latérale de Google.",
-    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\"."
+    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Calculateur de Phe",
@@ -67,7 +67,7 @@
     "scan-barcode": "Scanner le code-barres",
     "please-wait": "Veuillez patienter...",
     "protein": "Protéines (pour 100g)",
-    "info": "Le Phe est calculé à partir des protéines (* 50). Source de données: openfoodfacts.org",
+    "info": "Le Phe est calculé à partir des protéines (* 50). Source: openfoodfacts.org",
     "no-protein": "Protéines non disponibles pour le calcul.",
     "protein-link": "Convertir manuellement les protéines"
   },
@@ -164,7 +164,7 @@
     "title": "À propos",
     "description": "À propos de PKU Tools",
     "email": "Email",
-    "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). & openfoodfacts.org"
+    "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Avertissement",

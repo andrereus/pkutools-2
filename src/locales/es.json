@@ -39,7 +39,7 @@
     "search": "Buscar alimentos",
     "weight": "Peso (en g)",
     "source": "Fuente: Traducido por USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Por ejemplo, también se utiliza para la información nutricional en la barra lateral de Google.",
-    "search-info": "Afine su búsqueda con varias palabras, por ejemplo \"manzanas crudas\" o \"patatas cocidas\"."
+    "search-info": "Afine su búsqueda con varias palabras, por ejemplo \"manzanas crudas\" o \"patatas cocidas\". Fuente: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Calculadora de Phe",
@@ -67,7 +67,7 @@
     "scan-barcode": "Escanear código de barras",
     "please-wait": "Por favor, espera...",
     "protein": "Proteína (por 100g)",
-    "info": "Phe se calcula a partir de proteínas (* 50). Fuente de datos: openfoodfacts.org",
+    "info": "Phe se calcula a partir de proteínas (* 50). Fuente: openfoodfacts.org",
     "no-protein": "Proteína no disponible para el cálculo.",
     "protein-link": "Convertir proteínas manualmente"
   },
@@ -164,7 +164,7 @@
     "title": "Acerca de",
     "description": "Acerca de Herramientas PKU",
     "email": "Correo electrónico",
-    "sources": "Fuentes: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). & openfoodfacts.org"
+    "sources": "Fuentes: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Descargo de responsabilidad",
