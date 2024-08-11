@@ -262,7 +262,7 @@
           </div>
         </div>
         <div v-if="!userIsAuthenticated" class="t-border-b"></div>
-        <div v-if="userIsAuthenticated" class="t-py-2 t-px-2">
+        <div v-if="userIsAuthenticated" class="t-py-2 t-px-1">
           <div class="t-text-xs t-flex t-justify-between">
             <span>{{ pheResult }} Phe {{ $t('app.consumed') }}</span>
             <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
