@@ -50,7 +50,7 @@
           class="t-mb-6"
         />
 
-        <p class="t-text-xl t-mb-3">~ {{ calculatePhe() }} mg Phe</p>
+        <p class="t-text-xl t-mb-6">~ {{ calculatePhe() }} mg Phe</p>
 
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
