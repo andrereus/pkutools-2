@@ -278,11 +278,11 @@
             /><span class="t-hidden lg:t-inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
-        <div v-if="userIsAuthenticated" class="t-pt-2 t-pb-5 t-px-2">
+        <div v-if="userIsAuthenticated" class="t-pt-2 t-pb-4 t-px-2">
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
             height="3"
-            class="mb-4"
+            class="mb-3"
             color="primary"
             rounded
           ></v-progress-linear>
