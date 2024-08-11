@@ -263,8 +263,8 @@
         </div>
         <div v-if="!userIsAuthenticated" class="t-border-b"></div>
         <div v-if="userIsAuthenticated" class="t-py-2 t-px-2">
-          <div class="t-text-xs t-flex t-justify-between">
-            <span>{{ pheResult }} Phe {{ $t('app.consumed') }}</span>
+          <div class="t-text-xs t-flex t-justify-between t-uppercase">
+            <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
             <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
           </div>
           <v-progress-linear
