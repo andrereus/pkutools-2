@@ -261,6 +261,7 @@
             </MenuComponent>
           </div>
         </div>
+        <div v-if="!userIsAuthenticated" class="t-border-b"></div>
         <div v-if="userIsAuthenticated" class="t-py-2 t-px-2">
           <div class="t-text-xs t-flex t-justify-between">
             <span>{{ pheResult }} Phe {{ $t('app.consumed') }}</span>
@@ -268,7 +269,7 @@
           </div>
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-            height="3"
+            height="2"
             class="mt-2"
             color="primary"
             rounded
