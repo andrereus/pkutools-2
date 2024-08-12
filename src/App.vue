@@ -268,7 +268,11 @@
         >
           <div class="t-text-xs t-flex t-justify-between t-uppercase">
             <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
-            <span>{{ (settings?.maxPhe || 0) - pheResult }} Phe {{ $t('app.left') }}</span>
+            <span v-if="settings?.maxPhe"
+              >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
+                Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
+              }}%)</span
+            >
           </div>
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"

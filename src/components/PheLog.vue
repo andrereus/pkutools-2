@@ -38,6 +38,7 @@
       <v-data-table-virtual
         :headers="$i18n.locale === 'en' ? headersEn : headersDe"
         :items="pheLog"
+        class="mb-6"
       >
         <template v-slot:item="{ item }">
           <tr @click="editItem(item)" class="tr-edit">
@@ -69,11 +70,6 @@
           </tr>
         </template>
       </v-data-table-virtual>
-
-      <p class="mt-8 mb-6">
-        {{ Math.round((pheResult * 100) / (settings?.maxPhe || 0) - 100) }}%
-        {{ $t('phe-log.optimum') }}
-      </p>
 
       <v-dialog v-model="dialog2" max-width="500px">
         <template v-slot:activator="{ props }">
