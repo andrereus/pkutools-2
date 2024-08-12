@@ -264,7 +264,7 @@
         <div v-if="!userIsAuthenticated" class="t-border-b dark:t-border-gray-700"></div>
         <div
           v-if="userIsAuthenticated"
-          class="t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md t-shadow-inner"
+          class="t-my-1 t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md t-shadow-inner"
         >
           <div class="t-text-xs t-flex t-justify-between t-uppercase">
             <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
