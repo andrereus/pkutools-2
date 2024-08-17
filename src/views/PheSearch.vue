@@ -51,7 +51,7 @@
 
       <InputDialog
         :open="open"
-        :title="emoji + ' ' + name"
+        :title="emoji ? emoji + ' ' + name : name"
         @close="open = false"
         @submit="save"
         :auth="userIsAuthenticated"
