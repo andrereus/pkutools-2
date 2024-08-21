@@ -58,6 +58,7 @@
     "weight": "Peso consumido (en g)",
     "name": "Nombre del alimento",
     "other": "General",
+    "meat": "Carne",
     "vegetable": "Verduras",
     "fruit": "Fruta"
   },

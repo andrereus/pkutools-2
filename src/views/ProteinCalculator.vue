@@ -95,6 +95,7 @@ export default {
     type() {
       return [
         { title: this.$t('protein-calculator.other'), value: 'other' },
+        { title: this.$t('protein-calculator.meat'), value: 'meat' },
         { title: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
         { title: this.$t('protein-calculator.fruit'), value: 'fruit' }
       ]
@@ -104,6 +105,8 @@ export default {
         return 27
       } else if (this.select === 'vegetable') {
         return 35
+      } else if (this.select === 'meat') {
+        return 46
       } else {
         return 50
       }

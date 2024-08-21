@@ -58,6 +58,7 @@
     "weight": "Konsumiertes Gewicht (in g)",
     "name": "Lebensmittelname",
     "other": "Allgemein",
+    "meat": "Fleisch",
     "vegetable": "Gemüse",
     "fruit": "Obst"
   },
