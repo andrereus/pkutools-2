@@ -273,6 +273,9 @@
                 Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
               }}%)</span
             >
+            <RouterLink v-if="!settings?.maxPhe" to="/settings">{{
+              $t('settings.title')
+            }}</RouterLink>
           </div>
           <v-progress-linear
             :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
