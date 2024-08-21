@@ -101,9 +101,9 @@ export default {
     },
     factor() {
       if (this.select === 'fruit') {
-        return 30
+        return 27
       } else if (this.select === 'vegetable') {
-        return 40
+        return 35
       } else {
         return 50
       }
