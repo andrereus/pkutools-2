@@ -17,7 +17,7 @@
         </nav>
       </div>
 
-      <p v-if="pheLog.length === 0 && lastAdded.length === 0">
+      <p v-if="lastAdded.length === 0">
         {{ $t('phe-log.info') }}
       </p>
 
