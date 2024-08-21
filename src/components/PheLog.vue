@@ -17,6 +17,10 @@
         </nav>
       </div>
 
+      <p v-if="pheLog.length === 0 && lastAdded.length === 0">
+        {{ $t('phe-log.info') }}
+      </p>
+
       <v-sheet v-if="lastAdded" class="mb-6 t-bg-transparent">
         <v-slide-group>
           <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">

@@ -94,7 +94,8 @@
     "quick-note": "Entrée manuelle",
     "lock-info": "Mode édition/calcul",
     "preview": "Aperçu du Journal de Phe",
-    "optimum": "d'écart par rapport à l'optimum"
+    "optimum": "d'écart par rapport à l'optimum",
+    "info": "Utilise les outils (recherche, scanner, calculatrice, ...) pour ajouter des aliments."
   },
   "phe-diary": {
     "title": "Journal de Phe",

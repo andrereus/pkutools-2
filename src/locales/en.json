@@ -94,7 +94,8 @@
     "quick-note": "Manual entry",
     "lock-info": "Edit/Calculation mode",
     "preview": "Preview Phe Log",
-    "optimum": "deviation from the optimum"
+    "optimum": "deviation from the optimum",
+    "info": "Use the tools (search, scanner, calculator, ...) to add food."
   },
   "phe-diary": {
     "title": "Phe Diary",

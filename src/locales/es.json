@@ -94,7 +94,8 @@
     "quick-note": "Entrada manual",
     "lock-info": "Modo Edición/Cálculo",
     "preview": "Vista previa del registro de Phe",
-    "optimum": "de desviación del óptimo"
+    "optimum": "de desviación del óptimo",
+    "info": "Utiliza las herramientas (búsqueda, escáner, calculadora, ...) para añadir alimentos."
   },
   "phe-diary": {
     "title": "Diario de Phe",
