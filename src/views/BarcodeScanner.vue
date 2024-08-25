@@ -84,6 +84,7 @@ import PageHeader from '../components/PageHeader.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SimpleDialog from '../components/SimpleDialog.vue'
+import SelectMenu from '../components/SelectMenu.vue'
 
 export default {
   components: {
@@ -91,7 +92,8 @@ export default {
     PageHeader,
     PrimaryButton,
     NumberInput,
-    SimpleDialog
+    SimpleDialog,
+    SelectMenu
   },
   data: () => ({
     loaded: false,
