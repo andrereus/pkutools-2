@@ -75,9 +75,6 @@ export default {
     select: 'other'
   }),
   methods: {
-    calculateProtein() {
-      return Math.round(this.protein * this.factor)
-    },
     calculatePhe() {
       return Math.round((this.weight * (this.protein * this.factor)) / 100)
     },

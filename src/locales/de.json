@@ -68,7 +68,7 @@
     "scan-barcode": "Barcode scannen",
     "please-wait": "Bitte warten ...",
     "protein": "Eiweiß (pro 100g)",
-    "info": "Phe wird aus Eiweiß (* 50) berechnet. Quelle: openfoodfacts.org",
+    "info": "Phe wird aus Eiweiß berechnet. Quelle: openfoodfacts.org",
     "no-protein": "Eiweiß zur Berechnung nicht vorhanden.",
     "protein-link": "Eiweiß manuell umrechnen"
   },

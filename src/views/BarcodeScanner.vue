@@ -43,6 +43,12 @@
           {{ $t('barcode-scanner.protein') }}
         </p>
 
+        <SelectMenu id-name="factor" :label="$t('protein-calculator.factor')" v-model="select">
+          <option v-for="option in type" :key="option.value" :value="option.value">
+            {{ option.title }}
+          </option>
+        </SelectMenu>
+
         <NumberInput
           id-name="weight"
           :label="$t('protein-calculator.weight')"
@@ -93,7 +99,8 @@ export default {
     code: '',
     error: '',
     result: null,
-    weight: 100
+    weight: 100,
+    select: 'other'
   }),
   methods: {
     paintBoundingBox(detectedCodes, ctx) {
@@ -159,7 +166,11 @@ export default {
       this.open = false
     },
     calculatePhe() {
-      return Math.round((this.weight * (this.result.product.nutriments.proteins_100g * 50)) / 100)
+      return Math.round(
+        (this.weight *
+          (this.result.product.nutriments.proteins_100g * (this.protein * this.factor))) /
+          100
+      )
     },
     save() {
       const db = getDatabase()
@@ -172,6 +183,25 @@ export default {
     }
   },
   computed: {
+    type() {
+      return [
+        { title: this.$t('protein-calculator.other'), value: 'other' },
+        { title: this.$t('protein-calculator.meat'), value: 'meat' },
+        { title: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
+        { title: this.$t('protein-calculator.fruit'), value: 'fruit' }
+      ]
+    },
+    factor() {
+      if (this.select === 'fruit') {
+        return 27
+      } else if (this.select === 'vegetable') {
+        return 35
+      } else if (this.select === 'meat') {
+        return 46
+      } else {
+        return 50
+      }
+    },
     pheResult() {
       let phe = 0
       this.pheLog.forEach((item) => {

@@ -68,7 +68,7 @@
     "scan-barcode": "Scanner le code-barres",
     "please-wait": "Veuillez patienter...",
     "protein": "Protéines (pour 100g)",
-    "info": "Le Phe est calculé à partir des protéines (* 50). Source: openfoodfacts.org",
+    "info": "Le Phe est calculé à partir des protéines. Source: openfoodfacts.org",
     "no-protein": "Protéines non disponibles pour le calcul.",
     "protein-link": "Convertir manuellement les protéines"
   },
