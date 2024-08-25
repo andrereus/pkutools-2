@@ -169,9 +169,7 @@ export default {
     },
     calculatePhe() {
       return Math.round(
-        (this.weight *
-          (this.result.product.nutriments.proteins_100g * (this.protein * this.factor))) /
-          100
+        (this.weight * (this.result.product.nutriments.proteins_100g * this.factor)) / 100
       )
     },
     save() {
