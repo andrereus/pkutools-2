@@ -4,9 +4,9 @@
       <PageHeader :title="$t('app.scanner')" />
     </header>
 
-    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="open = true" class="t-mt-2" />
+    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="openDialog" class="t-mt-2" />
 
-    <SimpleDialog :open="open" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
+    <SimpleDialog ref="dialog" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
       <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
 
       <!-- Do not remove -->
@@ -136,8 +136,7 @@ export default {
           alert(this.$t('barcode-scanner.error'))
           console.log(error)
         })
-      this.loaded = false
-      this.open = false
+      this.cancel()
     },
     onError(err) {
       this.error = `[${err.name}]: `
@@ -161,11 +160,14 @@ export default {
         this.error += err.message
       }
     },
+    openDialog() {
+      this.open = true
+      this.$refs.dialog.openDialog()
+    },
     cancel() {
-      if (this.loaded === true) {
-        this.loaded = false
-      }
+      this.loaded = false
       this.open = false
+      this.$refs.dialog.closeDialog()
     },
     calculatePhe() {
       return Math.round(
