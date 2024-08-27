@@ -50,9 +50,8 @@
       <p class="t-mt-8">{{ $t('phe-search.search-info') }}</p>
 
       <InputDialog
-        :open="open"
+        ref="dialog"
         :title="emoji ? emoji + ' ' + name : name"
-        @close="open = false"
         @submit="save"
         :auth="userIsAuthenticated"
       >
@@ -90,7 +89,6 @@ export default {
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,
-    open: false,
     search: null,
     phe: null,
     weight: 100,
@@ -113,7 +111,7 @@ export default {
       this.emoji = item.emoji
       this.phe = item.phe
       this.weight = 100
-      this.open = true
+      this.$refs.dialog.openDialog()
     },
     calculatePhe() {
       return Math.round((this.weight * this.phe) / 100)
@@ -126,7 +124,7 @@ export default {
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
-      this.open = false
+      this.$refs.dialog.closeDialog()
       this.$router.push('/')
     },
     async searchFood() {
