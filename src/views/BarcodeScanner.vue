@@ -133,7 +133,7 @@ export default {
           this.result = result
         })
         .catch((error) => {
-          alert(this.$t('common.error'))
+          alert(this.$t('barcode-scanner.error'))
           console.log(error)
         })
       this.loaded = false

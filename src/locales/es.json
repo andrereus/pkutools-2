@@ -24,8 +24,7 @@
     "cancel": "Cancelar",
     "close": "Cerrar",
     "ok": "Aceptar",
-    "note": "Nota",
-    "error": "Algo ha ido mal."
+    "note": "Nota"
   },
   "home": {
     "title": "Inicio",
@@ -70,7 +69,8 @@
     "protein": "Proteína (por 100g)",
     "info": "Phe se calcula a partir de proteínas. Fuente: openfoodfacts.org",
     "no-protein": "Proteína no disponible para el cálculo.",
-    "protein-link": "Convertir proteínas manualmente"
+    "protein-link": "Convertir proteínas manualmente",
+    "error": "Algo ha ido mal. Si el error se repite, prueba a reiniciar la aplicación."
   },
   "own-food": {
     "title": "Alimento propio",

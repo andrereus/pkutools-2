@@ -24,8 +24,7 @@
     "cancel": "Abbrechen",
     "close": "Schließen",
     "ok": "Ok",
-    "note": "Hinweis",
-    "error": "Etwas ist schief gelaufen."
+    "note": "Hinweis"
   },
   "home": {
     "title": "Start",
@@ -70,7 +69,8 @@
     "protein": "Eiweiß (pro 100g)",
     "info": "Phe wird aus Eiweiß berechnet. Quelle: openfoodfacts.org",
     "no-protein": "Eiweiß zur Berechnung nicht vorhanden.",
-    "protein-link": "Eiweiß manuell umrechnen"
+    "protein-link": "Eiweiß manuell umrechnen",
+    "error": "Etwas ist schief gelaufen. Falls der Fehler erneut auftritt, versuche die App neu zu starten."
   },
   "own-food": {
     "title": "Eigene Lebensmittel",

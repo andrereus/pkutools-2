@@ -24,8 +24,7 @@
     "cancel": "Cancel",
     "close": "Close",
     "ok": "Ok",
-    "note": "Note",
-    "error": "Something went wrong."
+    "note": "Note"
   },
   "home": {
     "title": "Home",
@@ -70,7 +69,8 @@
     "protein": "Protein (per 100g)",
     "info": "Phe gets calculated from protein. Source: openfoodfacts.org",
     "no-protein": "Protein not available for calculation.",
-    "protein-link": "Convert protein manually"
+    "protein-link": "Convert protein manually",
+    "error": "Something went wrong. If the error occurs again, try restarting the app."
   },
   "own-food": {
     "title": "Own Food",
