@@ -90,7 +90,7 @@
               {{ $t('phe-diary.log') }}
             </p>
 
-            <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t--mt-1 t-mb-3">
+            <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t--mt-2 t-mb-3">
               <tr v-for="(item, index) in editedItem.log" :key="index">
                 <td
                   class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
