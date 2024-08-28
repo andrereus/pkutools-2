@@ -39,41 +39,50 @@
         </v-slide-group>
       </v-sheet>
 
-      <v-data-table-virtual
-        :headers="$i18n.locale === 'en' ? headersEn : headersDe"
-        :items="pheLog"
-        class="mb-6"
-      >
-        <template v-slot:item="{ item }">
-          <tr @click="editItem(item)" class="tr-edit">
-            <td class="text-start">
-              <img
-                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                v-if="item.icon !== undefined && item.icon !== ''"
-                onerror="this.src='img/food-icons/organic-food.svg'"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              <img
-                :src="publicPath + 'img/food-icons/organic-food.svg'"
-                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              {{
-                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                  ? item.emoji
-                  : null
-              }}
-              {{ item.name }}
-            </td>
-            <td class="text-start">{{ item.weight }}</td>
-            <td class="text-start">{{ item.phe }}</td>
-          </tr>
-        </template>
-      </v-data-table-virtual>
+      <DataTable :headers="tableHeaders" class="t-mb-8">
+        <tr
+          v-for="(item, index) in pheLog"
+          :key="index"
+          @click="editItem(item)"
+          class="t-cursor-pointer"
+        >
+          <td
+            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+          >
+            <img
+              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+              v-if="item.icon !== undefined && item.icon !== ''"
+              onerror="this.src='img/food-icons/organic-food.svg'"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            {{
+              (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                ? item.emoji
+                : null
+            }}
+            {{ item.name }}
+          </td>
+          <td
+            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+          >
+            {{ item.weight }}
+          </td>
+          <td
+            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+          >
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
 
       <v-dialog v-model="dialog2" max-width="500px">
         <template v-slot:activator="{ props }">
@@ -228,8 +237,13 @@ import {
   mdiPlus
 } from '@mdi/js'
 
+import DataTable from '../components/DataTable.vue'
+
 export default {
   name: 'PheLog',
+  components: {
+    DataTable
+  },
   data: () => ({
     mdiGoogle,
     mdiMagnify,
@@ -244,24 +258,6 @@ export default {
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
     alert: false,
-    headersEn: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Weight', key: 'weight' },
-      { title: 'Phe', key: 'phe' }
-    ],
-    headersDe: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Gewicht', key: 'weight' },
-      { title: 'Phe', key: 'phe' }
-    ],
     editedIndex: -1,
     editedKey: null,
     editedItem: {
@@ -390,6 +386,13 @@ export default {
     this.date = format(new Date(), 'yyyy-MM-dd')
   },
   computed: {
+    tableHeaders() {
+      return [
+        { key: 'food', title: this.$t('common.food') },
+        { key: 'weight', title: this.$t('common.weight') },
+        { key: 'phe', title: this.$t('common.phe') }
+      ]
+    },
     formTitle() {
       if (this.editedIndex === -1) {
         return this.$t('phe-log.quick-note')
@@ -433,10 +436,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tr-edit {
-  cursor: pointer;
-}
-
 .food-icon {
   vertical-align: bottom;
   display: inline-block;

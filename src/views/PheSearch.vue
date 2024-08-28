@@ -164,7 +164,7 @@ export default {
   computed: {
     tableHeaders() {
       return [
-        { key: 'name', title: this.$t('common.food') },
+        { key: 'food', title: this.$t('common.food') },
         { key: 'phe', title: this.$t('common.phe') }
       ]
     },
