@@ -38,7 +38,9 @@
     "search": "Chercher des aliments",
     "weight": "Poids (en g)",
     "source": "Source: Traduit par USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Par exemple, elle est également utilisée pour les informations nutritionnelles dans la barre latérale de Google.",
-    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov"
+    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov",
+    "name": "Nom",
+    "phe": "Phe"
   },
   "phe-calculator": {
     "title": "Calculateur de Phe",

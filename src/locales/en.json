@@ -38,7 +38,9 @@
     "search": "Search for food",
     "weight": "Weight (in g)",
     "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar.",
-    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\". Source: fdc.nal.usda.gov"
+    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\". Source: fdc.nal.usda.gov",
+    "name": "Name",
+    "phe": "Phe"
   },
   "phe-calculator": {
     "title": "Phe Calculator",

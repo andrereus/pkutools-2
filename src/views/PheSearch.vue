@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <DataTable v-if="advancedFood !== null">
+      <DataTable v-if="advancedFood !== null" :headers="tableHeaders">
         <tr
           v-for="(item, index) in advancedFood"
           :key="index"
@@ -162,6 +162,12 @@ export default {
     }
   },
   computed: {
+    tableHeaders() {
+      return [
+        { key: 'name', title: this.$t('phe-search.name') },
+        { key: 'phe', title: this.$t('phe-search.phe') }
+      ]
+    },
     pheResult() {
       let phe = 0
       this.pheLog.forEach((item) => {

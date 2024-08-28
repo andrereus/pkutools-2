@@ -1,3 +1,7 @@
+<script setup>
+defineProps(['headers'])
+</script>
+
 <template>
   <div class="t-mt-8 t-flow-root">
     <div class="t--mx-4 t--my-2 t-overflow-x-auto sm:t--mx-6 lg:t--mx-8">
@@ -9,16 +13,15 @@
             <thead class="t-bg-gray-50 dark:t-bg-gray-950">
               <tr>
                 <th
+                  v-for="(header, index) in headers"
+                  :key="header.key"
                   scope="col"
-                  class="t-py-3.5 t-pl-4 t-pr-3 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+                  :class="[
+                    't-py-3.5 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300',
+                    index === 0 ? 't-pl-4 t-pr-3 sm:t-pl-6' : 't-px-3'
+                  ]"
                 >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  class="t-px-3 t-py-3.5 t-text-left t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300"
-                >
-                  Phe
+                  {{ header.title }}
                 </th>
               </tr>
             </thead>

@@ -38,7 +38,9 @@
     "search": "Buscar alimentos",
     "weight": "Peso (en g)",
     "source": "Fuente: Traducido por USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Por ejemplo, también se utiliza para la información nutricional en la barra lateral de Google.",
-    "search-info": "Afine su búsqueda con varias palabras, por ejemplo \"manzanas crudas\" o \"patatas cocidas\". Fuente: fdc.nal.usda.gov"
+    "search-info": "Afine su búsqueda con varias palabras, por ejemplo \"manzanas crudas\" o \"patatas cocidas\". Fuente: fdc.nal.usda.gov",
+    "name": "Nombre",
+    "phe": "Phe"
   },
   "phe-calculator": {
     "title": "Calculadora de Phe",

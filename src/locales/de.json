@@ -38,7 +38,9 @@
     "search": "Lebensmittel suchen",
     "weight": "Gewicht (in g)",
     "source": "Quelle: Übersetzt von USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Dies wird z.B. auch für Nährwertangaben in der Google Seitenleiste verwendet.",
-    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov"
+    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov",
+    "name": "Name",
+    "phe": "Phe"
   },
   "phe-calculator": {
     "title": "Phe Rechner",
