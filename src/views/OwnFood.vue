@@ -19,31 +19,40 @@
     <div v-if="userIsAuthenticated">
       <p class="mb-6">{{ $t('own-food.search-info') }}</p>
 
-      <v-data-table-virtual :headers="headers" :items="ownFood" class="mb-3">
-        <template v-slot:item="{ item }">
-          <tr @click="addItem(item)" class="tr-edit">
-            <td class="text-start">
-              <img
-                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                v-if="item.icon !== undefined && item.icon !== ''"
-                onerror="this.src='img/food-icons/organic-food.svg'"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              <img
-                :src="publicPath + 'img/food-icons/organic-food.svg'"
-                v-if="item.icon === undefined || item.icon === ''"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              {{ item.name }}
-            </td>
-            <td class="text-start">{{ item.phe }}</td>
-          </tr>
-        </template>
-      </v-data-table-virtual>
+      <DataTable :headers="tableHeaders" class="t-mb-4">
+        <tr
+          v-for="(item, index) in ownFood"
+          :key="index"
+          @click="addItem(item)"
+          class="t-cursor-pointer"
+        >
+          <td
+            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+          >
+            <img
+              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+              v-if="item.icon !== undefined && item.icon !== ''"
+              onerror="this.src='img/food-icons/organic-food.svg'"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="item.icon === undefined || item.icon === ''"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            {{ item.name }}
+          </td>
+          <td
+            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+          >
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
@@ -192,10 +201,12 @@ import foodIcons from '../components/data/food-icons.json'
 import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 import PageHeader from '../components/PageHeader.vue'
+import DataTable from '../components/DataTable.vue'
 
 export default {
   components: {
-    PageHeader
+    PageHeader,
+    DataTable
   },
   data: () => ({
     mdiGoogle,
@@ -206,14 +217,6 @@ export default {
     dialog2: false,
     alert: false,
     menu: false,
-    headers: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Phe', key: 'phe' }
-    ],
     editedIndex: -1,
     editedKey: null,
     editedItem: {
@@ -324,6 +327,12 @@ export default {
     }
   },
   computed: {
+    tableHeaders() {
+      return [
+        { key: 'food', title: this.$t('common.food') },
+        { key: 'phe', title: this.$t('common.phe') }
+      ]
+    },
     pheResult() {
       let phe = 0
       this.pheLog.forEach((item) => {
@@ -363,10 +372,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tr-edit {
-  cursor: pointer;
-}
-
 .v-theme--dark.v-toolbar.v-sheet {
   background-color: #121212;
 }
