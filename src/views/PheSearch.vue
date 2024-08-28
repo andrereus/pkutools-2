@@ -57,7 +57,7 @@
       >
         <NumberInput
           id-name="weight"
-          :label="$t('phe-search.weight')"
+          :label="$t('common.weight-in-g')"
           v-model.number="weight"
           class="t-mb-6"
         />
@@ -164,8 +164,8 @@ export default {
   computed: {
     tableHeaders() {
       return [
-        { key: 'name', title: this.$t('phe-search.name') },
-        { key: 'phe', title: this.$t('phe-search.phe') }
+        { key: 'name', title: this.$t('common.food') },
+        { key: 'phe', title: this.$t('common.phe') }
       ]
     },
     pheResult() {

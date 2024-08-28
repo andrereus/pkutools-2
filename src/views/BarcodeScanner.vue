@@ -40,10 +40,10 @@
         <p class="t-text-xl t-mb-6">
           {{ result.product.nutriments.proteins_100g }}
           {{ result.product.nutriments.proteins_unit }}
-          {{ $t('barcode-scanner.protein') }}
+          {{ $t('common.short-protein-per-100g') }}
         </p>
 
-        <SelectMenu id-name="factor" :label="$t('protein-calculator.factor')" v-model="select">
+        <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
           <option v-for="option in type" :key="option.value" :value="option.value">
             {{ option.title }}
           </option>
@@ -51,7 +51,7 @@
 
         <NumberInput
           id-name="weight"
-          :label="$t('protein-calculator.weight')"
+          :label="$t('common.consumed-weight')"
           v-model.number="weight"
           class="t-mb-6"
         />

@@ -95,7 +95,7 @@
               </template>
             </v-text-field>
             <v-text-field
-              :label="$t('own-food.phe')"
+              :label="$t('common.phe-per-100g')"
               v-model.number="editedItem.phe"
               type="number"
             ></v-text-field>
@@ -145,7 +145,7 @@
 
           <v-card-text>
             <v-text-field
-              :label="$t('own-food.weight')"
+              :label="$t('common.weight-in-g')"
               v-model.number="weight"
               type="number"
               clearable

@@ -24,7 +24,18 @@
     "cancel": "Annuler",
     "close": "Fermer",
     "ok": "Ok",
-    "note": "Note"
+    "note": "Note",
+    "food": "Alimentation",
+    "food-name": "Nom de l'aliment",
+    "food-type": "Type d'aliment",
+    "weight": "Poids",
+    "weight-in-g": "Poids (en g)",
+    "consumed-weight": "Poids consommé (en g)",
+    "phe": "Phe",
+    "phe-in-g": "Phe (en mg)",
+    "phe-per-100g": "Phe pour 100g (en mg)",
+    "protein-per-100g": "Protéines pour 100g (en g)",
+    "short-protein-per-100g": "Protéines (par 100g)"
   },
   "home": {
     "title": "Accueil",
@@ -36,28 +47,18 @@
     "title": "Recherche de Phe",
     "description": "Recherche de valeurs de Phe.",
     "search": "Chercher des aliments",
-    "weight": "Poids (en g)",
     "source": "Source: Traduit par USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Par exemple, elle est également utilisée pour les informations nutritionnelles dans la barre latérale de Google.",
-    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov",
-    "name": "Nom",
-    "phe": "Phe"
+    "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Calculateur de Phe",
     "tab-title": "Phe",
-    "description": "Calcul des valeurs de Phe.",
-    "phe": "Phe pour 100g (en mg)",
-    "weight": "Poids consommé (en g)",
-    "name": "Nom de l'aliment"
+    "description": "Calcul des valeurs de Phe."
   },
   "protein-calculator": {
     "title": "Calculateur de protéines",
     "tab-title": "Protéines",
     "description": "Calculer les valeurs approximatives de Phe à partir des protéines.",
-    "factor": "Type d'aliment",
-    "protein": "Protéines pour 100g (en g)",
-    "weight": "Poids consommé (en g)",
-    "name": "Nom de l'aliment",
     "other": "Généralités",
     "meat": "Viande",
     "vegetable": "Légumes",
@@ -68,7 +69,6 @@
     "description": "Fonction expérimentale",
     "scan-barcode": "Scanner le code-barres",
     "please-wait": "Veuillez patienter...",
-    "protein": "Protéines (pour 100g)",
     "info": "Le Phe est calculé à partir des protéines. Source: openfoodfacts.org",
     "no-protein": "Protéines non disponibles pour le calcul.",
     "protein-link": "Convertir manuellement les protéines",
@@ -77,8 +77,6 @@
   "own-food": {
     "title": "Aliments personnels",
     "description": "Enregistrez vos aliments personnels et leurs valeurs de Phe.",
-    "phe": "Phe pour 100g (en mg)",
-    "weight": "Poids (en g)",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
     "note": "Limité à 500 entrées.",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
@@ -90,7 +88,6 @@
     "tab-title": "Protocole",
     "description": "Enregistrez les valeurs de Phe tout au long de la journée.",
     "save-diary": "Enregistrer dans le Journal de Phe et réinitialiser le Journal de Phe",
-    "weight": "Poids (en g)",
     "total": "Total",
     "remaining": "Restant",
     "save-day": "Terminer le journal",

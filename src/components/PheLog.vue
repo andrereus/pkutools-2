@@ -158,7 +158,7 @@
             </v-text-field>
 
             <v-text-field
-              :label="$t('phe-log.weight')"
+              :label="$t('common.weight-in-g')"
               :model-value="editedItem.weight"
               @keyup="editWeight"
               type="number"

@@ -24,7 +24,18 @@
     "cancel": "Cancel",
     "close": "Close",
     "ok": "Ok",
-    "note": "Note"
+    "note": "Note",
+    "food": "Food",
+    "food-name": "Food name",
+    "food-type": "Type of food",
+    "weight": "Weight",
+    "weight-in-g": "Weight (in g)",
+    "consumed-weight": "Consumed weight (in g)",
+    "phe": "Phe",
+    "phe-in-g": "Phe (in mg)",
+    "phe-per-100g": "Phe per 100g (in mg)",
+    "protein-per-100g": "Protein per 100g (in g)",
+    "short-protein-per-100g": "Protein (per 100g)"
   },
   "home": {
     "title": "Home",
@@ -36,28 +47,18 @@
     "title": "Phe Search",
     "description": "Search for phe values.",
     "search": "Search for food",
-    "weight": "Weight (in g)",
     "source": "Source: USDA, FoodData Central, 2019 (fdc.nal.usda.gov). As an example, this is also used for nutritional information in the Google sidebar.",
-    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\". Source: fdc.nal.usda.gov",
-    "name": "Name",
-    "phe": "Phe"
+    "search-info": "Refine your search with several words, e.g. \"apples raw\" or \"potatoes cooked\". Source: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Phe Calculator",
     "tab-title": "Phe",
-    "description": "Calculate phe values.",
-    "phe": "Phe per 100g (in mg)",
-    "weight": "Consumed weight (in g)",
-    "name": "Food name"
+    "description": "Calculate phe values."
   },
   "protein-calculator": {
     "title": "Protein Calculator",
     "tab-title": "Protein",
     "description": "Calculate approximate phe values from protein.",
-    "factor": "Food type",
-    "protein": "Protein per 100g (in g)",
-    "weight": "Consumed weight (in g)",
-    "name": "Food name",
     "other": "General",
     "meat": "Meat",
     "vegetable": "Vegetables",
@@ -68,7 +69,6 @@
     "description": "Experimental feature",
     "scan-barcode": "Scan barcode",
     "please-wait": "Please wait ...",
-    "protein": "Protein (per 100g)",
     "info": "Phe gets calculated from protein. Source: openfoodfacts.org",
     "no-protein": "Protein not available for calculation.",
     "protein-link": "Convert protein manually",
@@ -77,8 +77,6 @@
   "own-food": {
     "title": "Own Food",
     "description": "Save own food and phe values.",
-    "phe": "Phe per 100g (in mg)",
-    "weight": "Weight (in g)",
     "limit": "Own Food is limited to 500 entries.",
     "note": "Limited to 500 entries.",
     "search-info": "Own food is also available in the search.",
@@ -90,7 +88,6 @@
     "tab-title": "Log",
     "description": "Log phe values throughout the day.",
     "save-diary": "Save in Phe Diary and reset Phe Log",
-    "weight": "Weight (in g)",
     "total": "Total",
     "remaining": "Remaining",
     "save-day": "Finish log",

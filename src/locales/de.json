@@ -24,7 +24,18 @@
     "cancel": "Abbrechen",
     "close": "Schließen",
     "ok": "Ok",
-    "note": "Hinweis"
+    "note": "Hinweis",
+    "food": "Lebensmittel",
+    "food-name": "Lebensmittelname",
+    "food-type": "Art des Lebensmittels",
+    "weight": "Gewicht",
+    "weight-in-g": "Gewicht (in g)",
+    "consumed-weight": "Konsumiertes Gewicht (in g)",
+    "phe": "Phe",
+    "phe-in-g": "Phe (in mg)",
+    "phe-per-100g": "Phe pro 100g (in mg)",
+    "protein-per-100g": "Eiweiß pro 100g (in g)",
+    "short-protein-per-100g": "Eiweiß (pro 100g)"
   },
   "home": {
     "title": "Start",
@@ -36,28 +47,18 @@
     "title": "Phe Suche",
     "description": "Suche nach Phe-Werten.",
     "search": "Lebensmittel suchen",
-    "weight": "Gewicht (in g)",
     "source": "Quelle: Übersetzt von USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Dies wird z.B. auch für Nährwertangaben in der Google Seitenleiste verwendet.",
-    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov",
-    "name": "Name",
-    "phe": "Phe"
+    "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov"
   },
   "phe-calculator": {
     "title": "Phe Rechner",
     "tab-title": "Phe",
-    "description": "Berechne Phe-Werte.",
-    "phe": "Phe pro 100g (in mg)",
-    "weight": "Konsumiertes Gewicht (in g)",
-    "name": "Lebensmittelname"
+    "description": "Berechne Phe-Werte."
   },
   "protein-calculator": {
     "title": "Eiweiß Rechner",
     "tab-title": "Eiweiß",
     "description": "Berechne ungefähre Phe-Werte aus Eiweiß.",
-    "factor": "Art des Lebensmittels",
-    "protein": "Eiweiß pro 100g (in g)",
-    "weight": "Konsumiertes Gewicht (in g)",
-    "name": "Lebensmittelname",
     "other": "Allgemein",
     "meat": "Fleisch",
     "vegetable": "Gemüse",
@@ -68,7 +69,6 @@
     "description": "Experimentelle Funktion",
     "scan-barcode": "Barcode scannen",
     "please-wait": "Bitte warten ...",
-    "protein": "Eiweiß (pro 100g)",
     "info": "Phe wird aus Eiweiß berechnet. Quelle: openfoodfacts.org",
     "no-protein": "Eiweiß zur Berechnung nicht vorhanden.",
     "protein-link": "Eiweiß manuell umrechnen",
@@ -77,8 +77,6 @@
   "own-food": {
     "title": "Eigene Lebensmittel",
     "description": "Speichere eigene Lebensmittel und Phe-Werte.",
-    "phe": "Phe pro 100g (in mg)",
-    "weight": "Gewicht (in g)",
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
     "note": "Limitiert auf 500 Einträge.",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
@@ -90,7 +88,6 @@
     "tab-title": "Protokoll",
     "description": "Protokolliere Phe-Werte über den Tag.",
     "save-diary": "In Phe Tagebuch speichern und Phe Protokoll zurücksetzen",
-    "weight": "Gewicht (in g)",
     "total": "Gesamt",
     "remaining": "Übrig",
     "save-day": "Protokoll abschließen",

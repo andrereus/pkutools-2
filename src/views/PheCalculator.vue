@@ -22,13 +22,13 @@
 
     <TextInput
       id-name="food"
-      :label="$t('phe-calculator.name')"
+      :label="$t('common.food-name')"
       v-model="name"
       v-if="userIsAuthenticated"
     />
 
-    <NumberInput id-name="phe" :label="$t('phe-calculator.phe')" v-model.number="phe" />
-    <NumberInput id-name="weight" :label="$t('phe-calculator.weight')" v-model.number="weight" />
+    <NumberInput id-name="phe" :label="$t('common.phe-per-100g')" v-model.number="phe" />
+    <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />
 
     <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
 

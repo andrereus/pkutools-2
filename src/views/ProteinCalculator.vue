@@ -22,12 +22,12 @@
 
     <TextInput
       id-name="food"
-      :label="$t('protein-calculator.name')"
+      :label="$t('common.food-name')"
       v-model="name"
       v-if="userIsAuthenticated"
     />
 
-    <SelectMenu id-name="factor" :label="$t('protein-calculator.factor')" v-model="select">
+    <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
       <option v-for="option in type" :key="option.value" :value="option.value">
         {{ option.title }}
       </option>
@@ -35,14 +35,10 @@
 
     <NumberInput
       id-name="protein"
-      :label="$t('protein-calculator.protein')"
+      :label="$t('common.protein-per-100g')"
       v-model.number="protein"
     />
-    <NumberInput
-      id-name="weight"
-      :label="$t('protein-calculator.weight')"
-      v-model.number="weight"
-    />
+    <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />
 
     <p class="t-text-xl t-my-6">~ {{ calculatePhe() }} mg Phe</p>
 
