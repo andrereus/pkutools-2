@@ -408,8 +408,15 @@ export default {
       return Math.round(phe)
     },
     lastAdded() {
-      // Get last 2 objects, extract and concatenate "log" arrays, and reverse order.
-      return [].concat(...this.pheDiary.slice(-2).map((obj) => obj.log)).reverse()
+      // Get the food items from the last 2 diary entries that have a log
+      return []
+        .concat(
+          ...this.pheDiary
+            .filter((obj) => Array.isArray(obj.log))
+            .slice(-2)
+            .map((obj) => obj.log)
+        )
+        .reverse()
     },
     userIsAuthenticated() {
       const store = useStore()
