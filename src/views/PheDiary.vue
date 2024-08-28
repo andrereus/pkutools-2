@@ -40,19 +40,26 @@
         class="mt-n1 mb-1"
       ></apexchart>
 
-      <v-data-table-virtual
-        :headers="$i18n.locale === 'en' ? headersEn : headersDe"
-        :items="pheDiary"
-        :sort-by="['date']"
-        class="mb-3"
-      >
-        <template v-slot:item="{ item }">
-          <tr @click="editItem(item)" class="tr-edit">
-            <td class="text-start">{{ getlocalDate(item.date) }}</td>
-            <td class="text-start">{{ item.phe }}</td>
-          </tr>
-        </template>
-      </v-data-table-virtual>
+      <!-- TODO: Add sort feature -->
+      <DataTable :headers="tableHeaders" class="t-mb-4">
+        <tr
+          v-for="(item, index) in pheDiary"
+          :key="index"
+          @click="editItem(item)"
+          class="t-cursor-pointer"
+        >
+          <td
+            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+          >
+            {{ getlocalDate(item.date) }}
+          </td>
+          <td
+            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+          >
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
@@ -191,9 +198,12 @@ import frChart from 'apexcharts/dist/locales/fr.json'
 import esChart from 'apexcharts/dist/locales/es.json'
 import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
+import DataTable from '../components/DataTable.vue'
+
 export default {
   components: {
-    apexchart: VueApexCharts
+    apexchart: VueApexCharts,
+    DataTable
   },
   data: () => ({
     mdiGoogle,
@@ -202,22 +212,6 @@ export default {
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
     alert: false,
-    headersEn: [
-      {
-        title: 'Date',
-        align: 'start',
-        key: 'date'
-      },
-      { title: 'Phe', key: 'phe' }
-    ],
-    headersDe: [
-      {
-        title: 'Datum',
-        align: 'start',
-        key: 'date'
-      },
-      { title: 'Phe', key: 'phe' }
-    ],
     headers2: [
       {
         title: 'Name',
@@ -346,6 +340,12 @@ export default {
     }
   },
   computed: {
+    tableHeaders() {
+      return [
+        { key: 'date', title: this.$t('phe-diary.date') },
+        { key: 'phe', title: this.$t('common.phe') }
+      ]
+    },
     formTitle() {
       if (this.editedIndex === -1) {
         return this.$t('common.add')
@@ -466,10 +466,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tr-edit {
-  cursor: pointer;
-}
-
 .v-theme--dark.v-toolbar.v-sheet {
   background-color: #121212;
 }
