@@ -90,45 +90,40 @@
               {{ $t('phe-diary.log') }}
             </p>
 
-            <v-data-table-virtual
-              :headers="headers2"
-              :items="editedItem.log"
-              class="table-read-only mt-n2 mb-6"
-              v-if="editedItem.log"
-            >
-              <template v-slot:item="{ item }">
-                <tr class="tr-read-only">
-                  <td class="text-start">
-                    <img
-                      :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                      v-if="item.icon !== undefined && item.icon !== ''"
-                      onerror="this.src='img/food-icons/organic-food.svg'"
-                      width="25"
-                      class="food-icon"
-                      alt="Food Icon"
-                    />
-                    <img
-                      :src="publicPath + 'img/food-icons/organic-food.svg'"
-                      v-if="
-                        (item.icon === undefined || item.icon === '') && item.emoji === undefined
-                      "
-                      width="25"
-                      class="food-icon"
-                      alt="Food Icon"
-                    />
-                    {{
-                      (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                        ? item.emoji
-                        : null
-                    }}
-                    {{ item.name }}
-                  </td>
-                  <td class="text-start">
-                    {{ item.phe }}
-                  </td>
-                </tr>
-              </template>
-            </v-data-table-virtual>
+            <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t--mt-1 t-mb-3">
+              <tr v-for="(item, index) in editedItem.log" :key="index">
+                <td
+                  class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+                >
+                  <img
+                    :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                    v-if="item.icon !== undefined && item.icon !== ''"
+                    onerror="this.src='img/food-icons/organic-food.svg'"
+                    width="25"
+                    class="food-icon"
+                    alt="Food Icon"
+                  />
+                  <img
+                    :src="publicPath + 'img/food-icons/organic-food.svg'"
+                    v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+                    width="25"
+                    class="food-icon"
+                    alt="Food Icon"
+                  />
+                  {{
+                    (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                      ? item.emoji
+                      : null
+                  }}
+                  {{ item.name }}
+                </td>
+                <td
+                  class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+                >
+                  {{ item.phe }}
+                </td>
+              </tr>
+            </DataTable>
           </v-card-text>
 
           <v-card-actions class="mt-n6">
@@ -212,14 +207,6 @@ export default {
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
     alert: false,
-    headers2: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Phe', key: 'phe' }
-    ],
     editedIndex: -1,
     editedKey: null,
     editedItem: {
@@ -343,6 +330,12 @@ export default {
     tableHeaders() {
       return [
         { key: 'date', title: this.$t('phe-diary.date') },
+        { key: 'phe', title: this.$t('common.phe') }
+      ]
+    },
+    tableHeaders2() {
+      return [
+        { key: 'food', title: this.$t('common.food') },
         { key: 'phe', title: this.$t('common.phe') }
       ]
     },
@@ -477,13 +470,5 @@ export default {
 
 .v-btn {
   text-transform: none;
-}
-
-.v-theme--dark.table-read-only {
-  background-color: #2e2e2e;
-}
-
-.tr-read-only:hover {
-  background-color: inherit !important;
 }
 </style>
