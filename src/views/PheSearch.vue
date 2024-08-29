@@ -49,11 +49,15 @@
 
       <p class="t-mt-8">{{ $t('phe-search.search-info') }}</p>
 
-      <InputDialog
+      <ModelDialog
         ref="dialog"
         :title="emoji ? emoji + ' ' + name : name"
-        @submit="save"
         :auth="userIsAuthenticated"
+        :buttons="[
+          { label: $t('common.add'), type: 'submit' },
+          { label: $t('common.close'), type: 'close' }
+        ]"
+        @submit="save"
       >
         <NumberInput
           id-name="weight"
@@ -62,7 +66,7 @@
           class="t-mb-6"
         />
         <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
-      </InputDialog>
+      </ModelDialog>
     </div>
   </div>
 </template>
@@ -75,14 +79,14 @@ import Fuse from 'fuse.js'
 import { Search } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
-import InputDialog from '../components/InputDialog.vue'
+import ModelDialog from '../components/ModelDialog.vue'
 import NumberInput from '../components/NumberInput.vue'
 import DataTable from '../components/DataTable.vue'
 
 export default {
   components: {
     PageHeader,
-    InputDialog,
+    ModelDialog,
     NumberInput,
     DataTable,
     Search
