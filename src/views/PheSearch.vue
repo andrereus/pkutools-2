@@ -49,7 +49,7 @@
 
       <p class="t-mt-8">{{ $t('phe-search.search-info') }}</p>
 
-      <ModelDialog
+      <ModalDialog
         ref="dialog"
         :title="emoji ? emoji + ' ' + name : name"
         :auth="userIsAuthenticated"
@@ -66,7 +66,7 @@
           class="t-mb-6"
         />
         <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
-      </ModelDialog>
+      </ModalDialog>
     </div>
   </div>
 </template>
@@ -79,14 +79,14 @@ import Fuse from 'fuse.js'
 import { Search } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
-import ModelDialog from '../components/ModelDialog.vue'
+import ModalDialog from '../components/ModalDialog.vue'
 import NumberInput from '../components/NumberInput.vue'
 import DataTable from '../components/DataTable.vue'
 
 export default {
   components: {
     PageHeader,
-    ModelDialog,
+    ModalDialog,
     NumberInput,
     DataTable,
     Search
