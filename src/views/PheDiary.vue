@@ -75,10 +75,11 @@
         @delete="deleteItem"
         @close="close"
       >
-        <input
-          type="date"
+        <DateInput
+          id-name="date"
+          :label="$t('phe-diary.date')"
           v-model="editedItem.date"
-          class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
+          class="t-mb-6"
         />
 
         <NumberInput
@@ -152,6 +153,7 @@ import ModalDialog from '../components/ModalDialog.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
+import DateInput from '../components/DateInput.vue'
 
 export default {
   components: {
@@ -160,7 +162,8 @@ export default {
     ModalDialog,
     PrimaryButton,
     NumberInput,
-    SecondaryButton
+    SecondaryButton,
+    DateInput
   },
   data: () => ({
     mdiGoogle,

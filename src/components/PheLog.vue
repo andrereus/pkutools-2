@@ -95,11 +95,7 @@
         ]"
         @submit="saveResult"
       >
-        <input
-          type="date"
-          v-model="date"
-          class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
-        />
+        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" class="t-mb-6" />
       </ModalDialog>
 
       <SecondaryButton :text="$t('phe-log.quick-note')" @click="$refs.dialog2.openDialog()" />
@@ -201,6 +197,7 @@ import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
+import DateInput from '../components/DateInput.vue'
 
 export default {
   name: 'PheLog',
@@ -208,7 +205,8 @@ export default {
     DataTable,
     ModalDialog,
     PrimaryButton,
-    SecondaryButton
+    SecondaryButton,
+    DateInput
   },
   data: () => ({
     mdiGoogle,
