@@ -58,12 +58,7 @@
         ]"
         @submit="save"
       >
-        <NumberInput
-          id-name="weight"
-          :label="$t('common.weight-in-g')"
-          v-model.number="weight"
-          class="t-mb-6"
-        />
+        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
         <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
     </div>

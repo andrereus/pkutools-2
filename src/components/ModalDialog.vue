@@ -47,7 +47,7 @@ function handleButtonClick(buttonType) {
               <h3 class="t-text-base t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white">
                 {{ title }}
               </h3>
-              <div class="t-mt-5">
+              <div class="t-mt-3">
                 <slot />
               </div>
             </div>
