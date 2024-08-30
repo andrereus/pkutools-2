@@ -84,37 +84,24 @@
         </tr>
       </DataTable>
 
-      <v-dialog v-model="dialog2" max-width="500px">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="primary" v-bind="props" class="mr-3 mb-3">
-            {{ $t('phe-log.save-day') }}
-          </v-btn>
-        </template>
+      <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
 
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ $t('phe-log.save-day') }}
-          </v-card-title>
-
-          <v-card-text>
-            <input
-              type="date"
-              v-model="date"
-              class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
-            />
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="saveResult">{{
-              $t('common.save')
-            }}</v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <ModalDialog
+        ref="dialog"
+        :title="$t('phe-log.save-day')"
+        :auth="userIsAuthenticated"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit' },
+          { label: $t('common.cancel'), type: 'close' }
+        ]"
+        @submit="saveResult"
+      >
+        <input
+          type="date"
+          v-model="date"
+          class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
+        />
+      </ModalDialog>
 
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ props }">
@@ -238,11 +225,15 @@ import {
 } from '@mdi/js'
 
 import DataTable from '../components/DataTable.vue'
+import ModalDialog from '../components/ModalDialog.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
 
 export default {
   name: 'PheLog',
   components: {
-    DataTable
+    DataTable,
+    ModalDialog,
+    PrimaryButton
   },
   data: () => ({
     mdiGoogle,
@@ -276,7 +267,6 @@ export default {
     },
     lockedValues: false,
     foodIcons,
-    dialog2: false,
     data: ''
   }),
   methods: {
