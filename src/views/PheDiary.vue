@@ -143,7 +143,6 @@ import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
 import frChart from 'apexcharts/dist/locales/fr.json'
 import esChart from 'apexcharts/dist/locales/es.json'
-import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
@@ -163,9 +162,6 @@ export default {
     DateInput
   },
   data: () => ({
-    mdiGoogle,
-    mdiInformationVariant,
-    mdiEmail,
     publicPath: import.meta.env.BASE_URL,
     editedIndex: -1,
     editedKey: null,
@@ -419,16 +415,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-theme--dark.v-toolbar.v-sheet {
-  background-color: #121212;
-}
-
 .food-icon {
   vertical-align: bottom;
   display: inline-block;
-}
-
-.v-btn {
-  text-transform: none;
 }
 </style>

@@ -180,18 +180,7 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import foodIcons from './data/food-icons.json'
 import { format } from 'date-fns'
-import {
-  mdiGoogle,
-  mdiMagnify,
-  mdiCalculator,
-  mdiCalculatorVariant,
-  mdiFoodApple,
-  mdiLock,
-  mdiLockOpenVariant,
-  mdiBarcodeScan,
-  mdiPen,
-  mdiPlus
-} from '@mdi/js'
+import { mdiLock, mdiLockOpenVariant } from '@mdi/js'
 
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
@@ -209,16 +198,8 @@ export default {
     DateInput
   },
   data: () => ({
-    mdiGoogle,
-    mdiMagnify,
-    mdiCalculator,
-    mdiCalculatorVariant,
-    mdiFoodApple,
     mdiLock,
     mdiLockOpenVariant,
-    mdiBarcodeScan,
-    mdiPen,
-    mdiPlus,
     publicPath: import.meta.env.BASE_URL,
     editedIndex: -1,
     editedKey: null,
