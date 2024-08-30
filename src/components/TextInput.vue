@@ -10,7 +10,7 @@ const model = defineModel()
       class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
       >{{ label }}</label
     >
-    <div class="t-mt-2 t-mb-4">
+    <div class="t-mt-1 t-mb-3">
       <input
         type="text"
         :name="idName"
