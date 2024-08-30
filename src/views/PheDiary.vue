@@ -16,16 +16,16 @@
       </nav>
     </div>
 
-    <div v-if="!userIsAuthenticated">
-      <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
-        <v-icon start>{{ mdiGoogle }}</v-icon>
-        {{ $t('app.signin-google') }}
-      </v-btn>
+    <div v-if="!userIsAuthenticated" class="t-mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
-      <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
-        <v-icon start>{{ mdiEmail }}</v-icon>
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+      >
         {{ $t('email-auth.title') }}
-      </v-btn>
+      </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
