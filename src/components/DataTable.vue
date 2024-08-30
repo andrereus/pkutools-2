@@ -3,7 +3,7 @@ defineProps(['headers'])
 </script>
 
 <template>
-  <div class="t-mt-8 t-flow-root">
+  <div class="t-mt-6 t-flow-root">
     <div class="t--mx-4 t--my-2 t-overflow-x-auto sm:t--mx-6 lg:t--mx-8">
       <div class="t-inline-block t-min-w-full t-py-2 t-align-middle sm:t-px-6 lg:t-px-8">
         <div

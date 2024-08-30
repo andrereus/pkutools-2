@@ -41,7 +41,7 @@
       ></apexchart>
 
       <!-- TODO: Add sort feature -->
-      <DataTable :headers="tableHeaders" class="t-mb-4">
+      <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
           v-for="(item, index) in pheDiary"
           :key="index"
@@ -61,105 +61,73 @@
         </tr>
       </DataTable>
 
-      <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="primary" class="mr-3 mt-3" v-bind="props">
-            {{ $t('common.add') }}
-          </v-btn>
-        </template>
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
 
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ formTitle }}
-          </v-card-title>
-
-          <v-card-text>
-            <input
-              type="date"
-              v-model="editedItem.date"
-              class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
-            />
-
-            <v-text-field
-              :label="$t('phe-diary.phe')"
-              v-model.number="editedItem.phe"
-              type="number"
-            ></v-text-field>
-
-            <p v-if="editedItem.log" class="ml-2 mt-n2 mb-4 text-caption">
-              {{ $t('phe-diary.log') }}
-            </p>
-
-            <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t--mt-2 t-mb-3">
-              <tr v-for="(item, index) in editedItem.log" :key="index">
-                <td
-                  class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-                >
-                  <img
-                    :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                    v-if="item.icon !== undefined && item.icon !== ''"
-                    onerror="this.src='img/food-icons/organic-food.svg'"
-                    width="25"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                  <img
-                    :src="publicPath + 'img/food-icons/organic-food.svg'"
-                    v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-                    width="25"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                  {{
-                    (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                      ? item.emoji
-                      : null
-                  }}
-                  {{ item.name }}
-                </td>
-                <td
-                  class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-                >
-                  {{ item.phe }}
-                </td>
-              </tr>
-            </DataTable>
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-            <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
-              {{ $t('common.delete') }}
-            </v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="close">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-
-      <v-btn
-        variant="flat"
-        rounded
-        color="btnsecondary"
-        class="mr-3 mt-3"
-        @click="exportAllFoodItems"
+      <ModalDialog
+        ref="dialog"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="close"
       >
-        {{ $t('phe-diary.export-food') }}
-      </v-btn>
+        <input
+          type="date"
+          v-model="editedItem.date"
+          class="t-block t-w-full t-rounded-md t-border-0 t-py-3 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 t-mb-3 dark:t-text-gray-300"
+        />
 
-      <v-btn
-        variant="flat"
-        rounded
-        color="btnsecondary"
-        class="mr-3 mt-3"
-        @click="exportDailyPheTotals"
-      >
-        {{ $t('phe-diary.export-days') }}
-      </v-btn>
+        <NumberInput
+          id-name="total-phe"
+          :label="$t('phe-diary.phe')"
+          v-model.number="editedItem.phe"
+          class="t-mb-6"
+        />
 
-      <p class="text--secondary mt-5">
+        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t-mb-3">
+          <tr v-for="(item, index) in editedItem.log" :key="index">
+            <td
+              class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
+            >
+              <img
+                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                v-if="item.icon !== undefined && item.icon !== ''"
+                onerror="this.src='img/food-icons/organic-food.svg'"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              <img
+                :src="publicPath + 'img/food-icons/organic-food.svg'"
+                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              {{
+                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                  ? item.emoji
+                  : null
+              }}
+              {{ item.name }}
+            </td>
+            <td
+              class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
+            >
+              {{ item.phe }}
+            </td>
+          </tr>
+        </DataTable>
+      </ModalDialog>
+
+      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
+      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
+
+      <p class="text--secondary">
         <v-icon>{{ mdiInformationVariant }}</v-icon>
         {{ $t('phe-diary.note') }}
       </p>
@@ -194,18 +162,25 @@ import esChart from 'apexcharts/dist/locales/es.json'
 import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 import DataTable from '../components/DataTable.vue'
+import ModalDialog from '../components/ModalDialog.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
+import NumberInput from '../components/NumberInput.vue'
+import SecondaryButton from '../components/SecondaryButton.vue'
 
 export default {
   components: {
     apexchart: VueApexCharts,
-    DataTable
+    DataTable,
+    ModalDialog,
+    PrimaryButton,
+    NumberInput,
+    SecondaryButton
   },
   data: () => ({
     mdiGoogle,
     mdiInformationVariant,
     mdiEmail,
     publicPath: import.meta.env.BASE_URL,
-    dialog: false,
     alert: false,
     editedIndex: -1,
     editedKey: null,
@@ -232,7 +207,7 @@ export default {
       this.editedIndex = this.pheDiary.indexOf(item)
       this.editedKey = item['.key']
       this.editedItem = Object.assign({}, item)
-      this.dialog = true
+      this.$refs.dialog.openDialog()
     },
     deleteItem() {
       let r = confirm(this.$t('common.delete') + '?')
@@ -243,7 +218,7 @@ export default {
       }
     },
     close() {
-      this.dialog = false
+      this.$refs.dialog.closeDialog()
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem)
         this.editedIndex = -1
