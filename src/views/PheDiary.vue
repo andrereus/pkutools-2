@@ -131,20 +131,6 @@
         <v-icon>{{ mdiInformationVariant }}</v-icon>
         {{ $t('phe-diary.note') }}
       </p>
-
-      <v-dialog v-model="alert" max-width="300">
-        <v-card>
-          <v-card-title>{{ $t('common.note') }}</v-card-title>
-          <v-card-text>{{ $t('phe-diary.limit') }}</v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" variant="text" @click="alert = false">{{
-              $t('common.ok')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
     </div>
   </div>
 </template>
@@ -181,7 +167,6 @@ export default {
     mdiInformationVariant,
     mdiEmail,
     publicPath: import.meta.env.BASE_URL,
-    alert: false,
     editedIndex: -1,
     editedKey: null,
     editedItem: {
@@ -242,7 +227,7 @@ export default {
         }
       } else {
         if (this.pheDiary.length >= 100) {
-          this.alert = true
+          alert(this.$t('phe-diary.limit'))
         } else {
           push(ref(db, `${this.user.id}/pheDiary`), {
             date: this.editedItem.date,
