@@ -75,18 +75,12 @@
         @delete="deleteItem"
         @close="close"
       >
-        <DateInput
-          id-name="date"
-          :label="$t('phe-diary.date')"
-          v-model="editedItem.date"
-          class="t-mb-6"
-        />
+        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="editedItem.date" />
 
         <NumberInput
           id-name="total-phe"
           :label="$t('phe-diary.phe')"
           v-model.number="editedItem.phe"
-          class="t-mb-6"
         />
 
         <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t-mb-3">

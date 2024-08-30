@@ -95,7 +95,7 @@
         ]"
         @submit="saveResult"
       >
-        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" class="t-mb-6" />
+        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
       </ModalDialog>
 
       <SecondaryButton :text="$t('phe-log.quick-note')" @click="$refs.dialog2.openDialog()" />
