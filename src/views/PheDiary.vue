@@ -128,10 +128,7 @@
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
-      <p class="text--secondary">
-        <v-icon>{{ mdiInformationVariant }}</v-icon>
-        {{ $t('phe-diary.note') }}
-      </p>
+      <p>{{ $t('phe-diary.note') }}</p>
     </div>
   </div>
 </template>
