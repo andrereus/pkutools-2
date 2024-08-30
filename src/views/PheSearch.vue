@@ -52,10 +52,9 @@
       <ModalDialog
         ref="dialog"
         :title="emoji ? emoji + ' ' + name : name"
-        :auth="userIsAuthenticated"
         :buttons="[
-          { label: $t('common.add'), type: 'submit' },
-          { label: $t('common.close'), type: 'close' }
+          { label: $t('common.add'), type: 'submit', visible: userIsAuthenticated },
+          { label: $t('common.close'), type: 'simpleClose', visible: true }
         ]"
         @submit="save"
       >

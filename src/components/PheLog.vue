@@ -89,10 +89,9 @@
       <ModalDialog
         ref="dialog"
         :title="$t('phe-log.save-day')"
-        :auth="userIsAuthenticated"
         :buttons="[
-          { label: $t('common.save'), type: 'submit' },
-          { label: $t('common.cancel'), type: 'close' }
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.cancel'), type: 'simpleClose', visible: true }
         ]"
         @submit="saveResult"
       >
@@ -103,91 +102,79 @@
         />
       </ModalDialog>
 
-      <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="btnsecondary" class="mb-2" v-bind="props">
-            {{ $t('phe-log.quick-note') }}
-          </v-btn>
-        </template>
+      <SecondaryButton :text="$t('phe-log.quick-note')" @click="$refs.dialog2.openDialog()" />
 
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ formTitle }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-text-field label="Name" v-model="editedItem.name">
-              <template v-slot:append>
-                <v-menu>
-                  <template v-slot:activator="{ props }">
-                    <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
-                      <img
-                        :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                        v-if="editedItem.icon !== undefined && editedItem.icon !== null"
-                        width="40"
-                        class="food-icon"
-                        alt="Food Icon"
-                      />
-                      <img
-                        :src="publicPath + 'img/food-icons/organic-food.svg'"
-                        v-if="editedItem.icon === undefined || editedItem.icon === null"
-                        width="40"
-                        class="food-icon"
-                        alt="Food Icon"
-                      />
-                    </v-btn>
-                  </template>
-                  <v-card max-width="300" max-height="250" class="overflow-y-auto">
-                    <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
-                      <img
-                        :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
-                        v-if="item.svg !== undefined"
-                        width="40"
-                        class="food-icon pick-icon"
-                        alt="Icon Picker"
-                        @click="editedItem.icon = item.svg"
-                      />
-                    </span>
-                  </v-card>
-                </v-menu>
+      <ModalDialog
+        ref="dialog2"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="close"
+      >
+        <v-text-field label="Name" v-model="editedItem.name">
+          <template v-slot:append>
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
+                  <img
+                    :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
+                    v-if="editedItem.icon !== undefined && editedItem.icon !== null"
+                    width="40"
+                    class="food-icon"
+                    alt="Food Icon"
+                  />
+                  <img
+                    :src="publicPath + 'img/food-icons/organic-food.svg'"
+                    v-if="editedItem.icon === undefined || editedItem.icon === null"
+                    width="40"
+                    class="food-icon"
+                    alt="Food Icon"
+                  />
+                </v-btn>
               </template>
-            </v-text-field>
+              <v-card max-width="300" max-height="250" class="overflow-y-auto">
+                <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
+                  <img
+                    :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
+                    v-if="item.svg !== undefined"
+                    width="40"
+                    class="food-icon pick-icon"
+                    alt="Icon Picker"
+                    @click="editedItem.icon = item.svg"
+                  />
+                </span>
+              </v-card>
+            </v-menu>
+          </template>
+        </v-text-field>
 
-            <v-text-field
-              :label="$t('common.weight-in-g')"
-              :model-value="editedItem.weight"
-              @keyup="editWeight"
-              type="number"
-              :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
-              @click:append="lockValues"
-            ></v-text-field>
+        <v-text-field
+          :label="$t('common.weight-in-g')"
+          :model-value="editedItem.weight"
+          @keyup="editWeight"
+          type="number"
+          :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
+          @click:append="lockValues"
+        ></v-text-field>
 
-            <v-text-field
-              label="Phe (in mg)"
-              :model-value="editedItem.phe"
-              @keyup="editPhe"
-              type="number"
-              :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
-              @click:append="lockValues"
-            ></v-text-field>
+        <v-text-field
+          label="Phe (in mg)"
+          :model-value="editedItem.phe"
+          @keyup="editPhe"
+          type="number"
+          :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
+          @click:append="lockValues"
+        ></v-text-field>
 
-            <p class="mb-6">
-              <v-icon size="small">{{ mdiLock }}</v-icon> = {{ $t('phe-log.lock-info') }}
-            </p>
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-            <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
-              {{ $t('common.delete') }}
-            </v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="close">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+        <p class="mb-6">
+          <v-icon size="small">{{ mdiLock }}</v-icon> = {{ $t('phe-log.lock-info') }}
+        </p>
+      </ModalDialog>
 
       <v-dialog v-model="alert" max-width="300">
         <v-card>
@@ -227,13 +214,15 @@ import {
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
+import SecondaryButton from '../components/SecondaryButton.vue'
 
 export default {
   name: 'PheLog',
   components: {
     DataTable,
     ModalDialog,
-    PrimaryButton
+    PrimaryButton,
+    SecondaryButton
   },
   data: () => ({
     mdiGoogle,
@@ -247,7 +236,6 @@ export default {
     mdiPen,
     mdiPlus,
     publicPath: import.meta.env.BASE_URL,
-    dialog: false,
     alert: false,
     editedIndex: -1,
     editedKey: null,
@@ -275,7 +263,7 @@ export default {
       this.editedKey = item['.key']
       this.editedItem = Object.assign({}, item)
       this.lockValues()
-      this.dialog = true
+      this.$refs.dialog2.openDialog()
     },
     addLastAdded(item) {
       this.editedItem = Object.assign({}, item)
@@ -288,7 +276,7 @@ export default {
     },
     close() {
       this.lockedValues = false
-      this.dialog = false
+      this.$refs.dialog2.closeDialog()
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem)
         this.editedIndex = -1

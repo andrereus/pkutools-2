@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const props = defineProps(['title', 'buttons', 'auth'])
+const props = defineProps(['title', 'buttons'])
 const emit = defineEmits(['close', 'submit', 'delete'])
 
 const dialog = ref(null)
@@ -12,18 +12,19 @@ function openDialog() {
 
 function closeDialog() {
   dialog.value.close()
-  emit('close')
 }
 
 defineExpose({ openDialog, closeDialog })
 
 const filteredButtons = computed(() => {
-  return props.buttons.filter((button) => button.type !== 'submit' || props.auth)
+  return props.buttons.filter((button) => button.visible !== false)
 })
 
 function handleButtonClick(buttonType) {
-  if (buttonType === 'close') {
+  if (buttonType === 'simpleClose') {
     closeDialog()
+  } else if (buttonType === 'close') {
+    emit('close')
   } else if (buttonType === 'submit') {
     emit('submit')
   } else if (buttonType === 'delete') {
@@ -67,7 +68,7 @@ function handleButtonClick(buttonType) {
                 't-inline-flex t-w-full t-justify-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-semibold t-shadow-sm focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2',
                 button.type === 'delete'
                   ? 't-bg-red-500 t-text-white hover:t-bg-red-600 focus-visible:t-outline-red-500'
-                  : button.type === 'close'
+                  : button.type === 'simpleClose' || button.type === 'close'
                     ? 't-bg-white t-text-gray-900 hover:t-bg-gray-50 t-ring-1 t-ring-inset t-ring-gray-300'
                     : 't-bg-sky-500 t-text-white hover:t-bg-sky-600 focus-visible:t-outline-sky-500',
                 filteredButtons.length > 1 && index > 0 ? 't-mt-3 sm:t-mt-0' : ''
