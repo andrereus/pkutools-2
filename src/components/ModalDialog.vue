@@ -74,9 +74,7 @@ function handleButtonClick(buttonType) {
                 filteredButtons.length > 1 && index > 0 ? 't-mt-3 sm:t-mt-0' : ''
               ]"
               @click="handleButtonClick(button.type)"
-              :autofocus="
-                button.type === 'submit' || button.type === 'simpleClose' || button.type === 'close'
-              "
+              :autofocus="button.type === 'simpleClose' || button.type === 'close'"
             >
               {{ button.label }}
             </button>
