@@ -33,7 +33,7 @@
     "weight-in-g": "Peso (en g)",
     "consumed-weight": "Peso consumido (en g)",
     "phe": "Phe",
-    "phe-in-g": "Phe (en mg)",
+    "phe-in-mg": "Phe (en mg)",
     "phe-per-100g": "Phe por 100 g (en mg)",
     "protein-per-100g": "Proteínas por 100 g (en g)",
     "short-protein-per-100g": "Proteínas (por 100 g)"
@@ -93,10 +93,10 @@
     "remaining": "Restante",
     "save-day": "Terminar registro",
     "quick-note": "Entrada manual",
-    "lock-info": "Modo Edición/Cálculo",
     "preview": "Vista previa del registro de Phe",
     "optimum": "de desviación del óptimo",
-    "info": "Utiliza las herramientas (búsqueda, escáner, calculadora, ...) para añadir alimentos."
+    "info": "Utiliza las herramientas (búsqueda, escáner, calculadora, ...) para añadir alimentos.",
+    "data-warning": "Atención: Cambio en la estructura de los datos. Falta Phe por 100g. Por favor, añada de nuevo el alimento al protocolo."
   },
   "phe-diary": {
     "title": "Diario de Phe",

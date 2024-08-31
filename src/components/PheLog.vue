@@ -112,64 +112,21 @@
         @delete="deleteItem"
         @close="close"
       >
-        <v-text-field label="Name" v-model="editedItem.name">
-          <template v-slot:append>
-            <v-menu>
-              <template v-slot:activator="{ props }">
-                <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
-                  <img
-                    :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                    v-if="editedItem.icon !== undefined && editedItem.icon !== null"
-                    width="40"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                  <img
-                    :src="publicPath + 'img/food-icons/organic-food.svg'"
-                    v-if="editedItem.icon === undefined || editedItem.icon === null"
-                    width="40"
-                    class="food-icon"
-                    alt="Food Icon"
-                  />
-                </v-btn>
-              </template>
-              <v-card max-width="300" max-height="250" class="overflow-y-auto">
-                <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
-                  <img
-                    :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
-                    v-if="item.svg !== undefined"
-                    width="40"
-                    class="food-icon pick-icon"
-                    alt="Icon Picker"
-                    @click="editedItem.icon = item.svg"
-                  />
-                </span>
-              </v-card>
-            </v-menu>
-          </template>
-        </v-text-field>
-
-        <v-text-field
-          :label="$t('common.weight-in-g')"
-          :model-value="editedItem.weight"
-          @keyup="editWeight"
-          type="number"
-          :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
-          @click:append="lockValues"
-        ></v-text-field>
-
-        <v-text-field
-          label="Phe (in mg)"
-          :model-value="editedItem.phe"
-          @keyup="editPhe"
-          type="number"
-          :append-icon="lockedValues ? mdiLock : mdiLockOpenVariant"
-          @click:append="lockValues"
-        ></v-text-field>
-
-        <p class="mb-6">
-          <v-icon size="small">{{ mdiLock }}</v-icon> = {{ $t('phe-log.lock-info') }}
+        <p v-if="!editedItem.pheReference && this.editedIndex !== -1" class="t-mb-3">
+          {{ $t('phe-log.data-warning') }}
         </p>
+        <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
+        <NumberInput
+          id-name="phe"
+          :label="$t('common.phe-per-100g')"
+          v-model.number="editedItem.pheReference"
+        />
+        <NumberInput
+          id-name="weight"
+          :label="$t('common.consumed-weight')"
+          v-model.number="editedItem.weight"
+        />
+        <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
     </div>
   </div>
@@ -178,15 +135,15 @@
 <script>
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
-import foodIcons from './data/food-icons.json'
 import { format } from 'date-fns'
-import { mdiLock, mdiLockOpenVariant } from '@mdi/js'
 
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
+import TextInput from '../components/TextInput.vue'
+import NumberInput from '../components/NumberInput.vue'
 
 export default {
   name: 'PheLog',
@@ -195,11 +152,11 @@ export default {
     ModalDialog,
     PrimaryButton,
     SecondaryButton,
-    DateInput
+    DateInput,
+    TextInput,
+    NumberInput
   },
   data: () => ({
-    mdiLock,
-    mdiLockOpenVariant,
     publicPath: import.meta.env.BASE_URL,
     editedIndex: -1,
     editedKey: null,
@@ -207,6 +164,7 @@ export default {
       name: '',
       emoji: null,
       icon: null,
+      pheReference: null,
       weight: null,
       phe: null
     },
@@ -214,19 +172,20 @@ export default {
       name: '',
       emoji: null,
       icon: null,
+      pheReference: null,
       weight: null,
       phe: null
     },
-    lockedValues: false,
-    foodIcons,
     data: ''
   }),
   methods: {
+    calculatePhe() {
+      return Math.round((this.editedItem.weight * this.editedItem.pheReference) / 100) || 0
+    },
     editItem(item) {
       this.editedIndex = this.pheLog.indexOf(item)
       this.editedKey = item['.key']
       this.editedItem = Object.assign({}, item)
-      this.lockValues()
       this.$refs.dialog2.openDialog()
     },
     addLastAdded(item) {
@@ -239,7 +198,6 @@ export default {
       this.close()
     },
     close() {
-      this.lockedValues = false
       this.$refs.dialog2.closeDialog()
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem)
@@ -253,48 +211,21 @@ export default {
         update(ref(db, `${this.user.id}/pheLog/${this.editedKey}`), {
           name: this.editedItem.name,
           icon: this.editedItem.icon || null,
+          pheReference: Number(this.editedItem.pheReference) || 0,
           weight: Number(this.editedItem.weight),
-          phe: Number(this.editedItem.phe)
+          phe: this.calculatePhe()
         })
       } else {
         push(ref(db, `${this.user.id}/pheLog`), {
           name: this.editedItem.name,
           emoji: this.editedItem.emoji || null,
           icon: this.editedItem.icon || null,
+          pheReference: Number(this.editedItem.pheReference) || 0,
           weight: Number(this.editedItem.weight),
-          phe: Number(this.editedItem.phe)
+          phe: this.calculatePhe()
         })
       }
       this.close()
-    },
-    lockValues() {
-      if (this.lockedValues === false) {
-        this.editedItem.weight = Number(this.editedItem.weight)
-        this.editedItem.phe = Number(this.editedItem.phe)
-        this.lockedWeight = this.editedItem.weight
-        this.lockedPhe = this.editedItem.phe
-        this.lockedValues = true
-      } else {
-        this.lockedValues = false
-      }
-    },
-    editWeight(event) {
-      if (this.lockedValues === true) {
-        const newWeight = Number(event.target.value)
-        this.editedItem.phe = Math.round((newWeight * this.lockedPhe) / this.lockedWeight)
-        this.editedItem.weight = newWeight
-      } else {
-        this.editedItem.weight = event.target.value
-      }
-    },
-    editPhe(event) {
-      if (this.lockedValues === true) {
-        const newPhe = Number(event.target.value)
-        this.editedItem.weight = Math.round((newPhe * this.lockedWeight) / this.lockedPhe)
-        this.editedItem.phe = newPhe
-      } else {
-        this.editedItem.phe = event.target.value
-      }
     },
     saveResult() {
       const db = getDatabase()
@@ -388,10 +319,6 @@ export default {
 .food-icon {
   vertical-align: bottom;
   display: inline-block;
-}
-
-.pick-icon {
-  cursor: pointer;
 }
 
 .v-btn {

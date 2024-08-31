@@ -33,7 +33,7 @@
     "weight-in-g": "Gewicht (in g)",
     "consumed-weight": "Konsumiertes Gewicht (in g)",
     "phe": "Phe",
-    "phe-in-g": "Phe (in mg)",
+    "phe-in-mg": "Phe (in mg)",
     "phe-per-100g": "Phe pro 100g (in mg)",
     "protein-per-100g": "Eiweiß pro 100g (in g)",
     "short-protein-per-100g": "Eiweiß (pro 100g)"
@@ -93,10 +93,10 @@
     "remaining": "Übrig",
     "save-day": "Protokoll abschließen",
     "quick-note": "Manueller Eintrag",
-    "lock-info": "Editier-/Rechenmodus",
     "preview": "Vorschau Phe Protokoll",
     "optimum": "Abweichung vom Optimum",
-    "info": "Verwende die Tools (Suche, Scanner, Rechner, ...) um Lebensmittel hinzuzufügen."
+    "info": "Verwende die Tools (Suche, Scanner, Rechner, ...) um Lebensmittel hinzuzufügen.",
+    "data-warning": "Achtung: Änderung der Datenstruktur. Phe pro 100g fehlt. Bitte füge das Lebensmittel erneut dem Protokoll hinzu."
   },
   "phe-diary": {
     "title": "Phe Tagebuch",

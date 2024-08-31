@@ -295,6 +295,7 @@ export default {
       push(ref(db, `${this.user.id}/pheLog`), {
         name: this.editedItem.name,
         icon: this.editedItem.icon || null,
+        pheReference: this.editedItem.phe,
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
@@ -332,13 +333,6 @@ export default {
         { key: 'food', title: this.$t('common.food') },
         { key: 'phe', title: this.$t('common.phe') }
       ]
-    },
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
     },
     formTitle() {
       if (this.editedIndex === -1) {
