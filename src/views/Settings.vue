@@ -40,8 +40,8 @@
       <PageHeader :title="$t('settings.reset-heading')" class="t-mt-6" />
 
       <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
-      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
       <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
+      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
 
       <PageHeader :title="$t('settings.delete-account')" class="t-mt-6" />
 
