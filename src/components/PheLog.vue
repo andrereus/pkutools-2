@@ -62,11 +62,12 @@
         </tr>
       </DataTable>
 
-      <p v-if="lastAdded.length === 0">
+      <p v-if="lastAdded.length === 0" class="t-mb-8">
         {{ $t('phe-log.info') }}
       </p>
 
-      <div v-if="lastAdded" class="t-mb-6">
+      <div v-if="lastAdded.length !== 0" class="t-mb-8">
+        <p class="t-text-xs t-uppercase t-mb-3">{{ $t('phe-log.suggestions') }}</p>
         <SecondaryButton
           v-for="(item, index) in lastAdded"
           :key="index"

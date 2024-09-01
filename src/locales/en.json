@@ -94,7 +94,8 @@
     "preview": "Preview Phe Log",
     "optimum": "deviation from the optimum",
     "info": "Use the tools in the navigation bar to add food.",
-    "data-warning": "Attention: Change in data structure. Phe per 100g is missing. Please add the food to the protocol again."
+    "data-warning": "Attention: Change in data structure. Phe per 100g is missing. Please add the food to the protocol again.",
+    "suggestions": "Suggestions"
   },
   "phe-diary": {
     "title": "Phe Diary",

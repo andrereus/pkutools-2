@@ -94,7 +94,8 @@
     "preview": "Aperçu du Journal de Phe",
     "optimum": "d'écart par rapport à l'optimum",
     "info": "Utilise les outils de la barre de navigation pour ajouter des aliments.",
-    "data-warning": "Attention : modification de la structure des données. Phe par 100g manquant. Veuillez ajouter à nouveau l'aliment au protocole."
+    "data-warning": "Attention : modification de la structure des données. Phe par 100g manquant. Veuillez ajouter à nouveau l'aliment au protocole.",
+    "suggestions": "Suggestions"
   },
   "phe-diary": {
     "title": "Journal de Phe",
