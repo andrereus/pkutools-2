@@ -66,7 +66,7 @@
         </tr>
       </DataTable>
 
-      <div v-if="lastAdded" class="t-mb-4">
+      <div v-if="lastAdded" class="t-mb-6">
         <SecondaryButton
           v-for="(item, index) in lastAdded"
           :key="index"
