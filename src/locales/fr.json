@@ -79,7 +79,7 @@
     "title": "Aliments personnels",
     "description": "Enregistrez vos aliments personnels et leurs valeurs de Phe.",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
-    "note": "Limité à 500 entrées. Réinitialisation voir Paramètres.",
+    "note": "Limité à 500 entrées.",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
     "export-filename": "PKU Tools - Aliments personnels"
   },

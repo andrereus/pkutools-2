@@ -79,7 +79,7 @@
     "title": "Alimento propio",
     "description": "Guardar alimentos propios y valores de Phe.",
     "limit": "Alimento propio está limitado a 500 entradas.",
-    "note": "Limitado a 500 entradas. Restablecer ver Ajustes.",
+    "note": "Limitado a 500 entradas.",
     "search-info": "La comida propia también está disponible en la búsqueda.",
     "export-filename": "PKU Tools - Alimento propio"
   },
