@@ -275,14 +275,23 @@ export default {
     },
     lastAdded() {
       // Get the food items from the last 2 diary entries that have a log
-      return []
-        .concat(
-          ...this.pheDiary
-            .filter((obj) => Array.isArray(obj.log))
-            .slice(-2)
-            .map((obj) => obj.log)
-        )
-        .reverse()
+      const lastTwoEntries = this.pheDiary
+        .filter((obj) => Array.isArray(obj.log))
+        .slice(-2)
+        .map((obj) => obj.log)
+      // Flatten and reverse the array
+      const flattenedLogs = [].concat(...lastTwoEntries).reverse()
+      // Use a Map to filter out duplicates by name
+      const uniqueLogs = Array.from(
+        flattenedLogs
+          .reduce((map, item) => {
+            map.set(item.name, item) // Map stores the last occurrence by key 'name'
+            return map
+          }, new Map())
+          .values()
+      )
+      // The uniqueLogs array contains the last occurrence of each food item by name
+      return uniqueLogs
     },
     userIsAuthenticated() {
       const store = useStore()
