@@ -79,7 +79,7 @@
     "title": "Eigene Lebensmittel",
     "description": "Speichere eigene Lebensmittel und Phe-Werte.",
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
-    "note": "Limitiert auf 500 Einträge.",
+    "note": "Limitiert auf 500 Einträge. Reset siehe Einstellungen.",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
     "export-filename": "PKU Tools - Eigene Lebensmittel"
   },
@@ -103,12 +103,12 @@
     "date": "Datum",
     "phe": "Gesamt Phe (in mg)",
     "chart": "Eintrag hinzufügen",
-    "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Reset über Einstellungen.",
+    "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Reset siehe Einstellungen.",
     "export-food": "Lebensmittel exportieren",
     "export-days": "Tage exportieren",
     "log": "Protokoll",
     "export-filename": "PKU Tools - Phe Tagebuch",
-    "note": "Limitiert auf 100 Einträge (~3 Monate). Reset über Einstellungen.",
+    "note": "Limitiert auf 100 Einträge (~3 Monate). Reset siehe Einstellungen.",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt."
   },
   "settings": {
