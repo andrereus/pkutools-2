@@ -14,8 +14,7 @@
     "scanner": "Scanner",
     "calculator": "Calculator",
     "total": "total",
-    "left": "left",
-    "redesign": "Redesign in progress. Please be patient."
+    "left": "left"
   },
   "common": {
     "add": "Add",

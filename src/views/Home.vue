@@ -2,8 +2,6 @@
   <div>
     <PheLog v-if="userIsAuthenticated" />
 
-    <p v-if="userIsAuthenticated">{{ $t('app.redesign') }}</p>
-
     <div v-if="!userIsAuthenticated">
       <div class="t-pt-3 t-pb-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
