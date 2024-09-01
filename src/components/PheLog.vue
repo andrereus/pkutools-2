@@ -17,10 +17,6 @@
         </nav>
       </div>
 
-      <p v-if="lastAdded.length === 0">
-        {{ $t('phe-log.info') }}
-      </p>
-
       <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
           v-for="(item, index) in pheLog"
@@ -65,6 +61,10 @@
           </td>
         </tr>
       </DataTable>
+
+      <p v-if="lastAdded.length === 0">
+        {{ $t('phe-log.info') }}
+      </p>
 
       <div v-if="lastAdded" class="t-mb-6">
         <SecondaryButton

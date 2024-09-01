@@ -93,7 +93,7 @@
     "save-day": "Finish log",
     "preview": "Preview Phe Log",
     "optimum": "deviation from the optimum",
-    "info": "Use the tools (search, scanner, calculator, ...) to add food.",
+    "info": "Use the tools in the navigation bar to add food.",
     "data-warning": "Attention: Change in data structure. Phe per 100g is missing. Please add the food to the protocol again."
   },
   "phe-diary": {

@@ -93,7 +93,7 @@
     "save-day": "Protokoll abschließen",
     "preview": "Vorschau Phe Protokoll",
     "optimum": "Abweichung vom Optimum",
-    "info": "Verwende die Tools (Suche, Scanner, Rechner, ...) um Lebensmittel hinzuzufügen.",
+    "info": "Verwende die Tools in der Navigationsleiste um Lebensmittel hinzuzufügen.",
     "data-warning": "Achtung: Änderung der Datenstruktur. Phe pro 100g fehlt. Bitte füge das Lebensmittel erneut dem Protokoll hinzu."
   },
   "phe-diary": {
