@@ -185,9 +185,12 @@ export default {
       this.$refs.dialog.openDialog()
     },
     deleteItem() {
-      const db = getDatabase()
-      remove(ref(db, `${this.user.id}/pheDiary/${this.editedKey}`))
-      this.close()
+      let r = confirm(this.$t('common.delete') + '?')
+      if (r === true) {
+        const db = getDatabase()
+        remove(ref(db, `${this.user.id}/pheDiary/${this.editedKey}`))
+        this.close()
+      }
     },
     close() {
       this.$refs.dialog.closeDialog()
