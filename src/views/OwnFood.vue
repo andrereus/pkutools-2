@@ -4,20 +4,20 @@
       <PageHeader :title="$t('own-food.title')" />
     </header>
 
-    <div v-if="!userIsAuthenticated">
-      <v-btn variant="flat" rounded color="btnsecondary" @click="signInGoogle" class="mt-2">
-        <v-icon start>{{ mdiGoogle }}</v-icon>
-        {{ $t('app.signin-google') }}
-      </v-btn>
+    <div v-if="!userIsAuthenticated" class="t-mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
-      <v-btn variant="flat" rounded color="btnsecondary" to="/email-auth" class="mt-2">
-        <v-icon start>{{ mdiEmail }}</v-icon>
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+      >
         {{ $t('email-auth.title') }}
-      </v-btn>
+      </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p class="mb-6">{{ $t('own-food.search-info') }}</p>
+      <p class="t-mb-6">{{ $t('own-food.search-info') }}</p>
 
       <DataTable :headers="tableHeaders" class="t-mb-4">
         <tr
@@ -127,10 +127,7 @@
         {{ $t('common.export') }}
       </v-btn>
 
-      <p class="text--secondary mt-5">
-        <v-icon>{{ mdiInformationVariant }}</v-icon>
-        {{ $t('own-food.note') }}
-      </p>
+      <p class="t-mt-5">{{ $t('own-food.note') }}</p>
 
       <v-dialog v-model="dialog2" max-width="500px">
         <v-card>
@@ -176,20 +173,6 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-
-      <v-dialog v-model="alert" max-width="300">
-        <v-card>
-          <v-card-title>{{ $t('common.note') }}</v-card-title>
-          <v-card-text>{{ $t('own-food.limit') }}</v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" variant="text" @click="alert = false">{{
-              $t('common.ok')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
     </div>
   </div>
 </template>
@@ -198,7 +181,6 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
-import { mdiGoogle, mdiInformationVariant, mdiEmail } from '@mdi/js'
 
 import PageHeader from '../components/PageHeader.vue'
 import DataTable from '../components/DataTable.vue'
@@ -209,13 +191,9 @@ export default {
     DataTable
   },
   data: () => ({
-    mdiGoogle,
-    mdiInformationVariant,
-    mdiEmail,
     publicPath: import.meta.env.BASE_URL,
     dialog: false,
     dialog2: false,
-    alert: false,
     menu: false,
     editedIndex: -1,
     editedKey: null,
@@ -269,7 +247,7 @@ export default {
         })
       } else {
         if (this.ownFood.length >= 500) {
-          this.alert = true
+          alert(this.$t('own-food.limit'))
         } else {
           push(ref(db, `${this.user.id}/ownFood`), {
             name: this.editedItem.name,
@@ -369,10 +347,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-theme--dark.v-toolbar.v-sheet {
-  background-color: #121212;
-}
-
 .food-icon {
   vertical-align: bottom;
   display: inline-block;

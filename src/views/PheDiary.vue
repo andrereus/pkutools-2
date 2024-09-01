@@ -29,7 +29,7 @@
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
+      <p v-if="pheDiary.length < 2" class="t-mb-6">{{ $t('phe-diary.chart-info') }}</p>
 
       <apexchart
         v-if="pheDiary.length >= 2"
