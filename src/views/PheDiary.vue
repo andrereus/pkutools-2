@@ -9,7 +9,7 @@
         >
         <RouterLink
           to="/phe-diary"
-          class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
+          class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
           aria-current="page"
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
@@ -17,7 +17,11 @@
     </div>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <SecondaryButton
+        :text="$t('app.signin-google')"
+        @click="signInGoogle"
+        class="t-font-semibold"
+      />
       <br />
       <RouterLink
         type="button"
@@ -119,10 +123,18 @@
         </DataTable>
       </ModalDialog>
 
-      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
-      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
+      <SecondaryButton
+        :text="$t('phe-diary.export-food')"
+        @click="exportAllFoodItems"
+        class="t-font-semibold"
+      />
+      <SecondaryButton
+        :text="$t('phe-diary.export-days')"
+        @click="exportDailyPheTotals"
+        class="t-font-semibold"
+      />
 
-      <p>{{ $t('phe-diary.note') }}</p>
+      <p class="t-mt-3">{{ $t('phe-diary.note') }}</p>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@
         <nav class="t-flex t-space-x-4" aria-label="Tabs">
           <RouterLink
             to="/"
-            class="t-bg-gray-100 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-bg-gray-700 dark:t-text-gray-300"
+            class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
             aria-current="page"
             >{{ $t('phe-log.tab-title') }}</RouterLink
           >
@@ -21,23 +21,14 @@
         {{ $t('phe-log.info') }}
       </p>
 
-      <v-sheet v-if="lastAdded" class="mb-6 t-bg-transparent">
-        <v-slide-group>
-          <v-slide-group-item v-for="(item, index) in lastAdded" :key="index">
-            <v-btn
-              size="small"
-              variant="flat"
-              rounded
-              color="btnsecondary"
-              class="mr-1 mb-2"
-              @click="addLastAdded(item)"
-            >
-              + {{ item.weight }}g
-              {{ item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name }}
-            </v-btn>
-          </v-slide-group-item>
-        </v-slide-group>
-      </v-sheet>
+      <div v-if="lastAdded">
+        <SecondaryButton
+          v-for="(item, index) in lastAdded"
+          :key="index"
+          :text="`+ ${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
+          @click="addLastAdded(item)"
+        />
+      </div>
 
       <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
@@ -98,7 +89,11 @@
         <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
       </ModalDialog>
 
-      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
+      <SecondaryButton
+        :text="$t('common.add')"
+        @click="$refs.dialog2.openDialog()"
+        class="t-font-semibold"
+      />
 
       <ModalDialog
         ref="dialog2"
@@ -319,9 +314,5 @@ export default {
 .food-icon {
   vertical-align: bottom;
   display: inline-block;
-}
-
-.v-btn {
-  text-transform: none;
 }
 </style>

@@ -5,7 +5,11 @@
     </header>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <SecondaryButton
+        :text="$t('app.signin-google')"
+        @click="signInGoogle"
+        class="t-font-semibold"
+      />
       <br />
       <RouterLink
         type="button"
@@ -184,11 +188,13 @@ import foodIcons from '../components/data/food-icons.json'
 
 import PageHeader from '../components/PageHeader.vue'
 import DataTable from '../components/DataTable.vue'
+import SecondaryButton from '../components/SecondaryButton.vue'
 
 export default {
   components: {
     PageHeader,
-    DataTable
+    DataTable,
+    SecondaryButton
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,

@@ -16,7 +16,11 @@
     </SelectMenu>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <SecondaryButton
+        :text="$t('app.signin-google')"
+        @click="signInGoogle"
+        class="t-font-semibold"
+      />
       <br />
       <RouterLink
         type="button"
@@ -39,9 +43,17 @@
 
       <PageHeader :title="$t('settings.reset-heading')" class="t-mt-6" />
 
-      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
-      <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
-      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
+      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" class="t-font-semibold" />
+      <SecondaryButton
+        :text="$t('settings.reset-diary')"
+        @click="resetDiary"
+        class="t-font-semibold"
+      />
+      <SecondaryButton
+        :text="$t('settings.reset-own-food')"
+        @click="resetOwnFood"
+        class="t-font-semibold"
+      />
 
       <PageHeader :title="$t('settings.delete-account')" class="t-mt-6" />
 
@@ -49,7 +61,11 @@
         {{ $t('settings.delete-account-info') }}
       </p>
 
-      <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
+      <SecondaryButton
+        :text="$t('settings.delete-account')"
+        @click="deleteAccount"
+        class="t-font-semibold"
+      />
     </div>
   </div>
 </template>
