@@ -70,9 +70,9 @@
         <SecondaryButton
           v-for="(item, index) in lastAdded"
           :key="index"
-          :text="`+ ${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
+          :text="`${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
           @click="addLastAdded(item)"
-          class="t-text-xs"
+          class="t-text-xs t-font-normal"
         />
       </div>
 
@@ -90,11 +90,7 @@
         <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
       </ModalDialog>
 
-      <SecondaryButton
-        :text="$t('common.add')"
-        @click="$refs.dialog2.openDialog()"
-        class="t-font-semibold"
-      />
+      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
 
       <ModalDialog
         ref="dialog2"

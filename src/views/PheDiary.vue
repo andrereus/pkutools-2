@@ -17,11 +17,7 @@
     </div>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <SecondaryButton
-        :text="$t('app.signin-google')"
-        @click="signInGoogle"
-        class="t-font-semibold"
-      />
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
@@ -123,16 +119,8 @@
         </DataTable>
       </ModalDialog>
 
-      <SecondaryButton
-        :text="$t('phe-diary.export-food')"
-        @click="exportAllFoodItems"
-        class="t-font-semibold"
-      />
-      <SecondaryButton
-        :text="$t('phe-diary.export-days')"
-        @click="exportDailyPheTotals"
-        class="t-font-semibold"
-      />
+      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
+      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
       <p class="t-mt-3">{{ $t('phe-diary.note') }}</p>
     </div>

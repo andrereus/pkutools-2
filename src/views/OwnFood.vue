@@ -5,11 +5,7 @@
     </header>
 
     <div v-if="!userIsAuthenticated" class="t-mt-8">
-      <SecondaryButton
-        :text="$t('app.signin-google')"
-        @click="signInGoogle"
-        class="t-font-semibold"
-      />
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
