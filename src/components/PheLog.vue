@@ -21,15 +21,6 @@
         {{ $t('phe-log.info') }}
       </p>
 
-      <div v-if="lastAdded">
-        <SecondaryButton
-          v-for="(item, index) in lastAdded"
-          :key="index"
-          :text="`+ ${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
-          @click="addLastAdded(item)"
-        />
-      </div>
-
       <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
           v-for="(item, index) in pheLog"
@@ -74,6 +65,15 @@
           </td>
         </tr>
       </DataTable>
+
+      <div v-if="lastAdded" class="t-mb-4">
+        <SecondaryButton
+          v-for="(item, index) in lastAdded"
+          :key="index"
+          :text="`+ ${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
+          @click="addLastAdded(item)"
+        />
+      </div>
 
       <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
 
