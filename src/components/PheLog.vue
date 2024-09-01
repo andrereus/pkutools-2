@@ -72,6 +72,7 @@
           :key="index"
           :text="`+ ${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
           @click="addLastAdded(item)"
+          class="t-text-xs"
         />
       </div>
 
