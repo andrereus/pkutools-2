@@ -185,12 +185,9 @@ export default {
       this.$refs.dialog.openDialog()
     },
     deleteItem() {
-      let r = confirm(this.$t('common.delete') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        remove(ref(db, `${this.user.id}/pheDiary/${this.editedKey}`))
-        this.close()
-      }
+      const db = getDatabase()
+      remove(ref(db, `${this.user.id}/pheDiary/${this.editedKey}`))
+      this.close()
     },
     close() {
       this.$refs.dialog.closeDialog()
@@ -236,30 +233,36 @@ export default {
       }
     },
     exportAllFoodItems() {
-      let csvContent = 'data:text/csv;charset=utf-8,'
-      csvContent += 'Date,Name,Weight,Phe\n'
+      let r = confirm(this.$t('common.export') + '?')
+      if (r === true) {
+        let csvContent = 'data:text/csv;charset=utf-8,'
+        csvContent += 'Date,Name,Weight,Phe\n'
 
-      this.pheDiary.forEach((diaryEntry) => {
-        const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
-        if (diaryEntry.log && diaryEntry.log.length > 0) {
-          diaryEntry.log.forEach((logEntry) => {
-            const row = `${date},${logEntry.name},${logEntry.weight},${logEntry.phe}\n`
-            csvContent += row
-          })
-        }
-      })
-      this.triggerDownload(csvContent)
+        this.pheDiary.forEach((diaryEntry) => {
+          const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
+          if (diaryEntry.log && diaryEntry.log.length > 0) {
+            diaryEntry.log.forEach((logEntry) => {
+              const row = `${date},${logEntry.name},${logEntry.weight},${logEntry.phe}\n`
+              csvContent += row
+            })
+          }
+        })
+        this.triggerDownload(csvContent)
+      }
     },
     exportDailyPheTotals() {
-      let csvContent = 'data:text/csv;charset=utf-8,'
-      csvContent += 'Date,Total Phe\n'
+      let r = confirm(this.$t('common.export') + '?')
+      if (r === true) {
+        let csvContent = 'data:text/csv;charset=utf-8,'
+        csvContent += 'Date,Total Phe\n'
 
-      this.pheDiary.forEach((diaryEntry) => {
-        const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
-        const row = `${date},${diaryEntry.phe}\n`
-        csvContent += row
-      })
-      this.triggerDownload(csvContent)
+        this.pheDiary.forEach((diaryEntry) => {
+          const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
+          const row = `${date},${diaryEntry.phe}\n`
+          csvContent += row
+        })
+        this.triggerDownload(csvContent)
+      }
     },
     triggerDownload(csvContent) {
       const encodedUri = encodeURI(csvContent)

@@ -98,7 +98,7 @@
         <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
       </ModalDialog>
 
-      <SecondaryButton :text="$t('phe-log.quick-note')" @click="$refs.dialog2.openDialog()" />
+      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
 
       <ModalDialog
         ref="dialog2"
@@ -268,7 +268,7 @@ export default {
     },
     formTitle() {
       if (this.editedIndex === -1) {
-        return this.$t('phe-log.quick-note')
+        return this.$t('common.add')
       } else {
         return this.$t('common.edit')
       }

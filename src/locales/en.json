@@ -26,6 +26,7 @@
     "close": "Close",
     "ok": "Ok",
     "note": "Note",
+    "export": "Export",
     "food": "Food",
     "food-name": "Food name",
     "food-type": "Type of food",
@@ -81,7 +82,6 @@
     "limit": "Own Food is limited to 500 entries.",
     "note": "Limited to 500 entries.",
     "search-info": "Own food is also available in the search.",
-    "export": "Export",
     "export-filename": "PKU Tools - Own Food"
   },
   "phe-log": {
@@ -92,7 +92,6 @@
     "total": "Total",
     "remaining": "Remaining",
     "save-day": "Finish log",
-    "quick-note": "Manual entry",
     "preview": "Preview Phe Log",
     "optimum": "deviation from the optimum",
     "info": "Use the tools (search, scanner, calculator, ...) to add food.",
@@ -106,7 +105,6 @@
     "phe": "Total Phe (in mg)",
     "chart": "Add entry",
     "limit": "The Phe Diary is limited to 100 entries. Export your data in Excel. Reset via Settings.",
-    "export": "Export",
     "export-food": "Export food",
     "export-days": "Export days",
     "log": "Log",

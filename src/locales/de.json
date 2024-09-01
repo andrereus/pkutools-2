@@ -26,6 +26,7 @@
     "close": "Schließen",
     "ok": "Ok",
     "note": "Hinweis",
+    "export": "Exportieren",
     "food": "Lebensmittel",
     "food-name": "Lebensmittelname",
     "food-type": "Art des Lebensmittels",
@@ -81,7 +82,6 @@
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
     "note": "Limitiert auf 500 Einträge.",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
-    "export": "Exportieren",
     "export-filename": "PKU Tools - Eigene Lebensmittel"
   },
   "phe-log": {
@@ -92,7 +92,6 @@
     "total": "Gesamt",
     "remaining": "Übrig",
     "save-day": "Protokoll abschließen",
-    "quick-note": "Manueller Eintrag",
     "preview": "Vorschau Phe Protokoll",
     "optimum": "Abweichung vom Optimum",
     "info": "Verwende die Tools (Suche, Scanner, Rechner, ...) um Lebensmittel hinzuzufügen.",
@@ -106,7 +105,6 @@
     "phe": "Gesamt Phe (in mg)",
     "chart": "Eintrag hinzufügen",
     "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Reset über Einstellungen.",
-    "export": "Exportieren",
     "export-food": "Lebensmittel exportieren",
     "export-days": "Tage exportieren",
     "log": "Protokoll",

@@ -124,7 +124,7 @@
       </v-dialog>
 
       <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mt-3" @click="exportOwnFood">
-        {{ $t('own-food.export') }}
+        {{ $t('common.export') }}
       </v-btn>
 
       <p class="text--secondary mt-5">
@@ -303,14 +303,17 @@ export default {
       this.$router.push('/')
     },
     exportOwnFood() {
-      let csvContent = 'data:text/csv;charset=utf-8,'
-      csvContent += 'Name,Phe per 100g\n'
+      let r = confirm(this.$t('common.export') + '?')
+      if (r === true) {
+        let csvContent = 'data:text/csv;charset=utf-8,'
+        csvContent += 'Name,Phe per 100g\n'
 
-      this.ownFood.forEach((entry) => {
-        const row = `${entry.name},${entry.phe}\n`
-        csvContent += row
-      })
-      this.triggerDownload(csvContent)
+        this.ownFood.forEach((entry) => {
+          const row = `${entry.name},${entry.phe}\n`
+          csvContent += row
+        })
+        this.triggerDownload(csvContent)
+      }
     },
     triggerDownload(csvContent) {
       const encodedUri = encodeURI(csvContent)

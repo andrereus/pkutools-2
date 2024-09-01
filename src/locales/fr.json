@@ -26,6 +26,7 @@
     "close": "Fermer",
     "ok": "Ok",
     "note": "Note",
+    "export": "Exporter",
     "food": "Alimentation",
     "food-name": "Nom de l'aliment",
     "food-type": "Type d'aliment",
@@ -81,7 +82,6 @@
     "limit": "Les aliments personnels sont limités à 500 entrées.",
     "note": "Limité à 500 entrées.",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
-    "export": "Exporter",
     "export-filename": "PKU Tools - Aliments personnels"
   },
   "phe-log": {
@@ -92,7 +92,6 @@
     "total": "Total",
     "remaining": "Restant",
     "save-day": "Terminer le journal",
-    "quick-note": "Entrée manuelle",
     "preview": "Aperçu du Journal de Phe",
     "optimum": "d'écart par rapport à l'optimum",
     "info": "Utilise les outils (recherche, scanner, calculatrice, ...) pour ajouter des aliments.",
@@ -106,7 +105,6 @@
     "phe": "Phe total (en mg)",
     "chart": "Ajouter une entrée",
     "limit": "Le Journal de Phe est limité à 100 entrées. Exportez vos données en Excel. Réinitialisez via les paramètres.",
-    "export": "Exporter",
     "export-food": "Exporter des aliments",
     "export-days": "Días de exportación",
     "log": "Journal",
