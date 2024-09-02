@@ -277,7 +277,7 @@ export default {
       // Get the food items from the last diary entries that have a log
       const lastEntries = this.pheDiary
         .filter((obj) => Array.isArray(obj.log))
-        .slice(-5)
+        .slice(-7)
         .map((obj) => obj.log)
 
       // Flatten and reverse the array to prioritize the most recent items
