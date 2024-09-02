@@ -173,10 +173,6 @@
     "title": "Politique de confidentialité",
     "description": "Politique de confidentialité de PKU Tools"
   },
-  "feature-comparison": {
-    "subject": "Fonctionnalité",
-    "included": "Inclus"
-  },
   "features": {
     "search-name": "Recherche Alimentaire",
     "search-description": "Recherchez dans une base de données d'aliments.",

@@ -173,10 +173,6 @@
     "title": "Datenschutz",
     "description": "PKU Tools Datenschutz"
   },
-  "feature-comparison": {
-    "subject": "Funktion",
-    "included": "Enthalten"
-  },
   "features": {
     "search-name": "Lebensmittel Suche",
     "search-description": "Durchsuche eine Lebensmitteldatenbank.",

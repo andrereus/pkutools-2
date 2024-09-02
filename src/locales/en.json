@@ -173,10 +173,6 @@
     "title": "Privacy Policy",
     "description": "PKU Tools Privacy Policy"
   },
-  "feature-comparison": {
-    "subject": "Feature",
-    "included": "Included"
-  },
   "features": {
     "search-name": "Food Search",
     "search-description": "Search a food database.",
