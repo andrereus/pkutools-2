@@ -266,7 +266,7 @@
           v-if="userIsAuthenticated"
           class="t-my-1 t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md t-shadow-inner"
         >
-          <div class="t-text-sm t-flex t-justify-between t-uppercase">
+          <div class="t-text-sm t-flex t-justify-between">
             <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
             <span v-if="settings?.maxPhe"
               >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
