@@ -107,17 +107,22 @@
         <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
 
-      <p v-if="lastAdded.length === 0" class="t-mt-5">
+      <p v-if="lastAdded.length === 0" class="t-mt-4">
         {{ $t('phe-log.info') }}
       </p>
 
-      <div v-if="lastAdded.length !== 0" class="t-mt-5">
+      <div v-if="lastAdded.length !== 0" class="t-mt-4">
         <SecondaryButton
-          v-for="(item, index) in lastAdded"
+          v-for="(item, index) in lastAdded.slice(0, visibleItems)"
           :key="index"
           :text="`${item.weight}g ${item.name.length > 13 ? item.name.slice(0, 12) + '…' : item.name}`"
           @click="addLastAdded(item)"
           class="!t-font-normal"
+        />
+        <SecondaryButton
+          v-if="visibleItems < lastAdded.length"
+          :text="$t('phe-log.more')"
+          @click="showMoreItems"
         />
       </div>
     </div>
@@ -168,9 +173,13 @@ export default {
       weight: null,
       phe: null
     },
-    data: ''
+    data: '',
+    visibleItems: 7
   }),
   methods: {
+    showMoreItems() {
+      this.visibleItems += 7
+    },
     calculatePhe() {
       return Math.round((this.editedItem.weight * this.editedItem.pheReference) / 100) || 0
     },
@@ -276,7 +285,7 @@ export default {
       // Get the food items from the last diary entries that have a log
       const lastEntries = this.pheDiary
         .filter((obj) => Array.isArray(obj.log))
-        .slice(-7)
+        .slice(-5)
         .map((obj) => obj.log)
 
       // Flatten and reverse the array to prioritize the most recent items
@@ -299,7 +308,7 @@ export default {
       const sortedItems = Array.from(itemMap.values()).sort((a, b) => b.score - a.score)
 
       // Limit to the top 10 items
-      return sortedItems.slice(0, 10)
+      return sortedItems
     },
     userIsAuthenticated() {
       const store = useStore()
