@@ -274,24 +274,33 @@ export default {
       return Math.round(phe)
     },
     lastAdded() {
-      // Get the food items from the last 2 diary entries that have a log
-      const lastTwoEntries = this.pheDiary
+      // Get the food items from the last diary entries that have a log
+      const lastEntries = this.pheDiary
         .filter((obj) => Array.isArray(obj.log))
-        .slice(-2)
+        .slice(-5)
         .map((obj) => obj.log)
-      // Flatten and reverse the array
-      const flattenedLogs = [].concat(...lastTwoEntries).reverse()
-      // Use a Map to filter out duplicates by name
-      const uniqueLogs = Array.from(
-        flattenedLogs
-          .reduce((map, item) => {
-            map.set(item.name, item) // Map stores the last occurrence by key 'name'
-            return map
-          }, new Map())
-          .values()
-      )
-      // The uniqueLogs array contains the last occurrence of each food item by name
-      return uniqueLogs
+
+      // Flatten and reverse the array to prioritize the most recent items
+      const flattenedLogs = [].concat(...lastEntries).reverse()
+
+      // Use a Map to filter out duplicates and keep track of their recency-weighted score
+      const itemMap = new Map()
+
+      flattenedLogs.forEach((item, index) => {
+        const recencyWeight = flattenedLogs.length / (index + 1) // More recent items have higher weight
+        if (itemMap.has(item.name)) {
+          const entry = itemMap.get(item.name)
+          entry.score += recencyWeight
+        } else {
+          itemMap.set(item.name, { ...item, score: recencyWeight })
+        }
+      })
+
+      // Convert the Map back to an array and sort by combined score (recency-weighted frequency)
+      const sortedItems = Array.from(itemMap.values()).sort((a, b) => b.score - a.score)
+
+      // Limit to the top 10 items
+      return sortedItems.slice(0, 10)
     },
     userIsAuthenticated() {
       const store = useStore()
