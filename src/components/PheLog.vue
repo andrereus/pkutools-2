@@ -174,11 +174,11 @@ export default {
       phe: null
     },
     data: '',
-    visibleItems: 7
+    visibleItems: 5
   }),
   methods: {
     showMoreItems() {
-      this.visibleItems += 7
+      this.visibleItems += 5
     },
     calculatePhe() {
       return Math.round((this.editedItem.weight * this.editedItem.pheReference) / 100) || 0
