@@ -62,21 +62,6 @@
         </tr>
       </DataTable>
 
-      <p v-if="lastAdded.length === 0" class="t-mb-6">
-        {{ $t('phe-log.info') }}
-      </p>
-
-      <div v-if="lastAdded.length !== 0" class="t-mb-6">
-        <p class="t-text-xs t-uppercase t-mb-3">{{ $t('phe-log.suggestions') }}</p>
-        <SecondaryButton
-          v-for="(item, index) in lastAdded"
-          :key="index"
-          :text="`${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
-          @click="addLastAdded(item)"
-          class="t-text-xs t-font-normal"
-        />
-      </div>
-
       <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
 
       <ModalDialog
@@ -121,6 +106,20 @@
         />
         <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
+
+      <p v-if="lastAdded.length === 0" class="t-mt-4">
+        {{ $t('phe-log.info') }}
+      </p>
+
+      <div v-if="lastAdded.length !== 0" class="t-mt-4">
+        <SecondaryButton
+          v-for="(item, index) in lastAdded"
+          :key="index"
+          :text="`${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
+          @click="addLastAdded(item)"
+          class="t-text-xs t-font-normal"
+        />
+      </div>
     </div>
   </div>
 </template>

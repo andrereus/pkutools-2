@@ -94,8 +94,7 @@
     "preview": "Vorschau Phe Protokoll",
     "optimum": "Abweichung vom Optimum",
     "info": "Verwende die Tools in der Navigationsleiste um Lebensmittel hinzuzufügen.",
-    "data-warning": "Achtung: Änderung der Datenstruktur. Phe pro 100g fehlt. Bitte füge das Lebensmittel erneut dem Protokoll hinzu.",
-    "suggestions": "Vorschläge"
+    "data-warning": "Achtung: Änderung der Datenstruktur. Phe pro 100g fehlt. Bitte füge das Lebensmittel erneut dem Protokoll hinzu."
   },
   "phe-diary": {
     "title": "Phe Tagebuch",

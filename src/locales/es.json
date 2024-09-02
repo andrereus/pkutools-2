@@ -94,8 +94,7 @@
     "preview": "Vista previa del registro de Phe",
     "optimum": "de desviación del óptimo",
     "info": "Utilice las herramientas de la barra de navegación para añadir alimentos.",
-    "data-warning": "Atención: Cambio en la estructura de los datos. Falta Phe por 100g. Por favor, añada de nuevo el alimento al protocolo.",
-    "suggestions": "Sugerencias"
+    "data-warning": "Atención: Cambio en la estructura de los datos. Falta Phe por 100g. Por favor, añada de nuevo el alimento al protocolo."
   },
   "phe-diary": {
     "title": "Diario de Phe",
