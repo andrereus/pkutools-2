@@ -115,7 +115,7 @@
         <SecondaryButton
           v-for="(item, index) in lastAdded.slice(0, visibleItems)"
           :key="index"
-          :text="`${item.weight}g ${item.name.length > 13 ? item.name.slice(0, 12) + '…' : item.name}`"
+          :text="`${item.weight}g ${item.name.length > 14 ? item.name.slice(0, 13) + '…' : item.name}`"
           @click="addLastAdded(item)"
           class="!t-font-normal"
         />
