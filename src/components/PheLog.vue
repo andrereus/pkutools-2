@@ -107,17 +107,17 @@
         <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
 
-      <p v-if="lastAdded.length === 0" class="t-mt-4">
+      <p v-if="lastAdded.length === 0" class="t-mt-5">
         {{ $t('phe-log.info') }}
       </p>
 
-      <div v-if="lastAdded.length !== 0" class="t-mt-4">
+      <div v-if="lastAdded.length !== 0" class="t-mt-5">
         <SecondaryButton
           v-for="(item, index) in lastAdded"
           :key="index"
-          :text="`${item.weight}g ${item.name.length > 15 ? item.name.slice(0, 14) + '…' : item.name}`"
+          :text="`${item.weight}g ${item.name.length > 13 ? item.name.slice(0, 12) + '…' : item.name}`"
           @click="addLastAdded(item)"
-          class="!t-text-xs !t-font-normal"
+          class="!t-font-normal"
         />
       </div>
     </div>
