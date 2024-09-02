@@ -191,7 +191,7 @@ export default {
     },
     addLastAdded(item) {
       this.editedItem = Object.assign({}, item)
-      this.save()
+      this.$refs.dialog2.openDialog()
     },
     deleteItem() {
       const db = getDatabase()
