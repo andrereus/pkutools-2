@@ -355,7 +355,7 @@ export default {
             }
           },
           zoom: {
-            enabled: false
+            enabled: true
           },
           background: 'transparent'
         },
