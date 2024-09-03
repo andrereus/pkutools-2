@@ -106,7 +106,7 @@
 import { useStore } from '../stores/index'
 import PheLog from '../components/PheLog.vue'
 
-import { Search, Calculator, ScanBarcode, Apple, Book, FileDown } from 'lucide-vue-next'
+import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -116,7 +116,7 @@ export default {
     ScanBarcode,
     Apple,
     Book,
-    FileDown
+    Sparkles
   },
   data: () => ({
     features: [
@@ -145,16 +145,16 @@ export default {
         route: '/phe-diary'
       },
       {
+        name: 'features.suggestions-name',
+        description: 'features.suggestions-description',
+        icon: Sparkles,
+        route: '/phe-diary'
+      },
+      {
         name: 'features.own-food-name',
         description: 'features.own-food-description',
         icon: Apple,
         route: '/own-food'
-      },
-      {
-        name: 'features.export-name',
-        description: 'features.export-description',
-        icon: FileDown,
-        route: '/settings'
       }
     ]
   }),

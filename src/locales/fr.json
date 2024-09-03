@@ -185,7 +185,7 @@
     "diary-description": "Suivez vos aliments et surveillez votre tolérance à la Phe.",
     "own-food-name": "Aliments Personnalisés",
     "own-food-description": "Enregistrez vos propres aliments pour un ajout rapide.",
-    "export-name": "Fonction d'Exportation",
-    "export-description": "Exportez vos données au format CSV (compatible avec Excel)."
+    "suggestions-name": "Suggestions en 1 clic",
+    "suggestions-description": "Ajoute des suggestions au protocole en un seul clic."
   }
 }

@@ -368,8 +368,8 @@ export default {
       { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
       { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
-      { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' }
+      { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ],
     lang: [
       { name: 'Deutsch', abbr: 'de' },

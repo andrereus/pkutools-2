@@ -185,7 +185,7 @@
     "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "own-food-name": "Alimentos Propios",
     "own-food-description": "Guarda tus propios alimentos para añadir rápidamente.",
-    "export-name": "Función de Exportación",
-    "export-description": "Exporta tus datos como CSV (compatible con Excel)."
+    "suggestions-name": "Sugerencias de 1 clic",
+    "suggestions-description": "Añade sugerencias al registro con un solo clic."
   }
 }
