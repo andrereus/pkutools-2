@@ -42,7 +42,9 @@
     "title": "Accueil",
     "features": "Fonctionnalités",
     "signin-install": "Inscription et installation",
-    "suggestion": "Peut être installé sur n'importe quel appareil (Android, iOS, Mac, Windows)."
+    "suggestion": "Peut être installé sur n'importe quel appareil (Android, iOS, Mac, Windows).",
+    "about-title": "Par des PKUers pour des PKUers",
+    "about-description": "Par le développeur de l'une des premières applications PKU pour Android \"Phe Rechner\", ainsi que du PKU Manager. Développement de PKU Apps depuis 2013."
   },
   "phe-search": {
     "title": "Recherche de Phe",
@@ -178,7 +180,7 @@
     "search-name": "Recherche Alimentaire",
     "search-description": "Recherchez dans une base de données d'aliments.",
     "scanner-name": "Scanner de Code-Barres",
-    "scanner-description": "Scannez des produits avec des codes-barres.",
+    "scanner-description": "La première application PKU à avoir introduit un lecteur de code-barres.",
     "calculator-name": "Calculateur de Phénylalanine",
     "calculator-description": "Calculez la quantité de Phe pour un poids spécifique ou convertissez des protéines en Phe.",
     "diary-name": "Journal et Carnet",

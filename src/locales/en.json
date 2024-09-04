@@ -42,7 +42,9 @@
     "title": "Home",
     "features": "Features",
     "signin-install": "Registration and installation",
-    "suggestion": "Can be installed on any device (Android, iOS, Mac, Windows)."
+    "suggestion": "Can be installed on any device (Android, iOS, Mac, Windows).",
+    "about-title": "By PKUers for PKUers",
+    "about-description": "From the developer of one of the first PKU apps for Android \"Phe Rechner\", as well as PKU Manager. Development of PKU apps since 2013."
   },
   "phe-search": {
     "title": "Phe Search",
@@ -178,7 +180,7 @@
     "search-name": "Food Search",
     "search-description": "Search a food database.",
     "scanner-name": "Barcode Scanner",
-    "scanner-description": "Scan products with barcodes.",
+    "scanner-description": "The first PKU app to introduce a barcode scanner.",
     "calculator-name": "Phenylalanine Calculator",
     "calculator-description": "Calculate the amount of Phe for a specific weight or convert protein to Phe.",
     "diary-name": "Log and Diary",
