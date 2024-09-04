@@ -37,7 +37,7 @@
         height="250"
         :options="chartOptions"
         :series="graph"
-        class="t--mb-1"
+        class="t--mb-2"
       ></apexchart>
 
       <!-- TODO: Add sort feature -->
