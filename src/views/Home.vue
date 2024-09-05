@@ -240,6 +240,11 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.userIsAuthenticated && !this.$route.query.home) {
+      this.$router.push({ path: '/', query: { log: true } })
+    }
+  },
   computed: {
     userIsAuthenticated() {
       const store = useStore()
