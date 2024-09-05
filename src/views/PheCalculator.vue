@@ -5,7 +5,7 @@
     </header>
 
     <div class="t-block t-mb-6">
-      <nav class="t-flex t-space-x-4" aria-label="Tabs">
+      <nav class="t-flex t-space-x-2" aria-label="Tabs">
         <RouterLink
           to="/phe-calculator"
           class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
