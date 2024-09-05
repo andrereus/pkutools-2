@@ -51,7 +51,10 @@
           </div>
 
           <div class="t-flex t-flex-1 t-items-stretch t-justify-start t-ml-3">
-            <RouterLink to="/" class="t-flex t-flex-shrink-0 t-items-center">
+            <RouterLink
+              :to="userIsAuthenticated ? '/?log=true' : '/?home=true'"
+              class="t-flex t-flex-shrink-0 t-items-center"
+            >
               <img
                 class="t-h-8 t-w-auto t-mr-3"
                 src="./assets/pkutools-logo.png"
@@ -364,16 +367,6 @@ export default {
     Scroll
   },
   data: () => ({
-    navigation: [
-      { name: 'home.title', icon: 'House', route: '/' },
-      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-      { name: 'phe-log.title', icon: 'Scroll', route: '/?log=true' },
-      { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-    ],
     lang: [
       { name: 'Deutsch', abbr: 'de' },
       { name: 'English', abbr: 'en' },
@@ -386,13 +379,6 @@ export default {
       { name: 'imprint.title', icon: 'Info', route: '/imprint' },
       { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
       { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
-    ],
-    tabNavigation: [
-      { name: 'home.title', icon: 'House', route: '/' },
-      { name: 'app.search', icon: 'Search', route: '/phe-search' },
-      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ]
   }),
   setup() {
@@ -468,6 +454,35 @@ export default {
     }
   },
   computed: {
+    navigation() {
+      return [
+        {
+          name: 'home.title',
+          icon: 'House',
+          route: this.userIsAuthenticated ? '/?log=true' : '/?home=true'
+        },
+        { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+        { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+        { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+        { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+        { name: 'phe-log.title', icon: 'Scroll', route: '/?log=true' },
+        { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' },
+        { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+      ]
+    },
+    tabNavigation() {
+      return [
+        {
+          name: 'home.title',
+          icon: 'House',
+          route: this.userIsAuthenticated ? '/?log=true' : '/?home=true'
+        },
+        { name: 'app.search', icon: 'Search', route: '/phe-search' },
+        { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+        { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+        { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+      ]
+    },
     locale: {
       get: function () {
         return this.$i18n.locale
