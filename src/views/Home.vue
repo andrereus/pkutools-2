@@ -12,7 +12,7 @@
           ]"
           aria-current="page"
         >
-          <House class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
+          <Info class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
         </RouterLink>
         <RouterLink
           :to="{ path: '/', query: { log: true } }"
@@ -156,7 +156,7 @@
 import { useStore } from '../stores/index'
 import PheLog from '../components/PheLog.vue'
 
-import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles, House } from 'lucide-vue-next'
+import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles, Info } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -167,7 +167,7 @@ export default {
     Apple,
     Book,
     Sparkles,
-    House
+    Info
   },
   data: () => ({
     features: [

@@ -6,7 +6,7 @@
           :to="{ path: '/', query: { home: true } }"
           class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
         >
-          <House class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
+          <Info class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
         </RouterLink>
         <RouterLink
           :to="{ path: '/', query: { log: true } }"
@@ -152,7 +152,7 @@ import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 
-import { House } from 'lucide-vue-next'
+import { Info } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -163,7 +163,7 @@ export default {
     NumberInput,
     SecondaryButton,
     DateInput,
-    House
+    Info
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,
