@@ -1,8 +1,42 @@
 <template>
   <div>
-    <PheLog v-if="userIsAuthenticated" />
+    <div class="t-block t-mb-6">
+      <nav class="t-flex t-space-x-4" aria-label="Tabs">
+        <RouterLink
+          :to="{ path: '/', query: { home: true } }"
+          :class="[
+            't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 t-cursor-pointer',
+            pheLog
+              ? 't-text-gray-500 hover:t-text-gray-700'
+              : 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
+          ]"
+          aria-current="page"
+        >
+          <House class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
+        </RouterLink>
+        <RouterLink
+          :to="{ path: '/', query: { log: true } }"
+          :class="[
+            't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 t-cursor-pointer',
+            !pheLog
+              ? 't-text-gray-500 hover:t-text-gray-700'
+              : 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
+          ]"
+          aria-current="page"
+        >
+          {{ $t('phe-log.tab-title') }}
+        </RouterLink>
+        <RouterLink
+          to="/phe-diary"
+          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          >{{ $t('phe-diary.tab-title') }}</RouterLink
+        >
+      </nav>
+    </div>
 
-    <div v-if="!userIsAuthenticated">
+    <PheLog v-if="pheLog" />
+
+    <div v-if="!pheLog">
       <div class="t-pt-3 t-pb-6 sm:t-py-8">
         <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
           <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
@@ -76,6 +110,7 @@
             {{ $t('home.suggestion') }}
           </p>
           <div
+            v-if="!userIsAuthenticated"
             class="t-mt-8 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
           >
             <a
@@ -121,7 +156,7 @@
 import { useStore } from '../stores/index'
 import PheLog from '../components/PheLog.vue'
 
-import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
+import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles, House } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -131,7 +166,8 @@ export default {
     ScanBarcode,
     Apple,
     Book,
-    Sparkles
+    Sparkles,
+    House
   },
   data: () => ({
     features: [
@@ -157,13 +193,13 @@ export default {
         name: 'features.diary-name',
         description: 'features.diary-description',
         icon: Book,
-        route: '/phe-diary'
+        route: '/?log=true'
       },
       {
         name: 'features.suggestions-name',
         description: 'features.suggestions-description',
         icon: Sparkles,
-        route: '/phe-diary'
+        route: '/?log=true'
       },
       {
         name: 'features.own-food-name',
@@ -171,7 +207,8 @@ export default {
         icon: Apple,
         route: '/own-food'
       }
-    ]
+    ],
+    pheLog: false
   }),
   methods: {
     async signInGoogle() {
@@ -181,6 +218,25 @@ export default {
       } catch (error) {
         alert(this.$t('app.auth-error'))
         console.error(error)
+      }
+    }
+  },
+  watch: {
+    userIsAuthenticated(newVal) {
+      if (newVal) {
+        this.$router.push({ path: '/', query: { log: true } })
+      } else {
+        this.$router.push({ path: '/', query: { home: true } })
+      }
+    },
+    '$route.query': {
+      immediate: true,
+      handler(newQuery) {
+        if (newQuery.home) {
+          this.pheLog = false
+        } else if (newQuery.log) {
+          this.pheLog = true
+        }
       }
     }
   },

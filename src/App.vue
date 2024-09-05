@@ -336,7 +336,8 @@ import {
   LogOut,
   Settings,
   LifeBuoy,
-  Info
+  Info,
+  Scroll
 } from 'lucide-vue-next'
 
 export default {
@@ -359,7 +360,8 @@ export default {
     LogOut,
     Settings,
     LifeBuoy,
-    Info
+    Info,
+    Scroll
   },
   data: () => ({
     navigation: [
@@ -368,6 +370,7 @@ export default {
       { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
       { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'phe-log.title', icon: 'Scroll', route: '/?log=true' },
       { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' },
       { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ],

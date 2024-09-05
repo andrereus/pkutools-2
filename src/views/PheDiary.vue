@@ -3,10 +3,17 @@
     <div class="t-block t-mb-6">
       <nav class="t-flex t-space-x-4" aria-label="Tabs">
         <RouterLink
-          to="/"
+          :to="{ path: '/', query: { home: true } }"
           class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-          >{{ $t('phe-log.tab-title') }}</RouterLink
         >
+          <House class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
+        </RouterLink>
+        <RouterLink
+          :to="{ path: '/', query: { log: true } }"
+          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+        >
+          {{ $t('phe-log.tab-title') }}
+        </RouterLink>
         <RouterLink
           to="/phe-diary"
           class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
@@ -145,6 +152,8 @@ import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 
+import { House } from 'lucide-vue-next'
+
 export default {
   components: {
     apexchart: VueApexCharts,
@@ -153,7 +162,8 @@ export default {
     PrimaryButton,
     NumberInput,
     SecondaryButton,
-    DateInput
+    DateInput,
+    House
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,

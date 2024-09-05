@@ -1,22 +1,18 @@
 <template>
   <div>
-    <div v-if="userIsAuthenticated">
-      <div class="t-block t-mb-6">
-        <nav class="t-flex t-space-x-4" aria-label="Tabs">
-          <RouterLink
-            to="/"
-            class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-            aria-current="page"
-            >{{ $t('phe-log.tab-title') }}</RouterLink
-          >
-          <RouterLink
-            to="/phe-diary"
-            class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-            >{{ $t('phe-diary.tab-title') }}</RouterLink
-          >
-        </nav>
-      </div>
+    <div v-if="!userIsAuthenticated" class="t-mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <br />
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+      >
+        {{ $t('email-auth.title') }}
+      </RouterLink>
+    </div>
 
+    <div v-if="userIsAuthenticated">
       <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
           v-for="(item, index) in pheLog"
@@ -177,6 +173,15 @@ export default {
     visibleItems: 5
   }),
   methods: {
+    async signInGoogle() {
+      const store = useStore()
+      try {
+        await store.signInGoogle()
+      } catch (error) {
+        alert(this.$t('app.auth-error'))
+        console.error(error)
+      }
+    },
     showMoreItems() {
       this.visibleItems += 5
     },
