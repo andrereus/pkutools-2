@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <PageHeader :title="$t('about.title')" />
+      <PageHeader :title="$t('imprint.title')" />
     </header>
 
     <p>
@@ -13,9 +13,9 @@
     </p>
 
     <!-- prettier-ignore -->
-    <p>{{ $t("about.email") }}: {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
+    <p>{{ $t("imprint.email") }}: {{ part1 }}@<span class="hidden">null</span>{{ part2 }}.{{ part3 }}</p>
     <br />
-    <p>{{ $t('about.sources') }}</p>
+    <p>{{ $t('imprint.sources') }}</p>
   </div>
 </template>
 

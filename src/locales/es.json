@@ -162,9 +162,9 @@
     "install-p3": "En Safari, toca el botón de compartir y luego \"Añadir a la pantalla de inicio\".",
     "install-p4": "Haz clic en el pequeño icono de instalación en la barra de direcciones en Chrome, Brave o Edge."
   },
-  "about": {
-    "title": "Acerca de",
-    "description": "Acerca de Herramientas PKU",
+  "imprint": {
+    "title": "Pie de imprenta",
+    "description": "Pie de imprenta de PKU Tools",
     "email": "Correo electrónico",
     "sources": "Fuentes: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },

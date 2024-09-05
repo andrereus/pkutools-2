@@ -9,7 +9,7 @@ import PheDiary from '../views/PheDiary.vue'
 import Settings from '../views/Settings.vue'
 import EmailAuth from '../views/EmailAuth.vue'
 import Help from '../views/Help.vue'
-import About from '../views/About.vue'
+import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
 
@@ -67,9 +67,9 @@ const router = createRouter({
       component: Help
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About
+      path: '/imprint',
+      name: 'Imprint',
+      component: Imprint
     },
     {
       path: '/disclaimer',

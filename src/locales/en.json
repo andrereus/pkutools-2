@@ -162,9 +162,9 @@
     "install-p3": "In Safari, tap the share button and then \"Add to Home Screen\".",
     "install-p4": "Click the little installation icon in the address bar in Chrome, Brave or Edge."
   },
-  "about": {
-    "title": "About",
-    "description": "About PKU Tools",
+  "imprint": {
+    "title": "Imprint",
+    "description": "Imprint of PKU Tools",
     "email": "Email",
     "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },

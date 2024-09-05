@@ -162,9 +162,9 @@
     "install-p3": "Tippe in Safari auf den Teilen-Button und dann \"Zum Home-Bildschirm\".",
     "install-p4": "Klicke das kleine Installations-Icon in der Adressleiste in Chrome, Brave oder Edge."
   },
-  "about": {
+  "imprint": {
     "title": "Impressum",
-    "description": "Über PKU Tools",
+    "description": "Impressum von PKU Tools",
     "email": "E-Mail",
     "sources": "Quellen: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
   },

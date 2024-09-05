@@ -380,7 +380,7 @@ export default {
     userNavigation: [
       { name: 'settings.title', icon: 'Settings', route: '/settings' },
       { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-      { name: 'about.title', icon: 'Info', route: '/about' },
+      { name: 'imprint.title', icon: 'Info', route: '/imprint' },
       { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
       { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
     ],
