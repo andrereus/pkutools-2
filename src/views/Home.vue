@@ -12,6 +12,7 @@
           ]"
           aria-current="page"
         >
+          <span class="t-sr-only">{{ $t('home.title') }}</span>
           <Info class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
         </RouterLink>
         <RouterLink
