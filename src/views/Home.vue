@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="t-block t-mb-6">
+    <div v-if="userIsAuthenticated || pheLog" class="t-block t-mb-6">
       <nav class="t-flex t-space-x-4" aria-label="Tabs">
         <RouterLink
           :to="{ path: '/', query: { home: true } }"
