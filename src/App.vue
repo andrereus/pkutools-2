@@ -198,7 +198,7 @@
                       <a
                         :class="[
                           active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300 sl-mask'
                         ]"
                         @click.prevent="
                           () => {
