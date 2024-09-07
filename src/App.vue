@@ -130,7 +130,7 @@
                   />
                   <img
                     v-if="userIsAuthenticated && userPhotoUrl"
-                    class="t-h-8 t-w-8 t-rounded-full"
+                    class="t-h-8 t-w-8 t-rounded-full sl-exclude"
                     :src="userPhotoUrl"
                     :alt="$t('app.profile-picture')"
                   />
