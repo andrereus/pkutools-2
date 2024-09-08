@@ -44,7 +44,7 @@
     "signin-install": "Registro e instalación",
     "suggestion": "Puede instalarse en cualquier dispositivo (Android, iOS, Mac, Windows).",
     "about-title": "Por PKUers para PKUers",
-    "about-description": "Del desarrollador de una de las primeras apps PKU para Android \"Phe Rechner\", así como del PKU Manager. Desarrollo de aplicaciones PKU desde 2012."
+    "about-description": "Del desarrollador de una de las primeras apps PKU para Android \"Phe Rechner\", así como del PKU Manager. Desarrollo de aplicaciones PKU desde 2013."
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
@@ -180,7 +180,7 @@
     "search-name": "Búsqueda de Alimentos",
     "search-description": "Busca en una base de datos de alimentos.",
     "scanner-name": "Escáner de Código de Barras",
-    "scanner-description": "2022 el primer escáner de código de barras para PKU.",
+    "scanner-description": "Escanee los códigos de barras de los productos.",
     "calculator-name": "Calculadora de Fenilalanina",
     "calculator-description": "Calcula la cantidad de Phe para un peso específico o convierte proteína en Phe.",
     "diary-name": "Registro y Diario",
