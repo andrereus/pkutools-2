@@ -340,7 +340,7 @@ import {
   Settings,
   LifeBuoy,
   Info,
-  Scroll
+  Calendar
 } from 'lucide-vue-next'
 
 export default {
@@ -364,7 +364,7 @@ export default {
     Settings,
     LifeBuoy,
     Info,
-    Scroll
+    Calendar
   },
   data: () => ({
     lang: [
@@ -372,13 +372,6 @@ export default {
       { name: 'English', abbr: 'en' },
       { name: 'Español', abbr: 'es' },
       { name: 'Français', abbr: 'fr' }
-    ],
-    userNavigation: [
-      { name: 'settings.title', icon: 'Settings', route: '/settings' },
-      { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-      { name: 'imprint.title', icon: 'Info', route: '/imprint' },
-      { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-      { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
     ]
   }),
   setup() {
@@ -455,33 +448,63 @@ export default {
   },
   computed: {
     navigation() {
-      return [
-        {
-          name: 'home.title',
-          icon: 'House',
-          route: this.userIsAuthenticated ? '/?log=true' : '/?home=true'
-        },
-        { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-        { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-        { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-        { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-        { name: 'phe-log.title', icon: 'Scroll', route: '/?log=true' },
-        { name: 'phe-diary.title', icon: 'Book', route: '/phe-diary' },
-        { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-      ]
+      if (this.userIsAuthenticated) {
+        return [
+          { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
+          { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
+          { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+          { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+          { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+        ]
+      } else {
+        return [
+          { name: 'home.title', icon: 'House', route: '/?home=true' },
+          { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+          { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+          { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' }
+        ]
+      }
     },
     tabNavigation() {
-      return [
-        {
-          name: 'home.title',
-          icon: 'House',
-          route: this.userIsAuthenticated ? '/?log=true' : '/?home=true'
-        },
-        { name: 'app.search', icon: 'Search', route: '/phe-search' },
-        { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-        { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-        { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-      ]
+      if (this.userIsAuthenticated) {
+        return [
+          { name: 'home.title', icon: 'House', route: '/?log=true' },
+          { name: 'app.search', icon: 'Search', route: '/phe-search' },
+          { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+        ]
+      } else {
+        return [
+          { name: 'home.title', icon: 'House', route: '/?home=true' },
+          { name: 'app.search', icon: 'Search', route: '/phe-search' },
+          { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' }
+        ]
+      }
+    },
+    userNavigation() {
+      if (this.userIsAuthenticated) {
+        return [
+          { name: 'settings.title', icon: 'Settings', route: '/settings' },
+          { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
+          { name: 'app.about', icon: 'Info', route: '/?home=true' },
+          { name: 'imprint.title', icon: 'Info', route: '/imprint' },
+          { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
+          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+        ]
+      } else {
+        return [
+          { name: 'settings.title', icon: 'Settings', route: '/settings' },
+          { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
+          { name: 'imprint.title', icon: 'Info', route: '/imprint' },
+          { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
+          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+        ]
+      }
     },
     locale: {
       get: function () {

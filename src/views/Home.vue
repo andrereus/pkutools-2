@@ -1,28 +1,10 @@
 <template>
   <div>
-    <div v-if="userIsAuthenticated || pheLog" class="t-block t-mb-6">
+    <div v-if="pheLog" class="t-block t-mb-6">
       <nav class="t-flex t-space-x-2" aria-label="Tabs">
         <RouterLink
-          :to="{ path: '/', query: { home: true } }"
-          :class="[
-            't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 t-cursor-pointer',
-            pheLog
-              ? 't-text-gray-500 hover:t-text-gray-700'
-              : 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
-          ]"
-          aria-current="page"
-        >
-          <span class="t-sr-only">{{ $t('home.title') }}</span>
-          <Info class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
-        </RouterLink>
-        <RouterLink
           :to="{ path: '/', query: { log: true } }"
-          :class="[
-            't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 t-cursor-pointer',
-            !pheLog
-              ? 't-text-gray-500 hover:t-text-gray-700'
-              : 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
-          ]"
+          class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
           aria-current="page"
         >
           {{ $t('phe-log.tab-title') }}
@@ -157,7 +139,7 @@
 import { useStore } from '../stores/index'
 import PheLog from '../components/PheLog.vue'
 
-import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles, Info } from 'lucide-vue-next'
+import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
 
 export default {
   components: {
@@ -167,8 +149,7 @@ export default {
     ScanBarcode,
     Apple,
     Book,
-    Sparkles,
-    Info
+    Sparkles
   },
   data: () => ({
     features: [

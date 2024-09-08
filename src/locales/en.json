@@ -14,7 +14,8 @@
     "scanner": "Scanner",
     "calculator": "Calculator",
     "total": "total",
-    "left": "left"
+    "left": "left",
+    "about": "About"
   },
   "common": {
     "add": "Add",

@@ -3,12 +3,6 @@
     <div class="t-block t-mb-6">
       <nav class="t-flex t-space-x-2" aria-label="Tabs">
         <RouterLink
-          :to="{ path: '/', query: { home: true } }"
-          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
-        >
-          <Info class="t-h-4 t-w-4 t-mt-0.5" aria-hidden="true" />
-        </RouterLink>
-        <RouterLink
           :to="{ path: '/', query: { log: true } }"
           class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
         >
@@ -152,8 +146,6 @@ import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 
-import { Info } from 'lucide-vue-next'
-
 export default {
   components: {
     apexchart: VueApexCharts,
@@ -162,8 +154,7 @@ export default {
     PrimaryButton,
     NumberInput,
     SecondaryButton,
-    DateInput,
-    Info
+    DateInput
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,
