@@ -340,7 +340,8 @@ import {
   Settings,
   LifeBuoy,
   Info,
-  Calendar
+  Calendar,
+  CircleArrowLeft
 } from 'lucide-vue-next'
 
 export default {
@@ -364,7 +365,8 @@ export default {
     Settings,
     LifeBuoy,
     Info,
-    Calendar
+    Calendar,
+    CircleArrowLeft
   },
   data: () => ({
     lang: [
@@ -464,7 +466,8 @@ export default {
           { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
           { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
           { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' }
+          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
         ]
       }
     },
@@ -482,7 +485,8 @@ export default {
           { name: 'home.title', icon: 'House', route: '/?home=true' },
           { name: 'app.search', icon: 'Search', route: '/phe-search' },
           { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' }
+          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
         ]
       }
     },
@@ -491,10 +495,10 @@ export default {
         return [
           { name: 'settings.title', icon: 'Settings', route: '/settings' },
           { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-          { name: 'app.about', icon: 'Info', route: '/?home=true' },
           { name: 'imprint.title', icon: 'Info', route: '/imprint' },
           { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' },
+          { name: 'app.start', icon: 'CircleArrowLeft', route: '/?home=true' }
         ]
       } else {
         return [
