@@ -493,12 +493,12 @@ export default {
     userNavigation() {
       if (this.userIsAuthenticated) {
         return [
+          { name: 'app.start', icon: 'CircleArrowLeft', route: '/?home=true' },
           { name: 'settings.title', icon: 'Settings', route: '/settings' },
           { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
           { name: 'imprint.title', icon: 'Info', route: '/imprint' },
           { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' },
-          { name: 'app.start', icon: 'CircleArrowLeft', route: '/?home=true' }
+          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
         ]
       } else {
         return [
