@@ -84,7 +84,8 @@
     "limit": "Les aliments personnels sont limités à 500 entrées.",
     "note": "Limité à 500 entrées.",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
-    "export-filename": "PKU Tools - Aliments personnels"
+    "export-filename": "PKU Tools - Aliments personnels",
+    "choose-icon": "Choisir une icône"
   },
   "phe-log": {
     "title": "Protocole Phe",

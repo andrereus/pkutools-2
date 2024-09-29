@@ -278,11 +278,6 @@ export default {
       document.body.removeChild(link)
     }
   },
-  watch: {
-    dialog(val) {
-      val || this.close()
-    }
-  },
   computed: {
     tableHeaders() {
       return [

@@ -84,7 +84,8 @@
     "limit": "Eigene Lebensmittel sind auf 500 Einträge limitiert.",
     "note": "Limitiert auf 500 Einträge.",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
-    "export-filename": "PKU Tools - Eigene Lebensmittel"
+    "export-filename": "PKU Tools - Eigene Lebensmittel",
+    "choose-icon": "Icon wählen"
   },
   "phe-log": {
     "title": "Phe Protokoll",

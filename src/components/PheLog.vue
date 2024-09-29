@@ -256,11 +256,6 @@ export default {
       }
     }
   },
-  watch: {
-    dialog(val) {
-      val || this.close()
-    }
-  },
   created() {
     this.date = format(new Date(), 'yyyy-MM-dd')
   },

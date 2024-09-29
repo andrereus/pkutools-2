@@ -84,7 +84,8 @@
     "limit": "Alimento propio está limitado a 500 entradas.",
     "note": "Limitado a 500 entradas.",
     "search-info": "La comida propia también está disponible en la búsqueda.",
-    "export-filename": "PKU Tools - Alimento propio"
+    "export-filename": "PKU Tools - Alimento propio",
+    "choose-icon": "Seleccionar icono"
   },
   "phe-log": {
     "title": "Protocolo Phe",

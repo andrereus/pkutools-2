@@ -84,7 +84,8 @@
     "limit": "Own Food is limited to 500 entries.",
     "note": "Limited to 500 entries.",
     "search-info": "Own food is also available in the search.",
-    "export-filename": "PKU Tools - Own Food"
+    "export-filename": "PKU Tools - Own Food",
+    "choose-icon": "Select icon"
   },
   "phe-log": {
     "title": "Phe Log",

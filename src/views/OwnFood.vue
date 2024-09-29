@@ -19,7 +19,7 @@
     <div v-if="userIsAuthenticated">
       <p class="t-mb-6">{{ $t('own-food.search-info') }}</p>
 
-      <DataTable :headers="tableHeaders" class="t-mb-4">
+      <DataTable :headers="tableHeaders" class="t-mb-8">
         <tr
           v-for="(item, index) in ownFood"
           :key="index"
@@ -54,125 +54,94 @@
         </tr>
       </DataTable>
 
-      <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ props }">
-          <v-btn variant="flat" rounded color="primary" class="mr-3 mt-3" v-bind="props">
-            {{ $t('common.add') }}
-          </v-btn>
-        </template>
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
 
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
-            {{ formTitle }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-text-field label="Name" v-model="editedItem.name">
-              <template v-slot:append>
-                <v-menu>
-                  <template v-slot:activator="{ props }">
-                    <v-btn variant="plain" rounded color="btnsecondary" v-bind="props">
-                      <img
-                        :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-                        v-if="editedItem.icon !== undefined && editedItem.icon !== null"
-                        width="40"
-                        class="food-icon"
-                        alt="Food Icon"
-                      />
-                      <img
-                        :src="publicPath + 'img/food-icons/organic-food.svg'"
-                        v-if="editedItem.icon === undefined || editedItem.icon === null"
-                        width="40"
-                        class="food-icon"
-                        alt="Food Icon"
-                      />
-                    </v-btn>
-                  </template>
-                  <v-card max-width="300" max-height="250" class="overflow-y-auto">
-                    <span v-for="(item, index) in foodIcons" :key="index" class="px-1">
-                      <img
-                        :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
-                        v-if="item.svg !== undefined"
-                        width="40"
-                        class="food-icon pick-icon"
-                        alt="Icon Picker"
-                        @click="editedItem.icon = item.svg"
-                      />
-                    </span>
-                  </v-card>
-                </v-menu>
-              </template>
-            </v-text-field>
-            <v-text-field
-              :label="$t('common.phe-per-100g')"
-              v-model.number="editedItem.phe"
-              type="number"
-            ></v-text-field>
-          </v-card-text>
-
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="save">{{ $t('common.save') }}</v-btn>
-            <v-btn variant="flat" color="warning" v-if="editedIndex !== -1" @click="deleteItem()">
-              {{ $t('common.delete') }}
-            </v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="close">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-
-      <v-btn variant="flat" rounded color="btnsecondary" class="mr-3 mt-3" @click="exportOwnFood">
-        {{ $t('common.export') }}
-      </v-btn>
-
-      <p class="t-mt-5">{{ $t('own-food.note') }}</p>
-
-      <v-dialog v-model="dialog2" max-width="500px">
-        <v-card>
-          <v-card-title class="text-h5 mt-4">
+      <ModalDialog
+        ref="dialog"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="closeModal"
+      >
+        <Popover>
+          <PopoverButton class="t-mt-1">
             <img
               :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-              v-if="editedItem.icon !== undefined"
-              width="35"
-              class="food-icon"
+              v-if="editedItem.icon !== undefined && editedItem.icon !== null"
+              width="30"
+              class="food-icon t-float-left"
               alt="Food Icon"
             />
             <img
               :src="publicPath + 'img/food-icons/organic-food.svg'"
-              v-if="editedItem.icon === undefined"
-              width="35"
-              class="food-icon"
+              v-if="editedItem.icon === undefined || editedItem.icon === null"
+              width="30"
+              class="food-icon t-float-left"
               alt="Food Icon"
             />
-            {{ editedItem.name }}
-          </v-card-title>
+            <span class="t-float-left t-m-1 t-text-sm">{{ $t('own-food.choose-icon') }}</span>
+          </PopoverButton>
 
-          <v-card-text>
-            <v-text-field
-              :label="$t('common.weight-in-g')"
-              v-model.number="weight"
-              type="number"
-              clearable
-            ></v-text-field>
-            <p class="text-h6 font-weight-regular">= {{ calculatePhe() }} mg Phe</p>
-          </v-card-text>
+          <transition
+            enter-active-class="t-transition t-ease-out t-duration-200"
+            enter-from-class="t-transform t-opacity-0 t-scale-95"
+            enter-to-class="t-transform t-opacity-100 t-scale-100"
+            leave-active-class="t-transition t-ease-in t-duration-75"
+            leave-from-class="t-transform t-opacity-100 t-scale-100"
+            leave-to-class="t-transform t-opacity-0 t-scale-95"
+          >
+            <PopoverPanel v-slot="{ close }">
+              <span v-for="(item, index) in foodIcons" :key="index">
+                <img
+                  :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
+                  v-if="item.svg !== undefined"
+                  width="35"
+                  class="food-icon pick-icon t-m-2"
+                  alt="Food Icon"
+                  @click="setIcon(item, close)"
+                />
+              </span>
+            </PopoverPanel>
+          </transition>
+        </Popover>
 
-          <v-card-actions class="mt-n6">
-            <v-spacer></v-spacer>
-            <v-btn variant="flat" color="primary" @click="add">
-              {{ $t('common.add') }}
-            </v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="editItem()">{{
-              $t('common.edit')
-            }}</v-btn>
-            <v-btn variant="flat" color="btnsecondary" @click="dialog2 = false">{{
-              $t('common.cancel')
-            }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+        <TextInput
+          id-name="food"
+          :label="$t('common.food-name')"
+          v-model="editedItem.name"
+          class="t-mt-2"
+        />
+        <NumberInput
+          id-name="phe"
+          :label="$t('common.phe-per-100g')"
+          v-model.number="editedItem.phe"
+        />
+      </ModalDialog>
+
+      <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
+
+      <p class="t-mt-3">{{ $t('own-food.note') }}</p>
+
+      <ModalDialog
+        ref="dialog2"
+        :title="editedItem.name"
+        :buttons="[
+          { label: $t('common.add'), type: 'submit', visible: true },
+          { label: $t('common.edit'), type: 'edit', visible: true },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="add"
+        @edit="editItem"
+        @close="$refs.dialog2.closeDialog()"
+      >
+        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
+        <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
+      </ModalDialog>
     </div>
   </div>
 </template>
@@ -182,21 +151,31 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
 
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+
 import PageHeader from '../components/PageHeader.vue'
 import DataTable from '../components/DataTable.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
+import ModalDialog from '../components/ModalDialog.vue'
+import PrimaryButton from '../components/PrimaryButton.vue'
+import TextInput from '../components/TextInput.vue'
+import NumberInput from '../components/NumberInput.vue'
 
 export default {
   components: {
+    Popover,
+    PopoverButton,
+    PopoverPanel,
     PageHeader,
     DataTable,
-    SecondaryButton
+    SecondaryButton,
+    ModalDialog,
+    PrimaryButton,
+    TextInput,
+    NumberInput
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,
-    dialog: false,
-    dialog2: false,
-    menu: false,
     editedIndex: -1,
     editedKey: null,
     editedItem: {
@@ -223,16 +202,16 @@ export default {
       }
     },
     editItem() {
-      this.dialog2 = false
-      this.dialog = true
+      this.$refs.dialog2.closeDialog()
+      this.$refs.dialog.openDialog()
     },
     deleteItem() {
       const db = getDatabase()
       remove(ref(db, `${this.user.id}/ownFood/${this.editedKey}`))
-      this.close()
+      this.closeModal()
     },
-    close() {
-      this.dialog = false
+    closeModal() {
+      this.$refs.dialog.closeDialog()
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem)
         this.editedIndex = -1
@@ -258,14 +237,14 @@ export default {
           })
         }
       }
-      this.close()
+      this.closeModal()
     },
     addItem(item) {
       this.weight = 100
       this.editedIndex = this.ownFood.indexOf(item)
       this.editedKey = item['.key']
       this.editedItem = Object.assign({}, item)
-      this.dialog2 = true
+      this.$refs.dialog2.openDialog()
     },
     calculatePhe() {
       return Math.round((this.weight * this.editedItem.phe) / 100)
@@ -279,7 +258,7 @@ export default {
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
-      this.dialog2 = false
+      this.$refs.dialog2.closeDialog()
       this.$router.push('/')
     },
     exportOwnFood() {
@@ -303,11 +282,10 @@ export default {
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
-    }
-  },
-  watch: {
-    dialog(val) {
-      val || this.close()
+    },
+    setIcon(item, close) {
+      this.editedItem.icon = item.svg
+      close()
     }
   },
   computed: {
@@ -356,9 +334,5 @@ export default {
 
 .pick-icon {
   cursor: pointer;
-}
-
-.v-btn {
-  text-transform: none;
 }
 </style>
