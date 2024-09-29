@@ -178,7 +178,7 @@ export default {
       const db = getDatabase()
       push(ref(db, `${this.user.id}/pheLog`), {
         name: this.result.product.product_name,
-        pheReference: this.result.product.nutriments.proteins_100g * this.factor,
+        pheReference: Math.round(this.result.product.nutriments.proteins_100g * this.factor),
         weight: Number(this.weight),
         phe: this.calculatePhe()
       })
