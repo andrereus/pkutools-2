@@ -139,7 +139,7 @@
         ]"
         @submit="add"
         @edit="editItem"
-        @close="$refs.dialog2.closeDialog()"
+        @close="closeModal"
       >
         <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
         <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
@@ -214,6 +214,7 @@ export default {
     },
     closeModal() {
       this.$refs.dialog.closeDialog()
+      this.$refs.dialog2.closeDialog()
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem)
         this.editedIndex = -1
