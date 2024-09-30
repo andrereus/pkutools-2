@@ -139,7 +139,7 @@
     "name": "Nombre",
     "email": "Correo electrónico",
     "password": "Contraseña",
-    "register-note": "Esto crea una nueva cuenta.",
+    "register-note": "Crea una nueva cuenta.",
     "register": "Registrarse",
     "signin": "Iniciar sesión",
     "reset-note": "Recibe un correo electrónico para restablecer la contraseña.",

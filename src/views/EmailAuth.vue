@@ -13,36 +13,36 @@
         <TabList class="t-mb-6">
           <Tab v-slot="{ selected }">
             <button
-              :class="{
-                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  selected,
-                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  !selected
-              }"
+              :class="[
+                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                selected
+                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
+                  : 't-text-gray-500 hover:t-text-gray-700'
+              ]"
             >
               {{ $t('email-auth.signin') }}
             </button>
           </Tab>
           <Tab v-slot="{ selected }">
             <button
-              :class="{
-                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  selected,
-                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  !selected
-              }"
+              :class="[
+                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                selected
+                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
+                  : 't-text-gray-500 hover:t-text-gray-700'
+              ]"
             >
               {{ $t('email-auth.register') }}
             </button>
           </Tab>
           <Tab v-slot="{ selected }">
             <button
-              :class="{
-                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  selected,
-                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
-                  !selected
-              }"
+              :class="[
+                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                selected
+                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
+                  : 't-text-gray-500 hover:t-text-gray-700'
+              ]"
             >
               {{ $t('email-auth.forgot-password') }}
             </button>
