@@ -80,12 +80,12 @@
             </v-btn>
           </TabPanel>
           <TabPanel>
-            <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
+            <p class="t-mt-2">{{ $t('email-auth.register-note') }}</p>
 
             <v-text-field
               :label="$t('email-auth.name')"
               type="text"
-              class="mt-8"
+              class="mt-4"
               v-model="name"
             ></v-text-field>
 
@@ -118,12 +118,12 @@
             </v-btn>
           </TabPanel>
           <TabPanel>
-            <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
+            <p class="t-mt-2">{{ $t('email-auth.reset-note') }}</p>
 
             <v-text-field
               :label="$t('email-auth.email')"
               type="email"
-              class="mt-8"
+              class="mt-4"
               v-model="email"
               :rules="[rules.required, rules.email]"
             ></v-text-field>
