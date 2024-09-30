@@ -135,7 +135,6 @@
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
-    "description": "Alternative zur Anmeldung über Google.",
     "signedin": "Du bist angemeldet.",
     "name": "Name",
     "email": "E-Mail",

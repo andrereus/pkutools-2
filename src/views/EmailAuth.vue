@@ -9,115 +9,131 @@
     </div>
 
     <div v-if="!userIsAuthenticated">
-      <p class="mb-6">{{ $t('email-auth.description') }}</p>
+      <TabGroup>
+        <TabList class="t-mb-6">
+          <Tab v-slot="{ selected }">
+            <button
+              :class="{
+                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  selected,
+                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  !selected
+              }"
+            >
+              {{ $t('email-auth.signin') }}
+            </button>
+          </Tab>
+          <Tab v-slot="{ selected }">
+            <button
+              :class="{
+                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  selected,
+                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  !selected
+              }"
+            >
+              {{ $t('email-auth.register') }}
+            </button>
+          </Tab>
+          <Tab v-slot="{ selected }">
+            <button
+              :class="{
+                't-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  selected,
+                't-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300':
+                  !selected
+              }"
+            >
+              {{ $t('email-auth.forgot-password') }}
+            </button>
+          </Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <v-text-field
+              :label="$t('email-auth.email')"
+              type="email"
+              class="mt-6"
+              v-model="email"
+              :rules="[rules.required, rules.email]"
+            ></v-text-field>
 
-      <v-card variant="outlined">
-        <v-tabs v-model="tab" show-arrows>
-          <v-tab>{{ $t('email-auth.signin') }}</v-tab>
-          <v-tab>{{ $t('email-auth.register') }}</v-tab>
-          <v-tab>{{ $t('email-auth.forgot-password') }}</v-tab>
-        </v-tabs>
+            <v-text-field
+              :label="$t('email-auth.password')"
+              :type="show1 ? 'text' : 'password'"
+              v-model="password"
+              :append-icon="show1 ? mdiEye : mdiEyeOff"
+              :rules="[rules.required, rules.min]"
+              :hint="$t('email-auth.min-length')"
+              @click:append="show1 = !show1"
+              spellcheck="false"
+            ></v-text-field>
 
-        <v-window v-model="tab">
-          <v-window-item>
-            <v-container fluid>
-              <v-text-field
-                :label="$t('email-auth.email')"
-                type="email"
-                class="mt-6"
-                v-model="email"
-                :rules="[rules.required, rules.email]"
-              ></v-text-field>
+            <v-btn
+              variant="flat"
+              rounded
+              color="primary"
+              class="mr-3 mb-3"
+              @click="signInEmailPassword"
+            >
+              {{ $t('email-auth.signin') }}
+            </v-btn>
+          </TabPanel>
+          <TabPanel>
+            <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
 
-              <v-text-field
-                :label="$t('email-auth.password')"
-                :type="show1 ? 'text' : 'password'"
-                v-model="password"
-                :append-icon="show1 ? mdiEye : mdiEyeOff"
-                :rules="[rules.required, rules.min]"
-                :hint="$t('email-auth.min-length')"
-                @click:append="show1 = !show1"
-                spellcheck="false"
-              ></v-text-field>
+            <v-text-field
+              :label="$t('email-auth.name')"
+              type="text"
+              class="mt-8"
+              v-model="name"
+            ></v-text-field>
 
-              <v-btn
-                variant="flat"
-                rounded
-                color="primary"
-                class="mr-3 mb-3"
-                @click="signInEmailPassword"
-              >
-                {{ $t('email-auth.signin') }}
-              </v-btn>
-            </v-container>
-          </v-window-item>
+            <v-text-field
+              :label="$t('email-auth.email')"
+              type="email"
+              v-model="email"
+              :rules="[rules.required, rules.email]"
+            ></v-text-field>
 
-          <v-window-item>
-            <v-container fluid>
-              <p class="mt-2">{{ $t('email-auth.register-note') }}</p>
+            <v-text-field
+              :label="$t('email-auth.password')"
+              :type="show1 ? 'text' : 'password'"
+              v-model="password"
+              :append-icon="show1 ? mdiEye : mdiEyeOff"
+              :rules="[rules.required, rules.min]"
+              :hint="$t('email-auth.min-length')"
+              @click:append="show1 = !show1"
+              spellcheck="false"
+            ></v-text-field>
 
-              <v-text-field
-                :label="$t('email-auth.name')"
-                type="text"
-                class="mt-8"
-                v-model="name"
-              ></v-text-field>
+            <v-btn
+              variant="flat"
+              rounded
+              color="primary"
+              class="mr-3 mb-3"
+              @click="registerEmailPassword"
+            >
+              {{ $t('email-auth.register') }}
+            </v-btn>
+          </TabPanel>
+          <TabPanel>
+            <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
 
-              <v-text-field
-                :label="$t('email-auth.email')"
-                type="email"
-                v-model="email"
-                :rules="[rules.required, rules.email]"
-              ></v-text-field>
+            <v-text-field
+              :label="$t('email-auth.email')"
+              type="email"
+              class="mt-8"
+              v-model="email"
+              :rules="[rules.required, rules.email]"
+            ></v-text-field>
 
-              <v-text-field
-                :label="$t('email-auth.password')"
-                :type="show1 ? 'text' : 'password'"
-                v-model="password"
-                :append-icon="show1 ? mdiEye : mdiEyeOff"
-                :rules="[rules.required, rules.min]"
-                :hint="$t('email-auth.min-length')"
-                @click:append="show1 = !show1"
-                spellcheck="false"
-              ></v-text-field>
-
-              <v-btn
-                variant="flat"
-                rounded
-                color="primary"
-                class="mr-3 mb-3"
-                @click="registerEmailPassword"
-              >
-                {{ $t('email-auth.register') }}
-              </v-btn>
-            </v-container>
-          </v-window-item>
-
-          <v-window-item>
-            <v-container fluid>
-              <p class="mt-2">{{ $t('email-auth.reset-note') }}</p>
-
-              <v-text-field
-                :label="$t('email-auth.email')"
-                type="email"
-                class="mt-8"
-                v-model="email"
-                :rules="[rules.required, rules.email]"
-              ></v-text-field>
-
-              <v-btn
-                variant="flat"
-                rounded
-                color="primary"
-                class="mr-3 mb-3"
-                @click="resetPassword"
-              >
-                {{ $t('email-auth.reset-password') }}
-              </v-btn>
-            </v-container>
-          </v-window-item>
-        </v-window>
-      </v-card>
+            <v-btn variant="flat" rounded color="primary" class="mr-3 mb-3" @click="resetPassword">
+              {{ $t('email-auth.reset-password') }}
+            </v-btn>
+          </TabPanel>
+        </TabPanels>
+      </TabGroup>
     </div>
   </div>
 </template>
@@ -126,10 +142,17 @@
 import { useStore } from '../stores/index'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+
 import PageHeader from '../components/PageHeader.vue'
 
 export default {
   components: {
+    TabGroup,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel,
     PageHeader
   },
   data: () => ({

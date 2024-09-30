@@ -135,7 +135,6 @@
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
-    "description": "Alternativa para iniciar sesión a través de Google.",
     "signedin": "Has iniciado sesión.",
     "name": "Nombre",
     "email": "Correo electrónico",
