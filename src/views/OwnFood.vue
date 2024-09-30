@@ -84,7 +84,9 @@
               class="food-icon t-float-left"
               alt="Food Icon"
             />
-            <span class="t-float-left t-m-1 t-text-sm">{{ $t('own-food.choose-icon') }}</span>
+            <span class="t-float-left t-my-1 t-ml-2 t-text-sm">{{
+              $t('own-food.choose-icon')
+            }}</span>
           </PopoverButton>
 
           <transition
