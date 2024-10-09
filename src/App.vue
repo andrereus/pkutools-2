@@ -280,13 +280,14 @@
               $t('settings.title')
             }}</RouterLink>
           </div>
-          <v-progress-linear
-            :model-value="(pheResult * 100) / (settings?.maxPhe || 0)"
-            height="3"
-            class="mt-2"
-            color="primary"
-            rounded
-          ></v-progress-linear>
+          <div
+            class="t-relative t-w-full t-bg-gray-200 dark:t-bg-gray-800 t-rounded-md t-overflow-hidden t-h-1 t-mt-2"
+          >
+            <div
+              class="t-bg-sky-500 t-h-full t-rounded-md"
+              :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 0)}%` }"
+            ></div>
+          </div>
         </div>
         <nav
           class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12 lg:t-justify-start lg:t-space-x-4"
