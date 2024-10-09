@@ -237,7 +237,7 @@ export default {
       }
     },
     exportAllFoodItems() {
-      let r = confirm(this.$t('common.export') + '?')
+      let r = confirm(this.$t('phe-diary.export-food') + '?')
       if (r === true) {
         let csvContent = 'data:text/csv;charset=utf-8,'
         csvContent += 'Date,Name,Weight,Phe\n'
@@ -255,7 +255,7 @@ export default {
       }
     },
     exportDailyPheTotals() {
-      let r = confirm(this.$t('common.export') + '?')
+      let r = confirm(this.$t('phe-diary.export-days') + '?')
       if (r === true) {
         let csvContent = 'data:text/csv;charset=utf-8,'
         csvContent += 'Date,Total Phe\n'
