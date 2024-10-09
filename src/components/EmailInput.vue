@@ -1,0 +1,43 @@
+<script setup>
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+defineProps(['idName', 'label'])
+const model = defineModel()
+const errorMessage = ref('')
+const { t } = useI18n()
+
+const validateEmail = () => {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  errorMessage.value = pattern.test(model.value) ? '' : t('email-auth.invalid-email')
+}
+
+watch(model, () => {
+  if (!model.value) {
+    errorMessage.value = t('email-auth.required')
+  } else {
+    validateEmail()
+  }
+})
+</script>
+
+<template>
+  <div>
+    <label
+      :for="idName"
+      class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
+      >{{ label }}</label
+    >
+    <div class="t-mt-1 t-mb-3">
+      <input
+        type="email"
+        :name="idName"
+        :id="idName"
+        v-model="model"
+        @blur="validateEmail"
+        class="t-block t-w-full t-rounded-md t-border-0 t-bg-white t-py-1.5 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-bg-gray-800 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500"
+      />
+      <p v-if="errorMessage" class="t-text-red-600 t-text-sm t-mt-1.5">{{ errorMessage }}</p>
+    </div>
+  </div>
+</template>
