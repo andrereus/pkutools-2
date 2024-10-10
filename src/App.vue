@@ -285,7 +285,7 @@
           >
             <div
               class="t-bg-sky-500 t-h-full t-rounded-md"
-              :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 0)}%` }"
+              :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
             ></div>
           </div>
         </div>
