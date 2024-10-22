@@ -1,5 +1,5 @@
 <template>
-  <div class="t-prose" :class="{ 't-prose-invert': $vuetify.theme.current.dark }">
+  <div class="t-prose dark:t-prose-invert">
     <h1>Disclaimer</h1>
     <p>Last updated: July 25, 2024</p>
     <h2>Interpretation and Definitions</h2>

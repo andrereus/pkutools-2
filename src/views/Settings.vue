@@ -58,7 +58,6 @@
 import { useStore } from '../stores/index'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
-import { useTheme } from 'vuetify'
 
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
@@ -77,43 +76,6 @@ export default {
   data: () => ({
     selectedTheme: 'system'
   }),
-  setup() {
-    const theme = useTheme()
-    const handleSystemThemeChange = (e) => {
-      theme.global.name.value = e.matches ? 'dark' : 'light'
-      document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      if (theme.global.name.value === 'dark') {
-        document.documentElement.classList.add('t-dark')
-      } else {
-        document.documentElement.classList.remove('t-dark')
-      }
-    }
-    function applyTheme(selectedTheme) {
-      if (selectedTheme === 'system') {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        theme.global.name.value = prefersDark ? 'dark' : 'light'
-        window
-          .matchMedia('(prefers-color-scheme: dark)')
-          .addEventListener('change', handleSystemThemeChange)
-      } else {
-        theme.global.name.value = selectedTheme
-        window
-          .matchMedia('(prefers-color-scheme: dark)')
-          .removeEventListener('change', handleSystemThemeChange)
-      }
-      document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      if (theme.global.name.value === 'dark') {
-        document.documentElement.classList.add('t-dark')
-      } else {
-        document.documentElement.classList.remove('t-dark')
-      }
-      localStorage.setItem('vuetifyCurrentTheme', selectedTheme)
-    }
-    return {
-      applyTheme,
-      handleSystemThemeChange
-    }
-  },
   methods: {
     async signInGoogle() {
       const store = useStore()
@@ -176,13 +138,24 @@ export default {
       }
     },
     handleThemeChange() {
-      this.applyTheme(this.selectedTheme)
+      if (this.selectedTheme === 'light') {
+        localStorage.setItem('theme', 'light')
+        document.documentElement.classList.remove('t-dark')
+      } else if (this.selectedTheme === 'dark') {
+        localStorage.setItem('theme', 'dark')
+        document.documentElement.classList.add('t-dark')
+      } else {
+        localStorage.removeItem('theme')
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
+          document.documentElement.classList.add('t-dark')
+        } else {
+          document.documentElement.classList.remove('t-dark')
+        }
+      }
     }
   },
   mounted() {
-    const storedTheme = localStorage.getItem('vuetifyCurrentTheme') || 'system'
-    this.selectedTheme = storedTheme
-    this.applyTheme(this.selectedTheme)
+    this.selectedTheme = localStorage.getItem('theme') || 'system'
   },
   computed: {
     themeOptions() {

@@ -385,7 +385,7 @@ export default {
           ]
         },
         theme: {
-          mode: this.$vuetify.theme.dark === true ? 'dark' : 'light'
+          mode: document.documentElement.classList.contains('t-dark') ? 'dark' : 'light'
         },
         colors: ['#3498db']
       }

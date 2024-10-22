@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light" class="t-h-full">
+<html lang="en" class="t-h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -9,6 +9,13 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" sizes="180x180" />
+    <script>
+      document.documentElement.classList.toggle(
+        't-dark',
+        localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      )
+    </script>
     <script type="text/javascript">
       window.smartlook ||
         (function (d) {

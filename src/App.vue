@@ -1,5 +1,5 @@
 <template>
-  <div class="t-min-h-full app-container-safe-area">
+  <div class="t-min-h-full app-container-safe-area dark:t-text-white">
     <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
       <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 lg:t-px-8">
         <div class="t-relative t-flex t-h-16 t-justify-between">
@@ -322,7 +322,6 @@
 <script>
 /* global Headway */
 import { useStore } from './stores/index'
-import { useTheme } from 'vuetify'
 
 import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import {
@@ -377,46 +376,6 @@ export default {
       { name: 'Français', abbr: 'fr' }
     ]
   }),
-  setup() {
-    const theme = useTheme()
-    const handleSystemThemeChange = (e) => {
-      theme.global.name.value = e.matches ? 'dark' : 'light'
-      document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      if (theme.global.name.value === 'dark') {
-        document.documentElement.classList.add('t-dark')
-      } else {
-        document.documentElement.classList.remove('t-dark')
-      }
-    }
-    function initializeTheme() {
-      let storedTheme = localStorage.getItem('vuetifyCurrentTheme')
-      if (!storedTheme || storedTheme === 'system') {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        storedTheme = prefersDark ? 'dark' : 'light'
-        window
-          .matchMedia('(prefers-color-scheme: dark)')
-          .addEventListener('change', handleSystemThemeChange)
-      }
-      theme.global.name.value = storedTheme
-      document.documentElement.setAttribute('data-theme', theme.global.name.value)
-      if (theme.global.name.value === 'dark') {
-        document.documentElement.classList.add('t-dark')
-      } else {
-        document.documentElement.classList.remove('t-dark')
-      }
-
-      // Remove old local storage item
-      if (localStorage.vuetifyThemeDark) {
-        localStorage.removeItem('vuetifyThemeDark')
-      }
-      if (localStorage.vuetifyThemeFromDevice) {
-        localStorage.removeItem('vuetifyThemeFromDevice')
-      }
-    }
-    return {
-      initializeTheme
-    }
-  },
   methods: {
     async signInGoogle() {
       const store = useStore()
@@ -436,7 +395,6 @@ export default {
     document.getElementsByTagName('html')[0].lang = this.$i18n.locale
   },
   mounted() {
-    this.initializeTheme()
     const store = useStore()
     store.checkAuthState()
 
@@ -447,6 +405,17 @@ export default {
         account: 'JVmwL7'
       }
       Headway.init(config)
+    }
+
+    // Remove old local storage item
+    if (localStorage.vuetifyThemeDark) {
+      localStorage.removeItem('vuetifyThemeDark')
+    }
+    if (localStorage.vuetifyThemeFromDevice) {
+      localStorage.removeItem('vuetifyThemeFromDevice')
+    }
+    if (localStorage.vuetifyCurrentTheme) {
+      localStorage.removeItem('vuetifyCurrentTheme')
     }
   },
   computed: {
@@ -518,7 +487,6 @@ export default {
       set: function (newLocale) {
         localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
         this.$i18n.locale = newLocale
-        this.$vuetify.locale.current = newLocale
         document.getElementsByTagName('html')[0].lang = newLocale
       }
     },
