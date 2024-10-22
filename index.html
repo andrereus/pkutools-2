@@ -10,11 +10,17 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" sizes="180x180" />
     <script>
-      document.documentElement.classList.toggle(
-        'dark',
-        localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      )
+      function updateTheme() {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const selectedTheme = localStorage.getItem('theme') || 'system'
+        if (selectedTheme === 'dark' || (selectedTheme === 'system' && systemTheme === true)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      }
+      updateTheme()
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme)
     </script>
     <script type="text/javascript">
       window.smartlook ||
