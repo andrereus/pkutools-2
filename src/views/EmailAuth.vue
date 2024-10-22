@@ -10,14 +10,14 @@
 
     <div v-if="!userIsAuthenticated">
       <TabGroup>
-        <TabList class="t-mb-6">
+        <TabList class="mb-6">
           <Tab v-slot="{ selected }">
             <button
               :class="[
-                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300',
                 selected
-                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
-                  : 't-text-gray-500 hover:t-text-gray-700'
+                  ? 'bg-black/5 dark:bg-white/15 text-gray-700'
+                  : 'text-gray-500 hover:text-gray-700'
               ]"
             >
               {{ $t('email-auth.signin') }}
@@ -26,10 +26,10 @@
           <Tab v-slot="{ selected }">
             <button
               :class="[
-                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300',
                 selected
-                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
-                  : 't-text-gray-500 hover:t-text-gray-700'
+                  ? 'bg-black/5 dark:bg-white/15 text-gray-700'
+                  : 'text-gray-500 hover:text-gray-700'
               ]"
             >
               {{ $t('email-auth.register') }}
@@ -38,10 +38,10 @@
           <Tab v-slot="{ selected }">
             <button
               :class="[
-                't-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300',
+                'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300',
                 selected
-                  ? 't-bg-black/5 dark:t-bg-white/15 t-text-gray-700'
-                  : 't-text-gray-500 hover:t-text-gray-700'
+                  ? 'bg-black/5 dark:bg-white/15 text-gray-700'
+                  : 'text-gray-500 hover:text-gray-700'
               ]"
             >
               {{ $t('email-auth.forgot-password') }}
@@ -60,11 +60,11 @@
             <PrimaryButton
               :text="$t('email-auth.signin')"
               @click="signInEmailPassword"
-              class="t-mt-4"
+              class="mt-4"
             />
           </TabPanel>
           <TabPanel>
-            <p class="t-mt-2 t-mb-6">{{ $t('email-auth.register-note') }}</p>
+            <p class="mt-2 mb-6">{{ $t('email-auth.register-note') }}</p>
 
             <TextInput id-name="name" :label="$t('email-auth.name')" v-model="name" />
             <EmailInput id-name="register-email" :label="$t('email-auth.email')" v-model="email" />
@@ -77,18 +77,18 @@
             <PrimaryButton
               :text="$t('email-auth.register')"
               @click="registerEmailPassword"
-              class="t-mt-4"
+              class="mt-4"
             />
           </TabPanel>
           <TabPanel>
-            <p class="t-mt-2 t-mb-6">{{ $t('email-auth.reset-note') }}</p>
+            <p class="mt-2 mb-6">{{ $t('email-auth.reset-note') }}</p>
 
             <EmailInput id-name="reset-email" :label="$t('email-auth.email')" v-model="email" />
 
             <PrimaryButton
               :text="$t('email-auth.reset-password')"
               @click="resetPassword"
-              class="t-mt-4"
+              class="mt-4"
             />
           </TabPanel>
         </TabPanels>

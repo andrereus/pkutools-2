@@ -5,7 +5,7 @@ defineProps(['text'])
 <template>
   <button
     type="button"
-    class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-mr-3 t-mb-3"
+    class="rounded bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 mr-3 mb-3"
   >
     {{ text }}
   </button>

@@ -1,35 +1,35 @@
 <template>
-  <div class="t-min-h-full app-container-safe-area dark:t-text-white">
-    <div as="nav" class="t-bg-white t-shadow dark:t-bg-gray-800">
-      <div class="t-mx-auto t-max-w-7xl t-px-2 sm:t-px-4 lg:t-px-8">
-        <div class="t-relative t-flex t-h-16 t-justify-between">
-          <div class="t-relative t-inset-y-0 t-left-0 t-flex t-items-center">
-            <MenuComponent as="div" class="t-relative">
+  <div class="min-h-full app-container-safe-area dark:text-white">
+    <div as="nav" class="bg-white shadow dark:bg-gray-800">
+      <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+        <div class="relative flex h-16 justify-between">
+          <div class="relative inset-y-0 left-0 flex items-center">
+            <MenuComponent as="div" class="relative">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
                 >
-                  <span class="t-absolute t--inset-1.5" />
-                  <span class="t-sr-only">{{ $t('app.main-menu') }}</span>
-                  <MenuIcon class="t-h-6 t-w-6" aria-hidden="true" />
+                  <span class="absolute -inset-1.5" />
+                  <span class="sr-only">{{ $t('app.main-menu') }}</span>
+                  <MenuIcon class="h-6 w-6" aria-hidden="true" />
                 </MenuButton>
               </div>
               <transition
-                enter-active-class="t-transition t-ease-out t-duration-200"
-                enter-from-class="t-transform t-opacity-0 t-scale-95"
-                enter-to-class="t-transform t-opacity-100 t-scale-100"
-                leave-active-class="t-transition t-ease-in t-duration-75"
-                leave-from-class="t-transform t-opacity-100 t-scale-100"
-                leave-to-class="t-transform t-opacity-0 t-scale-95"
+                enter-active-class="transition ease-out duration-200"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-left-0 t-z-10 t-mt-4 t-w-64 t-origin-top-left t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
+                  class="absolute left-0 z-10 mt-4 w-64 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                        'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -40,7 +40,7 @@
                     >
                       <component
                         :is="item.icon"
-                        class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                        class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                         aria-hidden="true"
                       />{{ $t(item.name) }}
                     </a>
@@ -50,52 +50,48 @@
             </MenuComponent>
           </div>
 
-          <div class="t-flex t-flex-1 t-items-stretch t-justify-start t-ml-3">
+          <div class="flex flex-1 items-stretch justify-start ml-3">
             <RouterLink
               :to="userIsAuthenticated ? '/?log=true' : '/?home=true'"
-              class="t-flex t-flex-shrink-0 t-items-center"
+              class="flex flex-shrink-0 items-center"
             >
-              <img
-                class="t-h-8 t-w-auto t-mr-3"
-                src="./assets/pkutools-logo.png"
-                alt="PKU Tools Logo"
-              />
-              <span class="dark:t-text-white">PKU Tools</span>
+              <img class="h-8 w-auto mr-3" src="./assets/pkutools-logo.png" alt="PKU Tools Logo" />
+              <span class="dark:text-white">PKU Tools</span>
             </RouterLink>
           </div>
 
           <div
-            class="t-absolute t-inset-y-0 t-right-0 t-flex t-items-center t-pr-2 sm:t-static sm:t-inset-auto sm:t-ml-6 sm:t-pr-0"
+            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
           >
             <button
               type="button"
-              class="headway t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white"
+              class="headway relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
             ></button>
 
-            <MenuComponent as="div" class="t-relative t-ml-2">
+            <MenuComponent as="div" class="relative ml-2">
               <div>
                 <MenuButton
-                  class="t-relative t-rounded-full t-bg-white t-p-1 t-text-gray-600 hover:t-text-black focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 t-uppercase dark:t-bg-gray-800 dark:t-text-gray-200 dark:hover:t-text-white t-mr-2"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2"
                 >
                   {{ locale }}
                 </MenuButton>
               </div>
               <transition
-                enter-active-class="t-transition t-ease-out t-duration-200"
-                enter-from-class="t-transform t-opacity-0 t-scale-95"
-                enter-to-class="t-transform t-opacity-100 t-scale-100"
-                leave-active-class="t-transition t-ease-in t-duration-75"
-                leave-from-class="t-transform t-opacity-100 t-scale-100"
-                leave-to-class="t-transform t-opacity-0 t-scale-95"
+                enter-active-class="transition ease-out duration-200"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-4 t-w-40 t-origin-top-right t-rounded-md t-bg-white t-py-1 t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
                       :class="[
-                        active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                        't-block t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                        active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                        'block px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                       ]"
                       @click.prevent="
                         () => {
@@ -111,48 +107,48 @@
               </transition>
             </MenuComponent>
 
-            <MenuComponent as="div" class="t-relative t-ml-3">
+            <MenuComponent as="div" class="relative ml-3">
               <div>
                 <MenuButton
-                  class="t-relative t-flex t-rounded-full t-bg-white t-text-sm focus:t-outline-none focus:t-ring-2 focus:t-ring-sky-500 focus:t-ring-offset-2 dark:t-bg-gray-800"
+                  class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800"
                 >
-                  <span class="t-absolute t--inset-1.5" />
-                  <span class="t-sr-only">{{ $t('app.account-menu') }}</span>
+                  <span class="absolute -inset-1.5" />
+                  <span class="sr-only">{{ $t('app.account-menu') }}</span>
                   <CircleUser
                     v-if="!userIsAuthenticated"
-                    class="t-h-6 t-w-6 dark:t-text-gray-300"
+                    class="h-6 w-6 dark:text-gray-300"
                     aria-hidden="true"
                   />
                   <User
                     v-if="userIsAuthenticated && !userPhotoUrl"
-                    class="t-h-6 t-w-6 dark:t-text-gray-300"
+                    class="h-6 w-6 dark:text-gray-300"
                     aria-hidden="true"
                   />
                   <img
                     v-if="userIsAuthenticated && userPhotoUrl"
-                    class="t-h-8 t-w-8 t-rounded-full sl-exclude"
+                    class="h-8 w-8 rounded-full sl-exclude"
                     :src="userPhotoUrl"
                     :alt="$t('app.profile-picture')"
                   />
                 </MenuButton>
               </div>
               <transition
-                enter-active-class="t-transition t-ease-out t-duration-200"
-                enter-from-class="t-transform t-opacity-0 t-scale-95"
-                enter-to-class="t-transform t-opacity-100 t-scale-100"
-                leave-active-class="t-transition t-ease-in t-duration-75"
-                leave-from-class="t-transform t-opacity-100 t-scale-100"
-                leave-to-class="t-transform t-opacity-0 t-scale-95"
+                enter-active-class="transition ease-out duration-200"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="t-absolute t-right-0 t-z-10 t-mt-4 t-w-64 t-origin-top-right t-divide-y t-divide-gray-100 t-rounded-md t-bg-white t-shadow-lg t-ring-1 t-ring-black t-ring-opacity-5 focus:t-outline-none dark:t-bg-gray-800 dark:t-ring-gray-700 dark:t-divide-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700 dark:divide-gray-700"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -165,7 +161,7 @@
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           width="25"
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                         >
                           <path
                             d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"
@@ -178,8 +174,8 @@
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -189,7 +185,7 @@
                         "
                       >
                         <Mail
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ $t('email-auth.title') }}
                       </a>
@@ -197,8 +193,8 @@
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300 sl-mask'
+                          active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300 sl-mask'
                         ]"
                         @click.prevent="
                           () => {
@@ -208,7 +204,7 @@
                         "
                       >
                         <User
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ user.name || user.email }}
                       </a>
@@ -216,8 +212,8 @@
                     <MenuItem v-if="userIsAuthenticated" v-slot="{ active, close }">
                       <a
                         :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -227,7 +223,7 @@
                         "
                       >
                         <LogOut
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ $t('app.signout') }}
                       </a>
@@ -241,8 +237,8 @@
                     >
                       <a
                         :class="[
-                          active ? 't-bg-gray-100 dark:t-bg-gray-700' : '',
-                          't-group t-flex t-items-center t-px-6 t-py-3 t-text-gray-700 t-cursor-pointer dark:t-text-gray-300'
+                          active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
@@ -253,7 +249,7 @@
                       >
                         <component
                           :is="item.icon"
-                          class="t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ $t(item.name) }}
                       </a>
@@ -264,12 +260,12 @@
             </MenuComponent>
           </div>
         </div>
-        <div v-if="!userIsAuthenticated" class="t-border-b dark:t-border-gray-700"></div>
+        <div v-if="!userIsAuthenticated" class="border-b dark:border-gray-700"></div>
         <div
           v-if="userIsAuthenticated"
-          class="t-my-1 t-py-3 t-px-3 t-bg-gray-50 dark:t-bg-gray-900 t-rounded-md t-shadow-inner"
+          class="my-1 py-3 px-3 bg-gray-50 dark:bg-gray-900 rounded-md shadow-inner"
         >
-          <div class="t-text-sm t-flex t-justify-between">
+          <div class="text-sm flex justify-between">
             <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
             <span v-if="settings?.maxPhe"
               >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
@@ -281,37 +277,37 @@
             }}</RouterLink>
           </div>
           <div
-            class="t-relative t-w-full t-bg-gray-200 dark:t-bg-gray-800 t-rounded-md t-overflow-hidden t-h-1 t-mt-2"
+            class="relative w-full bg-gray-200 dark:bg-gray-800 rounded-md overflow-hidden h-1 mt-2"
           >
             <div
-              class="t-bg-sky-500 t-h-full t-rounded-md"
+              class="bg-sky-500 h-full rounded-md"
               :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
             ></div>
           </div>
         </div>
         <nav
-          class="t-flex t-py-2 t-justify-around sm:t-justify-center sm:t-space-x-12 lg:t-justify-start lg:t-space-x-4"
+          class="flex py-2 justify-around sm:justify-center sm:space-x-12 lg:justify-start lg:space-x-4"
           aria-label="Global"
         >
           <RouterLink
             v-for="item in tabNavigation"
             :key="item.name"
             :to="item.route"
-            class="t-text-gray-600 hover:t-bg-gray-50 hover:t-text-gray-600 t-group t-inline-flex t-items-center t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300 dark:hover:t-bg-gray-700"
+            class="text-gray-600 hover:bg-gray-50 hover:text-gray-600 group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:bg-gray-700"
           >
             <component
               :is="item.icon"
-              class="md:t-mr-3 t-h-5 t-w-5 t-text-gray-700 group-hover:t-text-gray-500 dark:t-text-gray-300 dark:group-hover:t-text-gray-300"
+              class="md:mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
               aria-hidden="true"
-            /><span class="t-hidden lg:t-inline-block">{{ $t(item.name) }}</span>
+            /><span class="hidden lg:inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
       </div>
     </div>
 
-    <div class="t-pb-10">
+    <div class="pb-10">
       <main>
-        <div class="t-mx-auto t-max-w-7xl t-px-4 t-py-8 sm:t-px-6 lg:t-px-8">
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <RouterView></RouterView>
         </div>
       </main>

@@ -30,29 +30,29 @@ watch(model, () => {
   <div>
     <label
       :for="idName"
-      class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
+      class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300"
       >{{ label }}</label
     >
-    <div class="t-mt-1 t-mb-3">
-      <div class="t-relative t-mt-1.5">
+    <div class="mt-1 mb-3">
+      <div class="relative mt-1.5">
         <input
           :type="showPassword ? 'text' : 'password'"
           :name="idName"
           :id="idName"
           v-model="model"
           @blur="validatePassword"
-          class="t-block t-w-full t-rounded-md t-border-0 t-bg-white t-py-1.5 t-pr-10 t-text-gray-900 t-shadow-sm t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-bg-gray-800 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500"
+          class="block w-full rounded-md border-0 bg-white py-1.5 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500"
           spellcheck="false"
         />
         <div
           @click="showPassword = !showPassword"
-          class="t-absolute t-inset-y-0 t-right-0 t-flex t-items-center t-pr-3 t-cursor-pointer"
+          class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
         >
-          <Eye v-if="showPassword" class="t-h-5 t-w-5 t-text-gray-400" aria-hidden="true" />
-          <EyeOff v-else class="t-h-5 t-w-5 t-text-gray-400" aria-hidden="true" />
+          <Eye v-if="showPassword" class="h-5 w-5 text-gray-400" aria-hidden="true" />
+          <EyeOff v-else class="h-5 w-5 text-gray-400" aria-hidden="true" />
         </div>
       </div>
-      <p v-if="errorMessage" class="t-text-red-600 t-text-sm t-mt-1.5">{{ errorMessage }}</p>
+      <p v-if="errorMessage" class="text-red-600 text-sm mt-1.5">{{ errorMessage }}</p>
     </div>
   </div>
 </template>

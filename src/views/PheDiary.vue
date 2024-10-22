@@ -1,36 +1,36 @@
 <template>
   <div>
-    <div class="t-block t-mb-6">
-      <nav class="t-flex t-space-x-2" aria-label="Tabs">
+    <div class="block mb-6">
+      <nav class="flex space-x-2" aria-label="Tabs">
         <RouterLink
           :to="{ path: '/', query: { log: true } }"
-          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
         >
           {{ $t('phe-log.tab-title') }}
         </RouterLink>
         <RouterLink
           to="/phe-diary"
-          class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           aria-current="page"
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
       </nav>
     </div>
 
-    <div v-if="!userIsAuthenticated" class="t-mt-8">
+    <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
         to="/email-auth"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p v-if="pheDiary.length < 2" class="t-mb-6">{{ $t('phe-diary.chart-info') }}</p>
+      <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
 
       <apexchart
         v-if="pheDiary.length >= 2"
@@ -38,25 +38,21 @@
         height="250"
         :options="chartOptions"
         :series="graph"
-        class="t--mb-2"
+        class="-mb-2"
       ></apexchart>
 
       <!-- TODO: Add sort feature -->
-      <DataTable :headers="tableHeaders" class="t-mb-8">
+      <DataTable :headers="tableHeaders" class="mb-8">
         <tr
           v-for="(item, index) in pheDiary"
           :key="index"
           @click="editItem(item)"
-          class="t-cursor-pointer"
+          class="cursor-pointer"
         >
-          <td
-            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-          >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
             {{ getlocalDate(item.date) }}
           </td>
-          <td
-            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-          >
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
         </tr>
@@ -84,11 +80,9 @@
           v-model.number="editedItem.phe"
         />
 
-        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="t-mb-3">
+        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
           <tr v-for="(item, index) in editedItem.log" :key="index">
-            <td
-              class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-            >
+            <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
               <img
                 :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
                 v-if="item.icon !== undefined && item.icon !== ''"
@@ -111,9 +105,7 @@
               }}
               {{ item.name }}
             </td>
-            <td
-              class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-            >
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
               {{ item.phe }}
             </td>
           </tr>
@@ -123,7 +115,7 @@
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
-      <p class="t-mt-3">{{ $t('phe-diary.note') }}</p>
+      <p class="mt-3">{{ $t('phe-diary.note') }}</p>
     </div>
   </div>
 </template>
@@ -385,7 +377,7 @@ export default {
           ]
         },
         theme: {
-          mode: document.documentElement.classList.contains('t-dark') ? 'dark' : 'light'
+          mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light'
         },
         colors: ['#3498db']
       }

@@ -7,14 +7,14 @@ const model = defineModel()
   <div>
     <label
       :for="idName"
-      class="t-block t-text-sm t-font-medium t-leading-6 t-text-gray-900 dark:t-text-gray-300"
+      class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300"
       >{{ label }}</label
     >
     <select
       :id="idName"
       :name="idName"
       v-model="model"
-      class="t-mt-1 t-mb-3 t-block t-w-full t-rounded-md t-border-0 t-py-1.5 t-pl-3 t-pr-10 t-text-gray-900 t-ring-1 t-ring-inset t-ring-gray-300 focus:t-ring-2 focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500 t-bg-white dark:t-bg-gray-800"
+      class="mt-1 mb-3 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-sky-500 sm:text-sm sm:leading-6 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500 bg-white dark:bg-gray-800"
     >
       <slot />
     </select>

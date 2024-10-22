@@ -4,31 +4,29 @@
       <PageHeader :title="$t('own-food.title')" />
     </header>
 
-    <div v-if="!userIsAuthenticated" class="t-mt-8">
+    <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
         to="/email-auth"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p class="t-mb-6">{{ $t('own-food.search-info') }}</p>
+      <p class="mb-6">{{ $t('own-food.search-info') }}</p>
 
-      <DataTable :headers="tableHeaders" class="t-mb-8">
+      <DataTable :headers="tableHeaders" class="mb-8">
         <tr
           v-for="(item, index) in ownFood"
           :key="index"
           @click="addItem(item)"
-          class="t-cursor-pointer"
+          class="cursor-pointer"
         >
-          <td
-            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-          >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
             <img
               :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
               v-if="item.icon !== undefined && item.icon !== ''"
@@ -46,9 +44,7 @@
             />
             {{ item.name }}
           </td>
-          <td
-            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-          >
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
         </tr>
@@ -69,33 +65,31 @@
         @close="closeModal"
       >
         <Popover>
-          <PopoverButton class="t-mt-1">
+          <PopoverButton class="mt-1">
             <img
               :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
               v-if="editedItem.icon !== undefined && editedItem.icon !== null"
               width="30"
-              class="food-icon t-float-left"
+              class="food-icon float-left"
               alt="Food Icon"
             />
             <img
               :src="publicPath + 'img/food-icons/organic-food.svg'"
               v-if="editedItem.icon === undefined || editedItem.icon === null"
               width="30"
-              class="food-icon t-float-left"
+              class="food-icon float-left"
               alt="Food Icon"
             />
-            <span class="t-float-left t-my-1 t-ml-2 t-text-sm">{{
-              $t('own-food.choose-icon')
-            }}</span>
+            <span class="float-left my-1 ml-2 text-sm">{{ $t('own-food.choose-icon') }}</span>
           </PopoverButton>
 
           <transition
-            enter-active-class="t-transition t-ease-out t-duration-200"
-            enter-from-class="t-transform t-opacity-0 t-scale-95"
-            enter-to-class="t-transform t-opacity-100 t-scale-100"
-            leave-active-class="t-transition t-ease-in t-duration-75"
-            leave-from-class="t-transform t-opacity-100 t-scale-100"
-            leave-to-class="t-transform t-opacity-0 t-scale-95"
+            enter-active-class="transition ease-out duration-200"
+            enter-from-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
           >
             <PopoverPanel v-slot="{ close }">
               <span v-for="(item, index) in foodIcons" :key="index">
@@ -103,7 +97,7 @@
                   :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
                   v-if="item.svg !== undefined"
                   width="35"
-                  class="food-icon pick-icon t-m-2"
+                  class="food-icon pick-icon m-2"
                   alt="Food Icon"
                   @click="setIcon(item, close)"
                 />
@@ -116,7 +110,7 @@
           id-name="food"
           :label="$t('common.food-name')"
           v-model="editedItem.name"
-          class="t-mt-2"
+          class="mt-2"
         />
         <NumberInput
           id-name="phe"
@@ -127,7 +121,7 @@
 
       <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
 
-      <p class="t-mt-3">{{ $t('own-food.note') }}</p>
+      <p class="mt-3">{{ $t('own-food.note') }}</p>
 
       <ModalDialog
         ref="dialog2"
@@ -142,7 +136,7 @@
         @close="closeModal"
       >
         <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
     </div>
   </div>

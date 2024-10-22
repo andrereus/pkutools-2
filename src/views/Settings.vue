@@ -15,13 +15,13 @@
       </option>
     </SelectMenu>
 
-    <div v-if="!userIsAuthenticated" class="t-mt-8">
+    <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
         to="/email-auth"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
@@ -32,20 +32,20 @@
         id-name="max-phe"
         :label="$t('settings.max-phe')"
         v-model.number="settings.maxPhe"
-        class="t-mb-6"
+        class="mb-6"
       />
 
       <PrimaryButton :text="$t('common.save')" @click="save" />
 
-      <PageHeader :title="$t('settings.reset-heading')" class="t-mt-6" />
+      <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
 
       <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
       <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
       <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
 
-      <PageHeader :title="$t('settings.delete-account')" class="t-mt-6" />
+      <PageHeader :title="$t('settings.delete-account')" class="mt-6" />
 
-      <p class="t-mb-6">
+      <p class="mb-6">
         {{ $t('settings.delete-account-info') }}
       </p>
 
@@ -140,16 +140,16 @@ export default {
     handleThemeChange() {
       if (this.selectedTheme === 'light') {
         localStorage.setItem('theme', 'light')
-        document.documentElement.classList.remove('t-dark')
+        document.documentElement.classList.remove('dark')
       } else if (this.selectedTheme === 'dark') {
         localStorage.setItem('theme', 'dark')
-        document.documentElement.classList.add('t-dark')
+        document.documentElement.classList.add('dark')
       } else {
         localStorage.removeItem('theme')
         if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
-          document.documentElement.classList.add('t-dark')
+          document.documentElement.classList.add('dark')
         } else {
-          document.documentElement.classList.remove('t-dark')
+          document.documentElement.classList.remove('dark')
         }
       }
     }

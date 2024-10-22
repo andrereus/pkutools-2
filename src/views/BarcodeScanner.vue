@@ -4,7 +4,7 @@
       <PageHeader :title="$t('app.scanner')" />
     </header>
 
-    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="openDialog" class="t-mt-2" />
+    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="openDialog" class="mt-2" />
 
     <SimpleDialog ref="dialog" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
       <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
@@ -28,16 +28,16 @@
         :src="result.product.image_small_url"
         max-height="200"
         max-width="200"
-        class="t-my-6"
+        class="my-6"
       />
 
-      <h2 class="t-text-2xl t-mt-3 t-mb-1">{{ result.product.product_name }}</h2>
+      <h2 class="text-2xl mt-3 mb-1">{{ result.product.product_name }}</h2>
 
       <!-- Do not remove -->
-      <p v-if="code !== ''" class="t-text-sm t-mb-6">Code: {{ code }}</p>
+      <p v-if="code !== ''" class="text-sm mb-6">Code: {{ code }}</p>
 
       <div v-if="this.result.product.nutriments.proteins_100g">
-        <p class="t-text-xl t-mb-6">
+        <p class="text-xl mb-6">
           {{ result.product.nutriments.proteins_100g }}
           {{ result.product.nutriments.proteins_unit }}
           {{ $t('common.short-protein-per-100g') }}
@@ -53,23 +53,23 @@
           id-name="weight"
           :label="$t('common.consumed-weight')"
           v-model.number="weight"
-          class="t-mb-6"
+          class="mb-6"
         />
 
-        <p class="t-text-xl t-mb-6">~ {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl mb-6">~ {{ calculatePhe() }} mg Phe</p>
 
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
 
-      <div v-if="!this.result.product.nutriments.proteins_100g" class="t-mb-6">
+      <div v-if="!this.result.product.nutriments.proteins_100g" class="mb-6">
         <p>{{ $t('barcode-scanner.no-protein') }}</p>
-        <RouterLink to="/protein-calculator" class="t-text-sky-500">
+        <RouterLink to="/protein-calculator" class="text-sky-500">
           {{ $t('barcode-scanner.protein-link') }} <span aria-hidden="true">→</span>
         </RouterLink>
       </div>
     </div>
 
-    <p class="t-mt-2">
+    <p class="mt-2">
       {{ $t('barcode-scanner.info') }}
     </p>
   </div>

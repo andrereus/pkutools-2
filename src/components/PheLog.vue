@@ -1,28 +1,26 @@
 <template>
   <div>
-    <div v-if="!userIsAuthenticated" class="t-mt-8">
+    <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
         type="button"
         to="/email-auth"
-        class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10 t-mr-3 t-mb-6"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
     </div>
 
     <div v-if="userIsAuthenticated">
-      <DataTable :headers="tableHeaders" class="t-mb-8">
+      <DataTable :headers="tableHeaders" class="mb-8">
         <tr
           v-for="(item, index) in pheLog"
           :key="index"
           @click="editItem(item)"
-          class="t-cursor-pointer"
+          class="cursor-pointer"
         >
-          <td
-            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-          >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
             <img
               :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
               v-if="item.icon !== undefined && item.icon !== ''"
@@ -45,14 +43,10 @@
             }}
             {{ item.name }}
           </td>
-          <td
-            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-          >
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.weight }}
           </td>
-          <td
-            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-          >
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
         </tr>
@@ -86,7 +80,7 @@
         @delete="deleteItem"
         @close="close"
       >
-        <p v-if="!editedItem.pheReference && this.editedIndex !== -1" class="t-mb-3">
+        <p v-if="!editedItem.pheReference && this.editedIndex !== -1" class="mb-3">
           {{ $t('phe-log.data-warning') }}
         </p>
         <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
@@ -100,14 +94,14 @@
           :label="$t('common.consumed-weight')"
           v-model.number="editedItem.weight"
         />
-        <p class="t-text-xl t-my-6">= {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
 
-      <p v-if="lastAdded.length === 0" class="t-mt-3">
+      <p v-if="lastAdded.length === 0" class="mt-3">
         {{ $t('phe-log.info') }}
       </p>
 
-      <div v-if="lastAdded.length !== 0" class="t-mt-3">
+      <div v-if="lastAdded.length !== 0" class="mt-3">
         <SecondaryButton
           v-for="(item, index) in lastAdded.slice(0, visibleItems)"
           :key="index"

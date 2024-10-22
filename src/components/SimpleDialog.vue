@@ -18,28 +18,28 @@ defineExpose({ openDialog, closeDialog })
 </script>
 
 <template>
-  <dialog class="t-relative t-z-10 dark:t-text-white" ref="dialog">
-    <div class="t-fixed t-inset-0 t-bg-gray-500 t-bg-opacity-75 t-transition-opacity" />
+  <dialog class="relative z-10 dark:text-white" ref="dialog">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
-    <div class="t-fixed t-inset-0 t-z-10 t-w-screen t-overflow-y-auto">
-      <div class="t-flex t-min-h-full t-items-center t-justify-center t-p-4 t-text-center sm:t-p-0">
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
         <div
-          class="t-relative t-transform t-overflow-hidden t-rounded-lg t-bg-white dark:t-bg-gray-900 t-px-4 t-pb-4 t-pt-5 t-text-left t-shadow-xl t-transition-all sm:t-my-8 sm:t-w-full sm:t-max-w-screen-sm sm:t-p-6"
+          class="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-900 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-screen-sm sm:p-6"
         >
           <div>
-            <div class="t-text-center">
-              <h3 class="t-text-base t-font-semibold t-leading-6 t-text-gray-900 dark:t-text-white">
+            <div class="text-center">
+              <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
                 {{ title }}
               </h3>
-              <div class="t-mt-3">
+              <div class="mt-3">
                 <slot />
               </div>
             </div>
           </div>
-          <div class="t-mt-5 sm:t-mt-6">
+          <div class="mt-5 sm:mt-6">
             <button
               type="button"
-              class="t-inline-flex t-w-full t-justify-center t-rounded-md t-bg-sky-500 t-px-3 t-py-2 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-500 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
+              class="inline-flex w-full justify-center rounded-md bg-sky-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               @click="$emit('close')"
             >
               {{ $t('common.cancel') }}

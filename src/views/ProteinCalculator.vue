@@ -4,16 +4,16 @@
       <PageHeader :title="$t('app.calculator')" />
     </header>
 
-    <div class="t-block t-mb-6">
-      <nav class="t-flex t-space-x-2" aria-label="Tabs">
+    <div class="block mb-6">
+      <nav class="flex space-x-2" aria-label="Tabs">
         <RouterLink
           to="/phe-calculator"
-          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           >{{ $t('phe-calculator.tab-title') }}</RouterLink
         >
         <RouterLink
           to="/protein-calculator"
-          class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           aria-current="page"
           >{{ $t('protein-calculator.tab-title') }}</RouterLink
         >
@@ -40,7 +40,7 @@
     />
     <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />
 
-    <p class="t-text-xl t-my-6">~ {{ calculatePhe() }} mg Phe</p>
+    <p class="text-xl my-6">~ {{ calculatePhe() }} mg Phe</p>
 
     <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
   </div>

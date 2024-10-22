@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div v-if="pheLog" class="t-block t-mb-6">
-      <nav class="t-flex t-space-x-2" aria-label="Tabs">
+    <div v-if="pheLog" class="block mb-6">
+      <nav class="flex space-x-2" aria-label="Tabs">
         <RouterLink
           :to="{ path: '/', query: { log: true } }"
-          class="t-bg-black/5 dark:t-bg-white/15 t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           aria-current="page"
         >
           {{ $t('phe-log.tab-title') }}
         </RouterLink>
         <RouterLink
           to="/phe-diary"
-          class="t-text-gray-500 hover:t-text-gray-700 t-rounded-md t-px-3 t-py-2 t-text-sm t-font-medium dark:t-text-gray-300"
+          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
       </nav>
@@ -20,43 +20,37 @@
     <PheLog v-if="pheLog" />
 
     <div v-if="!pheLog">
-      <div class="t-pt-3 t-pb-6 sm:t-py-8">
-        <div class="t-mx-auto t-max-w-7xl t-px-6 lg:t-px-8">
-          <div class="t-mx-auto t-max-w-2xl lg:t-text-center">
+      <div class="pt-3 pb-6 sm:py-8">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:text-center">
             <p
-              class="t-mt-2 t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
+              class="mt-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl"
             >
               {{ $t('app.description') }}
             </p>
-            <p class="t-mt-6 t-text-lg t-leading-8 t-text-gray-600 dark:t-text-gray-300">
+            <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {{ $t('app.long-description') }}
             </p>
           </div>
-          <div class="t-mx-auto t-mt-16 t-max-w-2xl sm:t-mt-20 lg:t-mt-24 lg:t-max-w-4xl">
+          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
             <dl
-              class="t-grid t-max-w-xl t-grid-cols-1 t-gap-x-8 t-gap-y-10 lg:t-max-w-none lg:t-grid-cols-2 lg:t-gap-y-16"
+              class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
             >
               <RouterLink
                 v-for="feature in features"
                 :key="feature.name"
                 :to="feature.route"
-                class="t-relative t-pl-16"
+                class="relative pl-16"
               >
-                <dt
-                  class="t-text-base t-font-semibold t-leading-7 t-text-gray-900 dark:t-text-white"
-                >
+                <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
                   <div
-                    class="t-absolute t-left-0 t-top-0 t-flex t-h-10 t-w-10 t-items-center t-justify-center t-rounded-lg t-bg-sky-500"
+                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500"
                   >
-                    <component
-                      :is="feature.icon"
-                      class="t-h-6 t-w-6 t-text-white"
-                      aria-hidden="true"
-                    />
+                    <component :is="feature.icon" class="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   {{ $t(feature.name) }}
                 </dt>
-                <dd class="t-mt-2 t-text-base t-leading-7 t-text-gray-600 dark:t-text-gray-300">
+                <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">
                   {{ $t(feature.description) }}
                 </dd>
               </RouterLink>
@@ -65,53 +59,43 @@
         </div>
       </div>
 
-      <div class="t-py-12 sm:t-py-16 t-pb-8 sm:t-pb-12 t-px-6 sm:t-px-6 lg:t-px-8">
-        <div class="t-mx-auto t-max-w-2xl t-text-center">
-          <h2
-            class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
-          >
+      <div class="py-12 sm:py-16 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
             {{ $t('home.about-title') }}
           </h2>
-          <p
-            class="t-mx-auto t-mt-6 t-max-w-xl t-text-lg t-leading-8 t-text-gray-600 dark:t-text-gray-300"
-          >
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
             {{ $t('home.about-description') }}
           </p>
         </div>
       </div>
 
-      <div class="t-pt-8 sm:t-pt-12 t-pb-24 sm:t-pb-32 t-px-6 sm:t-px-6 lg:t-px-8">
-        <div class="t-mx-auto t-max-w-2xl t-text-center">
-          <h2
-            class="t-text-xl t-font-bold t-tracking-tight t-text-gray-900 dark:t-text-white sm:t-text-2xl"
-          >
+      <div class="pt-8 sm:pt-12 pb-24 sm:pb-32 px-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
             {{ $t('home.signin-install') }}
           </h2>
-          <p
-            class="t-mx-auto t-mt-6 t-max-w-xl t-text-lg t-leading-8 t-text-gray-600 dark:t-text-gray-300"
-          >
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
             {{ $t('home.suggestion') }}
           </p>
           <div
             v-if="!userIsAuthenticated"
-            class="t-mt-8 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
+            class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
             <a
               @click.prevent="signInGoogle"
-              class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500 t-cursor-pointer"
+              class="rounded bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
             >
               {{ $t('app.signin-google') }}
             </a>
             <RouterLink
               to="/email-auth"
-              class="t-rounded t-bg-sky-500 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-white t-shadow-sm hover:t-bg-sky-600 focus-visible:t-outline focus-visible:t-outline-2 focus-visible:t-outline-offset-2 focus-visible:t-outline-sky-500"
+              class="rounded bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
             >
               {{ $t('email-auth.title') }}
             </RouterLink>
           </div>
-          <div
-            class="t-mt-6 t-flex t-flex-col t-items-center t-gap-4 sm:t-flex-row sm:t-justify-center"
-          >
+          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
               target="_blank"
@@ -119,12 +103,12 @@
               <img
                 alt="Get it on Google Play"
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                class="t-inline-block t-w-28 t-align-middle"
+                class="inline-block w-28 align-middle"
               />
             </a>
             <RouterLink
               to="/help"
-              class="t-rounded t-bg-black/5 dark:t-bg-white/15 t-px-2 t-py-1 t-text-sm t-font-semibold t-text-gray-900 dark:t-text-gray-300 t-shadow-sm hover:t-bg-black/10 dark:hover:t-bg-white/10"
+              class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10"
             >
               {{ $t('app.install') }} <span aria-hidden="true">→</span>
             </RouterLink>

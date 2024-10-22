@@ -5,13 +5,11 @@
     </header>
 
     <div>
-      <div class="t-w-full t-mb-6">
-        <label for="search" class="t-sr-only">{{ $t('phe-search.search') }}</label>
-        <div class="t-relative">
-          <div
-            class="t-pointer-events-none t-absolute t-inset-y-0 t-left-0 t-flex t-items-center t-pl-3"
-          >
-            <Search class="t-h-5 t-w-5 t-text-gray-400" aria-hidden="true" />
+      <div class="w-full mb-6">
+        <label for="search" class="sr-only">{{ $t('phe-search.search') }}</label>
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <Search class="h-5 w-5 text-gray-400" aria-hidden="true" />
           </div>
           <input
             type="search"
@@ -21,7 +19,7 @@
             :placeholder="$t('phe-search.search')"
             @keyup="searchFood"
             autocomplete="off"
-            class="t-block t-w-full t-rounded-md t-border-0 t-bg-white t-py-1.5 t-pl-10 t-pr-3 t-text-gray-900 t-ring-1 t-ring-inset t-ring-gray-300 placeholder:t-text-gray-400 focus:t-ring-2 focus:t-ring-inset focus:t-ring-sky-500 sm:t-text-sm sm:t-leading-6 dark:t-bg-gray-800 dark:t-text-gray-300 dark:t-ring-gray-600 dark:focus:t-ring-sky-500"
+            class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500"
           />
         </div>
       </div>
@@ -31,23 +29,19 @@
           v-for="(item, index) in advancedFood"
           :key="index"
           @click="loadItem(item)"
-          class="t-cursor-pointer"
+          class="cursor-pointer"
         >
-          <td
-            class="t-py-4 t-pl-4 t-pr-3 t-text-sm t-font-medium t-text-gray-900 dark:t-text-gray-300 sm:t-pl-6"
-          >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
             {{ item.emoji }}
             {{ item.name }}
           </td>
-          <td
-            class="t-whitespace-nowrap t-px-3 t-py-4 t-text-sm t-text-gray-500 dark:t-text-gray-400"
-          >
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
         </tr>
       </DataTable>
 
-      <p class="t-mt-8">{{ $t('phe-search.search-info') }}</p>
+      <p class="mt-8">{{ $t('phe-search.search-info') }}</p>
 
       <ModalDialog
         ref="dialog"
@@ -59,7 +53,7 @@
         @submit="save"
       >
         <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="t-text-xl">= {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
     </div>
   </div>
