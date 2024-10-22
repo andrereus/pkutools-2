@@ -72,6 +72,14 @@
     <p class="mt-2">
       {{ $t('barcode-scanner.info') }}
     </p>
+
+    <a href="https://www.buymeacoffee.com/andrereus" target="_blank">
+      <img
+        src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+        alt="Buy Me A Coffee"
+        class="w-28 mt-8"
+      />
+    </a>
   </div>
 </template>
 
