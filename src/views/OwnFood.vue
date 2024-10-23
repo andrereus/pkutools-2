@@ -224,7 +224,10 @@ export default {
           phe: Number(this.editedItem.phe)
         })
       } else {
-        if (this.ownFood.length >= 500) {
+        if (
+          this.ownFood.length >= 500 &&
+          this.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+        ) {
           alert(this.$t('own-food.limit'))
         } else {
           push(ref(db, `${this.user.id}/ownFood`), {

@@ -37,6 +37,17 @@
 
       <PrimaryButton :text="$t('common.save')" @click="save" />
 
+      <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
+
+      <TextInput
+        id-name="license"
+        :label="$t('settings.license-key')"
+        v-model="settings.license"
+        class="mb-6"
+      />
+
+      <PrimaryButton :text="$t('common.save')" @click="saveLicense" />
+
       <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
 
       <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
@@ -62,6 +73,7 @@ import { getAuth } from 'firebase/auth'
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
 import NumberInput from '../components/NumberInput.vue'
+import TextInput from '../components/TextInput.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 
@@ -70,6 +82,7 @@ export default {
     PageHeader,
     SelectMenu,
     NumberInput,
+    TextInput,
     PrimaryButton,
     SecondaryButton
   },
@@ -92,6 +105,18 @@ export default {
         maxPhe: this.settings.maxPhe || 0
       }).then(() => {
         alert(this.$t('settings.saved'))
+      })
+    },
+    saveLicense() {
+      const db = getDatabase()
+      update(ref(db, `${this.user.id}/settings`), {
+        license: this.settings.license || ''
+      }).then(() => {
+        if (this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY) {
+          alert(this.$t('settings.license-active'))
+        } else {
+          alert(this.$t('settings.license-inactive'))
+        }
       })
     },
     resetLog() {

@@ -209,7 +209,10 @@ export default {
           })
         }
       } else {
-        if (this.pheDiary.length >= 100) {
+        if (
+          this.pheDiary.length >= 100 &&
+          this.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+        ) {
           alert(this.$t('phe-diary.limit'))
         } else {
           push(ref(db, `${this.user.id}/pheDiary`), {

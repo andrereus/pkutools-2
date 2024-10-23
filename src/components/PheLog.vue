@@ -229,7 +229,10 @@ export default {
     },
     saveResult() {
       const db = getDatabase()
-      if (this.pheDiary.length >= 100) {
+      if (
+        this.pheDiary.length >= 100 &&
+        this.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+      ) {
         alert(this.$t('phe-diary.limit'))
       } else {
         const pheLogForFirebase = this.pheLog.map(
