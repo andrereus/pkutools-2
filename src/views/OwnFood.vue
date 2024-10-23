@@ -121,7 +121,7 @@
 
       <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
 
-      <p class="mt-3">{{ $t('own-food.note') }}</p>
+      <p v-if="!license" class="mt-3">{{ $t('own-food.note') }}</p>
 
       <ModalDialog
         ref="dialog2"
@@ -289,6 +289,9 @@ export default {
     }
   },
   computed: {
+    license() {
+      return this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+    },
     tableHeaders() {
       return [
         { key: 'food', title: this.$t('common.food') },

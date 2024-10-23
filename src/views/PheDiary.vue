@@ -115,7 +115,7 @@
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
-      <p class="mt-3">{{ $t('phe-diary.note') }}</p>
+      <p v-if="!license" class="mt-3">{{ $t('phe-diary.note') }}</p>
     </div>
   </div>
 </template>
@@ -274,6 +274,9 @@ export default {
     }
   },
   computed: {
+    license() {
+      return this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+    },
     tableHeaders() {
       return [
         { key: 'date', title: this.$t('phe-diary.date') },
