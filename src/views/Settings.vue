@@ -45,7 +45,7 @@
         <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
           alt="Buy Me A Coffee"
-          class="w-24 mb-4"
+          class="w-24 mb-6"
         />
       </a>
 
