@@ -39,16 +39,6 @@
 
       <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
 
-      <p class="mb-2 hidden">{{ $t('settings.license-info') }}:</p>
-
-      <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="hidden">
-        <img
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me A Coffee"
-          class="w-24 mb-6"
-        />
-      </a>
-
       <TextInput
         id-name="license"
         :label="$t('settings.license-key')"
