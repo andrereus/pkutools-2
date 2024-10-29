@@ -33,14 +33,6 @@
     <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
 
     <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
-
-    <a href="https://www.buymeacoffee.com/andrereus" target="_blank">
-      <img
-        src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-        alt="Buy Me A Coffee"
-        class="w-28 mt-8"
-      />
-    </a>
   </div>
 </template>
 

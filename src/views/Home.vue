@@ -67,6 +67,15 @@
           <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
             {{ $t('home.about-description') }}
           </p>
+          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a href="https://www.buymeacoffee.com/andrereus" target="_blank">
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                alt="Buy Me A Coffee"
+                class="w-28"
+              />
+            </a>
+          </div>
         </div>
       </div>
 
