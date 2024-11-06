@@ -37,11 +37,14 @@
           <div
             class="max-w-2xl w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4"
           >
-            <img
-              src="../assets/demo.gif"
-              alt="Demo"
+            <video
+              src="../assets/demo.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
               class="w-full rounded-md shadow-2xl ring-1 ring-gray-900/10"
-            />
+            ></video>
           </div>
         </div>
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
