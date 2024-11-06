@@ -35,7 +35,7 @@
         </div>
         <div class="mt-12 flex justify-center sm:mt-12">
           <div
-            class="max-w-4xl w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4"
+            class="max-w-2xl w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4"
           >
             <img
               src="../assets/demo.gif"
