@@ -33,7 +33,7 @@
             </p>
           </div>
         </div>
-        <div class="mt-12 flex justify-center sm:mt-12">
+        <div class="mt-10 flex justify-center sm:mt-12">
           <div
             class="max-w-4xl w-full rounded-xl bg-gray-900/5 dark:bg-gray-800 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-gray-700 lg:rounded-2xl lg:p-4"
           >
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto mt-16 max-w-2xl sm:mt-16 lg:max-w-4xl">
+          <div class="mx-auto mt-14 max-w-2xl sm:mt-16 lg:max-w-4xl">
             <dl
               class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
             >
