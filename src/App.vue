@@ -336,8 +336,7 @@ import {
   Settings,
   LifeBuoy,
   Info,
-  Calendar,
-  CircleArrowLeft
+  Calendar
 } from 'lucide-vue-next'
 
 export default {
@@ -361,8 +360,7 @@ export default {
     Settings,
     LifeBuoy,
     Info,
-    Calendar,
-    CircleArrowLeft
+    Calendar
   },
   data: () => ({
     lang: [
@@ -418,6 +416,7 @@ export default {
     navigation() {
       if (this.userIsAuthenticated) {
         return [
+          { name: 'app.start', icon: 'House', route: '/?home=true' },
           { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
           { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
           { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
@@ -459,7 +458,6 @@ export default {
     userNavigation() {
       if (this.userIsAuthenticated) {
         return [
-          { name: 'app.start', icon: 'CircleArrowLeft', route: '/?home=true' },
           { name: 'settings.title', icon: 'Settings', route: '/settings' },
           { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
           { name: 'imprint.title', icon: 'Info', route: '/imprint' },
