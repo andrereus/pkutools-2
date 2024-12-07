@@ -39,6 +39,13 @@
 
       <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
 
+      <p class="mb-6">
+        {{ $t('settings.license-text') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+
       <TextInput
         id-name="license"
         :label="$t('settings.license-key')"
