@@ -82,10 +82,11 @@
     "title": "Alimento propio",
     "description": "Guardar alimentos propios y valores de Phe.",
     "limit": "Alimento propio está limitado a 500 entradas.",
-    "note": "Limitado a 500 entradas.",
+    "note": "Limitado a 500 entradas. Ilimitado con licencia",
     "search-info": "La comida propia también está disponible en la búsqueda.",
     "export-filename": "PKU Tools - Alimento propio",
-    "choose-icon": "Seleccionar icono"
+    "choose-icon": "Seleccionar icono",
+    "unlimited": "Sin límites"
   },
   "phe-log": {
     "title": "Protocolo Phe",
@@ -113,8 +114,9 @@
     "export-days": "Días de exportación",
     "log": "Registro",
     "export-filename": "Herramientas PKU - Diario de Phe",
-    "note": "Limitado a 100 entradas (~3 meses). Para borrarla, consulte Configuración.",
-    "chart-info": "El diagrama se muestra después de la segunda entrada."
+    "note": "Limitado a 100 entradas (~3 meses). Ilimitado con licencia",
+    "chart-info": "El diagrama se muestra después de la segunda entrada.",
+    "unlimited": "Sin límites"
   },
   "settings": {
     "title": "Configuración",

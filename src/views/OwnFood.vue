@@ -121,7 +121,16 @@
 
       <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
 
-      <p v-if="!license" class="mt-3">{{ $t('own-food.note') }}</p>
+      <p v-if="!license" class="mt-3">
+        {{ $t('own-food.note') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+      <p v-if="license" class="mt-3 text-sm">
+        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
+        {{ $t('own-food.unlimited') }}
+      </p>
 
       <ModalDialog
         ref="dialog2"
@@ -149,6 +158,8 @@ import foodIcons from '../components/data/food-icons.json'
 
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
+import { BadgeCheck } from 'lucide-vue-next'
+
 import PageHeader from '../components/PageHeader.vue'
 import DataTable from '../components/DataTable.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
@@ -168,7 +179,8 @@ export default {
     ModalDialog,
     PrimaryButton,
     TextInput,
-    NumberInput
+    NumberInput,
+    BadgeCheck
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,

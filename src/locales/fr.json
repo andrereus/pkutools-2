@@ -82,10 +82,11 @@
     "title": "Aliments personnels",
     "description": "Enregistrez vos aliments personnels et leurs valeurs de Phe.",
     "limit": "Les aliments personnels sont limités à 500 entrées.",
-    "note": "Limité à 500 entrées.",
+    "note": "Limité à 500 entrées. Illimité avec licence",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
     "export-filename": "PKU Tools - Aliments personnels",
-    "choose-icon": "Sélectionner une icône"
+    "choose-icon": "Sélectionner une icône",
+    "unlimited": "Illimité"
   },
   "phe-log": {
     "title": "Protocole Phe",
@@ -113,8 +114,9 @@
     "export-days": "Días de exportación",
     "log": "Journal",
     "export-filename": "PKU Tools - Journal de Phe",
-    "note": "Limité à 100 entrées (~3 mois). Pour la suppression, voir les paramètres.",
-    "chart-info": "Le diagramme s'affiche après la deuxième entrée."
+    "note": "Limité à 100 entrées (~3 mois). Illimité avec licence",
+    "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
+    "unlimited": "Illimité"
   },
   "settings": {
     "title": "Paramètres",

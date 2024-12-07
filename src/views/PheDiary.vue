@@ -115,7 +115,16 @@
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
-      <p v-if="!license" class="mt-3">{{ $t('phe-diary.note') }}</p>
+      <p v-if="!license" class="mt-3">
+        {{ $t('phe-diary.note') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+      <p v-if="license" class="mt-3 text-sm">
+        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
+        {{ $t('phe-diary.unlimited') }}
+      </p>
     </div>
   </div>
 </template>
@@ -130,6 +139,8 @@ import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
 import frChart from 'apexcharts/dist/locales/fr.json'
 import esChart from 'apexcharts/dist/locales/es.json'
+
+import { BadgeCheck } from 'lucide-vue-next'
 
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
@@ -146,7 +157,8 @@ export default {
     PrimaryButton,
     NumberInput,
     SecondaryButton,
-    DateInput
+    DateInput,
+    BadgeCheck
   },
   data: () => ({
     publicPath: import.meta.env.BASE_URL,
