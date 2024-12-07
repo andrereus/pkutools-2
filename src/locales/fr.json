@@ -127,7 +127,7 @@
     "license-key": "Clé de licence",
     "license-active": "Licence active!",
     "license-inactive": "Licence inactive.",
-    "check-license": "Vérifier",
+    "check-license": "Vérifier et Enregistrer",
     "reset-heading": "Supprimer les données",
     "reset-log": "Supprimer Protocole",
     "reset-diary": "Supprimer Journal",
