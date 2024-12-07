@@ -46,7 +46,7 @@
         class="mb-6"
       />
 
-      <PrimaryButton :text="$t('common.save')" @click="saveLicense" />
+      <PrimaryButton :text="$t('settings.check-license')" @click="saveLicense" />
 
       <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
 
@@ -113,7 +113,7 @@ export default {
         license: this.settings.license || ''
       }).then(() => {
         if (this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY) {
-          alert(this.$t('settings.license-active'))
+          alert(this.$t('settings.license-active') + ' 🎉')
         } else {
           alert(this.$t('settings.license-inactive'))
         }
