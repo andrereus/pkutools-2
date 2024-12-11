@@ -288,6 +288,11 @@ const add = () => {
   router.push('/')
 }
 
+const escapeCSV = (value) => {
+  if (value === null || value === undefined) return ''
+  return `"${value.toString().replace(/"/g, '""')}"`
+}
+
 const exportOwnFood = () => {
   let r = confirm(t('common.export') + '?')
   if (r === true) {
@@ -295,7 +300,7 @@ const exportOwnFood = () => {
     csvContent += 'Name,Phe per 100g\n'
 
     ownFood.value.forEach((entry) => {
-      const row = `${entry.name},${entry.phe}\n`
+      const row = [escapeCSV(entry.name), escapeCSV(entry.phe)].join(',') + '\n'
       csvContent += row
     })
     triggerDownload(csvContent)
