@@ -72,9 +72,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, remove, update } from 'firebase/database'
+import { getDatabase, ref as dbRef, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -84,131 +87,121 @@ import TextInput from '../components/TextInput.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 
-export default {
-  components: {
-    PageHeader,
-    SelectMenu,
-    NumberInput,
-    TextInput,
-    PrimaryButton,
-    SecondaryButton
-  },
-  data: () => ({
-    selectedTheme: 'system'
-  }),
-  methods: {
-    async signInGoogle() {
-      const store = useStore()
-      try {
-        await store.signInGoogle()
-      } catch (error) {
-        alert(this.$t('app.auth-error'))
-        console.error(error)
-      }
-    },
-    save() {
-      const db = getDatabase()
-      update(ref(db, `${this.user.id}/settings`), {
-        maxPhe: this.settings.maxPhe || 0
-      }).then(() => {
-        alert(this.$t('settings.saved'))
-      })
-    },
-    saveLicense() {
-      const db = getDatabase()
-      update(ref(db, `${this.user.id}/settings`), {
-        license: this.settings.license || ''
-      }).then(() => {
-        if (this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY) {
-          alert(this.$t('settings.license-active') + ' 🎉')
-        } else {
-          alert(this.$t('settings.license-inactive'))
-        }
-      })
-    },
-    resetLog() {
-      let r = confirm(this.$t('settings.reset-log') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        remove(ref(db, `${this.user.id}/pheLog`))
-        this.$router.push('/')
-      }
-    },
-    resetOwnFood() {
-      let r = confirm(this.$t('settings.reset-own-food') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        remove(ref(db, `${this.user.id}/ownFood`))
-        this.$router.push('own-food')
-      }
-    },
-    resetDiary() {
-      let r = confirm(this.$t('settings.reset-diary') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        remove(ref(db, `${this.user.id}/pheDiary`))
-        this.$router.push('phe-diary')
-      }
-    },
-    deleteAccount() {
-      let r = confirm(this.$t('settings.delete-account') + '?')
-      if (r === true) {
-        const db = getDatabase()
-        const store = useStore()
-        const auth = getAuth()
-        remove(ref(db, store.user.id))
-        auth.currentUser
-          .delete()
-          .then(() => {
-            store.signOut()
-            this.$router.push('/')
-          })
-          .catch((error) => {
-            alert(this.$t('settings.delete-account-error'))
-            console.error(error)
-          })
-      }
-    },
-    handleThemeChange() {
-      if (this.selectedTheme === 'light') {
-        localStorage.setItem('theme', 'light')
-        document.documentElement.classList.remove('dark')
-      } else if (this.selectedTheme === 'dark') {
-        localStorage.setItem('theme', 'dark')
-        document.documentElement.classList.add('dark')
-      } else {
-        localStorage.removeItem('theme')
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
-          document.documentElement.classList.add('dark')
-        } else {
-          document.documentElement.classList.remove('dark')
-        }
-      }
+const router = useRouter()
+const store = useStore()
+const { t } = useI18n()
+
+// Reactive state
+const selectedTheme = ref('system')
+
+// Computed properties
+const themeOptions = computed(() => [
+  { title: t('settings.theme-system'), value: 'system' },
+  { title: t('settings.theme-light'), value: 'light' },
+  { title: t('settings.theme-dark'), value: 'dark' }
+])
+
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const settings = computed(() => store.settings)
+
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
+
+const save = () => {
+  const db = getDatabase()
+  update(dbRef(db, `${user.value.id}/settings`), {
+    maxPhe: settings.value.maxPhe || 0
+  }).then(() => {
+    alert(t('settings.saved'))
+  })
+}
+
+const saveLicense = () => {
+  const db = getDatabase()
+  update(dbRef(db, `${user.value.id}/settings`), {
+    license: settings.value.license || ''
+  }).then(() => {
+    if (settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY) {
+      alert(t('settings.license-active') + ' 🎉')
+    } else {
+      alert(t('settings.license-inactive'))
     }
-  },
-  mounted() {
-    this.selectedTheme = localStorage.getItem('theme') || 'system'
-  },
-  computed: {
-    themeOptions() {
-      return [
-        { title: this.$t('settings.theme-system'), value: 'system' },
-        { title: this.$t('settings.theme-light'), value: 'light' },
-        { title: this.$t('settings.theme-dark'), value: 'dark' }
-      ]
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
+  })
+}
+
+const resetLog = () => {
+  let r = confirm(t('settings.reset-log') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    remove(dbRef(db, `${user.value.id}/pheLog`))
+    router.push('/')
+  }
+}
+
+const resetOwnFood = () => {
+  let r = confirm(t('settings.reset-own-food') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    remove(dbRef(db, `${user.value.id}/ownFood`))
+    router.push('own-food')
+  }
+}
+
+const resetDiary = () => {
+  let r = confirm(t('settings.reset-diary') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    remove(dbRef(db, `${user.value.id}/pheDiary`))
+    router.push('phe-diary')
+  }
+}
+
+const deleteAccount = () => {
+  let r = confirm(t('settings.delete-account') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    const auth = getAuth()
+    remove(dbRef(db, store.user.id))
+    auth.currentUser
+      .delete()
+      .then(() => {
+        store.signOut()
+        router.push('/')
+      })
+      .catch((error) => {
+        alert(t('settings.delete-account-error'))
+        console.error(error)
+      })
+  }
+}
+
+const handleThemeChange = () => {
+  if (selectedTheme.value === 'light') {
+    localStorage.setItem('theme', 'light')
+    document.documentElement.classList.remove('dark')
+  } else if (selectedTheme.value === 'dark') {
+    localStorage.setItem('theme', 'dark')
+    document.documentElement.classList.add('dark')
+  } else {
+    localStorage.removeItem('theme')
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
     }
   }
 }
+
+// Lifecycle hooks
+onMounted(() => {
+  selectedTheme.value = localStorage.getItem('theme') || 'system'
+})
 </script>
