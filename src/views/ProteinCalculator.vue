@@ -46,9 +46,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, push } from 'firebase/database'
+import { getDatabase, ref as dbRef, push } from 'firebase/database'
 
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
@@ -56,71 +59,54 @@ import TextInput from '../components/TextInput.vue'
 import NumberInput from '../components/NumberInput.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 
-export default {
-  components: {
-    PageHeader,
-    SelectMenu,
-    TextInput,
-    NumberInput,
-    PrimaryButton
-  },
-  data: () => ({
-    protein: null,
-    weight: null,
-    name: '',
-    select: 'other'
-  }),
-  methods: {
-    calculatePhe() {
-      return Math.round((this.weight * (this.protein * this.factor)) / 100)
-    },
-    save() {
-      const db = getDatabase()
-      push(ref(db, `${this.user.id}/pheLog`), {
-        name: this.name,
-        pheReference: Math.round(this.protein * this.factor),
-        weight: Number(this.weight),
-        phe: this.calculatePhe()
-      })
-      this.$router.push('/')
-    }
-  },
-  computed: {
-    type() {
-      return [
-        { title: this.$t('protein-calculator.other'), value: 'other' },
-        { title: this.$t('protein-calculator.meat'), value: 'meat' },
-        { title: this.$t('protein-calculator.vegetable'), value: 'vegetable' },
-        { title: this.$t('protein-calculator.fruit'), value: 'fruit' }
-      ]
-    },
-    factor() {
-      if (this.select === 'fruit') {
-        return 27
-      } else if (this.select === 'vegetable') {
-        return 35
-      } else if (this.select === 'meat') {
-        return 46
-      } else {
-        return 50
-      }
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
-    }
+const router = useRouter()
+const store = useStore()
+const { t } = useI18n()
+
+// Reactive state
+const protein = ref(null)
+const weight = ref(null)
+const name = ref('')
+const select = ref('other')
+
+// Computed properties
+const type = computed(() => [
+  { title: t('protein-calculator.other'), value: 'other' },
+  { title: t('protein-calculator.meat'), value: 'meat' },
+  { title: t('protein-calculator.vegetable'), value: 'vegetable' },
+  { title: t('protein-calculator.fruit'), value: 'fruit' }
+])
+
+const factor = computed(() => {
+  if (select.value === 'fruit') {
+    return 27
+  } else if (select.value === 'vegetable') {
+    return 35
+  } else if (select.value === 'meat') {
+    return 46
+  } else {
+    return 50
   }
+})
+
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+// Methods
+const calculatePhe = () => {
+  return Math.round((weight.value * (protein.value * factor.value)) / 100)
+}
+
+const save = () => {
+  const db = getDatabase()
+  push(dbRef(db, `${user.value.id}/pheLog`), {
+    name: name.value,
+    pheReference: Math.round(protein.value * factor.value),
+    weight: Number(weight.value),
+    phe: calculatePhe()
+  })
+  router.push('/')
 }
 </script>

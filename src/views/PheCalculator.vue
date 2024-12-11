@@ -36,59 +36,44 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, push } from 'firebase/database'
+import { getDatabase, ref as dbRef, push } from 'firebase/database'
 
 import PageHeader from '../components/PageHeader.vue'
 import TextInput from '../components/TextInput.vue'
 import NumberInput from '../components/NumberInput.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 
-export default {
-  components: {
-    PageHeader,
-    TextInput,
-    NumberInput,
-    PrimaryButton
-  },
-  data: () => ({
-    phe: null,
-    weight: null,
-    name: ''
-  }),
-  methods: {
-    calculatePhe() {
-      return Math.round((this.weight * this.phe) / 100)
-    },
-    save() {
-      const db = getDatabase()
-      push(ref(db, `${this.user.id}/pheLog`), {
-        name: this.name,
-        pheReference: this.phe,
-        weight: Number(this.weight),
-        phe: this.calculatePhe()
-      })
-      this.$router.push('/')
-    }
-  },
-  computed: {
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
-    }
-  }
+const router = useRouter()
+const store = useStore()
+
+// Reactive state
+const phe = ref(null)
+const weight = ref(null)
+const name = ref('')
+
+// Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+// Methods
+const calculatePhe = () => {
+  return Math.round((weight.value * phe.value) / 100)
+}
+
+const save = () => {
+  const db = getDatabase()
+  push(dbRef(db, `${user.value.id}/pheLog`), {
+    name: name.value,
+    pheReference: phe.value,
+    weight: Number(weight.value),
+    phe: calculatePhe()
+  })
+  router.push('/')
 }
 </script>
