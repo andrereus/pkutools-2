@@ -1,134 +1,3 @@
-<template>
-  <div>
-    <div class="block mb-6">
-      <nav class="flex space-x-2" aria-label="Tabs">
-        <RouterLink
-          :to="{ path: '/', query: { log: true } }"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-        >
-          {{ $t('phe-log.tab-title') }}
-        </RouterLink>
-        <RouterLink
-          to="/phe-diary"
-          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          aria-current="page"
-          >{{ $t('phe-diary.tab-title') }}</RouterLink
-        >
-      </nav>
-    </div>
-
-    <div v-if="!userIsAuthenticated" class="mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
-      <br />
-      <RouterLink
-        type="button"
-        to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
-      >
-        {{ $t('email-auth.title') }}
-      </RouterLink>
-    </div>
-
-    <div v-if="userIsAuthenticated">
-      <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
-
-      <apexchart
-        v-if="pheDiary.length >= 2"
-        type="area"
-        height="250"
-        :options="chartOptions"
-        :series="graph"
-        class="-mb-2"
-      ></apexchart>
-
-      <!-- TODO: Add sort feature -->
-      <DataTable :headers="tableHeaders" class="mb-8">
-        <tr
-          v-for="(item, index) in pheDiary"
-          :key="index"
-          @click="editItem(item)"
-          class="cursor-pointer"
-        >
-          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-            {{ getlocalDate(item.date) }}
-          </td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }}
-          </td>
-        </tr>
-      </DataTable>
-
-      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
-
-      <ModalDialog
-        ref="dialog"
-        :title="formTitle"
-        :buttons="[
-          { label: $t('common.save'), type: 'submit', visible: true },
-          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
-          { label: $t('common.cancel'), type: 'close', visible: true }
-        ]"
-        @submit="save"
-        @delete="deleteItem"
-        @close="close"
-      >
-        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="editedItem.date" />
-
-        <NumberInput
-          id-name="total-phe"
-          :label="$t('phe-diary.phe')"
-          v-model.number="editedItem.phe"
-        />
-
-        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
-          <tr v-for="(item, index) in editedItem.log" :key="index">
-            <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-              <img
-                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                v-if="item.icon !== undefined && item.icon !== ''"
-                onerror="this.src='img/food-icons/organic-food.svg'"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              <img
-                :src="publicPath + 'img/food-icons/organic-food.svg'"
-                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              {{
-                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                  ? item.emoji
-                  : null
-              }}
-              {{ item.name }}
-            </td>
-            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-              {{ item.phe }}
-            </td>
-          </tr>
-        </DataTable>
-      </ModalDialog>
-
-      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
-      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
-
-      <p v-if="!license" class="mt-3">
-        {{ $t('phe-diary.note') }}
-        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
-          >PKU Tools Unlimited</a
-        >.
-      </p>
-      <p v-if="license" class="mt-3 text-sm">
-        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('phe-diary.unlimited') }}
-      </p>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -415,6 +284,137 @@ const triggerDownload = (csvContent) => {
   document.body.removeChild(link)
 }
 </script>
+
+<template>
+  <div>
+    <div class="block mb-6">
+      <nav class="flex space-x-2" aria-label="Tabs">
+        <RouterLink
+          :to="{ path: '/', query: { log: true } }"
+          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
+        >
+          {{ $t('phe-log.tab-title') }}
+        </RouterLink>
+        <RouterLink
+          to="/phe-diary"
+          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
+          aria-current="page"
+          >{{ $t('phe-diary.tab-title') }}</RouterLink
+        >
+      </nav>
+    </div>
+
+    <div v-if="!userIsAuthenticated" class="mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <br />
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+      >
+        {{ $t('email-auth.title') }}
+      </RouterLink>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
+
+      <apexchart
+        v-if="pheDiary.length >= 2"
+        type="area"
+        height="250"
+        :options="chartOptions"
+        :series="graph"
+        class="-mb-2"
+      ></apexchart>
+
+      <!-- TODO: Add sort feature -->
+      <DataTable :headers="tableHeaders" class="mb-8">
+        <tr
+          v-for="(item, index) in pheDiary"
+          :key="index"
+          @click="editItem(item)"
+          class="cursor-pointer"
+        >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
+            {{ getlocalDate(item.date) }}
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
+
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
+
+      <ModalDialog
+        ref="dialog"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="close"
+      >
+        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="editedItem.date" />
+
+        <NumberInput
+          id-name="total-phe"
+          :label="$t('phe-diary.phe')"
+          v-model.number="editedItem.phe"
+        />
+
+        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
+          <tr v-for="(item, index) in editedItem.log" :key="index">
+            <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
+              <img
+                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+                v-if="item.icon !== undefined && item.icon !== ''"
+                onerror="this.src='img/food-icons/organic-food.svg'"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              <img
+                :src="publicPath + 'img/food-icons/organic-food.svg'"
+                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+                width="25"
+                class="food-icon"
+                alt="Food Icon"
+              />
+              {{
+                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                  ? item.emoji
+                  : null
+              }}
+              {{ item.name }}
+            </td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+              {{ item.phe }}
+            </td>
+          </tr>
+        </DataTable>
+      </ModalDialog>
+
+      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
+      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
+
+      <p v-if="!license" class="mt-3">
+        {{ $t('phe-diary.note') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+      <p v-if="license" class="mt-3 text-sm">
+        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
+        {{ $t('phe-diary.unlimited') }}
+      </p>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .food-icon {

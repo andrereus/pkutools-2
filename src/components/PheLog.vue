@@ -1,124 +1,3 @@
-<template>
-  <div>
-    <div v-if="!userIsAuthenticated" class="mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
-      <br />
-      <RouterLink
-        type="button"
-        to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
-      >
-        {{ $t('email-auth.title') }}
-      </RouterLink>
-    </div>
-
-    <div v-if="userIsAuthenticated">
-      <DataTable :headers="tableHeaders" class="mb-8">
-        <tr
-          v-for="(item, index) in pheLog"
-          :key="index"
-          @click="editItem(item)"
-          class="cursor-pointer"
-        >
-          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-            <img
-              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-              v-if="item.icon !== undefined && item.icon !== ''"
-              onerror="this.src='img/food-icons/organic-food.svg'"
-              width="25"
-              class="food-icon"
-              alt="Food Icon"
-            />
-            <img
-              :src="publicPath + 'img/food-icons/organic-food.svg'"
-              v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-              width="25"
-              class="food-icon"
-              alt="Food Icon"
-            />
-            {{
-              (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                ? item.emoji
-                : null
-            }}
-            {{ item.name }}
-          </td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.weight }}
-          </td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }}
-          </td>
-        </tr>
-      </DataTable>
-
-      <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
-
-      <ModalDialog
-        ref="dialog"
-        :title="$t('phe-log.save-day')"
-        :buttons="[
-          { label: $t('common.save'), type: 'submit', visible: true },
-          { label: $t('common.cancel'), type: 'simpleClose', visible: true }
-        ]"
-        @submit="saveResult"
-      >
-        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
-      </ModalDialog>
-
-      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
-
-      <ModalDialog
-        ref="dialog2"
-        :title="formTitle"
-        :buttons="[
-          { label: $t('common.save'), type: 'submit', visible: true },
-          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
-          { label: $t('common.cancel'), type: 'close', visible: true }
-        ]"
-        @submit="save"
-        @delete="deleteItem"
-        @close="close"
-      >
-        <p v-if="!editedItem.pheReference && editedIndex !== -1" class="mb-3">
-          {{ $t('phe-log.data-warning') }}
-        </p>
-        <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
-        <NumberInput
-          id-name="phe"
-          :label="$t('common.phe-per-100g')"
-          v-model.number="editedItem.pheReference"
-        />
-        <NumberInput
-          id-name="weight"
-          :label="$t('common.consumed-weight')"
-          v-model.number="editedItem.weight"
-        />
-        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
-      </ModalDialog>
-
-      <p v-if="lastAdded.length === 0" class="mt-3">
-        {{ $t('phe-log.info') }}
-      </p>
-
-      <div v-if="lastAdded.length !== 0" class="mt-3">
-        <SecondaryButton
-          v-for="(item, index) in lastAdded.slice(0, visibleItems)"
-          :key="index"
-          :text="`${item.weight}g ${item.name.length > 14 ? item.name.slice(0, 13) + '…' : item.name}`"
-          @click="addLastAdded(item)"
-          class="!t-font-normal"
-        />
-        <SecondaryButton
-          v-if="visibleItems < lastAdded.length"
-          :text="$t('phe-log.more')"
-          @click="showMoreItems"
-        />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -306,6 +185,127 @@ const saveResult = () => {
   }
 }
 </script>
+
+<template>
+  <div>
+    <div v-if="!userIsAuthenticated" class="mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <br />
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+      >
+        {{ $t('email-auth.title') }}
+      </RouterLink>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <DataTable :headers="tableHeaders" class="mb-8">
+        <tr
+          v-for="(item, index) in pheLog"
+          :key="index"
+          @click="editItem(item)"
+          class="cursor-pointer"
+        >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
+            <img
+              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+              v-if="item.icon !== undefined && item.icon !== ''"
+              onerror="this.src='img/food-icons/organic-food.svg'"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            {{
+              (item.icon === undefined || item.icon === '') && item.emoji !== undefined
+                ? item.emoji
+                : null
+            }}
+            {{ item.name }}
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.weight }}
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
+
+      <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
+
+      <ModalDialog
+        ref="dialog"
+        :title="$t('phe-log.save-day')"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.cancel'), type: 'simpleClose', visible: true }
+        ]"
+        @submit="saveResult"
+      >
+        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
+      </ModalDialog>
+
+      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
+
+      <ModalDialog
+        ref="dialog2"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="close"
+      >
+        <p v-if="!editedItem.pheReference && editedIndex !== -1" class="mb-3">
+          {{ $t('phe-log.data-warning') }}
+        </p>
+        <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
+        <NumberInput
+          id-name="phe"
+          :label="$t('common.phe-per-100g')"
+          v-model.number="editedItem.pheReference"
+        />
+        <NumberInput
+          id-name="weight"
+          :label="$t('common.consumed-weight')"
+          v-model.number="editedItem.weight"
+        />
+        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
+      </ModalDialog>
+
+      <p v-if="lastAdded.length === 0" class="mt-3">
+        {{ $t('phe-log.info') }}
+      </p>
+
+      <div v-if="lastAdded.length !== 0" class="mt-3">
+        <SecondaryButton
+          v-for="(item, index) in lastAdded.slice(0, visibleItems)"
+          :key="index"
+          :text="`${item.weight}g ${item.name.length > 14 ? item.name.slice(0, 13) + '…' : item.name}`"
+          @click="addLastAdded(item)"
+          class="!t-font-normal"
+        />
+        <SecondaryButton
+          v-if="visibleItems < lastAdded.length"
+          :text="$t('phe-log.more')"
+          @click="showMoreItems"
+        />
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .food-icon {

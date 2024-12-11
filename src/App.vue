@@ -1,3 +1,176 @@
+<script setup>
+/* global Headway */
+import { ref, computed, onBeforeMount, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useStore } from './stores/index'
+
+import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import {
+  Menu as MenuIcon,
+  CircleUser,
+  User,
+  House,
+  Search,
+  Calculator,
+  SquareDivide,
+  ScanBarcode,
+  Apple,
+  Book,
+  Mail,
+  LogOut,
+  Settings,
+  LifeBuoy,
+  Info,
+  Calendar
+} from 'lucide-vue-next'
+
+const router = useRouter()
+const store = useStore()
+const { t, locale } = useI18n()
+
+// Reactive state
+const lang = [
+  { name: 'Deutsch', abbr: 'de' },
+  { name: 'English', abbr: 'en' },
+  { name: 'Español', abbr: 'es' },
+  { name: 'Français', abbr: 'fr' }
+]
+
+// Computed properties
+const navigation = computed(() => {
+  if (userIsAuthenticated.value) {
+    return [
+      { name: 'app.start', icon: 'House', route: '/?home=true' },
+      { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
+      { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
+      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  } else {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?home=true' },
+      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  }
+})
+
+const tabNavigation = computed(() => {
+  if (userIsAuthenticated.value) {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?log=true' },
+      { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  } else {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?home=true' },
+      { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  }
+})
+
+const userNavigation = computed(() => {
+  const navItems = [
+    { name: 'settings.title', icon: 'Settings', route: '/settings' },
+    { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
+    { name: 'imprint.title', icon: 'Info', route: '/imprint' },
+    { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
+    { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+  ]
+  return navItems
+})
+
+const userIsAuthenticated = computed(() => store.user !== null)
+const userPhotoUrl = computed(() => (store.user ? store.user.photoUrl : null))
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+const pheResult = computed(() => {
+  let phe = 0
+  pheLog.value.forEach((item) => {
+    phe += item.phe
+  })
+  return Math.round(phe)
+})
+
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
+
+const signOut = () => {
+  store.signOut()
+}
+
+const setLocale = (newLocale) => {
+  localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
+  locale.value = newLocale
+  document.getElementsByTagName('html')[0].lang = newLocale
+}
+
+// Lifecycle hooks
+onBeforeMount(() => {
+  document.getElementsByTagName('html')[0].lang = locale.value
+})
+
+onMounted(() => {
+  store.checkAuthState()
+
+  // Script gets loaded in index.html
+  if (typeof Headway !== 'undefined') {
+    const config = {
+      selector: '.headway',
+      account: 'JVmwL7'
+    }
+    Headway.init(config)
+  }
+
+  // Remove old local storage items
+  const oldItems = ['vuetifyThemeDark', 'vuetifyThemeFromDevice', 'vuetifyCurrentTheme']
+  oldItems.forEach((item) => {
+    if (localStorage.getItem(item)) {
+      localStorage.removeItem(item)
+    }
+  })
+})
+
+// Add an icon map to reference the actual icon components
+const iconMap = {
+  House,
+  Search,
+  Calculator,
+  SquareDivide,
+  ScanBarcode,
+  Apple,
+  Book,
+  Mail,
+  LogOut,
+  Settings,
+  LifeBuoy,
+  Info,
+  Calendar
+}
+</script>
+
 <template>
   <div class="min-h-full app-container-safe-area dark:text-white">
     <div as="nav" class="bg-white shadow dark:bg-gray-800">
@@ -314,179 +487,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-/* global Headway */
-import { ref, computed, onBeforeMount, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-import { useStore } from './stores/index'
-
-import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import {
-  Menu as MenuIcon,
-  CircleUser,
-  User,
-  House,
-  Search,
-  Calculator,
-  SquareDivide,
-  ScanBarcode,
-  Apple,
-  Book,
-  Mail,
-  LogOut,
-  Settings,
-  LifeBuoy,
-  Info,
-  Calendar
-} from 'lucide-vue-next'
-
-const router = useRouter()
-const store = useStore()
-const { t, locale } = useI18n()
-
-// Reactive state
-const lang = [
-  { name: 'Deutsch', abbr: 'de' },
-  { name: 'English', abbr: 'en' },
-  { name: 'Español', abbr: 'es' },
-  { name: 'Français', abbr: 'fr' }
-]
-
-// Computed properties
-const navigation = computed(() => {
-  if (userIsAuthenticated.value) {
-    return [
-      { name: 'app.start', icon: 'House', route: '/?home=true' },
-      { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
-      { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
-      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-    ]
-  } else {
-    return [
-      { name: 'home.title', icon: 'House', route: '/?home=true' },
-      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-    ]
-  }
-})
-
-const tabNavigation = computed(() => {
-  if (userIsAuthenticated.value) {
-    return [
-      { name: 'home.title', icon: 'House', route: '/?log=true' },
-      { name: 'app.search', icon: 'Search', route: '/phe-search' },
-      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-    ]
-  } else {
-    return [
-      { name: 'home.title', icon: 'House', route: '/?home=true' },
-      { name: 'app.search', icon: 'Search', route: '/phe-search' },
-      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-    ]
-  }
-})
-
-const userNavigation = computed(() => {
-  const navItems = [
-    { name: 'settings.title', icon: 'Settings', route: '/settings' },
-    { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-    { name: 'imprint.title', icon: 'Info', route: '/imprint' },
-    { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-    { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
-  ]
-  return navItems
-})
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const userPhotoUrl = computed(() => (store.user ? store.user.photoUrl : null))
-const user = computed(() => store.user)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
-
-const pheResult = computed(() => {
-  let phe = 0
-  pheLog.value.forEach((item) => {
-    phe += item.phe
-  })
-  return Math.round(phe)
-})
-
-// Methods
-const signInGoogle = async () => {
-  try {
-    await store.signInGoogle()
-  } catch (error) {
-    alert(t('app.auth-error'))
-    console.error(error)
-  }
-}
-
-const signOut = () => {
-  store.signOut()
-}
-
-const setLocale = (newLocale) => {
-  localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
-  locale.value = newLocale
-  document.getElementsByTagName('html')[0].lang = newLocale
-}
-
-// Lifecycle hooks
-onBeforeMount(() => {
-  document.getElementsByTagName('html')[0].lang = locale.value
-})
-
-onMounted(() => {
-  store.checkAuthState()
-
-  // Script gets loaded in index.html
-  if (typeof Headway !== 'undefined') {
-    const config = {
-      selector: '.headway',
-      account: 'JVmwL7'
-    }
-    Headway.init(config)
-  }
-
-  // Remove old local storage items
-  const oldItems = ['vuetifyThemeDark', 'vuetifyThemeFromDevice', 'vuetifyCurrentTheme']
-  oldItems.forEach((item) => {
-    if (localStorage.getItem(item)) {
-      localStorage.removeItem(item)
-    }
-  })
-})
-
-// Add an icon map to reference the actual icon components
-const iconMap = {
-  House,
-  Search,
-  Calculator,
-  SquareDivide,
-  ScanBarcode,
-  Apple,
-  Book,
-  Mail,
-  LogOut,
-  Settings,
-  LifeBuoy,
-  Info,
-  Calendar
-}
-</script>
 
 <style lang="scss" scoped>
 .app-container-safe-area {

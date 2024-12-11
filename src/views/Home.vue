@@ -1,3 +1,100 @@
+<script setup>
+import { ref, computed, watch, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useStore } from '../stores/index'
+import PheLog from '../components/PheLog.vue'
+import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
+
+const router = useRouter()
+const route = useRoute()
+const store = useStore()
+
+// Reactive state
+const pheLog = ref(false)
+
+// Features data
+const features = [
+  {
+    name: 'features.search-name',
+    description: 'features.search-description',
+    icon: Search,
+    route: '/phe-search'
+  },
+  {
+    name: 'features.scanner-name',
+    description: 'features.scanner-description',
+    icon: ScanBarcode,
+    route: '/barcode-scanner'
+  },
+  {
+    name: 'features.calculator-name',
+    description: 'features.calculator-description',
+    icon: Calculator,
+    route: '/phe-calculator'
+  },
+  {
+    name: 'features.diary-name',
+    description: 'features.diary-description',
+    icon: Book,
+    route: '/?log=true'
+  },
+  {
+    name: 'features.suggestions-name',
+    description: 'features.suggestions-description',
+    icon: Sparkles,
+    route: '/?log=true'
+  },
+  {
+    name: 'features.own-food-name',
+    description: 'features.own-food-description',
+    icon: Apple,
+    route: '/own-food'
+  }
+]
+
+// Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
+
+// Watchers
+watch(userIsAuthenticated, (newVal) => {
+  if (newVal) {
+    router.push({ path: '/', query: { log: true } })
+  } else {
+    router.push({ path: '/', query: { home: true } })
+  }
+})
+
+watch(
+  () => route.query,
+  (newQuery) => {
+    if (newQuery.home) {
+      pheLog.value = false
+    } else if (newQuery.log) {
+      pheLog.value = true
+    }
+  },
+  { immediate: true }
+)
+
+// Lifecycle hooks
+onMounted(() => {
+  if (userIsAuthenticated.value && !route.query.home) {
+    router.push({ path: '/', query: { log: true } })
+  }
+})
+</script>
+
 <template>
   <div>
     <div v-if="pheLog" class="block mb-6">
@@ -143,100 +240,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, computed, watch, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '../stores/index'
-import PheLog from '../components/PheLog.vue'
-import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
-
-const router = useRouter()
-const route = useRoute()
-const store = useStore()
-
-// Reactive state
-const pheLog = ref(false)
-
-// Features data
-const features = [
-  {
-    name: 'features.search-name',
-    description: 'features.search-description',
-    icon: Search,
-    route: '/phe-search'
-  },
-  {
-    name: 'features.scanner-name',
-    description: 'features.scanner-description',
-    icon: ScanBarcode,
-    route: '/barcode-scanner'
-  },
-  {
-    name: 'features.calculator-name',
-    description: 'features.calculator-description',
-    icon: Calculator,
-    route: '/phe-calculator'
-  },
-  {
-    name: 'features.diary-name',
-    description: 'features.diary-description',
-    icon: Book,
-    route: '/?log=true'
-  },
-  {
-    name: 'features.suggestions-name',
-    description: 'features.suggestions-description',
-    icon: Sparkles,
-    route: '/?log=true'
-  },
-  {
-    name: 'features.own-food-name',
-    description: 'features.own-food-description',
-    icon: Apple,
-    route: '/own-food'
-  }
-]
-
-// Computed properties
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-
-// Methods
-const signInGoogle = async () => {
-  try {
-    await store.signInGoogle()
-  } catch (error) {
-    alert(t('app.auth-error'))
-    console.error(error)
-  }
-}
-
-// Watchers
-watch(userIsAuthenticated, (newVal) => {
-  if (newVal) {
-    router.push({ path: '/', query: { log: true } })
-  } else {
-    router.push({ path: '/', query: { home: true } })
-  }
-})
-
-watch(
-  () => route.query,
-  (newQuery) => {
-    if (newQuery.home) {
-      pheLog.value = false
-    } else if (newQuery.log) {
-      pheLog.value = true
-    }
-  },
-  { immediate: true }
-)
-
-// Lifecycle hooks
-onMounted(() => {
-  if (userIsAuthenticated.value && !route.query.home) {
-    router.push({ path: '/', query: { log: true } })
-  }
-})
-</script>

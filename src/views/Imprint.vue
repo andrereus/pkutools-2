@@ -1,3 +1,12 @@
+<script setup>
+import { ref } from 'vue'
+import PageHeader from '../components/PageHeader.vue'
+
+const part1 = ref('mail')
+const part2 = ref('pkutools')
+const part3 = ref('com')
+</script>
+
 <template>
   <div>
     <header>
@@ -18,15 +27,6 @@
     <p>{{ $t('imprint.sources') }}</p>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import PageHeader from '../components/PageHeader.vue'
-
-const part1 = ref('mail')
-const part2 = ref('pkutools')
-const part3 = ref('com')
-</script>
 
 <style lang="scss" scoped>
 .hidden {

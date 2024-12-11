@@ -1,77 +1,3 @@
-<template>
-  <div>
-    <header>
-      <PageHeader :title="$t('settings.title')" />
-    </header>
-
-    <SelectMenu
-      id-name="theme-select"
-      :label="$t('settings.theme')"
-      v-model="selectedTheme"
-      @change="handleThemeChange"
-    >
-      <option v-for="option in themeOptions" :key="option.value" :value="option.value">
-        {{ option.title }}
-      </option>
-    </SelectMenu>
-
-    <div v-if="!userIsAuthenticated" class="mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
-      <br />
-      <RouterLink
-        type="button"
-        to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
-      >
-        {{ $t('email-auth.title') }}
-      </RouterLink>
-    </div>
-
-    <div v-if="userIsAuthenticated">
-      <NumberInput
-        id-name="max-phe"
-        :label="$t('settings.max-phe')"
-        v-model.number="settings.maxPhe"
-        class="mb-6"
-      />
-
-      <PrimaryButton :text="$t('common.save')" @click="save" />
-
-      <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
-
-      <p class="mb-6">
-        {{ $t('settings.license-text') }}
-        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
-          >PKU Tools Unlimited</a
-        >.
-      </p>
-
-      <TextInput
-        id-name="license"
-        :label="$t('settings.license-key')"
-        v-model="settings.license"
-        class="mb-6"
-      />
-
-      <PrimaryButton :text="$t('settings.check-license')" @click="saveLicense" />
-
-      <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
-
-      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
-      <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
-      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
-
-      <PageHeader :title="$t('settings.delete-account')" class="mt-6" />
-
-      <p class="mb-6">
-        {{ $t('settings.delete-account-info') }}
-      </p>
-
-      <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -205,3 +131,77 @@ onMounted(() => {
   selectedTheme.value = localStorage.getItem('theme') || 'system'
 })
 </script>
+
+<template>
+  <div>
+    <header>
+      <PageHeader :title="$t('settings.title')" />
+    </header>
+
+    <SelectMenu
+      id-name="theme-select"
+      :label="$t('settings.theme')"
+      v-model="selectedTheme"
+      @change="handleThemeChange"
+    >
+      <option v-for="option in themeOptions" :key="option.value" :value="option.value">
+        {{ option.title }}
+      </option>
+    </SelectMenu>
+
+    <div v-if="!userIsAuthenticated" class="mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <br />
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+      >
+        {{ $t('email-auth.title') }}
+      </RouterLink>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <NumberInput
+        id-name="max-phe"
+        :label="$t('settings.max-phe')"
+        v-model.number="settings.maxPhe"
+        class="mb-6"
+      />
+
+      <PrimaryButton :text="$t('common.save')" @click="save" />
+
+      <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
+
+      <p class="mb-6">
+        {{ $t('settings.license-text') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+
+      <TextInput
+        id-name="license"
+        :label="$t('settings.license-key')"
+        v-model="settings.license"
+        class="mb-6"
+      />
+
+      <PrimaryButton :text="$t('settings.check-license')" @click="saveLicense" />
+
+      <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
+
+      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
+      <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
+      <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
+
+      <PageHeader :title="$t('settings.delete-account')" class="mt-6" />
+
+      <p class="mb-6">
+        {{ $t('settings.delete-account-info') }}
+      </p>
+
+      <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
+    </div>
+  </div>
+</template>

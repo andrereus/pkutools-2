@@ -1,3 +1,11 @@
+<script setup>
+import { ref } from 'vue'
+
+const part1 = ref('mail')
+const part2 = ref('pkutools')
+const part3 = ref('com')
+</script>
+
 <template>
   <div class="prose dark:prose-invert">
     <h1>Disclaimer</h1>
@@ -171,14 +179,6 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const part1 = ref('mail')
-const part2 = ref('pkutools')
-const part3 = ref('com')
-</script>
 
 <style lang="scss" scoped>
 .hidden {

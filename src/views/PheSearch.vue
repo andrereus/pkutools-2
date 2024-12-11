@@ -1,64 +1,3 @@
-<template>
-  <div>
-    <header>
-      <PageHeader :title="$t('app.search')" />
-    </header>
-
-    <div>
-      <div class="w-full mb-6">
-        <label for="search" class="sr-only">{{ $t('phe-search.search') }}</label>
-        <div class="relative">
-          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search class="h-5 w-5 text-gray-400" aria-hidden="true" />
-          </div>
-          <input
-            type="search"
-            id="search"
-            name="search"
-            v-model="search"
-            :placeholder="$t('phe-search.search')"
-            @keyup="searchFood"
-            autocomplete="off"
-            class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500"
-          />
-        </div>
-      </div>
-
-      <DataTable v-if="advancedFood !== null" :headers="tableHeaders">
-        <tr
-          v-for="(item, index) in advancedFood"
-          :key="index"
-          @click="loadItem(item)"
-          class="cursor-pointer"
-        >
-          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-            {{ item.emoji }}
-            {{ item.name }}
-          </td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }}
-          </td>
-        </tr>
-      </DataTable>
-
-      <p class="mt-8">{{ $t('phe-search.search-info') }}</p>
-
-      <ModalDialog
-        ref="dialog"
-        :title="emoji ? emoji + ' ' + name : name"
-        :buttons="[
-          { label: $t('common.add'), type: 'submit', visible: userIsAuthenticated },
-          { label: $t('common.close'), type: 'simpleClose', visible: true }
-        ]"
-        @submit="save"
-      >
-        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
-      </ModalDialog>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -156,3 +95,64 @@ const searchFood = async () => {
   loading.value = false
 }
 </script>
+
+<template>
+  <div>
+    <header>
+      <PageHeader :title="$t('app.search')" />
+    </header>
+
+    <div>
+      <div class="w-full mb-6">
+        <label for="search" class="sr-only">{{ $t('phe-search.search') }}</label>
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <Search class="h-5 w-5 text-gray-400" aria-hidden="true" />
+          </div>
+          <input
+            type="search"
+            id="search"
+            name="search"
+            v-model="search"
+            :placeholder="$t('phe-search.search')"
+            @keyup="searchFood"
+            autocomplete="off"
+            class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500"
+          />
+        </div>
+      </div>
+
+      <DataTable v-if="advancedFood !== null" :headers="tableHeaders">
+        <tr
+          v-for="(item, index) in advancedFood"
+          :key="index"
+          @click="loadItem(item)"
+          class="cursor-pointer"
+        >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
+            {{ item.emoji }}
+            {{ item.name }}
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
+
+      <p class="mt-8">{{ $t('phe-search.search-info') }}</p>
+
+      <ModalDialog
+        ref="dialog"
+        :title="emoji ? emoji + ' ' + name : name"
+        :buttons="[
+          { label: $t('common.add'), type: 'submit', visible: userIsAuthenticated },
+          { label: $t('common.close'), type: 'simpleClose', visible: true }
+        ]"
+        @submit="save"
+      >
+        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
+        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
+      </ModalDialog>
+    </div>
+  </div>
+</template>

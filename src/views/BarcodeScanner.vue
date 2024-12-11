@@ -1,80 +1,3 @@
-<template>
-  <div>
-    <header>
-      <PageHeader :title="$t('app.scanner')" />
-    </header>
-
-    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="openDialog" class="mt-2" />
-
-    <SimpleDialog ref="dialog" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
-      <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
-
-      <!-- Do not remove -->
-      <p v-if="error !== ''">{{ error }}</p>
-
-      <QrcodeStream
-        v-if="open"
-        :track="paintBoundingBox"
-        :formats="['ean_13', 'ean_8']"
-        @camera-on="onReady"
-        @detect="onDetect"
-        @error="onError"
-      ></QrcodeStream>
-    </SimpleDialog>
-
-    <div v-if="result">
-      <img
-        v-if="result.product.image_small_url"
-        :src="result.product.image_small_url"
-        max-height="200"
-        max-width="200"
-        class="my-6"
-      />
-
-      <h2 class="text-2xl mt-3 mb-1">{{ result.product.product_name }}</h2>
-
-      <!-- Do not remove -->
-      <p v-if="code !== ''" class="text-sm mb-6">Code: {{ code }}</p>
-
-      <div v-if="result.product.nutriments.proteins_100g">
-        <p class="text-xl mb-6">
-          {{ result.product.nutriments.proteins_100g }}
-          {{ result.product.nutriments.proteins_unit }}
-          {{ $t('common.short-protein-per-100g') }}
-        </p>
-
-        <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
-          <option v-for="option in type" :key="option.value" :value="option.value">
-            {{ option.title }}
-          </option>
-        </SelectMenu>
-
-        <NumberInput
-          id-name="weight"
-          :label="$t('common.consumed-weight')"
-          v-model.number="weight"
-          class="mb-6"
-        />
-
-        <p class="text-xl mb-6">~ {{ calculatePhe() }} mg Phe</p>
-
-        <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
-      </div>
-
-      <div v-if="!result.product.nutriments.proteins_100g" class="mb-6">
-        <p>{{ $t('barcode-scanner.no-protein') }}</p>
-        <RouterLink to="/protein-calculator" class="text-sky-500">
-          {{ $t('barcode-scanner.protein-link') }} <span aria-hidden="true">→</span>
-        </RouterLink>
-      </div>
-    </div>
-
-    <p class="mt-2">
-      {{ $t('barcode-scanner.info') }}
-    </p>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -214,3 +137,80 @@ const save = () => {
   router.push('/')
 }
 </script>
+
+<template>
+  <div>
+    <header>
+      <PageHeader :title="$t('app.scanner')" />
+    </header>
+
+    <PrimaryButton :text="$t('barcode-scanner.scan-barcode')" @click="openDialog" class="mt-2" />
+
+    <SimpleDialog ref="dialog" :title="$t('barcode-scanner.scan-barcode')" @close="cancel">
+      <p v-if="loaded === false">{{ $t('barcode-scanner.please-wait') }}</p>
+
+      <!-- Do not remove -->
+      <p v-if="error !== ''">{{ error }}</p>
+
+      <QrcodeStream
+        v-if="open"
+        :track="paintBoundingBox"
+        :formats="['ean_13', 'ean_8']"
+        @camera-on="onReady"
+        @detect="onDetect"
+        @error="onError"
+      ></QrcodeStream>
+    </SimpleDialog>
+
+    <div v-if="result">
+      <img
+        v-if="result.product.image_small_url"
+        :src="result.product.image_small_url"
+        max-height="200"
+        max-width="200"
+        class="my-6"
+      />
+
+      <h2 class="text-2xl mt-3 mb-1">{{ result.product.product_name }}</h2>
+
+      <!-- Do not remove -->
+      <p v-if="code !== ''" class="text-sm mb-6">Code: {{ code }}</p>
+
+      <div v-if="result.product.nutriments.proteins_100g">
+        <p class="text-xl mb-6">
+          {{ result.product.nutriments.proteins_100g }}
+          {{ result.product.nutriments.proteins_unit }}
+          {{ $t('common.short-protein-per-100g') }}
+        </p>
+
+        <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
+          <option v-for="option in type" :key="option.value" :value="option.value">
+            {{ option.title }}
+          </option>
+        </SelectMenu>
+
+        <NumberInput
+          id-name="weight"
+          :label="$t('common.consumed-weight')"
+          v-model.number="weight"
+          class="mb-6"
+        />
+
+        <p class="text-xl mb-6">~ {{ calculatePhe() }} mg Phe</p>
+
+        <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
+      </div>
+
+      <div v-if="!result.product.nutriments.proteins_100g" class="mb-6">
+        <p>{{ $t('barcode-scanner.no-protein') }}</p>
+        <RouterLink to="/protein-calculator" class="text-sky-500">
+          {{ $t('barcode-scanner.protein-link') }} <span aria-hidden="true">→</span>
+        </RouterLink>
+      </div>
+    </div>
+
+    <p class="mt-2">
+      {{ $t('barcode-scanner.info') }}
+    </p>
+  </div>
+</template>

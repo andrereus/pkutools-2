@@ -1,156 +1,3 @@
-<template>
-  <div>
-    <header>
-      <PageHeader :title="$t('own-food.title')" />
-    </header>
-
-    <div v-if="!userIsAuthenticated" class="mt-8">
-      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
-      <br />
-      <RouterLink
-        type="button"
-        to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
-      >
-        {{ $t('email-auth.title') }}
-      </RouterLink>
-    </div>
-
-    <div v-if="userIsAuthenticated">
-      <p class="mb-6">{{ $t('own-food.search-info') }}</p>
-
-      <DataTable :headers="tableHeaders" class="mb-8">
-        <tr
-          v-for="(item, index) in ownFood"
-          :key="index"
-          @click="addItem(item)"
-          class="cursor-pointer"
-        >
-          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-            <img
-              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-              v-if="item.icon !== undefined && item.icon !== ''"
-              onerror="this.src='img/food-icons/organic-food.svg'"
-              width="25"
-              class="food-icon"
-              alt="Food Icon"
-            />
-            <img
-              :src="publicPath + 'img/food-icons/organic-food.svg'"
-              v-if="item.icon === undefined || item.icon === ''"
-              width="25"
-              class="food-icon"
-              alt="Food Icon"
-            />
-            {{ item.name }}
-          </td>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }}
-          </td>
-        </tr>
-      </DataTable>
-
-      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
-
-      <ModalDialog
-        ref="dialog"
-        :title="formTitle"
-        :buttons="[
-          { label: $t('common.save'), type: 'submit', visible: true },
-          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
-          { label: $t('common.cancel'), type: 'close', visible: true }
-        ]"
-        @submit="save"
-        @delete="deleteItem"
-        @close="closeModal"
-      >
-        <Popover>
-          <PopoverButton class="mt-1">
-            <img
-              :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
-              v-if="editedItem.icon !== undefined && editedItem.icon !== null"
-              width="30"
-              class="food-icon float-left"
-              alt="Food Icon"
-            />
-            <img
-              :src="publicPath + 'img/food-icons/organic-food.svg'"
-              v-if="editedItem.icon === undefined || editedItem.icon === null"
-              width="30"
-              class="food-icon float-left"
-              alt="Food Icon"
-            />
-            <span class="float-left my-1 ml-2 text-sm">{{ $t('own-food.choose-icon') }}</span>
-          </PopoverButton>
-
-          <transition
-            enter-active-class="transition ease-out duration-200"
-            enter-from-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-            leave-active-class="transition ease-in duration-75"
-            leave-from-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
-          >
-            <PopoverPanel v-slot="{ close }">
-              <span v-for="(item, index) in foodIcons" :key="index">
-                <img
-                  :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
-                  v-if="item.svg !== undefined"
-                  width="35"
-                  class="food-icon pick-icon m-2"
-                  alt="Food Icon"
-                  @click="setIcon(item, close)"
-                />
-              </span>
-            </PopoverPanel>
-          </transition>
-        </Popover>
-
-        <TextInput
-          id-name="food"
-          :label="$t('common.food-name')"
-          v-model="editedItem.name"
-          class="mt-2"
-        />
-        <NumberInput
-          id-name="phe"
-          :label="$t('common.phe-per-100g')"
-          v-model.number="editedItem.phe"
-        />
-      </ModalDialog>
-
-      <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
-
-      <p v-if="!license" class="mt-3">
-        {{ $t('own-food.note') }}
-        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
-          >PKU Tools Unlimited</a
-        >.
-      </p>
-      <p v-if="license" class="mt-3 text-sm">
-        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('own-food.unlimited') }}
-      </p>
-
-      <ModalDialog
-        ref="dialog2"
-        :title="editedItem.name"
-        :buttons="[
-          { label: $t('common.add'), type: 'submit', visible: true },
-          { label: $t('common.edit'), type: 'edit', visible: true },
-          { label: $t('common.cancel'), type: 'close', visible: true }
-        ]"
-        @submit="add"
-        @edit="editItem"
-        @close="closeModal"
-      >
-        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
-      </ModalDialog>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -322,6 +169,159 @@ const setIcon = (item, close) => {
   close()
 }
 </script>
+
+<template>
+  <div>
+    <header>
+      <PageHeader :title="$t('own-food.title')" />
+    </header>
+
+    <div v-if="!userIsAuthenticated" class="mt-8">
+      <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
+      <br />
+      <RouterLink
+        type="button"
+        to="/email-auth"
+        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+      >
+        {{ $t('email-auth.title') }}
+      </RouterLink>
+    </div>
+
+    <div v-if="userIsAuthenticated">
+      <p class="mb-6">{{ $t('own-food.search-info') }}</p>
+
+      <DataTable :headers="tableHeaders" class="mb-8">
+        <tr
+          v-for="(item, index) in ownFood"
+          :key="index"
+          @click="addItem(item)"
+          class="cursor-pointer"
+        >
+          <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
+            <img
+              :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
+              v-if="item.icon !== undefined && item.icon !== ''"
+              onerror="this.src='img/food-icons/organic-food.svg'"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="item.icon === undefined || item.icon === ''"
+              width="25"
+              class="food-icon"
+              alt="Food Icon"
+            />
+            {{ item.name }}
+          </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.phe }}
+          </td>
+        </tr>
+      </DataTable>
+
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog.openDialog()" />
+
+      <ModalDialog
+        ref="dialog"
+        :title="formTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="save"
+        @delete="deleteItem"
+        @close="closeModal"
+      >
+        <Popover>
+          <PopoverButton class="mt-1">
+            <img
+              :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
+              v-if="editedItem.icon !== undefined && editedItem.icon !== null"
+              width="30"
+              class="food-icon float-left"
+              alt="Food Icon"
+            />
+            <img
+              :src="publicPath + 'img/food-icons/organic-food.svg'"
+              v-if="editedItem.icon === undefined || editedItem.icon === null"
+              width="30"
+              class="food-icon float-left"
+              alt="Food Icon"
+            />
+            <span class="float-left my-1 ml-2 text-sm">{{ $t('own-food.choose-icon') }}</span>
+          </PopoverButton>
+
+          <transition
+            enter-active-class="transition ease-out duration-200"
+            enter-from-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
+          >
+            <PopoverPanel v-slot="{ close }">
+              <span v-for="(item, index) in foodIcons" :key="index">
+                <img
+                  :src="publicPath + 'img/food-icons/' + item.svg + '.svg'"
+                  v-if="item.svg !== undefined"
+                  width="35"
+                  class="food-icon pick-icon m-2"
+                  alt="Food Icon"
+                  @click="setIcon(item, close)"
+                />
+              </span>
+            </PopoverPanel>
+          </transition>
+        </Popover>
+
+        <TextInput
+          id-name="food"
+          :label="$t('common.food-name')"
+          v-model="editedItem.name"
+          class="mt-2"
+        />
+        <NumberInput
+          id-name="phe"
+          :label="$t('common.phe-per-100g')"
+          v-model.number="editedItem.phe"
+        />
+      </ModalDialog>
+
+      <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
+
+      <p v-if="!license" class="mt-3">
+        {{ $t('own-food.note') }}
+        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+          >PKU Tools Unlimited</a
+        >.
+      </p>
+      <p v-if="license" class="mt-3 text-sm">
+        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
+        {{ $t('own-food.unlimited') }}
+      </p>
+
+      <ModalDialog
+        ref="dialog2"
+        :title="editedItem.name"
+        :buttons="[
+          { label: $t('common.add'), type: 'submit', visible: true },
+          { label: $t('common.edit'), type: 'edit', visible: true },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="add"
+        @edit="editItem"
+        @close="closeModal"
+      >
+        <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
+        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
+      </ModalDialog>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .food-icon {
