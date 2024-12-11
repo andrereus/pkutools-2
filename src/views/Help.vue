@@ -38,19 +38,13 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 import PageHeader from '../components/PageHeader.vue'
 
-export default {
-  components: {
-    PageHeader
-  },
-  data: () => ({
-    part1: 'mail',
-    part2: 'pkutools',
-    part3: 'com'
-  })
-}
+const part1 = ref('mail')
+const part2 = ref('pkutools')
+const part3 = ref('com')
 </script>
 
 <style lang="scss" scoped>

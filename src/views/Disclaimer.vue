@@ -172,14 +172,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    part1: 'mail',
-    part2: 'pkutools',
-    part3: 'com'
-  })
-}
+<script setup>
+import { ref } from 'vue'
+
+const part1 = ref('mail')
+const part2 = ref('pkutools')
+const part3 = ref('com')
 </script>
 
 <style lang="scss" scoped>
