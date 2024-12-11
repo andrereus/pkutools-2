@@ -59,11 +59,13 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, push } from 'firebase/database'
+import { getDatabase, ref as dbRef, push } from 'firebase/database'
 import Fuse from 'fuse.js'
-
 import { Search } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -71,116 +73,86 @@ import ModalDialog from '../components/ModalDialog.vue'
 import NumberInput from '../components/NumberInput.vue'
 import DataTable from '../components/DataTable.vue'
 
-export default {
-  components: {
-    PageHeader,
-    ModalDialog,
-    NumberInput,
-    DataTable,
-    Search
-  },
-  data: () => ({
-    publicPath: import.meta.env.BASE_URL,
-    search: null,
-    phe: null,
-    weight: 100,
-    name: '',
-    emoji: '🌱',
-    headers: [
-      {
-        title: 'Name',
-        align: 'start',
-        key: 'name'
-      },
-      { title: 'Phe', key: 'phe' }
-    ],
-    advancedFood: null,
-    loading: false
-  }),
-  methods: {
-    loadItem(item) {
-      this.name = item.name
-      this.emoji = item.emoji
-      this.phe = item.phe
-      this.weight = 100
-      this.$refs.dialog.openDialog()
-    },
-    calculatePhe() {
-      return Math.round((this.weight * this.phe) / 100)
-    },
-    save() {
-      const db = getDatabase()
-      push(ref(db, `${this.user.id}/pheLog`), {
-        name: this.name,
-        emoji: this.emoji || null,
-        pheReference: this.phe,
-        weight: Number(this.weight),
-        phe: this.calculatePhe()
-      })
-      this.$refs.dialog.closeDialog()
-      this.$router.push('/')
-    },
-    async searchFood() {
-      this.loading = true
-      let res, food, langFood
+const router = useRouter()
+const store = useStore()
+const { t, locale } = useI18n()
+const dialog = ref(null)
+const publicPath = import.meta.env.BASE_URL
 
-      if (this.$i18n.locale === 'de') {
-        res = await fetch(this.publicPath + 'data/usda-icon-de.json')
-        langFood = await res.json()
-      } else if (this.$i18n.locale === 'es') {
-        res = await fetch(this.publicPath + 'data/usda-icon-es.json')
-        langFood = await res.json()
-      } else if (this.$i18n.locale === 'fr') {
-        res = await fetch(this.publicPath + 'data/usda-icon-fr.json')
-        langFood = await res.json()
-      } else {
-        res = await fetch(this.publicPath + 'data/usda-icon-en.json')
-        langFood = await res.json()
-      }
-      food = langFood.concat(this.ownFood)
+// Reactive state
+const search = ref(null)
+const phe = ref(null)
+const weight = ref(100)
+const name = ref('')
+const emoji = ref('🌱')
+const advancedFood = ref(null)
+const loading = ref(false)
 
-      const fuse = new Fuse(food, {
-        keys: ['name', 'phe'],
-        threshold: 0.2,
-        minMatchCharLength: 2,
-        ignoreLocation: true,
-        useExtendedSearch: true
-      })
-      let results = fuse.search(this.search.trim())
+// Computed properties
+const tableHeaders = computed(() => [
+  { key: 'food', title: t('common.food') },
+  { key: 'phe', title: t('common.phe') }
+])
 
-      this.advancedFood = results.map((result) => {
-        return result.item
-      })
-      this.loading = false
-    }
-  },
-  computed: {
-    tableHeaders() {
-      return [
-        { key: 'food', title: this.$t('common.food') },
-        { key: 'phe', title: this.$t('common.phe') }
-      ]
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    ownFood() {
-      const store = useStore()
-      return store.ownFood
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
-    }
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const ownFood = computed(() => store.ownFood)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+// Methods
+const loadItem = (item) => {
+  name.value = item.name
+  emoji.value = item.emoji
+  phe.value = item.phe
+  weight.value = 100
+  dialog.value.openDialog()
+}
+
+const calculatePhe = () => {
+  return Math.round((weight.value * phe.value) / 100)
+}
+
+const save = () => {
+  const db = getDatabase()
+  push(dbRef(db, `${user.value.id}/pheLog`), {
+    name: name.value,
+    emoji: emoji.value || null,
+    pheReference: phe.value,
+    weight: Number(weight.value),
+    phe: calculatePhe()
+  })
+  dialog.value.closeDialog()
+  router.push('/')
+}
+
+const searchFood = async () => {
+  loading.value = true
+  let res, food, langFood
+
+  // Load language-specific food data
+  const langMap = {
+    de: 'usda-icon-de.json',
+    es: 'usda-icon-es.json',
+    fr: 'usda-icon-fr.json',
+    en: 'usda-icon-en.json'
   }
+
+  const fileName = langMap[locale.value] || langMap.en
+  res = await fetch(publicPath + 'data/' + fileName)
+  langFood = await res.json()
+  food = langFood.concat(ownFood.value)
+
+  const fuse = new Fuse(food, {
+    keys: ['name', 'phe'],
+    threshold: 0.2,
+    minMatchCharLength: 2,
+    ignoreLocation: true,
+    useExtendedSearch: true
+  })
+
+  let results = fuse.search(search.value.trim())
+  advancedFood.value = results.map((result) => result.item)
+  loading.value = false
 }
 </script>
