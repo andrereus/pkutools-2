@@ -151,13 +151,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, push, remove, update } from 'firebase/database'
+import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
-
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-
 import { BadgeCheck } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -168,176 +169,152 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 import TextInput from '../components/TextInput.vue'
 import NumberInput from '../components/NumberInput.vue'
 
-export default {
-  components: {
-    Popover,
-    PopoverButton,
-    PopoverPanel,
-    PageHeader,
-    DataTable,
-    SecondaryButton,
-    ModalDialog,
-    PrimaryButton,
-    TextInput,
-    NumberInput,
-    BadgeCheck
-  },
-  data: () => ({
-    publicPath: import.meta.env.BASE_URL,
-    editedIndex: -1,
-    editedKey: null,
-    editedItem: {
-      name: '',
-      icon: null,
-      phe: null
-    },
-    defaultItem: {
-      name: '',
-      icon: null,
-      phe: null
-    },
-    weight: 100,
-    foodIcons
-  }),
-  methods: {
-    async signInGoogle() {
-      const store = useStore()
-      try {
-        await store.signInGoogle()
-      } catch (error) {
-        alert(this.$t('app.auth-error'))
-        console.error(error)
-      }
-    },
-    editItem() {
-      this.$refs.dialog2.closeDialog()
-      this.$refs.dialog.openDialog()
-    },
-    deleteItem() {
-      const db = getDatabase()
-      remove(ref(db, `${this.user.id}/ownFood/${this.editedKey}`))
-      this.closeModal()
-    },
-    closeModal() {
-      this.$refs.dialog.closeDialog()
-      this.$refs.dialog2.closeDialog()
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-        this.editedKey = null
-      })
-    },
-    save() {
-      const db = getDatabase()
-      if (this.editedIndex > -1) {
-        update(ref(db, `${this.user.id}/ownFood/${this.editedKey}`), {
-          name: this.editedItem.name,
-          icon: this.editedItem.icon || null,
-          phe: Number(this.editedItem.phe)
-        })
-      } else {
-        if (
-          this.ownFood.length >= 500 &&
-          this.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
-        ) {
-          alert(this.$t('own-food.limit'))
-        } else {
-          push(ref(db, `${this.user.id}/ownFood`), {
-            name: this.editedItem.name,
-            icon: this.editedItem.icon || null,
-            phe: Number(this.editedItem.phe)
-          })
-        }
-      }
-      this.closeModal()
-    },
-    addItem(item) {
-      this.weight = 100
-      this.editedIndex = this.ownFood.indexOf(item)
-      this.editedKey = item['.key']
-      this.editedItem = Object.assign({}, item)
-      this.$refs.dialog2.openDialog()
-    },
-    calculatePhe() {
-      return Math.round((this.weight * this.editedItem.phe) / 100)
-    },
-    add() {
-      const db = getDatabase()
-      push(ref(db, `${this.user.id}/pheLog`), {
-        name: this.editedItem.name,
-        icon: this.editedItem.icon || null,
-        pheReference: this.editedItem.phe,
-        weight: Number(this.weight),
-        phe: this.calculatePhe()
-      })
-      this.$refs.dialog2.closeDialog()
-      this.$router.push('/')
-    },
-    exportOwnFood() {
-      let r = confirm(this.$t('common.export') + '?')
-      if (r === true) {
-        let csvContent = 'data:text/csv;charset=utf-8,'
-        csvContent += 'Name,Phe per 100g\n'
+const router = useRouter()
+const store = useStore()
+const { t } = useI18n()
+const dialog = ref(null)
+const dialog2 = ref(null)
+const publicPath = import.meta.env.BASE_URL
 
-        this.ownFood.forEach((entry) => {
-          const row = `${entry.name},${entry.phe}\n`
-          csvContent += row
-        })
-        this.triggerDownload(csvContent)
-      }
-    },
-    triggerDownload(csvContent) {
-      const encodedUri = encodeURI(csvContent)
-      const link = document.createElement('a')
-      link.setAttribute('href', encodedUri)
-      link.setAttribute('download', this.$t('own-food.export-filename') + '.csv')
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    },
-    setIcon(item, close) {
-      this.editedItem.icon = item.svg
-      close()
-    }
-  },
-  computed: {
-    license() {
-      return this.settings.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
-    },
-    tableHeaders() {
-      return [
-        { key: 'food', title: this.$t('common.food') },
-        { key: 'phe', title: this.$t('common.phe') }
-      ]
-    },
-    formTitle() {
-      if (this.editedIndex === -1) {
-        return this.$t('common.add')
-      } else {
-        return this.$t('common.edit')
-      }
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    ownFood() {
-      const store = useStore()
-      return store.ownFood
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
+// Reactive state
+const editedIndex = ref(-1)
+const editedKey = ref(null)
+const weight = ref(100)
+
+const defaultItem = {
+  name: '',
+  icon: null,
+  phe: null
+}
+
+const editedItem = ref({ ...defaultItem })
+
+// Computed properties
+const license = computed(
+  () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+)
+
+const tableHeaders = computed(() => [
+  { key: 'food', title: t('common.food') },
+  { key: 'phe', title: t('common.phe') }
+])
+
+const formTitle = computed(() => {
+  return editedIndex.value === -1 ? t('common.add') : t('common.edit')
+})
+
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const ownFood = computed(() => store.ownFood)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
+
+const editItem = () => {
+  dialog2.value.closeDialog()
+  dialog.value.openDialog()
+}
+
+const deleteItem = () => {
+  const db = getDatabase()
+  remove(dbRef(db, `${user.value.id}/ownFood/${editedKey.value}`))
+  closeModal()
+}
+
+const closeModal = () => {
+  dialog.value.closeDialog()
+  dialog2.value.closeDialog()
+  editedItem.value = { ...defaultItem }
+  editedIndex.value = -1
+  editedKey.value = null
+}
+
+const save = () => {
+  const db = getDatabase()
+  if (editedIndex.value > -1) {
+    update(dbRef(db, `${user.value.id}/ownFood/${editedKey.value}`), {
+      name: editedItem.value.name,
+      icon: editedItem.value.icon || null,
+      phe: Number(editedItem.value.phe)
+    })
+  } else {
+    if (
+      ownFood.value.length >= 500 &&
+      settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+    ) {
+      alert(t('own-food.limit'))
+    } else {
+      push(dbRef(db, `${user.value.id}/ownFood`), {
+        name: editedItem.value.name,
+        icon: editedItem.value.icon || null,
+        phe: Number(editedItem.value.phe)
+      })
     }
   }
+  closeModal()
+}
+
+const addItem = (item) => {
+  weight.value = 100
+  editedIndex.value = ownFood.value.indexOf(item)
+  editedKey.value = item['.key']
+  editedItem.value = { ...item }
+  dialog2.value.openDialog()
+}
+
+const calculatePhe = () => {
+  return Math.round((weight.value * editedItem.value.phe) / 100)
+}
+
+const add = () => {
+  const db = getDatabase()
+  push(dbRef(db, `${user.value.id}/pheLog`), {
+    name: editedItem.value.name,
+    icon: editedItem.value.icon || null,
+    pheReference: editedItem.value.phe,
+    weight: Number(weight.value),
+    phe: calculatePhe()
+  })
+  dialog2.value.closeDialog()
+  router.push('/')
+}
+
+const exportOwnFood = () => {
+  let r = confirm(t('common.export') + '?')
+  if (r === true) {
+    let csvContent = 'data:text/csv;charset=utf-8,'
+    csvContent += 'Name,Phe per 100g\n'
+
+    ownFood.value.forEach((entry) => {
+      const row = `${entry.name},${entry.phe}\n`
+      csvContent += row
+    })
+    triggerDownload(csvContent)
+  }
+}
+
+const triggerDownload = (csvContent) => {
+  const encodedUri = encodeURI(csvContent)
+  const link = document.createElement('a')
+  link.setAttribute('href', encodedUri)
+  link.setAttribute('download', t('own-food.export-filename') + '.csv')
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
+const setIcon = (item, close) => {
+  editedItem.value.icon = item.svg
+  close()
 }
 </script>
 
