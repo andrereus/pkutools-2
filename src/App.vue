@@ -39,7 +39,7 @@
                       "
                     >
                       <component
-                        :is="item.icon"
+                        :is="iconMap[item.icon]"
                         class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                         aria-hidden="true"
                       />{{ $t(item.name) }}
@@ -248,7 +248,7 @@
                         "
                       >
                         <component
-                          :is="item.icon"
+                          :is="iconMap[item.icon]"
                           class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ $t(item.name) }}
@@ -296,7 +296,7 @@
             class="text-gray-600 hover:bg-gray-50 hover:text-gray-600 group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:bg-gray-700"
           >
             <component
-              :is="item.icon"
+              :is="iconMap[item.icon]"
               class="md:mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
               aria-hidden="true"
             /><span class="hidden lg:inline-block">{{ $t(item.name) }}</span>
@@ -315,8 +315,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 /* global Headway */
+import { ref, computed, onBeforeMount, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from './stores/index'
 
 import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
@@ -339,179 +342,149 @@ import {
   Calendar
 } from 'lucide-vue-next'
 
-export default {
-  components: {
-    MenuComponent,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    MenuIcon,
-    CircleUser,
-    User,
-    House,
-    Search,
-    Calculator,
-    SquareDivide,
-    ScanBarcode,
-    Apple,
-    Book,
-    Mail,
-    LogOut,
-    Settings,
-    LifeBuoy,
-    Info,
-    Calendar
-  },
-  data: () => ({
-    lang: [
-      { name: 'Deutsch', abbr: 'de' },
-      { name: 'English', abbr: 'en' },
-      { name: 'Español', abbr: 'es' },
-      { name: 'Français', abbr: 'fr' }
+const router = useRouter()
+const store = useStore()
+const { t, locale } = useI18n()
+
+// Reactive state
+const lang = [
+  { name: 'Deutsch', abbr: 'de' },
+  { name: 'English', abbr: 'en' },
+  { name: 'Español', abbr: 'es' },
+  { name: 'Français', abbr: 'fr' }
+]
+
+// Computed properties
+const navigation = computed(() => {
+  if (userIsAuthenticated.value) {
+    return [
+      { name: 'app.start', icon: 'House', route: '/?home=true' },
+      { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
+      { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
+      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
     ]
-  }),
-  methods: {
-    async signInGoogle() {
-      const store = useStore()
-      try {
-        await store.signInGoogle()
-      } catch (error) {
-        alert(this.$t('app.auth-error'))
-        console.error(error)
-      }
-    },
-    signOut() {
-      const store = useStore()
-      store.signOut()
-    }
-  },
-  beforeCreate() {
-    document.getElementsByTagName('html')[0].lang = this.$i18n.locale
-  },
-  mounted() {
-    const store = useStore()
-    store.checkAuthState()
-
-    // Script gets loaded in index.html
-    if (typeof Headway !== 'undefined') {
-      const config = {
-        selector: '.headway',
-        account: 'JVmwL7'
-      }
-      Headway.init(config)
-    }
-
-    // Remove old local storage item
-    if (localStorage.vuetifyThemeDark) {
-      localStorage.removeItem('vuetifyThemeDark')
-    }
-    if (localStorage.vuetifyThemeFromDevice) {
-      localStorage.removeItem('vuetifyThemeFromDevice')
-    }
-    if (localStorage.vuetifyCurrentTheme) {
-      localStorage.removeItem('vuetifyCurrentTheme')
-    }
-  },
-  computed: {
-    navigation() {
-      if (this.userIsAuthenticated) {
-        return [
-          { name: 'app.start', icon: 'House', route: '/?home=true' },
-          { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
-          { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
-          { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-          { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-          { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-        ]
-      } else {
-        return [
-          { name: 'home.title', icon: 'House', route: '/?home=true' },
-          { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
-          { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
-          { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
-          { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-        ]
-      }
-    },
-    tabNavigation() {
-      if (this.userIsAuthenticated) {
-        return [
-          { name: 'home.title', icon: 'House', route: '/?log=true' },
-          { name: 'app.search', icon: 'Search', route: '/phe-search' },
-          { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-        ]
-      } else {
-        return [
-          { name: 'home.title', icon: 'House', route: '/?home=true' },
-          { name: 'app.search', icon: 'Search', route: '/phe-search' },
-          { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
-          { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-          { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
-        ]
-      }
-    },
-    userNavigation() {
-      if (this.userIsAuthenticated) {
-        return [
-          { name: 'settings.title', icon: 'Settings', route: '/settings' },
-          { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-          { name: 'imprint.title', icon: 'Info', route: '/imprint' },
-          { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
-        ]
-      } else {
-        return [
-          { name: 'settings.title', icon: 'Settings', route: '/settings' },
-          { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
-          { name: 'imprint.title', icon: 'Info', route: '/imprint' },
-          { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
-          { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
-        ]
-      }
-    },
-    locale: {
-      get: function () {
-        return this.$i18n.locale
-      },
-      set: function (newLocale) {
-        localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
-        this.$i18n.locale = newLocale
-        document.getElementsByTagName('html')[0].lang = newLocale
-      }
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    userPhotoUrl() {
-      const store = useStore()
-      return store.user ? store.user.photoUrl : null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
-    },
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    }
+  } else {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?home=true' },
+      { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
+      { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
   }
+})
+
+const tabNavigation = computed(() => {
+  if (userIsAuthenticated.value) {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?log=true' },
+      { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  } else {
+    return [
+      { name: 'home.title', icon: 'House', route: '/?home=true' },
+      { name: 'app.search', icon: 'Search', route: '/phe-search' },
+      { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
+      { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
+      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+    ]
+  }
+})
+
+const userNavigation = computed(() => {
+  const navItems = [
+    { name: 'settings.title', icon: 'Settings', route: '/settings' },
+    { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
+    { name: 'imprint.title', icon: 'Info', route: '/imprint' },
+    { name: 'disclaimer.title', icon: 'Info', route: '/disclaimer' },
+    { name: 'privacy-policy.title', icon: 'Info', route: '/privacy-policy' }
+  ]
+  return navItems
+})
+
+const userIsAuthenticated = computed(() => store.user !== null)
+const userPhotoUrl = computed(() => (store.user ? store.user.photoUrl : null))
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
+const pheResult = computed(() => {
+  let phe = 0
+  pheLog.value.forEach((item) => {
+    phe += item.phe
+  })
+  return Math.round(phe)
+})
+
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
+
+const signOut = () => {
+  store.signOut()
+}
+
+const setLocale = (newLocale) => {
+  localStorage.i18nCurrentLocale = JSON.stringify(newLocale)
+  locale.value = newLocale
+  document.getElementsByTagName('html')[0].lang = newLocale
+}
+
+// Lifecycle hooks
+onBeforeMount(() => {
+  document.getElementsByTagName('html')[0].lang = locale.value
+})
+
+onMounted(() => {
+  store.checkAuthState()
+
+  // Script gets loaded in index.html
+  if (typeof Headway !== 'undefined') {
+    const config = {
+      selector: '.headway',
+      account: 'JVmwL7'
+    }
+    Headway.init(config)
+  }
+
+  // Remove old local storage items
+  const oldItems = ['vuetifyThemeDark', 'vuetifyThemeFromDevice', 'vuetifyCurrentTheme']
+  oldItems.forEach((item) => {
+    if (localStorage.getItem(item)) {
+      localStorage.removeItem(item)
+    }
+  })
+})
+
+// Add an icon map to reference the actual icon components
+const iconMap = {
+  House,
+  Search,
+  Calculator,
+  SquareDivide,
+  ScanBarcode,
+  Apple,
+  Book,
+  Mail,
+  LogOut,
+  Settings,
+  LifeBuoy,
+  Info,
+  Calendar
 }
 </script>
 
