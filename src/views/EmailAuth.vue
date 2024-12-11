@@ -97,9 +97,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -108,65 +110,47 @@ import PasswordInput from '../components/PasswordInput.vue'
 import TextInput from '../components/TextInput.vue'
 import PrimaryButton from '../components/PrimaryButton.vue'
 
-export default {
-  components: {
-    TabGroup,
-    TabList,
-    Tab,
-    TabPanels,
-    TabPanel,
-    PageHeader,
-    EmailInput,
-    PasswordInput,
-    TextInput,
-    PrimaryButton
-  },
-  data: () => ({
-    name: null,
-    email: null,
-    password: null
-  }),
-  methods: {
-    async registerEmailPassword() {
-      const store = useStore()
-      try {
-        await store.registerWithEmail(this.email, this.password, this.name)
-        this.$router.push('/')
-      } catch (error) {
-        alert(this.$t('email-auth.error'))
-        console.error(error)
-      }
-    },
-    async signInEmailPassword() {
-      const store = useStore()
-      try {
-        await store.signInWithEmail(this.email, this.password)
-        this.$router.push('/')
-      } catch (error) {
-        alert(this.$t('email-auth.error'))
-        console.error(error)
-      }
-    },
-    async resetPassword() {
-      const store = useStore()
-      try {
-        await store.resetPassword(this.email)
-        alert(this.$t('email-auth.password-sent'))
-      } catch (error) {
-        alert(this.$t('email-auth.error'))
-        console.error(error)
-      }
-    }
-  },
-  computed: {
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    }
+const router = useRouter()
+const store = useStore()
+const { t } = useI18n()
+
+// Reactive state
+const name = ref(null)
+const email = ref(null)
+const password = ref(null)
+
+// Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+
+// Methods
+const registerEmailPassword = async () => {
+  try {
+    await store.registerWithEmail(email.value, password.value, name.value)
+    router.push('/')
+  } catch (error) {
+    alert(t('email-auth.error'))
+    console.error(error)
+  }
+}
+
+const signInEmailPassword = async () => {
+  try {
+    await store.signInWithEmail(email.value, password.value)
+    router.push('/')
+  } catch (error) {
+    alert(t('email-auth.error'))
+    console.error(error)
+  }
+}
+
+const resetPassword = async () => {
+  try {
+    await store.resetPassword(email.value)
+    alert(t('email-auth.password-sent'))
+  } catch (error) {
+    alert(t('email-auth.error'))
+    console.error(error)
   }
 }
 </script>
