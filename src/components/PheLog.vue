@@ -80,7 +80,7 @@
         @delete="deleteItem"
         @close="close"
       >
-        <p v-if="!editedItem.pheReference && this.editedIndex !== -1" class="mb-3">
+        <p v-if="!editedItem.pheReference && editedIndex !== -1" class="mb-3">
           {{ $t('phe-log.data-warning') }}
         </p>
         <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
@@ -119,214 +119,190 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
-import { getDatabase, ref, push, remove, update } from 'firebase/database'
+import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import { format } from 'date-fns'
 
-import DataTable from '../components/DataTable.vue'
-import ModalDialog from '../components/ModalDialog.vue'
-import PrimaryButton from '../components/PrimaryButton.vue'
-import SecondaryButton from '../components/SecondaryButton.vue'
-import DateInput from '../components/DateInput.vue'
-import TextInput from '../components/TextInput.vue'
-import NumberInput from '../components/NumberInput.vue'
+import DataTable from './DataTable.vue'
+import ModalDialog from './ModalDialog.vue'
+import PrimaryButton from './PrimaryButton.vue'
+import SecondaryButton from './SecondaryButton.vue'
+import DateInput from './DateInput.vue'
+import TextInput from './TextInput.vue'
+import NumberInput from './NumberInput.vue'
 
-export default {
-  name: 'PheLog',
-  components: {
-    DataTable,
-    ModalDialog,
-    PrimaryButton,
-    SecondaryButton,
-    DateInput,
-    TextInput,
-    NumberInput
-  },
-  data: () => ({
-    publicPath: import.meta.env.BASE_URL,
-    editedIndex: -1,
-    editedKey: null,
-    editedItem: {
-      name: '',
-      emoji: null,
-      icon: null,
-      pheReference: null,
-      weight: null,
-      phe: null
-    },
-    defaultItem: {
-      name: '',
-      emoji: null,
-      icon: null,
-      pheReference: null,
-      weight: null,
-      phe: null
-    },
-    data: '',
-    visibleItems: 5
-  }),
-  methods: {
-    async signInGoogle() {
-      const store = useStore()
-      try {
-        await store.signInGoogle()
-      } catch (error) {
-        alert(this.$t('app.auth-error'))
-        console.error(error)
-      }
-    },
-    showMoreItems() {
-      this.visibleItems += 5
-    },
-    calculatePhe() {
-      return Math.round((this.editedItem.weight * this.editedItem.pheReference) / 100) || 0
-    },
-    editItem(item) {
-      this.editedIndex = this.pheLog.indexOf(item)
-      this.editedKey = item['.key']
-      this.editedItem = Object.assign({}, item)
-      this.$refs.dialog2.openDialog()
-    },
-    addLastAdded(item) {
-      this.editedItem = Object.assign({}, item)
-      this.$refs.dialog2.openDialog()
-    },
-    deleteItem() {
-      const db = getDatabase()
-      remove(ref(db, `${this.user.id}/pheLog/${this.editedKey}`))
-      this.close()
-    },
-    close() {
-      this.$refs.dialog2.closeDialog()
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-        this.editedKey = null
-      })
-    },
-    save() {
-      const db = getDatabase()
-      if (this.editedIndex > -1) {
-        update(ref(db, `${this.user.id}/pheLog/${this.editedKey}`), {
-          name: this.editedItem.name,
-          icon: this.editedItem.icon || null,
-          pheReference: Number(this.editedItem.pheReference) || 0,
-          weight: Number(this.editedItem.weight),
-          phe: this.calculatePhe()
-        })
-      } else {
-        push(ref(db, `${this.user.id}/pheLog`), {
-          name: this.editedItem.name,
-          emoji: this.editedItem.emoji || null,
-          icon: this.editedItem.icon || null,
-          pheReference: Number(this.editedItem.pheReference) || 0,
-          weight: Number(this.editedItem.weight),
-          phe: this.calculatePhe()
-        })
-      }
-      this.close()
-    },
-    saveResult() {
-      const db = getDatabase()
-      if (
-        this.pheDiary.length >= 100 &&
-        this.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
-      ) {
-        alert(this.$t('phe-diary.limit'))
-      } else {
-        const pheLogForFirebase = this.pheLog.map(
-          ({
-            // eslint-disable-next-line no-unused-vars
-            '.key': key,
-            ...itemWithoutKey
-          }) => itemWithoutKey
-        )
-        push(ref(db, `${this.user.id}/pheDiary`), {
-          date: this.date,
-          phe: this.pheResult,
-          log: pheLogForFirebase
-        }).then(() => {
-          remove(ref(db, `${this.user.id}/pheLog`))
-        })
-        this.$router.push('phe-diary')
-      }
+const router = useRouter()
+const store = useStore()
+const { t } = useI18n()
+const dialog = ref(null)
+const dialog2 = ref(null)
+const publicPath = import.meta.env.BASE_URL
+
+// Reactive state
+const editedIndex = ref(-1)
+const editedKey = ref(null)
+const date = ref(format(new Date(), 'yyyy-MM-dd'))
+const visibleItems = ref(5)
+
+const defaultItem = {
+  name: '',
+  emoji: null,
+  icon: null,
+  pheReference: null,
+  weight: null,
+  phe: null
+}
+
+const editedItem = ref({ ...defaultItem })
+
+// Computed properties
+const tableHeaders = computed(() => [
+  { key: 'food', title: t('common.food') },
+  { key: 'weight', title: t('common.weight') },
+  { key: 'phe', title: t('common.phe') }
+])
+
+const formTitle = computed(() => {
+  return editedIndex.value === -1 ? t('common.add') : t('common.edit')
+})
+
+const pheResult = computed(() => {
+  let phe = 0
+  pheLog.value.forEach((item) => {
+    phe += item.phe
+  })
+  return Math.round(phe)
+})
+
+const lastAdded = computed(() => {
+  // Get the food items from the last diary entries that have a log
+  const lastEntries = pheDiary.value
+    .filter((obj) => Array.isArray(obj.log))
+    .slice(-5)
+    .map((obj) => obj.log)
+
+  // Flatten and reverse the array to prioritize the most recent items
+  const flattenedLogs = [].concat(...lastEntries).reverse()
+
+  // Use a Map to filter out duplicates and keep track of their recency-weighted score
+  const itemMap = new Map()
+
+  flattenedLogs.forEach((item, index) => {
+    const recencyWeight = flattenedLogs.length / (index + 1) // More recent items have higher weight
+    if (itemMap.has(item.name)) {
+      const entry = itemMap.get(item.name)
+      entry.score += recencyWeight
+    } else {
+      itemMap.set(item.name, { ...item, score: recencyWeight })
     }
-  },
-  created() {
-    this.date = format(new Date(), 'yyyy-MM-dd')
-  },
-  computed: {
-    tableHeaders() {
-      return [
-        { key: 'food', title: this.$t('common.food') },
-        { key: 'weight', title: this.$t('common.weight') },
-        { key: 'phe', title: this.$t('common.phe') }
-      ]
-    },
-    formTitle() {
-      if (this.editedIndex === -1) {
-        return this.$t('common.add')
-      } else {
-        return this.$t('common.edit')
-      }
-    },
-    pheResult() {
-      let phe = 0
-      this.pheLog.forEach((item) => {
-        phe += item.phe
-      })
-      return Math.round(phe)
-    },
-    lastAdded() {
-      // Get the food items from the last diary entries that have a log
-      const lastEntries = this.pheDiary
-        .filter((obj) => Array.isArray(obj.log))
-        .slice(-5)
-        .map((obj) => obj.log)
+  })
 
-      // Flatten and reverse the array to prioritize the most recent items
-      const flattenedLogs = [].concat(...lastEntries).reverse()
+  // Convert the Map back to an array and sort by combined score (recency-weighted frequency)
+  const sortedItems = Array.from(itemMap.values()).sort((a, b) => b.score - a.score)
 
-      // Use a Map to filter out duplicates and keep track of their recency-weighted score
-      const itemMap = new Map()
+  // Limit to the top 10 items
+  return sortedItems
+})
 
-      flattenedLogs.forEach((item, index) => {
-        const recencyWeight = flattenedLogs.length / (index + 1) // More recent items have higher weight
-        if (itemMap.has(item.name)) {
-          const entry = itemMap.get(item.name)
-          entry.score += recencyWeight
-        } else {
-          itemMap.set(item.name, { ...item, score: recencyWeight })
-        }
-      })
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const pheDiary = computed(() => store.pheDiary)
+const settings = computed(() => store.settings)
 
-      // Convert the Map back to an array and sort by combined score (recency-weighted frequency)
-      const sortedItems = Array.from(itemMap.values()).sort((a, b) => b.score - a.score)
+// Methods
+const signInGoogle = async () => {
+  try {
+    await store.signInGoogle()
+  } catch (error) {
+    alert(t('app.auth-error'))
+    console.error(error)
+  }
+}
 
-      // Limit to the top 10 items
-      return sortedItems
-    },
-    userIsAuthenticated() {
-      const store = useStore()
-      return store.user !== null
-    },
-    user() {
-      const store = useStore()
-      return store.user
-    },
-    pheLog() {
-      const store = useStore()
-      return store.pheLog
-    },
-    pheDiary() {
-      const store = useStore()
-      return store.pheDiary
-    },
-    settings() {
-      const store = useStore()
-      return store.settings
-    }
+const showMoreItems = () => {
+  visibleItems.value += 5
+}
+
+const calculatePhe = () => {
+  return Math.round((editedItem.value.weight * editedItem.value.pheReference) / 100) || 0
+}
+
+const editItem = (item) => {
+  editedIndex.value = pheLog.value.indexOf(item)
+  editedKey.value = item['.key']
+  editedItem.value = Object.assign({}, item)
+  dialog2.value.openDialog()
+}
+
+const addLastAdded = (item) => {
+  editedItem.value = Object.assign({}, item)
+  dialog2.value.openDialog()
+}
+
+const deleteItem = () => {
+  const db = getDatabase()
+  remove(dbRef(db, `${user.value.id}/pheLog/${editedKey.value}`))
+  close()
+}
+
+const close = () => {
+  dialog2.value.closeDialog()
+  editedItem.value = Object.assign({}, defaultItem)
+  editedIndex.value = -1
+  editedKey.value = null
+}
+
+const save = () => {
+  const db = getDatabase()
+  if (editedIndex.value > -1) {
+    update(dbRef(db, `${user.value.id}/pheLog/${editedKey.value}`), {
+      name: editedItem.value.name,
+      icon: editedItem.value.icon || null,
+      pheReference: Number(editedItem.value.pheReference) || 0,
+      weight: Number(editedItem.value.weight),
+      phe: calculatePhe()
+    })
+  } else {
+    push(dbRef(db, `${user.value.id}/pheLog`), {
+      name: editedItem.value.name,
+      emoji: editedItem.value.emoji || null,
+      icon: editedItem.value.icon || null,
+      pheReference: Number(editedItem.value.pheReference) || 0,
+      weight: Number(editedItem.value.weight),
+      phe: calculatePhe()
+    })
+  }
+  close()
+}
+
+const saveResult = () => {
+  const db = getDatabase()
+  if (
+    pheDiary.value.length >= 100 &&
+    settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+  ) {
+    alert(t('phe-diary.limit'))
+  } else {
+    const pheLogForFirebase = pheLog.value.map(
+      ({
+        // eslint-disable-next-line no-unused-vars
+        '.key': key,
+        ...itemWithoutKey
+      }) => itemWithoutKey
+    )
+    push(dbRef(db, `${user.value.id}/pheDiary`), {
+      date: date.value,
+      phe: pheResult.value,
+      log: pheLogForFirebase
+    }).then(() => {
+      remove(dbRef(db, `${user.value.id}/pheLog`))
+    })
+    router.push('phe-diary')
   }
 }
 </script>
