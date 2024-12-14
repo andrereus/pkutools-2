@@ -31,7 +31,7 @@ const editedIndex = ref(-1)
 const editedKey = ref(null)
 
 const defaultItem = {
-  date: '',
+  date: format(new Date(), 'yyyy-MM-dd'),
   phe: null
 }
 
