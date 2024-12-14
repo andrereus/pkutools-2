@@ -303,7 +303,7 @@ const triggerDownload = (csvContent) => {
             {{ getlocalDate(item.date) }}
           </td>
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }} {{ item.unit === 'mgdl' ? 'mg/dL' : 'µmol/L' }}
+            {{ item.phe }}
           </td>
         </tr>
       </DataTable>
