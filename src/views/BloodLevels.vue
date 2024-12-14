@@ -351,7 +351,7 @@ const triggerDownload = (csvContent) => {
           v-model.number="editedItem.phe"
         />
 
-        <p class="text-sm mt-6">
+        <p class="text-sm mt-4">
           ~ {{ calculatePhe() }}
           <span v-if="editedItem.unit === 'mgdl'">µmol/L</span>
           <span v-if="editedItem.unit === 'umoll'">mg/dL</span>
