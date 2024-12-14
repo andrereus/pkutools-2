@@ -128,8 +128,9 @@
     "export": "Export",
     "export-filename": "PKU Tools - Phe Diary",
     "note": "Limited to 50 entries. Unlimited with license",
-    "chart-info": "The chart gets displayed after the second entry.",
-    "unlimited": "Unlimited"
+    "info": "Early version - changes possible.",
+    "unlimited": "Unlimited",
+    "unit": "Unit"
   },
   "settings": {
     "title": "Settings",

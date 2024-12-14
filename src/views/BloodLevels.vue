@@ -19,6 +19,7 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
+import SelectMenu from '../components/SelectMenu.vue'
 
 const router = useRouter()
 const store = useStore()
@@ -32,12 +33,18 @@ const editedKey = ref(null)
 
 const defaultItem = {
   date: '',
+  unit: 'mgdl',
   phe: null
 }
 
 const editedItem = ref({ ...defaultItem })
 
 // Computed properties
+const unitOptions = computed(() => [
+  { title: 'mg/dL', value: 'mgdl' },
+  { title: 'µmol/L', value: 'umoll' }
+])
+
 const license = computed(
   () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
 )
@@ -151,6 +158,18 @@ const signInGoogle = async () => {
   }
 }
 
+const calculatePhe = () => {
+  let result = 0
+
+  if (editedItem.value.unit === 'mgdl') {
+    result = Math.round(editedItem.value.phe * 60.5)
+  } else if (editedItem.value.unit === 'umoll') {
+    result = Math.round(editedItem.value.phe / 60.5)
+  }
+
+  return result
+}
+
 const editItem = (item) => {
   editedIndex.value = bloodLevels.value.indexOf(item)
   editedKey.value = item['.key']
@@ -179,6 +198,7 @@ const save = () => {
   if (editedIndex.value > -1) {
     update(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`), {
       date: editedItem.value.date,
+      unit: editedItem.value.unit,
       phe: Number(editedItem.value.phe)
     })
   } else {
@@ -190,6 +210,7 @@ const save = () => {
     } else {
       push(dbRef(db, `${user.value.id}/bloodLevels`), {
         date: editedItem.value.date,
+        unit: editedItem.value.unit,
         phe: Number(editedItem.value.phe)
       })
     }
@@ -274,7 +295,7 @@ const triggerDownload = (csvContent) => {
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p v-if="bloodLevels.length < 2" class="mb-6">{{ $t('blood-levels.chart-info') }}</p>
+      <p class="mb-6">{{ $t('blood-levels.info') }}</p>
 
       <apexchart
         v-if="bloodLevels.length >= 2"
@@ -318,11 +339,23 @@ const triggerDownload = (csvContent) => {
       >
         <DateInput id-name="date" :label="$t('blood-levels.date')" v-model="editedItem.date" />
 
+        <SelectMenu id-name="unit" :label="$t('blood-levels.unit')" v-model="editedItem.unit">
+          <option v-for="option in unitOptions" :key="option.value" :value="option.value">
+            {{ option.title }}
+          </option>
+        </SelectMenu>
+
         <NumberInput
           id-name="phe"
           :label="$t('blood-levels.phe')"
           v-model.number="editedItem.phe"
         />
+
+        <p class="text-sm mt-6">
+          ~ {{ calculatePhe() }}
+          <span v-if="editedItem.unit === 'mgdl'">µmol/L</span>
+          <span v-if="editedItem.unit === 'umoll'">mg/dL</span>
+        </p>
       </ModalDialog>
 
       <SecondaryButton :text="$t('blood-levels.export')" @click="exportBloodLevels" />

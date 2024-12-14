@@ -128,8 +128,9 @@
     "export": "Exportation",
     "export-filename": "PKU Tools - Journal Phe",
     "note": "Limité à 50 entrées. Illimité avec la licence",
-    "chart-info": "Le graphique s'affiche après la deuxième entrée.",
-    "unlimited": "Illimité"
+    "info": "Première version - modifications possibles.",
+    "unlimited": "Illimité",
+    "unit": "Unité"
   },
   "settings": {
     "title": "Paramètres",

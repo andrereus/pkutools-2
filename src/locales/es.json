@@ -128,8 +128,9 @@
     "export": "Exportar",
     "export-filename": "PKU Tools - Diario Phe",
     "note": "Limitado a 50 entradas. Ilimitadas con licencia",
-    "chart-info": "El gráfico se muestra después de la segunda entrada.",
-    "unlimited": "Sin límites"
+    "info": "Versión temprana - cambios posibles.",
+    "unlimited": "Sin límites",
+    "unit": "Unidad"
   },
   "settings": {
     "title": "Configuración",

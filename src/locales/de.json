@@ -128,8 +128,9 @@
     "export": "Exportieren",
     "export-filename": "PKU Tools - Phe Tagebuch",
     "note": "Limitiert auf 50 Einträge. Unbegrenzt mit Lizenz",
-    "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
-    "unlimited": "Unlimitiert"
+    "info": "Frühe Version - Änderungen möglich.",
+    "unlimited": "Unlimitiert",
+    "unit": "Einheit"
   },
   "settings": {
     "title": "Einstellungen",
