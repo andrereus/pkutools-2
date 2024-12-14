@@ -22,7 +22,8 @@ import {
   Settings,
   LifeBuoy,
   Info,
-  Calendar
+  Calendar,
+  ChartLine
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -44,6 +45,7 @@ const navigation = computed(() => {
       { name: 'app.start', icon: 'House', route: '/?home=true' },
       { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
       { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
+      { name: 'blood-levels.title', icon: 'ChartLine', route: '/blood-levels' },
       { name: 'phe-search.title', icon: 'Search', route: '/phe-search' },
       { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
@@ -167,7 +169,8 @@ const iconMap = {
   Settings,
   LifeBuoy,
   Info,
-  Calendar
+  Calendar,
+  ChartLine
 }
 </script>
 

@@ -108,7 +108,6 @@
     "description": "Enregistrez les valeurs de Phe sur plusieurs jours.",
     "date": "Date",
     "phe": "Phe total (en mg)",
-    "chart": "Ajouter une entrée",
     "limit": "Le Journal de Phe est limité à 100 entrées. Exportez vos données en Excel. Pour la suppression, voir les paramètres.",
     "export-food": "Exporter des aliments",
     "export-days": "Días de exportación",
@@ -116,6 +115,19 @@
     "export-filename": "PKU Tools - Journal de Phe",
     "note": "Limité à 100 entrées (~3 mois). Illimité avec licence",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
+    "unlimited": "Illimité"
+  },
+  "blood-levels": {
+    "title": "Niveaux sanguins",
+    "tab-title": "Niveaux sanguins",
+    "description": "Enregistrer les taux sanguins.",
+    "date": "Date",
+    "phe-value": "Valeur de la Phe (en mg/dl)",
+    "limit": "Les niveaux de sang sont limités à 50 entrées. Exportez vos données dans Excel. Pour la suppression, voir les paramètres.",
+    "export": "Exportation",
+    "export-filename": "PKU Tools - Journal Phe",
+    "note": "Limité à 50 entrées. Illimité avec la licence",
+    "chart-info": "Le graphique s'affiche après la deuxième entrée.",
     "unlimited": "Illimité"
   },
   "settings": {

@@ -17,6 +17,7 @@ export const useStore = defineStore('main', {
     user: null,
     pheLog: [],
     pheDiary: [],
+    bloodLevels: [],
     ownFood: [],
     settings: {},
     unsubscribeFunctions: {}
@@ -101,6 +102,7 @@ export const useStore = defineStore('main', {
       const initialState = {
         pheLog: [],
         pheDiary: [],
+        bloodLevels: [],
         ownFood: [],
         settings: {}
       }
@@ -123,6 +125,7 @@ export const useStore = defineStore('main', {
 
       bindRef('pheLog', ref(db, `${userId}/pheLog`))
       bindRef('pheDiary', ref(db, `${userId}/pheDiary`))
+      bindRef('bloodLevels', ref(db, `${userId}/bloodLevels`))
       bindRef('ownFood', ref(db, `${userId}/ownFood`))
       bindRef('settings', ref(db, `${userId}/settings`))
     },

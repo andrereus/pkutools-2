@@ -43,12 +43,7 @@ const license = computed(
 )
 
 const tableHeaders = computed(() => [
-  { key: 'date', title: t('phe-diary.date') },
-  { key: 'phe', title: t('common.phe') }
-])
-
-const tableHeaders2 = computed(() => [
-  { key: 'food', title: t('common.food') },
+  { key: 'date', title: t('blood-levels.date') },
   { key: 'phe', title: t('common.phe') }
 ])
 
@@ -68,8 +63,8 @@ const computelocalDate = computed(() => {
 })
 
 const graph = computed(() => {
-  let newPheDiary = pheDiary.value
-  let chartPheDiary = newPheDiary
+  let newBloodLevels = bloodLevels.value
+  let chartBloodLevels = newBloodLevels
     .map((obj) => {
       return { x: obj.date, y: obj.phe }
     })
@@ -79,7 +74,7 @@ const graph = computed(() => {
   return [
     {
       name: 'Phe',
-      data: chartPheDiary
+      data: chartBloodLevels
     }
   ]
 })
@@ -153,7 +148,7 @@ const chartOptions = computed(() => {
 
 const userIsAuthenticated = computed(() => store.user !== null)
 const user = computed(() => store.user)
-const pheDiary = computed(() => store.pheDiary)
+const bloodLevels = computed(() => store.bloodLevels)
 const settings = computed(() => store.settings)
 
 // Methods
@@ -167,7 +162,7 @@ const signInGoogle = async () => {
 }
 
 const editItem = (item) => {
-  editedIndex.value = pheDiary.value.indexOf(item)
+  editedIndex.value = bloodLevels.value.indexOf(item)
   editedKey.value = item['.key']
   editedItem.value = Object.assign({}, item)
   dialog.value.openDialog()
@@ -177,7 +172,7 @@ const deleteItem = () => {
   let r = confirm(t('common.delete') + '?')
   if (r === true) {
     const db = getDatabase()
-    remove(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`))
+    remove(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`))
     close()
   }
 }
@@ -192,26 +187,18 @@ const close = () => {
 const save = () => {
   const db = getDatabase()
   if (editedIndex.value > -1) {
-    if (editedItem.value.log) {
-      update(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`), {
-        date: editedItem.value.date,
-        phe: Number(editedItem.value.phe),
-        log: editedItem.value.log
-      })
-    } else {
-      update(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`), {
-        date: editedItem.value.date,
-        phe: Number(editedItem.value.phe)
-      })
-    }
+    update(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`), {
+      date: editedItem.value.date,
+      phe: Number(editedItem.value.phe)
+    })
   } else {
     if (
-      pheDiary.value.length >= 100 &&
+      bloodLevels.value.length >= 100 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('phe-diary.limit'))
+      alert(t('blood-levels.limit'))
     } else {
-      push(dbRef(db, `${user.value.id}/pheDiary`), {
+      push(dbRef(db, `${user.value.id}/bloodLevels`), {
         date: editedItem.value.date,
         phe: Number(editedItem.value.phe)
       })
@@ -234,40 +221,15 @@ const escapeCSV = (value) => {
   return `"${value.toString().replace(/"/g, '""')}"`
 }
 
-const exportAllFoodItems = () => {
-  let r = confirm(t('phe-diary.export-food') + '?')
-  if (r === true) {
-    let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Date,Name,Weight,Phe\n'
-
-    pheDiary.value.forEach((diaryEntry) => {
-      const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
-      if (diaryEntry.log && diaryEntry.log.length > 0) {
-        diaryEntry.log.forEach((logEntry) => {
-          const row =
-            [
-              escapeCSV(date),
-              escapeCSV(logEntry.name),
-              escapeCSV(logEntry.weight),
-              escapeCSV(logEntry.phe)
-            ].join(',') + '\n'
-          csvContent += row
-        })
-      }
-    })
-    triggerDownload(csvContent)
-  }
-}
-
 const exportDailyPheTotals = () => {
-  let r = confirm(t('phe-diary.export-days') + '?')
+  let r = confirm(t('blood-levels.export') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
     csvContent += 'Date,Total Phe\n'
 
-    pheDiary.value.forEach((diaryEntry) => {
-      const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
-      const row = [escapeCSV(date), escapeCSV(diaryEntry.phe)].join(',') + '\n'
+    bloodLevels.value.forEach((entry) => {
+      const date = formatISO(parseISO(entry.date), { representation: 'date' })
+      const row = [escapeCSV(date), escapeCSV(entry.phe)].join(',') + '\n'
       csvContent += row
     })
     triggerDownload(csvContent)
@@ -278,7 +240,7 @@ const triggerDownload = (csvContent) => {
   const encodedUri = encodeURI(csvContent)
   const link = document.createElement('a')
   link.setAttribute('href', encodedUri)
-  link.setAttribute('download', t('phe-diary.export-filename') + '.csv')
+  link.setAttribute('download', t('blood-levels.export-filename') + '.csv')
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
@@ -297,13 +259,13 @@ const triggerDownload = (csvContent) => {
         </RouterLink>
         <RouterLink
           to="/phe-diary"
-          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          aria-current="page"
+          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
         <RouterLink
           to="/blood-levels"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
+          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
+          aria-current="page"
           >{{ $t('blood-levels.tab-title') }}</RouterLink
         >
       </nav>
@@ -322,10 +284,10 @@ const triggerDownload = (csvContent) => {
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
+      <p v-if="bloodLevels.length < 2" class="mb-6">{{ $t('blood-levels.chart-info') }}</p>
 
       <apexchart
-        v-if="pheDiary.length >= 2"
+        v-if="bloodLevels.length >= 2"
         type="area"
         height="250"
         :options="chartOptions"
@@ -336,7 +298,7 @@ const triggerDownload = (csvContent) => {
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr
-          v-for="(item, index) in pheDiary"
+          v-for="(item, index) in bloodLevels"
           :key="index"
           @click="editItem(item)"
           class="cursor-pointer"
@@ -364,58 +326,26 @@ const triggerDownload = (csvContent) => {
         @delete="deleteItem"
         @close="close"
       >
-        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="editedItem.date" />
+        <DateInput id-name="date" :label="$t('blood-levels.date')" v-model="editedItem.date" />
 
         <NumberInput
           id-name="total-phe"
-          :label="$t('phe-diary.phe')"
+          :label="$t('blood-levels.phe-value')"
           v-model.number="editedItem.phe"
         />
-
-        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
-          <tr v-for="(item, index) in editedItem.log" :key="index">
-            <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
-              <img
-                :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
-                v-if="item.icon !== undefined && item.icon !== ''"
-                onerror="this.src='img/food-icons/organic-food.svg'"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              <img
-                :src="publicPath + 'img/food-icons/organic-food.svg'"
-                v-if="(item.icon === undefined || item.icon === '') && item.emoji === undefined"
-                width="25"
-                class="food-icon"
-                alt="Food Icon"
-              />
-              {{
-                (item.icon === undefined || item.icon === '') && item.emoji !== undefined
-                  ? item.emoji
-                  : null
-              }}
-              {{ item.name }}
-            </td>
-            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-              {{ item.phe }}
-            </td>
-          </tr>
-        </DataTable>
       </ModalDialog>
 
-      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
-      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
+      <SecondaryButton :text="$t('blood-levels.export')" @click="exportDailyPheTotals" />
 
       <p v-if="!license" class="mt-3">
-        {{ $t('phe-diary.note') }}
+        {{ $t('blood-levels.note') }}
         <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
           >PKU Tools Unlimited</a
         >.
       </p>
       <p v-if="license" class="mt-3 text-sm">
         <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('phe-diary.unlimited') }}
+        {{ $t('blood-levels.unlimited') }}
       </p>
     </div>
   </div>

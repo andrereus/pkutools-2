@@ -108,14 +108,26 @@
     "description": "Registrar valores de Phe durante varios días.",
     "date": "Fecha",
     "phe": "Total de Phe (en mg)",
-    "chart": "Agregar entrada",
     "limit": "El diario de Phe está limitado a 100 entradas. Exporta tus datos en Excel. Para borrarla, consulte Configuración.",
     "export-food": "Exportar alimentos",
     "export-days": "Días de exportación",
     "log": "Registro",
-    "export-filename": "Herramientas PKU - Diario de Phe",
+    "export-filename": "PKU Tools - Diario de Phe",
     "note": "Limitado a 100 entradas (~3 meses). Ilimitado con licencia",
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
+    "unlimited": "Sin límites"
+  },
+  "blood-levels": {
+    "title": "Niveles en sangre",
+    "tab-title": "Niveles en sangre",
+    "description": "Registre los niveles en sangre.",
+    "date": "Fecha",
+    "phe-value": "Valor Phe (en mg/dl)",
+    "limit": "Los niveles de sangre están limitados a 50 entradas. Exporte sus datos en Excel. Para borrarlos, consulte los ajustes.",
+    "export": "Exportar",
+    "export-filename": "PKU Tools - Diario Phe",
+    "note": "Limitado a 50 entradas. Ilimitadas con licencia",
+    "chart-info": "El gráfico se muestra después de la segunda entrada.",
     "unlimited": "Sin límites"
   },
   "settings": {
