@@ -158,18 +158,6 @@ const signInGoogle = async () => {
   }
 }
 
-const calculatePhe = () => {
-  let result = 0
-
-  if (editedItem.value.unit === 'mgdl') {
-    result = Math.round(editedItem.value.phe * 60.5)
-  } else if (editedItem.value.unit === 'umoll') {
-    result = Math.round(editedItem.value.phe / 60.5)
-  }
-
-  return result
-}
-
 const editItem = (item) => {
   editedIndex.value = bloodLevels.value.indexOf(item)
   editedKey.value = item['.key']
@@ -178,12 +166,9 @@ const editItem = (item) => {
 }
 
 const deleteItem = () => {
-  let r = confirm(t('common.delete') + '?')
-  if (r === true) {
-    const db = getDatabase()
-    remove(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`))
-    close()
-  }
+  const db = getDatabase()
+  remove(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`))
+  close()
 }
 
 const close = () => {
@@ -318,7 +303,7 @@ const triggerDownload = (csvContent) => {
             {{ getlocalDate(item.date) }}
           </td>
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.phe }}
+            {{ item.phe }} {{ item.unit === 'mgdl' ? 'mg/dL' : 'µmol/L' }}
           </td>
         </tr>
       </DataTable>
@@ -350,12 +335,6 @@ const triggerDownload = (csvContent) => {
           :label="$t('blood-levels.phe')"
           v-model.number="editedItem.phe"
         />
-
-        <p class="text-sm mt-4">
-          ~ {{ calculatePhe() }}
-          <span v-if="editedItem.unit === 'mgdl'">µmol/L</span>
-          <span v-if="editedItem.unit === 'umoll'">mg/dL</span>
-        </p>
       </ModalDialog>
 
       <SecondaryButton :text="$t('blood-levels.export')" @click="exportBloodLevels" />
