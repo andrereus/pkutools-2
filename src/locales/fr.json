@@ -123,6 +123,7 @@
     "description": "Enregistrer les taux sanguins.",
     "date": "Date",
     "phe-value": "Valeur de la Phe (en mg/dl)",
+    "phe": "Valeur Phe",
     "limit": "Les niveaux de sang sont limités à 50 entrées. Exportez vos données dans Excel. Pour la suppression, voir les paramètres.",
     "export": "Exportation",
     "export-filename": "PKU Tools - Journal Phe",

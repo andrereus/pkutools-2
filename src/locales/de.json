@@ -123,6 +123,7 @@
     "description": "Protokolliere Blutwerte.",
     "date": "Datum",
     "phe-value": "Phe-Wert (in mg/dl)",
+    "phe": "Phe-Wert",
     "limit": "Blutwerte sind limitert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Phe Tagebuch",

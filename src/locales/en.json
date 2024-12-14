@@ -123,6 +123,7 @@
     "description": "Log blood levels.",
     "date": "Date",
     "phe-value": "Phe value (in mg/dl)",
+    "phe": "Phe value",
     "limit": "Blood Levels are limited to 50 entries. Export your data in Excel. For deletion, see settings.",
     "export": "Export",
     "export-filename": "PKU Tools - Phe Diary",

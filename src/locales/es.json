@@ -123,6 +123,7 @@
     "description": "Registre los niveles en sangre.",
     "date": "Fecha",
     "phe-value": "Valor Phe (en mg/dl)",
+    "phe": "Valor Phe",
     "limit": "Los niveles de sangre están limitados a 50 entradas. Exporte sus datos en Excel. Para borrarlos, consulte los ajustes.",
     "export": "Exportar",
     "export-filename": "PKU Tools - Diario Phe",

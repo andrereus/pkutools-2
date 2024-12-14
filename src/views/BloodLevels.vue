@@ -44,7 +44,7 @@ const license = computed(
 
 const tableHeaders = computed(() => [
   { key: 'date', title: t('blood-levels.date') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('blood-levels.phe') }
 ])
 
 const formTitle = computed(() => {
@@ -93,7 +93,7 @@ const chartOptions = computed(() => {
           csv: {
             filename: 'PKU Tools - Chart Data',
             headerCategory: 'Date',
-            headerValue: 'Total Phe',
+            headerValue: 'Phe',
             dateFormatter(timestamp) {
               return timestamp
             }
@@ -128,16 +128,6 @@ const chartOptions = computed(() => {
     },
     yaxis: {
       min: 0
-    },
-    annotations: {
-      yaxis: [
-        {
-          y: settings.value.maxPhe || 0,
-          borderWidth: 2,
-          borderColor: '#3498db',
-          strokeDashArray: 6
-        }
-      ]
     },
     theme: {
       mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light'
@@ -193,7 +183,7 @@ const save = () => {
     })
   } else {
     if (
-      bloodLevels.value.length >= 100 &&
+      bloodLevels.value.length >= 50 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
       alert(t('blood-levels.limit'))
@@ -221,11 +211,11 @@ const escapeCSV = (value) => {
   return `"${value.toString().replace(/"/g, '""')}"`
 }
 
-const exportDailyPheTotals = () => {
+const exportBloodLevels = () => {
   let r = confirm(t('blood-levels.export') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Date,Total Phe\n'
+    csvContent += 'Date,Phe\n'
 
     bloodLevels.value.forEach((entry) => {
       const date = formatISO(parseISO(entry.date), { representation: 'date' })
@@ -329,13 +319,13 @@ const triggerDownload = (csvContent) => {
         <DateInput id-name="date" :label="$t('blood-levels.date')" v-model="editedItem.date" />
 
         <NumberInput
-          id-name="total-phe"
-          :label="$t('blood-levels.phe-value')"
+          id-name="phe"
+          :label="$t('blood-levels.phe')"
           v-model.number="editedItem.phe"
         />
       </ModalDialog>
 
-      <SecondaryButton :text="$t('blood-levels.export')" @click="exportDailyPheTotals" />
+      <SecondaryButton :text="$t('blood-levels.export')" @click="exportBloodLevels" />
 
       <p v-if="!license" class="mt-3">
         {{ $t('blood-levels.note') }}
@@ -350,10 +340,3 @@ const triggerDownload = (csvContent) => {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.food-icon {
-  vertical-align: bottom;
-  display: inline-block;
-}
-</style>
