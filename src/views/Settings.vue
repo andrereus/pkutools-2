@@ -21,15 +21,15 @@ const { t } = useI18n()
 const selectedTheme = ref('system')
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const settings = computed(() => store.settings)
+
 const themeOptions = computed(() => [
   { title: t('settings.theme-system'), value: 'system' },
   { title: t('settings.theme-light'), value: 'light' },
   { title: t('settings.theme-dark'), value: 'dark' }
 ])
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const settings = computed(() => store.settings)
 
 // Methods
 const signInGoogle = async () => {

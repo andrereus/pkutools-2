@@ -1,7 +1,6 @@
 <script setup>
 /* global Headway */
-import { ref, computed, onBeforeMount, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, onBeforeMount, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from './stores/index'
 
@@ -26,7 +25,6 @@ import {
   ChartLine
 } from 'lucide-vue-next'
 
-const router = useRouter()
 const store = useStore()
 const { t, locale } = useI18n()
 
@@ -39,6 +37,12 @@ const lang = [
 ]
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const userPhotoUrl = computed(() => (store.user ? store.user.photoUrl : null))
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const settings = computed(() => store.settings)
+
 const navigation = computed(() => {
   if (userIsAuthenticated.value) {
     return [
@@ -94,12 +98,6 @@ const userNavigation = computed(() => {
   ]
   return navItems
 })
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const userPhotoUrl = computed(() => (store.user ? store.user.photoUrl : null))
-const user = computed(() => store.user)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
 
 const pheResult = computed(() => {
   let phe = 0
@@ -271,7 +269,7 @@ const iconMap = {
                       ]"
                       @click.prevent="
                         () => {
-                          locale = lang.abbr
+                          setLocale(lang.abbr)
                           close()
                         }
                       "

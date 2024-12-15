@@ -27,6 +27,9 @@ const weight = ref(100)
 const select = ref('other')
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+
 const type = computed(() => [
   { title: t('protein-calculator.other'), value: 'other' },
   { title: t('protein-calculator.meat'), value: 'meat' },
@@ -45,11 +48,6 @@ const factor = computed(() => {
     return 50
   }
 })
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
 
 // Methods
 const paintBoundingBox = (detectedCodes, ctx) => {

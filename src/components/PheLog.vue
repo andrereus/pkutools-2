@@ -39,6 +39,12 @@ const defaultItem = {
 const editedItem = ref({ ...defaultItem })
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const pheLog = computed(() => store.pheLog)
+const pheDiary = computed(() => store.pheDiary)
+const settings = computed(() => store.settings)
+
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
   { key: 'weight', title: t('common.weight') },
@@ -86,12 +92,6 @@ const lastAdded = computed(() => {
   // Limit to the top 10 items
   return sortedItems
 })
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const pheLog = computed(() => store.pheLog)
-const pheDiary = computed(() => store.pheDiary)
-const settings = computed(() => store.settings)
 
 // Methods
 const signInGoogle = async () => {

@@ -22,7 +22,6 @@ const password = ref(null)
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
 
 // Methods
 const registerEmailPassword = async () => {

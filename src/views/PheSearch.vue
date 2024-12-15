@@ -28,16 +28,14 @@ const advancedFood = ref(null)
 const loading = ref(false)
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const ownFood = computed(() => store.ownFood)
+
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
   { key: 'phe', title: t('common.phe') }
 ])
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const ownFood = computed(() => store.ownFood)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
 
 // Methods
 const loadItem = (item) => {

@@ -37,6 +37,11 @@ const defaultItem = {
 const editedItem = ref({ ...defaultItem })
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const ownFood = computed(() => store.ownFood)
+const settings = computed(() => store.settings)
+
 const license = computed(
   () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
 )
@@ -49,12 +54,6 @@ const tableHeaders = computed(() => [
 const formTitle = computed(() => {
   return editedIndex.value === -1 ? t('common.add') : t('common.edit')
 })
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const ownFood = computed(() => store.ownFood)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
 
 // Methods
 const signInGoogle = async () => {

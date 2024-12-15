@@ -20,8 +20,6 @@ const name = ref('')
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
 const user = computed(() => store.user)
-const pheLog = computed(() => store.pheLog)
-const settings = computed(() => store.settings)
 
 // Methods
 const calculatePhe = () => {

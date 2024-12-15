@@ -54,7 +54,6 @@ const features = [
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
 
 // Methods
 const signInGoogle = async () => {

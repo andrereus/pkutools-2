@@ -1,12 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import { format, parseISO, formatISO } from 'date-fns'
 import { enUS, de, fr, es } from 'date-fns/locale'
-import VueApexCharts from 'vue3-apexcharts'
 import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
 import frChart from 'apexcharts/dist/locales/fr.json'
@@ -20,7 +18,6 @@ import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 
-const router = useRouter()
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
 const dialog = ref(null)
@@ -38,6 +35,11 @@ const defaultItem = {
 const editedItem = ref({ ...defaultItem })
 
 // Computed properties
+const userIsAuthenticated = computed(() => store.user !== null)
+const user = computed(() => store.user)
+const pheDiary = computed(() => store.pheDiary)
+const settings = computed(() => store.settings)
+
 const license = computed(
   () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
 )
@@ -54,17 +56,6 @@ const tableHeaders2 = computed(() => [
 
 const formTitle = computed(() => {
   return editedIndex.value === -1 ? t('common.add') : t('common.edit')
-})
-
-const computelocalDate = computed(() => {
-  if (editedItem.value.date) {
-    const locales = { enUS, de, fr, es }
-    return format(parseISO(editedItem.value.date), 'eee P', {
-      locale: locales[i18nLocale.value]
-    })
-  } else {
-    return ''
-  }
 })
 
 const graph = computed(() => {
@@ -150,11 +141,6 @@ const chartOptions = computed(() => {
     colors: ['#3498db']
   }
 })
-
-const userIsAuthenticated = computed(() => store.user !== null)
-const user = computed(() => store.user)
-const pheDiary = computed(() => store.pheDiary)
-const settings = computed(() => store.settings)
 
 // Methods
 const signInGoogle = async () => {
