@@ -33,7 +33,7 @@ const editedKey = ref(null)
 
 const defaultItem = {
   date: format(new Date(), 'yyyy-MM-dd'),
-  unit: 'mgdl',
+  pheUnit: 'mgdl',
   phe: null
 }
 
@@ -183,7 +183,7 @@ const save = () => {
   if (editedIndex.value > -1) {
     update(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`), {
       date: editedItem.value.date,
-      unit: editedItem.value.unit,
+      pheUnit: editedItem.value.pheUnit,
       phe: Number(editedItem.value.phe)
     })
   } else {
@@ -195,7 +195,7 @@ const save = () => {
     } else {
       push(dbRef(db, `${user.value.id}/bloodLevels`), {
         date: editedItem.value.date,
-        unit: editedItem.value.unit,
+        pheUnit: editedItem.value.pheUnit,
         phe: Number(editedItem.value.phe)
       })
     }
@@ -324,7 +324,7 @@ const triggerDownload = (csvContent) => {
       >
         <DateInput id-name="date" :label="$t('blood-levels.date')" v-model="editedItem.date" />
 
-        <SelectMenu id-name="unit" :label="$t('blood-levels.unit')" v-model="editedItem.unit">
+        <SelectMenu id-name="unit" :label="$t('blood-levels.unit')" v-model="editedItem.pheUnit">
           <option v-for="option in unitOptions" :key="option.value" :value="option.value">
             {{ option.title }}
           </option>
