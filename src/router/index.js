@@ -6,7 +6,7 @@ import ProteinCalculator from '../views/ProteinCalculator.vue'
 import BarcodeScanner from '../views/BarcodeScanner.vue'
 import OwnFood from '../views/OwnFood.vue'
 import PheDiary from '../views/PheDiary.vue'
-import BloodLevels from '../views/BloodLevels.vue'
+import LabValues from '../views/LabValues.vue'
 import Settings from '../views/Settings.vue'
 import EmailAuth from '../views/EmailAuth.vue'
 import Help from '../views/Help.vue'
@@ -53,9 +53,9 @@ const router = createRouter({
       component: PheDiary
     },
     {
-      path: '/blood-levels',
-      name: 'Blood Levels',
-      component: BloodLevels
+      path: '/lab-values',
+      name: 'Lab Values',
+      component: LabValues
     },
     {
       path: '/settings',

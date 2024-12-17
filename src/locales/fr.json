@@ -117,7 +117,7 @@
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
     "unlimited": "Illimité"
   },
-  "blood-levels": {
+  "lab-values": {
     "title": "Niveaux sanguins",
     "tab-title": "Niveaux sanguins",
     "description": "Enregistrer les taux sanguins.",

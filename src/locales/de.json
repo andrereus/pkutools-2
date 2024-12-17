@@ -117,7 +117,7 @@
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
     "unlimited": "Unlimitiert"
   },
-  "blood-levels": {
+  "lab-values": {
     "title": "Blutwerte",
     "tab-title": "Blutwerte",
     "description": "Protokolliere Blutwerte.",

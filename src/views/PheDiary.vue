@@ -288,9 +288,9 @@ const triggerDownload = (csvContent) => {
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
         <!-- <RouterLink
-          to="/blood-levels"
+          to="/lab-values"
           class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          >{{ $t('blood-levels.tab-title') }}</RouterLink
+          >{{ $t('lab-values.tab-title') }}</RouterLink
         > -->
       </nav>
     </div>

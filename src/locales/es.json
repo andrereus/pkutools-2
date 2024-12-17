@@ -117,7 +117,7 @@
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
     "unlimited": "Sin límites"
   },
-  "blood-levels": {
+  "lab-values": {
     "title": "Niveles en sangre",
     "tab-title": "Niveles en sangre",
     "description": "Registre los niveles en sangre.",
