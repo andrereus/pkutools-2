@@ -81,8 +81,8 @@
   "own-food": {
     "title": "Alimento propio",
     "description": "Guardar alimentos propios y valores de Phe.",
-    "limit": "Alimento propio está limitado a 300 entradas.",
-    "note": "Limitado a 300 entradas. Ilimitado con licencia",
+    "limit": "Alimento propio está limitado a 200 entradas.",
+    "note": "Limitado a 200 entradas. Ilimitado con licencia",
     "search-info": "La comida propia también está disponible en la búsqueda.",
     "export-filename": "PKU Tools - Alimento propio",
     "choose-icon": "Seleccionar icono",

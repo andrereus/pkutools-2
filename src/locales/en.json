@@ -81,8 +81,8 @@
   "own-food": {
     "title": "Own Food",
     "description": "Save own food and phe values.",
-    "limit": "Own Food is limited to 300 entries.",
-    "note": "Limited to 300 entries. Unlimited with license",
+    "limit": "Own Food is limited to 200 entries.",
+    "note": "Limited to 200 entries. Unlimited with license",
     "search-info": "Own food is also available in the search.",
     "export-filename": "PKU Tools - Own Food",
     "choose-icon": "Select icon",
