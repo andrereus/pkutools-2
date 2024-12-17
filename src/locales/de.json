@@ -123,6 +123,7 @@
     "description": "Protokolliere Laborwerte.",
     "date": "Datum",
     "phe": "Phe-Wert",
+    "tyrosine": "Tyrosin",
     "limit": "Laborwerte sind limitert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Laborwerte",

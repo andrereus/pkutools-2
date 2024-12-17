@@ -28,7 +28,8 @@ const editedKey = ref(null)
 
 const defaultItem = {
   date: format(new Date(), 'yyyy-MM-dd'),
-  phe: null
+  phe: null,
+  tyrosine: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -45,7 +46,8 @@ const license = computed(
 
 const tableHeaders = computed(() => [
   { key: 'date', title: t('lab-values.date') },
-  { key: 'phe', title: t('lab-values.phe') }
+  { key: 'phe', title: t('lab-values.phe') },
+  { key: 'tyrosine', title: t('lab-values.tyrosine') }
 ])
 
 const formTitle = computed(() => {
@@ -161,7 +163,8 @@ const save = () => {
   if (editedIndex.value > -1) {
     update(dbRef(db, `${user.value.id}/labValues/${editedKey.value}`), {
       date: editedItem.value.date,
-      phe: Number(editedItem.value.phe)
+      phe: Number(editedItem.value.phe),
+      tyrosine: Number(editedItem.value.tyrosine)
     })
   } else {
     if (
@@ -172,7 +175,8 @@ const save = () => {
     } else {
       push(dbRef(db, `${user.value.id}/labValues`), {
         date: editedItem.value.date,
-        phe: Number(editedItem.value.phe)
+        phe: Number(editedItem.value.phe),
+        tyrosine: Number(editedItem.value.tyrosine)
       })
     }
   }
@@ -197,11 +201,12 @@ const exportLabValues = () => {
   let r = confirm(t('lab-values.export') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Date,Phe\n'
+    csvContent += 'Date,Phe,Tyrosine\n'
 
     labValues.value.forEach((entry) => {
       const date = formatISO(parseISO(entry.date), { representation: 'date' })
-      const row = [escapeCSV(date), escapeCSV(entry.phe)].join(',') + '\n'
+      const row =
+        [escapeCSV(date), escapeCSV(entry.phe), escapeCSV(entry.tyrosine)].join(',') + '\n'
       csvContent += row
     })
     triggerDownload(csvContent)
@@ -281,6 +286,9 @@ const triggerDownload = (csvContent) => {
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.tyrosine }}
+          </td>
         </tr>
       </DataTable>
 
@@ -304,6 +312,14 @@ const triggerDownload = (csvContent) => {
           id-name="phe"
           :label="$t('lab-values.phe') + (settings.labUnit === 'mgdl' ? ' (mg/dL)' : ' (µmol/L)')"
           v-model.number="editedItem.phe"
+        />
+
+        <NumberInput
+          id-name="tyrosine"
+          :label="
+            $t('lab-values.tyrosine') + (settings.labUnit === 'mgdl' ? ' (mg/dL)' : ' (µmol/L)')
+          "
+          v-model.number="editedItem.tyrosine"
         />
       </ModalDialog>
 

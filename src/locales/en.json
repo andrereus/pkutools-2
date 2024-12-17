@@ -123,6 +123,7 @@
     "description": "Log lab values.",
     "date": "Date",
     "phe": "Phe value",
+    "tyrosine": "Tyrosine",
     "limit": "Lab Values are limited to 50 entries. Export your data in Excel. For deletion, see settings.",
     "export": "Export",
     "export-filename": "PKU Tools - Lab Values",

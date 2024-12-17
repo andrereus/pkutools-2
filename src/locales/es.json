@@ -123,6 +123,7 @@
     "description": "Registrar los valores de laboratorio.",
     "date": "Fecha",
     "phe": "Valor Phe",
+    "tyrosine": "Tirosina",
     "limit": "Los valores de laboratorio están limitados a 50 entradas. Exporte sus datos a Excel. Para borrar, consulte Configuración.",
     "export": "Exportar",
     "export-filename": "PKU Tools - Valores de laboratorio",
