@@ -3,6 +3,7 @@
 import { computed, onBeforeMount, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from './stores/index'
+import { useRoute } from 'vue-router'
 
 import { Menu as MenuComponent, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import {
@@ -27,6 +28,7 @@ import {
 
 const store = useStore()
 const { t, locale } = useI18n()
+const route = useRoute()
 
 // Reactive state
 const lang = [
@@ -105,6 +107,24 @@ const pheResult = computed(() => {
     phe += item.phe
   })
   return Math.round(phe)
+})
+
+const isTabActive = computed(() => (item) => {
+  if (
+    item.route.startsWith('/?') &&
+    (route.path === '/' || route.path === '/phe-diary' || route.path === '/lab-values')
+  ) {
+    return true
+  }
+
+  if (
+    item.route === '/phe-calculator' &&
+    (route.path === '/phe-calculator' || route.path === '/protein-calculator')
+  ) {
+    return true
+  }
+
+  return route.fullPath === item.route
 })
 
 // Methods
@@ -203,6 +223,7 @@ const iconMap = {
                     <a
                       :class="[
                         active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                        route.fullPath === item.route ? 'bg-gray-100 dark:bg-gray-700' : '',
                         'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                       ]"
                       @click.prevent="
@@ -265,6 +286,7 @@ const iconMap = {
                     <a
                       :class="[
                         active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                        locale === lang.abbr ? 'bg-gray-100 dark:bg-gray-700' : '',
                         'block px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                       ]"
                       @click.prevent="
@@ -274,7 +296,10 @@ const iconMap = {
                         }
                       "
                     >
-                      {{ lang.name }}
+                      <span
+                        :class="[locale === lang.abbr ? 'text-gray-900 dark:text-white' : '']"
+                        >{{ lang.name }}</span
+                      >
                     </a>
                   </MenuItem>
                 </MenuItems>
@@ -412,6 +437,7 @@ const iconMap = {
                       <a
                         :class="[
                           active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                          route.path === item.route ? 'bg-gray-100 dark:bg-gray-700' : '',
                           'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
@@ -423,7 +449,12 @@ const iconMap = {
                       >
                         <component
                           :is="iconMap[item.icon]"
-                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
+                          :class="[
+                            route.path === item.route
+                              ? 'text-gray-900 dark:text-white'
+                              : 'text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300',
+                            'mr-3 h-5 w-5'
+                          ]"
                           aria-hidden="true"
                         />{{ $t(item.name) }}
                       </a>
@@ -467,13 +498,24 @@ const iconMap = {
             v-for="item in tabNavigation"
             :key="item.name"
             :to="item.route"
-            class="text-gray-600 hover:bg-gray-50 hover:text-gray-600 group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:bg-gray-700"
+            :class="[
+              isTabActive(item)
+                ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white'
+                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-300 dark:hover:bg-gray-700',
+              'group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium'
+            ]"
           >
             <component
               :is="iconMap[item.icon]"
-              class="md:mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
+              :class="[
+                isTabActive(item)
+                  ? 'text-gray-900 dark:text-white'
+                  : 'text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300',
+                'md:mr-3 h-5 w-5'
+              ]"
               aria-hidden="true"
-            /><span class="hidden lg:inline-block">{{ $t(item.name) }}</span>
+            />
+            <span class="hidden lg:inline-block">{{ $t(item.name) }}</span>
           </RouterLink>
         </nav>
       </div>
