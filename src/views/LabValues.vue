@@ -17,7 +17,6 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
-import SelectMenu from '../components/SelectMenu.vue'
 
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
@@ -29,7 +28,6 @@ const editedKey = ref(null)
 
 const defaultItem = {
   date: format(new Date(), 'yyyy-MM-dd'),
-  pheUnit: 'mgdl',
   phe: null
 }
 
@@ -40,11 +38,6 @@ const userIsAuthenticated = computed(() => store.user !== null)
 const user = computed(() => store.user)
 const labValues = computed(() => store.labValues)
 const settings = computed(() => store.settings)
-
-const unitOptions = computed(() => [
-  { title: 'mg/dL', value: 'mgdl' },
-  { title: 'µmol/L', value: 'umoll' }
-])
 
 const license = computed(
   () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
@@ -168,7 +161,6 @@ const save = () => {
   if (editedIndex.value > -1) {
     update(dbRef(db, `${user.value.id}/labValues/${editedKey.value}`), {
       date: editedItem.value.date,
-      pheUnit: editedItem.value.pheUnit,
       phe: Number(editedItem.value.phe)
     })
   } else {
@@ -180,7 +172,6 @@ const save = () => {
     } else {
       push(dbRef(db, `${user.value.id}/labValues`), {
         date: editedItem.value.date,
-        pheUnit: editedItem.value.pheUnit,
         phe: Number(editedItem.value.phe)
       })
     }
@@ -308,12 +299,6 @@ const triggerDownload = (csvContent) => {
         @close="close"
       >
         <DateInput id-name="date" :label="$t('lab-values.date')" v-model="editedItem.date" />
-
-        <SelectMenu id-name="unit" :label="$t('lab-values.unit')" v-model="editedItem.pheUnit">
-          <option v-for="option in unitOptions" :key="option.value" :value="option.value">
-            {{ option.title }}
-          </option>
-        </SelectMenu>
 
         <NumberInput id-name="phe" :label="$t('lab-values.phe')" v-model.number="editedItem.phe" />
       </ModalDialog>

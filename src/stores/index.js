@@ -19,7 +19,11 @@ export const useStore = defineStore('main', {
     pheDiary: [],
     labValues: [],
     ownFood: [],
-    settings: {},
+    settings: {
+      maxPhe: 0,
+      labUnit: 'mgdl',
+      license: ''
+    },
     unsubscribeFunctions: {}
   }),
   actions: {

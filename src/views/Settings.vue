@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
@@ -31,6 +31,11 @@ const themeOptions = computed(() => [
   { title: t('settings.theme-dark'), value: 'dark' }
 ])
 
+const unitOptions = computed(() => [
+  { title: 'mg/dL', value: 'mgdl' },
+  { title: 'µmol/L', value: 'umoll' }
+])
+
 // Methods
 const signInGoogle = async () => {
   try {
@@ -44,7 +49,8 @@ const signInGoogle = async () => {
 const save = () => {
   const db = getDatabase()
   update(dbRef(db, `${user.value.id}/settings`), {
-    maxPhe: settings.value.maxPhe || 0
+    maxPhe: settings.value.maxPhe || 0,
+    labUnit: settings.value.labUnit
   }).then(() => {
     alert(t('settings.saved'))
   })
@@ -166,8 +172,18 @@ onMounted(() => {
         id-name="max-phe"
         :label="$t('settings.max-phe')"
         v-model.number="settings.maxPhe"
-        class="mb-6"
       />
+
+      <SelectMenu
+        id-name="unit"
+        :label="$t('lab-values.unit')"
+        v-model="settings.labUnit"
+        class="mb-6"
+      >
+        <option v-for="option in unitOptions" :key="option.value" :value="option.value">
+          {{ option.title }}
+        </option>
+      </SelectMenu>
 
       <PrimaryButton :text="$t('common.save')" @click="save" />
 
