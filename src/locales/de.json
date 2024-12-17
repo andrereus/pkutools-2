@@ -81,8 +81,8 @@
   "own-food": {
     "title": "Eigene Lebensmittel",
     "description": "Speichere eigene Lebensmittel und Phe-Werte.",
-    "limit": "Eigene Lebensmittel sind auf 200 Einträge limitiert.",
-    "note": "Limitiert auf 200 Einträge. Unbegrenzt mit Lizenz",
+    "limit": "Eigene Lebensmittel sind auf 250 Einträge limitiert.",
+    "note": "Limitiert auf 250 Einträge. Unbegrenzt mit Lizenz",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
     "export-filename": "PKU Tools - Eigene Lebensmittel",
     "choose-icon": "Icon auswählen",
