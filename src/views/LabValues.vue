@@ -38,7 +38,7 @@ const editedItem = ref({ ...defaultItem })
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
 const user = computed(() => store.user)
-const bloodLevels = computed(() => store.bloodLevels)
+const labValues = computed(() => store.labValues)
 const settings = computed(() => store.settings)
 
 const unitOptions = computed(() => [
@@ -51,8 +51,8 @@ const license = computed(
 )
 
 const tableHeaders = computed(() => [
-  { key: 'date', title: t('blood-levels.date') },
-  { key: 'phe', title: t('blood-levels.phe') }
+  { key: 'date', title: t('lab-values.date') },
+  { key: 'phe', title: t('lab-values.phe') }
 ])
 
 const formTitle = computed(() => {
@@ -60,8 +60,8 @@ const formTitle = computed(() => {
 })
 
 const graph = computed(() => {
-  let newBloodLevels = bloodLevels.value
-  let chartBloodLevels = newBloodLevels
+  let newLabValues = labValues.value
+  let chartLabValues = newLabValues
     .map((obj) => {
       return { x: obj.date, y: obj.phe }
     })
@@ -71,7 +71,7 @@ const graph = computed(() => {
   return [
     {
       name: 'Phe',
-      data: chartBloodLevels
+      data: chartLabValues
     }
   ]
 })
@@ -144,7 +144,7 @@ const signInGoogle = async () => {
 }
 
 const editItem = (item) => {
-  editedIndex.value = bloodLevels.value.indexOf(item)
+  editedIndex.value = labValues.value.indexOf(item)
   editedKey.value = item['.key']
   editedItem.value = Object.assign({}, item)
   dialog.value.openDialog()
@@ -152,7 +152,7 @@ const editItem = (item) => {
 
 const deleteItem = () => {
   const db = getDatabase()
-  remove(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`))
+  remove(dbRef(db, `${user.value.id}/labValues/${editedKey.value}`))
   close()
 }
 
@@ -166,19 +166,19 @@ const close = () => {
 const save = () => {
   const db = getDatabase()
   if (editedIndex.value > -1) {
-    update(dbRef(db, `${user.value.id}/bloodLevels/${editedKey.value}`), {
+    update(dbRef(db, `${user.value.id}/labValues/${editedKey.value}`), {
       date: editedItem.value.date,
       pheUnit: editedItem.value.pheUnit,
       phe: Number(editedItem.value.phe)
     })
   } else {
     if (
-      bloodLevels.value.length >= 50 &&
+      labValues.value.length >= 50 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('blood-levels.limit'))
+      alert(t('lab-values.limit'))
     } else {
-      push(dbRef(db, `${user.value.id}/bloodLevels`), {
+      push(dbRef(db, `${user.value.id}/labValues`), {
         date: editedItem.value.date,
         pheUnit: editedItem.value.pheUnit,
         phe: Number(editedItem.value.phe)
@@ -202,13 +202,13 @@ const escapeCSV = (value) => {
   return `"${value.toString().replace(/"/g, '""')}"`
 }
 
-const exportBloodLevels = () => {
-  let r = confirm(t('blood-levels.export') + '?')
+const exportLabValues = () => {
+  let r = confirm(t('lab-values.export') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
     csvContent += 'Date,Phe\n'
 
-    bloodLevels.value.forEach((entry) => {
+    labValues.value.forEach((entry) => {
       const date = formatISO(parseISO(entry.date), { representation: 'date' })
       const row = [escapeCSV(date), escapeCSV(entry.phe)].join(',') + '\n'
       csvContent += row
@@ -221,7 +221,7 @@ const triggerDownload = (csvContent) => {
   const encodedUri = encodeURI(csvContent)
   const link = document.createElement('a')
   link.setAttribute('href', encodedUri)
-  link.setAttribute('download', t('blood-levels.export-filename') + '.csv')
+  link.setAttribute('download', t('lab-values.export-filename') + '.csv')
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
@@ -244,10 +244,10 @@ const triggerDownload = (csvContent) => {
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
         <RouterLink
-          to="/blood-levels"
+          to="/lab-values"
           class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           aria-current="page"
-          >{{ $t('blood-levels.tab-title') }}</RouterLink
+          >{{ $t('lab-values.tab-title') }}</RouterLink
         >
       </nav>
     </div>
@@ -265,10 +265,10 @@ const triggerDownload = (csvContent) => {
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p class="mb-6">{{ $t('blood-levels.info') }}</p>
+      <p class="mb-6">{{ $t('lab-values.info') }}</p>
 
       <apexchart
-        v-if="bloodLevels.length >= 2"
+        v-if="labValues.length >= 2"
         type="area"
         height="250"
         :options="chartOptions"
@@ -279,7 +279,7 @@ const triggerDownload = (csvContent) => {
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr
-          v-for="(item, index) in bloodLevels"
+          v-for="(item, index) in labValues"
           :key="index"
           @click="editItem(item)"
           class="cursor-pointer"
@@ -307,32 +307,28 @@ const triggerDownload = (csvContent) => {
         @delete="deleteItem"
         @close="close"
       >
-        <DateInput id-name="date" :label="$t('blood-levels.date')" v-model="editedItem.date" />
+        <DateInput id-name="date" :label="$t('lab-values.date')" v-model="editedItem.date" />
 
-        <SelectMenu id-name="unit" :label="$t('blood-levels.unit')" v-model="editedItem.pheUnit">
+        <SelectMenu id-name="unit" :label="$t('lab-values.unit')" v-model="editedItem.pheUnit">
           <option v-for="option in unitOptions" :key="option.value" :value="option.value">
             {{ option.title }}
           </option>
         </SelectMenu>
 
-        <NumberInput
-          id-name="phe"
-          :label="$t('blood-levels.phe')"
-          v-model.number="editedItem.phe"
-        />
+        <NumberInput id-name="phe" :label="$t('lab-values.phe')" v-model.number="editedItem.phe" />
       </ModalDialog>
 
-      <SecondaryButton :text="$t('blood-levels.export')" @click="exportBloodLevels" />
+      <SecondaryButton :text="$t('lab-values.export')" @click="exportLabValues" />
 
       <p v-if="!license" class="mt-3">
-        {{ $t('blood-levels.note') }}
+        {{ $t('lab-values.note') }}
         <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
           >PKU Tools Unlimited</a
         >.
       </p>
       <p v-if="license" class="mt-3 text-sm">
         <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('blood-levels.unlimited') }}
+        {{ $t('lab-values.unlimited') }}
       </p>
     </div>
   </div>
