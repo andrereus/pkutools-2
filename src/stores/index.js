@@ -12,6 +12,12 @@ import {
 } from 'firebase/auth'
 import { getDatabase, ref, onValue } from 'firebase/database'
 
+const defaultSettings = {
+  maxPhe: null,
+  labUnit: 'mgdl',
+  license: null
+}
+
 export const useStore = defineStore('main', {
   state: () => ({
     user: null,
@@ -19,11 +25,7 @@ export const useStore = defineStore('main', {
     pheDiary: [],
     labValues: [],
     ownFood: [],
-    settings: {
-      maxPhe: 0,
-      labUnit: 'mgdl',
-      license: ''
-    },
+    settings: { ...defaultSettings },
     unsubscribeFunctions: {}
   }),
   actions: {
@@ -108,7 +110,7 @@ export const useStore = defineStore('main', {
         pheDiary: [],
         labValues: [],
         ownFood: [],
-        settings: {}
+        settings: { ...defaultSettings }
       }
 
       const bindRef = (key, dbRef) => {
@@ -117,11 +119,21 @@ export const useStore = defineStore('main', {
           const isInitiallyArray = Array.isArray(initialState[key])
 
           if (data && typeof data === 'object') {
-            this[key] = isInitiallyArray
-              ? Object.entries(data).map(([key, value]) => ({ ...value, '.key': key }))
-              : data
+            if (isInitiallyArray) {
+              this[key] = Object.entries(data).map(([key, value]) => ({ ...value, '.key': key }))
+            } else if (key === 'settings') {
+              this[key] = { ...defaultSettings, ...data }
+            } else {
+              this[key] = data
+            }
           } else {
-            this[key] = isInitiallyArray ? [] : {}
+            if (isInitiallyArray) {
+              this[key] = []
+            } else if (key === 'settings') {
+              this[key] = { ...defaultSettings }
+            } else {
+              this[key] = {}
+            }
           }
         })
         this.unsubscribeFunctions[key] = unsubscribe
