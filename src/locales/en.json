@@ -170,10 +170,10 @@
     "forgot-password": "Forgot Password",
     "reset-password": "Reset Password",
     "password-sent": "Email for password reset has been sent. Please check your emails.",
-    "error": "That didn't work.",
+    "error": "Unfortunately this did not work.",
     "required": "Required",
     "min-length": "Minimum 8 characters",
-    "invalid-email": "Email not valid"
+    "invalid-email": "Invalid email"
   },
   "help": {
     "title": "Help",

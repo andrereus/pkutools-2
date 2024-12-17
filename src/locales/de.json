@@ -108,7 +108,7 @@
     "description": "Protokolliere Phe-Werte über mehrere Tage.",
     "date": "Datum",
     "phe": "Gesamt Phe (in mg)",
-    "limit": "Das Phe Tagebuch ist limitert auf 100 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
+    "limit": "Das Phe Tagebuch ist limitiert auf 100 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export-food": "Lebensmittel exportieren",
     "export-days": "Tage exportieren",
     "log": "Protokoll",
@@ -124,7 +124,7 @@
     "date": "Datum",
     "phe": "Phe-Wert",
     "tyrosine": "Tyrosin",
-    "limit": "Laborwerte sind limitert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
+    "limit": "Laborwerte sind limitiert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Laborwerte",
     "note": "Limitiert auf 50 Einträge. Unbegrenzt mit Lizenz",
@@ -173,7 +173,7 @@
     "error": "Das hat leider nicht geklappt.",
     "required": "Pflichtfeld",
     "min-length": "Minimum 8 Zeichen",
-    "invalid-email": "E-Mail noch ungültig"
+    "invalid-email": "Ungültige E-Mail"
   },
   "help": {
     "title": "Hilfe",
