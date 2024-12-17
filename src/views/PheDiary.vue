@@ -287,11 +287,11 @@ const triggerDownload = (csvContent) => {
           aria-current="page"
           >{{ $t('phe-diary.tab-title') }}</RouterLink
         >
-        <!-- <RouterLink
+        <RouterLink
           to="/lab-values"
           class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
           >{{ $t('lab-values.tab-title') }}</RouterLink
-        > -->
+        >
       </nav>
     </div>
 
