@@ -130,7 +130,8 @@
     "note": "Limité à 50 entrées. Illimité avec la licence",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
     "unlimited": "Illimité",
-    "unit": "Unité pour les valeurs de laboratoire"
+    "unit": "Unité pour les valeurs de laboratoire",
+    "unit-info": "Unité modifiable dans les paramètres."
   },
   "settings": {
     "title": "Paramètres",

@@ -130,7 +130,8 @@
     "note": "Limitado a 50 entradas. Ilimitadas con licencia",
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
     "unlimited": "Sin límites",
-    "unit": "Unidad para valores de laboratorio"
+    "unit": "Unidad para valores de laboratorio",
+    "unit-info": "La unidad puede cambiarse en los ajustes."
   },
   "settings": {
     "title": "Configuración",

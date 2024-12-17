@@ -321,6 +321,8 @@ const triggerDownload = (csvContent) => {
           "
           v-model.number="editedItem.tyrosine"
         />
+
+        <p class="text-sm mt-4">{{ $t('lab-values.unit-info') }}</p>
       </ModalDialog>
 
       <SecondaryButton :text="$t('lab-values.export')" @click="exportLabValues" />

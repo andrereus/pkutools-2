@@ -130,7 +130,8 @@
     "note": "Limitiert auf 50 Einträge. Unbegrenzt mit Lizenz",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
     "unlimited": "Unlimitiert",
-    "unit": "Einheit für Laborwerte"
+    "unit": "Einheit für Laborwerte",
+    "unit-info": "Einheit änderbar in den Einstellungen."
   },
   "settings": {
     "title": "Einstellungen",
