@@ -122,15 +122,14 @@
     "tab-title": "Laborwerte",
     "description": "Protokolliere Laborwerte.",
     "date": "Datum",
-    "phe-value": "Phe-Wert (in mg/dl)",
     "phe": "Phe-Wert",
     "limit": "Laborwerte sind limitert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Laborwerte",
     "note": "Limitiert auf 50 Einträge. Unbegrenzt mit Lizenz",
-    "info": "Diese Funktion ist noch in Arbeit ...",
+    "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
     "unlimited": "Unlimitiert",
-    "unit": "Einheit"
+    "unit": "Einheit für Laborwerte"
   },
   "settings": {
     "title": "Einstellungen",

@@ -122,15 +122,14 @@
     "tab-title": "Valeurs de laboratoire",
     "description": "Enregistre les résultats de laboratoire.",
     "date": "Date",
-    "phe-value": "Valeur de la Phe (en mg/dl)",
     "phe": "Valeur Phe",
     "limit": "Les résultats de laboratoire sont limités à 50 entrées. Exporte tes données dans Excel. Pour la suppression, voir les paramètres.",
     "export": "Exportation",
     "export-filename": "PKU Tools - Valeurs de laboratoire",
     "note": "Limité à 50 entrées. Illimité avec la licence",
-    "info": "Cette fonction est encore en cours d'élaboration ...",
+    "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
     "unlimited": "Illimité",
-    "unit": "Unité"
+    "unit": "Unité pour les valeurs de laboratoire"
   },
   "settings": {
     "title": "Paramètres",

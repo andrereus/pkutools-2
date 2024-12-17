@@ -122,15 +122,14 @@
     "tab-title": "Lab Values",
     "description": "Log lab values.",
     "date": "Date",
-    "phe-value": "Phe value (in mg/dl)",
     "phe": "Phe value",
     "limit": "Lab Values are limited to 50 entries. Export your data in Excel. For deletion, see settings.",
     "export": "Export",
     "export-filename": "PKU Tools - Lab Values",
     "note": "Limited to 50 entries. Unlimited with license",
-    "info": "This function is still in progress ...",
+    "chart-info": "The chart gets displayed after the second entry.",
     "unlimited": "Unlimited",
-    "unit": "Unit"
+    "unit": "Unit for laboratory values"
   },
   "settings": {
     "title": "Settings",

@@ -256,7 +256,7 @@ const triggerDownload = (csvContent) => {
     </div>
 
     <div v-if="userIsAuthenticated">
-      <p class="mb-6">{{ $t('lab-values.info') }}</p>
+      <p v-if="labValues.length < 2" class="mb-6">{{ $t('lab-values.chart-info') }}</p>
 
       <apexchart
         v-if="labValues.length >= 2"
@@ -300,7 +300,11 @@ const triggerDownload = (csvContent) => {
       >
         <DateInput id-name="date" :label="$t('lab-values.date')" v-model="editedItem.date" />
 
-        <NumberInput id-name="phe" :label="$t('lab-values.phe')" v-model.number="editedItem.phe" />
+        <NumberInput
+          id-name="phe"
+          :label="$t('lab-values.phe') + (settings.labUnit === 'mgdl' ? ' (mg/dL)' : ' (µmol/L)')"
+          v-model.number="editedItem.phe"
+        />
       </ModalDialog>
 
       <SecondaryButton :text="$t('lab-values.export')" @click="exportLabValues" />
