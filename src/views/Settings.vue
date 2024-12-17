@@ -78,21 +78,30 @@ const resetLog = () => {
   }
 }
 
-const resetOwnFood = () => {
-  let r = confirm(t('settings.reset-own-food') + '?')
-  if (r === true) {
-    const db = getDatabase()
-    remove(dbRef(db, `${user.value.id}/ownFood`))
-    router.push('own-food')
-  }
-}
-
 const resetDiary = () => {
   let r = confirm(t('settings.reset-diary') + '?')
   if (r === true) {
     const db = getDatabase()
     remove(dbRef(db, `${user.value.id}/pheDiary`))
     router.push('phe-diary')
+  }
+}
+
+const resetLabValues = () => {
+  let r = confirm(t('settings.reset-lab-values') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    remove(dbRef(db, `${user.value.id}/labValues`))
+    router.push('lab-values')
+  }
+}
+
+const resetOwnFood = () => {
+  let r = confirm(t('settings.reset-own-food') + '?')
+  if (r === true) {
+    const db = getDatabase()
+    remove(dbRef(db, `${user.value.id}/ownFood`))
+    router.push('own-food')
   }
 }
 
@@ -209,6 +218,7 @@ onMounted(() => {
 
       <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
       <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
+      <SecondaryButton :text="$t('settings.reset-lab-values')" @click="resetLabValues" />
       <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
 
       <PageHeader :title="$t('settings.delete-account')" class="mt-6" />

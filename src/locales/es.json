@@ -147,6 +147,7 @@
     "reset-heading": "Borrar datos",
     "reset-log": "Borrar Protocolo",
     "reset-diary": "Borrar Diario",
+    "reset-lab-values": "Borrar Valores de laboratorio",
     "reset-own-food": "Borrar Alimento propio",
     "delete-account": "Eliminar cuenta",
     "delete-account-info": "Sólo funciona si el último inicio de sesión no fue hace mucho tiempo. Por favor, cierra la sesión una vez y vuelve a iniciarla.",

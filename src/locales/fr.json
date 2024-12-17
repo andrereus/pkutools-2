@@ -147,6 +147,7 @@
     "reset-heading": "Supprimer les données",
     "reset-log": "Supprimer Protocole",
     "reset-diary": "Supprimer Journal",
+    "reset-lab-values": "Supprimer les Valeurs de laboratoire",
     "reset-own-food": "Supprimer Aliments personnels",
     "delete-account": "Supprimer le compte",
     "delete-account-info": "Cela ne fonctionne que si la dernière connexion ne date pas de trop longtemps. Pour cela, veuillez vous déconnecter et vous reconnecter une fois.",

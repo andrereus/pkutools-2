@@ -147,6 +147,7 @@
     "reset-heading": "Delete data",
     "reset-log": "Delete Log",
     "reset-diary": "Delete Diary",
+    "reset-lab-values": "Delete Lab Values",
     "reset-own-food": "Delete Own Food",
     "delete-account": "Delete account",
     "delete-account-info": "Only works if the last login was not too long ago. Please log out once and log in again.",

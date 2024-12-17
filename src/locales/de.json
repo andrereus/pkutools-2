@@ -147,6 +147,7 @@
     "reset-heading": "Daten löschen",
     "reset-log": "Protokoll löschen",
     "reset-diary": "Tagebuch löschen",
+    "reset-lab-values": "Laborwerte löschen",
     "reset-own-food": "Eigene Lebensmittel löschen",
     "delete-account": "Account löschen",
     "delete-account-info": "Funktioniert nur wenn die letzte Anmeldung nicht zu lange her ist. Dazu bitte einmal ab- und wieder anmelden.",
