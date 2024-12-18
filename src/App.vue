@@ -296,10 +296,7 @@ const iconMap = {
                         }
                       "
                     >
-                      <span
-                        :class="[locale === lang.abbr ? 'text-gray-900 dark:text-white' : '']"
-                        >{{ lang.name }}</span
-                      >
+                      {{ lang.name }}
                     </a>
                   </MenuItem>
                 </MenuItems>
@@ -449,12 +446,7 @@ const iconMap = {
                       >
                         <component
                           :is="iconMap[item.icon]"
-                          :class="[
-                            route.path === item.route
-                              ? 'text-gray-900 dark:text-white'
-                              : 'text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300',
-                            'mr-3 h-5 w-5'
-                          ]"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ $t(item.name) }}
                       </a>
@@ -500,19 +492,14 @@ const iconMap = {
             :to="item.route"
             :class="[
               isTabActive(item)
-                ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white'
-                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-300 dark:hover:bg-gray-700',
-              'group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium'
+                ? 'bg-gray-100 dark:bg-gray-700'
+                : 'hover:bg-gray-50 hover:text-gray-600 dark:hover:bg-gray-700',
+              'group inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300'
             ]"
           >
             <component
               :is="iconMap[item.icon]"
-              :class="[
-                isTabActive(item)
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300',
-                'md:mr-3 h-5 w-5'
-              ]"
+              class="md:mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
               aria-hidden="true"
             />
             <span class="hidden lg:inline-block">{{ $t(item.name) }}</span>
