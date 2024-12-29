@@ -89,9 +89,9 @@ const chartOptions = computed(() => {
       defaultLocale: i18nLocale.value,
       toolbar: {
         tools: {
-          zoom: false,
           zoomin: false,
           zoomout: false,
+          pan: false,
           reset: false
         },
         export: {
@@ -109,8 +109,7 @@ const chartOptions = computed(() => {
           png: {
             filename: 'PKU Tools - Chart'
           }
-        },
-        autoSelected: 'pan'
+        }
       },
       zoom: {
         enabled: true
