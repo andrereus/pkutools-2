@@ -128,6 +128,12 @@ const chartOptions = computed(() => {
   }
 })
 
+const sortedLabValues = computed(() => {
+  return [...labValues.value].sort((a, b) => {
+    return parseISO(a.date) - parseISO(b.date)
+  })
+})
+
 // Methods
 const signInGoogle = async () => {
   try {
@@ -275,7 +281,7 @@ const triggerDownload = (csvContent) => {
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr
-          v-for="(item, index) in labValues"
+          v-for="(item, index) in sortedLabValues"
           :key="index"
           @click="editItem(item)"
           class="cursor-pointer"

@@ -168,6 +168,12 @@ const oldestDate = computed(() => {
   }, parseISO(pheDiary.value[0].date))
 })
 
+const sortedPheDiary = computed(() => {
+  return [...pheDiary.value].sort((a, b) => {
+    return parseISO(a.date) - parseISO(b.date)
+  })
+})
+
 // Methods
 const signInGoogle = async () => {
   try {
@@ -410,7 +416,7 @@ const updateData = (timeline) => {
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr
-          v-for="(item, index) in pheDiary"
+          v-for="(item, index) in sortedPheDiary"
           :key="index"
           @click="editItem(item)"
           class="cursor-pointer"
