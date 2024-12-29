@@ -85,6 +85,10 @@ const chartOptions = computed(() => {
       locales: [en, de, fr, es],
       defaultLocale: i18nLocale.value,
       toolbar: {
+        tools: {
+          zoomin: false,
+          zoomout: false
+        },
         export: {
           csv: {
             filename: 'PKU Tools - Chart Data',
