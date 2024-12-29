@@ -350,8 +350,8 @@ const updateData = (timeline) => {
             :class="[
               'px-3 py-1 text-sm rounded-md',
               selection === period
-                ? 'bg-sky-500 text-white'
-                : 'bg-black/5 dark:bg-white/15 text-gray-700 dark:text-gray-300'
+                ? 'bg-black/5 dark:bg-white/15'
+                : 'text-gray-700 dark:text-gray-300'
             ]"
           >
             {{
