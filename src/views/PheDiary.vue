@@ -285,8 +285,8 @@ const updateData = (timeline) => {
   const now = new Date()
 
   switch (timeline) {
-    case 'two_weeks':
-      chartRef.value.chart.zoomX(subWeeks(now, 2).getTime(), now.getTime())
+    case 'one_week':
+      chartRef.value.chart.zoomX(subWeeks(now, 1).getTime(), now.getTime())
       break
     case 'one_month':
       chartRef.value.chart.zoomX(subMonths(now, 1).getTime(), now.getTime())
@@ -346,7 +346,7 @@ const updateData = (timeline) => {
       <div v-if="pheDiary.length >= 2">
         <div class="flex gap-2 mb-4">
           <button
-            v-for="(period, idx) in ['all', 'two_weeks', 'one_month', 'three_months', 'ytd']"
+            v-for="(period, idx) in ['all', 'one_week', 'one_month', 'three_months', 'ytd']"
             :key="idx"
             @click="updateData(period)"
             :class="[
@@ -357,8 +357,8 @@ const updateData = (timeline) => {
             ]"
           >
             {{
-              period === 'two_weeks'
-                ? '2W'
+              period === 'one_week'
+                ? '1W'
                 : period === 'one_month'
                   ? '1M'
                   : period === 'three_months'
