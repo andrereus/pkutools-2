@@ -89,9 +89,9 @@ const chartOptions = computed(() => {
       defaultLocale: i18nLocale.value,
       toolbar: {
         tools: {
+          zoom: false,
           zoomin: false,
           zoomout: false,
-          pan: false,
           reset: false
         },
         export: {
@@ -109,7 +109,8 @@ const chartOptions = computed(() => {
           png: {
             filename: 'PKU Tools - Chart'
           }
-        }
+        },
+        autoSelected: 'pan'
       },
       zoom: {
         enabled: true
@@ -149,6 +150,22 @@ const chartOptions = computed(() => {
     },
     colors: ['#3498db']
   }
+})
+
+const newestDate = computed(() => {
+  if (!pheDiary.value.length) return new Date()
+  return pheDiary.value.reduce((newest, entry) => {
+    const entryDate = parseISO(entry.date)
+    return entryDate > newest ? entryDate : newest
+  }, parseISO(pheDiary.value[0].date))
+})
+
+const oldestDate = computed(() => {
+  if (!pheDiary.value.length) return new Date()
+  return pheDiary.value.reduce((oldest, entry) => {
+    const entryDate = parseISO(entry.date)
+    return entryDate < oldest ? entryDate : oldest
+  }, parseISO(pheDiary.value[0].date))
 })
 
 // Methods
@@ -281,23 +298,34 @@ const triggerDownload = (csvContent) => {
 
 const updateData = (timeline) => {
   selection.value = timeline
-  const now = new Date()
 
   switch (timeline) {
     case 'all':
-      chartRef.value.chart.zoomX(parseISO(pheDiary.value[0]?.date).getTime(), now.getTime())
+      chartRef.value.chart.zoomX(oldestDate.value.getTime(), newestDate.value.getTime())
       break
     case 'one_week':
-      chartRef.value.chart.zoomX(subWeeks(now, 1).getTime(), now.getTime())
+      chartRef.value.chart.zoomX(
+        subWeeks(newestDate.value, 1).getTime(),
+        newestDate.value.getTime()
+      )
       break
     case 'one_month':
-      chartRef.value.chart.zoomX(subMonths(now, 1).getTime(), now.getTime())
+      chartRef.value.chart.zoomX(
+        subMonths(newestDate.value, 1).getTime(),
+        newestDate.value.getTime()
+      )
       break
     case 'three_months':
-      chartRef.value.chart.zoomX(subMonths(now, 3).getTime(), now.getTime())
+      chartRef.value.chart.zoomX(
+        subMonths(newestDate.value, 3).getTime(),
+        newestDate.value.getTime()
+      )
       break
     case 'six_months':
-      chartRef.value.chart.zoomX(subMonths(now, 6).getTime(), now.getTime())
+      chartRef.value.chart.zoomX(
+        subMonths(newestDate.value, 6).getTime(),
+        newestDate.value.getTime()
+      )
       break
   }
 }
