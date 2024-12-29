@@ -344,7 +344,7 @@ const updateData = (timeline) => {
       <div v-if="pheDiary.length >= 2">
         <div class="flex gap-2 mb-4">
           <button
-            v-for="(period, idx) in ['two_weeks', 'one_month', 'three_months', 'ytd', 'all']"
+            v-for="(period, idx) in ['all', 'two_weeks', 'one_month', 'three_months', 'ytd']"
             :key="idx"
             @click="updateData(period)"
             :class="[
