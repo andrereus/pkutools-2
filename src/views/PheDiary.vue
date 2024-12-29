@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
-import { format, parseISO, formatISO } from 'date-fns'
+import { format, parseISO, formatISO, subMonths, subWeeks, startOfYear } from 'date-fns'
 import { enUS, de, fr, es } from 'date-fns/locale'
 import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
@@ -33,6 +33,9 @@ const defaultItem = {
 }
 
 const editedItem = ref({ ...defaultItem })
+
+const selection = ref('two_weeks')
+const chartRef = ref(null)
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
@@ -87,7 +90,8 @@ const chartOptions = computed(() => {
       toolbar: {
         tools: {
           zoomin: false,
-          zoomout: false
+          zoomout: false,
+          reset: false
         },
         export: {
           csv: {
@@ -273,6 +277,35 @@ const triggerDownload = (csvContent) => {
   link.click()
   document.body.removeChild(link)
 }
+
+const updateData = (timeline) => {
+  selection.value = timeline
+  const now = new Date()
+
+  switch (timeline) {
+    case 'two_weeks':
+      chartRef.value.chart.zoomX(subWeeks(now, 2).getTime(), now.getTime())
+      break
+    case 'one_month':
+      chartRef.value.chart.zoomX(subMonths(now, 1).getTime(), now.getTime())
+      break
+    case 'three_months':
+      chartRef.value.chart.zoomX(subMonths(now, 3).getTime(), now.getTime())
+      break
+    case 'ytd':
+      chartRef.value.chart.zoomX(startOfYear(now).getTime(), now.getTime())
+      break
+    case 'all':
+      chartRef.value.chart.zoomX(parseISO(pheDiary.value[0]?.date).getTime(), now.getTime())
+      break
+  }
+}
+
+const handleChartMounted = () => {
+  if (pheDiary.value.length >= 2) {
+    updateData('two_weeks')
+  }
+}
 </script>
 
 <template>
@@ -314,14 +347,43 @@ const triggerDownload = (csvContent) => {
     <div v-if="userIsAuthenticated">
       <p v-if="pheDiary.length < 2" class="mb-6">{{ $t('phe-diary.chart-info') }}</p>
 
-      <apexchart
-        v-if="pheDiary.length >= 2"
-        type="area"
-        height="250"
-        :options="chartOptions"
-        :series="graph"
-        class="-mb-2"
-      ></apexchart>
+      <div v-if="pheDiary.length >= 2">
+        <div class="flex gap-2 mb-4">
+          <button
+            v-for="(period, idx) in ['two_weeks', 'one_month', 'three_months', 'ytd', 'all']"
+            :key="idx"
+            @click="updateData(period)"
+            :class="[
+              'px-3 py-1 text-sm rounded-md',
+              selection === period
+                ? 'bg-sky-500 text-white'
+                : 'bg-black/5 dark:bg-white/15 text-gray-700 dark:text-gray-300'
+            ]"
+          >
+            {{
+              period === 'two_weeks'
+                ? '2W'
+                : period === 'one_month'
+                  ? '1M'
+                  : period === 'three_months'
+                    ? '3M'
+                    : period === 'ytd'
+                      ? 'YTD'
+                      : 'ALL'
+            }}
+          </button>
+        </div>
+
+        <apexchart
+          ref="chartRef"
+          type="area"
+          height="250"
+          :options="chartOptions"
+          :series="graph"
+          class="-mb-2"
+          @mounted="handleChartMounted"
+        ></apexchart>
+      </div>
 
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
