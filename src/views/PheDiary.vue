@@ -34,7 +34,7 @@ const defaultItem = {
 
 const editedItem = ref({ ...defaultItem })
 
-const selection = ref('two_weeks')
+const selection = ref('all')
 const chartRef = ref(null)
 
 // Computed properties
@@ -300,12 +300,6 @@ const updateData = (timeline) => {
       break
   }
 }
-
-const handleChartMounted = () => {
-  if (pheDiary.value.length >= 2) {
-    updateData('two_weeks')
-  }
-}
 </script>
 
 <template>
@@ -381,7 +375,6 @@ const handleChartMounted = () => {
           :options="chartOptions"
           :series="graph"
           class="-mb-2"
-          @mounted="handleChartMounted"
         ></apexchart>
       </div>
 
