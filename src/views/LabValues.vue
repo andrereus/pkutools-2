@@ -99,7 +99,7 @@ const chartOptions = computed(() => {
         }
       },
       zoom: {
-        enabled: false
+        enabled: true
       },
       background: 'transparent'
     },
