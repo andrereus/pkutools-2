@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
-import { format, parseISO, formatISO, subMonths, subWeeks, startOfYear } from 'date-fns'
+import { format, parseISO, formatISO, subMonths, subWeeks } from 'date-fns'
 import { enUS, de, fr, es } from 'date-fns/locale'
 import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
@@ -285,6 +285,9 @@ const updateData = (timeline) => {
   const now = new Date()
 
   switch (timeline) {
+    case 'all':
+      chartRef.value.chart.zoomX(parseISO(pheDiary.value[0]?.date).getTime(), now.getTime())
+      break
     case 'one_week':
       chartRef.value.chart.zoomX(subWeeks(now, 1).getTime(), now.getTime())
       break
@@ -294,11 +297,8 @@ const updateData = (timeline) => {
     case 'three_months':
       chartRef.value.chart.zoomX(subMonths(now, 3).getTime(), now.getTime())
       break
-    case 'ytd':
-      chartRef.value.chart.zoomX(startOfYear(now).getTime(), now.getTime())
-      break
-    case 'all':
-      chartRef.value.chart.zoomX(parseISO(pheDiary.value[0]?.date).getTime(), now.getTime())
+    case 'six_months':
+      chartRef.value.chart.zoomX(subMonths(now, 6).getTime(), now.getTime())
       break
   }
 }
@@ -346,7 +346,7 @@ const updateData = (timeline) => {
       <div v-if="pheDiary.length >= 2">
         <div class="flex gap-2 mb-4">
           <button
-            v-for="(period, idx) in ['all', 'one_week', 'one_month', 'three_months', 'ytd']"
+            v-for="(period, idx) in ['all', 'one_week', 'one_month', 'three_months', 'six_months']"
             :key="idx"
             @click="updateData(period)"
             :class="[
@@ -363,8 +363,8 @@ const updateData = (timeline) => {
                   ? '1M'
                   : period === 'three_months'
                     ? '3M'
-                    : period === 'ytd'
-                      ? 'YTD'
+                    : period === 'six_months'
+                      ? '6M'
                       : 'ALL'
             }}
           </button>
