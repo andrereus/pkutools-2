@@ -309,6 +309,12 @@ const updateData = (timeline) => {
         newestDate.value.getTime()
       )
       break
+    case 'two_weeks':
+      chartRef.value.chart.zoomX(
+        subWeeks(newestDate.value, 2).getTime(),
+        newestDate.value.getTime()
+      )
+      break
     case 'one_month':
       chartRef.value.chart.zoomX(
         subMonths(newestDate.value, 1).getTime(),
@@ -318,12 +324,6 @@ const updateData = (timeline) => {
     case 'three_months':
       chartRef.value.chart.zoomX(
         subMonths(newestDate.value, 3).getTime(),
-        newestDate.value.getTime()
-      )
-      break
-    case 'six_months':
-      chartRef.value.chart.zoomX(
-        subMonths(newestDate.value, 6).getTime(),
         newestDate.value.getTime()
       )
       break
@@ -373,7 +373,7 @@ const updateData = (timeline) => {
       <div v-if="pheDiary.length >= 2">
         <div class="flex gap-2 mb-4">
           <button
-            v-for="(period, idx) in ['all', 'one_week', 'one_month', 'three_months', 'six_months']"
+            v-for="(period, idx) in ['all', 'one_week', 'two_weeks', 'one_month', 'three_months']"
             :key="idx"
             @click="updateData(period)"
             :class="[
@@ -386,12 +386,12 @@ const updateData = (timeline) => {
             {{
               period === 'one_week'
                 ? '1W'
-                : period === 'one_month'
-                  ? '1M'
-                  : period === 'three_months'
-                    ? '3M'
-                    : period === 'six_months'
-                      ? '6M'
+                : period === 'two_weeks'
+                  ? '2W'
+                  : period === 'one_month'
+                    ? '1M'
+                    : period === 'three_months'
+                      ? '3M'
                       : 'ALL'
             }}
           </button>
