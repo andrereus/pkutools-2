@@ -335,7 +335,7 @@ const triggerDownload = (csvContent) => {
 
       <p v-if="!license" class="mt-3">
         {{ $t('lab-values.note') }}
-        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+        <a href="https://buymeacoffee.com/andrereus" target="_blank" class="text-sky-500"
           >PKU Tools Unlimited</a
         >.
       </p>

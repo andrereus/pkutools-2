@@ -200,7 +200,7 @@ onMounted(() => {
 
       <p class="mb-6">
         {{ $t('settings.license-text') }}
-        <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
+        <a href="https://buymeacoffee.com/andrereus" target="_blank" class="text-sky-500"
           >PKU Tools Unlimited</a
         >
         {{ $t('settings.license-price') }}
