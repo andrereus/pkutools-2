@@ -202,7 +202,8 @@ onMounted(() => {
         {{ $t('settings.license-text') }}
         <a href="https://buymeacoffee.com/andrereus/membership" target="_blank" class="text-sky-500"
           >PKU Tools Unlimited</a
-        >.
+        >
+        {{ $t('settings.license-price') }}
       </p>
 
       <TextInput
