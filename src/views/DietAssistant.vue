@@ -26,6 +26,10 @@ const user = computed(() => store.user)
 const pheLog = computed(() => store.pheLog)
 const settings = computed(() => store.settings)
 
+const license = computed(
+  () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+)
+
 const pheTolerance = computed(() => settings.value.maxPhe || 0)
 const pheTotal = computed(() => {
   let phe = 0
@@ -94,7 +98,7 @@ const sendMessage = async (e) => {
 </script>
 
 <template>
-  <div>
+  <div v-if="userIsAuthenticated && license">
     <header>
       <PageHeader title="Diät Assistent" />
     </header>
