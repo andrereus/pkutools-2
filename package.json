@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "vercel dev",
     "dev-host": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
+    "@vercel/node": "^5.1.2",
     "apexcharts": "^4.3.0",
     "date-fns": "^3.6.0",
     "firebase": "^11.1.0",
