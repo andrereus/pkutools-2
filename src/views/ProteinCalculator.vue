@@ -103,7 +103,7 @@ const save = () => {
     />
     <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />
 
-    <p class="text-xl my-6">~ {{ calculatePhe() }} mg Phe</p>
+    <p class="text-xl my-6">≈ {{ calculatePhe() }} mg Phe</p>
 
     <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
   </div>
