@@ -87,11 +87,6 @@ const router = createRouter({
       path: '/privacy-policy',
       name: 'Privacy Policy',
       component: PrivacyPolicy
-    },
-    {
-      path: '/diet-assistant',
-      name: 'Diet Assistant',
-      component: DietAssistant
     }
   ]
 })
