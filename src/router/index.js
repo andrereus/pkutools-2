@@ -13,7 +13,6 @@ import Help from '../views/Help.vue'
 import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
-import DietAssistant from '../views/DietAssistant.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
