@@ -32,3 +32,4 @@ coverage
 .env
 .env.local
 .vercel
+emulator-data
