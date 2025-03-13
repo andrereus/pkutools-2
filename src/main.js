@@ -13,6 +13,8 @@ import es from './locales/es.json'
 import fr from './locales/fr.json'
 
 import { initializeApp } from 'firebase/app'
+import { getAuth, connectAuthEmulator } from 'firebase/auth'
+import { getDatabase, connectDatabaseEmulator } from 'firebase/database'
 
 import VueApexCharts from 'vue3-apexcharts'
 
@@ -25,15 +27,25 @@ const i18n = createI18n({
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: 'pku-tools.firebaseapp.com',
-  databaseURL: 'https://pku-tools.firebaseio.com',
-  projectId: 'pku-tools',
-  storageBucket: 'pku-tools.appspot.com',
-  messagingSenderId: '202032702286',
-  appId: '1:202032702286:web:2daa2ac360e82ee0cfb41f'
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
-initializeApp(firebaseConfig)
+const firebaseApp = initializeApp(firebaseConfig)
+
+if (import.meta.env.MODE === 'development') {
+  const auth = getAuth(firebaseApp)
+  const db = getDatabase(firebaseApp)
+
+  connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true })
+  connectDatabaseEmulator(db, 'localhost', 9000)
+
+  console.log('Connected to Firebase emulators')
+}
 
 const app = createApp(App)
 

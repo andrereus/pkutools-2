@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo-512.png"
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo-512.png",
+    "emulators": "firebase emulators:start",
+    "emulators:data": "firebase emulators:start --import=./emulator-data --export-on-exit=./emulator-data"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
