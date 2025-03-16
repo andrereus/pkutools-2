@@ -22,7 +22,7 @@ PKU Tools is a nutrition app for low-phenylalanine diets aimed at people with PK
 - **Frontend**: Vue 3
 - **Build Tool**: Vite
 - **Router**: Vue Router
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind
 - **State Management**: Pinia
 - **Internationalization**: Vue I18n
 - **Server**: Vercel
