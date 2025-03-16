@@ -1,35 +1,64 @@
-# pkutools-2
+# PKU Tools
 
-This template should help get you started developing with Vue 3 in Vite.
+PKU Tools is a nutrition app for low-phenylalanine diets aimed at people with PKU. It combines a calculator, pencil, paper and nutritional table.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- 🔍 Food Search
+- 📷 Barcode Scanner
+- 📱 Phenylalanine Calculator
+- ➗ Protein Calculator
+- 📝 Phe Log
+- 📅 Phe Diary
+- 📈 Lab Values
+- 🍎 Own Foods
+- 🌍 Multi-language Support
+- 📱 PWA Support
+- 🔄 Real-time Sync
+- 🌓 Dark Mode
 
-## Customize configuration
+## Tech Stack
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- **Frontend**: Vue 3
+- **Build Tool**: Vite
+- **Router**: Vue Router
+- **Styling**: Tailwind CSS
+- **State Management**: Pinia
+- **Internationalization**: Vue I18n
+- **Server**: Vercel
+- **Authentication**: Firebase
+- **Database**: Firebase
 
-## Project Setup
+## Install
 
-```sh
+Install Node.js and Firebase.
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Create a `.env` from `.env.example`.
 
-```sh
+## Usage
+
+Start Firebase emulator:
+
+```
+npm run emulators
+```
+
+With data persistence:
+
+```
+npm run emulators:data
+```
+
+Start development server:
+
+```
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Contributing
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Contributions are welcome! Please feel free to submit a Pull Request.
