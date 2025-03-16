@@ -61,4 +61,4 @@ npm run dev
 
 ## Contributing
 
-Feel free to open an issue or submit PRs.
+Contributions are welcome.
