@@ -8,10 +8,10 @@ PKU Tools is a nutrition app for low-phenylalanine diets aimed at people with PK
 - 📷 Barcode Scanner
 - 📱 Phenylalanine Calculator
 - ➗ Protein Calculator
+- 🍎 Own Foods
 - 📝 Phe Log
 - 📅 Phe Diary
 - 📈 Lab Values
-- 🍎 Own Foods
 - 🌍 Multi-language Support
 - 📱 PWA Support
 - 🔄 Real-time Sync
