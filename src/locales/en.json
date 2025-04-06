@@ -212,7 +212,7 @@
     "diary-description": "Keep track of your food and monitor your Phe tolerance.",
     "own-food-name": "Own Foods",
     "own-food-description": "Save your own foods for quick addition.",
-    "suggestions-name": "1-Click Suggestions",
-    "suggestions-description": "Add suggestions to the log with one click."
+    "lab-values-name": "Lab Values",
+    "lab-values-description": "Track laboratory values in a diagram."
   }
 }

@@ -212,7 +212,7 @@
     "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
     "own-food-name": "Eigene Lebensmittel",
     "own-food-description": "Hinterlege eigene Lebensmittel zum schnellen Hinzufügen.",
-    "suggestions-name": "1-Klick Vorschläge",
-    "suggestions-description": "Füge Vorschläge mit einem Klick dem Protokoll hinzu."
+    "lab-values-name": "Laborwerte",
+    "lab-values-description": "Verfolge Laborwerte in einem Diagramm."
   }
 }

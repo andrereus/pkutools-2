@@ -212,7 +212,7 @@
     "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "own-food-name": "Alimentos Propios",
     "own-food-description": "Guarda tus propios alimentos para añadir rápidamente.",
-    "suggestions-name": "Sugerencias de 1 clic",
-    "suggestions-description": "Añade sugerencias al registro con un solo clic."
+    "lab-values-name": "Valores de laboratorio",
+    "lab-values-description": "Seguimiento de los valores de laboratorio en un diagrama."
   }
 }

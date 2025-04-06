@@ -3,7 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '../stores/index'
 import PheLog from '../components/PheLog.vue'
-import { Search, Calculator, ScanBarcode, Apple, Book, Sparkles } from 'lucide-vue-next'
+import { Search, Calculator, ScanBarcode, Apple, Book, ChartLine } from 'lucide-vue-next'
 
 const router = useRouter()
 const route = useRoute()
@@ -33,22 +33,22 @@ const features = [
     route: '/phe-calculator'
   },
   {
+    name: 'features.own-food-name',
+    description: 'features.own-food-description',
+    icon: Apple,
+    route: '/own-food'
+  },
+  {
     name: 'features.diary-name',
     description: 'features.diary-description',
     icon: Book,
     route: '/?log=true'
   },
   {
-    name: 'features.suggestions-name',
-    description: 'features.suggestions-description',
-    icon: Sparkles,
-    route: '/?log=true'
-  },
-  {
-    name: 'features.own-food-name',
-    description: 'features.own-food-description',
-    icon: Apple,
-    route: '/own-food'
+    name: 'features.lab-values-name',
+    description: 'features.lab-values-description',
+    icon: ChartLine,
+    route: '/lab-values'
   }
 ]
 
