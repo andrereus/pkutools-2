@@ -208,10 +208,10 @@
     "scanner-description": "Scanne Barcodes von Produkten.",
     "calculator-name": "Phenylalanin Rechner",
     "calculator-description": "Berechne die Phe-Menge für ein bestimmtes Gewicht oder rechne Eiweiß in Phe um.",
-    "diary-name": "Protokoll und Tagebuch",
-    "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
     "own-food-name": "Eigene Lebensmittel",
     "own-food-description": "Hinterlege eigene Lebensmittel zum schnellen Hinzufügen.",
+    "diary-name": "Protokoll und Tagebuch",
+    "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
     "lab-values-name": "Laborwerte",
     "lab-values-description": "Verfolge Laborwerte in einem Diagramm."
   }

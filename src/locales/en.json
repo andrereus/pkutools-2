@@ -208,10 +208,10 @@
     "scanner-description": "Scan barcodes from products.",
     "calculator-name": "Phenylalanine Calculator",
     "calculator-description": "Calculate the amount of Phe for a specific weight or convert protein to Phe.",
-    "diary-name": "Log and Diary",
-    "diary-description": "Keep track of your food and monitor your Phe tolerance.",
     "own-food-name": "Own Foods",
     "own-food-description": "Save your own foods for quick addition.",
+    "diary-name": "Log and Diary",
+    "diary-description": "Keep track of your food and monitor your Phe tolerance.",
     "lab-values-name": "Lab Values",
     "lab-values-description": "Track laboratory values in a diagram."
   }

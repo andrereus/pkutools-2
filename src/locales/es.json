@@ -208,10 +208,10 @@
     "scanner-description": "Escanea los códigos de barras de los productos.",
     "calculator-name": "Calculadora de Fenilalanina",
     "calculator-description": "Calcula la cantidad de Phe para un peso específico o convierte proteína en Phe.",
-    "diary-name": "Registro y Diario",
-    "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "own-food-name": "Alimentos Propios",
     "own-food-description": "Guarda tus propios alimentos para añadir rápidamente.",
+    "diary-name": "Registro y Diario",
+    "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "lab-values-name": "Valores de laboratorio",
     "lab-values-description": "Seguimiento de los valores de laboratorio en un diagrama."
   }

@@ -208,10 +208,10 @@
     "scanner-description": "Scanne les codes-barres des produits.",
     "calculator-name": "Calculateur de Phénylalanine",
     "calculator-description": "Calculez la quantité de Phe pour un poids spécifique ou convertissez des protéines en Phe.",
-    "diary-name": "Journal et Carnet",
-    "diary-description": "Suivez vos aliments et surveillez votre tolérance à la Phe.",
     "own-food-name": "Aliments Personnalisés",
     "own-food-description": "Enregistrez vos propres aliments pour un ajout rapide.",
+    "diary-name": "Journal et Carnet",
+    "diary-description": "Suivez vos aliments et surveillez votre tolérance à la Phe.",
     "lab-values-name": "Valeurs de laboratoire",
     "lab-values-description": "Suivez les valeurs de laboratoire sur un graphique."
   }
