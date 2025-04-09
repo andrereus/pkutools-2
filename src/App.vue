@@ -544,7 +544,7 @@ const iconMap = {
       </main>
     </div>
 
-    <footer class="bg-white dark:bg-gray-800">
+    <footer class="bg-white dark:bg-gray-800 hidden xl:block">
       <div class="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8 lg:py-12">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           <RouterLink
