@@ -194,7 +194,7 @@ const save = () => {
           class="mb-6"
         />
 
-        <p class="text-xl mb-6">~ {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl mb-6">≈ {{ calculatePhe() }} mg Phe</p>
 
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
