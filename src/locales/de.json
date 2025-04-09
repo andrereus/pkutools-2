@@ -159,6 +159,7 @@
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
+    "tab-title": "Anmelden",
     "signedin": "Du bist angemeldet.",
     "name": "Name",
     "email": "E-Mail",
@@ -173,7 +174,8 @@
     "error": "Das hat leider nicht geklappt.",
     "required": "Pflichtfeld",
     "min-length": "Minimum 8 Zeichen",
-    "invalid-email": "Ungültige E-Mail"
+    "invalid-email": "Ungültige E-Mail",
+    "or": "Oder"
   },
   "help": {
     "title": "Hilfe",

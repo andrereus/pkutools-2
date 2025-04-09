@@ -159,6 +159,7 @@
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
+    "tab-title": "Iniciar sesión",
     "signedin": "Has iniciado sesión.",
     "name": "Nombre",
     "email": "Correo electrónico",
@@ -173,7 +174,8 @@
     "error": "Lamentablemente, esto no ha funcionado.",
     "required": "Requerido",
     "min-length": "Mínimo 8 caracteres",
-    "invalid-email": "Correo electrónico no válido"
+    "invalid-email": "Correo electrónico no válido",
+    "or": "O"
   },
   "help": {
     "title": "Ayuda",

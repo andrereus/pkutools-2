@@ -159,6 +159,7 @@
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",
+    "tab-title": "Se connecter",
     "signedin": "Vous êtes connecté.",
     "name": "Nom",
     "email": "E-mail",
@@ -173,7 +174,8 @@
     "error": "Malheureusement, cela n'a pas fonctionné.",
     "required": "Obligatoire",
     "min-length": "Minimum 8 caractères",
-    "invalid-email": "E-mail non valide"
+    "invalid-email": "E-mail non valide",
+    "or": "Ou"
   },
   "help": {
     "title": "Aide",

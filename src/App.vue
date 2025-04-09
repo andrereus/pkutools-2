@@ -116,7 +116,7 @@ const footerNavigation = computed(() => {
       { name: 'lab-values.title', route: '/lab-values' }
     ],
     account: [
-      { name: 'email-auth.title', route: '/email-auth' },
+      { name: 'email-auth.tab-title', route: '/email-auth' },
       { name: 'settings.title', route: '/settings' }
     ],
     about: [

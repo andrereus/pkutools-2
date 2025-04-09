@@ -159,6 +159,7 @@
   },
   "email-auth": {
     "title": "Sign in with Email",
+    "tab-title": "Sign in",
     "signedin": "You are signed in.",
     "name": "Name",
     "email": "Email",
@@ -173,7 +174,8 @@
     "error": "Unfortunately this did not work.",
     "required": "Required",
     "min-length": "Minimum 8 characters",
-    "invalid-email": "Invalid email"
+    "invalid-email": "Invalid email",
+    "or": "Or"
   },
   "help": {
     "title": "Help",
