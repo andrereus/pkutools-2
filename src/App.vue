@@ -556,7 +556,7 @@ const iconMap = {
           <div class="lg:mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-white">
                   {{ $t('footer.tools') }}
                 </h3>
                 <ul role="list" class="mt-6 space-y-4">
@@ -570,7 +570,7 @@ const iconMap = {
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-white">
                   {{ $t('footer.logs') }}
                 </h3>
                 <ul role="list" class="mt-6 space-y-4">
@@ -586,7 +586,7 @@ const iconMap = {
             </div>
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-white">
                   {{ $t('footer.account') }}
                 </h3>
                 <ul role="list" class="mt-6 space-y-4">
@@ -600,7 +600,7 @@ const iconMap = {
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-white">
                   {{ $t('footer.about') }}
                 </h3>
                 <ul role="list" class="mt-6 space-y-4">
