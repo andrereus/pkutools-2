@@ -68,7 +68,7 @@ const resetPassword = async () => {
 <template>
   <div class="max-w-2xl">
     <div v-if="userIsAuthenticated">
-      <h2 class="text-xl text-gray-900 dark:text-gray-300 mb-6">
+      <h2 class="text-lg text-gray-900 dark:text-gray-300 mb-6">
         <BadgeCheck class="h-6 w-6 text-sky-500 inline-block ml-2 mr-1" aria-hidden="true" />
         {{ $t('email-auth.signedin') }}
       </h2>
