@@ -221,7 +221,7 @@ const iconMap = {
 </script>
 
 <template>
-  <div class="min-h-full app-container-safe-area dark:text-white">
+  <div class="min-h-screen flex flex-col app-container-safe-area dark:text-white">
     <div as="nav" class="bg-white shadow dark:bg-gray-800">
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 justify-between">
@@ -536,7 +536,7 @@ const iconMap = {
       </div>
     </div>
 
-    <div class="pb-10">
+    <div class="pb-5 lg:pb-10 flex-grow">
       <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <RouterView></RouterView>
@@ -544,33 +544,40 @@ const iconMap = {
       </main>
     </div>
 
-    <footer class="bg-white">
-      <div class="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8 lg:py-16">
+    <footer class="bg-white dark:bg-gray-800">
+      <div class="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8 lg:py-12">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-          <RouterLink :to="userIsAuthenticated ? '/?log=true' : '/?home=true'">
+          <RouterLink
+            :to="userIsAuthenticated ? '/?log=true' : '/?home=true'"
+            class="hidden lg:block"
+          >
             <img class="h-8" src="./assets/pkutools-logo.png" alt="PKU Tools Logo" />
           </RouterLink>
-          <div class="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div class="lg:mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900">Tools</h3>
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                  {{ $t('footer.tools') }}
+                </h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in footerNavigation.tools" :key="item.name">
                     <RouterLink
                       :to="item.route"
-                      class="text-sm/6 text-gray-600 hover:text-gray-900"
+                      class="text-sm/6 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                       >{{ $t(item.name) }}</RouterLink
                     >
                   </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900">Protokolle</h3>
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                  {{ $t('footer.logs') }}
+                </h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in footerNavigation.features" :key="item.name">
                     <RouterLink
                       :to="item.route"
-                      class="text-sm/6 text-gray-600 hover:text-gray-900"
+                      class="text-sm/6 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                       >{{ $t(item.name) }}</RouterLink
                     >
                   </li>
@@ -579,24 +586,28 @@ const iconMap = {
             </div>
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900">Account</h3>
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                  {{ $t('footer.account') }}
+                </h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in footerNavigation.account" :key="item.name">
                     <RouterLink
                       :to="item.route"
-                      class="text-sm/6 text-gray-600 hover:text-gray-900"
+                      class="text-sm/6 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                       >{{ $t(item.name) }}</RouterLink
                     >
                   </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900">About</h3>
+                <h3 class="text-sm/6 font-semibold text-gray-900 dark:text-gray-300">
+                  {{ $t('footer.about') }}
+                </h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in footerNavigation.about" :key="item.name">
                     <RouterLink
                       :to="item.route"
-                      class="text-sm/6 text-gray-600 hover:text-gray-900"
+                      class="text-sm/6 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                       >{{ $t(item.name) }}</RouterLink
                     >
                   </li>

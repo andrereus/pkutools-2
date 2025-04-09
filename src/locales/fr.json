@@ -214,5 +214,11 @@
     "diary-description": "Suivez vos aliments et surveillez votre tolérance à la Phe.",
     "lab-values-name": "Valeurs de laboratoire",
     "lab-values-description": "Suivez les valeurs de laboratoire sur un graphique."
+  },
+  "footer": {
+    "tools": "Outils",
+    "logs": "Journaux",
+    "account": "Compte",
+    "about": "À propos"
   }
 }

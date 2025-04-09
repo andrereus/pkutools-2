@@ -214,5 +214,11 @@
     "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "lab-values-name": "Valores de laboratorio",
     "lab-values-description": "Seguimiento de los valores de laboratorio en un diagrama."
+  },
+  "footer": {
+    "tools": "Herramientas",
+    "logs": "Registros",
+    "account": "Cuenta",
+    "about": "Acerca de"
   }
 }

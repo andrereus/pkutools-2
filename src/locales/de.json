@@ -214,5 +214,11 @@
     "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
     "lab-values-name": "Laborwerte",
     "lab-values-description": "Verfolge Laborwerte in einem Diagramm."
+  },
+  "footer": {
+    "tools": "Tools",
+    "logs": "Protokolle",
+    "account": "Account",
+    "about": "About"
   }
 }

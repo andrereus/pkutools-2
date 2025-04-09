@@ -214,5 +214,11 @@
     "diary-description": "Keep track of your food and monitor your Phe tolerance.",
     "lab-values-name": "Lab Values",
     "lab-values-description": "Track laboratory values in a diagram."
+  },
+  "footer": {
+    "tools": "Tools",
+    "logs": "Logs",
+    "account": "Account",
+    "about": "About"
   }
 }
