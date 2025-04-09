@@ -27,6 +27,7 @@ const userIsAuthenticated = computed(() => store.user !== null)
 const signInGoogle = async () => {
   try {
     await store.signInGoogle()
+    router.push('/')
   } catch (error) {
     alert(t('app.auth-error'))
     console.error(error)
