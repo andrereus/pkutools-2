@@ -488,10 +488,14 @@ const updateData = (timeline) => {
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
       <p v-if="!license" class="mt-3">
-        {{ $t('phe-diary.note') }}
-        <a href="https://buymeacoffee.com/andrereus" target="_blank" class="text-sky-500"
-          >PKU Tools Unlimited</a
-        >.
+        {{ $t('app.license') }}
+        <a href="https://buymeacoffee.com/andrereus" target="_blank">
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+            alt="Buy Me A Coffee"
+            class="w-24 mt-3"
+          />
+        </a>
       </p>
       <p v-if="license" class="mt-3 text-sm">
         <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />

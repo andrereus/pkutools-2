@@ -15,7 +15,8 @@
     "calculator": "Calculateur",
     "total": "total",
     "left": "restante",
-    "start": "Page d'accueil"
+    "start": "Page d'accueil",
+    "license": "Nombre d'entrées limité en cas d'utilisation gratuite. Soutenir avec un abonnement pour des entrées illimitées :"
   },
   "common": {
     "add": "Ajouter",
@@ -82,7 +83,6 @@
     "title": "Aliments personnels",
     "description": "Enregistrez vos aliments personnels et leurs valeurs de Phe.",
     "limit": "Les aliments personnels sont limités à 250 entrées.",
-    "note": "Limité à 250 entrées. Illimité avec licence",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
     "export-filename": "PKU Tools - Aliments personnels",
     "choose-icon": "Sélectionner une icône",
@@ -113,7 +113,6 @@
     "export-days": "Exporter les jours",
     "log": "Journal",
     "export-filename": "PKU Tools - Journal de Phe",
-    "note": "Limité à 100 entrées (~3 mois). Illimité avec licence",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
     "unlimited": "Illimité"
   },
@@ -127,7 +126,6 @@
     "limit": "Les résultats de laboratoire sont limités à 50 entrées. Exporte tes données dans Excel. Pour la suppression, voir les paramètres.",
     "export": "Exporter",
     "export-filename": "PKU Tools - Valeurs de laboratoire",
-    "note": "Limité à 50 entrées. Illimité avec la licence",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
     "unlimited": "Illimité",
     "unit": "Unité pour les valeurs de laboratoire",

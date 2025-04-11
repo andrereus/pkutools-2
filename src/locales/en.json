@@ -15,7 +15,8 @@
     "calculator": "Calculator",
     "total": "total",
     "left": "left",
-    "start": "Start page"
+    "start": "Start page",
+    "license": "Number of entries limited with free use. Support with a subscription for unlimited entries:"
   },
   "common": {
     "add": "Add",
@@ -82,7 +83,6 @@
     "title": "Own Food",
     "description": "Save own food and phe values.",
     "limit": "Own Food is limited to 250 entries.",
-    "note": "Limited to 250 entries. Unlimited with license",
     "search-info": "Own food is also available in the search.",
     "export-filename": "PKU Tools - Own Food",
     "choose-icon": "Select icon",
@@ -113,7 +113,6 @@
     "export-days": "Export days",
     "log": "Log",
     "export-filename": "PKU Tools - Phe Diary",
-    "note": "Limited to 100 entries (~3 months). Unlimited with license",
     "chart-info": "The chart gets displayed after the second entry.",
     "unlimited": "Unlimited"
   },
@@ -127,7 +126,6 @@
     "limit": "Lab Values are limited to 50 entries. Export your data in Excel. For deletion, see settings.",
     "export": "Export",
     "export-filename": "PKU Tools - Lab Values",
-    "note": "Limited to 50 entries. Unlimited with license",
     "chart-info": "The chart gets displayed after the second entry.",
     "unlimited": "Unlimited",
     "unit": "Unit for laboratory values",

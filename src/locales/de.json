@@ -15,7 +15,8 @@
     "calculator": "Rechner",
     "total": "gesamt",
     "left": "übrig",
-    "start": "Startseite"
+    "start": "Startseite",
+    "license": "Anzahl Einträge bei kostenloser Nutzung begrenzt. Unterstütze mit einem Abo für unbegrenzte Einträge:"
   },
   "common": {
     "add": "Hinzufügen",
@@ -82,7 +83,6 @@
     "title": "Eigene Lebensmittel",
     "description": "Speichere eigene Lebensmittel und Phe-Werte.",
     "limit": "Eigene Lebensmittel sind auf 250 Einträge limitiert.",
-    "note": "Limitiert auf 250 Einträge. Unbegrenzt mit Lizenz",
     "search-info": "Eigene Lebensmittel sind auch in der Suche verfügbar.",
     "export-filename": "PKU Tools - Eigene Lebensmittel",
     "choose-icon": "Icon auswählen",
@@ -113,7 +113,6 @@
     "export-days": "Tage exportieren",
     "log": "Protokoll",
     "export-filename": "PKU Tools - Phe Tagebuch",
-    "note": "Limitiert auf 100 Einträge (~3 Monate). Unbegrenzt mit Lizenz",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
     "unlimited": "Unlimitiert"
   },
@@ -127,7 +126,6 @@
     "limit": "Laborwerte sind limitiert auf 50 Einträge. Exportiere deine Daten in Excel. Zum Löschen siehe Einstellungen.",
     "export": "Exportieren",
     "export-filename": "PKU Tools - Laborwerte",
-    "note": "Limitiert auf 50 Einträge. Unbegrenzt mit Lizenz",
     "chart-info": "Das Diagramm wird nach dem zweiten Eintrag angezeigt.",
     "unlimited": "Unlimitiert",
     "unit": "Einheit für Laborwerte",

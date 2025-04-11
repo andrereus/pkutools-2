@@ -15,7 +15,8 @@
     "calculator": "Calculadora",
     "total": "total",
     "left": "restante",
-    "start": "Página de inicio"
+    "start": "Página de inicio",
+    "license": "Número de entradas limitado con uso gratuito. Soporte con una suscripción para entradas ilimitadas:"
   },
   "common": {
     "add": "Agregar",
@@ -82,7 +83,6 @@
     "title": "Alimentos propios",
     "description": "Guardar alimentos propios y valores de Phe.",
     "limit": "Los alimentos propios están limitados a 250 entradas.",
-    "note": "Limitado a 250 entradas. Ilimitado con licencia",
     "search-info": "La comida propia también está disponible en la búsqueda.",
     "export-filename": "PKU Tools - Alimento propio",
     "choose-icon": "Seleccionar icono",
@@ -113,7 +113,6 @@
     "export-days": "Días de exportación",
     "log": "Registro",
     "export-filename": "PKU Tools - Diario de Phe",
-    "note": "Limitado a 100 entradas (~3 meses). Ilimitado con licencia",
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
     "unlimited": "Sin límites"
   },
@@ -127,7 +126,6 @@
     "limit": "Los valores de laboratorio están limitados a 50 entradas. Exporte sus datos a Excel. Para borrar, consulte Configuración.",
     "export": "Exportar",
     "export-filename": "PKU Tools - Valores de laboratorio",
-    "note": "Limitado a 50 entradas. Ilimitado con licencia",
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
     "unlimited": "Sin límites",
     "unit": "Unidad para valores de laboratorio",
