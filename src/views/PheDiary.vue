@@ -189,7 +189,7 @@ const signInGoogle = async () => {
 const editItem = (item) => {
   editedIndex.value = pheDiary.value.indexOf(item)
   editedKey.value = item['.key']
-  editedItem.value = Object.assign({}, item)
+  editedItem.value = JSON.parse(JSON.stringify(item))
   dialog.value.openDialog()
 }
 

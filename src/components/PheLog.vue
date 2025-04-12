@@ -114,12 +114,12 @@ const calculatePhe = () => {
 const editItem = (item) => {
   editedIndex.value = pheLog.value.indexOf(item)
   editedKey.value = item['.key']
-  editedItem.value = Object.assign({}, item)
+  editedItem.value = JSON.parse(JSON.stringify(item))
   dialog2.value.openDialog()
 }
 
 const addLastAdded = (item) => {
-  editedItem.value = Object.assign({}, item)
+  editedItem.value = JSON.parse(JSON.stringify(item))
   dialog2.value.openDialog()
 }
 
@@ -131,7 +131,7 @@ const deleteItem = () => {
 
 const close = () => {
   dialog2.value.closeDialog()
-  editedItem.value = Object.assign({}, defaultItem)
+  editedItem.value = { ...defaultItem }
   editedIndex.value = -1
   editedKey.value = null
 }
