@@ -517,14 +517,14 @@ const updateData = (timeline) => {
           v-model.number="editedItem.phe"
         />
 
-        <div v-if="editedItem.log" class="flex justify-between items-center -mb-4">
+        <div v-if="editedItem.log" class="flex justify-between items-center -mb-3">
           <h4 class="text-sm font-medium ml-1">
             {{ $t('phe-log.title') }}
           </h4>
           <SecondaryButton
             :text="$t('common.add')"
             @click="$refs.dialog2.openDialog()"
-            class="mr-0 mb-0"
+            class="!mr-0 !mb-0"
           />
         </div>
 
