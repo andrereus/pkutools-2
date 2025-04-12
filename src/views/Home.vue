@@ -96,28 +96,6 @@ onMounted(() => {
 
 <template>
   <div>
-    <div v-if="pheLog" class="block mb-6">
-      <nav class="flex space-x-2" aria-label="Tabs">
-        <RouterLink
-          :to="{ path: '/', query: { log: true } }"
-          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          aria-current="page"
-        >
-          {{ $t('phe-log.tab-title') }}
-        </RouterLink>
-        <RouterLink
-          to="/phe-diary"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          >{{ $t('phe-diary.tab-title') }}</RouterLink
-        >
-        <RouterLink
-          to="/lab-values"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          >{{ $t('lab-values.tab-title') }}</RouterLink
-        >
-      </nav>
-    </div>
-
     <PheLog v-if="pheLog" />
 
     <div v-if="!pheLog">

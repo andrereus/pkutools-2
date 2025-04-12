@@ -485,31 +485,7 @@ const iconMap = {
             </MenuComponent>
           </div>
         </div>
-        <div v-if="!userIsAuthenticated" class="border-b dark:border-gray-700"></div>
-        <div
-          v-if="userIsAuthenticated"
-          class="my-1 py-3 px-3 bg-gray-50 dark:bg-gray-900 rounded-md shadow-inner"
-        >
-          <div class="text-sm flex justify-between">
-            <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
-            <span v-if="settings?.maxPhe"
-              >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
-                Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
-              }}%)</span
-            >
-            <RouterLink v-if="!settings?.maxPhe" to="/settings">{{
-              $t('settings.title')
-            }}</RouterLink>
-          </div>
-          <div
-            class="relative w-full bg-gray-200 dark:bg-gray-800 rounded-md overflow-hidden h-1 mt-2"
-          >
-            <div
-              class="bg-sky-500 h-full rounded-md"
-              :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
-            ></div>
-          </div>
-        </div>
+        <div class="border-b dark:border-gray-700"></div>
         <nav
           class="flex py-2 justify-around sm:justify-center sm:space-x-12 lg:justify-start lg:space-x-4"
           aria-label="Global"

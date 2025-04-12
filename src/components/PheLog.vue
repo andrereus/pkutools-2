@@ -4,15 +4,16 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
-import { format } from 'date-fns'
+import { format, parseISO, subDays, addDays } from 'date-fns'
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
 import DataTable from './DataTable.vue'
 import ModalDialog from './ModalDialog.vue'
-import PrimaryButton from './PrimaryButton.vue'
 import SecondaryButton from './SecondaryButton.vue'
-import DateInput from './DateInput.vue'
 import TextInput from './TextInput.vue'
 import NumberInput from './NumberInput.vue'
+import PrimaryButton from './PrimaryButton.vue'
+import PageHeader from './PageHeader.vue'
 
 const router = useRouter()
 const store = useStore()
@@ -156,15 +157,22 @@ const save = () => {
   }
 
   if (selectedDiaryEntry.value) {
-    // Update existing diary entry
-    const updatedLog = [...(selectedDiaryEntry.value.log || []), newLogEntry]
+    const updatedLog = [...selectedDayLog.value]
+    if (editedIndex.value > -1) {
+      // Update existing item
+      updatedLog[editedIndex.value] = newLogEntry
+    } else {
+      // Add new item
+      updatedLog.push(newLogEntry)
+    }
+
     const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
       log: updatedLog,
       phe: totalPhe
     })
   } else {
-    // Create new diary entry
+    // Create new entry for today
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: date.value,
       phe: calculatePhe(),
@@ -199,10 +207,24 @@ const saveResult = () => {
     router.push('phe-diary')
   }
 }
+
+const prevDay = () => {
+  const currentDate = parseISO(date.value)
+  date.value = format(subDays(currentDate, 1), 'yyyy-MM-dd')
+}
+
+const nextDay = () => {
+  const currentDate = parseISO(date.value)
+  date.value = format(addDays(currentDate, 1), 'yyyy-MM-dd')
+}
 </script>
 
 <template>
   <div>
+    <header>
+      <PageHeader :title="$t('phe-log.title')" />
+    </header>
+
     <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
@@ -216,9 +238,45 @@ const saveResult = () => {
     </div>
 
     <div v-if="userIsAuthenticated">
-      <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" class="mb-6" />
+      <div class="flex justify-between items-center gap-4 mb-6">
+        <button class="p-1 rounded-md bg-gray-100 dark:bg-gray-800" @click="prevDay">
+          <ChevronLeft class="h-6 w-6" aria-hidden="true" />
+        </button>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          v-model="date"
+          class="flex-1 block w-full rounded-md border-0 bg-white py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-600 dark:focus:ring-sky-500"
+        />
+        <button class="p-1 rounded-md bg-gray-100 dark:bg-gray-800" @click="nextDay">
+          <ChevronRight class="h-6 w-6" aria-hidden="true" />
+        </button>
+      </div>
 
-      <DataTable :headers="tableHeaders" class="mb-8">
+      <div class="mb-6 py-3 px-3 bg-gray-100 dark:bg-gray-900 rounded-md shadow-inner">
+        <div class="text-sm flex justify-between">
+          <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
+          <span v-if="settings?.maxPhe"
+            >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
+              Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
+            }}%)</span
+          >
+          <RouterLink v-if="!settings?.maxPhe" to="/settings">{{
+            $t('settings.title')
+          }}</RouterLink>
+        </div>
+        <div
+          class="relative w-full bg-gray-200 dark:bg-gray-800 rounded-md overflow-hidden h-1 mt-2"
+        >
+          <div
+            class="bg-sky-500 h-full rounded-md"
+            :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
+          ></div>
+        </div>
+      </div>
+
+      <DataTable :headers="tableHeaders" class="mb-6">
         <tr
           v-for="(item, index) in selectedDayLog"
           :key="index"
@@ -257,8 +315,6 @@ const saveResult = () => {
         </tr>
       </DataTable>
 
-      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
-
       <ModalDialog
         ref="dialog2"
         :title="formTitle"
@@ -288,11 +344,9 @@ const saveResult = () => {
         <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
 
-      <p v-if="lastAdded.length === 0" class="mt-3">
-        {{ $t('phe-log.info') }}
-      </p>
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
 
-      <div v-if="lastAdded.length !== 0" class="mt-3">
+      <span v-if="lastAdded.length !== 0" class="mt-3">
         <SecondaryButton
           v-for="(item, index) in lastAdded.slice(0, visibleItems)"
           :key="index"
@@ -305,7 +359,11 @@ const saveResult = () => {
           :text="$t('phe-log.more')"
           @click="showMoreItems"
         />
-      </div>
+      </span>
+
+      <p v-if="lastAdded.length === 0" class="mt-3">
+        {{ $t('phe-log.info') }}
+      </p>
     </div>
   </div>
 </template>

@@ -17,6 +17,7 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
+import PageHeader from '../components/PageHeader.vue'
 
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
@@ -232,27 +233,9 @@ const triggerDownload = (csvContent) => {
 
 <template>
   <div>
-    <div class="block mb-6">
-      <nav class="flex space-x-2" aria-label="Tabs">
-        <RouterLink
-          :to="{ path: '/', query: { log: true } }"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-        >
-          {{ $t('phe-log.tab-title') }}
-        </RouterLink>
-        <RouterLink
-          to="/phe-diary"
-          class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          >{{ $t('phe-diary.tab-title') }}</RouterLink
-        >
-        <RouterLink
-          to="/lab-values"
-          class="bg-black/5 dark:bg-white/15 text-gray-700 rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300"
-          aria-current="page"
-          >{{ $t('lab-values.tab-title') }}</RouterLink
-        >
-      </nav>
-    </div>
+    <header>
+      <PageHeader :title="$t('lab-values.title')" />
+    </header>
 
     <div v-if="!userIsAuthenticated" class="mt-8">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
