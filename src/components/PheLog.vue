@@ -26,6 +26,7 @@ const editedIndex = ref(-1)
 const editedKey = ref(null)
 const date = ref(format(new Date(), 'yyyy-MM-dd'))
 const visibleItems = ref(5)
+const selectedDiaryEntry = ref(null)
 
 const defaultItem = {
   name: '',
@@ -55,12 +56,14 @@ const formTitle = computed(() => {
   return editedIndex.value === -1 ? t('common.add') : t('common.edit')
 })
 
+const selectedDayLog = computed(() => {
+  const entry = pheDiary.value.find((entry) => entry.date === date.value)
+  selectedDiaryEntry.value = entry
+  return entry?.log || []
+})
+
 const pheResult = computed(() => {
-  let phe = 0
-  pheLog.value.forEach((item) => {
-    phe += item.phe
-  })
-  return Math.round(phe)
+  return selectedDayLog.value.reduce((sum, item) => sum + item.phe, 0)
 })
 
 const lastAdded = computed(() => {
@@ -111,9 +114,8 @@ const calculatePhe = () => {
   return Math.round((editedItem.value.weight * editedItem.value.pheReference) / 100) || 0
 }
 
-const editItem = (item) => {
-  editedIndex.value = pheLog.value.indexOf(item)
-  editedKey.value = item['.key']
+const editItem = (item, index) => {
+  editedIndex.value = index
   editedItem.value = JSON.parse(JSON.stringify(item))
   dialog2.value.openDialog()
 }
@@ -125,7 +127,13 @@ const addLastAdded = (item) => {
 
 const deleteItem = () => {
   const db = getDatabase()
-  remove(dbRef(db, `${user.value.id}/pheLog/${editedKey.value}`))
+  const updatedLog = selectedDayLog.value.filter((_, index) => index !== editedIndex.value)
+  const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+
+  update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
+    log: updatedLog,
+    phe: totalPhe
+  })
   close()
 }
 
@@ -138,22 +146,29 @@ const close = () => {
 
 const save = () => {
   const db = getDatabase()
-  if (editedIndex.value > -1) {
-    update(dbRef(db, `${user.value.id}/pheLog/${editedKey.value}`), {
-      name: editedItem.value.name,
-      icon: editedItem.value.icon || null,
-      pheReference: Number(editedItem.value.pheReference) || 0,
-      weight: Number(editedItem.value.weight),
-      phe: calculatePhe()
+  const newLogEntry = {
+    name: editedItem.value.name,
+    emoji: editedItem.value.emoji || null,
+    icon: editedItem.value.icon || null,
+    pheReference: Number(editedItem.value.pheReference) || 0,
+    weight: Number(editedItem.value.weight),
+    phe: calculatePhe()
+  }
+
+  if (selectedDiaryEntry.value) {
+    // Update existing diary entry
+    const updatedLog = [...(selectedDiaryEntry.value.log || []), newLogEntry]
+    const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+    update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
+      log: updatedLog,
+      phe: totalPhe
     })
   } else {
-    push(dbRef(db, `${user.value.id}/pheLog`), {
-      name: editedItem.value.name,
-      emoji: editedItem.value.emoji || null,
-      icon: editedItem.value.icon || null,
-      pheReference: Number(editedItem.value.pheReference) || 0,
-      weight: Number(editedItem.value.weight),
-      phe: calculatePhe()
+    // Create new diary entry
+    push(dbRef(db, `${user.value.id}/pheDiary`), {
+      date: date.value,
+      phe: calculatePhe(),
+      log: [newLogEntry]
     })
   }
   close()
@@ -201,11 +216,13 @@ const saveResult = () => {
     </div>
 
     <div v-if="userIsAuthenticated">
+      <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" class="mb-6" />
+
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr
-          v-for="(item, index) in pheLog"
+          v-for="(item, index) in selectedDayLog"
           :key="index"
-          @click="editItem(item)"
+          @click="editItem(item, index)"
           class="cursor-pointer"
         >
           <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
@@ -240,21 +257,7 @@ const saveResult = () => {
         </tr>
       </DataTable>
 
-      <PrimaryButton :text="$t('phe-log.save-day')" @click="$refs.dialog.openDialog()" />
-
-      <ModalDialog
-        ref="dialog"
-        :title="$t('phe-log.save-day')"
-        :buttons="[
-          { label: $t('common.save'), type: 'submit', visible: true },
-          { label: $t('common.cancel'), type: 'simpleClose', visible: true }
-        ]"
-        @submit="saveResult"
-      >
-        <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="date" />
-      </ModalDialog>
-
-      <SecondaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
+      <PrimaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />
 
       <ModalDialog
         ref="dialog2"
