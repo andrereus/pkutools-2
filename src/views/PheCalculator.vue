@@ -2,7 +2,8 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from '../stores/index'
-import { getDatabase, ref as dbRef, push } from 'firebase/database'
+import { getDatabase, ref as dbRef, push, update } from 'firebase/database'
+import { format } from 'date-fns'
 
 import PageHeader from '../components/PageHeader.vue'
 import TextInput from '../components/TextInput.vue'
@@ -28,12 +29,32 @@ const calculatePhe = () => {
 
 const save = () => {
   const db = getDatabase()
-  push(dbRef(db, `${user.value.id}/pheLog`), {
+  const logEntry = {
     name: name.value,
     pheReference: phe.value,
     weight: Number(weight.value),
     phe: calculatePhe()
-  })
+  }
+
+  // Find today's entry or create new one
+  const today = new Date()
+  const formattedDate = format(today, 'yyyy-MM-dd')
+  const todayEntry = store.pheDiary.find((entry) => entry.date === formattedDate)
+
+  if (todayEntry) {
+    const updatedLog = [...(todayEntry.log || []), logEntry]
+    const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+    update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
+      log: updatedLog,
+      phe: totalPhe
+    })
+  } else {
+    push(dbRef(db, `${user.value.id}/pheDiary`), {
+      date: formattedDate,
+      phe: calculatePhe(),
+      log: [logEntry]
+    })
+  }
   router.push('/')
 }
 </script>

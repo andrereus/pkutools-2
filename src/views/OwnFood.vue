@@ -7,6 +7,7 @@ import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/databa
 import foodIcons from '../components/data/food-icons.json'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { BadgeCheck } from 'lucide-vue-next'
+import { format } from 'date-fns'
 
 import PageHeader from '../components/PageHeader.vue'
 import DataTable from '../components/DataTable.vue'
@@ -123,13 +124,32 @@ const calculatePhe = () => {
 
 const add = () => {
   const db = getDatabase()
-  push(dbRef(db, `${user.value.id}/pheLog`), {
+  const logEntry = {
     name: editedItem.value.name,
     icon: editedItem.value.icon || null,
     pheReference: editedItem.value.phe,
     weight: Number(weight.value),
     phe: calculatePhe()
-  })
+  }
+
+  const today = new Date()
+  const formattedDate = format(today, 'yyyy-MM-dd')
+  const todayEntry = store.pheDiary.find((entry) => entry.date === formattedDate)
+
+  if (todayEntry) {
+    const updatedLog = [...(todayEntry.log || []), logEntry]
+    const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+    update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
+      log: updatedLog,
+      phe: totalPhe
+    })
+  } else {
+    push(dbRef(db, `${user.value.id}/pheDiary`), {
+      date: formattedDate,
+      phe: calculatePhe(),
+      log: [logEntry]
+    })
+  }
   dialog2.value.closeDialog()
   router.push('/')
 }
