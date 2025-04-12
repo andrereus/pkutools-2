@@ -518,7 +518,7 @@ const updateData = (timeline) => {
         />
 
         <div v-if="editedItem.log" class="flex justify-between items-center -mb-3">
-          <h4 class="text-sm font-medium ml-1">
+          <h4 class="text-sm font-medium">
             {{ $t('phe-log.title') }}
           </h4>
           <SecondaryButton
