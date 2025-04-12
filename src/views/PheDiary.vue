@@ -517,7 +517,7 @@ const updateData = (timeline) => {
           v-model.number="editedItem.phe"
         />
 
-        <div v-if="editedItem.log" class="flex justify-between items-center mb-2">
+        <div v-if="editedItem.log" class="flex justify-between items-center -mb-4">
           <h4 class="text-sm font-medium ml-1">
             {{ $t('phe-log.title') }}
           </h4>
@@ -528,7 +528,7 @@ const updateData = (timeline) => {
           />
         </div>
 
-        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mt-0 mb-3">
+        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
           <tr
             v-for="(item, index) in editedItem.log"
             :key="index"
