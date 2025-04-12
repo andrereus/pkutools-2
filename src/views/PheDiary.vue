@@ -17,10 +17,12 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
+import TextInput from '../components/TextInput.vue'
 
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
 const dialog = ref(null)
+const dialog2 = ref(null)
 const publicPath = import.meta.env.BASE_URL
 
 // Reactive state
@@ -238,6 +240,69 @@ const save = () => {
   close()
 }
 
+// Start add/edit log
+
+const editedLogIndex = ref(-1)
+
+const defaultLogItem = {
+  name: '',
+  emoji: null,
+  icon: null,
+  pheReference: null,
+  weight: null,
+  phe: null
+}
+
+const editedLogItem = ref({ ...defaultLogItem })
+
+const logFormTitle = computed(() => {
+  return editedLogIndex.value === -1 ? t('common.add') : t('common.edit')
+})
+
+const calculatePhe = () => {
+  return Math.round((editedLogItem.value.weight * editedLogItem.value.pheReference) / 100) || 0
+}
+
+const editLogItem = (item, index) => {
+  editedLogIndex.value = index
+  editedLogItem.value = { ...item }
+  dialog2.value.openDialog()
+}
+
+const deleteLogItem = () => {
+  editedItem.value.log.splice(editedLogIndex.value, 1)
+  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + item.phe, 0)
+  dialog2.value.closeDialog()
+}
+
+const closeLogEdit = () => {
+  dialog2.value.closeDialog()
+  editedLogItem.value = { ...defaultLogItem }
+  editedLogIndex.value = -1
+}
+
+const saveLogEdit = () => {
+  const updatedItem = {
+    name: editedLogItem.value.name,
+    emoji: editedLogItem.value.emoji || null,
+    icon: editedLogItem.value.icon || null,
+    pheReference: Number(editedLogItem.value.pheReference) || 0,
+    weight: Number(editedLogItem.value.weight),
+    phe: calculatePhe()
+  }
+
+  if (editedLogIndex.value > -1) {
+    editedItem.value.log[editedLogIndex.value] = updatedItem
+  } else {
+    editedItem.value.log.push(updatedItem)
+  }
+
+  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + item.phe, 0)
+  closeLogEdit()
+}
+
+// End add/edit log
+
 const getlocalDate = (date) => {
   if (date) {
     const locales = { enUS, de, fr, es }
@@ -452,8 +517,24 @@ const updateData = (timeline) => {
           v-model.number="editedItem.phe"
         />
 
-        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mb-3">
-          <tr v-for="(item, index) in editedItem.log" :key="index">
+        <div v-if="editedItem.log" class="flex justify-between items-center mb-2">
+          <h4 class="text-sm font-medium ml-1">
+            {{ $t('phe-log.title') }}
+          </h4>
+          <SecondaryButton
+            :text="$t('common.add')"
+            @click="$refs.dialog2.openDialog()"
+            class="mr-0 mb-0"
+          />
+        </div>
+
+        <DataTable v-if="editedItem.log" :headers="tableHeaders2" class="mt-0 mb-3">
+          <tr
+            v-for="(item, index) in editedItem.log"
+            :key="index"
+            @click="editLogItem(item, index)"
+            class="cursor-pointer"
+          >
             <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-gray-300 sm:pl-6">
               <img
                 :src="publicPath + 'img/food-icons/' + item.icon + '.svg'"
@@ -482,6 +563,32 @@ const updateData = (timeline) => {
             </td>
           </tr>
         </DataTable>
+      </ModalDialog>
+
+      <ModalDialog
+        ref="dialog2"
+        :title="logFormTitle"
+        :buttons="[
+          { label: $t('common.save'), type: 'submit', visible: true },
+          { label: $t('common.delete'), type: 'delete', visible: editedLogIndex !== -1 },
+          { label: $t('common.cancel'), type: 'close', visible: true }
+        ]"
+        @submit="saveLogEdit"
+        @delete="deleteLogItem"
+        @close="closeLogEdit"
+      >
+        <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedLogItem.name" />
+        <NumberInput
+          id-name="phe"
+          :label="$t('common.phe-per-100g')"
+          v-model.number="editedLogItem.pheReference"
+        />
+        <NumberInput
+          id-name="weight"
+          :label="$t('common.consumed-weight')"
+          v-model.number="editedLogItem.weight"
+        />
+        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
       </ModalDialog>
 
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
