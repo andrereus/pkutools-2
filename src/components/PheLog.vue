@@ -222,7 +222,11 @@ const nextDay = () => {
 <template>
   <div>
     <header>
-      <PageHeader :title="$t('phe-log.title')" />
+      <PageHeader :title="$t('phe-log.title')" class="inline-block" />
+      <span
+        class="ml-2 inline-block align-top mt-1 rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/30"
+        >{{ $t('common.new') }}</span
+      >
     </header>
 
     <div v-if="!userIsAuthenticated" class="mt-8">

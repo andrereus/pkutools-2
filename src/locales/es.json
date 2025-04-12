@@ -38,7 +38,8 @@
     "phe-in-mg": "Phe (en mg)",
     "phe-per-100g": "Phe por 100 g (en mg)",
     "protein-per-100g": "Proteínas por 100 g (en g)",
-    "short-protein-per-100g": "Proteínas (por 100 g)"
+    "short-protein-per-100g": "Proteínas (por 100 g)",
+    "new": "Nuevo"
   },
   "home": {
     "title": "Inicio",
