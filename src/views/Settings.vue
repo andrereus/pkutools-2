@@ -50,6 +50,7 @@ const save = () => {
   const db = getDatabase()
   update(dbRef(db, `${user.value.id}/settings`), {
     maxPhe: settings.value.maxPhe || 0,
+    maxCalories: settings.value.maxCalories || 0,
     labUnit: settings.value.labUnit
   }).then(() => {
     alert(t('settings.saved'))
@@ -181,6 +182,12 @@ onMounted(() => {
         id-name="max-phe"
         :label="$t('settings.max-phe')"
         v-model.number="settings.maxPhe"
+      />
+
+      <NumberInput
+        id-name="max-calories"
+        :label="$t('settings.max-calories')"
+        v-model.number="settings.maxCalories"
       />
 
       <SelectMenu

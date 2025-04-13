@@ -140,6 +140,7 @@
     "title": "Configuración",
     "description": "Configuración de la aplicación / cuenta",
     "max-phe": "Tolerancia de Phe por día",
+    "max-calories": "Calorías por día",
     "saved": "Guardado",
     "license-heading": "Licencias",
     "license-text": "Entradas ilimitadas y asistencia prioritaria con",

@@ -140,6 +140,7 @@
     "title": "Paramètres",
     "description": "Paramètres de l'application / du compte",
     "max-phe": "Tolérance de Phe par jour",
+    "max-calories": "Calories par jour",
     "saved": "Enregistré",
     "license-heading": "Licences",
     "license-text": "Entrées illimitées et support prioritaire avec",

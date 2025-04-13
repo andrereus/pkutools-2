@@ -284,7 +284,9 @@ const infoAlert = () => {
         <div class="text-sm flex justify-between">
           <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
           <span v-if="settings?.maxPhe"
-            >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }}</span
+            >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
+              Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
+            }}%)</span
           >
           <RouterLink v-if="!settings?.maxPhe" to="/settings">{{
             $t('settings.title')
@@ -298,8 +300,25 @@ const infoAlert = () => {
             :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
           ></div>
         </div>
-        <div class="text-sm mt-2">
-          <span>{{ caloriesResult }} {{ $t('common.calories') }}</span>
+        <div class="text-sm flex justify-between mt-2">
+          <span>{{ caloriesResult }} {{ $t('common.calories') }} {{ $t('app.total') }}</span>
+          <span v-if="settings?.maxCalories"
+            >{{ settings.maxCalories - caloriesResult }} {{ $t('common.calories') }}
+            {{ $t('app.left') }} ({{
+              Math.round(((caloriesResult * 100) / settings.maxCalories - 100) * -1)
+            }}%)</span
+          >
+          <RouterLink v-if="!settings?.maxCalories" to="/settings">{{
+            $t('settings.title')
+          }}</RouterLink>
+        </div>
+        <div
+          class="relative w-full bg-gray-200 dark:bg-gray-800 rounded-md overflow-hidden h-1 mt-2"
+        >
+          <div
+            class="bg-sky-500 h-full rounded-md"
+            :style="{ width: `${(caloriesResult * 100) / (settings?.maxCalories || 1)}%` }"
+          ></div>
         </div>
       </div>
 

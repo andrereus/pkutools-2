@@ -140,6 +140,7 @@
     "title": "Settings",
     "description": "App / Account Settings",
     "max-phe": "Phe tolerance per day",
+    "max-calories": "Calories per day",
     "saved": "Saved",
     "license-heading": "Licenses",
     "license-text": "Unlimited entries and priority support with",
