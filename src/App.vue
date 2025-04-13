@@ -138,10 +138,7 @@ const pheResult = computed(() => {
 })
 
 const isTabActive = computed(() => (item) => {
-  if (
-    item.route.startsWith('/?') &&
-    (route.path === '/' || route.path === '/phe-diary' || route.path === '/lab-values')
-  ) {
+  if (item.route.startsWith('/?') && route.path === '/') {
     return true
   }
 
