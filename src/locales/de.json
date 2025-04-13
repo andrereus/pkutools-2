@@ -40,7 +40,10 @@
     "phe-per-100g": "Phe pro 100g (in mg)",
     "protein-per-100g": "Eiweiß pro 100g (in g)",
     "short-protein-per-100g": "Eiweiß (pro 100g)",
-    "new": "Neu"
+    "new": "Neu",
+    "calories": "Kalorien",
+    "calories-per-100g": "Kalorien pro 100g",
+    "total-calories": "Gesamt Kalorien"
   },
   "home": {
     "title": "Start",

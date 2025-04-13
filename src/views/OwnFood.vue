@@ -6,7 +6,7 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { BadgeCheck } from 'lucide-vue-next'
+import { BadgeCheck, ChevronDown } from 'lucide-vue-next'
 import { format } from 'date-fns'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -32,7 +32,8 @@ const weight = ref(100)
 const defaultItem = {
   name: '',
   icon: null,
-  phe: null
+  phe: null,
+  calories: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -49,7 +50,8 @@ const license = computed(
 
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('common.phe') },
+  { key: 'calories', title: t('common.calories') }
 ])
 
 const formTitle = computed(() => {
@@ -91,7 +93,8 @@ const save = () => {
     update(dbRef(db, `${user.value.id}/ownFood/${editedKey.value}`), {
       name: editedItem.value.name,
       icon: editedItem.value.icon || null,
-      phe: Number(editedItem.value.phe)
+      phe: Number(editedItem.value.phe),
+      calories: Number(editedItem.value.calories) || 0
     })
   } else {
     if (
@@ -103,7 +106,8 @@ const save = () => {
       push(dbRef(db, `${user.value.id}/ownFood`), {
         name: editedItem.value.name,
         icon: editedItem.value.icon || null,
-        phe: Number(editedItem.value.phe)
+        phe: Number(editedItem.value.phe),
+        calories: Number(editedItem.value.calories) || 0
       })
     }
   }
@@ -122,6 +126,10 @@ const calculatePhe = () => {
   return Math.round((weight.value * editedItem.value.phe) / 100)
 }
 
+const calculateCalories = () => {
+  return Math.round((weight.value * editedItem.value.calories) / 100) || 0
+}
+
 const add = () => {
   const db = getDatabase()
   const logEntry = {
@@ -129,7 +137,8 @@ const add = () => {
     icon: editedItem.value.icon || null,
     pheReference: editedItem.value.phe,
     weight: Number(weight.value),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    calories: calculateCalories()
   }
 
   const today = new Date()
@@ -238,6 +247,9 @@ const setIcon = (item, close) => {
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.calories }}
+          </td>
         </tr>
       </DataTable>
 
@@ -256,7 +268,7 @@ const setIcon = (item, close) => {
         @close="closeModal"
       >
         <Popover>
-          <PopoverButton class="mt-1">
+          <PopoverButton class="my-1">
             <img
               :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
               v-if="editedItem.icon !== undefined && editedItem.icon !== null"
@@ -272,6 +284,7 @@ const setIcon = (item, close) => {
               alt="Food Icon"
             />
             <span class="float-left my-1 ml-2 text-sm">{{ $t('own-food.choose-icon') }}</span>
+            <ChevronDown class="h-5 w-5 inline-block ml-2" aria-hidden="true" />
           </PopoverButton>
 
           <transition
@@ -303,11 +316,20 @@ const setIcon = (item, close) => {
           v-model="editedItem.name"
           class="mt-2"
         />
-        <NumberInput
-          id-name="phe"
-          :label="$t('common.phe-per-100g')"
-          v-model.number="editedItem.phe"
-        />
+        <div class="flex gap-4">
+          <NumberInput
+            id-name="phe"
+            :label="$t('common.phe-per-100g')"
+            v-model.number="editedItem.phe"
+            class="flex-1"
+          />
+          <NumberInput
+            id-name="calories"
+            :label="$t('common.calories-per-100g')"
+            v-model.number="editedItem.calories"
+            class="flex-1"
+          />
+        </div>
       </ModalDialog>
 
       <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
@@ -340,7 +362,10 @@ const setIcon = (item, close) => {
         @close="closeModal"
       >
         <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
+        <div class="flex gap-4 mt-4">
+          <span class="flex-1 ml-1">= {{ calculatePhe() }} mg Phe</span>
+          <span class="flex-1 ml-1">= {{ calculateCalories() }} {{ $t('common.calories') }}</span>
+        </div>
       </ModalDialog>
     </div>
   </div>

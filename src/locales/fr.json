@@ -40,7 +40,10 @@
     "phe-per-100g": "Phe pour 100g (en mg)",
     "protein-per-100g": "Protéines pour 100g (en g)",
     "short-protein-per-100g": "Protéines (par 100g)",
-    "new": "Nouveau"
+    "new": "Nouveau",
+    "calories": "Calories",
+    "calories-per-100g": "Calories par 100g",
+    "total-calories": "Total calories"
   },
   "home": {
     "title": "Accueil",

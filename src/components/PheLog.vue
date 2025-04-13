@@ -34,8 +34,10 @@ const defaultItem = {
   emoji: null,
   icon: null,
   pheReference: null,
+  caloriesReference: null,
   weight: null,
-  phe: null
+  phe: null,
+  calories: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -50,7 +52,8 @@ const settings = computed(() => store.settings)
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
   { key: 'weight', title: t('common.weight') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('common.phe') },
+  { key: 'calories', title: t('common.calories') }
 ])
 
 const formTitle = computed(() => {
@@ -115,6 +118,10 @@ const calculatePhe = () => {
   return Math.round((editedItem.value.weight * editedItem.value.pheReference) / 100) || 0
 }
 
+const calculateCalories = () => {
+  return Math.round((editedItem.value.weight * editedItem.value.caloriesReference) / 100) || 0
+}
+
 const editItem = (item, index) => {
   editedIndex.value = index
   editedItem.value = JSON.parse(JSON.stringify(item))
@@ -152,8 +159,10 @@ const save = () => {
     emoji: editedItem.value.emoji || null,
     icon: editedItem.value.icon || null,
     pheReference: Number(editedItem.value.pheReference) || 0,
+    caloriesReference: Number(editedItem.value.caloriesReference) || 0,
     weight: Number(editedItem.value.weight),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    calories: calculateCalories()
   }
 
   if (selectedDiaryEntry.value) {
@@ -322,6 +331,9 @@ const infoAlert = () => {
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.calories }}
+          </td>
         </tr>
       </DataTable>
 
@@ -341,17 +353,29 @@ const infoAlert = () => {
           {{ $t('phe-log.data-warning') }}
         </p>
         <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedItem.name" />
-        <NumberInput
-          id-name="phe"
-          :label="$t('common.phe-per-100g')"
-          v-model.number="editedItem.pheReference"
-        />
+        <div class="flex gap-4">
+          <NumberInput
+            id-name="phe"
+            :label="$t('common.phe-per-100g')"
+            v-model.number="editedItem.pheReference"
+            class="flex-1"
+          />
+          <NumberInput
+            id-name="caloriesRef"
+            :label="$t('common.calories-per-100g')"
+            v-model.number="editedItem.caloriesReference"
+            class="flex-1"
+          />
+        </div>
         <NumberInput
           id-name="weight"
           :label="$t('common.consumed-weight')"
           v-model.number="editedItem.weight"
         />
-        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
+        <div class="flex gap-4 mt-4">
+          <span class="flex-1 ml-1">= {{ calculatePhe() }} mg Phe</span>
+          <span class="flex-1 ml-1">= {{ calculateCalories() }} {{ $t('common.calories') }}</span>
+        </div>
       </ModalDialog>
 
       <PrimaryButton :text="$t('common.add')" @click="$refs.dialog2.openDialog()" />

@@ -21,6 +21,7 @@ const protein = ref(null)
 const weight = ref(null)
 const name = ref('')
 const select = ref('other')
+const caloriesReference = ref(null)
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
@@ -50,13 +51,19 @@ const calculatePhe = () => {
   return Math.round((weight.value * (protein.value * factor.value)) / 100)
 }
 
+const calculateCalories = () => {
+  return Math.round((weight.value * caloriesReference.value) / 100) || 0
+}
+
 const save = () => {
   const db = getDatabase()
   const logEntry = {
     name: name.value,
     pheReference: Math.round(protein.value * factor.value),
+    caloriesReference: Number(caloriesReference.value) || 0,
     weight: Number(weight.value),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    calories: calculateCalories()
   }
 
   const today = new Date()
@@ -116,14 +123,28 @@ const save = () => {
       </option>
     </SelectMenu>
 
-    <NumberInput
-      id-name="protein"
-      :label="$t('common.protein-per-100g')"
-      v-model.number="protein"
-    />
+    <div class="flex gap-4">
+      <NumberInput
+        id-name="protein"
+        :label="$t('common.protein-per-100g')"
+        v-model.number="protein"
+        class="flex-1"
+      />
+      <NumberInput
+        id-name="caloriesRef"
+        :label="$t('common.calories-per-100g')"
+        v-model.number="caloriesReference"
+        class="flex-1"
+      />
+    </div>
     <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />
 
-    <p class="text-xl my-6">≈ {{ calculatePhe() }} mg Phe</p>
+    <div class="flex gap-4 my-6">
+      <span class="flex-1 ml-1 text-lg">≈ {{ calculatePhe() }} mg Phe</span>
+      <span class="flex-1 ml-1 text-lg"
+        >= {{ calculateCalories() }} {{ $t('common.calories') }}</span
+      >
+    </div>
 
     <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
   </div>

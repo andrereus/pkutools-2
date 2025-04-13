@@ -32,7 +32,8 @@ const editedKey = ref(null)
 
 const defaultItem = {
   date: format(new Date(), 'yyyy-MM-dd'),
-  phe: null
+  phe: null,
+  calories: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -52,12 +53,14 @@ const license = computed(
 
 const tableHeaders = computed(() => [
   { key: 'date', title: t('phe-diary.date') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('common.phe') },
+  { key: 'calories', title: t('common.calories') }
 ])
 
 const tableHeaders2 = computed(() => [
   { key: 'food', title: t('common.food') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('common.phe') },
+  { key: 'calories', title: t('common.calories') }
 ])
 
 const formTitle = computed(() => {
@@ -217,12 +220,14 @@ const save = () => {
       update(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`), {
         date: editedItem.value.date,
         phe: Number(editedItem.value.phe),
-        log: editedItem.value.log
+        log: editedItem.value.log,
+        calories: Number(editedItem.value.calories)
       })
     } else {
       update(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`), {
         date: editedItem.value.date,
-        phe: Number(editedItem.value.phe)
+        phe: Number(editedItem.value.phe),
+        calories: Number(editedItem.value.calories)
       })
     }
   } else {
@@ -234,7 +239,8 @@ const save = () => {
     } else {
       push(dbRef(db, `${user.value.id}/pheDiary`), {
         date: editedItem.value.date,
-        phe: Number(editedItem.value.phe)
+        phe: Number(editedItem.value.phe),
+        calories: Number(editedItem.value.calories)
       })
     }
   }
@@ -485,6 +491,9 @@ const infoAlert = () => {
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.calories }}
+          </td>
         </tr>
       </DataTable>
 
@@ -508,6 +517,12 @@ const infoAlert = () => {
           id-name="total-phe"
           :label="$t('phe-diary.phe')"
           v-model.number="editedItem.phe"
+        />
+
+        <NumberInput
+          id-name="calories"
+          :label="$t('common.total-calories')"
+          v-model.number="editedItem.calories"
         />
 
         <div v-if="editedItem.log" class="flex justify-between items-center -mb-3">
@@ -553,6 +568,9 @@ const infoAlert = () => {
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
               {{ item.phe }}
+            </td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+              {{ item.calories }}
             </td>
           </tr>
         </DataTable>

@@ -125,13 +125,20 @@ const calculatePhe = () => {
   )
 }
 
+const calculateCalories = () => {
+  return Math.round((weight.value * result.value.product.nutriments.energy_value) / 100) || 0
+}
+
+// Update save method to include calorie reference
 const save = () => {
   const db = getDatabase()
   const logEntry = {
     name: result.value.product.product_name,
     pheReference: Math.round(result.value.product.nutriments.proteins_100g * factor.value),
+    caloriesReference: result.value.product.nutriments.energy_value || 0,
     weight: Number(weight.value),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    calories: calculateCalories()
   }
 
   const today = new Date()
@@ -199,6 +206,9 @@ const save = () => {
           {{ result.product.nutriments.proteins_100g }}
           {{ result.product.nutriments.proteins_unit }}
           {{ $t('common.short-protein-per-100g') }}
+          <br />
+          {{ result.product.nutriments.energy_value || 0 }}
+          {{ $t('common.calories-per-100g') }}
         </p>
 
         <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
