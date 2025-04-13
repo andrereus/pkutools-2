@@ -126,16 +126,15 @@ const calculatePhe = () => {
 }
 
 const calculateCalories = () => {
-  return Math.round((weight.value * result.value.product.nutriments.energy_value) / 100) || 0
+  return Math.round((weight.value * result.value.product.nutriments['energy-kcal_100g']) / 100) || 0
 }
 
-// Update save method to include calorie reference
 const save = () => {
   const db = getDatabase()
   const logEntry = {
     name: result.value.product.product_name,
     pheReference: Math.round(result.value.product.nutriments.proteins_100g * factor.value),
-    caloriesReference: result.value.product.nutriments.energy_value || 0,
+    caloriesReference: result.value.product.nutriments['energy-kcal_100g'] || 0,
     weight: Number(weight.value),
     phe: calculatePhe(),
     calories: calculateCalories()
@@ -205,12 +204,13 @@ const save = () => {
       <p v-if="code !== ''" class="text-sm mb-6">Code: {{ code }}</p>
 
       <div v-if="result.product.nutriments.proteins_100g">
-        <p class="text-xl mb-6">
+        <p class="text-xl mb-1">
           {{ result.product.nutriments.proteins_100g }}
           {{ result.product.nutriments.proteins_unit }}
           {{ $t('common.short-protein-per-100g') }}
-          <br />
-          {{ result.product.nutriments.energy_value || 0 }}
+        </p>
+        <p v-if="result.product.nutriments['energy-kcal_100g']" class="text-sm mb-6">
+          {{ result.product.nutriments['energy-kcal_100g'] || 0 }}
           {{ $t('common.calories-per-100g') }}
         </p>
 
@@ -227,7 +227,10 @@ const save = () => {
           class="mb-6"
         />
 
-        <p class="text-xl mb-6">≈ {{ calculatePhe() }} mg Phe</p>
+        <p class="text-xl mb-1">≈ {{ calculatePhe() }} mg Phe</p>
+        <p v-if="result.product.nutriments['energy-kcal_100g']" class="text-sm mb-6">
+          = {{ calculateCalories() }} {{ $t('common.calories') }}
+        </p>
 
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />
       </div>
