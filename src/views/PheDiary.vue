@@ -256,8 +256,10 @@ const defaultLogItem = {
   emoji: null,
   icon: null,
   pheReference: null,
+  caloriesReference: null,
   weight: null,
-  phe: null
+  phe: null,
+  calories: null
 }
 
 const editedLogItem = ref({ ...defaultLogItem })
@@ -268,6 +270,10 @@ const logFormTitle = computed(() => {
 
 const calculatePhe = () => {
   return Math.round((editedLogItem.value.weight * editedLogItem.value.pheReference) / 100) || 0
+}
+
+const calculateCalories = () => {
+  return Math.round((editedLogItem.value.weight * editedLogItem.value.caloriesReference) / 100) || 0
 }
 
 const editLogItem = (item, index) => {
@@ -294,8 +300,10 @@ const saveLogEdit = () => {
     emoji: editedLogItem.value.emoji || null,
     icon: editedLogItem.value.icon || null,
     pheReference: Number(editedLogItem.value.pheReference) || 0,
+    caloriesReference: Number(editedLogItem.value.caloriesReference) || 0,
     weight: Number(editedLogItem.value.weight),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    calories: calculateCalories()
   }
 
   if (editedLogIndex.value > -1) {
@@ -304,7 +312,11 @@ const saveLogEdit = () => {
     editedItem.value.log.push(updatedItem)
   }
 
-  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + item.phe, 0)
+  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + (item.phe || 0), 0)
+  editedItem.value.calories = editedItem.value.log.reduce(
+    (sum, item) => sum + (item.calories || 0),
+    0
+  )
   closeLogEdit()
 }
 
@@ -589,17 +601,29 @@ const infoAlert = () => {
         @close="closeLogEdit"
       >
         <TextInput id-name="food" :label="$t('common.food-name')" v-model="editedLogItem.name" />
-        <NumberInput
-          id-name="phe"
-          :label="$t('common.phe-per-100g')"
-          v-model.number="editedLogItem.pheReference"
-        />
+        <div class="flex gap-4">
+          <NumberInput
+            id-name="phe"
+            :label="$t('common.phe-per-100g')"
+            v-model.number="editedLogItem.pheReference"
+            class="flex-1"
+          />
+          <NumberInput
+            id-name="caloriesRef"
+            :label="$t('common.calories-per-100g')"
+            v-model.number="editedLogItem.caloriesReference"
+            class="flex-1"
+          />
+        </div>
         <NumberInput
           id-name="weight"
           :label="$t('common.consumed-weight')"
           v-model.number="editedLogItem.weight"
         />
-        <p class="text-xl my-6">= {{ calculatePhe() }} mg Phe</p>
+        <div class="flex justify-between my-4 mx-1">
+          <span>= {{ calculatePhe() }} mg Phe</span>
+          <span>= {{ calculateCalories() }} {{ $t('common.calories') }}</span>
+        </div>
       </ModalDialog>
 
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
