@@ -72,15 +72,18 @@ const save = () => {
 
   if (todayEntry) {
     const updatedLog = [...(todayEntry.log || []), logEntry]
-    const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+    const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
+    const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
       log: updatedLog,
-      phe: totalPhe
+      phe: totalPhe,
+      calories: totalCalories
     })
   } else {
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: formattedDate,
       phe: calculatePhe(),
+      calories: calculateCalories(),
       log: [logEntry]
     })
   }
