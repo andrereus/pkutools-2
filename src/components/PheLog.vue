@@ -242,7 +242,7 @@ const infoAlert = () => {
 <template>
   <div>
     <header>
-      <PageHeader :title="$t('phe-log.title')" class="inline-block" />
+      <PageHeader :title="$t('phe-log.tab-title')" class="inline-block" />
       <button
         class="ml-2 inline-block align-top mt-1 rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/30"
         @click="infoAlert"
