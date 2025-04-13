@@ -401,16 +401,22 @@ const updateData = (timeline) => {
       break
   }
 }
+
+const infoAlert = () => {
+  alert(t('app.info'))
+}
 </script>
 
 <template>
   <div>
     <header>
       <PageHeader :title="$t('phe-diary.title')" class="inline-block" />
-      <span
+      <button
         class="ml-2 inline-block align-top mt-1 rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/30"
-        >{{ $t('common.new') }}</span
+        @click="infoAlert"
       >
+        {{ $t('common.new') }}
+      </button>
     </header>
 
     <div v-if="!userIsAuthenticated" class="mt-8">

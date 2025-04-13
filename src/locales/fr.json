@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Page d'accueil",
-    "license": "L'utilisation gratuite est limitée. Soutenir avec un abonnement pour une utilisation illimitée :"
+    "license": "L'utilisation gratuite est limitée. Soutenir avec un abonnement pour une utilisation illimitée :",
+    "info": "Protocole Phe dispose désormais d'un sélecteur de date et les aliments sont automatiquement sauvegardés pour un jour spécifique. Vous pouvez également ajouter ou modifier des aliments dans le Journal de Phe. Une flexibilité maximale ! 🎉 😃"
   },
   "common": {
     "add": "Ajouter",

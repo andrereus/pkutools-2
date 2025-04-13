@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Página de inicio",
-    "license": "El uso gratuito es limitado. Soporte con una suscripción para un uso ilimitado:"
+    "license": "El uso gratuito es limitado. Soporte con una suscripción para un uso ilimitado:",
+    "info": "Protocolo Phe ahora tiene un selector de fecha y los alimentos se guardan automáticamente en un día específico. Además, ahora puede añadir o editar entradas de comida en el Diario de Phe. ¡Máxima flexibilidad! 🎉 😃"
   },
   "common": {
     "add": "Agregar",
