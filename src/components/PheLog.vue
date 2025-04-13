@@ -140,11 +140,13 @@ const addLastAdded = (item) => {
 const deleteItem = () => {
   const db = getDatabase()
   const updatedLog = selectedDayLog.value.filter((_, index) => index !== editedIndex.value)
-  const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+  const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
+  const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
 
   update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
     log: updatedLog,
-    phe: totalPhe
+    phe: totalPhe,
+    calories: totalCalories
   })
   close()
 }

@@ -284,7 +284,11 @@ const editLogItem = (item, index) => {
 
 const deleteLogItem = () => {
   editedItem.value.log.splice(editedLogIndex.value, 1)
-  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + item.phe, 0)
+  editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + (item.phe || 0), 0)
+  editedItem.value.calories = editedItem.value.log.reduce(
+    (sum, item) => sum + (item.calories || 0),
+    0
+  )
   dialog2.value.closeDialog()
 }
 
