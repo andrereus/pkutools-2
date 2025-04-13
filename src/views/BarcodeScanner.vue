@@ -125,7 +125,7 @@ const calculatePhe = () => {
   )
 }
 
-const calculateCalories = () => {
+const calculateKcal = () => {
   return Math.round((weight.value * result.value.product.nutriments['energy-kcal_100g']) / 100) || 0
 }
 
@@ -134,10 +134,10 @@ const save = () => {
   const logEntry = {
     name: result.value.product.product_name,
     pheReference: Math.round(result.value.product.nutriments.proteins_100g * factor.value),
-    caloriesReference: result.value.product.nutriments['energy-kcal_100g'] || 0,
+    kcalReference: result.value.product.nutriments['energy-kcal_100g'] || 0,
     weight: Number(weight.value),
     phe: calculatePhe(),
-    calories: calculateCalories()
+    kcal: calculateKcal()
   }
 
   const today = new Date()
@@ -147,17 +147,17 @@ const save = () => {
   if (todayEntry) {
     const updatedLog = [...(todayEntry.log || []), logEntry]
     const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
-    const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
+    const totalKcal = updatedLog.reduce((sum, item) => sum + (item.kcal || 0), 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
       log: updatedLog,
       phe: totalPhe,
-      calories: totalCalories
+      kcal: totalKcal
     })
   } else {
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: formattedDate,
       phe: calculatePhe(),
-      calories: calculateCalories(),
+      kcal: calculateKcal(),
       log: [logEntry]
     })
   }
@@ -211,7 +211,7 @@ const save = () => {
         </p>
         <p v-if="result.product.nutriments['energy-kcal_100g']" class="text-sm mb-6">
           {{ result.product.nutriments['energy-kcal_100g'] || 0 }}
-          {{ $t('common.calories-per-100g') }}
+          {{ $t('common.kcal-per-100g') }}
         </p>
 
         <SelectMenu id-name="factor" :label="$t('common.food-type')" v-model="select">
@@ -229,7 +229,7 @@ const save = () => {
 
         <p class="text-xl mb-1">≈ {{ calculatePhe() }} mg Phe</p>
         <p v-if="result.product.nutriments['energy-kcal_100g']" class="text-sm mb-6">
-          = {{ calculateCalories() }} {{ $t('common.calories') }}
+          = {{ calculateKcal() }} {{ $t('common.kcal') }}
         </p>
 
         <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />

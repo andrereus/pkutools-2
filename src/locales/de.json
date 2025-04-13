@@ -41,9 +41,9 @@
     "protein-per-100g": "Eiweiß pro 100g (in g)",
     "short-protein-per-100g": "Eiweiß (pro 100g)",
     "new": "Neu",
-    "calories": "Kalorien",
-    "calories-per-100g": "Kalorien pro 100g",
-    "total-calories": "Gesamt Kalorien"
+    "kcal": "kcal",
+    "kcal-per-100g": "Kcal pro 100g",
+    "total-kcal": "Gesamt kcal"
   },
   "home": {
     "title": "Start",
@@ -140,7 +140,7 @@
     "title": "Einstellungen",
     "description": "App / Account Einstellungen",
     "max-phe": "Phe-Toleranz pro Tag",
-    "max-calories": "Kalorien pro Tag",
+    "max-kcal": "Kcal pro Tag",
     "saved": "Gespeichert",
     "license-heading": "Lizenzen",
     "license-text": "Unbegrenzte Einträge und vorrangiger Support mit",

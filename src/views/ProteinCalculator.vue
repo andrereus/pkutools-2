@@ -21,7 +21,7 @@ const protein = ref(null)
 const weight = ref(null)
 const name = ref('')
 const select = ref('other')
-const caloriesReference = ref(null)
+const kcalReference = ref(null)
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
@@ -51,8 +51,8 @@ const calculatePhe = () => {
   return Math.round((weight.value * (protein.value * factor.value)) / 100)
 }
 
-const calculateCalories = () => {
-  return Math.round((weight.value * caloriesReference.value) / 100) || 0
+const calculateKcal = () => {
+  return Math.round((weight.value * kcalReference.value) / 100) || 0
 }
 
 const save = () => {
@@ -60,10 +60,10 @@ const save = () => {
   const logEntry = {
     name: name.value,
     pheReference: Math.round(protein.value * factor.value),
-    caloriesReference: Number(caloriesReference.value) || 0,
+    kcalReference: Number(kcalReference.value) || 0,
     weight: Number(weight.value),
     phe: calculatePhe(),
-    calories: calculateCalories()
+    kcal: calculateKcal()
   }
 
   const today = new Date()
@@ -73,17 +73,17 @@ const save = () => {
   if (todayEntry) {
     const updatedLog = [...(todayEntry.log || []), logEntry]
     const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
-    const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
+    const totalKcal = updatedLog.reduce((sum, item) => sum + (item.kcal || 0), 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
       log: updatedLog,
       phe: totalPhe,
-      calories: totalCalories
+      kcal: totalKcal
     })
   } else {
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: formattedDate,
       phe: calculatePhe(),
-      calories: calculateCalories(),
+      kcal: calculateKcal(),
       log: [logEntry]
     })
   }
@@ -134,9 +134,9 @@ const save = () => {
         class="flex-1"
       />
       <NumberInput
-        id-name="caloriesRef"
-        :label="$t('common.calories-per-100g')"
-        v-model.number="caloriesReference"
+        id-name="kcalRef"
+        :label="$t('common.kcal-per-100g')"
+        v-model.number="kcalReference"
         class="flex-1"
       />
     </div>
@@ -144,9 +144,7 @@ const save = () => {
 
     <div class="flex gap-4 my-6">
       <span class="flex-1 ml-1 text-lg">≈ {{ calculatePhe() }} mg Phe</span>
-      <span class="flex-1 ml-1 text-lg"
-        >= {{ calculateCalories() }} {{ $t('common.calories') }}</span
-      >
+      <span class="flex-1 ml-1 text-lg">= {{ calculateKcal() }} {{ $t('common.kcal') }}</span>
     </div>
 
     <PrimaryButton v-if="userIsAuthenticated" :text="$t('common.add')" @click="save" />

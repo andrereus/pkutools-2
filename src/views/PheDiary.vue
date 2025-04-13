@@ -33,7 +33,7 @@ const editedKey = ref(null)
 const defaultItem = {
   date: format(new Date(), 'yyyy-MM-dd'),
   phe: null,
-  calories: null
+  kcal: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -54,13 +54,13 @@ const license = computed(
 const tableHeaders = computed(() => [
   { key: 'date', title: t('phe-diary.date') },
   { key: 'phe', title: t('common.phe') },
-  { key: 'calories', title: t('common.calories') }
+  { key: 'kcal', title: t('common.kcal') }
 ])
 
 const tableHeaders2 = computed(() => [
   { key: 'food', title: t('common.food') },
   { key: 'phe', title: t('common.phe') },
-  { key: 'calories', title: t('common.calories') }
+  { key: 'kcal', title: t('common.kcal') }
 ])
 
 const formTitle = computed(() => {
@@ -221,13 +221,13 @@ const save = () => {
         date: editedItem.value.date,
         phe: Number(editedItem.value.phe),
         log: editedItem.value.log,
-        calories: Number(editedItem.value.calories)
+        kcal: Number(editedItem.value.kcal)
       })
     } else {
       update(dbRef(db, `${user.value.id}/pheDiary/${editedKey.value}`), {
         date: editedItem.value.date,
         phe: Number(editedItem.value.phe),
-        calories: Number(editedItem.value.calories)
+        kcal: Number(editedItem.value.kcal)
       })
     }
   } else {
@@ -240,7 +240,7 @@ const save = () => {
       push(dbRef(db, `${user.value.id}/pheDiary`), {
         date: editedItem.value.date,
         phe: Number(editedItem.value.phe),
-        calories: Number(editedItem.value.calories)
+        kcal: Number(editedItem.value.kcal)
       })
     }
   }
@@ -256,10 +256,10 @@ const defaultLogItem = {
   emoji: null,
   icon: null,
   pheReference: null,
-  caloriesReference: null,
+  kcalReference: null,
   weight: null,
   phe: null,
-  calories: null
+  kcal: null
 }
 
 const editedLogItem = ref({ ...defaultLogItem })
@@ -272,8 +272,8 @@ const calculatePhe = () => {
   return Math.round((editedLogItem.value.weight * editedLogItem.value.pheReference) / 100) || 0
 }
 
-const calculateCalories = () => {
-  return Math.round((editedLogItem.value.weight * editedLogItem.value.caloriesReference) / 100) || 0
+const calculateKcal = () => {
+  return Math.round((editedLogItem.value.weight * editedLogItem.value.kcalReference) / 100) || 0
 }
 
 const editLogItem = (item, index) => {
@@ -285,10 +285,7 @@ const editLogItem = (item, index) => {
 const deleteLogItem = () => {
   editedItem.value.log.splice(editedLogIndex.value, 1)
   editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + (item.phe || 0), 0)
-  editedItem.value.calories = editedItem.value.log.reduce(
-    (sum, item) => sum + (item.calories || 0),
-    0
-  )
+  editedItem.value.kcal = editedItem.value.log.reduce((sum, item) => sum + (item.kcal || 0), 0)
   dialog2.value.closeDialog()
 }
 
@@ -304,10 +301,10 @@ const saveLogEdit = () => {
     emoji: editedLogItem.value.emoji || null,
     icon: editedLogItem.value.icon || null,
     pheReference: Number(editedLogItem.value.pheReference) || 0,
-    caloriesReference: Number(editedLogItem.value.caloriesReference) || 0,
+    kcalReference: Number(editedLogItem.value.kcalReference) || 0,
     weight: Number(editedLogItem.value.weight),
     phe: calculatePhe(),
-    calories: calculateCalories()
+    kcal: calculateKcal()
   }
 
   if (editedLogIndex.value > -1) {
@@ -317,10 +314,7 @@ const saveLogEdit = () => {
   }
 
   editedItem.value.phe = editedItem.value.log.reduce((sum, item) => sum + (item.phe || 0), 0)
-  editedItem.value.calories = editedItem.value.log.reduce(
-    (sum, item) => sum + (item.calories || 0),
-    0
-  )
+  editedItem.value.kcal = editedItem.value.log.reduce((sum, item) => sum + (item.kcal || 0), 0)
   closeLogEdit()
 }
 
@@ -508,7 +502,7 @@ const infoAlert = () => {
             {{ item.phe }}
           </td>
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.calories }}
+            {{ item.kcal }}
           </td>
         </tr>
       </DataTable>
@@ -537,9 +531,9 @@ const infoAlert = () => {
             class="flex-1"
           />
           <NumberInput
-            id-name="calories"
-            :label="$t('common.total-calories')"
-            v-model.number="editedItem.calories"
+            id-name="kcal"
+            :label="$t('common.total-kcal')"
+            v-model.number="editedItem.kcal"
             class="flex-1"
           />
         </div>
@@ -589,7 +583,7 @@ const infoAlert = () => {
               {{ item.phe }}
             </td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-              {{ item.calories }}
+              {{ item.kcal }}
             </td>
           </tr>
         </DataTable>
@@ -616,9 +610,9 @@ const infoAlert = () => {
             class="flex-1"
           />
           <NumberInput
-            id-name="caloriesRef"
-            :label="$t('common.calories-per-100g')"
-            v-model.number="editedLogItem.caloriesReference"
+            id-name="kcalRef"
+            :label="$t('common.kcal-per-100g')"
+            v-model.number="editedLogItem.kcalReference"
             class="flex-1"
           />
         </div>
@@ -627,9 +621,9 @@ const infoAlert = () => {
           :label="$t('common.consumed-weight')"
           v-model.number="editedLogItem.weight"
         />
-        <div class="flex justify-between my-4 mx-1">
-          <span>= {{ calculatePhe() }} mg Phe</span>
-          <span>= {{ calculateCalories() }} {{ $t('common.calories') }}</span>
+        <div class="flex gap-4 mt-4">
+          <span class="flex-1 ml-1">= {{ calculatePhe() }} mg Phe</span>
+          <span class="flex-1 ml-1">= {{ calculateKcal() }} {{ $t('common.kcal') }}</span>
         </div>
       </ModalDialog>
 

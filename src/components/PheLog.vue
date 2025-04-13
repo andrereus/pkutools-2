@@ -34,10 +34,10 @@ const defaultItem = {
   emoji: null,
   icon: null,
   pheReference: null,
-  caloriesReference: null,
+  kcalReference: null,
   weight: null,
   phe: null,
-  calories: null
+  kcal: null
 }
 
 const editedItem = ref({ ...defaultItem })
@@ -53,7 +53,7 @@ const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
   { key: 'weight', title: t('common.weight') },
   { key: 'phe', title: t('common.phe') },
-  { key: 'calories', title: t('common.calories') }
+  { key: 'kcal', title: t('common.kcal') }
 ])
 
 const formTitle = computed(() => {
@@ -70,8 +70,8 @@ const pheResult = computed(() => {
   return selectedDayLog.value.reduce((sum, item) => sum + item.phe, 0)
 })
 
-const caloriesResult = computed(() => {
-  return selectedDayLog.value.reduce((sum, item) => sum + (Number(item.calories) || 0), 0)
+const kcalResult = computed(() => {
+  return selectedDayLog.value.reduce((sum, item) => sum + (Number(item.kcal) || 0), 0)
 })
 
 const lastAdded = computed(() => {
@@ -122,8 +122,8 @@ const calculatePhe = () => {
   return Math.round((editedItem.value.weight * editedItem.value.pheReference) / 100) || 0
 }
 
-const calculateCalories = () => {
-  return Math.round((editedItem.value.weight * editedItem.value.caloriesReference) / 100) || 0
+const calculateKcal = () => {
+  return Math.round((editedItem.value.weight * editedItem.value.kcalReference) / 100) || 0
 }
 
 const editItem = (item, index) => {
@@ -141,12 +141,12 @@ const deleteItem = () => {
   const db = getDatabase()
   const updatedLog = selectedDayLog.value.filter((_, index) => index !== editedIndex.value)
   const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
-  const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
+  const totalKcal = updatedLog.reduce((sum, item) => sum + (item.kcal || 0), 0)
 
   update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
     log: updatedLog,
     phe: totalPhe,
-    calories: totalCalories
+    kcal: totalKcal
   })
   close()
 }
@@ -165,10 +165,10 @@ const save = () => {
     emoji: editedItem.value.emoji || null,
     icon: editedItem.value.icon || null,
     pheReference: Number(editedItem.value.pheReference) || 0,
-    caloriesReference: Number(editedItem.value.caloriesReference) || 0,
+    kcalReference: Number(editedItem.value.kcalReference) || 0,
     weight: Number(editedItem.value.weight),
     phe: calculatePhe(),
-    calories: calculateCalories()
+    kcal: calculateKcal()
   }
 
   if (selectedDiaryEntry.value) {
@@ -181,17 +181,17 @@ const save = () => {
       updatedLog.push(newLogEntry)
     }
     const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
-    const totalCalories = updatedLog.reduce((sum, item) => sum + (item.calories || 0), 0)
+    const totalKcal = updatedLog.reduce((sum, item) => sum + (item.kcal || 0), 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${selectedDiaryEntry.value['.key']}`), {
       log: updatedLog,
       phe: totalPhe,
-      calories: totalCalories
+      kcal: totalKcal
     })
   } else {
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: date.value,
       phe: calculatePhe(),
-      calories: calculateCalories(),
+      kcal: calculateKcal(),
       log: [newLogEntry]
     })
   }
@@ -301,14 +301,13 @@ const infoAlert = () => {
           ></div>
         </div>
         <div class="text-sm flex justify-between mt-2">
-          <span>{{ caloriesResult }} {{ $t('common.calories') }} {{ $t('app.total') }}</span>
-          <span v-if="settings?.maxCalories"
-            >{{ settings.maxCalories - caloriesResult }} {{ $t('common.calories') }}
-            {{ $t('app.left') }} ({{
-              Math.round(((caloriesResult * 100) / settings.maxCalories - 100) * -1)
+          <span>{{ kcalResult }} {{ $t('common.kcal') }} {{ $t('app.total') }}</span>
+          <span v-if="settings?.maxKcal"
+            >{{ settings.maxKcal - kcalResult }} {{ $t('common.kcal') }} {{ $t('app.left') }} ({{
+              Math.round(((kcalResult * 100) / settings.maxKcal - 100) * -1)
             }}%)</span
           >
-          <RouterLink v-if="!settings?.maxCalories" to="/settings">{{
+          <RouterLink v-if="!settings?.maxKcal" to="/settings">{{
             $t('settings.title')
           }}</RouterLink>
         </div>
@@ -317,7 +316,7 @@ const infoAlert = () => {
         >
           <div
             class="bg-sky-500 h-full rounded-md"
-            :style="{ width: `${(caloriesResult * 100) / (settings?.maxCalories || 1)}%` }"
+            :style="{ width: `${(kcalResult * 100) / (settings?.maxKcal || 1)}%` }"
           ></div>
         </div>
       </div>
@@ -359,7 +358,7 @@ const infoAlert = () => {
             {{ item.phe }}
           </td>
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
-            {{ item.calories }}
+            {{ item.kcal }}
           </td>
         </tr>
       </DataTable>
@@ -388,9 +387,9 @@ const infoAlert = () => {
             class="flex-1"
           />
           <NumberInput
-            id-name="caloriesRef"
-            :label="$t('common.calories-per-100g')"
-            v-model.number="editedItem.caloriesReference"
+            id-name="kcalRef"
+            :label="$t('common.kcal-per-100g')"
+            v-model.number="editedItem.kcalReference"
             class="flex-1"
           />
         </div>
@@ -401,7 +400,7 @@ const infoAlert = () => {
         />
         <div class="flex gap-4 mt-4">
           <span class="flex-1 ml-1">= {{ calculatePhe() }} mg Phe</span>
-          <span class="flex-1 ml-1">= {{ calculateCalories() }} {{ $t('common.calories') }}</span>
+          <span class="flex-1 ml-1">= {{ calculateKcal() }} {{ $t('common.kcal') }}</span>
         </div>
       </ModalDialog>
 

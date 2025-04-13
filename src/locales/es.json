@@ -41,9 +41,9 @@
     "protein-per-100g": "Proteínas por 100 g (en g)",
     "short-protein-per-100g": "Proteínas (por 100 g)",
     "new": "Nuevo",
-    "calories": "Calorías",
-    "calories-per-100g": "Calorías por 100 g",
-    "total-calories": "Calorías totales"
+    "kcal": "kcal",
+    "kcal-per-100g": "Kcal por 100g",
+    "total-kcal": "Kcal totales"
   },
   "home": {
     "title": "Inicio",
@@ -140,7 +140,7 @@
     "title": "Configuración",
     "description": "Configuración de la aplicación / cuenta",
     "max-phe": "Tolerancia de Phe por día",
-    "max-calories": "Calorías por día",
+    "max-kcal": "Kcal por día",
     "saved": "Guardado",
     "license-heading": "Licencias",
     "license-text": "Entradas ilimitadas y asistencia prioritaria con",
