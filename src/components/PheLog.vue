@@ -71,7 +71,7 @@ const pheResult = computed(() => {
 })
 
 const caloriesResult = computed(() => {
-  return selectedDayLog.value.reduce((sum, item) => sum + item.calories, 0)
+  return selectedDayLog.value.reduce((sum, item) => sum + (Number(item.calories) || 0), 0)
 })
 
 const lastAdded = computed(() => {
