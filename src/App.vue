@@ -77,7 +77,7 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
     ]
   } else {
     return [
@@ -85,7 +85,7 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'own-food.title', icon: 'Apple', route: '/own-food' }
+      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
     ]
   }
 })
