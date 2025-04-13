@@ -284,9 +284,7 @@ const infoAlert = () => {
         <div class="text-sm flex justify-between">
           <span>{{ pheResult }} Phe {{ $t('app.total') }}</span>
           <span v-if="settings?.maxPhe"
-            >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }} ({{
-              Math.round(((pheResult * 100) / settings.maxPhe - 100) * -1)
-            }}%)</span
+            >{{ settings.maxPhe - pheResult }} Phe {{ $t('app.left') }}</span
           >
           <RouterLink v-if="!settings?.maxPhe" to="/settings">{{
             $t('settings.title')
