@@ -525,17 +525,20 @@ const infoAlert = () => {
       >
         <DateInput id-name="date" :label="$t('phe-diary.date')" v-model="editedItem.date" />
 
-        <NumberInput
-          id-name="total-phe"
-          :label="$t('phe-diary.phe')"
-          v-model.number="editedItem.phe"
-        />
-
-        <NumberInput
-          id-name="calories"
-          :label="$t('common.total-calories')"
-          v-model.number="editedItem.calories"
-        />
+        <div class="flex gap-4">
+          <NumberInput
+            id-name="total-phe"
+            :label="$t('phe-diary.phe')"
+            v-model.number="editedItem.phe"
+            class="flex-1"
+          />
+          <NumberInput
+            id-name="calories"
+            :label="$t('common.total-calories')"
+            v-model.number="editedItem.calories"
+            class="flex-1"
+          />
+        </div>
 
         <div v-if="editedItem.log" class="flex justify-between items-center -mb-3">
           <h4 class="text-sm font-medium">

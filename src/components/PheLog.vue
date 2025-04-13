@@ -70,6 +70,10 @@ const pheResult = computed(() => {
   return selectedDayLog.value.reduce((sum, item) => sum + item.phe, 0)
 })
 
+const caloriesResult = computed(() => {
+  return selectedDayLog.value.reduce((sum, item) => sum + item.calories, 0)
+})
+
 const lastAdded = computed(() => {
   // Get the food items from the last diary entries that have a log
   const lastEntries = pheDiary.value
@@ -293,6 +297,9 @@ const infoAlert = () => {
             class="bg-sky-500 h-full rounded-md"
             :style="{ width: `${(pheResult * 100) / (settings?.maxPhe || 1)}%` }"
           ></div>
+        </div>
+        <div class="text-sm mt-2">
+          <span>{{ caloriesResult }} {{ $t('common.calories') }}</span>
         </div>
       </div>
 
