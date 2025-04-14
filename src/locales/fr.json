@@ -17,7 +17,7 @@
     "left": "restante",
     "start": "Page d'accueil",
     "license": "L'utilisation gratuite est limitée. Soutenir avec un abonnement pour une utilisation illimitée :",
-    "info": "Protocole Phe dispose désormais d'un sélecteur de date et les aliments sont automatiquement sauvegardés pour un jour spécifique. Vous pouvez également ajouter ou modifier des aliments dans le Journal de Phe. Une flexibilité maximale ! 🎉 😃"
+    "info": "Le journal de Phe dispose maintenant d’un sélecteur de date, et les aliments sont enregistrés automatiquement pour le jour correspondant. Vous pouvez également ajouter ou modifier des aliments dans le journal Phe, et suivre votre apport énergétique en kilocalories (kcal) ! 🙌 🎉 😃"
   },
   "common": {
     "add": "Ajouter",
@@ -40,7 +40,7 @@
     "phe-per-100g": "Phe pour 100g (en mg)",
     "protein-per-100g": "Protéines pour 100g (en g)",
     "short-protein-per-100g": "Protéines (par 100g)",
-    "new": "Nouveau",
+    "new": "Nouveau/Info",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal par 100g",
     "total-kcal": "Total kcal"

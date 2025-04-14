@@ -17,7 +17,7 @@
     "left": "übrig",
     "start": "Startseite",
     "license": "Kostenlose Nutzung ist begrenzt. Unterstütze mit einem Abo für unbegrenzte Nutzung:",
-    "info": "Das Phe Protokoll hat jetzt eine Datumsauswahl und die Lebensmittel werden automatisch in einem bestimmten Tag gespeichert. Außerdem können im Phe Tagebuch jetzt auch Lebensmittel hinzugefügt oder bearbeitet werden. Maximale Flexibilität! 🎉 😃"
+    "info": "Das Phe Protokoll hat jetzt eine Datumsauswahl und die Lebensmittel werden automatisch in einem bestimmten Tag gespeichert. Außerdem können im Phe Tagebuch jetzt auch Lebensmittel hinzugefügt oder bearbeitet werden und die Energieaufnahme in Kilokalorien (kcal) kann getrackt werden! 🙌 🎉 😃"
   },
   "common": {
     "add": "Hinzufügen",
@@ -40,7 +40,7 @@
     "phe-per-100g": "Phe pro 100g (in mg)",
     "protein-per-100g": "Eiweiß pro 100g (in g)",
     "short-protein-per-100g": "Eiweiß (pro 100g)",
-    "new": "Neu",
+    "new": "Neu/Info",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal pro 100g",
     "total-kcal": "Gesamt kcal"

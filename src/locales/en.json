@@ -17,7 +17,7 @@
     "left": "left",
     "start": "Start page",
     "license": "Free use is limited. Support with a subscription for unlimited use:",
-    "info": "PheLog now has a date picker and food is automatically saved to a specific day. Also you can now add or edit food entries in the PheDiary. Maximum flexibility! 🎉 😃"
+    "info": "Phe Log now has a date picker and food is automatically saved to a specific day. You can also add or edit food entries in the Phe Diary and track your energy intake in kilocalories (kcal)! 🙌 🎉 😃"
   },
   "common": {
     "add": "Add",
@@ -40,7 +40,7 @@
     "phe-per-100g": "Phe per 100g (in mg)",
     "protein-per-100g": "Protein per 100g (in g)",
     "short-protein-per-100g": "Protein (per 100g)",
-    "new": "New",
+    "new": "New/Info",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal per 100g",
     "total-kcal": "Total kcal"
