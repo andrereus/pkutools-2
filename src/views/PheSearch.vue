@@ -27,6 +27,7 @@ const name = ref('')
 const emoji = ref('🌱')
 const advancedFood = ref(null)
 const loading = ref(false)
+const kcalReference = ref(null)
 
 // Computed properties
 const userIsAuthenticated = computed(() => store.user !== null)
@@ -35,7 +36,8 @@ const ownFood = computed(() => store.ownFood)
 
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
-  { key: 'phe', title: t('common.phe') }
+  { key: 'phe', title: t('common.phe') },
+  { key: 'kcal', title: t('common.kcal') }
 ])
 
 // Methods
@@ -44,11 +46,16 @@ const loadItem = (item) => {
   emoji.value = item.emoji
   phe.value = item.phe
   weight.value = 100
+  kcalReference.value = item.kcal
   dialog.value.openDialog()
 }
 
 const calculatePhe = () => {
   return Math.round((weight.value * phe.value) / 100)
+}
+
+const calculateKcal = () => {
+  return Math.round((weight.value * kcalReference.value) / 100) || 0
 }
 
 const save = () => {
@@ -57,8 +64,10 @@ const save = () => {
     name: name.value,
     emoji: emoji.value || null,
     pheReference: phe.value,
+    kcalReference: Number(kcalReference.value) || 0,
     weight: Number(weight.value),
-    phe: calculatePhe()
+    phe: calculatePhe(),
+    kcal: calculateKcal()
   }
 
   const today = new Date()
@@ -67,15 +76,18 @@ const save = () => {
 
   if (todayEntry) {
     const updatedLog = [...(todayEntry.log || []), logEntry]
-    const totalPhe = updatedLog.reduce((sum, item) => sum + item.phe, 0)
+    const totalPhe = updatedLog.reduce((sum, item) => sum + (item.phe || 0), 0)
+    const totalKcal = updatedLog.reduce((sum, item) => sum + (item.kcal || 0), 0)
     update(dbRef(db, `${user.value.id}/pheDiary/${todayEntry['.key']}`), {
       log: updatedLog,
-      phe: totalPhe
+      phe: totalPhe,
+      kcal: totalKcal
     })
   } else {
     push(dbRef(db, `${user.value.id}/pheDiary`), {
       date: formattedDate,
       phe: calculatePhe(),
+      kcal: calculateKcal(),
       log: [logEntry]
     })
   }
@@ -85,20 +97,21 @@ const save = () => {
 
 const searchFood = async () => {
   loading.value = true
-  let res, food, langFood
+  let res, food
 
-  // Load language-specific food data
-  const langMap = {
-    de: 'usda-icon-de.json',
-    es: 'usda-icon-es.json',
-    fr: 'usda-icon-fr.json',
-    en: 'usda-icon-en.json'
-  }
+  // Load multilingual food data
+  res = await fetch(publicPath + 'data/usda-phe-kcal.json')
+  const foodData = await res.json()
 
-  const fileName = langMap[locale.value] || langMap.en
-  res = await fetch(publicPath + 'data/' + fileName)
-  langFood = await res.json()
-  food = langFood.concat(ownFood.value)
+  // Map the food data to use the correct language
+  food = foodData
+    .map((item) => ({
+      name: item[locale.value] || item.en, // fallback to English if translation missing
+      emoji: item.emoji,
+      phe: item.phe,
+      kcal: item.kcal
+    }))
+    .concat(ownFood.value)
 
   const fuse = new Fuse(food, {
     keys: ['name', 'phe'],
@@ -154,6 +167,9 @@ const searchFood = async () => {
           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
             {{ item.phe }}
           </td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.kcal }}
+          </td>
         </tr>
       </DataTable>
 
@@ -169,7 +185,10 @@ const searchFood = async () => {
         @submit="save"
       >
         <NumberInput id-name="weight" :label="$t('common.weight-in-g')" v-model.number="weight" />
-        <p class="text-xl">= {{ calculatePhe() }} mg Phe</p>
+        <div class="flex gap-4 my-6">
+          <span class="flex-1">= {{ calculatePhe() }} mg Phe</span>
+          <span class="flex-1">= {{ calculateKcal() }} {{ $t('common.kcal') }}</span>
+        </div>
       </ModalDialog>
     </div>
   </div>
