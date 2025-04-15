@@ -138,6 +138,7 @@ const save = () => {
         :label="$t('common.kcal-per-100g')"
         v-model.number="kcalReference"
         class="flex-1"
+        :placeholder="$t('common.optional')"
       />
     </div>
     <NumberInput id-name="weight" :label="$t('common.consumed-weight')" v-model.number="weight" />

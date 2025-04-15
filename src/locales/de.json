@@ -43,7 +43,8 @@
     "new": "Neu/Info",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal pro 100g",
-    "total-kcal": "Gesamt kcal"
+    "total-kcal": "Gesamt kcal",
+    "optional": "Optional"
   },
   "home": {
     "title": "Start",
