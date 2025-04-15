@@ -16,7 +16,7 @@
     "total": "total",
     "left": "restante",
     "start": "Página de inicio",
-    "license": "El uso gratuito es limitado. Soporte con una suscripción para un uso ilimitado:",
+    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para uso ilimitado o eliminar entradas antiguas:",
     "info": "¡El registro de Phe ahora tiene un selector de fecha y los alimentos se guardan automáticamente en el día correspondiente! También puedes agregar o editar alimentos en el diario de Phe y hacer seguimiento de tu ingesta de energía en kilocalorías (kcal). 🙌 🎉 😃"
   },
   "common": {

@@ -16,7 +16,7 @@
     "total": "total",
     "left": "restante",
     "start": "Page d'accueil",
-    "license": "L'utilisation gratuite est limitée. Soutenir avec un abonnement pour une utilisation illimitée :",
+    "license": "L'utilisation gratuite est limitée en raison des coûts du serveur et de la base de données. Soutiens avec un abonnement pour une utilisation illimitée ou efface les anciennes entrées :",
     "info": "Le journal de Phe dispose maintenant d’un sélecteur de date, et les aliments sont enregistrés automatiquement pour le jour correspondant. Vous pouvez également ajouter ou modifier des aliments dans le journal Phe, et suivre votre apport énergétique en kilocalories (kcal) ! 🙌 🎉 😃"
   },
   "common": {
