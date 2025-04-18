@@ -18,10 +18,10 @@ const settings = computed(() => store.settings)
 const labValues = computed(() => store.labValues)
 
 // Helper to get diary entries for date range
-const getDiaryEntriesForDays = (days) => {
+const getDiaryEntriesForDays = (days, includeToday = false) => {
   return [...Array(days)]
     .map((_, i) => {
-      const date = format(subDays(new Date(), i + 1), 'yyyy-MM-dd') // Start mit gestern (i + 1)
+      const date = format(subDays(new Date(), includeToday ? i : i + 1), 'yyyy-MM-dd')
       return pheDiary.value.find((entry) => entry.date === date)
     })
     .filter(Boolean)
@@ -49,7 +49,7 @@ const streak = computed(() => {
 
 // Calculate recent activity
 const recentActivity = computed(() => {
-  const last14Days = getDiaryEntriesForDays(14)
+  const last14Days = getDiaryEntriesForDays(14, true)
   return {
     count: last14Days.length,
     total: 14,
@@ -63,7 +63,7 @@ const pheStats = computed(() => {
     return { average: 0, deviation: 0 }
   }
 
-  const last14Days = getDiaryEntriesForDays(14)
+  const last14Days = getDiaryEntriesForDays(14, false)
   if (!last14Days.length) return { average: 0, deviation: 0 }
 
   const average = Math.round(
