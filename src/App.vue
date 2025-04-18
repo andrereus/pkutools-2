@@ -23,7 +23,8 @@ import {
   LifeBuoy,
   Info,
   Calendar,
-  ChartLine
+  ChartLine,
+  Bot
 } from 'lucide-vue-next'
 
 const store = useStore()
@@ -55,7 +56,8 @@ const navigation = computed(() => {
     { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
     { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
     { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
-    { name: 'lab-values.title', icon: 'ChartLine', route: '/lab-values' }
+    { name: 'lab-values.title', icon: 'ChartLine', route: '/lab-values' },
+    { name: 'assistant.title', icon: 'Bot', route: '/assistant' }
   ]
 })
 
@@ -201,7 +203,8 @@ const iconMap = {
   LifeBuoy,
   Info,
   Calendar,
-  ChartLine
+  ChartLine,
+  Bot
 }
 </script>
 

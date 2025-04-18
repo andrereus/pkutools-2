@@ -13,6 +13,7 @@ import Help from '../views/Help.vue'
 import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
+import Assistant from '../views/Assistant.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,6 +87,11 @@ const router = createRouter({
       path: '/privacy-policy',
       name: 'Privacy Policy',
       component: PrivacyPolicy
+    },
+    {
+      path: '/assistant',
+      name: 'Assistant',
+      component: Assistant
     }
   ]
 })

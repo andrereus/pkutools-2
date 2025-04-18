@@ -227,5 +227,40 @@
     "logs": "Protokolle",
     "account": "Account",
     "about": "About"
+  },
+  "assistant": {
+    "title": "Assistent",
+    "nutrition-balance": "Ernährungsbalance",
+    "nutrition-balance-high": "Erwäge Lebensmittel mit weniger Phe für die Sättigung. Deine Phe-Aufnahme ({phePercentage}%) ist höher als deine Kalorienaufnahme ({kcalPercentage}%).",
+    "nutrition-balance-low": "Du könntest mehr Phe-haltige Lebensmittel innerhalb deiner Grenzen einbauen. Deine Phe-Aufnahme ({phePercentage}%) ist niedriger als deine Kalorienaufnahme ({kcalPercentage}%).",
+    "nutrition-balance-good": "Super! Deine Phe- und Kalorienaufnahme sind heute gut ausbalanciert.",
+    "previous-day": "Analyse des Vortags",
+    "previous-day-low": "Die Phe-Aufnahme gestern war recht niedrig. Erwäge heute ein proteinreicheres Frühstück zur Ausbalancierung.",
+    "previous-day-high": "Du hast gestern dein Phe-Ziel überschritten. Versuche heute innerhalb deiner Grenzen zu bleiben.",
+    "previous-day-good": "Du hast gestern eine gute Phe-Aufnahme beibehalten. Weiter so!",
+    "lab-values": "Laborwerte-Analyse",
+    "lab-values-high": "Deine letzten Phe-Werte sind erhöht. Versuche in den nächsten Tagen strikt deine Phe-Grenzen einzuhalten.",
+    "lab-values-low": "Deine Phe-Werte sind niedrig. Du könntest eventuell etwas mehr Protein in deine Ernährung einbauen - sprich mit deinem Arzt.",
+    "lab-values-tyrosine-low": "Deine Tyrosin-Werte sind niedrig. Achte darauf, deine Aminosäuremischung regelmäßig einzunehmen.",
+    "motivation": "Motivation",
+    "streak": "Fantastisch! Du hast deine Ernährung {streak} Tage in Folge protokolliert!",
+    "week": "Das ist eine ganze Woche Engagement!",
+    "keep-going": "Weiter so!",
+    "start-tracking": "Beginne deine Ernährung täglich zu protokollieren, um eine Serie aufzubauen und personalisierte Einblicke zu erhalten!",
+    "daily-progress": "Tagesfortschritt",
+    "phe-history": "Phe Historie",
+    "lab-values-history": "Laborwerte Historie",
+    "badges": "Abzeichen"
+  },
+  "badges": {
+    "streak-title": "Aktive Serie",
+    "streak-description": "{days} Tage in Folge Ernährung protokolliert",
+    "tracking-title": "Ausgewogene Ernährung",
+    "tracking-description": "Phe und Kalorien im ausgewogenen Verhältnis",
+    "history-title": "Wöchentliche Übersicht",
+    "history-description": "Mindestens eine Woche Ernährung protokolliert",
+    "optimum-title": "Optimale Phe-Aufnahme",
+    "optimum-description": "5 Tage innerhalb 20% des Phe-Ziels",
+    "optimum-description-short": "{days} von 5 Tagen im Zielbereich"
   }
 }
