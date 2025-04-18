@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { parseISO, subDays, format } from 'date-fns'
@@ -206,7 +206,7 @@ const signInGoogle = async () => {
               </div>
             </div>
           </div>
-          <!-- Activity Badge -->
+          <!-- History Badge -->
           <div class="flex items-center gap-4">
             <div
               class="p-2 rounded-full"

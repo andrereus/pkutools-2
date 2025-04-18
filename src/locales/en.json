@@ -252,7 +252,6 @@
     "keep-going": "Keep it up!",
     "start-tracking": "Start tracking your nutrition daily to build a streak and get personalized insights!",
     "phe-diary": "Diary",
-    "phe-diary-stats": "In the last 14 days, your average Phe intake was {average} mg. The average deviation from optimum was {deviation}%.",
     "phe-stats-average": "In the last 14 days, your average Phe intake was {average} mg.",
     "phe-stats-deviation": "The average deviation from optimum is {deviation}%."
   },

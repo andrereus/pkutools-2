@@ -252,7 +252,6 @@
     "keep-going": "Continuez ainsi!",
     "start-tracking": "Commencez à suivre votre nutrition quotidiennement pour créer une série et obtenir des aperçus personnalisés!",
     "phe-diary": "Journal",
-    "phe-diary-stats": "Au cours des 14 derniers jours, votre apport moyen en Phe était de {average} mg. L'écart moyen par rapport à l'optimum était de {deviation}%.",
     "phe-stats-average": "Au cours des 14 derniers jours, votre apport moyen en Phe était de {average} mg.",
     "phe-stats-deviation": "L'écart moyen par rapport à l'optimum est de {deviation}%."
   },
