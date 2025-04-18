@@ -17,7 +17,8 @@
     "left": "restante",
     "start": "Page d'accueil",
     "license": "L'utilisation gratuite est limitée en raison des coûts du serveur et de la base de données. Soutenir avec un abonnement pour des entrées illimitées :",
-    "info": "Le journal de Phe dispose maintenant d’un sélecteur de date, et les aliments sont enregistrés automatiquement pour le jour correspondant. Vous pouvez également ajouter ou modifier des aliments dans le journal Phe, et suivre votre apport énergétique en kilocalories (kcal) ! 🙌 🎉 😃"
+    "info": "Le journal de Phe dispose maintenant d’un sélecteur de date, et les aliments sont enregistrés automatiquement pour le jour correspondant. Vous pouvez également ajouter ou modifier des aliments dans le journal Phe, et suivre votre apport énergétique en kilocalories (kcal) ! 🙌 🎉 😃",
+    "experiment": "Expérimental"
   },
   "common": {
     "add": "Ajouter",
@@ -40,7 +41,7 @@
     "phe-per-100g": "Phe pour 100g (en mg)",
     "protein-per-100g": "Protéines pour 100g (en g)",
     "short-protein-per-100g": "Protéines (par 100g)",
-    "new": "Nouveau/Info",
+    "new": "Nouveau",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal par 100g",
     "total-kcal": "Total kcal",
@@ -227,5 +228,38 @@
     "logs": "Journaux",
     "account": "Compte",
     "about": "À propos"
+  },
+  "assistant": {
+    "title": "Assistant",
+    "satiety-tip": "Actuellement",
+    "satiety-tip-high": "Envisagez des aliments contenant moins de Phe pour la satiété. Votre apport en Phe ({phePercentage}%) est supérieur à votre apport calorique ({kcalPercentage}%).",
+    "satiety-tip-low": "Vous pourriez inclure des aliments avec un peu plus de Phe dans vos limites. Votre apport en Phe ({phePercentage}%) est inférieur à votre apport calorique ({kcalPercentage}%).",
+    "satiety-tip-good": "Excellent! Votre rapport Phe/calories est bien équilibré aujourd'hui.",
+    "previous-day": "Aujourd'hui",
+    "previous-day-low": "L'apport en Phe d'hier était assez bas. Envisagez d'inclure plus d'aliments contenant du Phe aujourd'hui.",
+    "previous-day-high": "Vous avez dépassé votre objectif de Phe hier. Essayez d'inclure moins d'aliments contenant du Phe aujourd'hui.",
+    "previous-day-good": "Vous avez maintenu un bon apport en Phe hier. Continuez ainsi!",
+    "lab-values": "Valeurs de Laboratoire",
+    "lab-values-high": "Votre dernière valeur de Phe de {phe} {unit} est au-dessus de la plage cible. Essayez de respecter strictement vos limites de Phe dans les prochains jours.",
+    "lab-values-low": "Votre dernière valeur de Phe de {phe} {unit} est en dessous de la plage cible. Parlez à votre médecin de la possibilité d'inclure plus de Phe dans votre alimentation.",
+    "lab-values-good": "Votre dernière valeur de Phe de {phe} {unit} est dans la bonne plage. Continuez ainsi!",
+    "lab-values-tyrosine-low": "Votre dernière valeur de Tyrosine de {tyrosine} {unit} est basse. Assurez-vous de prendre votre mélange d'acides aminés régulièrement.",
+    "lab-values-tyrosine-high": "Votre dernière valeur de Tyrosine de {tyrosine} {unit} est élevée. Discutez du dosage de votre mélange d'acides aminés avec votre médecin.",
+    "lab-values-tyrosine-good": "Votre dernière valeur de Tyrosine de {tyrosine} {unit} est dans la bonne plage.",
+    "motivation": "Motivation",
+    "streak": "Incroyable! Vous avez suivi votre nutrition pendant {streak} jours d'affilée!",
+    "week": "C'est une semaine entière d'engagement!",
+    "keep-going": "Continuez ainsi!",
+    "start-tracking": "Commencez à suivre votre nutrition quotidiennement pour créer une série et obtenir des aperçus personnalisés!",
+    "phe-diary": "Journal",
+    "phe-diary-stats": "Au cours des 14 derniers jours, votre apport moyen en Phe était de {average} mg. L'écart moyen par rapport à l'optimum était de {deviation}%.",
+    "phe-stats-average": "Au cours des 14 derniers jours, votre apport moyen en Phe était de {average} mg.",
+    "phe-stats-deviation": "L'écart moyen par rapport à l'optimum est de {deviation}%."
+  },
+  "badges": {
+    "streak-title": "Série Active",
+    "streak-description": "Actuellement {days} sur 5 jours consécutifs",
+    "history-title": "Régularité",
+    "history-description": "{days} sur 10 jours ces 2 dernières semaines"
   }
 }

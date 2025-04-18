@@ -17,7 +17,8 @@
     "left": "left",
     "start": "Start page",
     "license": "Free use is limited due to server and database costs. Support with a subscription for unlimited entries:",
-    "info": "Phe Log now has a date picker and food is automatically saved to a specific day. You can also add or edit food entries in the Phe Diary and track your energy intake in kilocalories (kcal)! 🙌 🎉 😃"
+    "info": "Phe Log now has a date picker and food is automatically saved to a specific day. You can also add or edit food entries in the Phe Diary and track your energy intake in kilocalories (kcal)! 🙌 🎉 😃",
+    "experiment": "Experimental"
   },
   "common": {
     "add": "Add",
@@ -40,7 +41,7 @@
     "phe-per-100g": "Phe per 100g (in mg)",
     "protein-per-100g": "Protein per 100g (in g)",
     "short-protein-per-100g": "Protein (per 100g)",
-    "new": "New/Info",
+    "new": "New",
     "kcal": "Kcal",
     "kcal-per-100g": "Kcal per 100g",
     "total-kcal": "Total kcal",
@@ -227,5 +228,38 @@
     "logs": "Logs",
     "account": "Account",
     "about": "About"
+  },
+  "assistant": {
+    "title": "Assistant",
+    "satiety-tip": "Currently",
+    "satiety-tip-high": "Consider foods with less Phe for satiety. Your Phe intake ({phePercentage}%) is higher than your calorie intake ({kcalPercentage}%).",
+    "satiety-tip-low": "You could include foods with slightly more Phe within your limits. Your Phe intake ({phePercentage}%) is lower than your calorie intake ({kcalPercentage}%).",
+    "satiety-tip-good": "Great! Your Phe to calorie ratio is well balanced today.",
+    "previous-day": "Today",
+    "previous-day-low": "Yesterday's Phe intake was quite low. Consider including more Phe-containing foods today.",
+    "previous-day-high": "You exceeded your Phe goal yesterday. Try to include fewer Phe-containing foods today.",
+    "previous-day-good": "You maintained a good Phe intake yesterday. Keep it up!",
+    "lab-values": "Lab Values",
+    "lab-values-high": "Your last Phe value of {phe} {unit} is above the target range. Try to strictly adhere to your Phe limits in the coming days.",
+    "lab-values-low": "Your last Phe value of {phe} {unit} is below the target range. Talk to your doctor about potentially including more Phe in your diet.",
+    "lab-values-good": "Your last Phe value of {phe} {unit} is in the good range. Keep it up!",
+    "lab-values-tyrosine-low": "Your last Tyrosine value of {tyrosine} {unit} is low. Make sure to take your amino acid mixture regularly.",
+    "lab-values-tyrosine-high": "Your last Tyrosine value of {tyrosine} {unit} is elevated. Discuss the dosage of your amino acid mixture with your doctor.",
+    "lab-values-tyrosine-good": "Your last Tyrosine value of {tyrosine} {unit} is in the good range.",
+    "motivation": "Motivation",
+    "streak": "Amazing! You've tracked your nutrition for {streak} days in a row!",
+    "week": "That's a whole week of commitment!",
+    "keep-going": "Keep it up!",
+    "start-tracking": "Start tracking your nutrition daily to build a streak and get personalized insights!",
+    "phe-diary": "Diary",
+    "phe-diary-stats": "In the last 14 days, your average Phe intake was {average} mg. The average deviation from optimum was {deviation}%.",
+    "phe-stats-average": "In the last 14 days, your average Phe intake was {average} mg.",
+    "phe-stats-deviation": "The average deviation from optimum is {deviation}%."
+  },
+  "badges": {
+    "streak-title": "Active Streak",
+    "streak-description": "Currently {days} of 5 days in a row",
+    "history-title": "Consistency",
+    "history-description": "{days} of 10 days in the last 2 weeks"
   }
 }

@@ -17,10 +17,19 @@ const pheDiary = computed(() => store.pheDiary)
 const settings = computed(() => store.settings)
 const labValues = computed(() => store.labValues)
 
-// Calculate streak (current and previous days)
+// Helper to get diary entries for date range
+const getDiaryEntriesForDays = (days) => {
+  return [...Array(days)]
+    .map((_, i) => {
+      const date = format(subDays(new Date(), i), 'yyyy-MM-dd')
+      return pheDiary.value.find((entry) => entry.date === date)
+    })
+    .filter(Boolean)
+}
+
+// Calculate streak
 const streak = computed(() => {
   if (!pheDiary.value.length) return 0
-
   let currentStreak = 0
   let currentDate = new Date()
 
@@ -35,19 +44,12 @@ const streak = computed(() => {
     if (!entry) break
     currentStreak++
   }
-
   return currentStreak
 })
 
-// Calculate recent tracking activity (last 14 days)
+// Calculate recent activity
 const recentActivity = computed(() => {
-  const last14Days = [...Array(14)]
-    .map((_, i) => {
-      const date = format(subDays(new Date(), i), 'yyyy-MM-dd')
-      return pheDiary.value.find((entry) => entry.date === date)
-    })
-    .filter(Boolean)
-
+  const last14Days = getDiaryEntriesForDays(14)
   return {
     count: last14Days.length,
     total: 14,
@@ -55,19 +57,13 @@ const recentActivity = computed(() => {
   }
 })
 
-// Calculate Phe statistics for the last 14 days
+// Calculate Phe statistics
 const pheStats = computed(() => {
   if (!settings.value?.maxPhe || !pheDiary.value.length) {
     return { average: 0, deviation: 0 }
   }
 
-  const last14Days = [...Array(14)]
-    .map((_, i) => {
-      const date = format(subDays(new Date(), i), 'yyyy-MM-dd')
-      return pheDiary.value.find((entry) => entry.date === date)
-    })
-    .filter(Boolean)
-
+  const last14Days = getDiaryEntriesForDays(14)
   if (!last14Days.length) return { average: 0, deviation: 0 }
 
   const average = Math.round(
@@ -81,13 +77,18 @@ const pheStats = computed(() => {
   return { average, deviation: averageDeviation }
 })
 
-// Get today's entry for satiety tip
+// Get diary entries
 const todayEntry = computed(() => {
   const today = format(new Date(), 'yyyy-MM-dd')
   return pheDiary.value.find((entry) => entry.date === today)
 })
 
-// Calculate nutrition balance for today
+const yesterdayEntry = computed(() => {
+  const yesterday = format(subDays(new Date(), 1), 'yyyy-MM-dd')
+  return pheDiary.value.find((entry) => entry.date === yesterday)
+})
+
+// Calculate nutrition balance
 const nutritionBalance = computed(() => {
   if (!todayEntry.value || !settings.value?.maxPhe || !settings.value?.maxKcal) return null
 
@@ -99,12 +100,6 @@ const nutritionBalance = computed(() => {
     kcalPercentage,
     difference: phePercentage - kcalPercentage
   }
-})
-
-// Get yesterday's entry for analysis
-const yesterdayEntry = computed(() => {
-  const yesterday = format(subDays(new Date(), 1), 'yyyy-MM-dd')
-  return pheDiary.value.find((entry) => entry.date === yesterday)
 })
 
 // Get most recent lab values
@@ -119,7 +114,6 @@ const badges = computed(() => [
     id: 'streak',
     title: t('badges.streak-title'),
     description: t('badges.streak-description', { days: streak.value }),
-    icon: Activity,
     earned: streak.value >= 5,
     progress: Math.min(Math.round((streak.value / 5) * 100), 100)
   },
@@ -130,7 +124,6 @@ const badges = computed(() => [
       days: recentActivity.value.count,
       total: recentActivity.value.total
     }),
-    icon: ChartLine,
     earned: recentActivity.value.achieved,
     progress: Math.min(Math.round((recentActivity.value.count / 10) * 100), 100)
   }
@@ -150,7 +143,11 @@ const signInGoogle = async () => {
 <template>
   <div>
     <header>
-      <PageHeader :title="$t('assistant.title')" />
+      <PageHeader :title="$t('assistant.title')" class="inline-block" />
+      <span
+        class="ml-2 inline-block align-top mt-1 rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/20"
+        >{{ $t('app.experiment') }}</span
+      >
     </header>
 
     <div v-if="!userIsAuthenticated" class="mt-8">
@@ -167,7 +164,7 @@ const signInGoogle = async () => {
 
     <div v-if="userIsAuthenticated" class="space-y-6">
       <!-- Motivation -->
-      <div class="rounded-lg border p-4">
+      <div class="rounded-lg border dark:border-gray-700 p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
           <Award class="h-5 w-5" />
           {{ $t('assistant.motivation') }}
@@ -240,7 +237,7 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Currently -->
-      <div v-if="nutritionBalance" class="rounded-lg border p-4">
+      <div v-if="nutritionBalance" class="rounded-lg border dark:border-gray-700 p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
           <Clock class="h-5 w-5" />
           {{ $t('assistant.satiety-tip') }}
@@ -269,7 +266,10 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Today -->
-      <div v-if="yesterdayEntry && settings?.maxPhe" class="rounded-lg border p-4">
+      <div
+        v-if="yesterdayEntry && settings?.maxPhe"
+        class="rounded-lg border dark:border-gray-700 p-4"
+      >
         <div class="flex items-center gap-3 font-medium mb-2">
           <Calendar class="h-5 w-5" />
           {{ $t('assistant.previous-day') }}
@@ -288,7 +288,7 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Phe Diary -->
-      <div class="rounded-lg border p-4">
+      <div class="rounded-lg border dark:border-gray-700 p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
           <Book class="h-5 w-5" />
           {{ $t('assistant.phe-diary') }}
@@ -300,7 +300,7 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Lab Values -->
-      <div v-if="recentLabValues" class="rounded-lg border p-4">
+      <div v-if="recentLabValues" class="rounded-lg border dark:border-gray-700 p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
           <ChartLine class="h-5 w-5" />
           {{ $t('assistant.lab-values') }}
