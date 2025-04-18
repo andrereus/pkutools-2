@@ -227,40 +227,5 @@
     "logs": "Logs",
     "account": "Account",
     "about": "About"
-  },
-  "assistant": {
-    "title": "Assistant",
-    "nutrition-balance": "Nutrition Balance",
-    "nutrition-balance-high": "Consider foods with lower Phe content to maintain satiety. Your Phe intake ({phePercentage}%) is higher than your calorie intake ({kcalPercentage}%).",
-    "nutrition-balance-low": "You could include some higher Phe foods while staying within your limits. Your Phe intake ({phePercentage}%) is lower than your calorie intake ({kcalPercentage}%).",
-    "nutrition-balance-good": "Great job! Your Phe and calorie intake are well balanced today.",
-    "previous-day": "Previous Day Analysis",
-    "previous-day-low": "Yesterday's Phe intake was quite low. Consider having a more protein-rich breakfast today to balance it out.",
-    "previous-day-high": "You exceeded your Phe target yesterday. Try to stay within your limits today to maintain balance.",
-    "previous-day-good": "You maintained a good Phe intake yesterday. Keep up the good work!",
-    "lab-values": "Lab Values Analysis",
-    "lab-values-high": "Your recent Phe levels are elevated. Try to strictly follow your Phe limits for the next few days.",
-    "lab-values-low": "Your Phe levels are low. You might be able to include slightly more protein in your diet - consult your doctor.",
-    "lab-values-tyrosine-low": "Your Tyrosine levels are low. Make sure to take your amino acid mixture regularly.",
-    "motivation": "Motivation",
-    "streak": "Amazing! You've tracked your diet for {streak} consecutive days!",
-    "week": "That's a full week of dedication!",
-    "keep-going": "Keep going!",
-    "start-tracking": "Start tracking your diet daily to build a streak and get personalized insights!",
-    "daily-progress": "Daily Progress",
-    "phe-history": "Phe History",
-    "lab-values-history": "Lab Values History",
-    "badges": "Badges"
-  },
-  "badges": {
-    "streak-title": "Active Streak",
-    "streak-description": "Tracked diet for {days} consecutive days",
-    "tracking-title": "Balanced Diet",
-    "tracking-description": "Phe and calories in balanced ratio",
-    "history-title": "Weekly Overview",
-    "history-description": "At least one week of diet tracking",
-    "optimum-title": "Optimal Phe Intake",
-    "optimum-description": "5 days within 20% of Phe target",
-    "optimum-description-short": "{days} of 5 days within target range"
   }
 }
