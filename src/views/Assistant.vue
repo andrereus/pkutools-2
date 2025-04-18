@@ -21,7 +21,7 @@ const labValues = computed(() => store.labValues)
 const getDiaryEntriesForDays = (days) => {
   return [...Array(days)]
     .map((_, i) => {
-      const date = format(subDays(new Date(), i), 'yyyy-MM-dd')
+      const date = format(subDays(new Date(), i + 1), 'yyyy-MM-dd') // Start mit gestern (i + 1)
       return pheDiary.value.find((entry) => entry.date === date)
     })
     .filter(Boolean)
