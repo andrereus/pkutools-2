@@ -230,11 +230,11 @@
   },
   "assistant": {
     "title": "Assistent",
-    "satiety-tip": "Tipp zur Sättigung",
+    "satiety-tip": "Aktuell",
     "satiety-tip-high": "Erwäge Lebensmittel mit weniger Phe für die Sättigung. Deine Phe-Aufnahme ({phePercentage}%) ist höher als deine Kalorienaufnahme ({kcalPercentage}%).",
     "satiety-tip-low": "Du könntest Lebensmittel mit etwas mehr Phe innerhalb deiner Grenzen einbauen. Deine Phe-Aufnahme ({phePercentage}%) ist niedriger als deine Kalorienaufnahme ({kcalPercentage}%).",
     "satiety-tip-good": "Super! Dein Verhältnis von Phe zu Kalorien ist heute ausgewogen.",
-    "previous-day": "Tipp für heute",
+    "previous-day": "Heute",
     "previous-day-low": "Gestern war die Phe-Aufnahme recht niedrig. Erwäge heute etwas mehr Phe-haltige Lebensmittel zu dir zu nehmen.",
     "previous-day-high": "Du hast gestern dein Phe-Ziel überschritten. Versuche heute etwas weniger Phe-haltige Lebensmittel zu dir zu nehmen.",
     "previous-day-good": "Du hast gestern eine gute Phe-Aufnahme beibehalten. Weiter so!",
@@ -250,10 +250,10 @@
     "week": "Das ist eine ganze Woche Engagement!",
     "keep-going": "Weiter so!",
     "start-tracking": "Beginne deine Ernährung täglich zu protokollieren, um eine Serie aufzubauen und personalisierte Einblicke zu erhalten!",
-    "phe-diary": "Phe Tagebuch",
+    "phe-diary": "Tagebuch",
     "phe-diary-stats": "In den letzten 14 Tagen lag deine durchschnittliche Phe-Aufnahme bei {average} mg. Die durchschnittliche Abweichung vom Optimum betrug {deviation}%.",
     "phe-stats-average": "In den letzten 14 Tagen lag deine durchschnittliche Phe-Aufnahme bei {average} mg.",
-    "phe-stats-deviation": "Die durchschnittliche Abweichung vom Optimum betrug {deviation}%."
+    "phe-stats-deviation": "Die durchschnittliche Abweichung vom Optimum beträgt {deviation}%."
   },
   "badges": {
     "streak-title": "Aktive Serie",

@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { parseISO, subDays, format } from 'date-fns'
-import { Brain, Award, TestTubes, Activity, ChartLine, Target, Scale } from 'lucide-vue-next'
+import { Award, Activity, Clock, Calendar, Book, ChartLine, BicepsFlexed } from 'lucide-vue-next'
 import { RouterLink } from 'vue-router'
 import PageHeader from '../components/PageHeader.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
@@ -219,7 +219,7 @@ const signInGoogle = async () => {
                   : 'bg-gray-100 text-gray-400 dark:bg-gray-800'
               "
             >
-              <ChartLine class="h-5 w-5" />
+              <BicepsFlexed class="h-5 w-5" />
             </div>
             <div class="flex-1">
               <div class="flex justify-between items-center">
@@ -239,10 +239,10 @@ const signInGoogle = async () => {
         </div>
       </div>
 
-      <!-- Today's Analysis -->
+      <!-- Currently -->
       <div v-if="nutritionBalance" class="rounded-lg border p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
-          <Scale class="h-5 w-5" />
+          <Clock class="h-5 w-5" />
           {{ $t('assistant.satiety-tip') }}
         </div>
         <p>
@@ -268,10 +268,10 @@ const signInGoogle = async () => {
         </p>
       </div>
 
-      <!-- Previous Day Analysis -->
+      <!-- Today -->
       <div v-if="yesterdayEntry && settings?.maxPhe" class="rounded-lg border p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
-          <Brain class="h-5 w-5" />
+          <Calendar class="h-5 w-5" />
           {{ $t('assistant.previous-day') }}
         </div>
         <p>
@@ -287,10 +287,22 @@ const signInGoogle = async () => {
         </p>
       </div>
 
-      <!-- Lab Values Analysis -->
+      <!-- Phe Diary -->
+      <div class="rounded-lg border p-4">
+        <div class="flex items-center gap-3 font-medium mb-2">
+          <Book class="h-5 w-5" />
+          {{ $t('assistant.phe-diary') }}
+        </div>
+        <div>
+          <p>{{ $t('assistant.phe-stats-average', { average: pheStats.average }) }}</p>
+          <p>{{ $t('assistant.phe-stats-deviation', { deviation: pheStats.deviation }) }}</p>
+        </div>
+      </div>
+
+      <!-- Lab Values -->
       <div v-if="recentLabValues" class="rounded-lg border p-4">
         <div class="flex items-center gap-3 font-medium mb-2">
-          <TestTubes class="h-5 w-5" />
+          <ChartLine class="h-5 w-5" />
           {{ $t('assistant.lab-values') }}
         </div>
         <p>
@@ -320,7 +332,7 @@ const signInGoogle = async () => {
             }}
           </template>
         </p>
-        <p class="mt-2">
+        <p>
           <!-- Tyrosine Analysis -->
           <template v-if="recentLabValues.tyrosine < 0.41">
             {{
@@ -347,18 +359,6 @@ const signInGoogle = async () => {
             }}
           </template>
         </p>
-      </div>
-
-      <!-- Historical Stats -->
-      <div class="rounded-lg border p-4">
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <ChartLine class="h-5 w-5" />
-          {{ $t('assistant.phe-diary') }}
-        </div>
-        <div class="space-y-1">
-          <p>{{ $t('assistant.phe-stats-average', { average: pheStats.average }) }}</p>
-          <p>{{ $t('assistant.phe-stats-deviation', { deviation: pheStats.deviation }) }}</p>
-        </div>
       </div>
     </div>
   </div>
