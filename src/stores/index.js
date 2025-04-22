@@ -105,19 +105,31 @@ export const useStore = defineStore('main', {
       auth.useDeviceLanguage()
       await sendPasswordResetEmail(auth, email)
     },
-    async sendChatMessage(message) {
+    async sendChatMessage(message, language = 'en') {
       if (!this.settings.license) return
 
       const vertexAI = getVertexAI()
       const model = getGenerativeModel(vertexAI, { model: 'gemini-2.0-flash' })
 
-      const todayEntries = this.pheDiary.filter(
-        (entry) => entry.date === new Date().toISOString().split('T')[0]
-      )
+      // Map UI language to full language names
+      const languageMap = {
+        en: 'English',
+        de: 'German',
+        es: 'Spanish',
+        fr: 'French'
+      }
+
+      const today = new Date().toISOString().split('T')[0]
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
+
+      const todayEntries = this.pheDiary.filter((entry) => entry.date === today)
+      const yesterdayEntries = this.pheDiary.filter((entry) => entry.date === yesterday)
 
       const context = {
         todayPhe: todayEntries.reduce((sum, entry) => sum + entry.phe, 0),
         todayKcal: todayEntries.reduce((sum, entry) => sum + entry.kcal, 0),
+        yesterdayPhe: yesterdayEntries.reduce((sum, entry) => sum + entry.phe, 0),
+        yesterdayKcal: yesterdayEntries.reduce((sum, entry) => sum + entry.kcal, 0),
         maxPhe: this.settings.maxPhe,
         maxKcal: this.settings.maxKcal,
         recentLabValues: this.labValues.length
@@ -126,10 +138,27 @@ export const useStore = defineStore('main', {
       }
 
       const systemPrompt = `You are a helpful assistant for people with PKU (Phenylketonuria).
-Today's nutrition: ${context.todayPhe}mg Phe (${Math.round((context.todayPhe / context.maxPhe) * 100)}% of daily limit)
-${context.todayKcal}kcal (${Math.round((context.todayKcal / context.maxKcal) * 100)}% of daily limit)
-Latest Phe blood level: ${context.recentLabValues?.phe || 'unknown'} ${this.settings.labUnit}
-Keep responses concise and focused on PKU diet advice.`
+Respond strictly in ${languageMap[language] || 'English'} only.
+
+Your daily limits:
+- Phe: ${context.maxPhe}mg
+- Calories: ${context.maxKcal}kcal
+
+Today's nutrition:
+- ${context.todayPhe}mg Phe (${Math.round((context.todayPhe / context.maxPhe) * 100)}% of daily limit)
+- ${context.todayKcal}kcal (${Math.round((context.todayKcal / context.maxKcal) * 100)}% of daily limit)
+
+Yesterday's nutrition:
+- ${context.yesterdayPhe}mg Phe (${Math.round((context.yesterdayPhe / context.maxPhe) * 100)}% of daily limit)
+- ${context.yesterdayKcal}kcal (${Math.round((context.yesterdayKcal / context.maxKcal) * 100)}% of daily limit)
+
+Latest blood levels (${context.recentLabValues?.date || 'unknown'}):
+- Phe: ${context.recentLabValues?.phe || 'unknown'} ${this.settings.labUnit}
+- Tyrosine: ${context.recentLabValues?.tyrosine || 'unknown'} ${this.settings.labUnit}
+
+Keep responses concise and focused on PKU diet advice.
+Do not use any formatting like stars (*) or underscores (_) in your responses.
+Always respond in ${languageMap[language] || 'English'} language only.`
 
       this.chatMessages.push({ role: 'user', content: message })
       this.assistantBusy = true
@@ -148,16 +177,27 @@ Keep responses concise and focused on PKU diet advice.`
 
         this.chatMessages.push({ role: 'assistant', content: response })
 
-        // Save to Firebase
+        // Save to Firebase (clean data)
         const db = getDatabase()
         const chatRef = ref(db, `${this.user.id}/chatMessages`)
-        set(chatRef, this.chatMessages.slice(-10))
+        const cleanMessages = this.chatMessages.slice(-10).map(({ role, content }) => ({
+          role,
+          content
+        }))
+        set(chatRef, cleanMessages)
       } catch (error) {
         console.error('Chat error:', error)
       } finally {
         this.assistantBusy = false
       }
     },
+    async clearChatMessages() {
+      const db = getDatabase()
+      const chatRef = ref(db, `${this.user.id}/chatMessages`)
+      await set(chatRef, null)
+      this.chatMessages = []
+    },
+
     initRef() {
       const db = getDatabase()
       const userId = this.user.id

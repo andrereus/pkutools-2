@@ -6,7 +6,7 @@ import PageHeader from '../components/PageHeader.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 
 const store = useStore()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const messageInput = ref('')
 
 const userIsAuthenticated = computed(() => store.user !== null)
@@ -16,7 +16,7 @@ const assistantBusy = computed(() => store.assistantBusy)
 
 async function sendMessage() {
   if (!messageInput.value.trim()) return
-  await store.sendChatMessage(messageInput.value)
+  await store.sendChatMessage(messageInput.value, locale.value)
   messageInput.value = ''
 }
 
@@ -26,6 +26,12 @@ const signInGoogle = async () => {
   } catch (error) {
     alert(t('app.auth-error'))
     console.error(error)
+  }
+}
+
+const clearChat = () => {
+  if (confirm(t('chat.confirm-clear'))) {
+    store.clearChatMessages()
   }
 }
 </script>
@@ -57,6 +63,15 @@ const signInGoogle = async () => {
     </div>
 
     <div v-else class="mt-8">
+      <div class="flex justify-between items-center mb-4">
+        <button
+          v-if="messages.length > 0"
+          @click="clearChat"
+          class="text-sm text-red-500 hover:text-red-600 dark:hover:text-red-400"
+        >
+          {{ $t('chat.clear') }}
+        </button>
+      </div>
       <div class="border dark:border-gray-700 rounded-lg p-4 h-96 overflow-y-auto mb-4">
         <div v-for="(message, index) in messages" :key="index" class="mb-4">
           <div

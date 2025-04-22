@@ -262,10 +262,12 @@
     "history-description": "{days} von 10 Tagen in den letzten 2 Wochen"
   },
   "chat": {
-    "title": "Assistent Chat",
+    "title": "Chat mit Assistent",
     "placeholder": "Fragen zu Ernährung, Rezepten oder Lebensmittelberechnungen...",
     "send": "Senden",
     "thinking": "Assistent denkt nach...",
-    "license-required": "Eine Lizenz wird benötigt, um die Chat-Funktion zu nutzen."
+    "license-required": "Eine Lizenz wird benötigt, um die Chat-Funktion zu nutzen.",
+    "clear": "Chat löschen",
+    "confirm-clear": "Möchten Sie wirklich den gesamten Chatverlauf löschen?"
   }
 }

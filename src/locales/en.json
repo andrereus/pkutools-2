@@ -260,5 +260,14 @@
     "streak-description": "Currently {days} of 5 days in a row",
     "history-title": "Consistency",
     "history-description": "{days} of 10 days in the last 2 weeks"
+  },
+  "chat": {
+    "title": "Chat with Assistant",
+    "placeholder": "Ask about nutrition, recipes, or food calculations...",
+    "send": "Send",
+    "thinking": "Assistant is thinking...",
+    "license-required": "A license is required to use the chat feature.",
+    "clear": "Clear chat",
+    "confirm-clear": "Do you really want to delete the entire chat history?"
   }
 }
