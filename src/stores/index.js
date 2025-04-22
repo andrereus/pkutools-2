@@ -10,7 +10,7 @@ import {
   sendPasswordResetEmail,
   updateProfile
 } from 'firebase/auth'
-import { getDatabase, ref, onValue } from 'firebase/database'
+import { getDatabase, ref, onValue, set } from 'firebase/database'
 import { getVertexAI, getGenerativeModel } from 'firebase/vertexai'
 
 const defaultSettings = {
@@ -135,12 +135,17 @@ Keep responses concise and focused on PKU diet advice.`
       this.assistantBusy = true
 
       try {
-        const result = await model.generateContent([
-          { role: 'system', content: systemPrompt },
-          ...this.chatMessages.slice(-4)
-        ])
+        // Combine chat history into a single prompt
+        const chatHistory = this.chatMessages
+          .slice(-4)
+          .map((msg) => `${msg.role === 'user' ? 'Human' : 'Assistant'}: ${msg.content}`)
+          .join('\n')
 
+        const prompt = `${systemPrompt}\n\nChat history:\n${chatHistory}\n\nHuman: ${message}\nAssistant:`
+
+        const result = await model.generateContent(prompt)
         const response = result.response.text()
+
         this.chatMessages.push({ role: 'assistant', content: response })
 
         // Save to Firebase
