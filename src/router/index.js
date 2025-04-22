@@ -14,6 +14,7 @@ import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
 import Assistant from '../views/Assistant.vue'
+import AssistantChat from '../views/AssistantChat.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -92,6 +93,11 @@ const router = createRouter({
       path: '/assistant',
       name: 'Assistant',
       component: Assistant
+    },
+    {
+      path: '/assistant-chat',
+      name: 'Assistant Chat',
+      component: AssistantChat
     }
   ]
 })
