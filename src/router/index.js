@@ -49,6 +49,11 @@ const router = createRouter({
       component: OwnFood
     },
     {
+      path: '/assistant',
+      name: 'Assistant',
+      component: Assistant
+    },
+    {
       path: '/phe-diary',
       name: 'Phe Diary',
       component: PheDiary
@@ -87,11 +92,6 @@ const router = createRouter({
       path: '/privacy-policy',
       name: 'Privacy Policy',
       component: PrivacyPolicy
-    },
-    {
-      path: '/assistant',
-      name: 'Assistant',
-      component: Assistant
     }
   ]
 })

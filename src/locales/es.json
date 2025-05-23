@@ -220,7 +220,11 @@
     "diary-name": "Registro y Diario",
     "diary-description": "Lleva un registro de tu comida y controla tu tolerancia a la Phe.",
     "lab-values-name": "Valores de laboratorio",
-    "lab-values-description": "Seguimiento de los valores de laboratorio en un diagrama."
+    "lab-values-description": "Seguimiento de los valores de laboratorio en un diagrama.",
+    "suggestions-name": "Sugerencias de 1 clic",
+    "suggestions-description": "Añade sugerencias al registro con un solo clic.",
+    "assistant-name": "Asistente",
+    "assistant-description": "Obtenga una visión general, recomendaciones y motivación."
   },
   "footer": {
     "tools": "Herramientas",
@@ -230,6 +234,7 @@
   },
   "assistant": {
     "title": "Asistente",
+    "description": "Obtenga una visión general, recomendaciones y motivación.",
     "satiety-tip": "Actualmente",
     "satiety-tip-high": "Considera alimentos con menos Phe para la saciedad. Tu ingesta de Phe ({phePercentage}%) es mayor que tu ingesta calórica ({kcalPercentage}%).",
     "satiety-tip-low": "Podrías incluir alimentos con un poco más de Phe dentro de tus límites. Tu ingesta de Phe ({phePercentage}%) es menor que tu ingesta calórica ({kcalPercentage}%).",

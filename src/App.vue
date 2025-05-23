@@ -54,10 +54,10 @@ const navigation = computed(() => {
     { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
     { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
     { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
+    { name: 'assistant.title', icon: 'Bot', route: '/assistant' },
     { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
     { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
-    { name: 'lab-values.title', icon: 'ChartLine', route: '/lab-values' },
-    { name: 'assistant.title', icon: 'Bot', route: '/assistant' }
+    { name: 'lab-values.title', icon: 'ChartLine', route: '/lab-values' }
   ]
 })
 
@@ -68,7 +68,7 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
+      { name: 'assistant.title', icon: 'Bot', route: '/assistant' }
     ]
   } else {
     return [
@@ -76,7 +76,7 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
+      { name: 'assistant.title', icon: 'Bot', route: '/assistant' }
     ]
   }
 })
@@ -98,7 +98,8 @@ const footerNavigation = computed(() => {
       { name: 'barcode-scanner.title', route: '/barcode-scanner' },
       { name: 'phe-calculator.title', route: '/phe-calculator' },
       { name: 'protein-calculator.title', route: '/protein-calculator' },
-      { name: 'own-food.title', route: '/own-food' }
+      { name: 'own-food.title', route: '/own-food' },
+      { name: 'assistant.title', route: '/assistant' }
     ],
     features: [
       { name: 'phe-log.title', route: '/?log=true' },

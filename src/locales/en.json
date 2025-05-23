@@ -220,7 +220,11 @@
     "diary-name": "Log and Diary",
     "diary-description": "Keep track of your food and monitor your Phe tolerance.",
     "lab-values-name": "Lab Values",
-    "lab-values-description": "Track laboratory values in a diagram."
+    "lab-values-description": "Track laboratory values in a diagram.",
+    "suggestions-name": "1-Click Suggestions",
+    "suggestions-description": "Add suggestions to the log with one click.",
+    "assistant-name": "Assistant",
+    "assistant-description": "Get an overview, recommendations and motivation."
   },
   "footer": {
     "tools": "Tools",
@@ -230,6 +234,7 @@
   },
   "assistant": {
     "title": "Assistant",
+    "description": "Get an overview, recommendations and motivation.",
     "satiety-tip": "Currently",
     "satiety-tip-high": "Consider foods with less Phe for satiety. Your Phe intake ({phePercentage}%) is higher than your calorie intake ({kcalPercentage}%).",
     "satiety-tip-low": "You could include foods with slightly more Phe within your limits. Your Phe intake ({phePercentage}%) is lower than your calorie intake ({kcalPercentage}%).",
