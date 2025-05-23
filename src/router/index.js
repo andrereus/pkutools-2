@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import PheSearch from '../views/PheSearch.vue'
+import BarcodeScanner from '../views/BarcodeScanner.vue'
 import PheCalculator from '../views/PheCalculator.vue'
 import ProteinCalculator from '../views/ProteinCalculator.vue'
-import BarcodeScanner from '../views/BarcodeScanner.vue'
-import OwnFood from '../views/OwnFood.vue'
+import Assistant from '../views/Assistant.vue'
 import PheDiary from '../views/PheDiary.vue'
 import LabValues from '../views/LabValues.vue'
+import OwnFood from '../views/OwnFood.vue'
 import Settings from '../views/Settings.vue'
 import EmailAuth from '../views/EmailAuth.vue'
 import Help from '../views/Help.vue'
 import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
-import Assistant from '../views/Assistant.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,11 +44,6 @@ const router = createRouter({
       component: ProteinCalculator
     },
     {
-      path: '/own-food',
-      name: 'Own Food',
-      component: OwnFood
-    },
-    {
       path: '/assistant',
       name: 'Assistant',
       component: Assistant
@@ -62,6 +57,11 @@ const router = createRouter({
       path: '/lab-values',
       name: 'Lab Values',
       component: LabValues
+    },
+    {
+      path: '/own-food',
+      name: 'Own Food',
+      component: OwnFood
     },
     {
       path: '/settings',
