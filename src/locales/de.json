@@ -16,8 +16,7 @@
     "total": "gesamt",
     "left": "übrig",
     "start": "Startseite",
-    "license": "Kostenlose Nutzung ist wegen Server- und Datenbank-Kosten begrenzt. Unterstütze mit einem Abo für unbegrenzte Einträge:",
-    "experiment": "Experimentell"
+    "license": "Kostenlose Nutzung ist wegen Server- und Datenbank-Kosten begrenzt. Unterstütze mit einem Abo für unbegrenzte Einträge:"
   },
   "common": {
     "add": "Hinzufügen",
@@ -235,6 +234,7 @@
   "assistant": {
     "title": "Assistent",
     "description": "Erhalte eine Übersicht, Empfehlungen und Motivation.",
+    "info": "Assistent kann Fehler machen.",
     "satiety-tip": "Aktuell",
     "satiety-tip-high": "Erwäge Lebensmittel mit weniger Phe für die Sättigung. Deine Phe-Aufnahme ({phePercentage}%) ist höher als deine Kalorienaufnahme ({kcalPercentage}%).",
     "satiety-tip-low": "Du könntest Lebensmittel mit etwas mehr Phe innerhalb deiner Grenzen einbauen. Deine Phe-Aufnahme ({phePercentage}%) ist niedriger als deine Kalorienaufnahme ({kcalPercentage}%).",
