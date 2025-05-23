@@ -12,6 +12,7 @@ PKU Tools is a nutrition app for low-phenylalanine diets aimed at people with PK
 - 📝 Phe Log
 - 📅 Phe Diary
 - 📈 Lab Values
+- 🤖 Assistant
 - 🌍 Multi-language Support
 - 📱 PWA Support
 - 🔄 Real-time Sync
@@ -31,9 +32,11 @@ PKU Tools is a nutrition app for low-phenylalanine diets aimed at people with PK
 
 ## Install
 
-Install Node.js and Firebase.
+Install Node.js with NPM.
 
 ```
+npm install -g firebase-tools
+
 npm install
 ```
 
@@ -41,17 +44,13 @@ Create a `.env` from `.env.example`.
 
 ## Usage
 
-Start Firebase emulator:
-
-```
-npm run emulators
-```
-
-With data persistence:
+Start Firebase emulator with data persistence:
 
 ```
 npm run emulators:data
 ```
+
+Note: Use Ctrl+C before closing the terminal.
 
 Start development server:
 
