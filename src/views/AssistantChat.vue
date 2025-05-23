@@ -46,7 +46,7 @@ const clearChat = () => {
       >
     </header>
 
-    <div v-if="!userIsAuthenticated" class="mt-8">
+    <div v-if="!userIsAuthenticated">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink
@@ -58,11 +58,11 @@ const clearChat = () => {
       </RouterLink>
     </div>
 
-    <div v-else-if="!hasLicense" class="mt-8">
+    <div v-else-if="!hasLicense">
       <p>{{ $t('chat.license-required') }}</p>
     </div>
 
-    <div v-else class="mt-8">
+    <div v-else>
       <div class="flex justify-between items-center mb-4">
         <button
           v-if="messages.length > 0"
