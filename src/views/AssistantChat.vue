@@ -40,10 +40,6 @@ const clearChat = () => {
   <div>
     <header>
       <PageHeader :title="$t('chat.title')" class="inline-block" />
-      <span
-        class="ml-2 inline-block align-top mt-1 rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/20"
-        >{{ $t('app.experiment') }}</span
-      >
     </header>
 
     <div v-if="!userIsAuthenticated">
@@ -106,6 +102,10 @@ const clearChat = () => {
           {{ $t('chat.send') }}
         </button>
       </form>
+
+      <p class="mt-2">
+        {{ $t('assistant.info') }}
+      </p>
     </div>
   </div>
 </template>
