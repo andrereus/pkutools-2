@@ -233,22 +233,12 @@ const nextDay = () => {
   const currentDate = parseISO(date.value)
   date.value = format(addDays(currentDate, 1), 'yyyy-MM-dd')
 }
-
-const infoAlert = () => {
-  alert(t('app.info'))
-}
 </script>
 
 <template>
   <div>
     <header>
       <PageHeader :title="$t('phe-log.tab-title')" class="inline-block" />
-      <button
-        class="ml-2 inline-block align-top mt-1 rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/30"
-        @click="infoAlert"
-      >
-        {{ $t('common.new') }}
-      </button>
     </header>
 
     <div v-if="!userIsAuthenticated" class="mt-8">
