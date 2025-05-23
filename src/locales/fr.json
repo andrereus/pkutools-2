@@ -16,8 +16,7 @@
     "total": "total",
     "left": "restante",
     "start": "Page d'accueil",
-    "license": "L'utilisation gratuite est limitée en raison des coûts du serveur et de la base de données. Soutenir avec un abonnement pour des entrées illimitées :",
-    "experiment": "Expérimental"
+    "license": "L'utilisation gratuite est limitée en raison des coûts du serveur et de la base de données. Soutenir avec un abonnement pour des entrées illimitées :"
   },
   "common": {
     "add": "Ajouter",
@@ -235,6 +234,7 @@
   "assistant": {
     "title": "Assistant",
     "description": "Obtenir un aperçu, des recommandations et une motivation.",
+    "info": "Assistant peut faire des erreurs.",
     "satiety-tip": "Actuellement",
     "satiety-tip-high": "Envisagez des aliments contenant moins de Phe pour la satiété. Votre apport en Phe ({phePercentage}%) est supérieur à votre apport calorique ({kcalPercentage}%).",
     "satiety-tip-low": "Vous pourriez inclure des aliments avec un peu plus de Phe dans vos limites. Votre apport en Phe ({phePercentage}%) est inférieur à votre apport calorique ({kcalPercentage}%).",
