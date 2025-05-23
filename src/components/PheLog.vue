@@ -241,7 +241,7 @@ const nextDay = () => {
       <PageHeader :title="$t('phe-log.tab-title')" class="inline-block" />
     </header>
 
-    <div v-if="!userIsAuthenticated" class="mt-8">
+    <div v-if="!userIsAuthenticated">
       <SecondaryButton :text="$t('app.signin-google')" @click="signInGoogle" />
       <br />
       <RouterLink

@@ -220,7 +220,11 @@
     "diary-name": "Protokoll und Tagebuch",
     "diary-description": "Halte Protokoll über dein Essen und verfolge deine Phe-Toleranz.",
     "lab-values-name": "Laborwerte",
-    "lab-values-description": "Verfolge Laborwerte in einem Diagramm."
+    "lab-values-description": "Verfolge Laborwerte in einem Diagramm.",
+    "suggestions-name": "1-Klick Vorschläge",
+    "suggestions-description": "Füge Vorschläge mit einem Klick dem Protokoll hinzu.",
+    "assistant-name": "Assistent",
+    "assistant-description": "Erhalte eine Übersicht, Empfehlungen und Motivation."
   },
   "footer": {
     "tools": "Tools",
@@ -230,6 +234,7 @@
   },
   "assistant": {
     "title": "Assistent",
+    "description": "Erhalte eine Übersicht, Empfehlungen und Motivation.",
     "satiety-tip": "Aktuell",
     "satiety-tip-high": "Erwäge Lebensmittel mit weniger Phe für die Sättigung. Deine Phe-Aufnahme ({phePercentage}%) ist höher als deine Kalorienaufnahme ({kcalPercentage}%).",
     "satiety-tip-low": "Du könntest Lebensmittel mit etwas mehr Phe innerhalb deiner Grenzen einbauen. Deine Phe-Aufnahme ({phePercentage}%) ist niedriger als deine Kalorienaufnahme ({kcalPercentage}%).",
