@@ -16,9 +16,6 @@
         <loc>https://pkutools.com/protein-calculator</loc>
     </url>
     <url>
-        <loc>https://pkutools.com/own-food</loc>
-    </url>
-    <url>
         <loc>https://pkutools.com/assistant</loc>
     </url>
     <url>
@@ -26,6 +23,9 @@
     </url>
     <url>
         <loc>https://pkutools.com/lab-values</loc>
+    </url>
+    <url>
+        <loc>https://pkutools.com/own-food</loc>
     </url>
     <url>
         <loc>https://pkutools.com/settings</loc>

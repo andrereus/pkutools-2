@@ -42,22 +42,10 @@ const features = [
     route: '/phe-calculator'
   },
   {
-    name: 'features.own-food-name',
-    description: 'features.own-food-description',
-    icon: Apple,
-    route: '/own-food'
-  },
-  {
     name: 'features.assistant-name',
     description: 'features.assistant-description',
     icon: Bot,
     route: '/assistant'
-  },
-  {
-    name: 'features.suggestions-name',
-    description: 'features.suggestions-description',
-    icon: Sparkles,
-    route: '/?log=true'
   },
   {
     name: 'features.diary-name',
@@ -70,6 +58,18 @@ const features = [
     description: 'features.lab-values-description',
     icon: ChartLine,
     route: '/lab-values'
+  },
+  {
+    name: 'features.suggestions-name',
+    description: 'features.suggestions-description',
+    icon: Sparkles,
+    route: '/?log=true'
+  },
+  {
+    name: 'features.own-food-name',
+    description: 'features.own-food-description',
+    icon: Apple,
+    route: '/own-food'
   }
 ]
 

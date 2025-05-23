@@ -53,7 +53,6 @@ const navigation = computed(() => {
     { name: 'barcode-scanner.title', icon: 'ScanBarcode', route: '/barcode-scanner' },
     { name: 'phe-calculator.title', icon: 'Calculator', route: '/phe-calculator' },
     { name: 'protein-calculator.title', icon: 'SquareDivide', route: '/protein-calculator' },
-    { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
     { name: 'assistant.title', icon: 'Bot', route: '/assistant' },
     { name: 'phe-log.title', icon: 'Book', route: '/?log=true' },
     { name: 'phe-diary.title', icon: 'Calendar', route: '/phe-diary' },
@@ -83,6 +82,7 @@ const tabNavigation = computed(() => {
 
 const userNavigation = computed(() => {
   return [
+    { name: 'own-food.title', icon: 'Apple', route: '/own-food' },
     { name: 'settings.title', icon: 'Settings', route: '/settings' },
     { name: 'help.title', icon: 'LifeBuoy', route: '/help' },
     { name: 'imprint.title', icon: 'Info', route: '/imprint' },
@@ -98,7 +98,6 @@ const footerNavigation = computed(() => {
       { name: 'barcode-scanner.title', route: '/barcode-scanner' },
       { name: 'phe-calculator.title', route: '/phe-calculator' },
       { name: 'protein-calculator.title', route: '/protein-calculator' },
-      { name: 'own-food.title', route: '/own-food' },
       { name: 'assistant.title', route: '/assistant' }
     ],
     features: [
@@ -108,6 +107,7 @@ const footerNavigation = computed(() => {
     ],
     account: [
       { name: 'email-auth.tab-title', route: '/email-auth' },
+      { name: 'own-food.title', route: '/own-food' },
       { name: 'settings.title', route: '/settings' }
     ],
     about: [
