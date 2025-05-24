@@ -160,72 +160,74 @@ const signInGoogle = async () => {
 
     <div v-if="userIsAuthenticated" class="space-y-6">
       <!-- Motivation -->
-      <div class="rounded-lg border dark:border-gray-700 p-4">
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <Award class="h-5 w-5" />
-          {{ $t('assistant.motivation') }}
-        </div>
-        <div class="flex flex-col gap-4">
-          <div>
-            <p v-if="streak > 0">
-              {{ $t('assistant.streak', { streak }) }}
-              {{ streak >= 7 ? $t('assistant.week') : $t('assistant.keep-going') }}
-            </p>
-            <p v-else>
-              {{ $t('assistant.start-tracking') }}
-            </p>
+      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow">
+        <div class="px-4 py-5 sm:p-6">
+          <div class="flex items-center gap-3 font-medium mb-2">
+            <Award class="h-5 w-5" />
+            {{ $t('assistant.motivation') }}
           </div>
-          <!-- Streak Badge -->
-          <div class="flex items-center gap-4">
-            <div
-              class="p-2 rounded-full"
-              :class="
-                badges[0].earned
-                  ? 'bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-300'
-                  : 'bg-gray-100 text-gray-400 dark:bg-gray-800'
-              "
-            >
-              <Activity class="h-5 w-5" />
+          <div class="flex flex-col gap-4">
+            <div>
+              <p v-if="streak > 0">
+                {{ $t('assistant.streak', { streak }) }}
+                {{ streak >= 7 ? $t('assistant.week') : $t('assistant.keep-going') }}
+              </p>
+              <p v-else>
+                {{ $t('assistant.start-tracking') }}
+              </p>
             </div>
-            <div class="flex-1">
-              <div class="flex justify-between items-center">
-                <h4 class="text-sm font-medium">{{ badges[0].title }}</h4>
-                <span class="text-xs text-gray-500">{{ badges[0].progress }}%</span>
+            <!-- Streak Badge -->
+            <div class="flex items-center gap-4">
+              <div
+                class="p-2 rounded-full"
+                :class="
+                  badges[0].earned
+                    ? 'bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-300'
+                    : 'bg-gray-100 text-gray-400 dark:bg-gray-800'
+                "
+              >
+                <Activity class="h-5 w-5" />
               </div>
-              <p class="text-sm text-gray-500">{{ badges[0].description }}</p>
-              <div class="mt-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                <div
-                  class="h-1.5 rounded-full"
-                  :class="badges[0].earned ? 'bg-sky-500' : 'bg-gray-400'"
-                  :style="{ width: `${badges[0].progress}%` }"
-                ></div>
+              <div class="flex-1">
+                <div class="flex justify-between items-center">
+                  <h4 class="text-sm font-medium">{{ badges[0].title }}</h4>
+                  <span class="text-xs text-gray-500">{{ badges[0].progress }}%</span>
+                </div>
+                <p class="text-sm text-gray-500">{{ badges[0].description }}</p>
+                <div class="mt-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                  <div
+                    class="h-1.5 rounded-full"
+                    :class="badges[0].earned ? 'bg-sky-500' : 'bg-gray-400'"
+                    :style="{ width: `${badges[0].progress}%` }"
+                  ></div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- History Badge -->
-          <div class="flex items-center gap-4">
-            <div
-              class="p-2 rounded-full"
-              :class="
-                badges[1].earned
-                  ? 'bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-300'
-                  : 'bg-gray-100 text-gray-400 dark:bg-gray-800'
-              "
-            >
-              <BicepsFlexed class="h-5 w-5" />
-            </div>
-            <div class="flex-1">
-              <div class="flex justify-between items-center">
-                <h4 class="text-sm font-medium">{{ badges[1].title }}</h4>
-                <span class="text-xs text-gray-500">{{ badges[1].progress }}%</span>
+            <!-- History Badge -->
+            <div class="flex items-center gap-4">
+              <div
+                class="p-2 rounded-full"
+                :class="
+                  badges[1].earned
+                    ? 'bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-300'
+                    : 'bg-gray-100 text-gray-400 dark:bg-gray-800'
+                "
+              >
+                <BicepsFlexed class="h-5 w-5" />
               </div>
-              <p class="text-sm text-gray-500">{{ badges[1].description }}</p>
-              <div class="mt-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                <div
-                  class="h-1.5 rounded-full"
-                  :class="badges[1].earned ? 'bg-sky-500' : 'bg-gray-400'"
-                  :style="{ width: `${badges[1].progress}%` }"
-                ></div>
+              <div class="flex-1">
+                <div class="flex justify-between items-center">
+                  <h4 class="text-sm font-medium">{{ badges[1].title }}</h4>
+                  <span class="text-xs text-gray-500">{{ badges[1].progress }}%</span>
+                </div>
+                <p class="text-sm text-gray-500">{{ badges[1].description }}</p>
+                <div class="mt-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                  <div
+                    class="h-1.5 rounded-full"
+                    :class="badges[1].earned ? 'bg-sky-500' : 'bg-gray-400'"
+                    :style="{ width: `${badges[1].progress}%` }"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
@@ -233,128 +235,142 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Currently -->
-      <div v-if="nutritionBalance" class="rounded-lg border dark:border-gray-700 p-4">
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <Clock class="h-5 w-5" />
-          {{ $t('assistant.satiety-tip') }}
+      <div
+        v-if="nutritionBalance"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
+      >
+        <div class="px-4 py-5 sm:p-6">
+          <div class="flex items-center gap-3 font-medium mb-2">
+            <Clock class="h-5 w-5" />
+            {{ $t('assistant.satiety-tip') }}
+          </div>
+          <p>
+            <template v-if="nutritionBalance.difference > 5">
+              {{
+                $t('assistant.satiety-tip-high', {
+                  phePercentage: Math.round(nutritionBalance.phePercentage),
+                  kcalPercentage: Math.round(nutritionBalance.kcalPercentage)
+                })
+              }}
+            </template>
+            <template v-else-if="nutritionBalance.difference < -5">
+              {{
+                $t('assistant.satiety-tip-low', {
+                  phePercentage: Math.round(nutritionBalance.phePercentage),
+                  kcalPercentage: Math.round(nutritionBalance.kcalPercentage)
+                })
+              }}
+            </template>
+            <template v-else>
+              {{ $t('assistant.satiety-tip-good') }}
+            </template>
+          </p>
         </div>
-        <p>
-          <template v-if="nutritionBalance.difference > 5">
-            {{
-              $t('assistant.satiety-tip-high', {
-                phePercentage: Math.round(nutritionBalance.phePercentage),
-                kcalPercentage: Math.round(nutritionBalance.kcalPercentage)
-              })
-            }}
-          </template>
-          <template v-else-if="nutritionBalance.difference < -5">
-            {{
-              $t('assistant.satiety-tip-low', {
-                phePercentage: Math.round(nutritionBalance.phePercentage),
-                kcalPercentage: Math.round(nutritionBalance.kcalPercentage)
-              })
-            }}
-          </template>
-          <template v-else>
-            {{ $t('assistant.satiety-tip-good') }}
-          </template>
-        </p>
       </div>
 
       <!-- Today -->
       <div
         v-if="yesterdayEntry && settings?.maxPhe"
-        class="rounded-lg border dark:border-gray-700 p-4"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
       >
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <Calendar class="h-5 w-5" />
-          {{ $t('assistant.previous-day') }}
+        <div class="px-4 py-5 sm:p-6">
+          <div class="flex items-center gap-3 font-medium mb-2">
+            <Calendar class="h-5 w-5" />
+            {{ $t('assistant.previous-day') }}
+          </div>
+          <p>
+            <template v-if="yesterdayEntry.phe < settings.maxPhe * 0.8">
+              {{ $t('assistant.previous-day-low') }}
+            </template>
+            <template v-else-if="yesterdayEntry.phe > settings.maxPhe * 1.1">
+              {{ $t('assistant.previous-day-high') }}
+            </template>
+            <template v-else>
+              {{ $t('assistant.previous-day-good') }}
+            </template>
+          </p>
         </div>
-        <p>
-          <template v-if="yesterdayEntry.phe < settings.maxPhe * 0.8">
-            {{ $t('assistant.previous-day-low') }}
-          </template>
-          <template v-else-if="yesterdayEntry.phe > settings.maxPhe * 1.1">
-            {{ $t('assistant.previous-day-high') }}
-          </template>
-          <template v-else>
-            {{ $t('assistant.previous-day-good') }}
-          </template>
-        </p>
       </div>
 
       <!-- Phe Diary -->
-      <div class="rounded-lg border dark:border-gray-700 p-4">
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <Book class="h-5 w-5" />
-          {{ $t('assistant.phe-diary') }}
-        </div>
-        <div>
-          <p>{{ $t('assistant.phe-stats-average', { average: pheStats.average }) }}</p>
-          <p>{{ $t('assistant.phe-stats-deviation', { deviation: pheStats.deviation }) }}</p>
+      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow">
+        <div class="px-4 py-5 sm:p-6">
+          <div class="flex items-center gap-3 font-medium mb-2">
+            <Book class="h-5 w-5" />
+            {{ $t('assistant.phe-diary') }}
+          </div>
+          <div>
+            <p>{{ $t('assistant.phe-stats-average', { average: pheStats.average }) }}</p>
+            <p>{{ $t('assistant.phe-stats-deviation', { deviation: pheStats.deviation }) }}</p>
+          </div>
         </div>
       </div>
 
       <!-- Lab Values -->
-      <div v-if="recentLabValues" class="rounded-lg border dark:border-gray-700 p-4">
-        <div class="flex items-center gap-3 font-medium mb-2">
-          <ChartLine class="h-5 w-5" />
-          {{ $t('assistant.lab-values') }}
+      <div
+        v-if="recentLabValues"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
+      >
+        <div class="px-4 py-5 sm:p-6">
+          <div class="flex items-center gap-3 font-medium mb-2">
+            <ChartLine class="h-5 w-5" />
+            {{ $t('assistant.lab-values') }}
+          </div>
+          <p>
+            <!-- Phe Analysis -->
+            <template v-if="recentLabValues.phe > 10">
+              {{
+                $t('assistant.lab-values-high', {
+                  phe: recentLabValues.phe,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+            <template v-else-if="recentLabValues.phe < 2">
+              {{
+                $t('assistant.lab-values-low', {
+                  phe: recentLabValues.phe,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+            <template v-else>
+              {{
+                $t('assistant.lab-values-good', {
+                  phe: recentLabValues.phe,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+          </p>
+          <p>
+            <!-- Tyrosine Analysis -->
+            <template v-if="recentLabValues.tyrosine < 0.41">
+              {{
+                $t('assistant.lab-values-tyrosine-low', {
+                  tyrosine: recentLabValues.tyrosine,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+            <template v-else-if="recentLabValues.tyrosine > 3.73">
+              {{
+                $t('assistant.lab-values-tyrosine-high', {
+                  tyrosine: recentLabValues.tyrosine,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+            <template v-else>
+              {{
+                $t('assistant.lab-values-tyrosine-good', {
+                  tyrosine: recentLabValues.tyrosine,
+                  unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
+                })
+              }}
+            </template>
+          </p>
         </div>
-        <p>
-          <!-- Phe Analysis -->
-          <template v-if="recentLabValues.phe > 10">
-            {{
-              $t('assistant.lab-values-high', {
-                phe: recentLabValues.phe,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-          <template v-else-if="recentLabValues.phe < 2">
-            {{
-              $t('assistant.lab-values-low', {
-                phe: recentLabValues.phe,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-          <template v-else>
-            {{
-              $t('assistant.lab-values-good', {
-                phe: recentLabValues.phe,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-        </p>
-        <p>
-          <!-- Tyrosine Analysis -->
-          <template v-if="recentLabValues.tyrosine < 0.41">
-            {{
-              $t('assistant.lab-values-tyrosine-low', {
-                tyrosine: recentLabValues.tyrosine,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-          <template v-else-if="recentLabValues.tyrosine > 3.73">
-            {{
-              $t('assistant.lab-values-tyrosine-high', {
-                tyrosine: recentLabValues.tyrosine,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-          <template v-else>
-            {{
-              $t('assistant.lab-values-tyrosine-good', {
-                tyrosine: recentLabValues.tyrosine,
-                unit: settings?.labUnit === 'mgdl' ? 'mg/dL' : 'µmol/L'
-              })
-            }}
-          </template>
-        </p>
       </div>
 
       <p class="mt-2">
