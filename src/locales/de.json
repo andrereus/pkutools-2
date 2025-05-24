@@ -16,7 +16,8 @@
     "total": "gesamt",
     "left": "übrig",
     "start": "Startseite",
-    "license": "Kostenlose Nutzung ist wegen Server- und Datenbank-Kosten begrenzt. Unterstütze mit einem Abo für unbegrenzte Einträge:"
+    "license": "Kostenlose Nutzung ist wegen Server- und Datenbank-Kosten begrenzt. Unterstütze mit einem Abo für unbegrenzte Einträge:",
+    "nav-change": "Änderung der Navigation: Eigene Lebensmittel sind jetzt unter dem Account Menü."
   },
   "common": {
     "add": "Hinzufügen",

@@ -16,7 +16,8 @@
     "total": "total",
     "left": "left",
     "start": "Start page",
-    "license": "Free use is limited due to server and database costs. Support with a subscription for unlimited entries:"
+    "license": "Free use is limited due to server and database costs. Support with a subscription for unlimited entries:",
+    "nav-change": "Navigation change: Own food is now under the account menu."
   },
   "common": {
     "add": "Add",

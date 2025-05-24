@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Página de inicio",
-    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para entradas ilimitadas:"
+    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para entradas ilimitadas:",
+    "nav-change": "Cambio en la navegación: La comida propia está ahora en el menú de la cuenta."
   },
   "common": {
     "add": "Agregar",
