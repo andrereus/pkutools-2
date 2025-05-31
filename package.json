@@ -16,7 +16,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "apexcharts": "^4.7.0",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "firebase": "^11.8.1",
     "fuse.js": "^7.1.0",
     "lucide-vue-next": "^0.511.0",
