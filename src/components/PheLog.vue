@@ -414,10 +414,6 @@ const nextDay = () => {
       <p v-if="lastAdded.length === 0" class="mt-3">
         {{ $t('phe-log.info') }}
       </p>
-
-      <p class="mt-3 italic">
-        {{ $t('app.nav-change') }}
-      </p>
     </div>
   </div>
 </template>
