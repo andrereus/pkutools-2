@@ -209,13 +209,13 @@ onMounted(() => {
           >
             <a
               @click.prevent="signInGoogle"
-              class="rounded bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
+              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
             >
               {{ $t('app.signin-google') }}
             </a>
             <RouterLink
               to="/email-auth"
-              class="rounded bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
             >
               {{ $t('email-auth.title') }}
             </RouterLink>
@@ -233,7 +233,7 @@ onMounted(() => {
             </a>
             <RouterLink
               to="/help"
-              class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10"
+              class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10"
             >
               {{ $t('app.install') }} <span aria-hidden="true">→</span>
             </RouterLink>

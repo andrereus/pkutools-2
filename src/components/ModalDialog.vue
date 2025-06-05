@@ -37,7 +37,7 @@ function handleButtonClick(buttonType) {
 
 <template>
   <dialog class="relative z-10 dark:text-white" ref="dialog">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" />
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
       <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
@@ -67,7 +67,7 @@ function handleButtonClick(buttonType) {
               :key="button.type"
               type="button"
               :class="[
-                'inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+                'inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-xs focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer',
                 button.type === 'delete'
                   ? 'bg-red-500 text-white hover:bg-red-600 focus-visible:outline-red-500'
                   : button.type === 'simpleClose' ||

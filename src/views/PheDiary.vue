@@ -431,7 +431,7 @@ const updateData = (timeline) => {
       <RouterLink
         type="button"
         to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+        class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
@@ -535,7 +535,7 @@ const updateData = (timeline) => {
           <SecondaryButton
             :text="$t('common.add')"
             @click="$refs.dialog2.openDialog()"
-            class="!mr-0 !mb-0"
+            class="mr-0! mb-0!"
           />
         </div>
 
