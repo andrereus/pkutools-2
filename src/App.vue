@@ -234,7 +234,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-4 w-64 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
+                  class="absolute left-0 z-10 mt-4 w-64 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-gray-300 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active, close }">
                     <a
@@ -297,7 +297,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-gray-300 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
@@ -354,7 +354,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 mt-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700 dark:divide-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-gray-300 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700 dark:divide-gray-700"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
