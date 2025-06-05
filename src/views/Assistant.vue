@@ -152,7 +152,7 @@ const signInGoogle = async () => {
       <RouterLink
         type="button"
         to="/email-auth"
-        class="rounded bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-sm hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
+        class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-6"
       >
         {{ $t('email-auth.title') }}
       </RouterLink>
@@ -160,7 +160,7 @@ const signInGoogle = async () => {
 
     <div v-if="userIsAuthenticated" class="space-y-6">
       <!-- Motivation -->
-      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow">
+      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm">
         <div class="px-4 py-5 sm:p-6">
           <div class="flex items-center gap-3 font-medium mb-2">
             <Award class="h-5 w-5" />
@@ -237,7 +237,7 @@ const signInGoogle = async () => {
       <!-- Currently -->
       <div
         v-if="nutritionBalance"
-        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm"
       >
         <div class="px-4 py-5 sm:p-6">
           <div class="flex items-center gap-3 font-medium mb-2">
@@ -271,7 +271,7 @@ const signInGoogle = async () => {
       <!-- Today -->
       <div
         v-if="yesterdayEntry && settings?.maxPhe"
-        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm"
       >
         <div class="px-4 py-5 sm:p-6">
           <div class="flex items-center gap-3 font-medium mb-2">
@@ -293,7 +293,7 @@ const signInGoogle = async () => {
       </div>
 
       <!-- Phe Diary -->
-      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow">
+      <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm">
         <div class="px-4 py-5 sm:p-6">
           <div class="flex items-center gap-3 font-medium mb-2">
             <Book class="h-5 w-5" />
@@ -309,7 +309,7 @@ const signInGoogle = async () => {
       <!-- Lab Values -->
       <div
         v-if="recentLabValues"
-        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow"
+        class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm"
       >
         <div class="px-4 py-5 sm:p-6">
           <div class="flex items-center gap-3 font-medium mb-2">

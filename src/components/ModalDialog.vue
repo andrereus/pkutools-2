@@ -67,7 +67,7 @@ function handleButtonClick(buttonType) {
               :key="button.type"
               type="button"
               :class="[
-                'inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+                'inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-xs focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2',
                 button.type === 'delete'
                   ? 'bg-red-500 text-white hover:bg-red-600 focus-visible:outline-red-500'
                   : button.type === 'simpleClose' ||

@@ -211,14 +211,14 @@ const iconMap = {
 
 <template>
   <div class="min-h-screen flex flex-col app-container-safe-area dark:text-white">
-    <div as="nav" class="bg-white shadow dark:bg-gray-800">
+    <div as="nav" class="bg-white shadow-sm dark:bg-gray-800">
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 justify-between">
           <div class="relative inset-y-0 left-0 flex items-center">
             <MenuComponent as="div" class="relative">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.main-menu') }}</span>
@@ -234,7 +234,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-4 w-64 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700"
+                  class="absolute left-0 z-10 mt-4 w-64 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="item in navigation" :key="item.name" v-slot="{ active, close }">
                     <a
@@ -265,7 +265,7 @@ const iconMap = {
           <div class="flex flex-1 items-stretch justify-start ml-3">
             <RouterLink
               :to="userIsAuthenticated ? '/?log=true' : '/?home=true'"
-              class="flex flex-shrink-0 items-center"
+              class="flex shrink-0 items-center"
             >
               <img class="h-8 w-auto mr-3" src="./assets/pkutools-logo.png" alt="PKU Tools Logo" />
               <span class="dark:text-white">PKU Tools</span>
@@ -277,13 +277,13 @@ const iconMap = {
           >
             <button
               type="button"
-              class="headway relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
+              class="headway relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
             ></button>
 
             <MenuComponent as="div" class="relative ml-2">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2"
                 >
                   {{ locale }}
                 </MenuButton>
@@ -297,7 +297,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700"
                 >
                   <MenuItem v-for="(lang, i) in lang" :key="i" v-slot="{ active, close }">
                     <a
@@ -323,7 +323,7 @@ const iconMap = {
             <MenuComponent as="div" class="relative ml-3">
               <div>
                 <MenuButton
-                  class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800"
+                  class="relative flex rounded-full bg-white text-sm focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.account-menu') }}</span>
@@ -354,7 +354,7 @@ const iconMap = {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute right-0 z-10 mt-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:ring-gray-700 dark:divide-gray-700"
+                  class="absolute right-0 z-10 mt-4 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden dark:bg-gray-800 dark:ring-gray-700 dark:divide-gray-700"
                 >
                   <div class="py-1">
                     <MenuItem v-if="!userIsAuthenticated" v-slot="{ active, close }">
@@ -501,7 +501,7 @@ const iconMap = {
       </div>
     </div>
 
-    <div class="pb-5 lg:pb-10 flex-grow">
+    <div class="pb-5 lg:pb-10 grow">
       <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <RouterView></RouterView>
