@@ -218,7 +218,7 @@ const iconMap = {
             <MenuComponent as="div" class="relative">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white cursor-pointer"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.main-menu') }}</span>
@@ -283,7 +283,7 @@ const iconMap = {
             <MenuComponent as="div" class="relative ml-2">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2 cursor-pointer"
                 >
                   {{ locale }}
                 </MenuButton>
@@ -323,7 +323,7 @@ const iconMap = {
             <MenuComponent as="div" class="relative ml-3">
               <div>
                 <MenuButton
-                  class="relative flex rounded-full bg-white text-sm focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800"
+                  class="relative flex rounded-full bg-white text-sm focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 cursor-pointer"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.account-menu') }}</span>

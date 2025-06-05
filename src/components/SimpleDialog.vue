@@ -19,7 +19,7 @@ defineExpose({ openDialog, closeDialog })
 
 <template>
   <dialog class="relative z-10 dark:text-white" ref="dialog">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" />
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
       <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
@@ -39,7 +39,7 @@ defineExpose({ openDialog, closeDialog })
           <div class="mt-5 sm:mt-6">
             <button
               type="button"
-              class="inline-flex w-full justify-center rounded-md bg-sky-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-sky-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+              class="inline-flex w-full justify-center rounded-md bg-sky-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-sky-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
               @click="$emit('close')"
             >
               {{ $t('common.cancel') }}
