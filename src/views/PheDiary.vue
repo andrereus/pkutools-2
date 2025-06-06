@@ -232,7 +232,7 @@ const save = () => {
     }
   } else {
     if (
-      pheDiary.value.length >= 100 &&
+      pheDiary.value.length >= 50 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
       alert(t('app.limit'))
