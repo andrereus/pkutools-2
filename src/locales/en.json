@@ -157,7 +157,19 @@
     "theme": "Appearance (this app/this browser)",
     "theme-system": "Use device theme",
     "theme-light": "Light theme",
-    "theme-dark": "Dark theme"
+    "theme-dark": "Dark theme",
+    "tier-unlimited": "Unlimited",
+    "tier-unlimited-desc": "Get a license for additional features.",
+    "tier-unlimited-feature-1": "Unlimited diary entries",
+    "tier-unlimited-feature-2": "Unlimited lab value entries",
+    "tier-unlimited-feature-3": "Unlimited own foods",
+    "tier-unlimited-feature-4": "Priority support",
+    "tier-basic": "Basic",
+    "tier-basic-desc": "Free usage",
+    "tier-basic-feature-1": "50 diary entries",
+    "tier-basic-feature-2": "25 lab value entries",
+    "tier-basic-feature-3": "125 own foods",
+    "per-month": "/month"
   },
   "email-auth": {
     "title": "Sign in with Email",

@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, remove, update } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
+import { Check } from 'lucide-vue-next'
 
 import PageHeader from '../components/PageHeader.vue'
 import SelectMenu from '../components/SelectMenu.vue'
@@ -34,6 +35,36 @@ const themeOptions = computed(() => [
 const unitOptions = computed(() => [
   { title: 'mg/dL', value: 'mgdl' },
   { title: 'µmol/L', value: 'umoll' }
+])
+
+const tiers = computed(() => [
+  {
+    name: t('settings.tier-unlimited'),
+    id: 'tier-unlimited',
+    href: '#',
+    priceMonthly: '€5',
+    description: t('settings.tier-unlimited-desc'),
+    features: [
+      t('settings.tier-unlimited-feature-1'),
+      t('settings.tier-unlimited-feature-2'),
+      t('settings.tier-unlimited-feature-3'),
+      t('settings.tier-unlimited-feature-4')
+    ],
+    featured: true
+  },
+  {
+    name: t('settings.tier-basic'),
+    id: 'tier-basic',
+    href: '#',
+    priceMonthly: '€0',
+    description: t('settings.tier-basic-desc'),
+    features: [
+      t('settings.tier-basic-feature-1'),
+      t('settings.tier-basic-feature-2'),
+      t('settings.tier-basic-feature-3')
+    ],
+    featured: false
+  }
 ])
 
 // Methods
@@ -205,24 +236,67 @@ onMounted(() => {
 
       <PageHeader title="PKU Tools Unlimited" class="mt-6" />
 
-      <p class="mb-6">{{ $t('settings.license-text') }}</p>
-
-      <p class="mb-4">
-        <a
-          href="http://ko-fi.com/andrereus/tiers"
-          target="_blank"
-          class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-3 cursor-pointer"
-          >{{ $t('settings.license-kofi') }}</a
+      <div
+        class="my-6 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:gap-y-0 lg:max-w-3xl lg:grid-cols-2"
+      >
+        <div
+          v-for="(tier, tierIdx) in tiers"
+          :key="tier.id"
+          :class="[
+            tier.featured ? 'relative' : 'sm:mx-8 lg:mx-0',
+            tier.featured
+              ? ''
+              : tierIdx === 0
+                ? 'rounded-t-xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-xl'
+                : 'sm:rounded-t-none lg:rounded-tr-xl lg:rounded-bl-none',
+            'rounded-xl p-8 ring-1 ring-gray-200 dark:ring-gray-800'
+          ]"
         >
-      </p>
-      <p class="mb-6">
-        <a
-          href="https://buymeacoffee.com/andrereus/membership"
-          target="_blank"
-          class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-3 cursor-pointer"
-          >{{ $t('settings.license-bmac') }}</a
-        >
-      </p>
+          <h3
+            :id="tier.id"
+            :class="[tier.featured ? '' : '', 'text-sky-500 text-base/7 font-semibold']"
+          >
+            {{ tier.name }}
+          </h3>
+          <p class="mt-4 flex items-baseline gap-x-1">
+            <span :class="[tier.featured ? '' : '', 'text-xl font-semibold tracking-tight']">{{
+              tier.priceMonthly
+            }}</span>
+            <span :class="[tier.featured ? '' : '', 'text-gray-500 text-base']">{{
+              $t('settings.per-month')
+            }}</span>
+          </p>
+          <p :class="[tier.featured ? '' : '', 'text-gray-500 mt-4 text-base/7']">
+            {{ tier.description }}
+          </p>
+          <ul
+            role="list"
+            :class="[tier.featured ? '' : '', 'text-gray-500 mt-4 space-y-1 text-sm/6']"
+          >
+            <li v-for="feature in tier.features" :key="feature" class="flex gap-x-2">
+              <Check
+                :class="[tier.featured ? '' : '', 'text-sky-500 h-6 w-5 flex-none']"
+                aria-hidden="true"
+              />
+              {{ feature }}
+            </li>
+          </ul>
+          <a
+            href="http://ko-fi.com/andrereus/tiers"
+            target="_blank"
+            class="bg-sky-500 text-white shadow-xs hover:bg-sky-400 focus-visible:outline-sky-500 mt-6 block rounded-md px-3.5 py-1 text-center text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2"
+            v-if="tier.featured"
+            >{{ $t('settings.license-kofi') }}</a
+          >
+          <a
+            href="https://buymeacoffee.com/andrereus/membership"
+            target="_blank"
+            class="bg-black/5 dark:bg-white/15 text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 focus-visible:outline-sky-500 mt-2 block rounded-md px-3.5 py-1 text-center text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2"
+            v-if="tier.featured"
+            >{{ $t('settings.license-bmac') }}</a
+          >
+        </div>
+      </div>
 
       <TextInput
         id-name="license"

@@ -157,7 +157,19 @@
     "theme": "Apparence (cette application/ce navigateur)",
     "theme-system": "Utiliser le thème de l'appareil",
     "theme-light": "Thème lumineux",
-    "theme-dark": "Thème sombre"
+    "theme-dark": "Thème sombre",
+    "tier-unlimited": "Illimité",
+    "tier-unlimited-desc": "Obtenez une licence pour des fonctionnalités supplémentaires.",
+    "tier-unlimited-feature-1": "Entrées illimitées dans le journal",
+    "tier-unlimited-feature-2": "Entrées illimitées de valeurs de laboratoire",
+    "tier-unlimited-feature-3": "Aliments personnels illimités",
+    "tier-unlimited-feature-4": "Support prioritaire",
+    "tier-basic": "Basique",
+    "tier-basic-desc": "Utilisation gratuite",
+    "tier-basic-feature-1": "50 entrées dans le journal",
+    "tier-basic-feature-2": "25 entrées de valeurs de laboratoire",
+    "tier-basic-feature-3": "125 aliments personnalisés",
+    "per-month": "/mois"
   },
   "email-auth": {
     "title": "Se connecter avec un e-mail",
