@@ -16,7 +16,9 @@
     "total": "total",
     "left": "left",
     "start": "Start page",
-    "license": "Free use is limited due to server and database costs. Support with a subscription for unlimited entries:"
+    "limited": "Free use (limited entries)",
+    "unlimited": "Unlimited (unlimited entries)",
+    "limit": "Entries limit reached. Support with a subscription for unlimited entries. See settings for more."
   },
   "common": {
     "add": "Add",
@@ -87,11 +89,9 @@
   "own-food": {
     "title": "Own Food",
     "description": "Save own food and phe values.",
-    "limit": "Own Food is limited to 250 entries.",
     "search-info": "Own food is also available in the search.",
     "export-filename": "PKU Tools - Own Food",
-    "choose-icon": "Select icon",
-    "unlimited": "Unlimited"
+    "choose-icon": "Select icon"
   },
   "phe-log": {
     "title": "Phe Log",
@@ -113,13 +113,11 @@
     "description": "Log phe values over several days.",
     "date": "Date",
     "phe": "Total Phe (in mg)",
-    "limit": "The Phe Diary is limited to 100 entries. Export your data in Excel. For deletion, see settings.",
     "export-food": "Export food",
     "export-days": "Export days",
     "log": "Log",
     "export-filename": "PKU Tools - Phe Diary",
-    "chart-info": "The chart gets displayed after the second entry.",
-    "unlimited": "Unlimited"
+    "chart-info": "The chart gets displayed after the second entry."
   },
   "lab-values": {
     "title": "Lab Values",
@@ -128,11 +126,9 @@
     "date": "Date",
     "phe": "Phenylalanine",
     "tyrosine": "Tyrosine",
-    "limit": "Lab Values are limited to 50 entries. Export your data in Excel. For deletion, see settings.",
     "export": "Export",
     "export-filename": "PKU Tools - Lab Values",
     "chart-info": "The chart gets displayed after the second entry.",
-    "unlimited": "Unlimited",
     "unit": "Unit for laboratory values",
     "unit-info": "Unit can be changed in the settings."
   },

@@ -9,7 +9,7 @@ import enChart from 'apexcharts/dist/locales/en.json'
 import deChart from 'apexcharts/dist/locales/de.json'
 import frChart from 'apexcharts/dist/locales/fr.json'
 import esChart from 'apexcharts/dist/locales/es.json'
-import { BadgeCheck } from 'lucide-vue-next'
+import { BadgeCheck, BadgeMinus } from 'lucide-vue-next'
 
 import DataTable from '../components/DataTable.vue'
 import ModalDialog from '../components/ModalDialog.vue'
@@ -235,7 +235,7 @@ const save = () => {
       pheDiary.value.length >= 100 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('phe-diary.limit'))
+      alert(t('app.limit'))
     } else {
       push(dbRef(db, `${user.value.id}/pheDiary`), {
         date: editedItem.value.date,
@@ -620,19 +620,15 @@ const updateData = (timeline) => {
       <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
       <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
 
-      <p v-if="!license" class="mt-3">
-        {{ $t('app.license') }}
-        <a href="https://buymeacoffee.com/andrereus" target="_blank">
-          <img
-            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-            alt="Buy Me A Coffee"
-            class="w-24 mt-3"
-          />
-        </a>
+      <p v-if="!license" class="mt-3 text-sm">
+        <RouterLink to="/settings">
+          <BadgeMinus class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
+          {{ $t('app.limited') }}
+        </RouterLink>
       </p>
       <p v-if="license" class="mt-3 text-sm">
         <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('phe-diary.unlimited') }}
+        {{ $t('app.unlimited') }}
       </p>
     </div>
   </div>
