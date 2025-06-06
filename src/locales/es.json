@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Página de inicio",
-    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para entradas ilimitadas:"
+    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para entradas ilimitadas:",
+    "limit": "Límite alcanzado. Soporte con una suscripción para entradas ilimitadas. Consulte la configuración para obtener más información."
   },
   "common": {
     "add": "Agregar",

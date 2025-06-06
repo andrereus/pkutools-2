@@ -178,7 +178,7 @@ const save = () => {
       labValues.value.length >= 50 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('lab-values.limit'))
+      alert(t('app.limit'))
     } else {
       push(dbRef(db, `${user.value.id}/labValues`), {
         date: editedItem.value.date,

@@ -64,7 +64,7 @@ const save = () => {
       store.pheDiary.length >= 100 &&
       store.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('phe-diary.limit'))
+      alert(t('app.limit'))
     } else {
       push(dbRef(db, `${user.value.id}/pheDiary`), {
         date: formattedDate,

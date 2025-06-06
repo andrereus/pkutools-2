@@ -101,7 +101,7 @@ const save = () => {
       ownFood.value.length >= 250 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
-      alert(t('own-food.limit'))
+      alert(t('app.limit'))
     } else {
       push(dbRef(db, `${user.value.id}/ownFood`), {
         name: editedItem.value.name,
