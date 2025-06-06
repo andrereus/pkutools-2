@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Page d'accueil",
-    "license": "L'utilisation gratuite est limitée en raison des coûts du serveur et de la base de données. Soutenir avec un abonnement pour des entrées illimitées :",
+    "limited": "Utilisation gratuite (inscriptions limitées)",
+    "unlimited": "Illimité (entrées illimitées)",
     "limit": "Limite d'entrées atteinte. Soutenir avec un abonnement pour des entrées illimitées. Voir les paramètres pour en savoir plus."
   },
   "common": {
@@ -88,11 +89,9 @@
   "own-food": {
     "title": "Aliments personnels",
     "description": "Enregistrez vos aliments personnels et leurs valeurs de Phe.",
-    "limit": "Les aliments personnels sont limités à 250 entrées.",
     "search-info": "Les propres aliments sont également disponibles dans la recherche.",
     "export-filename": "PKU Tools - Aliments personnels",
-    "choose-icon": "Sélectionner une icône",
-    "unlimited": "Illimité"
+    "choose-icon": "Sélectionner une icône"
   },
   "phe-log": {
     "title": "Protocole Phe",
@@ -114,13 +113,11 @@
     "description": "Enregistrez les valeurs de Phe sur plusieurs jours.",
     "date": "Date",
     "phe": "Phe total (en mg)",
-    "limit": "Le Journal de Phe est limité à 100 entrées. Exportez vos données en Excel. Pour la suppression, voir les paramètres.",
     "export-food": "Exporter des aliments",
     "export-days": "Exporter les jours",
     "log": "Journal",
     "export-filename": "PKU Tools - Journal de Phe",
-    "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
-    "unlimited": "Illimité"
+    "chart-info": "Le diagramme s'affiche après la deuxième entrée."
   },
   "lab-values": {
     "title": "Valeurs de laboratoire",
@@ -129,11 +126,9 @@
     "date": "Date",
     "phe": "Phénylalanine",
     "tyrosine": "Tyrosine",
-    "limit": "Les résultats de laboratoire sont limités à 50 entrées. Exporte tes données dans Excel. Pour la suppression, voir les paramètres.",
     "export": "Exporter",
     "export-filename": "PKU Tools - Valeurs de laboratoire",
     "chart-info": "Le diagramme s'affiche après la deuxième entrée.",
-    "unlimited": "Illimité",
     "unit": "Unité pour les valeurs de laboratoire",
     "unit-info": "Unité modifiable dans les paramètres."
   },

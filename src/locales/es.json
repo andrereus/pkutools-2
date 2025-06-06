@@ -16,7 +16,8 @@
     "total": "total",
     "left": "restante",
     "start": "Página de inicio",
-    "license": "El uso gratuito es limitado debido a los costes del servidor y la base de datos. Soporte con una suscripción para entradas ilimitadas:",
+    "limited": "Uso gratuito (entradas limitadas)",
+    "unlimited": "Ilimitado (entradas ilimitadas)",
     "limit": "Límite de entradas alcanzado. Soporte con una suscripción para entradas ilimitadas. Consulte la configuración para obtener más información."
   },
   "common": {
@@ -88,11 +89,9 @@
   "own-food": {
     "title": "Alimentos propios",
     "description": "Guardar alimentos propios y valores de Phe.",
-    "limit": "Los alimentos propios están limitados a 250 entradas.",
     "search-info": "La comida propia también está disponible en la búsqueda.",
     "export-filename": "PKU Tools - Alimento propio",
-    "choose-icon": "Seleccionar icono",
-    "unlimited": "Sin límites"
+    "choose-icon": "Seleccionar icono"
   },
   "phe-log": {
     "title": "Protocolo Phe",
@@ -114,13 +113,11 @@
     "description": "Registrar valores de Phe durante varios días.",
     "date": "Fecha",
     "phe": "Total de Phe (en mg)",
-    "limit": "El diario de Phe está limitado a 100 entradas. Exporta tus datos en Excel. Para borrarlos, consulte Configuración.",
     "export-food": "Exportar alimentos",
     "export-days": "Días de exportación",
     "log": "Registro",
     "export-filename": "PKU Tools - Diario de Phe",
-    "chart-info": "El diagrama se muestra después de la segunda entrada.",
-    "unlimited": "Sin límites"
+    "chart-info": "El diagrama se muestra después de la segunda entrada."
   },
   "lab-values": {
     "title": "Valores de laboratorio",
@@ -129,11 +126,9 @@
     "date": "Fecha",
     "phe": "Fenilalanina",
     "tyrosine": "Tirosina",
-    "limit": "Los valores de laboratorio están limitados a 50 entradas. Exporte sus datos a Excel. Para borrar, consulte Configuración.",
     "export": "Exportar",
     "export-filename": "PKU Tools - Valores de laboratorio",
     "chart-info": "El diagrama se muestra después de la segunda entrada.",
-    "unlimited": "Sin límites",
     "unit": "Unidad para valores de laboratorio",
     "unit-info": "La unidad puede cambiarse en los ajustes."
   },

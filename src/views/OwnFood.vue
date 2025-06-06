@@ -6,7 +6,7 @@ import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import foodIcons from '../components/data/food-icons.json'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { BadgeCheck, ChevronDown } from 'lucide-vue-next'
+import { BadgeCheck, BadgeMinus, ChevronDown } from 'lucide-vue-next'
 import { format } from 'date-fns'
 
 import PageHeader from '../components/PageHeader.vue'
@@ -337,19 +337,15 @@ const setIcon = (item, close) => {
 
       <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
 
-      <p v-if="!license" class="mt-3">
-        {{ $t('app.license') }}
-        <a href="https://buymeacoffee.com/andrereus" target="_blank">
-          <img
-            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-            alt="Buy Me A Coffee"
-            class="w-24 mt-3"
-          />
-        </a>
+      <p v-if="!license" class="mt-3 text-sm">
+        <RouterLink to="/settings">
+          <BadgeMinus class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
+          {{ $t('app.limited') }}
+        </RouterLink>
       </p>
       <p v-if="license" class="mt-3 text-sm">
         <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
-        {{ $t('own-food.unlimited') }}
+        {{ $t('app.unlimited') }}
       </p>
 
       <ModalDialog

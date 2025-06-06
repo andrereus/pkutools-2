@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, remove, update } from 'firebase/database'
 import { format, parseISO, subDays, addDays } from 'date-fns'
-import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { ChevronLeft, ChevronRight, BadgeCheck, BadgeMinus } from 'lucide-vue-next'
 
 import DataTable from './DataTable.vue'
 import ModalDialog from './ModalDialog.vue'
@@ -48,6 +48,10 @@ const user = computed(() => store.user)
 const pheLog = computed(() => store.pheLog)
 const pheDiary = computed(() => store.pheDiary)
 const settings = computed(() => store.settings)
+
+const license = computed(
+  () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+)
 
 const tableHeaders = computed(() => [
   { key: 'food', title: t('common.food') },
@@ -420,6 +424,17 @@ const nextDay = () => {
 
       <p v-if="lastAdded.length === 0" class="mt-3">
         {{ $t('phe-log.info') }}
+      </p>
+
+      <p v-if="!license" class="mt-3 text-sm">
+        <RouterLink to="/settings">
+          <BadgeMinus class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
+          {{ $t('app.limited') }}
+        </RouterLink>
+      </p>
+      <p v-if="license" class="mt-3 text-sm">
+        <BadgeCheck class="h-5 w-5 text-sky-500 inline-block mr-1" aria-hidden="true" />
+        {{ $t('app.unlimited') }}
       </p>
     </div>
   </div>
