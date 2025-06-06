@@ -85,7 +85,7 @@ const save = () => {
     })
   } else {
     if (
-      store.pheDiary.length >= 100 &&
+      store.pheDiary.length >= 50 &&
       store.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
       alert(t('app.limit'))
