@@ -203,13 +203,25 @@ onMounted(() => {
 
       <PrimaryButton :text="$t('common.save')" @click="save" />
 
-      <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
+      <PageHeader title="PKU Tools Unlimited" class="mt-6" />
 
+      <p class="mb-6">{{ $t('settings.license-text') }}</p>
+
+      <p class="mb-4">
+        <a
+          href="http://ko-fi.com/andrereus/tiers"
+          target="_blank"
+          class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-3 cursor-pointer"
+          >{{ $t('settings.license-kofi') }}</a
+        >
+      </p>
       <p class="mb-6">
-        {{ $t('settings.license-text') }}
-        "PKU Tools Unlimited".
-        <br /><br />
-        Work in progress, coming soon, please check back later.
+        <a
+          href="https://buymeacoffee.com/andrereus/membership"
+          target="_blank"
+          class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10 mr-3 mb-3 cursor-pointer"
+          >{{ $t('settings.license-bmac') }}</a
+        >
       </p>
 
       <TextInput
