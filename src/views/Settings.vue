@@ -207,18 +207,10 @@ onMounted(() => {
 
       <p class="mb-6">
         {{ $t('settings.license-text') }}
-        <a href="https://buymeacoffee.com/andrereus" target="_blank" class="text-sky-500"
-          >PKU Tools Unlimited</a
-        >.
+        "PKU Tools Unlimited".
+        <br /><br />
+        Work in progress, coming soon, please check back later.
       </p>
-
-      <a href="https://buymeacoffee.com/andrereus" target="_blank">
-        <img
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me A Coffee"
-          class="w-24 mb-6"
-        />
-      </a>
 
       <TextInput
         id-name="license"
