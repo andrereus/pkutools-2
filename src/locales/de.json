@@ -157,7 +157,19 @@
     "theme": "Darstellung (diese App/dieser Browser)",
     "theme-system": "Gerätedesign verwenden",
     "theme-light": "Helles Design",
-    "theme-dark": "Dunkles Design"
+    "theme-dark": "Dunkles Design",
+    "tier-unlimited": "Unlimitiert",
+    "tier-unlimited-desc": "Erhalte eine Lizenz für zusätzliche Funktionen.",
+    "tier-unlimited-feature-1": "Unbegrenzte Tagebuch-Einträge",
+    "tier-unlimited-feature-2": "Unbegrenzte Laborwert-Einträge",
+    "tier-unlimited-feature-3": "Unbegrenzte eigene Lebensmittel",
+    "tier-unlimited-feature-4": "Vorrangiger Support",
+    "tier-basic": "Basic",
+    "tier-basic-desc": "Kostenlose Nutzung",
+    "tier-basic-feature-1": "50 Tagebuch-Einträge",
+    "tier-basic-feature-2": "25 Laborwert-Einträge",
+    "tier-basic-feature-3": "125 eigene Lebensmittel",
+    "per-month": "/monat"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

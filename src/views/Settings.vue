@@ -37,31 +37,35 @@ const unitOptions = computed(() => [
   { title: 'µmol/L', value: 'umoll' }
 ])
 
-const tiers = [
+const tiers = computed(() => [
   {
-    name: 'Unlimited',
+    name: t('settings.tier-unlimited'),
     id: 'tier-unlimited',
     href: '#',
-    priceMonthly: '$5',
-    description: 'Get a license key for additional features.',
+    priceMonthly: '€5',
+    description: t('settings.tier-unlimited-desc'),
     features: [
-      'Unbegrenzte Tagebuch-Einträge',
-      'Unbegrenzte Laborwert-Einträge',
-      'Unbegrenzte eigene Lebensmittel',
-      'Vorrangiger Support'
+      t('settings.tier-unlimited-feature-1'),
+      t('settings.tier-unlimited-feature-2'),
+      t('settings.tier-unlimited-feature-3'),
+      t('settings.tier-unlimited-feature-4')
     ],
     featured: true
   },
   {
-    name: 'Basic',
+    name: t('settings.tier-basic'),
     id: 'tier-basic',
     href: '#',
-    priceMonthly: '$0',
-    description: 'Kostenlose Nutzung',
-    features: ['50 Tagebuch-Einträge', '25 Laborwert-Einträge', '125 eigene Lebensmittel'],
+    priceMonthly: '€0',
+    description: t('settings.tier-basic-desc'),
+    features: [
+      t('settings.tier-basic-feature-1'),
+      t('settings.tier-basic-feature-2'),
+      t('settings.tier-basic-feature-3')
+    ],
     featured: false
   }
-]
+])
 
 // Methods
 const signInGoogle = async () => {
@@ -258,7 +262,9 @@ onMounted(() => {
             <span :class="[tier.featured ? '' : '', 'text-xl font-semibold tracking-tight']">{{
               tier.priceMonthly
             }}</span>
-            <span :class="[tier.featured ? '' : '', 'text-gray-500 text-base']">/month</span>
+            <span :class="[tier.featured ? '' : '', 'text-gray-500 text-base']">{{
+              $t('settings.per-month')
+            }}</span>
           </p>
           <p :class="[tier.featured ? '' : '', 'text-gray-500 mt-4 text-base/7']">
             {{ tier.description }}
