@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useStore } from '../stores/index'
 import { getDatabase, ref as dbRef, push, update } from 'firebase/database'
 import { format } from 'date-fns'
@@ -12,6 +13,7 @@ import PrimaryButton from '../components/PrimaryButton.vue'
 
 const router = useRouter()
 const store = useStore()
+const { t } = useI18n()
 
 // Reactive state
 const phe = ref(null)
@@ -58,12 +60,19 @@ const save = () => {
       kcal: totalKcal
     })
   } else {
-    push(dbRef(db, `${user.value.id}/pheDiary`), {
-      date: formattedDate,
-      phe: calculatePhe(),
-      kcal: calculateKcal(),
-      log: [logEntry]
-    })
+    if (
+      store.pheDiary.length >= 100 &&
+      store.settings.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+    ) {
+      alert(t('phe-diary.limit'))
+    } else {
+      push(dbRef(db, `${user.value.id}/pheDiary`), {
+        date: formattedDate,
+        phe: calculatePhe(),
+        kcal: calculateKcal(),
+        log: [logEntry]
+      })
+    }
   }
   router.push('/')
 }

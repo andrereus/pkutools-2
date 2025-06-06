@@ -188,12 +188,19 @@ const save = () => {
       kcal: totalKcal
     })
   } else {
-    push(dbRef(db, `${user.value.id}/pheDiary`), {
-      date: date.value,
-      phe: calculatePhe(),
-      kcal: calculateKcal(),
-      log: [newLogEntry]
-    })
+    if (
+      pheDiary.value.length >= 100 &&
+      settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
+    ) {
+      alert(t('phe-diary.limit'))
+    } else {
+      push(dbRef(db, `${user.value.id}/pheDiary`), {
+        date: date.value,
+        phe: calculatePhe(),
+        kcal: calculateKcal(),
+        log: [newLogEntry]
+      })
+    }
   }
   close()
 }
