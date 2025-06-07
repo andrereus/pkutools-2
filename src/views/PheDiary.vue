@@ -617,8 +617,16 @@ const updateData = (timeline) => {
         </div>
       </ModalDialog>
 
-      <SecondaryButton :text="$t('phe-diary.export-food')" @click="exportAllFoodItems" />
-      <SecondaryButton :text="$t('phe-diary.export-days')" @click="exportDailyPheTotals" />
+      <SecondaryButton
+        v-if="license"
+        :text="$t('phe-diary.export-food')"
+        @click="exportAllFoodItems"
+      />
+      <SecondaryButton
+        v-if="license"
+        :text="$t('phe-diary.export-days')"
+        @click="exportDailyPheTotals"
+      />
 
       <p v-if="!license" class="mt-3 text-sm">
         <RouterLink to="/settings">
