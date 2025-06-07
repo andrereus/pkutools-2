@@ -20,6 +20,7 @@ const router = useRouter()
 const route = useRoute()
 const store = useStore()
 const { t } = useI18n()
+const publicPath = import.meta.env.BASE_URL
 
 // Reactive state
 const pheLog = ref(false)
@@ -171,7 +172,7 @@ onMounted(() => {
             class="max-w-4xl w-full rounded-xl bg-gray-900/5 dark:bg-gray-800 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-gray-700 lg:rounded-2xl lg:p-4"
           >
             <video
-              src="../assets/demo.mp4"
+              :src="publicPath + 'video/demo.mp4'"
               autoplay
               loop
               muted
