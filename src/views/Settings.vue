@@ -39,6 +39,19 @@ const unitOptions = computed(() => [
 
 const tiers = computed(() => [
   {
+    name: t('settings.tier-basic'),
+    id: 'tier-basic',
+    href: '#',
+    priceMonthly: '€0',
+    description: t('settings.tier-basic-desc'),
+    features: [
+      t('settings.tier-basic-feature-1'),
+      t('settings.tier-basic-feature-2'),
+      t('settings.tier-basic-feature-3')
+    ],
+    featured: false
+  },
+  {
     name: t('settings.tier-unlimited'),
     id: 'tier-unlimited',
     href: '#',
@@ -51,19 +64,6 @@ const tiers = computed(() => [
       t('settings.tier-unlimited-feature-4')
     ],
     featured: true
-  },
-  {
-    name: t('settings.tier-basic'),
-    id: 'tier-basic',
-    href: '#',
-    priceMonthly: '€0',
-    description: t('settings.tier-basic-desc'),
-    features: [
-      t('settings.tier-basic-feature-1'),
-      t('settings.tier-basic-feature-2'),
-      t('settings.tier-basic-feature-3')
-    ],
-    featured: false
   }
 ])
 
