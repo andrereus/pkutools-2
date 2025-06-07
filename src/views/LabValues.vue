@@ -314,7 +314,7 @@ const triggerDownload = (csvContent) => {
         <p class="text-sm mt-4">{{ $t('lab-values.unit-info') }}</p>
       </ModalDialog>
 
-      <SecondaryButton :text="$t('lab-values.export')" @click="exportLabValues" />
+      <SecondaryButton v-if="license" :text="$t('lab-values.export')" @click="exportLabValues" />
 
       <p v-if="!license" class="mt-3 text-sm">
         <RouterLink to="/settings">

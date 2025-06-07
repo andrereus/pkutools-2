@@ -335,7 +335,7 @@ const setIcon = (item, close) => {
         </div>
       </ModalDialog>
 
-      <SecondaryButton :text="$t('common.export')" @click="exportOwnFood" />
+      <SecondaryButton v-if="license" :text="$t('common.export')" @click="exportOwnFood" />
 
       <p v-if="!license" class="mt-3 text-sm">
         <RouterLink to="/settings">
