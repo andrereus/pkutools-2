@@ -165,11 +165,13 @@
     "tier-unlimited-feature-3": "Alimentos propios ilimitados",
     "tier-unlimited-feature-4": "Acceso al Asistente",
     "tier-unlimited-feature-5": "Exportación CSV (Excel)",
+    "tier-unlimited-feature-6": "Publicidad gratuita",
     "tier-basic": "Basic",
     "tier-basic-desc": "Uso gratuito",
     "tier-basic-feature-1": "50 entradas en el diario",
     "tier-basic-feature-2": "25 entradas de valores de laboratorio",
     "tier-basic-feature-3": "125 alimentos propios",
+    "tier-basic-feature-4": "Publicidad gratuita",
     "per-month": "/mes"
   },
   "email-auth": {

@@ -165,11 +165,13 @@
     "tier-unlimited-feature-3": "Unbegrenzte eigene Lebensmittel",
     "tier-unlimited-feature-4": "Zugriff auf Assistent",
     "tier-unlimited-feature-5": "CSV-Export (Excel)",
+    "tier-unlimited-feature-6": "Werbefrei",
     "tier-basic": "Basic",
     "tier-basic-desc": "Kostenlose Nutzung",
     "tier-basic-feature-1": "50 Tagebuch-Einträge",
     "tier-basic-feature-2": "25 Laborwert-Einträge",
     "tier-basic-feature-3": "125 eigene Lebensmittel",
+    "tier-basic-feature-4": "Werbefrei",
     "per-month": "/monat"
   },
   "email-auth": {
