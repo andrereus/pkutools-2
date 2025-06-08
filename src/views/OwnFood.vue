@@ -175,10 +175,11 @@ const exportOwnFood = () => {
   let r = confirm(t('common.export') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Name,Phe per 100g\n'
+    csvContent += 'Name,Phe per 100g,Kcal per 100g\n'
 
     ownFood.value.forEach((entry) => {
-      const row = [escapeCSV(entry.name), escapeCSV(entry.phe)].join(',') + '\n'
+      const row =
+        [escapeCSV(entry.name), escapeCSV(entry.phe), escapeCSV(entry.kcal)].join(',') + '\n'
       csvContent += row
     })
     triggerDownload(csvContent)
