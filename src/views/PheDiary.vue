@@ -338,7 +338,7 @@ const exportAllFoodItems = () => {
   let r = confirm(t('phe-diary.export-food') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Date,Name,Weight,Phe\n'
+    csvContent += 'Date,Name,Weight,Phe,Kcal\n'
 
     pheDiary.value.forEach((diaryEntry) => {
       const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
@@ -349,7 +349,8 @@ const exportAllFoodItems = () => {
               escapeCSV(date),
               escapeCSV(logEntry.name),
               escapeCSV(logEntry.weight),
-              escapeCSV(logEntry.phe)
+              escapeCSV(logEntry.phe),
+              escapeCSV(logEntry.kcal)
             ].join(',') + '\n'
           csvContent += row
         })
@@ -363,11 +364,12 @@ const exportDailyPheTotals = () => {
   let r = confirm(t('phe-diary.export-days') + '?')
   if (r === true) {
     let csvContent = 'data:text/csv;charset=utf-8,'
-    csvContent += 'Date,Total Phe\n'
+    csvContent += 'Date,Total Phe,Total Kcal\n'
 
     pheDiary.value.forEach((diaryEntry) => {
       const date = formatISO(parseISO(diaryEntry.date), { representation: 'date' })
-      const row = [escapeCSV(date), escapeCSV(diaryEntry.phe)].join(',') + '\n'
+      const row =
+        [escapeCSV(date), escapeCSV(diaryEntry.phe), escapeCSV(diaryEntry.kcal)].join(',') + '\n'
       csvContent += row
     })
     triggerDownload(csvContent)
