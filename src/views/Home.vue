@@ -211,36 +211,6 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="py-12 sm:py-16 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
-            {{ $t('home.about-title') }}
-          </h2>
-          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {{ $t('home.about-description') }}
-          </p>
-          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a href="https://ko-fi.com/M4M0GIVPI" target="_blank">
-              <img
-                height="36"
-                style="border: 0px; height: 36px"
-                src="https://storage.ko-fi.com/cdn/kofi5.png?v=6"
-                border="0"
-                alt="Buy Me a Coffee at ko-fi.com"
-              />
-            </a>
-
-            <a href="https://www.buymeacoffee.com/andrereus" target="_blank">
-              <img
-                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=andrereus&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
-                alt="Buy Me A Coffee"
-                class="w-40"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div
         class="mx-auto my-6 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:gap-y-0 lg:max-w-3xl lg:grid-cols-2"
       >
@@ -345,6 +315,36 @@ onMounted(() => {
             >
               {{ $t('app.install') }} <span aria-hidden="true">→</span>
             </RouterLink>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 sm:pt-12 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
+            {{ $t('home.about-title') }}
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {{ $t('home.about-description') }}
+          </p>
+          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a href="https://ko-fi.com/M4M0GIVPI" target="_blank">
+              <img
+                height="36"
+                style="border: 0px; height: 36px"
+                src="https://storage.ko-fi.com/cdn/kofi5.png?v=6"
+                border="0"
+                alt="Buy Me a Coffee at ko-fi.com"
+              />
+            </a>
+
+            <a href="https://www.buymeacoffee.com/andrereus" target="_blank">
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=andrereus&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                alt="Buy Me A Coffee"
+                class="w-40"
+              />
+            </a>
           </div>
         </div>
       </div>
