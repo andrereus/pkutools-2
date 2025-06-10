@@ -271,7 +271,7 @@ const setIcon = (item, close) => {
         @delete="deleteItem"
         @close="closeModal"
       >
-        <Popover>
+        <Popover v-if="license">
           <PopoverButton class="my-1">
             <img
               :src="publicPath + 'img/food-icons/' + editedItem.icon + '.svg'"
