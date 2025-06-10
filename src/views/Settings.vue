@@ -63,8 +63,7 @@ const tiers = computed(() => [
       t('settings.tier-unlimited-feature-3'),
       t('settings.tier-unlimited-feature-4'),
       t('settings.tier-unlimited-feature-5'),
-      t('settings.tier-unlimited-feature-6'),
-      t('settings.tier-unlimited-feature-7')
+      t('settings.tier-unlimited-feature-6')
     ],
     featured: true
   }
