@@ -159,7 +159,7 @@
     "theme-light": "Helles Design",
     "theme-dark": "Dunkles Design",
     "tier-lifetime": "Lifetime",
-    "tier-lifetime-desc": "Einmalige Zahlung",
+    "tier-lifetime-desc": "Unbegrenzt mit einmaliger Zahlung",
     "tier-unlimited": "Unlimited",
     "tier-unlimited-desc": "Komplettes Diät Management",
     "tier-unlimited-feature-1": "Unbegrenzte Tagebuch-Einträge",
@@ -175,7 +175,8 @@
     "tier-basic-feature-3": "125 eigene Lebensmittel",
     "per-month": "/monat",
     "one-time": "/Einmalig",
-    "get-started": "Loslegen"
+    "subscribe": "Unlimited abonnieren",
+    "buy": "Lifetime kaufen"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",

@@ -159,7 +159,7 @@
     "theme-light": "Tema luminoso",
     "theme-dark": "Tema oscuro",
     "tier-lifetime": "Lifetime",
-    "tier-lifetime-desc": "Pago único",
+    "tier-lifetime-desc": "Ilimitado con pago único",
     "tier-unlimited": "Unlimited",
     "tier-unlimited-desc": "Gestión completa de la dieta",
     "tier-unlimited-feature-1": "Entradas ilimitadas en el diario",
@@ -175,7 +175,8 @@
     "tier-basic-feature-3": "125 alimentos propios",
     "per-month": "/mes",
     "one-time": "/Una vez",
-    "get-started": "Empezar"
+    "subscribe": "Suscribirse a Unlimited",
+    "buy": "Comprar Lifetime"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
