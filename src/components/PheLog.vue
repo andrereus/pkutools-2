@@ -193,7 +193,7 @@ const save = () => {
     })
   } else {
     if (
-      pheDiary.value.length >= 50 &&
+      pheDiary.value.length >= 30 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
       alert(t('app.limit'))
@@ -212,7 +212,7 @@ const save = () => {
 const saveResult = () => {
   const db = getDatabase()
   if (
-    pheDiary.value.length >= 50 &&
+    pheDiary.value.length >= 30 &&
     settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
   ) {
     alert(t('app.limit'))
