@@ -158,10 +158,10 @@
     "theme-system": "Gerätedesign verwenden",
     "theme-light": "Helles Design",
     "theme-dark": "Dunkles Design",
-    "tier-lifetime": "Lifetime",
-    "tier-lifetime-desc": "Unbegrenzt mit einmaliger Zahlung",
-    "tier-unlimited": "Unlimited",
-    "tier-unlimited-desc": "Komplettes Diät Management",
+    "tier-lifetime": "PKU Tools Lifetime",
+    "tier-lifetime-desc": "Unterstütze einmalig und erhalte Zugang zu allen Funktionen.",
+    "tier-unlimited": "PKU Tools Unlimited",
+    "tier-unlimited-desc": "Unterstütze monatlich und erhalte intelligentes Diät Management.",
     "tier-unlimited-feature-1": "Unbegrenzte Tagebuch-Einträge",
     "tier-unlimited-feature-2": "Unbegrenzte Laborwert-Einträge",
     "tier-unlimited-feature-3": "Unbegrenzte eigene Lebensmittel",
@@ -175,8 +175,8 @@
     "tier-basic-feature-3": "125 eigene Lebensmittel",
     "per-month": "/monat",
     "one-time": "/Einmalig",
-    "subscribe": "Unlimited abonnieren",
-    "buy": "Lifetime kaufen"
+    "subscribe": "Supporter werden",
+    "buy": "Supporter werden"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
