@@ -98,7 +98,7 @@ const save = () => {
     })
   } else {
     if (
-      ownFood.value.length >= 125 &&
+      ownFood.value.length >= 50 &&
       settings.value.license !== import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
     ) {
       alert(t('app.limit'))
