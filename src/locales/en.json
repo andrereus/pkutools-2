@@ -158,6 +158,8 @@
     "theme-system": "Use device theme",
     "theme-light": "Light theme",
     "theme-dark": "Dark theme",
+    "tier-lifetime": "Lifetime",
+    "tier-lifetime-desc": "One-time payment",
     "tier-unlimited": "Unlimited",
     "tier-unlimited-desc": "Complete diet management",
     "tier-unlimited-feature-1": "Unlimited diary entries",
@@ -171,7 +173,9 @@
     "tier-basic-feature-1": "50 diary entries",
     "tier-basic-feature-2": "25 lab value entries",
     "tier-basic-feature-3": "125 own foods",
-    "per-month": "/month"
+    "per-month": "/month",
+    "one-time": "/One-time",
+    "get-started": "Get started"
   },
   "email-auth": {
     "title": "Sign in with Email",

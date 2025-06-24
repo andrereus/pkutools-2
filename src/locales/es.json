@@ -158,6 +158,8 @@
     "theme-system": "Utilizar el tema del dispositivo",
     "theme-light": "Tema luminoso",
     "theme-dark": "Tema oscuro",
+    "tier-lifetime": "Lifetime",
+    "tier-lifetime-desc": "Pago único",
     "tier-unlimited": "Unlimited",
     "tier-unlimited-desc": "Gestión completa de la dieta",
     "tier-unlimited-feature-1": "Entradas ilimitadas en el diario",
@@ -171,7 +173,9 @@
     "tier-basic-feature-1": "50 entradas en el diario",
     "tier-basic-feature-2": "25 entradas de valores de laboratorio",
     "tier-basic-feature-3": "125 alimentos propios",
-    "per-month": "/mes"
+    "per-month": "/mes",
+    "one-time": "/Una vez",
+    "get-started": "Empezar"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",

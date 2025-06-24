@@ -158,6 +158,8 @@
     "theme-system": "Gerätedesign verwenden",
     "theme-light": "Helles Design",
     "theme-dark": "Dunkles Design",
+    "tier-lifetime": "Lifetime",
+    "tier-lifetime-desc": "Einmalige Zahlung",
     "tier-unlimited": "Unlimited",
     "tier-unlimited-desc": "Komplettes Diät Management",
     "tier-unlimited-feature-1": "Unbegrenzte Tagebuch-Einträge",
@@ -171,7 +173,9 @@
     "tier-basic-feature-1": "50 Tagebuch-Einträge",
     "tier-basic-feature-2": "25 Laborwert-Einträge",
     "tier-basic-feature-3": "125 eigene Lebensmittel",
-    "per-month": "/monat"
+    "per-month": "/monat",
+    "one-time": "/Einmalig",
+    "get-started": "Loslegen"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
