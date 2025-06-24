@@ -158,10 +158,10 @@
     "theme-system": "Use device theme",
     "theme-light": "Light theme",
     "theme-dark": "Dark theme",
-    "tier-lifetime": "Lifetime",
-    "tier-lifetime-desc": "Unlimited with one-time payment",
-    "tier-unlimited": "Unlimited",
-    "tier-unlimited-desc": "Complete diet management",
+    "tier-lifetime": "PKU Tools Lifetime",
+    "tier-lifetime-desc": "Support once and get access to all features.",
+    "tier-unlimited": "PKU Tools Unlimited",
+    "tier-unlimited-desc": "Support monthly and get intelligent diet management.",
     "tier-unlimited-feature-1": "Unlimited diary entries",
     "tier-unlimited-feature-2": "Unlimited lab value entries",
     "tier-unlimited-feature-3": "Unlimited own foods",
@@ -175,8 +175,8 @@
     "tier-basic-feature-3": "125 own foods",
     "per-month": "/month",
     "one-time": "/One-time",
-    "subscribe": "Subscribe to Unlimited",
-    "buy": "Buy Lifetime"
+    "subscribe": "Become a supporter",
+    "buy": "Become a supporter"
   },
   "email-auth": {
     "title": "Sign in with Email",
