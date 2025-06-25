@@ -224,6 +224,52 @@ onMounted(() => {
         </div>
       </div>
 
+      <div class="pt-8 sm:pt-12 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
+            {{ $t('home.signin-install') }}
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {{ $t('home.suggestion') }}
+          </p>
+          <div
+            v-if="!userIsAuthenticated"
+            class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          >
+            <a
+              @click.prevent="signInGoogle"
+              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
+            >
+              {{ $t('app.signin-google') }}
+            </a>
+            <RouterLink
+              to="/email-auth"
+              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+            >
+              {{ $t('email-auth.title') }}
+            </RouterLink>
+          </div>
+          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
+              target="_blank"
+            >
+              <img
+                alt="Get it on Google Play"
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                class="inline-block w-28 align-middle"
+              />
+            </a>
+            <RouterLink
+              to="/help"
+              class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10"
+            >
+              {{ $t('app.install') }} <span aria-hidden="true">→</span>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+
       <div
         class="mx-auto my-6 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:gap-y-0 lg:max-w-5xl lg:grid-cols-3"
       >
@@ -284,52 +330,6 @@ onMounted(() => {
             v-if="tier.id === 'tier-lifetime'"
             >{{ $t('settings.buy') }}</a
           >
-        </div>
-      </div>
-
-      <div class="pt-8 sm:pt-12 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
-            {{ $t('home.signin-install') }}
-          </h2>
-          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {{ $t('home.suggestion') }}
-          </p>
-          <div
-            v-if="!userIsAuthenticated"
-            class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-          >
-            <a
-              @click.prevent="signInGoogle"
-              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer"
-            >
-              {{ $t('app.signin-google') }}
-            </a>
-            <RouterLink
-              to="/email-auth"
-              class="rounded-sm bg-sky-500 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-sky-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-            >
-              {{ $t('email-auth.title') }}
-            </RouterLink>
-          </div>
-          <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.pkutools.twa"
-              target="_blank"
-            >
-              <img
-                alt="Get it on Google Play"
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                class="inline-block w-28 align-middle"
-              />
-            </a>
-            <RouterLink
-              to="/help"
-              class="rounded-sm bg-black/5 dark:bg-white/15 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-300 shadow-xs hover:bg-black/10 dark:hover:bg-white/10"
-            >
-              {{ $t('app.install') }} <span aria-hidden="true">→</span>
-            </RouterLink>
-          </div>
         </div>
       </div>
 
