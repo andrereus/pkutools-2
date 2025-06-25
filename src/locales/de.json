@@ -50,8 +50,10 @@
   "home": {
     "title": "Start",
     "features": "Funktionen",
-    "signin-install": "Anmeldung und Installation",
-    "suggestion": "Kann auf jedem Gerät installiert werden (Android, iOS, Mac, Windows).",
+    "signin": "Überall anmelden",
+    "signin-desc": "Einfach auf jedem Gerät anmelden. Daten synchronisieren in Echtzeit.",
+    "install": "Überall installieren",
+    "install-desc": "Kann auf jedem Gerät installiert werden (Android, iOS, Mac, Windows).",
     "about-title": "Von der Idee zur App",
     "about-description": "Vom Entwickler einer der ersten PKU Apps für Android \"Phe Rechner\", sowie vom \"PKU Manager\". Entwicklung von PKU Apps seit 2013."
   },

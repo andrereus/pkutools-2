@@ -227,10 +227,10 @@ onMounted(() => {
       <div class="pt-8 sm:pt-12 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
-            {{ $t('home.signin-install') }}
+            {{ $t('home.signin') }}
           </h2>
           <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {{ $t('home.suggestion') }}
+            {{ $t('home.signin-desc') }}
           </p>
           <div
             v-if="!userIsAuthenticated"
@@ -249,6 +249,17 @@ onMounted(() => {
               {{ $t('email-auth.title') }}
             </RouterLink>
           </div>
+        </div>
+      </div>
+
+      <div class="pt-8 sm:pt-12 pb-8 sm:pb-12 px-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
+            {{ $t('home.install') }}
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {{ $t('home.install-desc') }}
+          </p>
           <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="https://play.google.com/store/apps/details?id=com.pkutools.twa"

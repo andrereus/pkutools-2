@@ -50,8 +50,10 @@
   "home": {
     "title": "Accueil",
     "features": "Fonctionnalités",
-    "signin-install": "Inscription et installation",
-    "suggestion": "Peut être installé sur n'importe quel appareil (Android, iOS, Mac, Windows).",
+    "signin": "Connectez-vous partout",
+    "signin-desc": "Connectez-vous facilement sur n'importe quel appareil. Les données se synchronisent en temps réel.",
+    "install": "Installez partout",
+    "install-desc": "Peut être installé sur n'importe quel appareil (Android, iOS, Mac, Windows).",
     "about-title": "De l'idée à l'application",
     "about-description": "Par le développeur de l'une des premières applications PKU pour Android \"Phe Rechner\", ainsi que du \"PKU Manager\". Développement de PKU Apps depuis 2013."
   },
