@@ -177,8 +177,8 @@
     "tier-basic-feature-3": "50 own foods",
     "per-month": "/month",
     "one-time": "/One-time",
-    "subscribe": "Become a supporter",
-    "buy": "Become a supporter"
+    "subscribe": "Join",
+    "buy": "Join"
   },
   "email-auth": {
     "title": "Sign in with Email",

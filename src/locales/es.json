@@ -177,8 +177,8 @@
     "tier-basic-feature-3": "50 alimentos propios",
     "per-month": "/mes",
     "one-time": "/Una vez",
-    "subscribe": "Hazte simpatizante",
-    "buy": "Hazte simpatizante"
+    "subscribe": "Unirme",
+    "buy": "Unirme"
   },
   "email-auth": {
     "title": "Iniciar sesión con correo electrónico",
