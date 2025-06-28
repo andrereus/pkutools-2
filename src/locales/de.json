@@ -177,8 +177,8 @@
     "tier-basic-feature-3": "50 eigene Lebensmittel",
     "per-month": "/monat",
     "one-time": "/Einmalig",
-    "subscribe": "Supporter werden",
-    "buy": "Supporter werden"
+    "subscribe": "Abonnieren",
+    "buy": "Abonnieren"
   },
   "email-auth": {
     "title": "Anmelden mit E-Mail",
