@@ -14,6 +14,7 @@ import Help from '../views/Help.vue'
 import Imprint from '../views/Imprint.vue'
 import Disclaimer from '../views/Disclaimer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
+import { usePostHog } from '../composables/usePostHog'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -95,5 +96,7 @@ const router = createRouter({
     }
   ]
 })
+
+const { posthog } = usePostHog()
 
 export default router
