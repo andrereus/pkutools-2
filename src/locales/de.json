@@ -61,7 +61,6 @@
     "title": "Phe Suche",
     "description": "Suche nach Phe-Werten.",
     "search": "Lebensmittel suchen",
-    "source": "Quelle: Übersetzt von USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Dies wird z.B. auch für Nährwertangaben in der Google Seitenleiste verwendet.",
     "search-info": "Verfeinere deine Suche mit mehreren Wörtern, z.B. \"äpfel roh\" oder \"kartoffeln gekocht\". Quelle: fdc.nal.usda.gov"
   },
   "phe-calculator": {
@@ -216,7 +215,7 @@
     "title": "Impressum",
     "description": "Impressum von PKU Tools",
     "email": "E-Mail",
-    "sources": "Quellen: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
+    "sources": "Quellen: USDA, FoodData Central (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Disclaimer",
