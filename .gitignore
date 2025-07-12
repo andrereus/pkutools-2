@@ -33,3 +33,5 @@ coverage
 .env.local
 .vercel
 emulator-data
+# Sentry Config File
+.env.sentry-build-plugin
