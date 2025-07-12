@@ -61,7 +61,6 @@
     "title": "Búsqueda de Phe",
     "description": "Buscar valores de Phe.",
     "search": "Buscar alimentos",
-    "source": "Fuente: Traducido por USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Por ejemplo, también se utiliza para la información nutricional en la barra lateral de Google.",
     "search-info": "Afine su búsqueda con varias palabras, por ejemplo \"manzanas crudas\" o \"patatas cocidas\". Fuente: fdc.nal.usda.gov"
   },
   "phe-calculator": {
@@ -216,7 +215,7 @@
     "title": "Pie de imprenta",
     "description": "Pie de imprenta de PKU Tools",
     "email": "Correo electrónico",
-    "sources": "Fuentes: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
+    "sources": "Fuentes: USDA, FoodData Central (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Descargo de responsabilidad",

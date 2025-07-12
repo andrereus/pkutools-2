@@ -61,7 +61,6 @@
     "title": "Recherche de Phe",
     "description": "Recherche de valeurs de Phe.",
     "search": "Chercher des aliments",
-    "source": "Source: Traduit par USDA, FoodData Central, 2019 (fdc.nal.usda.gov). Par exemple, elle est également utilisée pour les informations nutritionnelles dans la barre latérale de Google.",
     "search-info": "Affine ta recherche avec plusieurs mots, par exemple \"pommes crues\" ou \"pommes de terre cuites\". Source: fdc.nal.usda.gov"
   },
   "phe-calculator": {
@@ -216,7 +215,7 @@
     "title": "Mentions légales",
     "description": "Mentions légales de PKU Tools",
     "email": "Email",
-    "sources": "Sources: USDA, FoodData Central, 2019 (fdc.nal.usda.gov) & openfoodfacts.org"
+    "sources": "Sources: USDA, FoodData Central (fdc.nal.usda.gov) & openfoodfacts.org"
   },
   "disclaimer": {
     "title": "Avertissement",
