@@ -438,14 +438,11 @@ const part3 = ref('com')
     <p>We may use third-party Service providers to monitor and analyze the use of our Service.</p>
     <ul>
       <li>
-        <p><strong>Smartlook</strong></p>
+        <p><strong>PostHog</strong></p>
         <p>
           Their Privacy Policy can be viewed at
-          <a
-            href="https://help.smartlook.com/docs/privacy-policy"
-            rel="external nofollow noopener"
-            target="_blank"
-            >https://help.smartlook.com/docs/privacy-policy</a
+          <a href="https://posthog.com/privacy" rel="external nofollow noopener" target="_blank"
+            >https://posthog.com/privacy</a
           >
         </p>
       </li>
@@ -471,6 +468,15 @@ const part3 = ref('com')
             rel="external nofollow noopener"
             target="_blank"
             >https://policies.google.com/privacy</a
+          >
+        </p>
+      </li>
+      <li>
+        <p><strong>Sentry</strong></p>
+        <p>
+          Their Privacy Policy can be viewed at
+          <a href="https://sentry.io/privacy" rel="external nofollow noopener" target="_blank"
+            >https://sentry.io/privacy</a
           >
         </p>
       </li>
