@@ -19,7 +19,6 @@ import { getDatabase, connectDatabaseEmulator } from 'firebase/database'
 import VueApexCharts from 'vue3-apexcharts'
 
 import * as Sentry from '@sentry/vue'
-import LogRocket from 'logrocket'
 
 const i18n = createI18n({
   legacy: false,
@@ -66,71 +65,6 @@ Sentry.init({
   // Session Replay
   replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
   replaysOnErrorSampleRate: 1.0 // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
-})
-
-LogRocket.init('sgnoqw/pku-tools', {
-  dom: {
-    inputSanitizer: true
-  },
-  network: {
-    requestSanitizer: (request) => {
-      let sanitizedRequest = { ...request }
-
-      // if the url contains 'ignore'
-      if (request.url.toLowerCase().indexOf('ignore') !== -1) {
-        // ignore the request response pair
-        return null
-      }
-
-      // scrub header value from request
-      if (request.headers['x-auth-token']) {
-        sanitizedRequest.headers['x-auth-token'] = ''
-      }
-
-      // scrub header pair from request
-      sanitizedRequest.headers['x-secret'] = null
-
-      // if the url contains 'delete'
-      if (request.url.toLowerCase().indexOf('delete') !== -1) {
-        // scrub out the body
-        return {
-          ...sanitizedRequest,
-          body: null
-        }
-      }
-
-      // make sure you return the modified request
-      return sanitizedRequest
-    }
-  },
-  network: {
-    responseSanitizer: (response) => {
-      if (response.headers['x-secret']) {
-        // removes all response data
-        return null
-      }
-
-      // scrubs response body
-      return {
-        ...response,
-        body: null
-      }
-    }
-  },
-  browser: {
-    urlSanitizer: (url) => {
-      let sanitizedUrl = url
-
-      // redact the path following /ssn/ from the URL
-      sanitizedUrl = sanitizedUrl.replace(/\/ssn\/([^\/]*)/i, '/ssn/**redacted**')
-
-      // redact the value of the query parameter secret_key
-      sanitizedUrl = sanitizedUrl.replace(/secret_key=([^&]*)/, 'secret_key=**redacted**')
-
-      // make sure you return the sanitized URL string
-      return sanitizedUrl
-    }
-  }
 })
 
 app.use(createPinia())
