@@ -407,7 +407,7 @@ const iconMap = {
                       <a
                         :class="[
                           active ? 'bg-gray-100 dark:bg-gray-700' : '',
-                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300 sl-mask'
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
                         ]"
                         @click.prevent="
                           () => {
