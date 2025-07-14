@@ -55,7 +55,8 @@
     "install": "Instala en cualquier lugar",
     "install-desc": "Se puede instalar en cualquier dispositivo (Android, iOS, Mac, Windows).",
     "about-title": "De la idea a la aplicación",
-    "about-description": "Del desarrollador de una de las primeras apps PKU para Android \"Phe Rechner\", así como del \"PKU Manager\". Desarrollo de aplicaciones PKU desde 2013."
+    "about-description": "Del desarrollador de una de las primeras apps PKU para Android \"Phe Rechner\", así como del \"PKU Manager\". Desarrollo de aplicaciones PKU desde 2013.",
+    "social": "Manténgase al día"
   },
   "phe-search": {
     "title": "Búsqueda de Phe",
