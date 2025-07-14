@@ -18,6 +18,7 @@ import NumberInput from '../components/NumberInput.vue'
 import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 import PageHeader from '../components/PageHeader.vue'
+import LabValuesCard from '../components/LabValuesCard.vue'
 
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
@@ -260,7 +261,7 @@ const triggerDownload = (csvContent) => {
         :series="graph"
         class="-mb-2"
       ></apexchart>
-
+      <LabValuesCard />
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">
         <tr

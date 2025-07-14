@@ -19,6 +19,8 @@ import SecondaryButton from '../components/SecondaryButton.vue'
 import DateInput from '../components/DateInput.vue'
 import TextInput from '../components/TextInput.vue'
 import PageHeader from '../components/PageHeader.vue'
+import MotivationCard from '../components/MotivationCard.vue'
+import PheDiaryCard from '../components/PheDiaryCard.vue'
 
 const store = useStore()
 const { t, locale: i18nLocale } = useI18n()
@@ -478,6 +480,9 @@ const updateData = (timeline) => {
           class="-mb-2"
         ></apexchart>
       </div>
+
+      <MotivationCard class="mb-3" />
+      <PheDiaryCard />
 
       <!-- TODO: Add sort feature -->
       <DataTable :headers="tableHeaders" class="mb-8">

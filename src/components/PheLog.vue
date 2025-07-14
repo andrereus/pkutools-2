@@ -14,6 +14,8 @@ import TextInput from './TextInput.vue'
 import NumberInput from './NumberInput.vue'
 import PrimaryButton from './PrimaryButton.vue'
 import PageHeader from './PageHeader.vue'
+import CurrentTipCard from './CurrentTipCard.vue'
+import TodaysTipCard from './TodaysTipCard.vue'
 
 const router = useRouter()
 const store = useStore()
@@ -321,6 +323,9 @@ const nextDay = () => {
           ></div>
         </div>
       </div>
+
+      <CurrentTipCard class="mb-3" />
+      <TodaysTipCard />
 
       <DataTable :headers="tableHeaders" class="mb-6">
         <tr
