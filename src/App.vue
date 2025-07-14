@@ -213,7 +213,7 @@ const iconMap = {
   <div class="min-h-screen flex flex-col app-container-safe-area dark:text-white">
     <div
       as="nav"
-      class="fixed top-0 w-full app-container-safe-area z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
+      class="fixed top-0 w-full z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
     >
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 justify-between">
