@@ -211,14 +211,17 @@ const iconMap = {
 
 <template>
   <div class="min-h-screen flex flex-col app-container-safe-area dark:text-white">
-    <div as="nav" class="bg-white shadow-sm dark:bg-gray-800">
+    <div
+      as="nav"
+      class="fixed top-0 w-full z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
+    >
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 justify-between">
           <div class="relative inset-y-0 left-0 flex items-center">
             <MenuComponent as="div" class="relative">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                  class="relative rounded-full p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:text-gray-200 dark:hover:text-white cursor-pointer"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.main-menu') }}</span>
@@ -277,13 +280,13 @@ const iconMap = {
           >
             <button
               type="button"
-              class="headway relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white"
+              class="headway relative rounded-full p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:text-gray-200 dark:hover:text-white"
             ></button>
 
             <MenuComponent as="div" class="relative ml-2">
               <div>
                 <MenuButton
-                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:bg-gray-800 dark:text-gray-200 dark:hover:text-white mr-2 cursor-pointer"
+                  class="relative rounded-full p-1 text-gray-600 hover:text-black focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 uppercase dark:text-gray-200 dark:hover:text-white mr-2 cursor-pointer"
                 >
                   {{ locale }}
                 </MenuButton>
@@ -323,7 +326,7 @@ const iconMap = {
             <MenuComponent as="div" class="relative ml-3">
               <div>
                 <MenuButton
-                  class="relative flex rounded-full bg-white text-sm focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:bg-gray-800 cursor-pointer"
+                  class="relative flex rounded-full text-sm focus:outline-hidden focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 cursor-pointer"
                 >
                   <span class="absolute -inset-1.5" />
                   <span class="sr-only">{{ $t('app.account-menu') }}</span>
@@ -501,7 +504,7 @@ const iconMap = {
       </div>
     </div>
 
-    <div class="pb-5 lg:pb-10 grow">
+    <div class="pb-5 lg:pb-10 grow pt-28">
       <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <RouterView></RouterView>
