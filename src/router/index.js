@@ -93,7 +93,10 @@ const router = createRouter({
       name: 'Privacy Policy',
       component: PrivacyPolicy
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router
