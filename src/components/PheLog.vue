@@ -110,6 +110,8 @@ const lastAdded = computed(() => {
   return sortedItems
 })
 
+const isToday = computed(() => date.value === format(new Date(), 'yyyy-MM-dd'))
+
 // Methods
 const signInGoogle = async () => {
   try {
@@ -324,8 +326,8 @@ const nextDay = () => {
         </div>
       </div>
 
-      <CurrentTipCard class="mb-3" />
-      <TodaysTipCard />
+      <CurrentTipCard v-if="isToday" class="mb-3" />
+      <TodaysTipCard v-if="isToday" />
 
       <DataTable :headers="tableHeaders" class="mb-6">
         <tr

@@ -274,7 +274,7 @@
     "keep-going": "Weiter so!",
     "start-tracking": "Beginne deine Ernährung täglich zu protokollieren, um eine Serie aufzubauen und personalisierte Einblicke zu erhalten!",
     "phe-diary": "Tagebuch",
-    "phe-stats-average": "In den letzten 14 Tagen lag deine durchschnittliche Phe-Aufnahme bei {average} mg.",
+    "phe-stats-average": "In den letzten 14 Tagen (ohne heute) lag deine durchschnittliche Phe-Aufnahme bei {average} mg.",
     "phe-stats-deviation": "Die durchschnittliche Abweichung vom Optimum beträgt {deviation}%."
   },
   "badges": {

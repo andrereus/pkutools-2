@@ -10,6 +10,7 @@ const { t } = useI18n()
 
 const settings = computed(() => store.settings)
 const pheDiary = computed(() => store.pheDiary)
+const showCard = computed(() => pheDiary.value.length >= 2)
 
 // Helper to get diary entries for date range
 const getDiaryEntriesForDays = (days, includeToday = false) => {
@@ -43,7 +44,7 @@ const pheStats = computed(() => {
 </script>
 
 <template>
-  <div class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm">
+  <div v-if="showCard" class="overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-sm">
     <div class="px-4 py-5 sm:p-6">
       <div class="flex items-center gap-3 font-medium mb-2">
         <Book class="h-5 w-5" />
