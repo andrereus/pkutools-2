@@ -214,6 +214,7 @@ const iconMap = {
     <div
       as="nav"
       class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
+      style="padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right)"
     >
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 justify-between">
