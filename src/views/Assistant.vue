@@ -10,17 +10,11 @@ import CurrentTipCard from '../components/CurrentTipCard.vue'
 import TodaysTipCard from '../components/TodaysTipCard.vue'
 import PheDiaryCard from '../components/PheDiaryCard.vue'
 import LabValuesCard from '../components/LabValuesCard.vue'
-import TiersCard from '../components/TiersCard.vue'
 
 const store = useStore()
 const { t } = useI18n()
 
 const userIsAuthenticated = computed(() => store.user !== null)
-const settings = computed(() => store.settings)
-
-const license = computed(
-  () => settings.value.license === import.meta.env.VITE_PKU_TOOLS_LICENSE_KEY
-)
 </script>
 
 <template>
@@ -44,15 +38,12 @@ const license = computed(
     <div v-if="userIsAuthenticated">
       <div class="space-y-6">
         <MotivationCard />
-        <CurrentTipCard v-if="license" />
-        <TodaysTipCard v-if="license" />
-        <PheDiaryCard v-if="license" />
-        <LabValuesCard v-if="license" />
-        <p v-if="license" class="mt-2">
-          {{ $t('assistant.info') }}
-        </p>
+        <CurrentTipCard />
+        <TodaysTipCard />
+        <PheDiaryCard />
+        <LabValuesCard />
+        <p class="mt-2">{{ $t('assistant.info') }}</p>
       </div>
-      <TiersCard v-if="!license" />
     </div>
   </div>
 </template>
