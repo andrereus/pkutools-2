@@ -215,7 +215,7 @@ const iconMap = {
       as="nav"
       class="fixed top-0 w-full z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
     >
-      <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+      <div class="w-full px-2 sm:px-4 lg:px-8 lg:max-w-7xl lg:mx-auto">
         <div class="relative flex h-16 justify-between">
           <div class="relative inset-y-0 left-0 flex items-center">
             <MenuComponent as="div" class="relative">
