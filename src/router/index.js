@@ -99,7 +99,10 @@ const router = createRouter({
       name: 'Assistant Chat',
       component: AssistantChat
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router
