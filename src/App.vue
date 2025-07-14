@@ -67,7 +67,8 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
+      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' },
+      { name: 'lab-values.tab-title', icon: 'ChartLine', route: '/lab-values' }
     ]
   } else {
     return [
@@ -75,7 +76,8 @@ const tabNavigation = computed(() => {
       { name: 'app.search', icon: 'Search', route: '/phe-search' },
       { name: 'app.scanner', icon: 'ScanBarcode', route: '/barcode-scanner' },
       { name: 'app.calculator', icon: 'Calculator', route: '/phe-calculator' },
-      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' }
+      { name: 'phe-diary.tab-title', icon: 'Calendar', route: '/phe-diary' },
+      { name: 'lab-values.tab-title', icon: 'ChartLine', route: '/lab-values' }
     ]
   }
 })
