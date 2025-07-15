@@ -413,7 +413,7 @@ const iconMap = {
                       <a
                         :class="[
                           active ? 'bg-gray-100 dark:bg-gray-700' : '',
-                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300'
+                          'group flex items-center px-6 py-3 text-gray-700 cursor-pointer dark:text-gray-300 ph-no-capture sentry-mask'
                         ]"
                         @click.prevent="
                           () => {
@@ -423,7 +423,7 @@ const iconMap = {
                         "
                       >
                         <User
-                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300 ph-no-capture sentry-mask"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
                           aria-hidden="true"
                         />{{ user.name || user.email }}
                       </a>
