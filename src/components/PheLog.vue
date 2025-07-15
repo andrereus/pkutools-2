@@ -326,7 +326,7 @@ const nextDay = () => {
         </div>
       </div>
 
-      <CurrentTipCard v-if="isToday" class="mb-3" />
+      <!-- <CurrentTipCard v-if="isToday" class="mb-3" /> -->
       <TodaysTipCard v-if="isToday" />
 
       <DataTable :headers="tableHeaders" class="mb-6">
