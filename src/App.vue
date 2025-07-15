@@ -1,6 +1,6 @@
 <script setup>
 /* global Headway */
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed, onBeforeMount, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from './stores/index'
 import { useRoute } from 'vue-router'
@@ -165,12 +165,38 @@ const setLocale = (newLocale) => {
   document.getElementsByTagName('html')[0].lang = newLocale
 }
 
+// --- Natural scroll-reveal state ---
+const navHeight = 64 + 48 // 64px for upper nav, 48px for tab nav (adjust if needed)
+const upperNavHeight = 64 // px
+const tabNavHeight = 48 // px
+const navOffset = ref(0) // 0 = fully shown, -upperNavHeight = fully hidden
+let lastScrollY = window.scrollY
+let ticking = false
+
+const handleScroll = () => {
+  const currentY = window.scrollY
+  const delta = currentY - lastScrollY
+  let newOffset = navOffset.value - delta
+  newOffset = Math.min(0, Math.max(newOffset, -upperNavHeight))
+  navOffset.value = newOffset
+  lastScrollY = currentY
+}
+
 // Lifecycle hooks
 onBeforeMount(() => {
   document.getElementsByTagName('html')[0].lang = locale.value
 })
 
 onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll()
+        ticking = false
+      })
+      ticking = true
+    }
+  })
   store.checkAuthState()
 
   // Script gets loaded in index.html
@@ -189,6 +215,9 @@ onMounted(() => {
       localStorage.removeItem(item)
     }
   })
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 
 // Add an icon map to reference the actual icon components
@@ -213,12 +242,18 @@ const iconMap = {
 
 <template>
   <div class="min-h-screen flex flex-col app-container-safe-area dark:text-white">
+    <!-- Unified nav container for continuous blur -->
     <div
-      as="nav"
-      class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg shadow-sm"
-      style="padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right)"
+      class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg shadow-sm bg-white/70 dark:bg-gray-800/70"
+      :style="{
+        transform: `translateY(${navOffset}px)`,
+        transition: 'transform 0.15s linear',
+        paddingLeft: 'env(safe-area-inset-left)',
+        paddingRight: 'env(safe-area-inset-right)'
+      }"
     >
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+        <!-- Upper nav -->
         <div class="relative flex h-16 justify-between">
           <div class="relative inset-y-0 left-0 flex items-center">
             <MenuComponent as="div" class="relative">
@@ -481,10 +516,8 @@ const iconMap = {
           </div>
         </div>
         <div class="border-b dark:border-gray-700"></div>
-        <nav
-          class="flex py-2 justify-around sm:justify-center sm:space-x-12 lg:justify-start lg:space-x-4"
-          aria-label="Global"
-        >
+        <!-- Tab navigation, left-aligned in centered container -->
+        <nav class="flex py-2 justify-start sm:space-x-12 lg:space-x-4" aria-label="Global">
           <RouterLink
             v-for="item in tabNavigation"
             :key="item.name"
@@ -507,7 +540,8 @@ const iconMap = {
       </div>
     </div>
 
-    <div class="pb-5 lg:pb-10 grow pt-28">
+    <!-- Main content, with reduced top padding -->
+    <div class="pb-5 lg:pb-10 grow" :style="{ paddingTop: '96px' }">
       <main>
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <RouterView></RouterView>
@@ -596,5 +630,20 @@ const iconMap = {
 .app-container-safe-area {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
     env(safe-area-inset-left);
+}
+</style>
+
+<style>
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: transform 0.3s;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  transform: translateY(-100%);
+}
+.slide-down-enter-to,
+.slide-down-leave-from {
+  transform: translateY(0);
 }
 </style>
