@@ -345,7 +345,7 @@ const iconMap = {
                   />
                   <img
                     v-if="userIsAuthenticated && userPhotoUrl"
-                    class="h-8 w-8 rounded-full sl-exclude"
+                    class="h-8 w-8 rounded-full ph-no-capture sentry-block"
                     :src="userPhotoUrl"
                     :alt="$t('app.profile-picture')"
                   />
@@ -423,7 +423,7 @@ const iconMap = {
                         "
                       >
                         <User
-                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300"
+                          class="mr-3 h-5 w-5 text-gray-700 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-300 ph-no-capture sentry-mask"
                           aria-hidden="true"
                         />{{ user.name || user.email }}
                       </a>
