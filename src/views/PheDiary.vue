@@ -481,7 +481,6 @@ const updateData = (timeline) => {
         ></apexchart>
       </div>
 
-      <MotivationCard class="mb-3" />
       <PheDiaryCard />
 
       <!-- TODO: Add sort feature -->
