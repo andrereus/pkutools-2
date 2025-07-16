@@ -35,7 +35,7 @@ const tiers = computed(() => [
   {
     name: t('settings.tier-lifetime'),
     id: 'tier-lifetime',
-    price: '€55',
+    price: '€49',
     description: t('settings.tier-lifetime-desc'),
     features: [
       t('settings.tier-unlimited-feature-1'),
