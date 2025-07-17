@@ -72,15 +72,6 @@ const saveLicense = () => {
   })
 }
 
-const resetLog = () => {
-  let r = confirm(t('settings.reset-log') + '?')
-  if (r === true) {
-    const db = getDatabase()
-    remove(dbRef(db, `${user.value.id}/pheLog`))
-    router.push('/')
-  }
-}
-
 const resetDiary = () => {
   let r = confirm(t('settings.reset-diary') + '?')
   if (r === true) {
@@ -217,18 +208,19 @@ onMounted(() => {
 
       <PrimaryButton :text="$t('settings.check-license')" @click="saveLicense" />
 
+      <PageHeader :title="$t('settings.change-password')" class="mt-6" />
+
+      <p class="mb-6">{{ $t('settings.change-password-info') }}</p>
+
       <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
 
-      <SecondaryButton :text="$t('settings.reset-log')" @click="resetLog" />
       <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
       <SecondaryButton :text="$t('settings.reset-lab-values')" @click="resetLabValues" />
       <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
 
       <PageHeader :title="$t('settings.delete-account')" class="mt-6" />
 
-      <p class="mb-6">
-        {{ $t('settings.delete-account-info') }}
-      </p>
+      <p class="mb-6">{{ $t('settings.delete-account-info') }}</p>
 
       <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
     </div>
