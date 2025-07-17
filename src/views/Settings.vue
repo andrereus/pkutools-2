@@ -199,29 +199,25 @@ onMounted(() => {
       <PageHeader title="PKU Tools Unlimited" class="mt-6" />
       <TiersCard />
 
+      <PageHeader :title="$t('settings.license-heading')" class="mt-6" />
       <TextInput
         id-name="license"
         :label="$t('settings.license-key')"
         v-model="settings.license"
         class="mb-6"
       />
-
       <PrimaryButton :text="$t('settings.check-license')" @click="saveLicense" />
 
       <PageHeader :title="$t('settings.change-password')" class="mt-6" />
-
       <p class="mb-6">{{ $t('settings.change-password-info') }}</p>
 
       <PageHeader :title="$t('settings.reset-heading')" class="mt-6" />
-
       <SecondaryButton :text="$t('settings.reset-diary')" @click="resetDiary" />
       <SecondaryButton :text="$t('settings.reset-lab-values')" @click="resetLabValues" />
       <SecondaryButton :text="$t('settings.reset-own-food')" @click="resetOwnFood" />
 
       <PageHeader :title="$t('settings.delete-account')" class="mt-6" />
-
       <p class="mb-6">{{ $t('settings.delete-account-info') }}</p>
-
       <SecondaryButton :text="$t('settings.delete-account')" @click="deleteAccount" />
     </div>
   </div>
