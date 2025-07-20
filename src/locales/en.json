@@ -285,6 +285,11 @@
     "history-title": "Consistency",
     "history-description": "{days} of 10 days in the last 2 weeks"
   },
+  "cookie-consent": {
+    "message": "We use cookies for essential functions and to improve the app. Accept cookies?",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "chat": {
     "title": "Chat with Assistant",
     "placeholder": "Ask about nutrition, recipes, or food calculations...",

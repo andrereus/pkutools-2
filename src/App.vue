@@ -1,6 +1,6 @@
 <script setup>
 /* global Headway */
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed, onBeforeMount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from './stores/index'
 import { useRoute } from 'vue-router'
@@ -208,6 +208,16 @@ const iconMap = {
   Calendar,
   ChartLine,
   Bot
+}
+
+const showCookieBanner = ref(!localStorage.getItem('cookie_consent'))
+
+const handleCookieConsent = (consent) => {
+  if (window.posthog) {
+    window.posthog.set_config({ persistence: consent === 'yes' ? 'localStorage+cookie' : 'memory' })
+  }
+  localStorage.setItem('cookie_consent', consent)
+  showCookieBanner.value = false
 }
 </script>
 
@@ -589,6 +599,29 @@ const iconMap = {
         </div>
       </div>
     </footer>
+
+    <div
+      v-if="showCookieBanner"
+      class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 max-w-xl w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+    >
+      <span class="text-gray-800 dark:text-gray-100 text-sm">
+        {{ $t('cookie-consent.message') }}
+      </span>
+      <div class="flex gap-2 justify-end">
+        <button
+          @click="handleCookieConsent('yes')"
+          class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition"
+        >
+          {{ $t('cookie-consent.accept') }}
+        </button>
+        <button
+          @click="handleCookieConsent('no')"
+          class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 text-sm font-medium px-4 py-2 rounded-lg transition"
+        >
+          {{ $t('cookie-consent.decline') }}
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 

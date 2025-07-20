@@ -285,6 +285,11 @@
     "history-title": "Regelmäßigkeit",
     "history-description": "{days} von 10 Tagen in den letzten 2 Wochen"
   },
+  "cookie-consent": {
+    "message": "Wir verwenden Cookies für grundlegende Funktionen und zur Verbesserung der App. Cookies akzeptieren?",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  },
   "chat": {
     "title": "Chat mit Assistent",
     "placeholder": "Fragen zu Ernährung, Rezepten oder Lebensmittelberechnungen...",

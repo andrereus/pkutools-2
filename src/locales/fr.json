@@ -284,5 +284,10 @@
     "streak-description": "Actuellement {days} sur 5 jours consécutifs",
     "history-title": "Régularité",
     "history-description": "{days} sur 10 jours ces 2 dernières semaines"
+  },
+  "cookie-consent": {
+    "message": "Nous utilisons des cookies pour les fonctions essentielles et pour améliorer l'application. Accepter les cookies ?",
+    "accept": "Accepter",
+    "decline": "Refuser"
   }
 }
