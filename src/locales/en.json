@@ -284,5 +284,10 @@
     "streak-description": "Currently {days} of 5 days in a row",
     "history-title": "Consistency",
     "history-description": "{days} of 10 days in the last 2 weeks"
+  },
+  "cookie-consent": {
+    "message": "We use cookies for essential functions and to improve the app. Accept cookies?",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }
