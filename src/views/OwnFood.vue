@@ -136,6 +136,7 @@ const add = () => {
     name: editedItem.value.name,
     icon: editedItem.value.icon || null,
     pheReference: editedItem.value.phe,
+    kcalReference: editedItem.value.kcal,
     weight: Number(weight.value),
     phe: calculatePhe(),
     kcal: calculateKcal()
